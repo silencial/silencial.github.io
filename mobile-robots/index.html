@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="CSE 490R Review My solution to the homework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mobile Robots">
+<meta property="og:url" content="https://silencial.github.io/mobile-robots/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="CSE 490R Review My solution to the homework">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9b1da0765b799c8c7f127e75860224b5.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_4843cc831aa0cfd6384fbe8c8d4a1135.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_026ce76324175dab1af828975d49d3bf.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9844cc32418a123e41c17e93270542ad.png">
+<meta property="article:published_time" content="2020-03-19T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-20T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="UW">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9b1da0765b799c8c7f127e75860224b5.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/mobile-robots/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;mobile-robots&#x2F;&quot;,&quot;path&quot;:&quot;mobile-robots&#x2F;&quot;,&quot;title&quot;:&quot;Mobile Robots&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Mobile Robots | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lab0"><span class="nav-number">1.</span> <span class="nav-text">Lab0</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bayes-filter"><span class="nav-number">1.1.</span> <span class="nav-text">Bayes Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kalman-filter"><span class="nav-number">1.2.</span> <span class="nav-text">Kalman Filter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab1"><span class="nav-number">2.</span> <span class="nav-text">Lab1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#motion-model"><span class="nav-number">2.1.</span> <span class="nav-text">Motion Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#noise"><span class="nav-number">2.1.1.</span> <span class="nav-text">Noise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sensor-model"><span class="nav-number">2.2.</span> <span class="nav-text">Sensor Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#noise-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Noise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#particle-filter"><span class="nav-number">2.3.</span> <span class="nav-text">Particle Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#resample"><span class="nav-number">2.3.1.</span> <span class="nav-text">Resample</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expected-pose"><span class="nav-number">2.3.2.</span> <span class="nav-text">Expected Pose</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab2"><span class="nav-number">3.</span> <span class="nav-text">Lab2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#control"><span class="nav-number">3.1.</span> <span class="nav-text">Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pid"><span class="nav-number">3.2.</span> <span class="nav-text">PID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pure-pursuit"><span class="nav-number">3.3.</span> <span class="nav-text">Pure-Pursuit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lyapunov-control"><span class="nav-number">3.4.</span> <span class="nav-text">Lyapunov Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lqr"><span class="nav-number">3.5.</span> <span class="nav-text">LQR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mpc"><span class="nav-number">3.6.</span> <span class="nav-text">MPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-1"><span class="nav-number">3.7.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lab3"><span class="nav-number">4.</span> <span class="nav-text">Lab3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-construction"><span class="nav-number">4.1.</span> <span class="nav-text">Graph Construction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sampling"><span class="nav-number">4.1.1.</span> <span class="nav-text">Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimal-radius"><span class="nav-number">4.1.2.</span> <span class="nav-text">Optimal Radius</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dubins-path"><span class="nav-number">4.1.3.</span> <span class="nav-text">Dubins Path</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#planning-algorithm"><span class="nav-number">4.2.</span> <span class="nav-text">Planning Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dijkstras-algorithm"><span class="nav-number">4.2.1.</span> <span class="nav-text">Dijkstra&#39;s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a"><span class="nav-number">4.2.2.</span> <span class="nav-text">A*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-a"><span class="nav-number">4.2.3.</span> <span class="nav-text">Weighted A*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lazy-a"><span class="nav-number">4.2.4.</span> <span class="nav-text">Lazy A*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shortcut"><span class="nav-number">4.2.5.</span> <span class="nav-text">Shortcut</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code-2"><span class="nav-number">4.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/mobile-robots/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mobile Robots
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-03-19 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-19T00:00:00+00:00">2020-03-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-03-20 00:00:00" itemprop="dateModified" datetime="2020-03-20T00:00:00+00:00">2020-03-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>41 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://courses.cs.washington.edu/courses/cse490r/19sp/">CSE 490R</a> Review</p>
+<p>My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/Mobile-Robots">solution</a> to the homework</p>
+<span id="more"></span>
+<hr />
+<h1 id="lab0">Lab0</h1>
+<ul>
+<li><strong>Localization</strong>: Determine the pose of a robot relative to a given map of the environment.</li>
+<li><strong>Mapping</strong>: Construct a map.</li>
+<li><strong>Planning</strong>:</li>
+</ul>
+<h2 id="bayes-filter">Bayes Filter</h2>
+<p>The <strong>Bayes filter algorithm</strong> includes two steps, the first step is prediction (push belief through dynamics given action), the second step is correction (apply Bayes rule given measurement).</p>
+<p><span class="math display">\[
+\displaylines{\overline{bel}\left(x_{t}\right) = \int p\left(x_{t} | u_{t}, x_{t-1}\right) bel\left(x_{t-1}\right) d x_{t-1} \\
+bel\left(x_{t}\right) = \eta p\left(z_{t} | x_{t}\right) \overline{bel}\left(x_{t}\right)
+}
+\]</span></p>
+<h2 id="kalman-filter">Kalman Filter</h2>
+<p><strong>Assumptions</strong>:</p>
+<ol type="1">
+<li>Linear dynamics <span class="math inline">\(p(x_t | u_t, x_{t-1}) = A_{t} x_{t-1}+B_{t} u_{t}+\varepsilon_{t}\)</span>, where <span class="math inline">\(\varepsilon_t \sim \mathcal{N}(0, R_t)\)</span></li>
+<li>Linear measurement model <span class="math inline">\(p(z_t | x_t) = C_{t} x_{t}+\delta_{t}\)</span>, where <span class="math inline">\(\delta_t \sim \mathcal{N}(0, Q_t)\)</span></li>
+<li>Initial belief <span class="math inline">\(bel(x_0)\)</span> is a Gaussian distribution <span class="math display">\[
+\displaylines{bel\left(x_{0}\right)=p\left(x_{0}\right)=\operatorname{det}\left(2 \pi \Sigma_{0}\right)^{-\frac{1}{2}} \exp \left\{-\frac{1}{2}\left(x_{0}-\mu_{0}\right)^{T} \Sigma_{0}^{-1}\left(x_{0}-\mu_{0}\right)\right\}
+}
+\]</span></li>
+</ol>
+<p><strong>Algorithm</strong>: <span class="math display">\[
+\displaylines{\mathbf{\text{Algorithm Kalman_filter(}}\mu_{t-1}, \Sigma_{t-1}, u_t, z_t \mathbf{):} \\
+\begin{aligned}
+\bar{\mu}_{t} &amp;=A_{t} \mu_{t-1}+B_{t} u_{t} \\
+\bar{\Sigma}_{t} &amp;=A_{t} \Sigma_{t-1} A_{t}^{T}+R_{t} \\
+K_{t} &amp;=\bar{\Sigma}_{t} C_{t-1}^{T}\left(C_{t} \bar{\Sigma}_{t} C_{t}^{T}+Q_{t}\right)^{-1} \\
+\mu_{t} &amp;=\bar{\mu}_{t}+K_{t}\left(z_{t}-C_{t} \bar{\mu}_{t}\right) \\
+\Sigma_{t} &amp;=\left(I-K_{t} C_{t}\right) \bar{\Sigma}_{t} \\
+&amp;\text{return } \mu_{t}, \Sigma_{t}
+\end{aligned}
+}
+\]</span></p>
+<h1 id="lab1">Lab1</h1>
+<h2 id="motion-model">Motion Model</h2>
+<ul>
+<li><strong>Kinematic model</strong>: map wheel speeds to robot velocities.</li>
+<li><strong>Dynamic model</strong>: map wheel torques to robot accelerations.</li>
+</ul>
+<p>Consider only kinematic model <span class="math inline">\(p(x_t | u_t, x_{t-1})\)</span> for now (assume we can set the speed directly), then <span class="math inline">\(x = [x, y, \theta]^T\)</span>, <span class="math inline">\(u = [V, \delta]^T\)</span>, where <span class="math inline">\(\theta\)</span> is the heading and <span class="math inline">\(\delta\)</span> is the steering angle.</p>
+<p>Now we will derive the motion model for rear axel. Note that a rigid body undergoing rotation and translation can be viewed as pure rotation about a instant center of rotation:</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9b1da0765b799c8c7f127e75860224b5.png" alt="Car Kinematic model" style="width:50.0%" /></p>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\dot{x}=V \cos (\theta)\\
+&amp;\dot{y}=V \sin (\theta)\\
+&amp;\dot{\theta}=\omega=\frac{V \tan \delta}{L}
+\end{aligned}
+}
+\]</span></p>
+<p>With numerical integration we can get <span class="math display">\[
+\displaylines{x_{t+1}=x_{t}+\frac{L}{\tan (\delta)}\left(\sin \left(\theta_{t+1}\right)-\sin \left(\theta_{t}\right)\right) \\
+y_{t+1}=y_{t}+\frac{L}{\tan (\delta)}\left(-\cos \left(\theta_{t+1}\right)+\cos \left(\theta_{t}\right)\right) \\
+\theta_{t+1}=\theta_{t}+\frac{v}{L} \tan (\delta) \Delta t \quad
+}
+\]</span></p>
+<h3 id="noise">Noise</h3>
+<ol type="1">
+<li>Control signal error: <span class="math inline">\(\hat{V} \sim \mathcal{N}(V, \sigma_v^2)\)</span>, <span class="math inline">\(\hat{\delta} \sim \mathcal{N}(\delta, \sigma_\delta^2)\)</span></li>
+<li>Incorrect physics (the Kinematic Model is inaccurate): <span class="math inline">\(\hat{x} \sim \mathcal{N}\left(x, \sigma_{x}^{2}\right)\)</span>, <span class="math inline">\(\hat{y} \sim \mathcal{N}\left(y, \sigma_{y}^{2}\right)\)</span>, <span class="math inline">\(\hat{\theta} \sim \mathcal{N}\left(\theta, \sigma_{\theta}^{2}\right)\)</span></li>
+</ol>
+<h2 id="sensor-model">Sensor Model</h2>
+<p><span class="math inline">\(p(z_t | x_t, m)\)</span> is the probability of sensor reading <span class="math inline">\(z_t\)</span> given state <span class="math inline">\(x_t\)</span> and map <span class="math inline">\(m\)</span>. Calculate simulated sensor reading <span class="math inline">\(z^*\)</span> form <span class="math inline">\(x\)</span> and <span class="math inline">\(m\)</span> and then compare with <span class="math inline">\(z\)</span>.</p>
+<p>Assume individual beams are conditionally independent given map <mark>(may result in overconfidence problem)</mark>: <span class="math display">\[
+\displaylines{p\left(z_{t} | x_{t}, m\right)=\prod_{i=1}^{K} p\left(z_{t}^{k} | x_{t}, m\right)
+}
+\]</span></p>
+<h3 id="noise-1">Noise</h3>
+<ol type="1">
+<li><p>Simple measurement noise in distance value <span class="math display">\[
+\displaylines{ p_{\text {hit }}\left(z_{t}^{k} | x_{t}, m\right)=\begin{cases}
+ \eta \mathcal{N}\left(z_{t}^{k} ; z_{t}^{k *}, \sigma_{\text {hit }}^{2}\right) &amp; \text { if } 0 \leq z_{t}^{k} \leq z_{\max } \\
+ 0 &amp; \text { otherwise }
+ \end{cases}
+ }
+\]</span></p></li>
+<li><p>Presence of unexpected objects <span class="math display">\[
+\displaylines{ p_{\text {short }}\left(z_{t}^{k} | x_{t}, m\right)=\begin{cases}
+ \eta \lambda_{\text {short }} e^{-\lambda_{\text {short }} z_{t}^{k}} &amp; \text { if } 0 \leq z_{t}^{k} \leq z_{t}^{k *} \\
+ 0 &amp; \text { otherwise }
+ \end{cases}
+ }
+\]</span></p></li>
+<li><p>Laser returns max range when no objects <span class="math display">\[
+\displaylines{ p_{\max }\left(z_{t}^{k} | x_{t}, m\right)=I\left(z=z_{\max }\right)=\begin{cases}
+ 1 &amp; \text { if } z=z_{\max } \\
+ 0 &amp; \text { otherwise }
+ \end{cases}
+ }
+\]</span></p></li>
+<li><p>Failures in sensing <span class="math display">\[
+\displaylines{ p_{\text {rand }}\left(z_{t}^{k} | x_{t}, m\right)=\begin{cases}
+ \frac{1}{z_{\max }} &amp; \text { if } 0 \leq z_{t}^{k}&lt;z_{\max } \\
+ 0 &amp; \text { otherwise }
+ \end{cases}
+ }
+\]</span></p></li>
+</ol>
+<p>Combine these 4 model to get <span class="math display">\[
+\displaylines{p\left(z_{t}^{k} | x_{t}, m\right)=\begin{pmatrix}
+z_{\mathrm{hit}} \\
+z_{\text {short }} \\
+z_{\text {max }} \\
+z_{\text {rand }}
+\end{pmatrix}^{T} \begin{pmatrix}
+p_{\text {hit }}(z_{t}^{k} | x_{t}, m) \\
+p_{\text {short }}(z_{t}^{k} | x_{t}, m) \\
+p_{\text {max }}(z_{t}^{k} | x_{t}, m) \\
+p_{\text {rand }}(z_{t}^{k} | x_{t}, m)
+\end{pmatrix}
+}
+\]</span></p>
+<h2 id="particle-filter">Particle Filter</h2>
+<p>The particle filter is an alternative <strong>nonparametric</strong> implementation of the Bayes filter. The key idea is to represent the posterior <span class="math inline">\(bel(x_t)\)</span> by a set of random state samples (particles) drawn from this posterior. <span class="math display">\[
+\displaylines{\mathbf{\text{Algorithm Particle_filter(}} \mathcal{X}_{t-1}, u_t, z_t \mathbf{):} \\
+\begin{aligned}
+&amp;\bar{\mathcal{X}}_{t}=\mathcal{X}_{t}=\emptyset \\
+&amp;\text{for } m=1 \text{ to } M \text{ do} \\
+&amp;\qquad \text{sample } x_{t}^{[m]} \sim p\left(x_{t} | u_{t}, x_{t-1}^{[m]}\right) \\
+&amp;\qquad {w_{t}^{[m]}=p\left(z_{t} | x_{t}^{[m]}\right)} \\
+&amp;\qquad {\bar{\mathcal{X}}_{t}=\bar{\mathcal{X}}_{t}+\left\langle x_{t}^{[m]}, w_{t}^{[m]}\right\rangle} \\
+&amp;\text{endfor } \\
+&amp;\text{for } m = 1 \text{ to } M \text{ do} \\
+&amp;\qquad \text{draw } i \text{ with probability } \propto w_{t}^{[i]} \\
+&amp;\qquad \text{add } x_t^{[i]} \text{ to } \mathcal{X}_t \\
+&amp;\text{endfor} \\
+&amp;\text{return } \mathcal{X}_t
+\end{aligned}
+}
+\]</span></p>
+<p>We first sample <span class="math inline">\(x_t\)</span> from the state transition distribution, then calculate the <strong>importance factor</strong>, <span class="math inline">\(w_t\)</span>. In the next loop, we do the <strong>resampling</strong>/<strong>importance sampling</strong>, to change the distribution of particles from <span class="math inline">\(\overline{bel}(x_t)\)</span> to <span class="math inline">\(bel(x_t)\)</span>.</p>
+<h3 id="resample">Resample</h3>
+<p>Resampling can cause high-variance (low-entropy) problem, where particles are depleted. Possible fixes:</p>
+<ol type="1">
+<li>If the variance of weights low, don't resample.</li>
+<li>Use low-variance sampling.</li>
+</ol>
+<p><span class="math display">\[
+\displaylines{\mathbf{\text{Algorithm Low_variance_sampler(}} \mathcal{X}_{t}, \mathcal{W}_{t} \mathbf{):} \\
+\begin{aligned}
+&amp;\bar{X}_{t}=\emptyset \\
+&amp;r=\operatorname{rand}\left(0 ; M^{-1}\right) \\
+&amp;c=w_{t}^{[1]} \\
+&amp;i=1 \\
+&amp;\text{for } m=1 \text{ to } M \text{ do} \\
+&amp;\qquad U=r+(m-1) \cdot M^{-1} \\
+&amp;\qquad \text{while } U &gt; c \\
+&amp;\qquad\quad i=i+1 \\
+&amp;\qquad\quad c=c+w_{t}^{[i]} \\
+&amp;\qquad \text{endwhile} \\
+&amp;\qquad \text{add } x_{t}^{[i]} \text{ to } \bar{X}_{t} \\
+&amp;\text{endfor } \\
+&amp;\text{return } \bar{\mathcal{X}}_t
+\end{aligned}
+}
+\]</span></p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_4843cc831aa0cfd6384fbe8c8d4a1135.png" alt="Low-Variance Sampling" /></p>
+<h3 id="expected-pose">Expected Pose</h3>
+<p>Calculate expected pose from particles: <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> can be computed directly by the weighted average. However, the weighted average of <span class="math inline">\(\theta\)</span> is not accurate. Thus we use cosine and sine averaging. (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Mean_of_circular_quantities">Ref</a>)</p>
+<h2 id="code">Code</h2>
+<p><code>MotionModel.py</code>:</p>
+<ol type="1">
+<li>Subscribe to motor topic, get control info (speed and steering angle), also save last frame info for calculation.</li>
+<li>Add variance to speed and steering angle. Apply motion model on particles. Add variance to states.</li>
+</ol>
+<p><code>SensorModle.py</code>:</p>
+<ol type="1">
+<li>Precompute the sensor model table and use <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/kctess5/range_libc">range_libc</a> package to achieve 2D raycasting for 2D occupancy grid.</li>
+<li>Subscribe to scan topic, filter out invalid and extreme scan values, downsample, and pass processed data to update weights.</li>
+</ol>
+<p><code>ParticleFilter.py</code>:</p>
+<ol type="1">
+<li>Transfer map to occupancy grid.</li>
+<li>Globally initialize particles and weights. Initialize motion model and sensor model.</li>
+<li>Subscribe to <code>/intialpose</code> topic, initialize particles and weights around initial pos.</li>
+<li>When receiving scan infos, update weights, resample and calculate the expected pose for visualization.</li>
+</ol>
+<h1 id="lab2">Lab2</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Uses Model</th>
+<th style="text-align: center;">Stability Guarantee</th>
+<th style="text-align: center;">Minimize Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">PID</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Pure Pursuit</td>
+<td style="text-align: center;">Circular arcs</td>
+<td style="text-align: center;">Yes - with assumptions</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Lyapunov</td>
+<td style="text-align: center;">Non-linear</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">LQR</td>
+<td style="text-align: center;">Linear</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Quadratic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">iLQR</td>
+<td style="text-align: center;">Non-linear</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="control">Control</h2>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_026ce76324175dab1af828975d49d3bf.png" alt="Coordinate Transformation" style="width:50.0%" /></p>
+<p>Position error in frame A: <span class="math display">\[
+\displaylines{{}^{A}e = \begin{bmatrix}
+x \\ y
+\end{bmatrix} - \begin{bmatrix}
+x_{ref} \\ y_{ref}
+\end{bmatrix}
+}
+\]</span></p>
+<p>We want position error in frame B so that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> error correspond to along-track and cross-track error respectively: <span class="math display">\[
+\displaylines{\begin{aligned}
+{}^{B}e &amp;= {}_A^{B} R {}^{A}e \\
+&amp;=R(-\theta_{ref}) \left( \begin{bmatrix}
+x \\ y
+\end{bmatrix} - \begin{bmatrix}
+x_{ref} \\ y_{ref}
+\end{bmatrix} \right) \\
+&amp;= \begin{bmatrix}
+\cos \left(\theta_{r e f}\right)\left(x-x_{r e f}\right)+\sin \left(\theta_{r e f}\right)\left(y-y_{r e f}\right) \\
+-\sin \left(\theta_{r e f}\right)\left(x-x_{r e f}\right)+\cos \left(\theta_{r e f}\right)\left(y-y_{r e f}\right)
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+e_{at} &amp; e_{ct}
+\end{bmatrix}^T
+\end{aligned}
+}
+\]</span></p>
+<p>Only consider cross-track error <span class="math inline">\(e_{ct}\)</span> and control steering angle for now.</p>
+<h2 id="pid">PID</h2>
+<p><span class="math display">\[
+\displaylines{u=-\left(K_{p} e_{c t}+K_{i} \int e_{c t}(t) d t+K_{d} \dot{e}_{c t}\right)
+}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(K_p\)</span>: Proportional coefficient</li>
+<li><span class="math inline">\(K_i\)</span>: Integral coefficient</li>
+<li><span class="math inline">\(K_d\)</span>: Derivative coefficient</li>
+</ul>
+<p>Analytically compute the derivative term: <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{e}_{c t} &amp;=-\sin \left(\theta_{ref}\right) \dot{x}+\cos \left(\theta_{ref}\right) \dot{y} \\
+&amp;=-\sin \left(\theta_{ref}\right) V \cos (\theta)+\cos \left(\theta_{ref}\right) V \sin (\theta) \\
+&amp;=V \sin \left(\theta-\theta_{ref}\right) \\
+&amp;=V \sin \left(\theta_{e}\right)
+\end{aligned}
+}
+\]</span></p>
+<h2 id="pure-pursuit">Pure-Pursuit</h2>
+<p><strong>Key idea</strong>: The car is always moving in a circular arc.</p>
+<ol type="1">
+<li>Find a lookahead and compute arc</li>
+<li>Move along the arc</li>
+<li>Go to step 1</li>
+</ol>
+<p>Solve for arc: <span class="math display">\[
+\displaylines{\alpha=\tan ^{-1}\left(\frac{y_{ref}-y}{x_{ref}-x}\right)-\theta \\
+R = \frac{L}{2 \sin\alpha} \\
+\dot{\theta} = \frac{V}{R} = \frac{2V\sin\alpha}{L} \\
+\dot{\theta} = \frac{V\tan u}{B}
+}
+\]</span></p>
+<p>where <span class="math inline">\(B\)</span> is the car length. Solve for <span class="math inline">\(u\)</span> we can get <span class="math display">\[
+\displaylines{u = \tan^{-1}\left( \frac{2B \sin \alpha}{L} \right)
+}
+\]</span></p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_9844cc32418a123e41c17e93270542ad.png" alt="Pure-pursuit Arc" style="width:67.0%" /></p>
+<h2 id="lyapunov-control">Lyapunov Control</h2>
+<p>Define Lyapunov function: <span class="math display">\[
+\displaylines{V\left(e_{ct}, \theta_{e}\right)=\frac{1}{2} k_{1} e_{ct}^{2}+\frac{1}{2} \theta_{e}^{2}
+}
+\]</span></p>
+<p>Compute the derivative: <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{V}\left(e_{c t}, \theta_{e}\right)&amp;=k_{1} e_{c t} \dot{e}_{c t}+\theta_{e} \dot{\theta}_{e}\\
+&amp;=k_{1} e_{c t} V \sin \theta_{e}+\theta_{e} \frac{V}{B} \tan u
+\end{aligned}
+}
+\]</span></p>
+<p>Set <span class="math inline">\(u\)</span> to get <span class="math inline">\(\dot{V} &lt; 0\)</span>: <span class="math display">\[
+\displaylines{\theta_{e} \frac{V}{B} \tan u=-k_{1} e_{c t} V \sin \theta_{e}-k_{2} \theta_{e}^{2} \\
+\tan u=-\frac{k_{1} e_{c t} B}{\theta_{e}} \sin \theta_{e}-\frac{B}{V} k_{2} \theta_{e} \\
+u=\tan ^{-1}\left(-\frac{k_{1} e_{c t} B}{\theta_{e}} \sin \theta_{e}-\frac{B}{V} k_{2} \theta_{e}\right)
+}
+\]</span></p>
+<h2 id="lqr">LQR</h2>
+<p>Turn the problem into an optimization to trade-off both driving error and keeping control action small: <span class="math display">\[
+\displaylines{\min _{u(t)} \int_{0}^{\infty}\left(w_{1} e(t)^{2}+w_{2} u(t)^{2} \right) dt
+}
+\]</span></p>
+<p>Given</p>
+<ol type="1">
+<li><strong>Linear</strong> dynamic system <span class="math display">\[
+\displaylines{  x_{t+1} = Ax_t + Bu_t
+}
+\]</span></li>
+<li><strong>Quadratic</strong> cost <span class="math display">\[
+\displaylines{J=\sum_{t=0}^{T-1} x_{t}^{T} Q x_{t}+u_{t}^{T} R u_{t}
+}
+\]</span></li>
+</ol>
+<p>The optimal control sequence minimizing the cost is <span class="math display">\[
+\displaylines{u_t = K_t x_t \\
+K_{t}=-\left(R+B^{T} V_{t+1} B\right)^{-1} B^{T} V_{t+1} A \\
+V_{t}=Q+K_{t}^{T} R K_{t}+\left(A+B K_{t}\right)^{T} V_{t+1}\left(A+B K_{t}\right)
+}
+\]</span></p>
+<h2 id="mpc">MPC</h2>
+<ol type="1">
+<li>Plan a sequence of control actions</li>
+<li>Predict the set of next states to a horizon H</li>
+<li>Evaluate the cost/constraint of the states and controls</li>
+<li>Optimize the cost</li>
+</ol>
+<h2 id="code-1">Code</h2>
+<p><code>controlnode.py</code>: main script</p>
+<ol type="1">
+<li>Define Subscribers to pose and path infos; Publishers for visualization and Services for reset</li>
+<li>Enter main program when initial pose is set and controller is ready. Get pose and reference pose, get next control and publish to <code>/vesc/high_level/ackermann_cmd_mux/input/nav_0</code> topic.</li>
+<li>Stop when path is completed</li>
+</ol>
+<p><code>runner_script.py</code>:</p>
+<ol type="1">
+<li>Loading different paths and speed</li>
+<li>Start the controller</li>
+</ol>
+<p><code>controller.py</code>: base controller class</p>
+<ol type="1">
+<li>Store path info</li>
+<li>Define utility functions: get reference pose by index, get pose and pose_ref error</li>
+</ol>
+<p><mark>Find reference pose function is the same for all controllers: Find the nearest point on the path and lookahead some distance.</mark></p>
+<p><code>pid.py</code>:</p>
+<ol type="1">
+<li>Use PD equation to get next control (steering angle)</li>
+</ol>
+<p><code>purepursuit.py</code>:</p>
+<ol type="1">
+<li>Use Purepursuit equation to get next control</li>
+</ol>
+<p><code>mpc.py</code>:</p>
+<ol type="1">
+<li>Dividing steering angle <span class="math inline">\([-\pi, \pi]\)</span> equally to <span class="math inline">\(K\)</span> rollouts</li>
+<li>Execute each steering angel through <span class="math inline">\(T\)</span> timesteps to collect <span class="math inline">\(K * T\)</span> poses</li>
+<li>Evaluate the cost of each rollout by collision cost and error cost
+<ol type="1">
+<li>Collision cost: if any pose in a trajectory is in collision with the map, add a large cost</li>
+<li>Error cost: norm of the distance between last pose and the reference pose, weighted by a constant</li>
+</ol></li>
+<li>Choose the rollout with the minimal cost and execute the first step</li>
+<li>Return to step 1</li>
+</ol>
+<p><code>mpc2.py</code>: Similar to mpc but use scan info rather than map. The only thing change is the obstacles cost.</p>
+<ol type="1">
+<li>Calculate <span class="math inline">\(N\)</span> obstacles pose in the map by scan info</li>
+<li>For <span class="math inline">\(K*T\)</span> poses, calculate the distance with every obstacles to get <span class="math inline">\(K*T*N\)</span> array</li>
+<li>Find the minimal distance for every pose to get <span class="math inline">\(K * T\)</span> array</li>
+<li>Average through timesteps to get <span class="math inline">\(K\)</span> array, then weighted by a constant to get the obstacles cost.</li>
+</ol>
+<p><code>nonlinear.py</code>:</p>
+<ol type="1">
+<li>Use Lyapunov control equation to get the control</li>
+</ol>
+<h1 id="lab3">Lab3</h1>
+<p>Steps for planing the path from one point to another:</p>
+<ol type="1">
+<li>Random sample points on the map and construct the graph</li>
+<li>Use planning algorithm (A*) to search the graph for optimal path</li>
+</ol>
+<h2 id="graph-construction">Graph Construction</h2>
+<p>The graph we are constructing is called <a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Random_geometric_graph">Random geometric graph</a> (RGG)</p>
+<ol type="1">
+<li>Sample a set of collision free vertices <span class="math inline">\(V\)</span></li>
+<li>Connect neighboring vertices to get edges <span class="math inline">\(E\)</span></li>
+</ol>
+<h3 id="sampling">Sampling</h3>
+<p>Uniform random sampling tends to clump. We want points to be spread out evenly, which can be achieved by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://observablehq.com/@jrus/halton">Halton sequence</a></p>
+<h3 id="optimal-radius">Optimal Radius</h3>
+<p>We want to choose the radius smaller enough for efficiency while ensuring connectivity. The optimal value can be chosen as <span class="math display">\[
+\displaylines{r = \left(\frac{\ln|V|}{\alpha_{p,d} |V|}\right)^{1/n}
+}
+\]</span> where <span class="math inline">\(\alpha_{p,d}\)</span> is a constant. For special case of a two-dimensional space and the euclidean norm (<span class="math inline">\(d=2\)</span>, <span class="math inline">\(p=2\)</span>), <span class="math inline">\(\alpha_{p,d} = \pi\)</span></p>
+<h3 id="dubins-path">Dubins Path</h3>
+<p>Since we are considering 2-D car dynamics, we need to connect two points with feasible path instead of straight lines. Mathematically, we need to solve the BVP: <span class="math display">\[
+\displaylines{\dot{q}(t) = f(q(t), u(t)) \\
+q(0) = q_1,\quad q(t) = q_2
+}
+\]</span> where <span class="math inline">\(q=(x,y,\theta)\)</span> in our case.</p>
+<p>Dubins path shows that the solution always exists and has to be one of 6 classes: <span class="math display">\[
+\displaylines{\{LRL, RLR, LSL, LSR, RSL, RSR\}
+}
+\]</span> where <span class="math inline">\(L,R,S\)</span> represent turn left, right, straight, respectively.</p>
+<h2 id="planning-algorithm">Planning Algorithm</h2>
+<p>Given start node <span class="math inline">\(s_0\)</span>, goal <span class="math inline">\(s_1\)</span> and cost <span class="math inline">\(c(s, s&#39;)\)</span>, create objects:</p>
+<ol type="1">
+<li>OPEN: <strong>priority queue</strong> of nodes to be processed</li>
+<li>CLOSED: list of nodes already processed</li>
+<li><span class="math inline">\(g(s)\)</span>: estimate of the least cost from start to a given node</li>
+</ol>
+<p>The pseudocode for <strong>best first search</strong> can be expressed as</p>
+<ol type="1">
+<li>Push <span class="math inline">\(s_0\)</span> into OPEN</li>
+<li>While <span class="math inline">\(s_1\)</span> not expanded
+<ol start="3" type="1">
+<li>Pop <em>best</em> from OPEN</li>
+<li>Add <em>best</em> to CLOSED</li>
+<li>For every successor <em>s'</em>
+<ol start="6" type="1">
+<li>If <span class="math inline">\(g(s&#39;) &gt; g(s) + c(s, s&#39;)\)</span>
+<ol start="7" type="1">
+<li><span class="math inline">\(g(s&#39;) = g(s) + c(s, s&#39;)\)</span></li>
+<li>Add (update) <span class="math inline">\(s&#39;\)</span> to OPEN</li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<p>The main problem is how to choose the heuristic function <span class="math inline">\(f(s)\)</span> for step 3.</p>
+<h3 id="dijkstras-algorithm">Dijkstra's Algorithm</h3>
+<p>Choose <span class="math inline">\(f(s) = g(s)\)</span>. Always pop the node with the smallest cost from the origin first.</p>
+<h3 id="a">A*</h3>
+<p>If we can pre-evaluate the cost from the node to the goal <span class="math inline">\(h(s)\)</span>, then we can choose a better <span class="math inline">\(f(s) = g(s) + h(s)\)</span>.</p>
+<ul>
+<li>If <span class="math inline">\(h(s)\)</span> is admissible <span class="math inline">\(h(s) \le h^*(s)\)</span>, <span class="math inline">\(h(goal) = 0\)</span>, then the path return by A* is optimal.</li>
+<li>If <span class="math inline">\(h(s)\)</span> is consistent <span class="math inline">\(h(s) \le c(s, s&#39;) + h(s&#39;)\)</span>, <span class="math inline">\(h(goal) = 0\)</span>, then A* is optimal and efficient (will not re-expand a node).</li>
+</ul>
+<p>All consistent heuristics are admissible, not vice versa.</p>
+<h3 id="weighted-a">Weighted A*</h3>
+<p>Choose <span class="math inline">\(f(s) = g(s) + \epsilon h(s)\)</span>, where <span class="math inline">\(\epsilon &gt; 1\)</span>. It is more efficient and the solution is <span class="math inline">\(\epsilon\)</span>-optimal <span class="math inline">\(c \le \epsilon c^*\)</span></p>
+<h3 id="lazy-a">Lazy A*</h3>
+<p>Instead of checking edge collision for all neighbors, only check the edge to parent when expanding. <mark>OPEN list will have multiple copies of a node since we haven't collision check.</mark></p>
+<h3 id="shortcut">Shortcut</h3>
+<p>After a path is found, we can randomly pick two nodes and connect them directly if the edge is collision-free.</p>
+<h2 id="code-2">Code</h2>
+<p><code>run.py</code>: main program</p>
+<ol type="1">
+<li>Load map info</li>
+<li>Construct graph given environment, sampler, number of vertices, connection radius.</li>
+<li>Add start and end node</li>
+<li>Use A* or lazy A* algorithm to search the optimal path and visualize</li>
+</ol>
+<p><code>MapEnvironment.py</code>: define utility functions associated with planning</p>
+<ol type="1">
+<li>Check edge collision</li>
+<li>Compute heuristic and distance function</li>
+<li>Generate path on the map</li>
+<li>Visualization of the graph and path</li>
+</ol>
+<p><code>Sampler.py</code>: create random samples for graph construction</p>
+<ol type="1">
+<li>Use <a target="_blank" rel="noopener external nofollow noreferrer" href="https://gist.github.com/tupui/cea0a91cc127ea3890ac0f002f887bae">halton sequence</a> to generate 2-D random vertices in <span class="math inline">\((0,1)\)</span></li>
+<li>Scale by map info</li>
+</ol>
+<p><code>graph_maker.py</code>: construct graph</p>
+<ol type="1">
+<li>Use python package <a target="_blank" rel="noopener external nofollow noreferrer" href="https://networkx.github.io/">NetworkX</a> to easily construct a graph</li>
+<li>Add sampled valid vertices</li>
+<li>Connect edges within radius and without collision (do not check collision if using lazy A*)</li>
+</ol>
+<p><code>astar.py</code>: A* algorithm</p>
+<ol type="1">
+<li>Use <code>heapq</code> package to create priority queue to store <code>[f(s), count, node, g(s), parent]</code> info. <code>count</code> is used to prevent comparing node when <span class="math inline">\(f(s)\)</span> are the same.</li>
+<li>Use dict <code>enqueued</code> to store <span class="math inline">\(g(s)\)</span> and <span class="math inline">\(h(s)\)</span> for a node, and another dict <code>explored</code> to store the explored node and its parent node.</li>
+<li>Add start node to the queue.</li>
+<li>While queue is not empty, pop one node and add it to <code>explored</code> if it is not already there.</li>
+<li>For all the neighbor node <span class="math inline">\(s&#39;\)</span>, compute <span class="math inline">\(g(s&#39;) = g(s) + c(s,s&#39;)\)</span> if <span class="math inline">\(s&#39;\)</span> is not already in <code>explored</code>.</li>
+<li>If <span class="math inline">\(s&#39;\)</span> is in <code>enqueued</code>, get its previous <span class="math inline">\(g&#39;(s&#39;)\)</span> and <span class="math inline">\(h&#39;(s&#39;)\)</span>. Continue to next neighbor if <span class="math inline">\(g&#39;(s) \le g(s&#39;)\)</span>, since it is better. If not in <code>enqueued</code>, compute <span class="math inline">\(h(s&#39;)\)</span> by the heuristic function.</li>
+<li>Update <span class="math inline">\(g(s&#39;)\)</span> and <span class="math inline">\(h(s&#39;)\)</span> in <code>enqueued</code> and push it to the queue.</li>
+<li>If reach target node, continually find parent node by <code>explored</code> and return the path.</li>
+</ol>
+<p><code>lazy_astar.py</code>: lazy A* algorithm</p>
+<ol type="1">
+<li>When expanding node, check its edge collision with parent.</li>
+<li>When checking neighbors, do not need to compare <span class="math inline">\(g&#39;(s&#39;)\)</span> and <span class="math inline">\(g(s&#39;)\)</span></li>
+<li>Multiple nodes with different parents can be added to the queue.</li>
+</ol>
+<p><code>runDubins.py</code>: similar to <code>run.py</code> but use Dubins environment</p>
+<p><code>DubinsMapEnvironment.py</code>: inherited from <code>MapEnvironment</code></p>
+<ol type="1">
+<li>Compute distances with Dubins path</li>
+<li>Compute heuristic with Dubins path</li>
+<li>Generate path by Dubins path planning</li>
+</ol>
+<p><code>DubinsSampler.py</code>:</p>
+<ol type="1">
+<li>Sample <span class="math inline">\(N\)</span> vertices same as in <code>Sampler.py</code></li>
+<li>Divide angles to <span class="math inline">\(M\)</span> parts, add angles to each vertices to create <span class="math inline">\(M\times N\)</span> samples</li>
+</ol>
+<p><code>Dubins.py</code>: utility function for Dubins path</p>
+<p><code>ROSPlanner.py</code>: take goal from rviz and do planning. <mark>Be careful of the frame change between map and world</mark></p>
+<ol type="1">
+<li>Load map info</li>
+<li>Construct graph and save for later use</li>
+<li>Subscribe to pose topic, save current pose</li>
+<li>Subscribe to goal topic, plan from the current pose to the goal, publish the path using service defined in lab2</li>
+<li>If there are multiple goals, sequentially planning through them and combine the path</li>
+</ol>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://ais.informatik.uni-freiburg.de/teaching/ss13/robotics/">Introduction to Mobile Robotics</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.probabilistic-robotics.org/">Probabilistic Robotics</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/UW/" rel="tag"><i class="fa fa-tag"></i> UW</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ros-101/" rel="prev" title="ROS 101">
+                  <i class="fa fa-chevron-left"></i> ROS 101
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/cs-tools/" rel="next" title="CS Tools">
+                  CS Tools <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

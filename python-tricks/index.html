@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="关于 Python 的一些知识收集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Tricks">
+<meta property="og:url" content="https://silencial.github.io/python-tricks/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="关于 Python 的一些知识收集">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-03T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/python-tricks/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;python-tricks&#x2F;&quot;,&quot;path&quot;:&quot;python-tricks&#x2F;&quot;,&quot;title&quot;:&quot;Python Tricks&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Python Tricks | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="nav-number">1.4.1.</span> <span class="nav-text">内置装饰器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF"><span class="nav-number">1.5.</span> <span class="nav-text">多重继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">上下文管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">魔术方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-number">1.7.1.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.7.2.</span> <span class="nav-text">表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">1.8.</span> <span class="nav-text">文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">并发编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5-io"><span class="nav-number">2.3.</span> <span class="nav-text">异步 I&#x2F;O</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">密码学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">4.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">4.2.</span> <span class="nav-text">覆盖率测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">Python 包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85"><span class="nav-number">5.1.</span> <span class="nav-text">打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E7%BC%96%E5%8F%B7"><span class="nav-number">5.1.1.</span> <span class="nav-text">版本编号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9D%91"><span class="nav-number">6.</span> <span class="nav-text">坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">默认参数</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/python-tricks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python Tricks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-26T00:00:00+00:00">2021-04-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-03 00:00:00" itemprop="dateModified" datetime="2021-05-03T00:00:00+00:00">2021-05-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>10k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>25 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>关于 Python 的一些知识收集</p>
+<span id="more"></span>
+<hr />
+<h1 id="语法">语法</h1>
+<h2 id="迭代器">迭代器</h2>
+<p>可以被 <code>for</code> 循环的对象统称为可迭代对象。而迭代器除了可以使用 <code>for</code> 循环，还可以使用 <code>next()</code> 函数调用并返回下一个值。比如生成器同时也是一个迭代器。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FibIter</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, num</span>):</span></span><br><span class="line">        self.num = num</span><br><span class="line">        self.a, self.b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">        self.idx = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.idx &lt; self.num:</span><br><span class="line">            self.a, self.b = self.b, self.a + self.b</span><br><span class="line">            self.idx += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> self.a</span><br><span class="line">        <span class="keyword">raise</span> StopIteration()</span><br><span class="line"></span><br><span class="line">fib = FibIter(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">next</span>(fib))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fib:</span><br><span class="line">    <span class="built_in">print</span>(fib)</span><br></pre></td></tr></table></figure>
+<h2 id="生成器">生成器</h2>
+<p>将列表生成式中的 <code>[]</code> 更改成 <code>()</code> 便可以得到一个生成器。区别在于列表在生成时已经完成了所有计算并将结果全部储存，而生成器只有在循环时才会计算当前需要的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lis = [m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">&#x27;ABCDEFG&#x27;</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">&#x27;12345&#x27;</span>]</span><br><span class="line">gen = (m + n <span class="keyword">for</span> m <span class="keyword">in</span> <span class="string">&#x27;ABCDEFG&#x27;</span> <span class="keyword">for</span> n <span class="keyword">in</span> <span class="string">&#x27;12345&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>函数中使用 <code>yield</code> 关键词也会产生生成器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params">num</span>):</span></span><br><span class="line">    n, a, b, = <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; num:</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = a+b, a</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fib(<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+<p>函数生成器中单独的 <code>yield</code> 可以用来接收参数，即将生成器作为协程使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>():</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x, y = <span class="keyword">yield</span></span><br><span class="line">        <span class="built_in">print</span>(x, y)</span><br><span class="line"></span><br><span class="line">a = f()</span><br><span class="line">a.send(<span class="literal">None</span>)  <span class="comment"># first must be None</span></span><br><span class="line">a.send([<span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">a.send([<span class="number">3</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="集合">集合</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>&#125;</span><br><span class="line">set2 = <span class="built_in">set</span>(<span class="built_in">range</span>(<span class="number">2</span>, <span class="number">11</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(set1 &amp; set2)  <span class="comment"># intersection</span></span><br><span class="line"><span class="built_in">print</span>(set1 | set2)  <span class="comment"># union</span></span><br><span class="line"><span class="built_in">print</span>(set1 - set2)  <span class="comment"># difference</span></span><br><span class="line"><span class="built_in">print</span>(set1 ^ set2)  <span class="comment"># symmetric difference</span></span><br><span class="line"><span class="built_in">print</span>(set2 &lt;= set1)  <span class="comment"># subset</span></span><br><span class="line"><span class="built_in">print</span>(set1 &gt;= set2)  <span class="comment"># upperset</span></span><br></pre></td></tr></table></figure>
+<h2 id="装饰器">装饰器</h2>
+<p>本质上，装饰器是一个返回函数的高阶函数。Python 中可以使用 <code>@</code> 来很方便地定义装饰器。下面的代码等价于 <code>say=my_decorator(say)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before the function is called.&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After the function is called.&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;hhh&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>带参数+返回值的装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Before the function is called.&quot;</span>)</span><br><span class="line">        val = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;After the function is called.&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@my_decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<h3 id="内置装饰器">内置装饰器</h3>
+<ol type="1">
+<li><code>@property</code>: 使得调用类中的成员函数像调用成员变量一样</li>
+<li><code>@staticmethod</code>: 可以由类名直接调用，表明改函数不需要访问该类</li>
+<li><code>@classmethod</code>: 可以由类名直接调用，只能访问类变量。默认第一个参数是类本身。常用来提供额外的构造器</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Date</span>：</span></span><br><span class="line"><span class="class">    <span class="title">def</span> <span class="title">__init__</span>(<span class="params">self, year, month, day</span>):</span></span><br><span class="line">        self.year = year</span><br><span class="line">        self.month = month</span><br><span class="line">        self.day = day</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">today</span>(<span class="params">cls</span>):</span></span><br><span class="line">        t = time.localtime()</span><br><span class="line">        <span class="keyword">return</span> cls(t.tm_year, t.tm_mon, t.tm_mday)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">year</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.year</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subtract</span>(<span class="params">x, y</span>):</span></span><br><span class="line">        <span class="keyword">return</span> x - y</span><br><span class="line"></span><br><span class="line">a = Date(<span class="number">2021</span>, <span class="number">4</span>, <span class="number">24</span>)</span><br><span class="line">b = Date.today()  <span class="comment"># 使用 classmethod 实现另一种初始化方法</span></span><br><span class="line">b.year - a.year  <span class="comment"># 而非 b.year()</span></span><br><span class="line">Date.subtract(<span class="number">2</span>, <span class="number">1</span>)  <span class="comment"># 类名直接调用</span></span><br><span class="line">b.subtract(<span class="number">2</span>, <span class="number">1</span>)  <span class="comment"># 实例调用</span></span><br></pre></td></tr></table></figure>
+<h2 id="多重继承">多重继承</h2>
+<p>下方的代码 <code>D</code> 类同时继承了两个父类，即同时获得了两个父类的所有功能。注意多重继承时父类的顺序。</p>
+<p><code>super</code> 的工作原理如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">super</span>(<span class="params">cls, inst</span>):</span></span><br><span class="line">    mro = inst.__class__.mro()</span><br><span class="line">    <span class="keyword">return</span> mro[mro.index(cls) + <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>即从 <code>inst</code> 的 mro 列表中寻找 <code>cls</code> 的下一个类。因此下方的代码 <code>super(B, self).foo()</code> 会调用 <code>C</code> 的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;foo of A&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>(<span class="params">A</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params">A</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;foo of C&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>(<span class="params">B, C</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span>(<span class="params">D</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;foo in E&#x27;</span>)</span><br><span class="line">        <span class="built_in">super</span>().foo()</span><br><span class="line">        <span class="built_in">super</span>(B, self).foo()</span><br><span class="line">        <span class="built_in">super</span>(C, self).foo()</span><br><span class="line"></span><br><span class="line">d = D()</span><br><span class="line">d.foo()</span><br><span class="line">e = E()</span><br><span class="line">e.foo()</span><br></pre></td></tr></table></figure>
+<h2 id="上下文管理">上下文管理</h2>
+<p>实现了上下文管理器的对象可以使用 <code>with</code> 语句。在执行时，会依次执行对象的 <code>__enter__</code> 函数，块内的代码，对象的 <code>__exit__</code> 函数。因此可以很方便实现自己的上下文管理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">My_Context_Manager</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Begin&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_value, traceback</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Exit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Simple function&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> My_Context_Manager(<span class="string">&#x27;test&#x27;</span>) <span class="keyword">as</span> c:</span><br><span class="line">    c.func()</span><br></pre></td></tr></table></figure>
+<p>注意 <code>__exit__</code> 中的参数是用来做异常处理的，不能省略。</p>
+<p>Python 的 <code>contextmanager</code> 装饰器提供了更简单的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> perf_counter</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span>(<span class="params">sec</span>):</span></span><br><span class="line">    start = perf_counter()</span><br><span class="line">    <span class="keyword">yield</span> sec</span><br><span class="line">    end = perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;end - start&#125;</span> s&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> count(<span class="number">1</span>) <span class="keyword">as</span> c:</span><br><span class="line">    time.sleep(c)</span><br></pre></td></tr></table></figure>
+<p>在执行时，遇到 <code>yield</code> 语句后会执行 <code>with</code> 语句内的内容，最后执行 <code>yield</code> 之后的部分。</p>
+<h2 id="魔术方法">魔术方法</h2>
+<h3 id="比较">比较</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span>(<span class="params">self, other</span>):</span>  <span class="comment"># ==</span></span><br><span class="line">        <span class="keyword">return</span> self.name == other.name <span class="keyword">and</span> self.age == other.age</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__ne__</span>(<span class="params">self, other</span>):</span>  <span class="comment"># !=</span></span><br><span class="line">        <span class="keyword">return</span> self.name != other.name <span class="keyword">or</span> self.age != other.age</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__gt__</span>(<span class="params">self, other</span>):</span>  <span class="comment"># &gt;</span></span><br><span class="line">        <span class="keyword">if</span> self.age &gt; other.age:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> self.age &lt; other.age:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.name &gt; other.name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__lt__</span>(<span class="params">self, other</span>):</span>  <span class="comment"># &lt;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> self.__gt__(other)</span><br><span class="line"></span><br><span class="line">a = Student(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">b = Student(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>)</span><br><span class="line">c = Student(<span class="string">&#x27;c&#x27;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(a &lt; b, b &gt; c)</span><br></pre></td></tr></table></figure>
+<h3 id="表示">表示</h3>
+<ul>
+<li>如果想要将自定义类放入 <code>set</code> 或作为 <code>dict</code> 的键，则必须重写 <code>__hash_</code> 和 <code>__eq__</code> 两个魔术方法</li>
+<li><code>__str__</code> 在使用 <code>print</code> 函数时被调用，<code>__repr__</code> 在 <code>print</code> 一个 list/set/dict 时被调用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hash__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hash</span>(self.name) + <span class="built_in">hash</span>(self.age)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span>(<span class="params">self, other</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.name == other.name <span class="keyword">and</span> self.age == other.age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;self.name&#125;</span>: <span class="subst">&#123;self.age&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__str__()</span><br><span class="line"></span><br><span class="line">stu = <span class="built_in">set</span>()</span><br><span class="line">stu.add(Student(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>))</span><br><span class="line">stu.add(Student(<span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>))</span><br><span class="line">stu.add(Student(<span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(stu)</span><br></pre></td></tr></table></figure>
+<h2 id="文档">文档</h2>
+<p>在文件开头或函数开头的 string 会被赋值到 <code>__doc__</code> 这一变量中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;脚本介绍&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;函数介绍&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(__doc__)</span><br><span class="line">    <span class="built_in">print</span>(main.__doc__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h1 id="并发编程">并发编程</h1>
+<ul>
+<li>并发：一个时间段内，有多个程序在同一个 CPU 上运行，但是任意时刻只有一个程序在 CPU 上运行。</li>
+<li>并行：在任意时刻，有多个程序运行在多个 CPU 上</li>
+</ul>
+<h2 id="多线程">多线程</h2>
+<ul>
+<li>由于 Python 全局锁 GIL 的存在，多线程无法利用多核优势，不适合计算密集型任务。</li>
+<li>线程之间可以使用全局变量进行通信。</li>
+</ul>
+<p>以下情况考虑多线程：</p>
+<ul>
+<li>程序需要维护很多共享状态时（list/dict/set）</li>
+<li>程序的大量时间花费在 I/O 操作上，如爬虫</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sleeper</span>(<span class="params">n, name</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span> start&#x27;</span>)</span><br><span class="line">    time.sleep(n)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span> finished&#x27;</span>)</span><br><span class="line"></span><br><span class="line">t = threading.Thread(target=sleeper, args=(<span class="number">2</span>, <span class="string">&#x27;thread1&#x27;</span>))</span><br><span class="line"><span class="comment"># t.daemon = True  # 主程序停止则线程停止，默认为 False</span></span><br><span class="line">t.start()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;All done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sleeper</span>(<span class="params">n, name</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span> start&#x27;</span>)</span><br><span class="line">    time.sleep(n)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;name&#125;</span> finished&#x27;</span>)</span><br><span class="line"></span><br><span class="line">threads = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    t = threading.Thread(target=sleeper, args=(<span class="number">2</span>, <span class="string">f&#x27;thread-<span class="subst">&#123;i&#125;</span>&#x27;</span>))</span><br><span class="line">    threads.append(t)</span><br><span class="line">    t.start()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> threads:</span><br><span class="line">    t.join()  <span class="comment"># 等待该线程执行完毕</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;All done&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>多个线程竞争一个资源：使用锁</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.lock = threading.Lock()</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">increment</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">with</span> self.lock:  <span class="comment"># 加锁</span></span><br><span class="line">            self.count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span>(<span class="params">c</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100000</span>):</span><br><span class="line">        c.increment()</span><br><span class="line"></span><br><span class="line">c = Counter()</span><br><span class="line"><span class="keyword">with</span> ThreadPoolExecutor() <span class="keyword">as</span> pool:</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        pool.submit(worker, c)</span><br><span class="line"><span class="built_in">print</span>(c.count)</span><br></pre></td></tr></table></figure>
+<p>多个线程的调度：使用 <code>Condition</code> 来暂停/唤醒线程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, balance=<span class="number">0</span></span>):</span></span><br><span class="line">        self.balance = balance</span><br><span class="line">        lock = threading.Lock()</span><br><span class="line">        self.condition = threading.Condition(lock)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">withdraw</span>(<span class="params">self, money</span>):</span></span><br><span class="line">        <span class="keyword">with</span> self.condition:</span><br><span class="line">            <span class="keyword">while</span> money &gt; self.balance:</span><br><span class="line">                self.condition.wait()  <span class="comment"># 等待 notify 解锁</span></span><br><span class="line">            self.balance -= money</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deposit</span>(<span class="params">self, money</span>):</span></span><br><span class="line">        <span class="keyword">with</span> self.condition:</span><br><span class="line">            self.balance += money</span><br><span class="line">            self.condition.notify_all()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_money</span>(<span class="params">account</span>):</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        money = randint(<span class="number">5</span>, <span class="number">10</span>)</span><br><span class="line">        account.deposit(money)</span><br><span class="line">        <span class="built_in">print</span>(threading.current_thread().name, <span class="string">&#x27;:&#x27;</span>, money, <span class="string">&#x27;====&gt;&#x27;</span>, account.balance)</span><br><span class="line">        sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub_money</span>(<span class="params">account</span>):</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        money = randint(<span class="number">10</span>, <span class="number">30</span>)</span><br><span class="line">        account.withdraw(money)</span><br><span class="line">        <span class="built_in">print</span>(threading.current_thread().name, <span class="string">&#x27;:&#x27;</span>, money, <span class="string">&#x27;&lt;====&#x27;</span>, account.balance)</span><br><span class="line">        sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">account = Account()</span><br><span class="line"><span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">10</span>) <span class="keyword">as</span> pool:</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        pool.submit(add_money, account)</span><br><span class="line">        pool.submit(sub_money, account)</span><br></pre></td></tr></table></figure>
+<h2 id="多进程">多进程</h2>
+<p>进程间的数据是完全隔离的</p>
+<p>以下情况考虑多进程：</p>
+<ul>
+<li>计算密集型任务</li>
+<li>程序的输入可以并行的分块，并且运算结果可合并</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool, cpu_count</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">        x = <span class="number">1</span> / (<span class="number">1</span> + x)</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">with</span> Pool(cpu_count()) <span class="keyword">as</span> p:</span><br><span class="line">        res = p.<span class="built_in">map</span>(f, <span class="built_in">range</span>(cpu_count()*<span class="number">1000</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="异步-io">异步 I/O</h2>
+<p>异步 I/O 是一种单线程、单进程设计，但仍能用作多任务处理（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.aiohttp.org/en/stable/">aiohttp</a> 异步 HTTP 网络访问）</p>
+<ul>
+<li><code>async def</code>: 定义一个协程函数，内部可以使用 <code>await</code> 语句</li>
+<li><code>await</code>: 暂停该协程的执行，同时让其它协程运行，直到 <code>await</code> 后面的语句执行完毕</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">makerandom</span>(<span class="params">i, threshold</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span> start&#x27;</span>)</span><br><span class="line">    k = random.randint(<span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">while</span> k &lt;= threshold:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;k&#125;</span> too low&#x27;</span>)</span><br><span class="line">        <span class="keyword">await</span> asyncio.sleep(i + <span class="number">1</span>)</span><br><span class="line">        k = random.randint(<span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;---&gt; Finished with <span class="subst">&#123;k&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> k</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    res = <span class="keyword">await</span> asyncio.gather(*(makerandom(i, <span class="number">10</span> - i - <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    r1, r2, r3 = asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<h1 id="密码学">密码学</h1>
+<ul>
+<li>AES：对称加密算法</li>
+<li>RSA：非对称加密算法</li>
+<li>md5：加密哈希函数。可以将字符串转换为 32 字节字符串</li>
+<li>base64：基于 64 个可打印字符编码二进制数据。常用在网页中传递少量二进制数据。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES, PKCS1_OAEP</span><br><span class="line"><span class="keyword">from</span> Crypto <span class="keyword">import</span> Random</span><br><span class="line"><span class="keyword">from</span> Crypto.PublicKey <span class="keyword">import</span> RSA</span><br><span class="line"></span><br><span class="line"><span class="comment"># AES</span></span><br><span class="line">message = <span class="string">&#x27;中文&#x27;</span></span><br><span class="line"><span class="comment"># 生成密钥</span></span><br><span class="line">key = md5(<span class="string">b&#x27;1qaz2wsx&#x27;</span>).digest()</span><br><span class="line">iv = Random.new().read(AES.block_size)</span><br><span class="line"><span class="comment"># 加密</span></span><br><span class="line">cipher = AES.new(key, AES.MODE_CFB, iv)</span><br><span class="line">data = cipher.encrypt(message.encode())</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"><span class="comment"># 解密</span></span><br><span class="line">cipher = AES.new(key, AES.MODE_CFB, iv)</span><br><span class="line">message = cipher.decrypt(data)</span><br><span class="line"><span class="built_in">print</span>(message.decode())</span><br><span class="line"></span><br><span class="line"><span class="comment"># RSA</span></span><br><span class="line">message = <span class="string">&#x27;hello, world!&#x27;</span></span><br><span class="line"><span class="comment"># 生成密钥</span></span><br><span class="line">key_pair = RSA.generate(<span class="number">1024</span>)</span><br><span class="line">pub_key = RSA.importKey(key_pair.publickey().exportKey())</span><br><span class="line">pri_key = RSA.importKey(key_pair.exportKey())</span><br><span class="line"><span class="comment"># 加密</span></span><br><span class="line">encryptor = PKCS1_OAEP.new(pub_key)</span><br><span class="line">data = encryptor.encrypt(message.encode())</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"><span class="comment"># base64 编码</span></span><br><span class="line"><span class="built_in">print</span>(base64.b64encode(data))</span><br><span class="line"><span class="comment"># 解密</span></span><br><span class="line">decryptor = PKCS1_OAEP.new(pri_key)</span><br><span class="line">message = decryptor.decrypt(data)</span><br><span class="line"><span class="built_in">print</span>(message.decode())</span><br></pre></td></tr></table></figure>
+<h1 id="测试">测试</h1>
+<h2 id="单元测试">单元测试</h2>
+<p>使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.pytest.org/en/6.2.x/">pytest</a> 来做单元测试。pytest 会自动寻找当前目录及子目录下所有 <code>test_*.py</code> 文件，并运行其中所有以 <code>test_</code> 开头的函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 assert 语句</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_example</span>():</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">1</span> == <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果没有抛出指定错误则 fail</span></span><br><span class="line"><span class="keyword">with</span> pytest.<span class="keyword">raise</span>(ExpectedError):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h2 id="覆盖率测试">覆盖率测试</h2>
+<p>使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://coverage.readthedocs.io/en/coverage-5.5/">coverge</a> 来做代码覆盖率测试</p>
+<ul>
+<li><p>命令行使用 <code>coverage run -m pytest [args]</code>，会在当前目录下生成 <code>.coverage</code> 文件</p></li>
+<li><code>coverage report -m</code>：显示生成的报告</li>
+<li><p><code>coverage html</code>：以网页的形式展示报告，可以互动</p></li>
+</ul>
+<h1 id="python-包">Python 包</h1>
+<p>一般的 python 包的结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pkg_name</span><br><span class="line">├── pkg_name</span><br><span class="line">│   ├── module1.py</span><br><span class="line">│   └── module2.py</span><br><span class="line">├── README.md</span><br><span class="line">└── setup.py</span><br></pre></td></tr></table></figure>
+<h2 id="打包">打包</h2>
+<p>使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a> 进行打包，创建 <code>setup.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">&#x27;&lt;name&gt;&#x27;</span>,</span><br><span class="line">    version=<span class="string">&#x27;&lt;version&gt;&#x27;</span>,</span><br><span class="line">    author=<span class="string">&#x27;&lt;author&gt;&#x27;</span>,</span><br><span class="line">    packages=[<span class="string">&#x27;&lt;dir1&gt;&#x27;</span>, ...]</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">&#x27;&lt;package1&gt;&#x27;</span>,</span><br><span class="line">        ...</span><br><span class="line">    ]，</span><br><span class="line">    entry_points=&#123;</span><br><span class="line">        <span class="string">&#x27;console_scripts&#x27;</span>: [</span><br><span class="line">            <span class="string">&#x27;&lt;name&gt; = &lt;package&gt;.&lt;module&gt;:&lt;function&gt;&#x27;</span>,</span><br><span class="line">            ...</span><br><span class="line">        ]</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>packages</code>：需要被打包的代码所在的文件夹</li>
+<li><code>install_requires</code>：项目依赖项</li>
+<li><code>console_scripts</code>：将项目中的某个函数注册为可执行命令</li>
+</ul>
+<h3 id="版本编号">版本编号</h3>
+<p>一般使用三位数字的编号，例如 <code>0.1.2</code>。分别对应大版本、小版本和补丁。增加版本号的规则如下：</p>
+<ul>
+<li>增加大版本编号：存在与之前版本不兼容的情况</li>
+<li>增加小版本编号：增加新功能，但不影响之前的版本</li>
+<li>增加补丁编号：修改 bug</li>
+</ul>
+<h2 id="安装">安装</h2>
+<p><code>pip install -e .</code>：在当前目录下寻找 <code>setup.py</code> 文件并以编辑模式安装包，即修改代码后不需要重新安装包。</p>
+<p>简单来说，当安装包时，文件内容会被复制到一个会被 python 搜索的文件夹中。大部分情况是复制到 python 安装目录下的 <code>site-packages</code> 文件夹。可以使用如下方法查看 python 的搜索路径：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path</span><br></pre></td></tr></table></figure>
+<h1 id="坑">坑</h1>
+<h2 id="默认参数">默认参数</h2>
+<p>默认参数语句总在 <code>def</code> 定义函数时被求值，且仅执行一次。因此在将可变对象作为函数的默认参数时需要注意：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">data=[]</span>):</span></span><br><span class="line">    data.append(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line">func()</span><br></pre></td></tr></table></figure>
+<p>上述代码返回值分别为 <code>[1]</code>，<code>[1, 1]</code>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/scraper/" rel="prev" title="Python 爬虫">
+                  <i class="fa fa-chevron-left"></i> Python 爬虫
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/nonlinear-optimization/" rel="next" title="Nonlinear Optimization">
+                  Nonlinear Optimization <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

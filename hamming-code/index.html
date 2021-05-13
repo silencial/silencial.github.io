@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="It is extremely difficult, and often impossible, to prevent errors when data are stored, retrieved, operated on, or transmitted.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hamming Code">
+<meta property="og:url" content="https://silencial.github.io/hamming-code/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="It is extremely difficult, and often impossible, to prevent errors when data are stored, retrieved, operated on, or transmitted.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-11-19T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-11-19T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Discrete Math">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/hamming-code/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;hamming-code&#x2F;&quot;,&quot;path&quot;:&quot;hamming-code&#x2F;&quot;,&quot;title&quot;:&quot;Hamming Code&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Hamming Code | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#error-detecting-codes"><span class="nav-number">1.</span> <span class="nav-text">Error Detecting Codes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-correcting-codes"><span class="nav-number">2.</span> <span class="nav-text">Error Correcting Codes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hamming-distance"><span class="nav-number">3.</span> <span class="nav-text">Hamming Distance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#perfect-codes"><span class="nav-number">4.</span> <span class="nav-text">Perfect Codes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generator-matrices"><span class="nav-number">5.</span> <span class="nav-text">Generator Matrices</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#parity-check-matrices"><span class="nav-number">6.</span> <span class="nav-text">Parity Check Matrices</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hamming-codes"><span class="nav-number">7.</span> <span class="nav-text">Hamming Codes</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/hamming-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hamming Code
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-11-19 00:00:00" itemprop="dateCreated datePublished" datetime="2018-11-19T00:00:00+00:00">2018-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>14 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>It is extremely difficult, and often impossible, to prevent errors when data are stored, retrieved, operated on, or transmitted.</p>
+<span id="more"></span>
+<hr />
+<h1 id="error-detecting-codes">Error Detecting Codes</h1>
+<p>A simple way to detect errors when a bit string is transmitted is to add a <strong>parity check bit</strong> at the end of the string. We encode the message <span class="math inline">\(x_1x_2\cdots x_n\)</span> as <span class="math inline">\(x_1x_2\cdots x_nx_{n+1}\)</span> , where the parity check bit <span class="math inline">\(x_{n+1}\)</span> is given by <span class="math display">\[
+\displaylines{x_{n+1}=(x_1+x_2+\cdots+x_n) \mod 2
+}
+\]</span> Adding the parity check bit guarantees that the number of <span class="math inline">\(1\)</span>s in the extended string must be even.</p>
+<p>Note that this method can only detect odd number of errors.</p>
+<h1 id="error-correcting-codes">Error Correcting Codes</h1>
+<p>When redundancy is included in codewords, such as when a parity check bit is added to a bit string, we can detect transmission errors. When we include more redundancy, we will also be able to correct errors.</p>
+<p>We use <em>triple repetition</em> code as an example. If the message is <span class="math inline">\(x_1x_2x_3\)</span>, we encode it as <span class="math inline">\(x_1x_2x_3x_4x_5x_6x_7x_8x_9\)</span> where <span class="math inline">\(x_1=x_4=x_7\)</span>, <span class="math inline">\(x_2=x_5=x_8\)</span>, <span class="math inline">\(x_3=x_6=x_9\)</span>.</p>
+<p>We decode a bit string, which may contain errors, using the <em>simple majority rule</em>. For example, when a triple repetition code is used, if we receive <span class="math inline">\(011111010\)</span>, we conclude that the message sent was <span class="math inline">\(011\)</span>.</p>
+<h1 id="hamming-distance">Hamming Distance</h1>
+<p>The <strong>Hamming distance</strong> <span class="math inline">\(d(x,y)\)</span> between the bit strings <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is the number of positions in which these strings differ.</p>
+<p>When a codeword <span class="math inline">\(x\)</span> from a code set <span class="math inline">\(C\)</span> is sent and the bit string <span class="math inline">\(y\)</span> is received, we compute the Hamming distance between <span class="math inline">\(y\)</span> and each of the codewords in <span class="math inline">\(C\)</span> and choose the minimum. If the distance between the closest codewords in <span class="math inline">\(C\)</span> is large enough and if sufficiently few errors were made in transmission, this codeword should be <span class="math inline">\(x\)</span>, the codeword sent. This type of decoding is called <em>nearest neighbor decoding</em>.</p>
+<p>It is easy to see that nearest neighbor decoding gives us the most likely codeword sent, so it is also <em>maximum likelihood decoding</em>.</p>
+<p>The <strong>minimum distance</strong> of a binary code <span class="math inline">\(C\)</span> is the smallest distance between two distinct codewords, that is <span class="math display">\[
+\displaylines{d(C)=\min\{d(x,y)|x,y\in C, x\ne y\}
+}
+\]</span> The minimum distance of a code tells us how many errors it can detect and how many errors it can correct, as the following two theorems show:</p>
+<ol type="1">
+<li>A binary code <span class="math inline">\(C\)</span> can detect up to <span class="math inline">\(k\)</span> errors in any codeword if and only if <span class="math inline">\(d(C)\ge k+1\)</span>.</li>
+<li>A binary code <span class="math inline">\(C\)</span> can correct up to <span class="math inline">\(k\)</span> errors in any codeword if and only if <span class="math inline">\(d(C)\ge 2k+1\)</span>.</li>
+</ol>
+<h1 id="perfect-codes">Perfect Codes</h1>
+<p>To allow error correction we want to make the minimum distance between codewords large. But doing so limits how many codewords are available. Here we will develop a bound on the number of codewords in a binary code with a given minimum distance.</p>
+<p>Suppose <span class="math inline">\(x\)</span> is a bit string of length <span class="math inline">\(n\)</span> and that <span class="math inline">\(k\)</span> is a nonnegative integer not exceeding <span class="math inline">\(n\)</span>. Then there are <span class="math display">\[
+\displaylines{C(n,0)+C(n,1)+\cdots+C(n,k)
+}
+\]</span> bit strings <span class="math inline">\(y\)</span> of length <span class="math inline">\(n\)</span> such that <span class="math inline">\(d(x,y)\le k\)</span>.</p>
+<p></br></p>
+<p>Let <span class="math inline">\(C\)</span> be a binary code containing codewords of length <span class="math inline">\(n\)</span> and let <span class="math inline">\(d(C)=2k+1\)</span>. Then given a bit string <span class="math inline">\(y\)</span> of length <span class="math inline">\(n\)</span>, there is at most one codeword <span class="math inline">\(x\)</span> such that <span class="math inline">\(y\)</span> is in the sphere of radius <span class="math inline">\(k\)</span> centered at <span class="math inline">\(x\)</span>.</p>
+<p></br></p>
+<p>With two lemmas above, we can derive <strong>The Sphere Packing or (Hamming) Bound</strong>:</p>
+<p>Suppose that <span class="math inline">\(C\)</span> is a code of bit strings of length <span class="math inline">\(n\)</span> with <span class="math inline">\(d(C)=2k+1\)</span>. Then <span class="math inline">\(|C|\)</span>, the number of codewords in <span class="math inline">\(C\)</span>, cannot exceed <span class="math display">\[
+\displaylines{\dfrac{2^n}{C(n,0)+C(n,1)+\cdots+C(n,k)}
+}
+\]</span> The code that actually achieve this bound are the most efficient error correcting codes and known as <strong>perfect codes</strong>.</p>
+<h1 id="generator-matrices">Generator Matrices</h1>
+<p>Consider a <span class="math inline">\(k\)</span>-bit message <span class="math inline">\(x_1x_2\cdots x_k\)</span> as a <span class="math inline">\(1\times k\)</span> matrix <span class="math inline">\(x\)</span>. Let <span class="math inline">\(G\)</span> be a <span class="math inline">\(k\times n\)</span> matrix that begins with the <span class="math inline">\(k\times k\)</span> identity matrix <span class="math inline">\(I_k\)</span>. That is, <span class="math inline">\(G=(I_k|A)\)</span>, where <span class="math inline">\(A\)</span> is a <span class="math inline">\(k\times(n-k)\)</span> matrix, known as a <strong>generator matrix</strong>. We encode <span class="math inline">\(x\)</span> as <span class="math inline">\(E(x)=xG\)</span>. For example, the <span class="math inline">\(G\)</span> matrix of adding the parity check bit to a three-bit message is <span class="math display">\[
+\displaylines{G=\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 1
+\end{pmatrix}
+}
+\]</span> It is easy to see that we can find the codewords in a binary code generated by a generator matrix <span class="math inline">\(G\)</span> by taking all possible linear combinations of the rows of <span class="math inline">\(G\)</span>. Also binary codes formed using generator matrices have the property that the sum of any two codewords is again a codeword. That is, they are <strong>linear codes</strong>.</p>
+<h1 id="parity-check-matrices">Parity Check Matrices</h1>
+<p>Suppose that <span class="math inline">\(G\)</span> is a <span class="math inline">\(k\times n\)</span> generator matrix with <span class="math display">\[
+\displaylines{G=(I_k|A)
+}
+\]</span> where <span class="math inline">\(A\)</span> is a <span class="math inline">\(k\times(n-k)\)</span> matrix. To <span class="math inline">\(G\)</span> we associate the parity check matrix <span class="math inline">\(H\)</span>, where <span class="math display">\[
+\displaylines{H=(A^T|I_{n-k})
+}
+\]</span> Then <span class="math inline">\(x\)</span> is a codeword if and only if <span class="math inline">\(Hx^T=0\)</span>.</p>
+<p>Not only can the parity check matrix be used to detect errors, but when the columns of this matrix are distinct and are all nonzero, it also can be used to correct errors. Suppose the codeword <span class="math inline">\(x\)</span> is sent and <span class="math inline">\(y=x+e\)</span> is received, where <span class="math inline">\(e\)</span> is an error string. Now suppose that only one error has been introduced when <span class="math inline">\(x\)</span> was transmitted, then <span class="math display">\[
+\displaylines{\begin{aligned}
+Hy^T&amp;=H(x^T+e^T) \\
+&amp;=Hx^T+He^T \\
+&amp;=He^T \\
+=c_j
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(c_j\)</span> is the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(H\)</span>.</p>
+<h1 id="hamming-codes">Hamming Codes</h1>
+<p>A Hamming code of order <span class="math inline">\(r\)</span> where <span class="math inline">\(r\)</span> is a positive integer, is a code generated when we take as parity check matrix <span class="math inline">\(H\)</span> an <span class="math inline">\(r\times(2^r-1)\)</span> matrix with columns that are all the <span class="math inline">\(2^r-1\)</span> nonzero bit strings of length <span class="math inline">\(r\)</span> in any order such that the last <span class="math inline">\(r\)</span> columns form the identity matrix.</p>
+<p>To show that the Hamming codes are perfect codes we first need to establish two lemmas.</p>
+<p></br></p>
+<p>A Hamming code of order <span class="math inline">\(r\)</span> contains <span class="math inline">\(2^{n-r}\)</span> codewords where <span class="math inline">\(n=2^r-1\)</span>.</p>
+<p></br></p>
+<p>The minimum distance of a Hamming code of order <span class="math inline">\(r\)</span> is <span class="math inline">\(3\)</span> whenever <span class="math inline">\(r\)</span> is a positive integer.</p>
+<p><strong>Proof:</strong> Since <span class="math inline">\(H\)</span> has columns which are all nonzero and no two of which are the same, it can correct single errors. Then the minimum distance of this code is at least <span class="math inline">\(3\)</span>. Among the columns of <span class="math inline">\(H\)</span> are the following three columns: <span class="math display">\[
+\displaylines{c_1=\begin{pmatrix}
+1 \\ 1 \\0 \\ \vdots \\ 0
+\end{pmatrix},
+\quad
+c_2=\begin{pmatrix}
+1 \\ 0 \\0 \\ \vdots \\ 0
+\end{pmatrix},
+\quad
+c_3=\begin{pmatrix}
+0 \\ 1 \\0 \\ \vdots \\ 0
+\end{pmatrix}
+}
+\]</span> Note that <span class="math inline">\(c_1+c_2+c_3=0\)</span>. Let <span class="math inline">\(x\)</span> be the bit string with <span class="math inline">\(1\)</span> in the positions of these columns and zero elsewhere. Then <span class="math inline">\(Hx^T=0\)</span>, <span class="math inline">\(x\)</span> is a codeword. <span class="math inline">\(d(C)\le d(x,\boldsymbol{0})=3\)</span>. We conclude that the minimum distance of a Hamming code of order <span class="math inline">\(r\)</span> is <span class="math inline">\(3\)</span>.</p>
+<p></br></p>
+<p>Let <span class="math inline">\(n=2^r-1\)</span>. Since Hamming code of order <span class="math inline">\(r\)</span> contains <span class="math inline">\(2^{n-r}\)</span> codewords and the minimum distance is <span class="math inline">\(3\)</span>. We see that this code achieves that maximum number of codewords allowed by the sphere packing bound. <span class="math display">\[
+\displaylines{2^{n-r}[1+C(n,1)]=2^{n-r}(1+n)=2^{n-r}(1+2^r-1)=2^n
+}
+\]</span> Hence Hamming code of order <span class="math inline">\(r\)</span> is a perfect code.</p>
+<p></br></p>
+<p><strong>Reference:</strong></p>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Hamming_code">Wiki Hamming Code</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.geeksforgeeks.org/computer-network-hamming-code/">Hamming Code</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+              <a href="/tags/Discrete-Math/" rel="tag"><i class="fa fa-tag"></i> Discrete Math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/godel-incompleteness-theorem/" rel="prev" title="哥德尔不完备定理">
+                  <i class="fa fa-chevron-left"></i> 哥德尔不完备定理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/stirling-numbers/" rel="next" title="Stirling Numbers">
+                  Stirling Numbers <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

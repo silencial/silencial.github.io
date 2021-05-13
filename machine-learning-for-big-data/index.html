@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="CSE 547 Review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning for Big Data">
+<meta property="og:url" content="https://silencial.github.io/machine-learning-for-big-data/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="CSE 547 Review">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/leEPeGf.png">
+<meta property="og:image" content="https://i.imgur.com/qShXYrR.png">
+<meta property="og:image" content="https://i.imgur.com/7314V7s.png">
+<meta property="article:published_time" content="2019-06-16T00:00:00.000Z">
+<meta property="article:modified_time" content="2019-06-16T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="UW">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/leEPeGf.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/machine-learning-for-big-data/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;machine-learning-for-big-data&#x2F;&quot;,&quot;path&quot;:&quot;machine-learning-for-big-data&#x2F;&quot;,&quot;title&quot;:&quot;Machine Learning for Big Data&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Machine Learning for Big Data | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#frequent-itemset-mining"><span class="nav-number">1.</span> <span class="nav-text">Frequent Itemset Mining</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#market-basket-model"><span class="nav-number">1.1.</span> <span class="nav-text">Market-Basket Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frequent-itemsets"><span class="nav-number">1.2.</span> <span class="nav-text">Frequent Itemsets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mining-association-rules"><span class="nav-number">1.3.</span> <span class="nav-text">Mining Association Rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finding-frequent-itemset"><span class="nav-number">1.4.</span> <span class="nav-text">Finding Frequent Itemset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-priori-algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">A-Priori Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pcy-algorithm"><span class="nav-number">1.4.2.</span> <span class="nav-text">PCY Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-sampling"><span class="nav-number">1.4.3.</span> <span class="nav-text">Random Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#son-algorithm"><span class="nav-number">1.4.4.</span> <span class="nav-text">Son Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toivonens-algorithm"><span class="nav-number">1.4.5.</span> <span class="nav-text">Toivonen&#39;s Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#finding-similar-items"><span class="nav-number">2.</span> <span class="nav-text">Finding Similar Items</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shingling"><span class="nav-number">2.1.</span> <span class="nav-text">Shingling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min-hashing"><span class="nav-number">2.2.</span> <span class="nav-text">Min-Hashing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#locality-sensitive-hashing"><span class="nav-number">2.3.</span> <span class="nav-text">Locality-Sensitive Hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extension"><span class="nav-number">2.3.1.</span> <span class="nav-text">Extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#other-distance-metrics"><span class="nav-number">2.3.2.</span> <span class="nav-text">Other Distance Metrics</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clustering"><span class="nav-number">3.</span> <span class="nav-text">Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hierarchical-clustering"><span class="nav-number">3.1.</span> <span class="nav-text">Hierarchical Clustering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means-clustering"><span class="nav-number">3.2.</span> <span class="nav-text">\(k\)-Means Clustering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bfr-algorithm"><span class="nav-number">3.3.</span> <span class="nav-text">BFR Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cure-algorithm"><span class="nav-number">3.4.</span> <span class="nav-text">CURE Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dimensionality-reduction"><span class="nav-number">4.</span> <span class="nav-text">Dimensionality Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#svd"><span class="nav-number">4.1.</span> <span class="nav-text">SVD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cur-decomposition"><span class="nav-number">4.2.</span> <span class="nav-text">CUR Decomposition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recommendation-system"><span class="nav-number">5.</span> <span class="nav-text">Recommendation System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#content-based"><span class="nav-number">5.1.</span> <span class="nav-text">Content-Based</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collaborative-filtering"><span class="nav-number">5.2.</span> <span class="nav-text">Collaborative Filtering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latent-factor-model"><span class="nav-number">5.3.</span> <span class="nav-text">Latent Factor Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pagerank"><span class="nav-number">6.</span> <span class="nav-text">PageRank</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-surfer"><span class="nav-number">6.1.</span> <span class="nav-text">Random Surfer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#google-formulation"><span class="nav-number">6.2.</span> <span class="nav-text">Google Formulation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#community-detection-in-graphs"><span class="nav-number">7.</span> <span class="nav-text">Community Detection in Graphs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#approximate-ppr-algorithm"><span class="nav-number">7.1.</span> <span class="nav-text">Approximate PPR Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#modularity-maximization"><span class="nav-number">7.2.</span> <span class="nav-text">Modularity Maximization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-representation-learning"><span class="nav-number">8.</span> <span class="nav-text">Graph Representation Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-walk-embeddings"><span class="nav-number">8.1.</span> <span class="nav-text">Random Walk Embeddings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsupervised-feature-learning"><span class="nav-number">8.2.</span> <span class="nav-text">Unsupervised Feature Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node2vec-algorithm"><span class="nav-number">8.3.</span> <span class="nav-text">Node2vec Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#large-scale-machine-learning"><span class="nav-number">9.</span> <span class="nav-text">Large-Scale Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decision-tree"><span class="nav-number">9.1.</span> <span class="nav-text">Decision Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#support-vector-machine"><span class="nav-number">9.2.</span> <span class="nav-text">Support Vector Machine</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mining-data-streams"><span class="nav-number">10.</span> <span class="nav-text">Mining Data Streams</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sampling"><span class="nav-number">10.1.</span> <span class="nav-text">Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queries-over-a-sliding-window"><span class="nav-number">10.2.</span> <span class="nav-text">Queries Over a Sliding Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filtering"><span class="nav-number">10.3.</span> <span class="nav-text">Filtering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#counting-distinct-element"><span class="nav-number">10.4.</span> <span class="nav-text">Counting Distinct Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computing-moments"><span class="nav-number">10.5.</span> <span class="nav-text">Computing Moments</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/machine-learning-for-big-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Machine Learning for Big Data
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-06-16 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-16T00:00:00+00:00">2019-06-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>21k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>52 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://courses.cs.washington.edu/courses/cse547/19sp/">CSE 547</a> Review</p>
+<span id="more"></span>
+<hr />
+<h1 id="frequent-itemset-mining">Frequent Itemset Mining</h1>
+<h2 id="market-basket-model">Market-Basket Model</h2>
+<p>We have a large set of <strong>items</strong>: Things sold in a supermarket.</p>
+<p>A large set of <strong>basket</strong> where each is a small subset of items: Things one customer buys on one day.</p>
+<p>Our goal is to find <strong>association rules</strong>: People who bought <span class="math inline">\(I = \{i_1, \dots, i_k\}\)</span> ten to buy <span class="math inline">\(j\)</span>, denoted by <span class="math inline">\(I \rightarrow j\)</span>.</p>
+<h2 id="frequent-itemsets">Frequent Itemsets</h2>
+<p><strong>Support</strong> for itemset <span class="math inline">\(I\)</span>: Number of baskets containing all items in <span class="math inline">\(I\)</span>.</p>
+<p>Support threshold <span class="math inline">\(s\)</span>: Sets of items that appear in at least <span class="math inline">\(s\)</span> baskets are called frequent itemsets.</p>
+<p><strong>Confidence</strong> of association rule is the probability of <span class="math inline">\(j\)</span> given <span class="math inline">\(I = \{i_1, \dots, i_k\}\)</span>: <span class="math display">\[
+\displaylines{\text{conf}(I \rightarrow j) = \frac{\text{support}(I \cup j)}{\text{support(I)}}
+}
+\]</span> Since not all high-confidence rules are interesting, we define <strong>interest</strong> of an association rule <span class="math inline">\(I \rightarrow j\)</span>: <span class="math display">\[
+\displaylines{\text{Interest}(I \rightarrow j) = | \text{conf}(I \rightarrow j) - \Pr[j] |
+}
+\]</span></p>
+<h2 id="mining-association-rules">Mining Association Rules</h2>
+<ol type="1">
+<li>Find all frequent itemsets <span class="math inline">\(I\)</span>.</li>
+<li>For every subset <span class="math inline">\(A\)</span> of <span class="math inline">\(I\)</span>, generate a rule <span class="math inline">\(A \rightarrow I\setminus A\)</span>.</li>
+<li>Compute the rule confidence.</li>
+</ol>
+<p><mark>Finding frequent itemsets is the most challenging part.</mark></p>
+<h2 id="finding-frequent-itemset">Finding Frequent Itemset</h2>
+<h3 id="a-priori-algorithm">A-Priori Algorithm</h3>
+<ol type="1">
+<li>Read baskets and count the # of occurrences of each item.</li>
+<li>Find frequent items that appear <span class="math inline">\(\ge s\)</span> times.</li>
+<li>Read baskets again and keep track of only those pairs where both elements are frequent.</li>
+</ol>
+<h3 id="pcy-algorithm">PCY Algorithm</h3>
+<p>In pass 1 of A-Priori, most memory is idle. We can use this to reduce memory required in pass 2.</p>
+<ul>
+<li>In addition to item counts, maintain a hash table with as many buckets as fit in memory.</li>
+<li>Keep a count for each bucket into which pairs of items are hashed.</li>
+<li>For a bucket with total count <span class="math inline">\(\le s\)</span>, none of its pairs can be frequent.</li>
+</ul>
+<p><br/></p>
+<p>A-Priori, PCY, etc. take <span class="math inline">\(k\)</span> passes to find frequent itemsets of size <span class="math inline">\(k\)</span>.</p>
+<p>We can use 2 or fewer passes for all sizes, but may <strong>miss</strong> some frequent itemsets</p>
+<h3 id="random-sampling">Random Sampling</h3>
+<ul>
+<li>Take a random sample of the baskets and run typical algorithm.</li>
+<li>Verify the candidate pairs are truly frequent in the entire data set by a second pass.</li>
+<li>We can use smaller threshold to catch more truly frequent itemsets.</li>
+</ul>
+<h3 id="son-algorithm">Son Algorithm</h3>
+<p>An itemset cannot be frequent in the entire set of baskets unless it is frequent in at least one subset.</p>
+<ul>
+<li>Repeatedly read small subsets of the baskets into main memory and run an in-memory algorithm to find all frequent itemsets.</li>
+<li>Count all the candidate itemset and determine which are frequent in the entire set.</li>
+</ul>
+<h3 id="toivonens-algorithm">Toivonen's Algorithm</h3>
+<ul>
+<li>Start with a random sample, but lower the threshold slightly for the sample.</li>
+<li>Find frequent itemsets in the sample.</li>
+<li>Add <strong>negative border</strong> to the these itemsets. An itemset is in the negative border if it is not frequent but all its immediate subsets are. Immediate subset = delete exactly one element.</li>
+<li>If no itemset from the negative border turns out to be frequent, then we found all the frequent itemsets. If we find one, we must start over with another sample.</li>
+</ul>
+<h1 id="finding-similar-items">Finding Similar Items</h1>
+<p>Given high dimensional data points <span class="math inline">\(x_1, x_2, \dots\)</span> and some distance function <span class="math inline">\(d(x_1, x_2)\)</span>, our goal is to find all pairs of data points <span class="math inline">\((x_i, x_j)\)</span> that satisfy <span class="math inline">\(d(x_1, x_2) \le s\)</span>.</p>
+<h2 id="shingling">Shingling</h2>
+<p>Convert a document into a set representation.</p>
+<p>A <strong>k-shingle</strong> for a document is a sequence of k tokens that appears in the doc.</p>
+<p>Then we can transfer sets to a shingles-documents Boolean matrix. The element in row <span class="math inline">\(e\)</span> and column <span class="math inline">\(s\)</span> is 1 iff document <span class="math inline">\(s\)</span> contains shingle <span class="math inline">\(e\)</span>.</p>
+<p>Suppose document <span class="math inline">\(D_1\)</span> is represented by a set of its k-shingles <span class="math inline">\(C_1 = S(D_1)\)</span>, then a natural similarity measure is the <strong>Jaccard similarity:</strong> <span class="math inline">\(\text{sim}(D_1, D_2) = |C_1 \cap C_2| / |C_1 \cup C_2|\)</span>.</p>
+<p><strong>Jaccard distance:</strong> <span class="math inline">\(d(C_1, C_2) = 1 - \text{sim}(D_1, D_2)\)</span></p>
+<h2 id="min-hashing">Min-Hashing</h2>
+<p>Convert large sets to short signatures, while preserving similarity.</p>
+<p>Find a hash function <span class="math inline">\(h\)</span> such that <span class="math inline">\(\Pr[h(C_1) = h(C_2)] = \text{sim}(C_1, C_2)\)</span>.</p>
+<p>For the Jaccard similarity, this function is called Min-Hashing.</p>
+<ul>
+<li>Permute the rows of the Boolean matrix with a permutation <span class="math inline">\(\pi\)</span>.</li>
+<li>Define minhash function <span class="math inline">\(h_\pi (C) = \min_\pi \pi(C)\)</span> as the number of the first row in which column <span class="math inline">\(C\)</span> has value 1.</li>
+<li>Repeat this process for different permutations to create a signature for each column.</li>
+</ul>
+<h2 id="locality-sensitive-hashing">Locality-Sensitive Hashing</h2>
+<ul>
+<li>Divide signature matrix <span class="math inline">\(M\)</span> into <span class="math inline">\(b\)</span> bands of <span class="math inline">\(r\)</span> rows.</li>
+<li>For each band, has its portion of each column to a hash table with <span class="math inline">\(k\)</span> buckets (<span class="math inline">\(k\)</span> is large enough).</li>
+<li>Choose candidate pairs that hash to the same bucket for at least 1 band.</li>
+</ul>
+<p>Suppose <span class="math inline">\(\text{sim}(C_1, C_2) = t\)</span>, then the prob that no band identical is <span class="math inline">\((1 - t^r)^b\)</span>.</p>
+<p>We can get the S-curve by using LSH:</p>
+<p><img src="https://i.imgur.com/leEPeGf.png" alt="LSH Confidence Curve" /></p>
+<h3 id="extension">Extension</h3>
+<p>A family <span class="math inline">\(H\)</span> of hash functions is said to be <span class="math inline">\((d_1, d_2, p_1, p_2)\)</span>-sensitive if for any <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in <span class="math inline">\(S\)</span>:</p>
+<ul>
+<li>if <span class="math inline">\(d(x, y) \le d_1\)</span>, then for any <span class="math inline">\(h \in H\)</span>, <span class="math inline">\(\Pr[h(x) = h(y)] \ge p_1\)</span>.</li>
+<li>if <span class="math inline">\(d(x, y) \ge d_1\)</span>, then for any <span class="math inline">\(h \in H\)</span>, <span class="math inline">\(\Pr[h(x) = h(y)] \le p_2\)</span>.</li>
+</ul>
+<p>Rows/Bands techniques are just AND/OR operations:</p>
+<ul>
+<li>AND: if <span class="math inline">\(H\)</span> is <span class="math inline">\((d_1, d_2, p_1, p_2)\)</span>-sensitive, then <span class="math inline">\(H&#39;\)</span> is <span class="math inline">\((d_1, d_2, p_1^r, p_2^r)\)</span>-sensitive.</li>
+<li>OR: if <span class="math inline">\(H\)</span> is <span class="math inline">\((d_1, d_2, p_1, p_2)\)</span>-sensitive, then <span class="math inline">\(H&#39;\)</span> is <span class="math inline">\((d_1, d_2, 1 - (1 - p_1)^b, 1 - (1 - p_2)^b)\)</span>-sensitive.</li>
+</ul>
+<p>We can use any sequence of AND's and OR's to get the best S-curve.</p>
+<h3 id="other-distance-metrics">Other Distance Metrics</h3>
+<p>For <strong>cosine distance</strong>, <strong>Random Hyperplanes</strong> method is a <span class="math inline">\((d_1, d_2, (1 - d_1 / \pi), (1 - d_2 / \pi))\)</span>-sensitive family for any <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span>.</p>
+<p>Random hyperplanes: Each vector <span class="math inline">\(v\)</span> determines a hash function <span class="math inline">\(h_v\)</span> such that <span class="math inline">\(h_v(x) = 1\)</span> if <span class="math inline">\(v\cdot x\ge 0\)</span>, or <span class="math inline">\(= -1\)</span> if <span class="math inline">\(v\cdot x &lt; 0\)</span>.</p>
+<p><br/></p>
+<p>For <strong>Euclidean distance</strong>, <strong>Project on lines</strong> method is a <span class="math inline">\((a/2, 2a, 1/2, 1/3)\)</span>-sensitive family for any bucket width <span class="math inline">\(a\)</span>.</p>
+<p>Project on line: Partition a random line into buckets with width <span class="math inline">\(a\)</span>, then project the point onto the line. Use bucket id as the hash value.</p>
+<h1 id="clustering">Clustering</h1>
+<p>Given a set of points and distance measure, group the points into clusters so that members of a cluster are close to each other.</p>
+<h2 id="hierarchical-clustering">Hierarchical Clustering</h2>
+<ul>
+<li>Agglomerative (bottom up): Each point is a cluster at first and then repeatedly combine the two "nearest" clusters into one.</li>
+<li>Divisive (top down): Start with one cluster and recursively split it.</li>
+</ul>
+<p>To represent a cluster, for Euclidean case, we can simply use the average of points as the centroid. For non-Euclidean case, we can define clustroid to be the point "closest" to other points, where the "closest" can be measured in different ways.</p>
+<p>To find nearest clusters, we can use the distance from the centroid/clustroid, or other measures like the minimum distance between two points from each cluster, the diameter of the merged cluster, or the average distance between points in the cluster.</p>
+<p>Stop merging clusters when <span class="math inline">\(k\)</span> clusters are found (if we know the number of clusters), or criterion is met based on the merging criterion, or there is only 1 cluster left.</p>
+<p><mark>The best choice depends on the shape of clusters.</mark></p>
+<h2 id="k-means-clustering"><span class="math inline">\(k\)</span>-Means Clustering</h2>
+<p>Assumes Euclidean space.</p>
+<ul>
+<li>Initialize <span class="math inline">\(k\)</span> cluster by picking one point each.</li>
+<li>Place other points to their nearest cluster.</li>
+<li>Update the centroids of <span class="math inline">\(k\)</span> clusters.</li>
+<li>Repeat until convergence.</li>
+</ul>
+<p>Try different <span class="math inline">\(k\)</span> and look at the changes in the average distance to centroid. As <span class="math inline">\(k\)</span> increases, the average falls rapidly until right <span class="math inline">\(k\)</span>, then changes little.</p>
+<h2 id="bfr-algorithm">BFR Algorithm</h2>
+<p>BFR is a variant of <span class="math inline">\(k\)</span>-means to handle very large data sets. It keeps summary statistics of groups of points to save memory but assumes clusters are normally distributed in a Euclidean space.</p>
+<ol type="1">
+<li>Initialize <span class="math inline">\(k\)</span> clusters.</li>
+<li>Load in a bag of points from disk</li>
+<li>Assign new points to one of the clusters within some distance threshold.</li>
+<li>Cluster the remaining points to create new clusters.</li>
+<li>Merge clusters created in 4 with existing clusters.</li>
+<li>Repeat 2-5 until all points are examined.</li>
+</ol>
+<p><br/></p>
+<p>We need to keep track of 3 sets of points:</p>
+<ul>
+<li>Discard set (DS): Points close enough to a centroid to be summarized.</li>
+<li>Compression set (CS): Groups of points that are close together but not close to any existing centroid.</li>
+<li>Retained set (RS): Isolated points waiting to be assigned to a CS.</li>
+</ul>
+<p><br/></p>
+<p>The statistics we need to keep:</p>
+<ul>
+<li><span class="math inline">\(N\)</span>: The number of points.</li>
+<li><span class="math inline">\(SUM\)</span>: A vector whose <span class="math inline">\(i\)</span>-th component is the sum of coordinates in the <span class="math inline">\(i\)</span>-th dimension.</li>
+<li><span class="math inline">\(SUMSQ\)</span>: A vector whose <span class="math inline">\(i\)</span>-th component is the sum of squares of coordinates in <span class="math inline">\(i\)</span>-th dimension.</li>
+</ul>
+<p><br/></p>
+<p>Closeness measurement:</p>
+<p>Mahalanobis distance: Normalized Euclidean distance from centroid.</p>
+<p><br/></p>
+<p>Combining criterion:</p>
+<p>The variance of the combined cluster is below some threshold.</p>
+<h2 id="cure-algorithm">CURE Algorithm</h2>
+<p>CURE (Clustering Using REpresentatives) only assumes a Euclidean distance and allows clusters to be any shape.</p>
+<ul>
+<li>Pick a random sample of points that fit in main memory.</li>
+<li>Cluster these points hierarchically.</li>
+<li>For each cluster, pick a sample of points, as dispersed as possible. Moving them <span class="math inline">\(20\%\)</span> toward the centroid of the cluster to get the representatives.</li>
+<li>Rescan the whole dataset and for every point <span class="math inline">\(p\)</span>, find the closest representative and assign <span class="math inline">\(p\)</span> to its cluster.</li>
+</ul>
+<h1 id="dimensionality-reduction">Dimensionality Reduction</h1>
+<h2 id="svd">SVD</h2>
+<p>Pros:</p>
+<ul>
+<li>Optimal low-rank approximation in terms of Frobenius norm.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>A singular vector specifies a linear combination of all input columns or rows.</li>
+<li>Lack of sparsity: singular vectors are dense.</li>
+</ul>
+<h2 id="cur-decomposition">CUR Decomposition</h2>
+<p>It is common for the matrix <span class="math inline">\(A\)</span> that we wish to decompose to be very sparse, but <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> from SVD decomposition are not. CUR decomposition solves this problem by using only randomly chosen rows and columns of <span class="math inline">\(A\)</span>. <span class="math display">\[
+\displaylines{A \approx C\cdot U\cdot R
+}
+\]</span> Where <span class="math inline">\(C\)</span> and <span class="math inline">\(R\)</span> are random picking columns and rows, respectively. <span class="math inline">\(U\)</span> is the pseudo-inverse of the intersection of <span class="math inline">\(C\)</span> and <span class="math inline">\(R\)</span>. To decrease the error <span class="math inline">\(\|A - C\cdot U\cdot R\|_F\)</span>, rows and columns must be picked with the probabilities proportional to importance: the square of the Frobenius norm of a row/column.</p>
+<p>Pros:</p>
+<ul>
+<li>Easy interpretation: Basis vectors are actual columns and rows.</li>
+<li>Sparsity.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>There will be duplicate rows and columns.</li>
+</ul>
+<h1 id="recommendation-system">Recommendation System</h1>
+<h2 id="content-based">Content-Based</h2>
+<p>Recommend items to customer <span class="math inline">\(x\)</span> similar to previous items rated highly by <span class="math inline">\(x\)</span>.</p>
+<ul>
+<li>Build user and item profiles.</li>
+<li>Compute the cosine similarity between user and item.</li>
+</ul>
+<p>Pros:</p>
+<ul>
+<li>No need for data on other users.</li>
+<li>Able to recommend new &amp; unpopular items.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Finding the appropriate features to create the profile is hard.</li>
+<li>Cannot build profile for new users.</li>
+<li>Never recommends items outside user's content profile.</li>
+<li>Unable to exploit quality judgements of other users.</li>
+</ul>
+<h2 id="collaborative-filtering">Collaborative Filtering</h2>
+<p>User-User CF: For user <span class="math inline">\(x\)</span>, find similar users based on the rating and estimate <span class="math inline">\(x\)</span>'s rating on item <span class="math inline">\(i\)</span> as the weighted average of these users' ratings on item <span class="math inline">\(i\)</span>.</p>
+<p>Item-Item CF: similar.</p>
+<p>Similarity metric: <strong>Pearson correlation coefficient</strong>. <span class="math display">\[
+\displaylines{s_{xy} = \frac{\sum_{s \in S_{xy}} (r_{xs} - \overline{r_x}) (r_{ys} - \overline{r_y})}{\sqrt{\sum_{s \in S_{xy}} (r_{xs} - \overline{r_x})^2} \sqrt{\sum_{s \in S_{xy}} (r_{ys} - \overline{r_y})^2}}
+}
+\]</span> where <span class="math inline">\(s_{xy}\)</span> is the similarity between user <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, <span class="math inline">\(S_{xy}\)</span> is the set of items that are rated by both users <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. <span class="math inline">\(\overline{r_x}, \overline{r_y}\)</span> are the average rating of <span class="math inline">\(x, y\)</span>. Notice that this is the cosine similarity when data is centered at 0.</p>
+<p>Pros:</p>
+<ul>
+<li>No feature selection needed, works for any kind of item.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Cold Start problem.</li>
+<li>The user/rating matrix is sparse and hard to find similar user/item.</li>
+<li>Cannot recommend items that has not been previously rated.</li>
+<li>Tends to recommend popular items. Cannot recommend items to someone with unique taste.</li>
+</ul>
+<p><mark>In practice, item-item CF often works better since items are simpler, users have multiple tastes.</mark></p>
+<h2 id="latent-factor-model">Latent Factor Model</h2>
+<p>SVD gives minimum reconstruction error (Sum of Squared Errors). Since the rating matrix has missing entries, we need to apply SVD only on the data presented: <span class="math display">\[
+\displaylines{\min_{P, Q} \sum_{(i,x) \in R} (r_{xi} - q_i p_x)^2
+}
+\]</span> To prevent overfitting, we add the regularization term: <span class="math display">\[
+\displaylines{\min_{P, Q} \sum_{(i,x) \in R} (r_{xi} - q_i p_x)^2 + \lambda_1 \sum_x \|p_x\|^2 + \lambda_2 \sum_i \|q_i\|^2
+}
+\]</span> Taking bias into account: <span class="math display">\[
+\displaylines{\min_{P, Q} \sum_{(i,x) \in R} \big(r_{xi} - (\mu + b_x + b_i + q_i p_x)\big)^2 + \lambda_1 \sum_x \|p_x\|^2 + \lambda_2 \sum_i \|q_i\|^2 + \lambda_3 \sum_x \|b_x\|^2 + \lambda_4 \sum_i \|b_i\|^2
+}
+\]</span> Where <span class="math inline">\(\mu\)</span> is the overall mean rating, <span class="math inline">\(b_x\)</span> is the bias for user <span class="math inline">\(x\)</span>, <span class="math inline">\(b_i\)</span> is the bias for movie <span class="math inline">\(i\)</span>.</p>
+<p>Add time dependence to biases: <span class="math display">\[
+\displaylines{r_{xi} = \mu + b_x(t) + b_i(t) + q_i p_x
+}
+\]</span></p>
+<p>To solve this optimization problem, we can use <strong>SGD</strong> (Stochastic Gradient Descent) or <strong>ALS</strong> (Alternating Least Squares).</p>
+<h1 id="pagerank">PageRank</h1>
+<h2 id="random-surfer">Random Surfer</h2>
+<p>Start at a random page and follow random out-links repeatedly. Compute the PageRank <span class="math inline">\(r_j\)</span> as the probability of being at a page: <span class="math display">\[
+\displaylines{r_j = \sum_{i \rightarrow j} \frac{r_i}{d_i}
+}
+\]</span> where <span class="math inline">\(d_i\)</span> is the out-degree of node <span class="math inline">\(i\)</span>.</p>
+<p>We can create the column stochastic matrix <span class="math inline">\(M\)</span> where <span class="math inline">\(M_{ji} = 1/d_i\)</span>, then <span class="math inline">\(Mr = r\)</span>. We can solve <span class="math inline">\(r\)</span> by power iteration.</p>
+<h2 id="google-formulation">Google Formulation</h2>
+<p>Problems:</p>
+<ul>
+<li>Dead ends: Some pages have no out-links and cause importance to leak out.</li>
+<li>Spider traps: Out-links are within the group and will absorb all importance.</li>
+</ul>
+<p>Solution: Teleports with probability <span class="math inline">\(\beta\)</span>: <span class="math display">\[
+\displaylines{r_j = \sum_{i \rightarrow j} \beta \frac{r_i}{d_i} + (1 - \beta) \frac{1}{N}
+}
+\]</span></p>
+<h1 id="community-detection-in-graphs">Community Detection in Graphs</h1>
+<h2 id="approximate-ppr-algorithm">Approximate PPR Algorithm</h2>
+<ul>
+<li>Pick a seed node <span class="math inline">\(s\)</span> of interest.</li>
+<li>Run PPR with teleport set=<span class="math inline">\(\{s\}\)</span>.</li>
+<li>Sort the nodes by the decreasing PPR score</li>
+<li>For each <span class="math inline">\(i\)</span> compute <span class="math inline">\(\phi(A_i = \{r_1, \dots, r_i\})\)</span> and find the local minima of <span class="math inline">\(\phi(A_i)\)</span>.</li>
+</ul>
+<p><br/></p>
+<p>Compute PPR (Personalized PageRank): <span class="math display">\[
+\displaylines{\mathbf{\text{ApproxPageRank}}(S, \beta, \epsilon):\qquad\qquad\qquad \\
+\begin{aligned}
+&amp;\text{Set } r=\vec{0}, q=[0,\dots, 1\dots, 0] \\
+&amp;\text{While } \max_{u \in V} \frac{q_u}{d_u} \ge \epsilon: \\
+&amp;\qquad \text{Choose any vertex } u \text{ where} \frac{q_u}{d_u} \ge \epsilon \\
+&amp;\qquad \mathbf{\text{Push}}(u, r, q): \\
+&amp;\qquad\qquad r&#39; = r, q&#39; = q \\
+&amp;\qquad\qquad r&#39;_u = r_u + (1 - \beta) q_u \\
+&amp;\qquad\qquad q&#39;_u = \frac{1}{2} \beta q_u \\
+&amp;\qquad\qquad \text{For each } v \text{ such that } u \rightarrow v: \\
+&amp;\qquad\qquad\qquad q&#39;_v = q_v + \frac{1}{2}\beta q_u/d_u \\
+&amp;\qquad\qquad r=r&#39;, q=q&#39; \\
+&amp;\quad \text{Return } r
+\end{aligned}
+}
+\]</span> The key of this algorithm is to keep track of the residual PageRank <span class="math inline">\(q\)</span> and push it to <span class="math inline">\(r\)</span> until <span class="math inline">\(q\)</span> is small.</p>
+<p><br/></p>
+<p>Good cluster definition:</p>
+<ul>
+<li>Maximize the number of within-cluster connections.</li>
+<li>Minimize the number of between-cluster connections.</li>
+</ul>
+<p><strong>Graph Cut</strong> is the set of edges (edge weights) with only one node in the cluster: <span class="math display">\[
+\displaylines{\operatorname{cut}(A) = \sum_{i\in A, j\notin A} w_{ij}
+}
+\]</span> <strong>Conductance</strong> is the connectivity of the group to the rest of the network relative to the density of the group. <span class="math display">\[
+\displaylines{\phi(A)=\frac{|\{(i, j) \in E ; i \in A, j \notin A\}|}{\min (\operatorname{vol}(A), 2 m-\operatorname{vol}(A))}
+}
+\]</span> where <span class="math inline">\(\operatorname{vol}(A)\)</span> is the total weight of the edges with at least one endpoint in <span class="math inline">\(A\)</span>, <span class="math inline">\(\operatorname{vol}(A) = \sum_{i \in A} d_i\)</span>.</p>
+<h2 id="modularity-maximization">Modularity Maximization</h2>
+<p>Modularity <span class="math inline">\(Q\)</span> is a measure of how well a network is partitioned into communities. Given a partitioning of the network into groups <span class="math inline">\(s \in S\)</span>: <span class="math display">\[
+\displaylines{Q \propto \sum_{s \in S}[(\# \text{ edges within groups}) - (\text{expected }\# \text{ edges within group } s) ]
+}
+\]</span> Given graph <span class="math inline">\(G\)</span> on <span class="math inline">\(n\)</span> nodes and <span class="math inline">\(m\)</span> edges, the expected number of edges between nodes <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> of degrees <span class="math inline">\(k_i\)</span> and <span class="math inline">\(k_i\)</span> and <span class="math inline">\(k_j\)</span> equals to <span class="math inline">\(\frac{k_i k_j}{2m}\)</span>. <span class="math display">\[
+\displaylines{Q = \frac{1}{2m} \sum_{s\in S}\sum_{i\in s}\sum_{j\in s}\left(A_{ij} - \frac{k_i k_j}{2m}\right)
+}
+\]</span> <span class="math inline">\(Q\)</span> is in range <span class="math inline">\([-1, 1]\)</span>. Greater than <span class="math inline">\(0.3\)</span>-<span class="math inline">\(0.7\)</span> means significant community structure.</p>
+<h1 id="graph-representation-learning">Graph Representation Learning</h1>
+<p>Modern deep learning toolbox is designed for simple sequences or grids. But graph has complex topographical structure so we need to encode nodes to the embedding space where the similarity between nodes are preserved.</p>
+<ul>
+<li>Define an encoder (a mapping from nodes to embeddings).</li>
+<li>Define a node similarity function.</li>
+<li>Optimize the parameters of the encoder so that <span class="math inline">\(\text{similarity}(u,v) \approx z_v^T z_u\)</span>.</li>
+</ul>
+<h2 id="random-walk-embeddings">Random Walk Embeddings</h2>
+<p>The similarity between nodes <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are defined as the probability that <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> co-occur on a random walk over the network.</p>
+<ul>
+<li>Estimate probability of visiting node <span class="math inline">\(v\)</span> on a random walk starting from node <span class="math inline">\(u\)</span> using some random walk strategy <span class="math inline">\(R\)</span>: <span class="math inline">\(P_R(v|u)\)</span>.</li>
+<li>Optimize embedding to encode these random walk statistics: <span class="math inline">\(\theta \propto P_R(v|u)\)</span>.</li>
+</ul>
+<h2 id="unsupervised-feature-learning">Unsupervised Feature Learning</h2>
+<p>Learn node <span class="math inline">\(u\)</span>'s embedding such that nearby nodes <span class="math inline">\(N_R(u)\)</span> are close together in the network. Given <span class="math inline">\(G=(V, E)\)</span>, learn a mapping <span class="math inline">\(z: u\rightarrow \mathbb{R}^d\)</span> such that <span class="math display">\[
+\displaylines{\max_{\mathbf{z}} \sum_{u \in V} \log \mathrm{P}\left(N_{\mathrm{R}}(u) | z_{u}\right)
+}
+\]</span> With random walk optimization: <span class="math display">\[
+\displaylines{\log \mathrm{P}\left(N_{\mathrm{R}}(u) | z_{u}\right)=\sum_{v \in N_{R}(u)} \log \mathrm{P}\left(\mathrm{z}_{v} | z_{u}\right)
+}
+\]</span> With softmax parametrization: <span class="math display">\[
+\displaylines{\mathrm{P}\left(z_{v} | z_{u}\right)=\frac{\exp \left(z_{v} \cdot z_u\right)}{\sum_{n \in V} \exp \left(z_{n} \cdot z_u\right)}
+}
+\]</span> Putting it all together: <span class="math display">\[
+\displaylines{\mathcal{L}=\sum_{u \in V} \sum_{v \in N_{R}(u)}-\log \left(\frac{\exp \left(\mathbf{z}_{u}^{\top} \mathbf{z}_{v}\right)}{\sum_{n \in V} \exp \left(\mathbf{z}_{u}^{\top} \mathbf{z}_{n}\right)}\right)
+}
+\]</span> Optimizing random walk embeddings = Finding node embeddings <span class="math inline">\(z\)</span> that minimize <span class="math inline">\(\mathcal{L}\)</span>.</p>
+<p><br/></p>
+<p><strong>Negative sampling</strong> <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\log \left(\frac{\exp \left(\mathbf{z}_{u}^{\top} \mathbf{z}_{v}\right)}{\sum_{n \in V} \exp \left(\mathbf{z}_{u}^{\top} \mathbf{z}_{n}\right)}\right)  \\
+&amp;\approx \log \left(\sigma\left(\mathbf{z}_{u}^{\top} \mathbf{z}_{v}\right)\right)-\sum_{i=1}^{k} \log \left(\sigma\left(\mathbf{z}_{u}^{\top} \mathbf{z}_{n_{i}}\right)\right), n_{i} \sim P_{V}
+\end{aligned}
+}
+\]</span> Instead of normalizing w.r.t. all nodes, just normalize against 𝑘 random "negative samples" <span class="math inline">\(n_i\)</span>.</p>
+<h2 id="node2vec-algorithm">Node2vec Algorithm</h2>
+<p>A flexible, biased random walks that can trade off between local and global views of the network.</p>
+<ul>
+<li>Return parameter <span class="math inline">\(p\)</span>: Return back to the previous node.</li>
+<li>In-out parameter <span class="math inline">\(q\)</span>: Moving outwards (DFS) vs. inwards (BFS).</li>
+</ul>
+<p><img src="https://i.imgur.com/qShXYrR.png" alt="Node2Vec Network Structure Varies for Different p q Values" /></p>
+<h1 id="large-scale-machine-learning">Large-Scale Machine Learning</h1>
+<h2 id="decision-tree">Decision Tree</h2>
+<p>A Decision Tree is a tree-structured plan of a set of attributes to test in order to predict the output. It split the data at each internal node and each leaf node makes a prediction.</p>
+<p>To construct a tree, we must figure out how to split and when to stop splitting.</p>
+<p>How to split:</p>
+<ul>
+<li>Regression: <strong>Purity</strong>. Find split <span class="math inline">\((X^{(i)}, v)\)</span> that creates <span class="math inline">\(D, D_L D_R\)</span> and maximizes $|D| Var(D)-(|D_L| Var(D_L)+|D_R| Var(D_R ) ) $, where <span class="math inline">\(Var(D) = \frac{1}{n}\sum_{i\in D}(y_i - \bar{y})^2\)</span>.</li>
+<li>Classification: <strong>Information Gain</strong>. <span class="math inline">\(IG(Y|X) = H(Y) - H(Y|X)\)</span>. Where <span class="math inline">\(H\)</span> is the entropy, <span class="math inline">\(H(X) = -\sum_{j=1}^m p(X_j) \log p(X_j)\)</span>, and <span class="math inline">\(H(Y|X) = \sum_j P(X = v_j) H(Y |X=v_j)\)</span>. <span class="math inline">\(IG\)</span> tells us how much information about <span class="math inline">\(Y\)</span> is contained in <span class="math inline">\(X\)</span>, so higher <span class="math inline">\(IG\)</span> means a good split.</li>
+</ul>
+<p>When to stop:</p>
+<ul>
+<li>When the leaf is "pure": The target variable does not vary too much, <span class="math inline">\(Var(y) &lt; \epsilon\)</span>.</li>
+<li>When # of examples in the leaf is too small.</li>
+</ul>
+<h2 id="support-vector-machine">Support Vector Machine</h2>
+<p>Given data <span class="math inline">\((x_1, y_1), \dots, (x_n, y_n)\)</span> where <span class="math inline">\(y_i \in \{-1, +1 \}\)</span>, we want to find a line <span class="math inline">\(y = wx+b\)</span> that separates these data.</p>
+<p>For <span class="math inline">\(i\)</span>-th datapoint, <span class="math inline">\(\gamma_i = (w x_i + b) y_i\)</span> is the distance and we want to maximize the margin:</p>
+<p><span class="math display">\[
+\displaylines{\max_{w, b} \min_{i} \gamma_i
+}
+\]</span></p>
+<p>This can be rewritten as: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\max\ \gamma \\
+&amp;s.t.\ \forall i, y_{i}(w \cdot x_{i}+b) \geq \gamma
+\end{aligned}
+}
+\]</span> Work with normalized <span class="math inline">\(w\)</span> and require support vectors <span class="math inline">\(x_j\)</span> to be on the plane <span class="math inline">\(w x_j + b = \pm 1\)</span>, we can get <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min\ \frac{1}{2} \|w\|^2 \\
+&amp;s.t.\ \forall i, y_{i}(w \cdot x_{i}+b) \geq 1
+\end{aligned}
+}
+\]</span> Introduce penalty for data that is not separable: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min\ \frac{1}{2} \|w\|^2 + C\sum_{i=1}^n \xi_i \\
+&amp;s.t.\ \forall i, y_{i}(w \cdot x_{i}+b) \geq 1 - \xi_i
+\end{aligned}
+}
+\]</span> Where <span class="math inline">\(\xi\)</span> is the slack variable and <span class="math inline">\(C\)</span> is the slack penalty. When <span class="math inline">\(C=\infty\)</span>, it strictly separate the data; when <span class="math inline">\(C=0\)</span>, it ignores the data.</p>
+<p>The natural form of SVM is <span class="math display">\[
+\displaylines{\mathop{\arg\min}_{w,b} \frac{1}{2} w\cdot w + C \sum_{i=1}^n \max\{0, 1-y_i(w x_i + b)\}
+}
+\]</span> Use SGD to solve this problem.</p>
+<h1 id="mining-data-streams">Mining Data Streams</h1>
+<p>In many data mining situations, we do not know the entire data set in advance. We can think of the data as <strong>infinite</strong> and <strong>non-stationary</strong>.</p>
+<p>SGD is an example of a stream algorithm. In Machine learning it is called <strong>Online Learning</strong>.</p>
+<ul>
+<li>Allows for modeling problems where we have a continuous stream of data.</li>
+<li>Slowly adapt to the changes in data.</li>
+</ul>
+<p>Types of queries:</p>
+<ul>
+<li>Random sampling from a stream</li>
+<li>Queries over sliding windows</li>
+<li>Filtering a data stream</li>
+<li>Counting distinct element</li>
+<li>Estimating moments</li>
+<li>Finding frequent elements.</li>
+</ul>
+<h2 id="sampling">Sampling</h2>
+<p><strong>Sampling a fixed proportion</strong></p>
+<p>To get a sample of <span class="math inline">\(a/b\)</span> fraction of the stream:</p>
+<ul>
+<li>Hash each tuple's key uniformly into <span class="math inline">\(b\)</span> buckets</li>
+<li>Pick the tuple if it is hashed to the first <span class="math inline">\(a\)</span> buckets</li>
+</ul>
+<p><br/></p>
+<p><strong>Sampling a fixed-size sample</strong></p>
+<p>Property: For all time steps k, each of elements seen so far has equal prob. of being sampled.</p>
+<p><strong>Reservoir sampling</strong></p>
+<ul>
+<li>Store all the first <span class="math inline">\(s\)</span> elements of the stream to <span class="math inline">\(S\)</span></li>
+<li>Suppose we have seen <span class="math inline">\(n-1\)</span> elements, and now the <span class="math inline">\(n\)</span>-th element arrives (<span class="math inline">\(n\ge s\)</span>)
+<ul>
+<li>With probability <span class="math inline">\(s/n\)</span>, uniformly pick a random element in <span class="math inline">\(S\)</span> and replace it by the <span class="math inline">\(n\)</span>-th element, else discard it</li>
+</ul></li>
+</ul>
+<h2 id="queries-over-a-sliding-window">Queries Over a Sliding Window</h2>
+<p>Queries are about a window of length <span class="math inline">\(N\)</span> — the <span class="math inline">\(N\)</span> most recent elements received. Given a stream of <span class="math inline">\(0\)</span>s and <span class="math inline">\(1\)</span>s, how many <span class="math inline">\(1\)</span>s are in the last <span class="math inline">\(k\)</span> bits? Approximate answer is ok since we cannot afford to store <span class="math inline">\(N\)</span> bits.</p>
+<p>If the stream is uniform distributed, we can simply count the total number of <span class="math inline">\(0\)</span>s: <span class="math inline">\(Z\)</span> and <span class="math inline">\(1\)</span>s: <span class="math inline">\(S\)</span> and get the result: <span class="math inline">\(N \frac{S}{S+Z}\)</span>.</p>
+<p>If it is non-uniform, <strong>DGIM</strong> method gives answer with accuracy higher than <span class="math inline">\(50\%\)</span>. Summarize blocks with specific number of <span class="math inline">\(1\)</span>s and let the block size increase exponentially.</p>
+<p><img src="https://i.imgur.com/7314V7s.png" alt="DGIM Sliding Window" /></p>
+<p>When a new bit comes in, drop the oldest bucket if its end-time is prior to <span class="math inline">\(N\)</span> time units before the current time. If the current bit is <span class="math inline">\(0\)</span>, then no other changes are needed, if it is <span class="math inline">\(1\)</span>, create a new bucket of size <span class="math inline">\(1\)</span>. If there are now three buckets of size <span class="math inline">\(1\)</span>, combine the oldest two into a bucket of size <span class="math inline">\(2\)</span>. And continue to combine.</p>
+<p>When querying, sum the sizes of all buckets but the oldest, add half the size of the last bucket.</p>
+<p>This method can be extended to count the sum of the last <span class="math inline">\(k\)</span> elements of a stream of positive integers.</p>
+<p>Instead of maintaining <span class="math inline">\(1\)</span> or <span class="math inline">\(2\)</span> of each size bucket, we can do <span class="math inline">\(r-1\)</span> or <span class="math inline">\(r\)</span>. The error is at most <span class="math inline">\(\mathcal{O}(1/r)\)</span>. By picking <span class="math inline">\(r\)</span>, we can tradeoff between memory and error.</p>
+<h2 id="filtering">Filtering</h2>
+<p>Given a list of keys <span class="math inline">\(S\)</span>, determine which tuples of stream are in <span class="math inline">\(S\)</span>.</p>
+<p>Hash table:</p>
+<ul>
+<li>Create a bit array <span class="math inline">\(B\)</span> of <span class="math inline">\(n\)</span> bits, initially all <span class="math inline">\(0\)</span>s.</li>
+<li>Choose a hash function <span class="math inline">\(h\)</span> with range <span class="math inline">\([0, n)\)</span>.</li>
+<li>For every = <span class="math inline">\(s \in S\)</span>, set <span class="math inline">\(B[h(s)] = 1\)</span>.</li>
+<li>Hash each element <span class="math inline">\(a\)</span> of the stream and output <span class="math inline">\(a\)</span> iff <span class="math inline">\(B[h(a)]=1\)</span>.</li>
+</ul>
+<p>Suppose <span class="math inline">\(|S| = m\)</span>, then the probability of false positive equals to the fraction of <span class="math inline">\(1\)</span>s in the array <span class="math inline">\(B\)</span> <span class="math display">\[
+\displaylines{1-\left(1 - \frac{1}{n}\right)^m \approx 1- e^{-m/n}
+}
+\]</span> <strong>Bloom filter</strong> use <span class="math inline">\(k\)</span> different hash functions and output <span class="math inline">\(a\)</span> iff it hashes to <span class="math inline">\(1\)</span> for every hash function. Now the false positive rate is <span class="math inline">\((1 - e^{-km/n})^k\)</span>. The optimal value of <span class="math inline">\(k\)</span> is <span class="math inline">\(n/m \ln 2\)</span>.</p>
+<h2 id="counting-distinct-element">Counting Distinct Element</h2>
+<p><strong>Flajolet-Martin approach</strong>:</p>
+<ul>
+<li>Pick a hash function <span class="math inline">\(h\)</span> that maps each of the <span class="math inline">\(N\)</span> elements to at least <span class="math inline">\(\log_2 N\)</span> bits.</li>
+<li>For each stream element <span class="math inline">\(a\)</span>, let <span class="math inline">\(r(a)\)</span> be the number of trailing <span class="math inline">\(0\)</span>s in <span class="math inline">\(h(a)\)</span>.</li>
+<li>Let <span class="math inline">\(R = \max_a r(a)\)</span>, and estimate the number of distinct elements to be <span class="math inline">\(2^R\)</span>.</li>
+</ul>
+<p>But <span class="math inline">\(E[2^R]\)</span> is actually infinite since as the probability halves when <span class="math inline">\(R \rightarrow R+1\)</span>, the value doubles. Workaround is to use many hash functions <span class="math inline">\(h_i\)</span> and get many samples. Partition the samples into small groups, take the median of groups and then take the average of the medians.</p>
+<h2 id="computing-moments">Computing Moments</h2>
+<p>Let <span class="math inline">\(m_i\)</span> be the number of times value <span class="math inline">\(i\)</span> occurs in the stream, the <span class="math inline">\(k\)</span>-th moment is <span class="math display">\[
+\displaylines{\sum_{i \in A}\left(m_{i}\right)^{k}
+}
+\]</span> <strong>AMS method</strong> gives an unbiased estimate for all moments. Take <span class="math inline">\(2\)</span>-nd moment for example</p>
+<ul>
+<li>Pick some random time <span class="math inline">\(t\)</span>, stream have item <span class="math inline">\(X\)</span>.</li>
+<li>Maintain count <span class="math inline">\(c\)</span> of the number of <span class="math inline">\(X\)</span>s in the stream starting from the chosen time <span class="math inline">\(t\)</span>.</li>
+<li>The estimate of the <span class="math inline">\(2\)</span>-nd moment is <span class="math inline">\(S = f(X) = n(2c - 1)\)</span>.</li>
+<li>Since we have <span class="math inline">\((X_1, X_2, \dots, X_k)\)</span>, the estimate will be <span class="math inline">\(S = \sum f(X_i) / k\)</span>.</li>
+</ul>
+<p>For estimating <span class="math inline">\(k\)</span>-th moment we use the same algorithm but change <span class="math inline">\(f(X)\)</span>.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/UW/" rel="tag"><i class="fa fa-tag"></i> UW</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/regex/" rel="prev" title="Regular Expression">
+                  <i class="fa fa-chevron-left"></i> Regular Expression
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/convex-optimization/" rel="next" title="Convex Optimization">
+                  Convex Optimization <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

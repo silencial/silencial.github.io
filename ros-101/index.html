@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="ROS basic tutorial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS 101">
+<meta property="og:url" content="https://silencial.github.io/ros-101/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="ROS basic tutorial">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="101">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/ros-101/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;ros-101&#x2F;&quot;,&quot;path&quot;:&quot;ros-101&#x2F;&quot;,&quot;title&quot;:&quot;ROS 101&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>ROS 101 | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ros-basic"><span class="nav-number">1.</span> <span class="nav-text">ROS Basic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#publisher-subscriber"><span class="nav-number">1.1.</span> <span class="nav-text">Publisher &amp; Subscriber</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#messages"><span class="nav-number">1.2.</span> <span class="nav-text">Messages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-a-msg"><span class="nav-number">1.2.1.</span> <span class="nav-text">Create a msg</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">1.3.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-a-srv"><span class="nav-number">1.3.1.</span> <span class="nav-text">Create a srv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform"><span class="nav-number">1.4.</span> <span class="nav-text">Transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#launch-file-parameter"><span class="nav-number">2.</span> <span class="nav-text">Launch File &amp; Parameter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#visualization"><span class="nav-number">3.</span> <span class="nav-text">Visualization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#messages-1"><span class="nav-number">3.1.</span> <span class="nav-text">Messages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rviz"><span class="nav-number">3.2.</span> <span class="nav-text">Rviz</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command-line"><span class="nav-number">4.</span> <span class="nav-text">Command Line</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#file-system"><span class="nav-number">4.1.</span> <span class="nav-text">File System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package"><span class="nav-number">4.2.</span> <span class="nav-text">Package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run"><span class="nav-number">4.3.</span> <span class="nav-text">Run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#running-info"><span class="nav-number">4.4.</span> <span class="nav-text">Running Info</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rosbag"><span class="nav-number">5.</span> <span class="nav-text">Rosbag</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/ros-101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ROS 101
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-03-01 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+00:00">2020-03-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-12-08 00:00:00" itemprop="dateModified" datetime="2020-12-08T00:00:00+00:00">2020-12-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>15 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>ROS basic tutorial</p>
+<span id="more"></span>
+<hr />
+<h1 id="ros-basic">ROS Basic</h1>
+<h2 id="publisher-subscriber">Publisher &amp; Subscriber</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Node initilization</span></span><br><span class="line">rospy.init_node(noe_name, anonymous=<span class="literal">True</span>, disable_signals=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a publisher and publish data</span></span><br><span class="line">pub = rospy.Publisher(topic_name, data_class)</span><br><span class="line">pub.publish(data)</span><br><span class="line"><span class="comment"># Publish at a rate (Hz)</span></span><br><span class="line">r = rospy.Rate(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line">    pub.publish(data)</span><br><span class="line">    r.sleep()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a subscriber, callback_function will be automatically called when data is published on this topic</span></span><br><span class="line">rospy.Subscriber(topic_name, data_class, callback_function)</span><br></pre></td></tr></table></figure>
+<p><mark>Publisher can't publish immediately after it is created. Need <code>rospy.sleep(1)</code> or use <code>latch</code>.</mark></p>
+<h2 id="messages">Messages</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># With latch=True, new subscriber always gets the last message that was published even if the message was published before the subscriber was connected.</span></span><br><span class="line">pub = rospy.Publisher(topic_name, data_class, latch=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Wait unitl receive message with given datatype in given topic</span></span><br><span class="line">rospy.wait_for_message(topic_name, data_class)</span><br></pre></td></tr></table></figure>
+<h3 id="create-a-msg">Create a msg</h3>
+<p>Make <code>msg</code> directory inside ROS package, create <code>Test.msg</code> file with datatype content, for example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string a</span><br><span class="line">string b</span><br><span class="line">uint8 c</span><br></pre></td></tr></table></figure>
+<p>Add the following two lines to <code>package.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build_depend</span>&gt;</span>message_generation<span class="tag">&lt;/<span class="name">build_depend</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exec_depend</span>&gt;</span>message_runtime<span class="tag">&lt;/<span class="name">exec_depend</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Change <code>CMakeList.txt</code> as follows:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">find_package(catkin REQUIRED COMPONENTS</span><br><span class="line">  rospy</span><br><span class="line">  std_msgs</span><br><span class="line">  message_generation</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">catkin_package(</span><br><span class="line">  CATKIN_DEPENDS message_runtime ...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">add_message_files(</span><br><span class="line">  FILES</span><br><span class="line">  Test.msg</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">generate_messages(</span><br><span class="line">  DEPENDENCIES</span><br><span class="line">  std_msgs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>It can be imported by <code>from [package].msg import Test</code></p>
+<h2 id="service">Service</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a Service</span></span><br><span class="line">rospy.Service(name, service_class, callback_function)</span><br></pre></td></tr></table></figure>
+<h3 id="create-a-srv">Create a srv</h3>
+<p>Similar to msg, create <code>Test.srv</code> in <code>srv/</code>; change <code>package.xml</code> and <code>CMakeLists.txt</code>, the difference is:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add_service_files(</span><br><span class="line">  FILES</span><br><span class="line">  AddTwoInts.srv</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>It can be imported by <code>from [package].srv import Test</code></p>
+<h2 id="transform">Transform</h2>
+<p>Frames are published on the <code>tf</code> topic.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find transforms between coordinate frames, rospy.Time(0) will give the latest available transform</span></span><br><span class="line">tfl = tf.TransformListener()</span><br><span class="line">trans, rot = tfl.lookupTransform(frameid_1, frameid_2, rospy.Time(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create transforms between frames</span></span><br><span class="line">pub_tf = tf.TransformBroadcaster()</span><br><span class="line">pub_tf.sendTransform((trans_x, trans_y), quat, rospy.Time.now(), frameid_1, frameid_2)</span><br></pre></td></tr></table></figure>
+<h1 id="launch-file-parameter">Launch File &amp; Parameter</h1>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Use include to run launch files --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">file</span>=<span class="string">&#x27;$(find [package])/[launch]&#x27;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Define arguments for later use --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">arg</span> <span class="attr">name</span>=<span class="string">&#x27;arg1&#x27;</span> <span class="attr">default</span>=<span class="string">&#x27;true&#x27;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Run nodes --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&#x27;[package]&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;[node_name]&#x27;</span> <span class="attr">type</span>=<span class="string">&#x27;[python file]&#x27;</span> <span class="attr">output</span>=<span class="string">&#x27;screen&#x27;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- param can be used in file --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">&#x27;arg1&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;$(arg arg1)&#x27;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Parameters will be in <code>name</code> domain, for example, the above launch file will create a <code>/node_name/arg1</code> parameter.</p>
+<p>In the python file, <code>arg1</code> can be read by</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arg1 = rospy.get_param(<span class="string">&#x27;~arg1&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>~</code> means in current node name domain.</p>
+<h1 id="visualization">Visualization</h1>
+<h2 id="messages-1">Messages</h2>
+<p>Visualize messages (values) using MarkerArray</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> visualization_msgs.msg <span class="keyword">import</span> Marker, MarkerArray</span><br><span class="line"><span class="keyword">import</span> matplotlib.colors <span class="keyword">as</span> colors</span><br><span class="line"></span><br><span class="line">self.pub = rospy.Publisher([topic], MarkerArray, queue_size=<span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate color map and scale by values</span></span><br><span class="line">norm = colors.Normalize(clip=<span class="literal">True</span>)</span><br><span class="line">norm.autoscale(values)</span><br><span class="line">color_map = cm.get_cmap()</span><br><span class="line"></span><br><span class="line">markers = MarkerArray()</span><br><span class="line"><span class="comment"># Add markers in markerarray</span></span><br><span class="line"><span class="keyword">for</span> i, (points, values) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(points, values)):</span><br><span class="line">  marker = Marker()</span><br><span class="line">  marker.header.stamp = rospy.Time.now()</span><br><span class="line">  marker.header.frame_id = <span class="string">&#x27;map&#x27;</span></span><br><span class="line">  <span class="comment"># marker.ns = [namespace]</span></span><br><span class="line">  marker.<span class="built_in">id</span> = i  <span class="comment"># ids are differenct so they won&#x27;t replace each other</span></span><br><span class="line">  marker.<span class="built_in">type</span> = Marker.LINE_STRIP</span><br><span class="line">  <span class="comment"># marker.action = Marker.ADD</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Here we use points for visualization so that pose and orientation are not required</span></span><br><span class="line">  marker.pose.position.x = <span class="number">0</span></span><br><span class="line">  marker.pose.position.y = <span class="number">0</span></span><br><span class="line">  marker.pose.position.z = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  marker.pose.orientation.x = <span class="number">0</span></span><br><span class="line">  marker.pose.orientation.y = <span class="number">0</span></span><br><span class="line">  marker.pose.orientation.z = <span class="number">0</span></span><br><span class="line">  marker.pose.orientation.w = <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">  marker.scale.x = <span class="number">0.02</span></span><br><span class="line"></span><br><span class="line">  color = color_map(norm(values))</span><br><span class="line">  marker.color.r = color[<span class="number">0</span>]</span><br><span class="line">  marker.color.g = color[<span class="number">1</span>]</span><br><span class="line">  marker.color.b = color[<span class="number">2</span>]</span><br><span class="line">  marker.color.a = color[<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Points are only used for markers of type Points, Line strips, and Line/Cube/Sphere lists. It&#x27;s also used for the Arrow type, if you want to specify the arrow start and end points.</span></span><br><span class="line">  <span class="keyword">for</span> point <span class="keyword">in</span> points:</span><br><span class="line">    p = Point()</span><br><span class="line">    p.x, p.y = point[<span class="number">0</span>], point[<span class="number">1</span>]</span><br><span class="line">    marker.points.append(p)</span><br><span class="line"></span><br><span class="line">  markers.markers.append(marker)</span><br><span class="line"></span><br><span class="line">self.pub.publish(markers)</span><br></pre></td></tr></table></figure>
+<h2 id="rviz">Rviz</h2>
+<p>Running <code>rviz</code> without parameter will load the config in <code>~/.rviz/default.rviz</code></p>
+<p>Save rviz config file and use <code>rviz -d [config]</code> will launch Rviz and load the specified config file. This can be integrated in the launch file:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">type</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">name</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">args</span>=<span class="string">&quot;-d $(find [package])/[config.rviz]&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="command-line">Command Line</h1>
+<h2 id="file-system">File System</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find package location</span></span><br><span class="line">rospack find [package]</span><br><span class="line"></span><br><span class="line"><span class="comment"># cd into a package folder</span></span><br><span class="line">roscd [package]</span><br><span class="line"><span class="comment"># cd into ros log files folder</span></span><br><span class="line">roscd <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h2 id="package">Package</h2>
+<p>Use <a target="_blank" rel="noopener external nofollow noreferrer" href="https://catkin-tools.readthedocs.io/en/latest/">Catkin Command Line Tools</a> to replace ROS built-in catkin tool.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Build/Clean the entire workspace</span></span><br><span class="line">catkin build</span><br><span class="line">catkin clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># List the first-order/all dependencies</span></span><br><span class="line">rospack depends1 [package]</span><br><span class="line">rospack depends [package]</span><br></pre></td></tr></table></figure>
+<h2 id="run">Run</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run a single node</span></span><br><span class="line">rosrun [package] [node]</span><br><span class="line"><span class="comment"># Run launch file</span></span><br><span class="line">roslaunch [package] [launch]</span><br></pre></td></tr></table></figure>
+<h2 id="running-info">Running Info</h2>
+<ul>
+<li><strong>Nodes</strong> are just executable files within a ROS package, which can publish/subscribe to Topics or provide/use Services.</li>
+<li><strong>Topics</strong> are for nodes to exchange messages.</li>
+<li><strong>Services</strong> are similar to topics but for RPC (Remote procedure call) request.</li>
+<li><strong>Messages</strong> are simple data structures.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># List all the nodes running</span></span><br><span class="line">rosnode list</span><br><span class="line"><span class="comment"># List infos about a node, such as Publications, Subscriptions and Services</span></span><br><span class="line">rosnode info [node]</span><br><span class="line"><span class="comment"># Clean useless nodes</span></span><br><span class="line">rosnode cleanup</span><br><span class="line"><span class="comment"># Show a dynamic graph of nodes and topics</span></span><br><span class="line">rosrun rqt_graph rqt_graph</span><br><span class="line"></span><br><span class="line"><span class="comment"># List all the topics</span></span><br><span class="line">rostopic list</span><br><span class="line"><span class="comment"># Print data published on a topic</span></span><br><span class="line">rostopic <span class="built_in">echo</span> [topic]</span><br><span class="line"><span class="comment"># List infos about a topic, such as message type, Publishers and Subscribers</span></span><br><span class="line">rostopic info [topic]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Show message datatype</span></span><br><span class="line">rosmsg show/info [msg]</span><br><span class="line"></span><br><span class="line"><span class="comment"># List all the services</span></span><br><span class="line">rosservice list</span><br><span class="line"><span class="comment"># Call a service</span></span><br><span class="line">rosservice call [service] [args]</span><br><span class="line"></span><br><span class="line"><span class="comment"># List all params</span></span><br><span class="line">rosparam list</span><br><span class="line"><span class="comment"># Get/Set params</span></span><br><span class="line">rosparam get [param]</span><br><span class="line">rosparam <span class="built_in">set</span> [param] [value]</span><br><span class="line"></span><br><span class="line"><span class="comment"># See all frames and the nodes publishing them</span></span><br><span class="line">rosrun tf tf_monitor</span><br><span class="line"><span class="comment"># View the connection between frames</span></span><br><span class="line">rosrun tf view_frames</span><br></pre></td></tr></table></figure>
+<h1 id="rosbag">Rosbag</h1>
+<p>Filter a recorded rosbag by time:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rosbag filter input.bag output.bag <span class="string">&quot;t.secs &gt;= 1531425960 and t.secs &lt;= 1531426140&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Export certain topic from a rosbag to csv/txt:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rostopic <span class="built_in">echo</span> -b [bag_file] -p [topic_name] &gt;&gt; [output_file_name]</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/101/" rel="tag"><i class="fa fa-tag"></i> 101</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/setup/" rel="prev" title="Setup">
+                  <i class="fa fa-chevron-left"></i> Setup
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/mobile-robots/" rel="next" title="Mobile Robots">
+                  Mobile Robots <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

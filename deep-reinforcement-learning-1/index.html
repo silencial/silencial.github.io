@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 2) Deep Reinforcement Learning (Part 3)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Reinforcement Learning (Part 1)">
+<meta property="og:url" content="https://silencial.github.io/deep-reinforcement-learning-1/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 2) Deep Reinforcement Learning (Part 3)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/Rl25f8W.png">
+<meta property="og:image" content="https://i.imgur.com/AT5SwcZ.png">
+<meta property="og:image" content="https://i.imgur.com/96PJnJ5.png">
+<meta property="og:image" content="https://i.imgur.com/MvWeqPG.png">
+<meta property="og:image" content="https://i.imgur.com/T3luu60.png">
+<meta property="og:image" content="https://i.imgur.com/teEZjKB.png">
+<meta property="og:image" content="https://i.imgur.com/p5Dz9Ub.png">
+<meta property="og:image" content="https://i.imgur.com/QbvuBBf.png">
+<meta property="og:image" content="https://i.imgur.com/P7e9Raj.png">
+<meta property="article:published_time" content="2020-02-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-09T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Open Courses">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/Rl25f8W.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/deep-reinforcement-learning-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;deep-reinforcement-learning-1&#x2F;&quot;,&quot;path&quot;:&quot;deep-reinforcement-learning-1&#x2F;&quot;,&quot;title&quot;:&quot;Deep Reinforcement Learning (Part 1)&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Deep Reinforcement Learning (Part 1) | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#imitation-learning"><span class="nav-number">1.</span> <span class="nav-text">Imitation Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#behavior-cloning"><span class="nav-number">1.1.</span> <span class="nav-text">Behavior Cloning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dagger"><span class="nav-number">1.2.</span> <span class="nav-text">DAgger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.3.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cost-function"><span class="nav-number">1.4.</span> <span class="nav-text">Cost Function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-to-rl"><span class="nav-number">2.</span> <span class="nav-text">Introduction to RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#markov-decision-process"><span class="nav-number">2.1.</span> <span class="nav-text">Markov Decision Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rl-definition"><span class="nav-number">2.2.</span> <span class="nav-text">RL Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rl-algorithms"><span class="nav-number">2.3.</span> <span class="nav-text">RL Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#policy-gradient"><span class="nav-number">2.3.1.</span> <span class="nav-text">Policy Gradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#value-based"><span class="nav-number">2.3.2.</span> <span class="nav-text">Value Based</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#actor-critic"><span class="nav-number">2.3.3.</span> <span class="nav-text">Actor-Critic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-based"><span class="nav-number">2.3.4.</span> <span class="nav-text">Model-Based</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluation"><span class="nav-number">2.4.</span> <span class="nav-text">Evaluation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-gradient-1"><span class="nav-number">3.</span> <span class="nav-text">Policy Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm"><span class="nav-number">3.1.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variance"><span class="nav-number">3.2.</span> <span class="nav-text">Variance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#causality"><span class="nav-number">3.2.1.</span> <span class="nav-text">Causality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#baseline"><span class="nav-number">3.2.2.</span> <span class="nav-text">Baseline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onoff-policy"><span class="nav-number">3.3.</span> <span class="nav-text">On&#x2F;Off Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#practice"><span class="nav-number">3.4.</span> <span class="nav-text">Practice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#actor-critic-1"><span class="nav-number">4.</span> <span class="nav-text">Actor-Critic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#value-function-fitting"><span class="nav-number">4.1.</span> <span class="nav-text">Value Function Fitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-evaluation"><span class="nav-number">4.2.</span> <span class="nav-text">Policy Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#monte-carlo"><span class="nav-number">4.2.1.</span> <span class="nav-text">Monte Carlo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ideal-target"><span class="nav-number">4.2.2.</span> <span class="nav-text">Ideal Target</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discount-factor"><span class="nav-number">4.3.</span> <span class="nav-text">Discount Factor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm-1"><span class="nav-number">4.4.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#architecture-design"><span class="nav-number">4.5.</span> <span class="nav-text">Architecture Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#improvements"><span class="nav-number">4.6.</span> <span class="nav-text">Improvements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#critic-baseline"><span class="nav-number">4.6.1.</span> <span class="nav-text">Critic Baseline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generalized-advantage-estimation"><span class="nav-number">4.6.2.</span> <span class="nav-text">Generalized Advantage Estimation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#value-function-methods"><span class="nav-number">5.</span> <span class="nav-text">Value Function Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-iteration"><span class="nav-number">5.1.</span> <span class="nav-text">Policy Iteration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration"><span class="nav-number">5.2.</span> <span class="nav-text">Value Iteration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fitted-value-iteration"><span class="nav-number">5.2.1.</span> <span class="nav-text">Fitted Value Iteration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fitted-q-iteration"><span class="nav-number">5.2.2.</span> <span class="nav-text">Fitted \(Q\)-Iteration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exploration"><span class="nav-number">5.2.3.</span> <span class="nav-text">Exploration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#value-iteration-theory"><span class="nav-number">5.3.</span> <span class="nav-text">Value Iteration Theory</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-learning-in-rl"><span class="nav-number">6.</span> <span class="nav-text">\(Q\)-Learning in RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#decorrelation"><span class="nav-number">6.1.</span> <span class="nav-text">Decorrelation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deep-q-learning"><span class="nav-number">6.2.</span> <span class="nav-text">Deep \(Q\)-Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comparison"><span class="nav-number">6.3.</span> <span class="nav-text">Comparison</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-q-learning"><span class="nav-number">6.4.</span> <span class="nav-text">Double \(Q\)-Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-step-return"><span class="nav-number">6.5.</span> <span class="nav-text">Multi-Step Return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continuous-actions"><span class="nav-number">6.6.</span> <span class="nav-text">Continuous Actions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ddpg"><span class="nav-number">6.6.1.</span> <span class="nav-text">DDPG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#practical-tips"><span class="nav-number">6.7.</span> <span class="nav-text">Practical Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#advanced-policy-gradient"><span class="nav-number">7.</span> <span class="nav-text">Advanced Policy Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-gradient-as-policy-iteration"><span class="nav-number">7.1.</span> <span class="nav-text">Policy Gradient as Policy Iteration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bounding-the-objective"><span class="nav-number">7.1.1.</span> <span class="nav-text">Bounding the Objective</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kl-divergence"><span class="nav-number">7.1.2.</span> <span class="nav-text">KL Divergence</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithms"><span class="nav-number">7.2.</span> <span class="nav-text">Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dal-gradient-descent"><span class="nav-number">7.2.1.</span> <span class="nav-text">Dal Gradient Descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#natural-policy-gradient"><span class="nav-number">7.2.2.</span> <span class="nav-text">Natural Policy Gradient</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proof"><span class="nav-number">8.</span> <span class="nav-text">Proof</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-1"><span class="nav-number">8.1.</span> <span class="nav-text">Proof 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-2"><span class="nav-number">8.2.</span> <span class="nav-text">Proof 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-3"><span class="nav-number">8.3.</span> <span class="nav-text">Proof 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-4"><span class="nav-number">8.4.</span> <span class="nav-text">Proof 4</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/deep-reinforcement-learning-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep Reinforcement Learning (Part 1)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-02-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-02-05T00:00:00+00:00">2020-02-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-02-09 00:00:00" itemprop="dateModified" datetime="2020-02-09T00:00:00+00:00">2020-02-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>39k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:39</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Berkeley <a target="_blank" rel="noopener external nofollow noreferrer" href="http://rail.eecs.berkeley.edu/deeprlcourse/">CS 285</a> Review</p>
+<p>My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/DeepRL">solution</a> to the homework</p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-2/">Deep Reinforcement Learning (Part 2)</a></p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-3/">Deep Reinforcement Learning (Part 3)</a></p>
+<span id="more"></span>
+<hr />
+<h1 id="imitation-learning">Imitation Learning</h1>
+<h2 id="behavior-cloning">Behavior Cloning</h2>
+<p>Use supervised learning with training data <span class="math inline">\((\mathbf{o}_t, \mathbf{a}_t)\)</span> to learn the policy <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{o}_t)\)</span>.</p>
+<p>Usually doesn't work since error <span class="math inline">\(p_{\pi_\theta}(\mathbf{o}_t) \ne p_{data}(\mathbf{o}_t)\)</span> will accumulate through time.</p>
+<p><img src="https://i.imgur.com/Rl25f8W.png" alt="BC Drift" />[width=50%]</p>
+<h2 id="dagger">DAgger</h2>
+<p>Instead of being clever about <span class="math inline">\(p_{\pi_\theta}(\mathbf{o}_t) = p_{data}(\mathbf{o}_t)\)</span>, we can use <strong>DAgger</strong> (Dataset Aggregation) to make <span class="math inline">\(p_{data}(\mathbf{o}_t) = p_{\pi_\theta}(\mathbf{o}_t)\)</span>:</p>
+<ol type="1">
+<li>Train <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{o}_t)\)</span> from human data <span class="math inline">\(\mathcal{D} = \{\mathbf{o}_1, \mathbf{a}_1, \dots, \mathbf{o}_N, \mathbf{a}_N\}\)</span></li>
+<li>Run <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{o}_t)\)</span> to get dataset <span class="math inline">\(\mathcal{D}_\pi = \{\mathbf{o}_1, \dots, \mathbf{o}_M\}\)</span></li>
+<li>Ask human to label <span class="math inline">\(\mathcal{D}_\pi\)</span> with action <span class="math inline">\(\mathbf{a}_t\)</span></li>
+<li>Aggregate: <span class="math inline">\(\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_\pi\)</span></li>
+</ol>
+<h2 id="problem">Problem</h2>
+<p><strong>Non-Markovian behavior</strong>: <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{o}_t)\)</span> vs. <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{o}_1, \dots, \mathbf{o}_t)\)</span>. Can be solved by using RNN with LSTM</p>
+<p><strong>Multimodal behavior</strong>: The average of two good actions can be a bad action. Can be solved by</p>
+<ul>
+<li>Represent distribution as mixture of Gaussians: <span class="math inline">\(\pi(\mathbf{a}|\mathbf{o}) = \sum_i w_i \mathcal{N}(\mu_i, \Sigma_i)\)</span></li>
+<li>Latent variable models</li>
+<li>Autoregressive discretization</li>
+</ul>
+<h2 id="cost-function">Cost Function</h2>
+<p>0-1 cost function: <span class="math display">\[
+\displaylines{c(\mathbf{s}, \mathbf{a})=\left\{\begin{array}{l}{0 \text { if } \mathbf{a}=\pi^{\star}(\mathbf{s})} \\ {1 \text { otherwise }}\end{array}\right.
+}
+\]</span> Assume <span class="math inline">\(\pi_{\theta}\left(\mathbf{a} \neq \pi^{\star}(\mathbf{s}) | \mathbf{s}\right) \leq \epsilon\)</span> for all <span class="math inline">\(\mathbf{s} \in \mathcal{D}_{train}\)</span>, then the expectation of cost is (<a href="#proof-1">Proof</a>) <span class="math display">\[
+\displaylines{\mathbb{E}\left[ \sum_t c(\mathbf{s}_t, \mathbf{a}_t) \right] \le \sum_t (\epsilon + 2\epsilon t)
+}
+\]</span> which is <span class="math inline">\(\mathcal{O}(\epsilon T^2)\)</span>, with DAgger <span class="math inline">\(p_{train}(\mathbf{s}) \rightarrow p_\theta(\mathbf{s})\)</span>, the expectation is <span class="math inline">\(\mathcal{O}(T)\)</span>.</p>
+<h1 id="introduction-to-rl">Introduction to RL</h1>
+<h2 id="markov-decision-process">Markov Decision Process</h2>
+<ul>
+<li><span class="math inline">\(\mathcal{M} = \{ \mathcal{S}, \mathcal{T} \}\)</span></li>
+<li><span class="math inline">\(\mathcal{S}\)</span>: state space</li>
+<li><span class="math inline">\(\mathcal{A}\)</span>: action space</li>
+<li><span class="math inline">\(\mathcal{T}\)</span>: transition operator</li>
+<li><span class="math inline">\(\mathcal{E}\)</span>: emission probability <span class="math inline">\(p(\mathbf{o}_t | \mathbf{s}_t)\)</span></li>
+<li><span class="math inline">\(r\)</span>: <span class="math inline">\(\mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}\)</span> reward function</li>
+</ul>
+<p>Let <span class="math inline">\(\mu_{t,j} = p(s_t = j)\)</span>, <span class="math inline">\(\xi_{t,k} = p(a_t = k)\)</span>, <span class="math inline">\(\mathcal{T}_{i,j,k} = p(s_{t+1} = i | s_t = j, a_t = k)\)</span>, then <span class="math display">\[
+\displaylines{\mu_{t, i}=\sum_{j, k} \mathcal{T}_{i, j, k} \mu_{t, j} \xi_{t, k}
+}
+\]</span> Using the Markov chain we can get <span class="math display">\[
+\begin{equation}\displaylines{
+\underbrace{p_{\theta}\left(\mathbf{s}_{1}, \mathbf{a}_{1}, \ldots, \mathbf{s}_{T}, \mathbf{a}_{T}\right)}_{p_{\theta}(\tau)}=p\left(\mathbf{s}_{1}\right) \prod_{t=1}^{T} \pi_{\theta}\left(\mathbf{a}_{t} | \mathbf{s}_{t}\right) p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}\right)
+}
+\label{markov}
+\end{equation}
+\]</span></p>
+<h2 id="rl-definition">RL Definition</h2>
+<p>The goal of RL is to find the optimal policy <span class="math display">\[
+\displaylines{\DeclareMathOperator*{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmax}{\arg\max}
+\begin{aligned}
+\theta^{\star} &amp;= \argmax _{\theta} \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right] \\
+&amp;= \argmax_{\theta} \sum_{t=1}^T \mathbb{E}_{(\mathbf{s}_t, \mathbf{a}_t) \sim p_{\theta}(\mathbf{s}_t, \mathbf{a}_t)}\left[r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]
+\end{aligned}
+}
+\]</span> For infinite horizon case <span class="math inline">\(T = \infty\)</span>, we can find the stationary distribution <span class="math inline">\(\mu = \mathcal{T} \mu\)</span>, where <span class="math inline">\(\mu = p_{\theta}(\mathbf{s}, \mathbf{a})\)</span>. Then the optimal policy can be represented as <span class="math display">\[
+\displaylines{\theta^{\star}=\argmax _{\theta} \frac{1}{T} \sum_{t=1}^{T} \mathbb{E}_{\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) \sim p_{\theta}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)}\left[r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right] \rightarrow \mathbb{E}_{(\mathbf{s}, \mathbf{a}) \sim p_{\theta}(\mathbf{s}, \mathbf{a})}[r(\mathbf{s}, \mathbf{a})]
+}
+\]</span></p>
+<h2 id="rl-algorithms">RL Algorithms</h2>
+<p><img src="https://i.imgur.com/AT5SwcZ.png" alt="RL General Algorithm" />[width=50%]</p>
+<h3 id="policy-gradient">Policy Gradient</h3>
+<p>Directly differentiate the objective w.r.t. policy</p>
+<p><img src="https://i.imgur.com/96PJnJ5.png" alt="Policy Gradient" /></p>
+<h3 id="value-based">Value Based</h3>
+<p>Rewrite the RL objective as conditional expectations: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{split}
+&amp;\sum_{t=1}^T \mathbb{E}_{(\mathbf{s}_t, \mathbf{a}_t) \sim p_\theta(\mathbf{s}_t, \mathbf{a}_t)} [r(\mathbf{s}_t, \mathbf{a}_t)] \\
+=&amp;\mathbb{E}_{\mathbf{s}_1\sim p(\mathbf{s}_1)} \biggl[ \mathbb{E}_{\mathbf{a}_1\sim \pi(\mathbf{a}_1|\mathbf{s}_1)} \Bigl[ r(\mathbf{s}_1,\mathbf{a}_1)+\mathbb{E}_{\mathbf{s}_2\sim p(\mathbf{s}_2|\mathbf{s}_1,\mathbf{a}_1)} \bigl[ \mathbb{E}_{\mathbf{a}_2\sim \pi(\mathbf{a}_2|\mathbf{s}_2)}[r(\mathbf{s}_2,\mathbf{a}_2)+\ldots|\mathbf{s}_2]|\mathbf{s}_1,\mathbf{a}_1 \bigr] |\mathbf{s}_1 \Bigr] \biggr]
+\end{split}
+}
+\label{exp}
+\end{equation}
+\]</span> Define <strong><span class="math inline">\(Q\)</span>-function</strong> as the total reward from taking <span class="math inline">\(\mathbf{a}_t\)</span> in <span class="math inline">\(\mathbf{s}_t\)</span>: <span class="math display">\[
+\displaylines{Q^\pi(\mathbf{s}_t,\mathbf{a}_t)=\sum_{t&#39;=t}^T\mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})|\mathbf{s}_t,\mathbf{a}_t]
+}
+\]</span></p>
+<p>Define <strong>Value function</strong> as the total reward from <span class="math inline">\(\mathbf{s}_t\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}V^\pi(\mathbf{s}_t) &amp;= \sum_{t&#39;=t}^T \mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})|\mathbf{s}_t] \\&amp;= \mathbb{E}_{\mathbf{a}_t \sim \pi(\mathbf{a}_t | \mathbf{s}_t)} [Q^\pi (\mathbf{s}_t, \mathbf{a}_t)]\end{aligned}
+}
+\]</span> then the RL objective <span class="math inline">\(\eqref{exp}\)</span> can be represented as <span class="math inline">\(\mathbb{E}_{\mathbf{s}_1 \sim p(\mathbf{s}_1)} [V^\pi (\mathbf{s}_1)]\)</span></p>
+<p>Estimate value function or <span class="math inline">\(Q\)</span>-function of the optimal policy (no explicit policy)</p>
+<p><img src="https://i.imgur.com/MvWeqPG.png" alt="Value Based" /></p>
+<h3 id="actor-critic">Actor-Critic</h3>
+<p>Estimate value function or <span class="math inline">\(Q\)</span>-function of the current policy, use it to improve policy</p>
+<p><img src="https://i.imgur.com/T3luu60.png" alt="Actor-Critic" /></p>
+<h3 id="model-based">Model-Based</h3>
+<p>Estimate the transition model, and then</p>
+<p><img src="https://i.imgur.com/teEZjKB.png" alt="Model-based RL" /></p>
+<ol type="1">
+<li>Just use the model to plan (no policy)
+<ul>
+<li>Trajectory optimization/optimal control (primarily in continuous spaces)</li>
+<li>Monte Carlo tree search (discrete spaces)</li>
+</ul></li>
+<li>Backpropagate gradients into the policy
+<ul>
+<li>Requires some tricks to make it work</li>
+</ul></li>
+<li>Use the model to learn a value function
+<ul>
+<li>Dynamic programming</li>
+<li>Generate simulated experience for model-free learner (Dyna)</li>
+</ul></li>
+</ol>
+<h2 id="evaluation">Evaluation</h2>
+<p><img src="https://i.imgur.com/p5Dz9Ub.png" alt="Efficiency Comparison" /></p>
+<p>When choosing the algorithm, consider:</p>
+<ul>
+<li>Different trade-offs
+<ul>
+<li>Sample efficiency</li>
+<li>on/off policy: Y/N require generating new samples to improve policy</li>
+<li>Stable and unbiased: since RL is often <strong>not</strong> gradient descent</li>
+</ul></li>
+<li>Different assumptions
+<ul>
+<li>Stochastic/deterministic</li>
+<li>Continuous/discrete</li>
+<li>Episodic/infinite horizon</li>
+</ul></li>
+<li>Easier to represent the policy/model</li>
+</ul>
+<h1 id="policy-gradient-1">Policy Gradient</h1>
+<h2 id="algorithm">Algorithm</h2>
+<p>Evaluate the objective by samples: <span class="math display">\[
+\displaylines{J(\theta) = \mathbb{E}_{\tau\sim \pi_\theta(\tau)}\left[\sum_tr(\mathbf{s}_t,\mathbf{a}_t)\right] \approx \frac{1}{N}\sum_i\sum_tr(\mathbf{s}_{i,t},\mathbf{a}_{i,t})
+}
+\]</span></p>
+<p>Direct policy differentiation: (<a href="#proof-2">Proof</a>) <span class="math display">\[
+\begin{equation}\displaylines{
+\nabla_{\theta} J(\theta) \approx \frac{1}{N}\sum_{i=1}^N\left[\left(\sum_{t=1}^T\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\right)\left(\sum_{t=1}^Tr(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)\right]
+}
+\label{policy}
+\end{equation}
+\]</span> Compared to maximum likelihood in supervised learning: <span class="math display">\[
+\displaylines{\nabla_{\theta} J_{\mathrm{ML}}(\theta) \approx \frac{1}{N} \sum_{i=1}^{N}\left(\sum_{t=1}^{T} \nabla_{\theta} \log \pi_{\theta}\left(\mathbf{a}_{i, t} | \mathbf{s}_{i, t}\right)\right)
+}
+\]</span> Policy gradient is like a <strong>weighted maximum likelihood</strong> objective.</p>
+<p>So we get our <strong>REINFORCE</strong> algorithm:</p>
+<ol type="1">
+<li>Sample <span class="math inline">\(\{\tau^i\}\)</span> from <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{s}_t)\)</span></li>
+<li>Compute <span class="math inline">\(\nabla_\theta J(\theta)\)</span></li>
+<li><span class="math inline">\(\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)\)</span></li>
+</ol>
+<p><mark>Does not require the initial state distribution or the transition probabilities.</mark></p>
+<p><mark>Can be used in POMDP (partially observed MDP) since Markov property is not use.</mark></p>
+<h2 id="variance">Variance</h2>
+<p>One problem with policy gradient is its high variance: adding a constant to the reward function <span class="math inline">\(r(\tau)\)</span> will change the update process of the policy.</p>
+<h3 id="causality">Causality</h3>
+<p>Since policy at time <span class="math inline">\(t&#39;\)</span> cannot affect reward at time <span class="math inline">\(t\)</span> when <span class="math inline">\(t &lt; t&#39;\)</span>, we can change the gradient <span class="math inline">\(\eqref{policy}\)</span> to <span class="math display">\[
+\begin{equation}\displaylines{
+\nabla_{\theta} J(\theta) \approx\frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t}) \hat{Q}_{i,t}
+}
+\label{rewardtogo}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(\hat{Q}_{i,t} = \sum_{t&#39;=t}^Tr(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;})\)</span> is the <strong>reward-to-go</strong>.</p>
+<h3 id="baseline">Baseline</h3>
+<p>Update the policy by the difference between current policy reward and the average reward. <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{split}
+&amp;\nabla_{\theta} J(\theta) \approx \frac{1}{N}\sum_{i=1}^N \nabla_\theta\log \pi_\theta(\tau) [r(\tau) - b] \\
+&amp;b = \frac{1}{N} \sum_{i=1}^N r(\tau)
+\end{split}
+}
+\label{baseline}
+\end{equation}
+\]</span> It is <strong>unbiased</strong> since the expectation of <span class="math inline">\(b\)</span> w.r.t. policy is <span class="math inline">\(0\)</span>.</p>
+<p>The theoretically best baseline is to take the gradient of variance w.r.t. <span class="math inline">\(b\)</span> and find the optimal value: (<a href="#proof-3">Proof</a>) <span class="math display">\[
+\displaylines{b^*=\frac{\mathbb{E}\left[\big(\nabla_\theta\log \pi_\theta(\tau)\big)^2 r(\tau)\right]}{\mathbb{E}\left[\big(\nabla_\theta\log \pi_\theta(\tau)\big)^2\right]}
+}
+\]</span> which is the expected reward weighted by gradient magnitudes.</p>
+<h2 id="onoff-policy">On/Off Policy</h2>
+<p>Policy gradient is on-policy since it needs re-sampling every time the policy updates, which can be extremely inefficient.</p>
+<p>We can avoid re-sampling by using <strong>importance sampling</strong>:</p>
+<p><span class="math display">\[
+\displaylines{\mathbb{E}_{x\sim p(x)}[f(x)]=\int p(x)f(x)\mathrm{d}x=\int q(x)\frac{p(x)}{q(x)}f(x)\mathrm{d}x=\mathbb{E}_{x\sim q(x)}\left[\frac{p(x)}{q(x)}f(x)\right]
+}
+\]</span></p>
+<p>then express the objective of a new policy <span class="math inline">\(\theta&#39;\)</span> as <span class="math display">\[
+\displaylines{J(\theta&#39;) = \mathbb{E}_{\tau \sim \pi_\theta(\tau)} \left[ \frac{\pi_{\theta&#39;}(\tau)}{\pi_{\theta}(\tau)} r(\tau) \right]
+}
+\]</span> and take the gradient: (<a href="#proof-4">Proof</a>) <span class="math display">\[
+\displaylines{\nabla_{\theta&#39;}J(\theta&#39;) = \mathbb{E}_{\tau\sim \pi_\theta(\tau)}\left[\sum_{t=1}^T\nabla_{\theta&#39;}\log \pi_{\theta&#39;}(\mathbf{a}_t|\mathbf{s}_t)\left(\prod_{t&#39;=1}^t\frac{\pi_{\theta&#39;}(\mathbf{a}_{t&#39;}|\mathbf{s}_{t&#39;})}{\pi_{\theta}(\mathbf{a}_{t&#39;}|\mathbf{s}_{t&#39;})}\right)\left(\sum_{t&#39;=t}^Tr(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})\right)\right]
+}
+\]</span> the problem is that the <span class="math inline">\(\prod\)</span> term is exponential in <span class="math inline">\(T\)</span>, which might blow/kill the gradient.</p>
+<p>Rewrite <span class="math inline">\(J(\theta&#39;)\)</span> as expectation under state-action marginal and do importance sampling for both to get <span class="math display">\[
+\displaylines{\begin{aligned}
+J(\theta&#39;) &amp;= \sum_{t=1}^T\mathbb{E}_{\mathbf{s}_t\sim p_\theta(\mathbf{s}_t)}\left[\mathbb{E}_{\mathbf{a}_t\sim\pi_\theta(\mathbf{a}_t|\mathbf{s}_t)}[r(\mathbf{s}_t,\mathbf{a}_t)]\right] \\
+&amp;= \sum_{t=1}^T\mathbb{E}_{\mathbf{s}_t\sim p_\theta(\mathbf{s}_t)}\left[\frac{p_{\theta&#39;}(\mathbf{s}_t)}{p_{\theta}(\mathbf{s}_t)}\mathbb{E}_{\mathbf{a}_t\sim\pi_\theta(\mathbf{a}_t|\mathbf{s}_t)}\left(\frac{\pi_{\theta&#39;}(\mathbf{a}_t|\mathbf{s}_t)}{\pi_{\theta}(\mathbf{a}_t|\mathbf{s}_t)}r(\mathbf{s}_t,\mathbf{a}_t)\right)\right] \\
+&amp;\approx \sum_{t=1}^T\mathbb{E}_{\mathbf{s}_t\sim p_\theta(\mathbf{s}_t)}\left[\mathbb{E}_{\mathbf{a}_t\sim\pi_\theta(\mathbf{a}_t|\mathbf{s}_t)}\left(\frac{\pi_{\theta&#39;}(\mathbf{a}_t|\mathbf{s}_t)}{\pi_{\theta}(\mathbf{a}_t|\mathbf{s}_t)}r(\mathbf{s}_t,\mathbf{a}_t)\right)\right]
+\end{aligned}
+}
+\]</span> We are sacrificing some accuracy for efficiency.</p>
+<h2 id="practice">Practice</h2>
+<ul>
+<li>Using much larger batches will help reducing variance.</li>
+<li>Tweaking learning rates is very hard. Adaptive step size rules like ADAM is okay.</li>
+</ul>
+<h1 id="actor-critic-1">Actor-Critic</h1>
+<h2 id="value-function-fitting">Value Function Fitting</h2>
+<p>If we can replace the <span class="math inline">\(\hat{Q}_{i,t}\)</span> in <span class="math inline">\(\eqref{rewardtogo}\)</span> by its expectation: <span class="math display">\[
+\displaylines{Q \left( \mathbf { s }_{ t } , \mathbf { a }_{ t } \right) = \sum_{ t ^ { \prime } = t } ^ { T } \mathbb{E} _{ \pi_ { \theta } } \left[ r ( \mathbf { s } _ { t ^ { \prime } } , \mathbf { a } _ { t ^ { \prime } }) | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right]
+}
+\]</span> the policy update will have smaller variance: <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\left[\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})Q(\mathbf{s}_t,\mathbf{a}_t)\right]
+}
+\]</span> Use the baseline <span class="math inline">\(b_t = V(\mathbf{s}_t) = \mathbb{E}_{\mathbf{a}_t \sim \pi_\theta (\mathbf{a}_t | \mathbf{s}_t)} Q(\mathbf{s}_t, \mathbf{a}_t)\)</span> <mark>(it is still unbiased as proved in the homework)</mark>) <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\left[\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})A^\pi(\mathbf{s}_{i, t},\mathbf{a}_{i, t})\right]
+}
+\]</span> where <span class="math inline">\(A^\pi(\mathbf{s}_t,\mathbf{a}_t)=Q^\pi(\mathbf{s}_t,\mathbf{a}_t)-V^\pi(\mathbf{s}_t)\)</span> is called the <strong>advantage function</strong>.</p>
+<p>Now we have 3 choices of function fitting: <span class="math inline">\(Q^\pi, V^\pi, A^\pi\)</span>. Since <span class="math inline">\(V^\pi\)</span> <mark>is only a function of state rather than state-action pair</mark>, most actor-critic algorithms choose value function fitting. Also <span class="math inline">\(Q^\pi, A^\pi\)</span> can be approximated by <span class="math inline">\(V^\pi\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}
+Q^\pi(\mathbf{s}_t,\mathbf{a}_t) &amp;= r(\mathbf{s}_t,\mathbf{a}_t) + \sum_{t&#39;=t+1}^T\mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})|\mathbf{s}_t,\mathbf{a}_t] \\
+&amp;= r(\mathbf{s}_t,\mathbf{a}_t) + \mathbb{E}_{\mathbf{s}_{t+1}\sim p(\mathbf{s_{t+1}}|\mathbf{s}_t,\mathbf{a}_t)}[V^\pi(\mathbf{s}_{t+1})] \\
+&amp;\approx r(\mathbf{s}_t,\mathbf{a}_t)+V^\pi(\mathbf{s}_{t+1}) \\
+\\
+A^\pi(\mathbf{s}_t,\mathbf{a}_t) &amp;\approx r(\mathbf{s}_t,\mathbf{a}_t)+V^\pi(\mathbf{s}_{t+1})-V^\pi(\mathbf{s}_t)
+\end{aligned}
+}
+\]</span></p>
+<h2 id="policy-evaluation">Policy Evaluation</h2>
+<p>Policy evaluation tries to evaluate how good the policy is, e.g. estimating <span class="math inline">\(Q^\pi\)</span> or <span class="math inline">\(V^\pi\)</span>.</p>
+<p>For example, we can train a <span class="math inline">\(\hat{V}_\phi^\pi\)</span> with parameter <span class="math inline">\(\phi\)</span> (neural network) to approximate <span class="math inline">\(V^\pi\)</span> by perform supervised regression <span class="math inline">\(\mathcal{L}(\phi)=\frac{1}{2}\sum_i\left\Vert\hat{V}_\phi^\pi(\mathbf{s}_i)-y_i\right\Vert^2\)</span> on the training data <span class="math inline">\(\left\{\left(\mathbf{s}_{i,t}, y_{i,t}\right)\right\}\)</span>.</p>
+<p>How to get <span class="math inline">\(y_{i,t}\)</span>?</p>
+<h3 id="monte-carlo">Monte Carlo</h3>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+y_{i,t} &amp;= V^\pi(\mathbf{s}_{i,t})\approx\sum_{t&#39;=t}^Tr(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;}) \\
+y_{i,t} &amp;= V^\pi(\mathbf{s}_{i,t})\approx\frac{1}{N}\sum_{i=1}^N\sum_{t&#39;=t}^Tr(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;})
+\end{aligned}
+}
+\]</span></p>
+<p>The second one is better but requires resetting the simulator.</p>
+<h3 id="ideal-target">Ideal Target</h3>
+<p>The ideal choice for <span class="math inline">\(y_{i,t}\)</span> is the actual reward: <span class="math display">\[
+\displaylines{y_{i,t}=\sum_{t&#39;=t}^T\mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})|\mathbf{s}_{i,t}]\approx r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})+V^\pi(\mathbf{s}_{i,t+1})\approx r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})+\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})
+}
+\]</span> We can directly use previous fitted value function for <span class="math inline">\(\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})\)</span>. <mark>We are trading off some accuracy for smaller variance.</mark></p>
+<p>Sometimes referred to as a "<strong>bootstrapped</strong>" estimate.</p>
+<h2 id="discount-factor">Discount Factor</h2>
+<p>For <span class="math inline">\(T = \infty\)</span>, we have to introduce discount factor <span class="math inline">\(\gamma\)</span> to avoid <span class="math inline">\(\hat{V}_\phi^\pi\)</span> getting infinite. <span class="math display">\[
+\displaylines{y_{i,t}\approx r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})+\gamma\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})
+}
+\]</span> For the policy gradient <span class="math inline">\(\eqref{policy}\)</span>, it has two options to introduce <span class="math inline">\(\gamma\)</span>. One is to discount the reward-to-go: <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\left(\sum_{t&#39;=t}^T\gamma^{t&#39;-t}r(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;})\right)
+}
+\]</span> the other is to derive from the beginning: <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_\theta J(\theta) &amp;\approx \frac{1}{N}\sum_{i=1}^N\left[\left(\sum_{t=1}^T\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\right)\left(\sum_{t=1}^T\gamma^{t-1}r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)\right] \\
+&amp;= \nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\gamma^{t-1}\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\left(\sum_{t&#39;=t}^T\gamma^{t&#39;-t}r(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;})\right)
+\end{aligned}
+}
+\]</span> In practice we often use the first option, since the second focus more on short-term reward.</p>
+<h2 id="algorithm-1">Algorithm</h2>
+<p>Batch actor-critic algorithm:</p>
+<ol type="1">
+<li>sample <span class="math inline">\(\{\mathbf{s}_i,\mathbf{a}_i\}\)</span> from <span class="math inline">\(\pi_\theta(\mathbf{a}|\mathbf{s})\)</span></li>
+<li>fit <span class="math inline">\(\hat{V}_\phi^\pi(\mathbf{s})\)</span> to sample reward sums</li>
+<li>evaluate <span class="math inline">\(\hat{A}^\pi(\mathbf{s}_i,\mathbf{a}_i)=r(\mathbf{s}_i,\mathbf{a}_i)+\gamma\hat{V}^\pi_\phi(\mathbf{s}_i&#39;)-\hat{V}^\pi_\phi(\mathbf{s}_i)\)</span></li>
+<li><span class="math inline">\(\nabla_\theta J(\theta)\approx\sum_{t=1}^T\left[\nabla_\theta\log \pi_\theta(\mathbf{a}_t|\mathbf{s}_t)\hat{A}^\pi(\mathbf{s}_t,\mathbf{a}_t)\right]\)</span></li>
+<li><span class="math inline">\(\theta\leftarrow \theta+\alpha\nabla_\theta J(\theta)\)</span></li>
+</ol>
+<p>Online actor-critic algorithm:</p>
+<ol type="1">
+<li>take action <span class="math inline">\(\mathbf{a}\sim\pi_\theta(\mathbf{a}|\mathbf{s})\)</span>, get <span class="math inline">\((\mathbf{s},\mathbf{a},\mathbf{s}&#39;,r)\)</span></li>
+<li>update <span class="math inline">\(\hat{V}_\phi^\pi(\mathbf{s})\)</span> using target <span class="math inline">\(r+\gamma\hat{V}^\pi_\phi(\mathbf{s}&#39;)\)</span></li>
+<li>evaluate <span class="math inline">\(\hat{A}^\pi(\mathbf{s},\mathbf{a})=r(\mathbf{s},\mathbf{a})+\gamma\hat{V}^\pi_\phi(\mathbf{s}&#39;)-\hat{V}^\pi_\phi(\mathbf{s})\)</span></li>
+<li><span class="math inline">\(\nabla_\theta J(\theta)\approx\nabla_\theta\log \pi_\theta(\mathbf{a}|\mathbf{s})\hat{A}^\pi(\mathbf{s},\mathbf{a})\)</span></li>
+<li><span class="math inline">\(\theta\leftarrow \theta+\alpha\nabla_\theta J(\theta)\)</span></li>
+</ol>
+<h2 id="architecture-design">Architecture Design</h2>
+<p>For actor-critic algorithm, we now have two neural networks to train: <span class="math inline">\(\mathbf{s} \rightarrow \pi_\theta(\mathbf{a} | \mathbf{s})\)</span> and <span class="math inline">\(\mathbf{s} \rightarrow \hat{V}_\phi^\pi(\mathbf{s})\)</span>.</p>
+<ul>
+<li>Train two network design separately: simple &amp; stable, but inefficient.</li>
+<li>Shared network design: difficult to train.</li>
+</ul>
+<p>For online algorithm, step 2 and 4 works best with a batch (reducing variance), so we can make it parallel</p>
+<ul>
+<li>Synchronized parallel</li>
+<li>Asynchronous parallel</li>
+</ul>
+<p><img src="https://i.imgur.com/QbvuBBf.png" alt="Synchronized vs. Asynchronous" /></p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="critic-baseline">Critic Baseline</h3>
+<p>Actor-critic has lower variance but is biased, policy gradient is unbiased but has higher variance. We can use <span class="math inline">\(\hat{V}_\phi^\pi\)</span> but still keep the estimator unbiased: <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\left(\left(\sum_{t&#39;=t}^T\gamma^{t&#39;-t}r(\mathbf{s}_{i,t&#39;},\mathbf{a}_{i,t&#39;})\right)-\hat{V}^\pi_\phi(\mathbf{s}_{i,t})\right)
+}
+\]</span> <mark>This is like using the baseline that depends on state.</mark> <span class="math display">\[
+\displaylines{\hat{A}^\pi(\mathbf{s}_t,\mathbf{a}_t)=\sum_{t&#39;=t}^\infty \gamma^{t&#39;-t}r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})-V^\pi_\phi(\mathbf{s}_t)
+}
+\]</span> We can also use baseline that depends on action: <span class="math display">\[
+\displaylines{\sum_{t&#39;=t}^\infty \gamma^{t&#39;-t}r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})-Q^\pi_\phi(\mathbf{s}_t,\mathbf{a}_t)
+}
+\]</span> but it is unbiased only if the critic is correct. We can modify the model to make it unbiased, provided the second term can be evaluated: <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\left(\hat{Q}_{i,t}-Q^\pi_\phi(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)+\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\mathbb{E}_{\mathbf{a}\sim\pi_\theta(\mathbf{a}_t|\mathbf{s}_{i,t})}[Q^\pi_\phi(\mathbf{s}_{i,t},\mathbf{a}_t)]
+}
+\]</span></p>
+<h3 id="generalized-advantage-estimation">Generalized Advantage Estimation</h3>
+<ul>
+<li>Critic: low variance, high bias if value is wrong</li>
+<li>Monte Carlo: no bias, high variance.</li>
+</ul>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+\hat{A}_\text{C}^\pi(\mathbf{s}_t,\mathbf{a}_t) &amp;= r(\mathbf{s}_t,\mathbf{a}_t)+\gamma\hat{V}^\pi_\phi(\mathbf{s}_{t+1})-\hat{V}^\pi_\phi(\mathbf{s}_t) \\
+\hat{A}_\text{MC}^\pi(\mathbf{s}_t,\mathbf{a}_t) &amp;= \sum_{t&#39;=t}^\infty \gamma^{t&#39;-t}r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})-\hat{V}^\pi_\phi(\mathbf{s}_t)
+\end{aligned}
+}
+\]</span></p>
+<p>We can define <strong>n-step return</strong> to combine these two: <span class="math display">\[
+\displaylines{\hat{A}_n^\pi(\mathbf{s}_t,\mathbf{a}_t)=\sum_{t&#39;=t}^{t+n}\gamma_{t&#39;-t}r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})+\gamma^n\hat{V}^\pi_\phi(\mathbf{s}_{t+n})-\hat{V}^\pi_\phi(\mathbf{s}_t)
+}
+\]</span> and the weighted combination of n-step returns, <strong>GAE</strong> (generalized advantage estimation): <span class="math display">\[
+\displaylines{\begin{aligned}
+\hat{A}_\text{GAE}^\pi(\mathbf{s}_t,\mathbf{a}_t) &amp;= \sum_{n=1}^\infty w_n \hat{A}_n^\pi(\mathbf{s}_t, \mathbf{a}_t) \\
+&amp;= \sum_{t&#39;=t}^\infty (\gamma\lambda)^{t&#39;-t}\left[r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;})+\gamma\hat{V}_\phi^\pi(\mathbf{s}_{t&#39;+1})-\hat{V}_\phi^\pi(\mathbf{s}_{t&#39;})\right]
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(w_n \propto \lambda^{n-1}\)</span> is the weight.</p>
+<h1 id="value-function-methods">Value Function Methods</h1>
+<h2 id="policy-iteration">Policy Iteration</h2>
+<p>Omit policy gradient completely, only use the critic:</p>
+<ol type="1">
+<li>evaluate <span class="math inline">\(A^\pi(\mathbf{s}, \mathbf{a})\)</span></li>
+<li>set <span class="math inline">\(\pi&#39;(\mathbf{a}_t|\mathbf{s}_t)=I\left(\mathbf{a}_t=\argmax_{\mathbf{a}_t}A^\pi(\mathbf{s}_t,\mathbf{a}_t)\right)\)</span></li>
+</ol>
+<p>Use <strong>dynamic programming</strong> to do step 1. As before, represent <span class="math inline">\(A^\pi(\mathbf{s}, \mathbf{a})\)</span> by <span class="math inline">\(V^\pi(\mathbf{s})\)</span> since the latter is easier to evaluate.</p>
+<p>Bootstrapped update: <span class="math inline">\(V^\pi(\mathbf{s})\leftarrow\mathbb{E}_{\mathbf{a}\sim\pi(\mathbf{a}|\mathbf{s})}[r(\mathbf{s},\mathbf{a})+\gamma\mathbb{E}_{\mathbf{s}&#39;\sim p(\mathbf{s}&#39;|\mathbf{s},\mathbf{a})}[V^\pi(\mathbf{s}&#39;)]]\)</span>. With deterministic policy <span class="math inline">\(\pi(\mathbf{s}) = \mathbf{a}\)</span>, it can be simplified to <span class="math inline">\(V^\pi(\mathbf{s})\leftarrow r(\mathbf{s},\pi(\mathbf{s}))+\gamma\mathbb{E}_{\mathbf{s}&#39;\sim p(\mathbf{s}&#39;|\mathbf{s},\pi(\mathbf{s}))}[V^\pi(\mathbf{s}&#39;)]\)</span>.</p>
+<p>So we have the policy iteration algorithm:</p>
+<ol type="1">
+<li>evaluate <span class="math inline">\(V^\pi(\mathbf{s})\)</span> by DP</li>
+<li>set <span class="math inline">\(\pi&#39;(\mathbf{a}_t|\mathbf{s}_t)=I\left(\mathbf{a}_t=\argmax_{\mathbf{a}_t}A^\pi(\mathbf{s}_t,\mathbf{a}_t)\right)\)</span></li>
+</ol>
+<h2 id="value-iteration">Value Iteration</h2>
+<p>We can further simplify dynamic programming by updating the <span class="math inline">\(Q\)</span>-function and <span class="math inline">\(V\)</span>-function iteratively. Notice that <span class="math inline">\(\argmax_{\mathbf{a}_t}A^\pi(\mathbf{s}_t,\mathbf{a}_t)=\argmax_{\mathbf{a}_t}Q^\pi(\mathbf{s}_t,\mathbf{a}_t)\)</span></p>
+<ol type="1">
+<li>set <span class="math inline">\(Q(\mathbf{s},\mathbf{a})=r(\mathbf{s},\mathbf{a})+\gamma\mathbb{E}[V(\mathbf{s}&#39;)]\)</span></li>
+<li>set <span class="math inline">\(V(\mathbf{s})=\max_\mathbf{a}Q(\mathbf{s},\mathbf{a})\)</span></li>
+</ol>
+<h3 id="fitted-value-iteration">Fitted Value Iteration</h3>
+<p>Use a neural net to represent <span class="math inline">\(Q\)</span> and <span class="math inline">\(V\)</span> by using loss function: <span class="math display">\[
+\displaylines{\mathcal{L}(\phi)=\frac{1}{2}\left\Vert V_\phi(\mathbf{s})-\max_\mathbf{a}Q^\pi(\mathbf{s},\mathbf{a})\right\Vert^2
+}
+\]</span> The value iteration can be rewritten as fitted value iteration:</p>
+<ol type="1">
+<li>set <span class="math inline">\(y_i\leftarrow\max_{\mathbf{a}_i}(r(\mathbf{s}_i,\mathbf{a}_i)+\gamma\mathbb{E}[V_\phi(\mathbf{s}_i&#39;)])\)</span></li>
+<li>set <span class="math inline">\(\phi\leftarrow\argmin_\phi\frac{1}{2}\sum_i\left\Vert V_\phi(\mathbf{s}_i)-y_i\right\Vert^2\)</span></li>
+</ol>
+<h3 id="fitted-q-iteration">Fitted <span class="math inline">\(Q\)</span>-Iteration</h3>
+<p>Step 1 requires resetting the simulator for different actions. Fitted <span class="math inline">\(Q\)</span>-iteration can fix this problem:</p>
+<ol type="1">
+<li>collect dataset <span class="math inline">\(\{(\mathbf{s}_i,\mathbf{a}_i,r_i,\mathbf{s}&#39;_i)\}\)</span></li>
+<li>set <span class="math inline">\(y_i\leftarrow r(\mathbf{s}_i,\mathbf{a}_i)+\gamma\mathbb{E}[V_\phi(\mathbf{s}_i&#39;)]\)</span> where <span class="math inline">\(\mathbb{E}[V_\phi(\mathbf{s}_i&#39;)] = \max_{\mathbf{a}&#39;}Q_\phi(\mathbf{s}_i&#39;,\mathbf{a}&#39;)\)</span></li>
+<li>set <span class="math inline">\(\phi\leftarrow\argmin_\phi\frac{1}{2}\sum_i\left\Vert Q_\phi(\mathbf{s}_i,\mathbf{a}_i)-y_i\right\Vert^2\)</span></li>
+</ol>
+<p>It is off-policy and only one network (no high-variance problem like policy gradient).</p>
+<p><strong>No convergence guarantees</strong> for non-linear function approximation.</p>
+<h3 id="exploration">Exploration</h3>
+<p>We can make fitted <span class="math inline">\(Q\)</span>-iteration online:</p>
+<ol type="1">
+<li>take some action <span class="math inline">\(\mathbf{a}_t\)</span> and observe <span class="math inline">\((\mathbf{s}_i,\mathbf{a}_i,r_i,\mathbf{s}&#39;_i)\)</span></li>
+<li>set <span class="math inline">\(y_i\leftarrow r(\mathbf{s}_i,\mathbf{a}_i)+\gamma\max_{\mathbf{a}&#39;}Q_\phi(\mathbf{s}_i&#39;,\mathbf{a}&#39;)\)</span></li>
+<li>set <span class="math inline">\(\phi\leftarrow \phi - \alpha \frac{dQ_\phi}{d\phi}(\mathbf{s}_i,\mathbf{a}_i) (Q_\phi(\mathbf{s}_i,\mathbf{a}_i) - y_i)\)</span></li>
+</ol>
+<p>But it can easily get stuck in local minimum since we take the max action at each step. We can fix this by using</p>
+<p><strong>epsilon-greedy</strong>: <span class="math display">\[
+\displaylines{\pi(\mathbf{a}_t | \mathbf{s}_t) = \begin{cases}
+1 - \epsilon \quad \text{if } \mathbf{a}_t = \argmax_{\mathbf{a}_t} Q_\phi(\mathbf{s}_t, \mathbf{a}_t) \\
+\epsilon / (|\mathcal{A} + 1|) \quad \text{ otherwise}
+\end{cases}
+}
+\]</span></p>
+<p>or <strong>Boltzmann exploration</strong>: <span class="math display">\[
+\displaylines{\pi\left(\mathbf{a}_{t} | \mathbf{s}_{t}\right) \propto \exp \left(Q_{\phi}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right)
+}
+\]</span></p>
+<h2 id="value-iteration-theory">Value Iteration Theory</h2>
+<p>Define operator <span class="math inline">\(\mathcal{B}\)</span>: <span class="math inline">\(\mathcal{B}V=\max_\mathbf{a}r_\mathbf{a}+\gamma\mathcal{T}_\mathbf{a}V\)</span>, where <span class="math inline">\(\mathcal{T}_\mathbf{a}\)</span> is the matrix of transitions for action <span class="math inline">\(\mathbf{a}\)</span>.</p>
+<p>Then <span class="math inline">\(V^{\star}(\mathbf{s})=\max _{\mathbf{a}} r(\mathbf{s}, \mathbf{a})+\gamma E\left[V^{\star}\left(\mathbf{s}^{\prime}\right)\right]\)</span> is a fixed point of <span class="math inline">\(\mathcal{B}\)</span>, which always exists and is unique.</p>
+<p><span class="math inline">\(\mathcal{B}\)</span> is a <strong>contraction</strong> w.r.t. <span class="math inline">\(\infty\)</span>-norm: <span class="math inline">\(\Vert\mathcal{B}V-\mathcal{B}\bar{V}\Vert_\infty\leq\gamma\Vert V-\bar{V}\Vert_\infty\)</span>.</p>
+<p>Value iteration can be represented by <span class="math inline">\(V \leftarrow \mathcal{B} V\)</span>, which converges.</p>
+<p><br/></p>
+<p>Define <span class="math inline">\(\Pi\)</span>: <span class="math inline">\(\Pi V=\argmin_{V&#39;\in\Omega}\frac{1}{2}\sum\Vert V&#39;(\mathbf{s})-V(\mathbf{s})\Vert^2\)</span>. <span class="math inline">\(\Pi\)</span> is a contraction w.r.t. <span class="math inline">\(\ell_2\)</span>-norm <span class="math inline">\(\Vert\Pi V-\Pi \bar{V}\Vert_2\leq\gamma\Vert V-\bar{V}\Vert_2\)</span>.</p>
+<p>Fitted value iteration can be represented by <span class="math inline">\(V \leftarrow \Pi \mathcal{B} V\)</span>, but <span class="math inline">\(\Pi \mathcal{B}\)</span> is not a contraction of any kind.</p>
+<p>Same applies to <span class="math inline">\(Q\)</span> iteration and fitted <span class="math inline">\(Q\)</span> iteration.</p>
+<p><mark>Online <span class="math inline">\(Q\)</span> iteration is not gradient descent since <span class="math inline">\(y_i\)</span> depends on <span class="math inline">\(\phi\)</span>, not converge.</mark></p>
+<p>Also applies to batch actor-critic algorithm</p>
+<h1 id="q-learning-in-rl"><span class="math inline">\(Q\)</span>-Learning in RL</h1>
+<h2 id="decorrelation">Decorrelation</h2>
+<p>The problem with online <span class="math inline">\(Q\)</span>-iteration is that it uses sequential states, which are strongly correlated. So the neural network will overfit for local regions.</p>
+<p>Parallelizing (synchronized, asynchronous) can help to decorrelate the data.</p>
+<p>There is another solution called the <strong>Replay Buffer</strong>. Since <span class="math inline">\(Q\)</span> learning is off-policy, we can sample data from a buffer and perform gradient update:</p>
+<ol type="1">
+<li>collect dataset <span class="math inline">\(\{ (\mathbf{s}_i, \mathbf{a}_i, \mathbf{s}&#39;_i, \mathbf{a}&#39;_i) \}\)</span> using some policy, add it to buffer <span class="math inline">\(\mathcal{B}\)</span>
+<ol start="2" type="1">
+<li>sample a batch <span class="math inline">\((\mathbf{s}_j, \mathbf{a}_j, \mathbf{s}&#39;_j, \mathbf{a}&#39;_j)\)</span> from <span class="math inline">\(\mathcal{B}\)</span></li>
+<li>compute <span class="math inline">\(y_j = r_j + \gamma \max_{\mathbf{a}_j&#39;} Q_{\phi}(\mathbf{s}&#39;_j, \mathbf{a}_j&#39;)\)</span></li>
+<li><span class="math inline">\(\phi\leftarrow\phi-\alpha\sum_j\frac{\mathrm{d} Q_\phi}{\mathrm{d}\phi}(\mathbf{s}_j,\mathbf{a}_j)\left(Q_\phi(\mathbf{s}_j,\mathbf{a}_j) - y_j \right)\)</span></li>
+</ol></li>
+</ol>
+<h2 id="deep-q-learning">Deep <span class="math inline">\(Q\)</span>-Learning</h2>
+<p>The step 3 of Replay Buffer is not stable since the target value <span class="math inline">\(y_j\)</span> is changing every time gradient updates. We can fix the target value by using previous network during gradient update:</p>
+<ol type="1">
+<li>update <span class="math inline">\(\phi&#39; \leftarrow \phi\)</span>
+<ol start="2" type="1">
+<li>collect dataset <span class="math inline">\(\{ (\mathbf{s}_i, \mathbf{a}_i, \mathbf{s}&#39;_i, \mathbf{a}&#39;_i) \}\)</span> using some policy, add it to <span class="math inline">\(\mathcal{B}\)</span>
+<ol start="3" type="1">
+<li>sample a batch <span class="math inline">\((\mathbf{s}_j, \mathbf{a}_j, \mathbf{s}&#39;_j, \mathbf{a}&#39;_j)\)</span> from <span class="math inline">\(\mathcal{B}\)</span></li>
+<li>compute <span class="math inline">\(y_j = r_j + \gamma \max_{\mathbf{a}&#39;_j} Q_{\phi&#39;}(\mathbf{s}&#39;_j, \mathbf{a}&#39;_j)\)</span> using target network <span class="math inline">\(Q_{\phi&#39;}\)</span></li>
+<li><span class="math inline">\(\phi\leftarrow\phi-\alpha\sum_j\frac{\mathrm{d} Q_\phi}{\mathrm{d}\phi}(\mathbf{s}_j,\mathbf{a}_j)\left(Q_\phi(\mathbf{s}_j,\mathbf{a}_j) - y_j \right)\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<p>To make <span class="math inline">\(\phi&#39;\)</span> update more smoothly, we can use Polyak averaging: <span class="math inline">\(\phi&#39; \leftarrow \tau \phi&#39; + (1 - \tau) \phi\)</span> every time <span class="math inline">\(\phi\)</span> updates, where <span class="math inline">\(\tau = 0.999\)</span> works well in practice.</p>
+<h2 id="comparison">Comparison</h2>
+<p><img src="https://i.imgur.com/P7e9Raj.png" alt="Comparison between Online Q, DQN and Fitted Q Learning" /></p>
+<ul>
+<li>Online <span class="math inline">\(Q\)</span>-learning: evict immediately, process 1,2,3 all run at the same speed</li>
+<li>DQN: process 1 and 3 run at the same speed, process 2 is slow</li>
+<li>Fitted <span class="math inline">\(Q\)</span>-iteration: process 3 in the inner loop of 2, which is in the inner loop of 1.</li>
+</ul>
+<h2 id="double-q-learning">Double <span class="math inline">\(Q\)</span>-Learning</h2>
+<p>DQN often <strong>overestimate</strong> the <span class="math inline">\(Q\)</span> value because of the max in target value: <span class="math inline">\(y_j=r_j+\gamma\max_{\mathbf{a}_j&#39;}Q_{\phi&#39;}(\mathbf{s}_j&#39;,\mathbf{a}_j&#39;)\)</span>. Since <span class="math inline">\(\mathbb{E}[\max(X_1,X_2)]\geq\max(\mathbb{E}[X_1],\mathbb{E}[X_2])\)</span>.</p>
+<p>Double <span class="math inline">\(Q\)</span>-learning uses two network to <strong>decorrelate</strong> the noise in actions from the noise in <span class="math inline">\(Q\)</span>-value: <span class="math display">\[
+\displaylines{\begin{aligned}
+Q_{\phi_A}(\mathbf{s},\mathbf{a}) &amp;\leftarrow r+\gamma Q_{\phi_B}(\mathbf{s}&#39;,\argmax_{\mathbf{a}&#39;}Q_{\phi_A}(\mathbf{s}&#39;,\mathbf{a}&#39;)) \\
+Q_{\phi_B}(\mathbf{s},\mathbf{a}) &amp;\leftarrow r+\gamma Q_{\phi_A}(\mathbf{s}&#39;,\argmax_{\mathbf{a}&#39;}Q_{\phi_B}(\mathbf{s}&#39;,\mathbf{a}&#39;))
+\end{aligned}
+}
+\]</span> We can keep using the current and target networks in DQN:</p>
+<ul>
+<li>Standard <span class="math inline">\(Q\)</span>-learning: <span class="math inline">\(y=r+\gamma Q_{\phi&#39;}(\mathbf{s}&#39;,\argmax_{\mathbf{a}&#39;}Q_{\phi&#39;}(\mathbf{s}&#39;,\mathbf{a}&#39;))\)</span></li>
+<li>Double <span class="math inline">\(Q\)</span>-learning: <span class="math inline">\(y=r+\gamma Q_{\phi&#39;}(\mathbf{s}&#39;,\argmax_{\mathbf{a}&#39;}Q_\phi(\mathbf{s}&#39;,\mathbf{a}&#39;))\)</span></li>
+</ul>
+<h2 id="multi-step-return">Multi-Step Return</h2>
+<p><span class="math inline">\(Q\)</span>-learning has low variance but is biased if the <span class="math inline">\(Q\)</span>-value is incorrect, so we can use multi-step reward to make it more accurate: <span class="math display">\[
+\displaylines{y_{j,t}=\sum_{t&#39;=t}^{t+N-1} \gamma^{t - t&#39;} r_{j,t&#39;}+\gamma^N\max_{\mathbf{a}_{j,t+N}}Q_{\phi&#39;}(\mathbf{s}_{j,t+N},\mathbf{a}_{j,t+N})
+}
+\]</span> and this target value can make learning faster, especially early on. But it is only correct when learning <strong>on-policy</strong> since we need <span class="math inline">\(\mathbf{s}_{j,t&#39;},\mathbf{a}_{j,t&#39;},\mathbf{s}_{j,t&#39;+1}\)</span> to come from <span class="math inline">\(\pi\)</span> for <span class="math inline">\(t&#39; - t &lt; N - 1\)</span>. Solutions:</p>
+<ul>
+<li>ignore the problem (often works very well for small <span class="math inline">\(N\)</span>)</li>
+<li>cut the trace: dynamically choose <span class="math inline">\(N\)</span> to get only on-policy data (works well when action space is small)</li>
+<li>importance sampling</li>
+</ul>
+<h2 id="continuous-actions">Continuous Actions</h2>
+<p>So far we just assume <span class="math inline">\(\mathcal{A}\)</span> is discrete and we can compute</p>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+\pi(\mathbf{a}_t|\mathbf{s}_t) &amp;= I\left(\mathbf{a}_t=\argmax_{\mathbf{a}_t}Q_\phi(\mathbf{s}_t,\mathbf{a}_t)\right) \\
+y_j &amp;= r_j+\gamma\max_{\mathbf{a}_j&#39;}Q_{\phi&#39;}(\mathbf{s}_j&#39;,\mathbf{a}_j&#39;)
+\end{aligned}
+}
+\]</span></p>
+<p>by traversing all actions.</p>
+<p>If <span class="math inline">\(\mathcal{A}\)</span> is continuous, we can</p>
+<ul>
+<li>gradient based optimization (e.g. SGD) slow in the inner loop</li>
+<li>stochastic optimization, since <span class="math inline">\(\mathcal{A}\)</span> is typically low-dimensional
+<ul>
+<li>sample actions from some distribution</li>
+<li>cross-entropy method (CEM): simple iterative stochastic optimization</li>
+<li>CMA-ES</li>
+</ul></li>
+<li>approximate <span class="math inline">\(Q\)</span> by an easily optimizable function, e.g. Normalized advantage function (NAF): <span class="math inline">\(Q_\phi(\mathbf{s},\mathbf{a})=-\frac{1}{2}(\mathbf{a}-\mu_\phi(\mathbf{s}))^\top P_\phi(\mathbf{s})(\mathbf{a}-\mu_\phi(\mathbf{s}))+V_\phi(\mathbf{s})\)</span></li>
+<li>Deep deterministic policy gradient (DDPG): train another network <span class="math inline">\(\mu_\theta(\mathbf{s})\)</span> such that <span class="math inline">\(\mu_\theta(\mathbf{s})\approx\argmax_\mathbf{a}Q_\phi(\mathbf{s},\mathbf{a})\)</span></li>
+</ul>
+<h3 id="ddpg">DDPG</h3>
+<ol type="1">
+<li>take some action <span class="math inline">\(\mathbf{a}_i\)</span> and observe <span class="math inline">\((\mathbf{s}_i, \mathbf{a}_i, \mathbf{s}&#39;_i)\)</span>, add it to <span class="math inline">\(\mathcal{B}\)</span></li>
+<li>sample a batch <span class="math inline">\((\mathbf{s}_j, \mathbf{a}_j, \mathbf{s}&#39;_j)\)</span> from <span class="math inline">\(\mathcal{B}\)</span></li>
+<li>compute <span class="math inline">\(y_j = r_j + \gamma \max_{\mathbf{a}&#39;_j} Q_{\phi&#39;}(\mathbf{s}&#39;_j, \mu_{\theta&#39;}(\mathbf{s}&#39;_j))\)</span> using target network <span class="math inline">\(Q_{\phi&#39;}\)</span> and <span class="math inline">\(\mu_{\theta&#39;}\)</span></li>
+<li><span class="math inline">\(\phi\leftarrow\phi-\alpha\sum_j\frac{\mathrm{d} Q_\phi}{\mathrm{d}\phi}(\mathbf{s}_j,\mathbf{a}_j)\left(Q_\phi(\mathbf{s}_j,\mathbf{a}_j) - y_j \right)\)</span></li>
+<li><span class="math inline">\(\theta\leftarrow\theta+\beta\sum_j\frac{\mathrm{d}\mu}{\mathrm{d}\theta} (\mathbf{s}_j) \frac{\mathrm{d}Q}{\mathrm{d}\mathbf{a}} (\mathbf{s}_j,\mathbf{a})\)</span></li>
+<li>update <span class="math inline">\(\phi&#39;\)</span> and <span class="math inline">\(\theta&#39;\)</span> (e.g. Polyak averaging)</li>
+</ol>
+<h2 id="practical-tips">Practical Tips</h2>
+<ul>
+<li><span class="math inline">\(Q\)</span>-learning takes some care to stabilize, so test on easy, reliable tasks first.</li>
+<li>Large replay buffers help improve stability</li>
+<li>Converge slowly, can be like random at first</li>
+<li>Schedule exploration (high to low) by <span class="math inline">\(\epsilon\)</span> and learning rates (high to low), Adam can help</li>
+<li>Bellman error gradients can be large; clip gradients or use Huber loss</li>
+<li>Double <span class="math inline">\(Q\)</span>-learning helps a lot in practice, simple and no downsides</li>
+<li><span class="math inline">\(N\)</span>-step return also helps a lot, but have some downsides</li>
+<li>Test on multiple random seeds, it can be very inconsistent between runs</li>
+</ul>
+<h1 id="advanced-policy-gradient">Advanced Policy Gradient</h1>
+<h2 id="policy-gradient-as-policy-iteration">Policy Gradient as Policy Iteration</h2>
+<p>With the objective <span class="math display">\[
+\displaylines{J(\theta) = \mathbb{E}_{\tau \sim p_\theta(\tau)} \left[ \sum_t \gamma^t r(\mathbf{s}_t, \mathbf{a}_t) \right]
+}
+\]</span></p>
+<p>We want to maximize <span class="math inline">\(J(\theta&#39;) - J(\theta)\)</span>, where</p>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+J(\theta&#39;)-J(\theta) &amp;=J(\theta&#39;)-\mathbb{E}_{\mathbf{s}_{0} \sim p(\mathbf{s}_{0})}\left[V^{\pi_{\theta}}(\mathbf{s}_{0})\right] \\
+&amp;=J(\theta&#39;)-\mathbb{E}_{\tau \sim p_{\theta&#39;}(\tau)}\left[V^{\pi_{\theta}}(\mathbf{s}_{0})\right] \\
+&amp;=J(\theta&#39;)-\mathbb{E}_{\tau \sim p_{\theta&#39;}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} V^{\pi_{\theta}}(\mathbf{s}_{t}) - \sum_{t=1}^{\infty} \gamma^{t} V^{\pi_{\theta}}(\mathbf{s}_{t})\right] \\
+&amp;=\mathbb{E}_{\tau \sim p_{\theta&#39;}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} \big( r(\mathbf{s}_{t}, \mathbf{a}_{t})+\gamma V^{\pi_{\theta}}(\mathbf{s}_{t+1})-V^{\pi_{\theta}}(\mathbf{s}_{t}) \big) \right] \\
+&amp;=\mathbb{E}_{\tau \sim p_{\theta&#39;}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} A^{\pi_{\theta}}(\mathbf{s}_{t}, \mathbf{a}_{t})\right]
+\end{aligned}
+}
+\]</span> <mark>The second line is because the expectation only depends on the initial state distribution.</mark></p>
+<p>The advantage is under <span class="math inline">\(\pi_\theta\)</span>, but expectation is under <span class="math inline">\(\pi_{\theta&#39;}\)</span>, so use importance sampling: <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbb{E}_{\tau \sim p_{\theta^{\prime}}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} A^{\pi_{\theta}}(\mathbf{s}_{t}, \mathbf{a}_{t})\right] &amp;= \sum_t \mathbb{E}_{\mathbf{s}_t \sim p_{\theta&#39;}(\mathbf{s}_t)} \left[ \mathbb{E}_{\mathbf{a}_t \sim \pi_{\theta&#39;}(\mathbf{a}_t | \mathbf{s}_t)} \left[ \gamma^t A^{\pi_\theta}(\mathbf{s}_t, \mathbf{a}_t) \right] \right] \\
+&amp;= \sum_t \mathbb{E}_{\mathbf{s}_t \sim p_{\theta&#39;}(\mathbf{s}_t)} \left[ \mathbb{E}_{\mathbf{a}_t \sim \pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t)} \left[ \frac{\pi_{\theta&#39;}(\mathbf{a}_t | \mathbf{s}_t)}{\pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t)} \gamma^t A^{\pi_\theta}(\mathbf{s}_t, \mathbf{a}_t) \right] \right]
+\end{aligned}
+}
+\]</span> The <span class="math inline">\(p_{\theta&#39;}(\mathbf{s}_t)\)</span> here is still a problem, if we can substitute with <span class="math inline">\(p_\theta(\mathbf{s}_t)\)</span>, we can easily maximizing this expression. <span class="math display">\[
+\displaylines{J(\theta&#39;) - J(\theta) \approx \bar{A}(\theta&#39;) \quad \Rightarrow \quad \theta&#39; \leftarrow \argmax_{\theta&#39;} \bar{A}(\theta&#39;)
+}
+\]</span> where <span class="math display">\[
+\displaylines{\bar{A}(\theta&#39;) = \sum_t \mathbb{E}_{\mathbf{s}_t \sim p_{\theta}(\mathbf{s}_t)} \left[ \mathbb{E}_{\mathbf{a}_t \sim \pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t)} \left[ \frac{\pi_{\theta&#39;}(\mathbf{a}_t | \mathbf{s}_t)}{\pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t)} \gamma^t A^{\pi_\theta}(\mathbf{s}_t, \mathbf{a}_t) \right] \right]
+}
+\]</span></p>
+<h3 id="bounding-the-objective">Bounding the Objective</h3>
+<p>The distribution mismatch between <span class="math inline">\(p_\theta(\mathbf{s}_t)\)</span> and <span class="math inline">\(p_{\theta&#39;}(\mathbf{s}_t)\)</span> can be ignored when <span class="math inline">\(\pi_\theta\)</span> and <span class="math inline">\(\pi_{\theta&#39;}\)</span> are close.</p>
+<p>Similar to imitation learning, if <span class="math inline">\(\pi_{\theta&#39;}\)</span> is close to <span class="math inline">\(\pi_\theta\)</span>: <span class="math inline">\(\pi_{\theta&#39;}(\mathbf{a}_t \neq \pi_{\theta}(\mathbf{s}_t) | \mathbf{s}_t) \leq \epsilon\)</span>, then <span class="math display">\[
+\displaylines{\left|p_{\theta&#39;}(\mathbf{s}_{t}) - p_{\theta}(\mathbf{s}_{t})\right| \leq 2\epsilon t
+}
+\]</span> and the objective is bounded by <span class="math display">\[
+\displaylines{\mathbb{E}_{\tau \sim p_{\theta^{\prime}}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} A^{\pi_{\theta}}(\mathbf{s}_{t}, \mathbf{a}_{t})\right] \ge \bar{A}(\theta&#39;) - \sum_t 2\epsilon t C
+}
+\]</span> where <span class="math inline">\(C\)</span> is a constant of <span class="math inline">\(\mathcal{O}(T r_\max)\)</span> or if with discount, <span class="math inline">\(\mathcal{O}(r_\max / (1 - \gamma))\)</span>.</p>
+<h3 id="kl-divergence">KL Divergence</h3>
+<p>Use KL divergence to give a more convenient bound: <span class="math display">\[
+\displaylines{\left| \pi _{ \theta ^ { \prime } } \left( \mathbf { a }_ { t } | \mathbf { s } _{ t } \right) - \pi_ { \theta } \left( \mathbf { a } _{ t } | \mathbf { s }_ { t } \right) \right| \leq \sqrt { \frac { 1 } { 2 } D _{ \mathrm { KL } } \left( \pi_ { \theta ^ { \prime } } \left( \mathbf { a } _{ t } | \mathbf { s }_ { t } \right) \| \pi _{ \theta } \left( \mathbf { a }_ { t } | \mathbf { s } _{ t } \right) \right) }
+}
+\]</span> where <span class="math display">\[
+\displaylines{D_ { \mathrm { KL } } \left( p _{ 1 } ( x ) \| p_ { 2 } ( x ) \right) = \mathbb{E} _{ x \sim p_ { 1 } ( x ) } \left[ \log \frac { p _ { 1 } ( x ) } { p _ { 2 } ( x ) } \right]
+}
+\]</span> We can solve the constraint optimization problem <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{split}
+&amp;\theta&#39; = \argmax_{\theta&#39;} \bar{A}(\theta&#39;) \\
+\text{s.t.} \quad &amp;D_ { \mathrm { KL } } \left( \pi _{ \theta ^ { \prime } } \left( \mathbf { a }_ { t } | \mathbf { s } _{ t } \right) \| \pi_ { \theta } \left( \mathbf { a } _{ t } | \mathbf { s }_ { t } \right) \right) \le \epsilon
+\end{split}
+}
+\label{opt}
+\end{equation}
+\]</span></p>
+<h2 id="algorithms">Algorithms</h2>
+<h3 id="dal-gradient-descent">Dal Gradient Descent</h3>
+<p>Solve <span class="math inline">\(\eqref{opt}\)</span> by first define the Lagrangian <span class="math display">\[
+\displaylines{\mathcal { L } ( \theta ^ { \prime } , \lambda ) = \bar{A}(\theta&#39;) - \lambda \left( D _{ \mathrm { KL } } \left( \pi_ { \theta ^ { \prime } } ( \mathbf { a } _{ t } | \mathbf { s }_ { t } ) \| \pi _{ \theta } ( \mathbf { a }_ { t } | \mathbf { s } _ { t } ) \right) - \epsilon \right)
+}
+\]</span> then update with two steps:</p>
+<ol type="1">
+<li>maximize <span class="math inline">\(\mathcal{L}(\theta&#39;, \lambda)\)</span> w.r.t. <span class="math inline">\(\theta&#39;\)</span></li>
+<li><span class="math inline">\(\lambda \leftarrow \lambda + \alpha\left( D _{ \mathrm { KL } } \left( \pi_ { \theta ^ { \prime } } ( \mathbf { a } _{ t } | \mathbf { s }_ { t } \| \pi _{ \theta } ( \mathbf { a }_ { t } | \mathbf { s } _ { t } ) \right) - \epsilon \right)\)</span></li>
+</ol>
+<h3 id="natural-policy-gradient">Natural Policy Gradient</h3>
+<p>We can solve <span class="math inline">\(\theta&#39; = \argmax_{\theta&#39;} \bar{A}(\theta&#39;)\)</span> by using the first order Taylor approximation: <span class="math display">\[
+\displaylines{\theta&#39; \leftarrow \argmax_{\theta&#39;} \nabla_\theta \bar{A}(\theta)^T (\theta&#39; - \theta)
+}
+\]</span> and <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_\theta \bar{A}(\theta) &amp;= \sum_t \mathbb{E}_{\mathbf{s}_t \sim p_{\theta}(\mathbf{s}_t)} \left[ \mathbb{E}_{\mathbf{a}_t \sim \pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t)} \left[ \gamma^t \nabla_\theta \log \pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t) A^{\pi_\theta}(\mathbf{s}_t, \mathbf{a}_t) \right] \right] \\
+&amp;= \nabla_\theta J(\theta)
+\end{aligned}
+}
+\]</span> <mark>which is exactly the normal policy gradient.</mark></p>
+<p>To deal with constraints, first approximate by second order Taylor expansion: <span class="math display">\[
+\displaylines{D _{ \mathrm { KL } } \left( \pi_ { \theta ^ { \prime } } \| \pi _{ \theta } \right) \approx \frac{1}{2} (\theta&#39; - \theta)^T \mathbf{F} (\theta&#39; - \theta)
+}
+\]</span> where <span class="math inline">\(\mathbf{F}\)</span> is the <strong>Fisher-information matrix</strong> <span class="math display">\[
+\displaylines{\mathbf{F} = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta \nabla_\theta \log \pi_\theta^T \right]
+}
+\]</span> which can be estimated with samples.</p>
+<p>Then <span class="math inline">\(\eqref{opt}\)</span> becomes <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\theta&#39; = \argmax_{\theta&#39;} \nabla_\theta J(\theta)^T (\theta&#39; - \theta) \\
+\text{s.t.} \quad &amp;\frac{1}{2} (\theta&#39; - \theta)^T \mathbf{F} (\theta&#39; - \theta) \le \epsilon
+\end{aligned}
+}
+\]</span> and the solution is <span class="math display">\[
+\displaylines{\theta&#39; = \theta + \sqrt{\frac{2 \epsilon}{\nabla_\theta J(\theta)^T \mathbf{F} \nabla_\theta J(\theta)}} \mathbf{F}^{-1} \nabla_\theta J(\theta)
+}
+\]</span></p>
+<h1 id="proof">Proof</h1>
+<h2 id="proof-1">Proof 1</h2>
+<p>With <span class="math inline">\(\pi_{\theta}\left(\mathbf{a} \neq \pi^{\star}(\mathbf{s}) | \mathbf{s}\right) \leq \epsilon\)</span>, we have <span class="math display">\[
+\displaylines{p_{\theta}(\mathbf{s}_{t}) = (1-\epsilon)^{t} p_{\text {train}}\left(\mathbf{s}_{t}\right)+\left(1-(1-\epsilon)^{t}\right) p_{\text {mistake}}(\mathbf{s}_{t}) \\
+}
+\]</span> then <span class="math display">\[
+\displaylines{\begin{aligned}
+\left|p_{\theta}(\mathbf{s}_{t})-p_{\text{train}}(\mathbf{s}_{t})\right| &amp;= \left(1-(1-\epsilon)^{t}\right) \left|p_{\text {mistake}}(\mathbf{s}_{t})-p_{\text {train}}(\mathbf{s}_{t})\right| \\
+&amp; \leq 2\left(1-(1-\epsilon)^{t}\right) \\
+&amp; \leq 2\epsilon t
+\end{aligned}
+}
+\]</span></p>
+<p>so the cost <span class="math display">\[
+\displaylines{\begin{aligned}
+\sum_t \mathbb{E}_{p_\theta(\mathbf{s}_t)}\left[ c_t \right] &amp;= \sum_t\sum_{\mathbf{s}_t} p_\theta(\mathbf{s}_t) c_t(\mathbf{s}_t) \\
+&amp;\le \sum_t\sum_{\mathbf{s}_t} \Big[ p_{\text{train}}(\mathbf{s}_t) c_t(\mathbf{s}_t) + |p_\theta(\mathbf{s}_t) - p_{\text{train}}(\mathbf{s}_t)| c_{\max} \Big] \\
+&amp;\le \sum_t (\epsilon + 2\epsilon t)
+\end{aligned}
+}
+\]</span></p>
+<h2 id="proof-2">Proof 2</h2>
+<p>With <span class="math inline">\(J(\theta) = \int \pi_{\theta}(\tau) r(\tau) d \tau\)</span>, taking the gradient:</p>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}\nabla_{\theta} J(\theta) &amp;= \int \nabla \pi_{\theta}(\tau) r(\tau) d \tau \\&amp;= \int \pi_{\theta}(\tau) \nabla_{\theta} \log \pi_{\theta}(\tau) r(\tau) d \tau \\&amp;= \mathbb{E}_{\tau \sim \pi_{\theta}(\tau)}\left[\nabla_{\theta} \log \pi_{\theta}(\tau) r(\tau)\right]\end{aligned}
+}
+\]</span> Expand <span class="math inline">\(\log \pi_\theta(\tau)\)</span> to <span class="math display">\[
+\displaylines{\log \pi_{\theta}(\tau)=\log p\left(\mathbf{s}_{1}\right)+\sum_{t=1}^{T} \log \pi_{\theta}\left(\mathbf{a}_{t} | \mathbf{s}_{t}\right)+\log p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}\right)
+}
+\]</span> so taking the gradient w.r.t. <span class="math inline">\(\theta\)</span> only left the second term.</p>
+<p>Plug in Markov chain <span class="math inline">\(\eqref{markov}\)</span> we can get <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_{\theta} J(\theta) &amp;= \mathbb{E}_{\tau \sim \pi_\theta(\tau)}\left[\left(\sum_{t=1}^T\nabla_\theta\log \pi_\theta(\mathbf{a}_{t}|\mathbf{s}_{t})\right)\left(\sum_{t=1}^Tr(\mathbf{s}_{t},\mathbf{a}_{t})\right)\right] \\&amp;\approx\frac{1}{N}\sum_{i=1}^N\left[\left(\sum_{t=1}^T\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\right)\left(\sum_{t=1}^Tr(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)\right]
+\end{aligned}
+}
+\]</span></p>
+<h2 id="proof-3">Proof 3</h2>
+<p>With <span class="math display">\[
+\displaylines{\nabla _{ \theta } J ( \theta ) = \mathbb{E}_ { \tau \sim \pi _{ \theta } ( \tau ) } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( \tau ) ( r ( \tau ) - b ) \right]
+}
+\]</span> the variance is <span class="math display">\[
+\displaylines{\begin{aligned}
+\text{Var}(x) &amp;= \mathbb{E}(x^2) - \mathbb{E}(x)^2 \\
+&amp;= \mathbb{E}_ { \tau \sim \pi _{ \theta } ( \tau ) } \left[ \big( \nabla _ { \theta } \log \pi _ { \theta } ( \tau ) ( r ( \tau ) - b ) \big) ^ { 2 } \right] - \mathbb{E}_ { \tau \sim \pi _{ \theta } ( \tau ) } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( \tau ) ( r ( \tau ) - b ) \right] ^ { 2 } \\
+&amp;= \mathbb{E}_ { \tau \sim \pi _{ \theta } ( \tau ) } \left[ \big( \nabla _ { \theta } \log \pi _ { \theta } ( \tau ) ( r ( \tau ) - b ) \big) ^ { 2 } \right] - \mathbb{E}_ { \tau \sim \pi _ { \theta } ( \tau ) } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( \tau ) r ( \tau ) \right] ^ { 2 }
+\end{aligned}
+}
+\]</span> since <span class="math inline">\(b\)</span> is unbiased.</p>
+<p>Let <span class="math inline">\(g(\tau) = \nabla_{ \theta } \log \pi_ { \theta } ( \tau )\)</span>, compute the derivative w.r.t. <span class="math inline">\(b\)</span> <span class="math display">\[
+\displaylines{\begin{aligned}
+\frac { d \text{Var} } { d b } &amp;= \frac { d } { d b } \mathbb{E} \left[ g ( \tau ) ^ { 2 } ( r ( \tau ) - b ) ^ { 2 } \right] \\
+&amp; = \frac { d } { d b } \left( \mathbb{E} \left[ g ( \tau ) ^ { 2 } r ( \tau ) ^ { 2 } \right] - 2 \mathbb{E} \left[ g ( \tau ) ^ { 2 } r ( \tau ) b \right] + b ^ { 2 } \mathbb{E} \left[ g ( \tau ) ^ { 2 } \right] \right) \\
+&amp; = - 2 \mathbb{E} \left[ g ( \tau ) ^ { 2 } r ( \tau ) \right] + 2 b \mathbb{E} \left[ g ( \tau ) ^ { 2 } \right]
+\end{aligned}
+}
+\]</span> and solve the optimal value for <span class="math inline">\(b\)</span> <span class="math display">\[
+\displaylines{b=\frac{\mathbb{E}\left[g(\tau)^2 r(\tau)\right]}{\mathbb{E}\left[g(\tau)^2\right]}
+}
+\]</span></p>
+<h2 id="proof-4">Proof 4</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_{\theta&#39;}J(\theta&#39;) &amp;= \mathbb{E}_{\tau\sim \pi_\theta(\tau)}\left[\frac{\pi_{\theta&#39;}(\tau)}{\pi_{\theta}(\tau)}\nabla_{\theta&#39;}\log \pi_{\theta&#39;}(\tau)r(\tau)\right] \\
+&amp;= \mathbb{E} _ { \tau \sim \pi _ { \theta } ( \tau ) } \left[ \left( \prod _ { t = 1 } ^ { T } \frac { \pi _ { \theta ^ { \prime } } ( \mathbf { a } _ { t } | \mathbf { s } _ { t } ) } { \pi _ { \theta } ( \mathbf { a } _ { t } | \mathbf { s } _ { t } ) } \right) \left( \sum _ { t = 1 } ^ { T } \nabla _ { \theta ^ { \prime } } \log \pi _ { \theta ^ { \prime } } ( \mathbf { a } _ { t } | \mathbf { s } _ { t } ) \right) \left( \sum _ { t = 1 } ^ { T } r \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) \right) \right]
+\end{aligned}
+}
+\]</span></p>
+<p>By causality (future actions don't affect current weight), we can rewrite the equation to be <span class="math display">\[
+\displaylines{\nabla_{\theta&#39;}J(\theta&#39;)
+= \mathbb{E}_{\tau\sim \pi_\theta(\tau)}\left[\sum_{t=1}^T\nabla_{\theta&#39;}\log \pi_{\theta&#39;}(\mathbf{a}_t|\mathbf{s}_t) \left(\prod_{t&#39;=1}^t\frac{\pi_{\theta&#39;}(\mathbf{a}_{t&#39;}|\mathbf{s}_{t&#39;})}{\pi_{\theta}(\mathbf{a}_{t&#39;}|\mathbf{s}_{t&#39;})}\right) \left(\sum_{t&#39;=t}^T r(\mathbf{s}_{t&#39;},\mathbf{a}_{t&#39;}) \left(\prod_{t&#39;&#39;=t}^{t&#39;}\frac{\pi_{\theta&#39;}(\mathbf{a}_{t&#39;&#39;}|\mathbf{s}_{t&#39;&#39;})}{\pi_{\theta}(\mathbf{a}_{t&#39;&#39;}|\mathbf{s}_{t&#39;&#39;})}\right) \right)\right]
+}
+\]</span> <mark>Ignore the second <span class="math inline">\(\prod\)</span> and we can get the policy iteration algorithm.</mark></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Open-Courses/" rel="tag"><i class="fa fa-tag"></i> Open Courses</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/nonlinear-system/" rel="prev" title="Nonlinear System">
+                  <i class="fa fa-chevron-left"></i> Nonlinear System
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/deep-reinforcement-learning-2/" rel="next" title="Deep Reinforcement Learning (Part 2)">
+                  Deep Reinforcement Learning (Part 2) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

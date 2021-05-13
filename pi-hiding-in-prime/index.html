@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="问题： 证明 \(\dfrac{\pi}{4} &#x3D; 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots\)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐藏在素数规律中的 $\pi$">
+<meta property="og:url" content="https://silencial.github.io/pi-hiding-in-prime/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="问题： 证明 \(\dfrac{\pi}{4} &#x3D; 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots\)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/LawE19V.png">
+<meta property="article:published_time" content="2018-08-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-08-08T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Fun">
+<meta property="article:tag" content="3Blue1Brown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/LawE19V.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/pi-hiding-in-prime/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;pi-hiding-in-prime&#x2F;&quot;,&quot;path&quot;:&quot;pi-hiding-in-prime&#x2F;&quot;,&quot;title&quot;:&quot;隐藏在素数规律中的 $\\pi$&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>隐藏在素数规律中的 $\pi$ | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%9C%86%E5%86%85%E6%A0%BC%E7%82%B9%E6%95%B0%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">计算圆内格点数目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E9%AB%98%E6%96%AF%E6%95%B4%E6%95%B0%E4%B8%8A%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">在高斯整数上分解质因数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0-chi"><span class="nav-number">3.</span> <span class="nav-text">定义函数 \(\chi\)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">证明</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/pi-hiding-in-prime/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          隐藏在素数规律中的 $\pi$
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-08-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-08T00:00:00+00:00">2018-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>问题：</strong></p>
+<p>证明 <span class="math inline">\(\dfrac{\pi}{4} = 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots\)</span></p>
+<span id="more"></span>
+<hr />
+<p>使用简单的微积分可以得到： <span class="math display">\[
+\displaylines{\begin{aligned}
+1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\cdots &amp;= \int_0^1 (1-x^2+x^4-\cdots)dx \\
+&amp;= \int_0^1 \dfrac{1}{1+x^2}dx \\
+&amp;= \tan^{-1}(1) \\
+&amp;= \dfrac{\pi}{4}
+\end{aligned}
+}
+\]</span> 我们选择从另外一种方式来得出这个等式，从圆的定义开始。</p>
+<h1 id="计算圆内格点数目">计算圆内格点数目</h1>
+<p>如果将二维平面划分为网格，并画出半径为 <span class="math inline">\(r\)</span> 的圆，圆内包含的格点数应该大约等于 <span class="math inline">\(\pi r^2\)</span> ，并且当 <span class="math inline">\(r\rightarrow+\infty\)</span> 时，两者应该无限接近，这即给出了一个计算 <span class="math inline">\(\pi\)</span> 的方法。</p>
+<p>考虑经过格点的圆，由于格点的坐标都为整数，因此我们只需要考虑那些半径是整数平方根的圆即可。</p>
+<p><img src="https://i.imgur.com/LawE19V.png" alt="Lattices inside Circle" /></p>
+<p>考虑半径为 <span class="math inline">\(R\)</span> 的圆，如果能找到整数 <span class="math inline">\(a,b\)</span> 使得 <span class="math inline">\(R^2 = a^2+b^2\)</span> ，则该圆经过点 <span class="math inline">\((a,b)\)</span> ，将其拓展至复平面： <span class="math display">\[
+\displaylines{R^2 = a^2+b^2 = (a+bi)(a-bi)
+}
+\]</span> 形如 <span class="math inline">\(a+bi \quad (a,b\in R)\)</span> 的数被称为<strong>高斯整数</strong>，因此寻找圆经过的格点问题就转化为寻找特定的高斯整数，使其与自身的复共轭相乘为半径的平方问题。</p>
+<h1 id="在高斯整数上分解质因数">在高斯整数上分解质因数</h1>
+<p>下一步我们需要了解一个数如何在高斯整数上分解。</p>
+<p>我们已经知道每个正整数都可以以唯一的方式进行素数分解，因此我们只需要考虑素数在高斯整数上的分解问题。</p>
+<p>例如 <span class="math inline">\(5\)</span> 可以被分解为 <span class="math inline">\((2+i)(2-i)\)</span> ，而 <span class="math inline">\((2+i)\)</span> 无法在高斯整数上继续分解，这样的数被称为<strong>高斯素数</strong>。除了让因子乘以 <span class="math inline">\(-1,i,-i\)</span> 之外，素数在高斯整数上的分解是唯一的。</p>
+<p>由<strong>费马平方和定理</strong>可知，除了 <span class="math inline">\(2\)</span> 之外，只有形如 <span class="math inline">\(p=4n+1\quad (n\in N)\)</span> 的素数可以在高斯整数中分解。</p>
+<p>因此将半径的平方进行高斯素数全分解后，计算有多少种分配方式能将其因子分为互为复共轭的两对，即是计算该圆经过了多少个格点。</p>
+<p>计算半径为 <span class="math inline">\(R\)</span> 的圆上的格点数：</p>
+<ol type="1">
+<li>将 <span class="math inline">\(R^2\)</span> 进行质因数分解：<span class="math inline">\(R^2=3^4\cdot5^3\cdot13^2\)</span></li>
+<li>将形如 <span class="math inline">\(p=4n+1\)</span> 的素数继续在高斯整数上分解：<span class="math inline">\(5,13\)</span></li>
+<li>将最后的因子分为两列，使其互为复共轭，由于 <span class="math inline">\(p=4n+1\)</span> 的素数可以分解为一对共轭的高斯素数，它们所提供的分配方式总是它们的指数加 <span class="math inline">\(1\)</span> 。而对于 <span class="math inline">\(p=4n+3\)</span> 的素数而言，只有当它们的指数为偶数时才能刚好进行分配。因此对于本例，分配方式共有 <span class="math inline">\(1 \times (3+1) \times (2+1)\)</span> 种。</li>
+<li>由于因子可以乘以 <span class="math inline">\(-1,i.-i\)</span> ，分配方式需要再乘以 <span class="math inline">\(4\)</span> 。</li>
+<li>特殊地 <span class="math inline">\(2=(1+i)(1-i)\)</span> ，但 <span class="math inline">\(i(1+i)=(1-i)\)</span> 已经被上一步包括，因此 <span class="math inline">\(2\)</span> 不影响总分配形式。</li>
+</ol>
+<h1 id="定义函数-chi">定义函数 <span class="math inline">\(\chi\)</span></h1>
+<p><span class="math display">\[
+\displaylines{\chi(n) = \begin{cases}
+1 \quad &amp;n=4k+1 \\
+-1 \quad &amp;n=4k+3 \quad (k\in N) \\
+0 \quad &amp;n=2k
+\end{cases}
+}
+\]</span></p>
+<p>注意 <span class="math inline">\(\chi(n)\)</span> 有可积性：<span class="math inline">\(\chi(ab) = \chi(a)\cdot\chi(b)\)</span> 。</p>
+<p>有了这一函数，我们可以将 <span class="math inline">\(a^b\)</span> 对应的分配方式写为 <span class="math inline">\(\chi(1)+\chi(a)+\chi(a^2)+\cdots+\chi(a^b)\)</span> 。</p>
+<p>因此将半径的平方进行素数分解后再用 <span class="math inline">\(\chi\)</span> 函数进行替代，并利用可积性合并，记半径为 <span class="math inline">\(R\)</span> 的圆经过的格点数记为 <span class="math inline">\(\# LP_R\)</span> ： <span class="math display">\[
+\displaylines{\begin{aligned}
+R^2&amp;=a^b\cdot c^d \\
+\#LP_R&amp;=4[\chi(1)+\chi(a)+\cdots+\chi(a^b)][\chi(1)+\chi(c)+\cdots+\chi(c^d)] \\
+&amp;= 4[\chi(1)+\chi(a_1)+\cdots+\chi(a_n)]
+\end{aligned}
+}
+\]</span> 其中 <span class="math inline">\(1, a_1, \cdots, a_n\)</span> 是 <span class="math inline">\(R^2\)</span> 的所有因子。</p>
+<h1 id="证明">证明</h1>
+<p>有了上述结论，我们就可以计算半径为 <span class="math inline">\(R\)</span> 的圆内的格点数： <span class="math display">\[
+\displaylines{\sum_{r=1}^{R} \#LP_r
+}
+\]</span> 当 <span class="math inline">\(R\rightarrow+\infty\)</span> 时，在 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(R^2\)</span> 的所有整数中，有因子 <span class="math inline">\(k\)</span> 的概率为 <span class="math inline">\(\dfrac{1}{k}\)</span> 。因此： <span class="math display">\[
+\displaylines{\begin{aligned}
+\sum_{r=1}^{R} \#LP_r &amp;= 4R^2\left[\chi(1)+\dfrac{\chi(2)}{2}+\dfrac{\chi(3)}{3}+\cdots\right] \\
+&amp;= \pi R^2
+\end{aligned}
+}
+\]</span> 所以： <span class="math display">\[
+\displaylines{\begin{aligned}
+\dfrac{\pi}{4} &amp;= \chi(1)+\dfrac{\chi(2)}{2}+\dfrac{\chi(3)}{3}+\cdots \\
+&amp;= 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots
+\end{aligned}
+}
+\]</span> 得证。</p>
+<p></br></p>
+<p><strong>参考：</strong></p>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.bilibili.com/video/av12131743">Video</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_theorem_on_sums_of_two_squares">Proofs of Fermat's Theorem on Sums of Two Squares</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Gaussian_integer#Gaussian_primes">Gaussian Integer</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+              <a href="/tags/Fun/" rel="tag"><i class="fa fa-tag"></i> Fun</a>
+              <a href="/tags/3Blue1Brown/" rel="tag"><i class="fa fa-tag"></i> 3Blue1Brown</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/stolen_necklace_problem/" rel="prev" title="用球面映射巧解分赃难题">
+                  <i class="fa fa-chevron-left"></i> 用球面映射巧解分赃难题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hardest-problem-on-hardest-test/" rel="next" title="如何优雅地解答最难数学竞赛的压轴题">
+                  如何优雅地解答最难数学竞赛的压轴题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

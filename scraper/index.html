@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Python 爬虫 101">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 爬虫">
+<meta property="og:url" content="https://silencial.github.io/scraper/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Python 爬虫 101">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-20T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-03T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="101">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/scraper/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;scraper&#x2F;&quot;,&quot;path&quot;:&quot;scraper&#x2F;&quot;,&quot;title&quot;:&quot;Python 爬虫&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Python 爬虫 | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">网页分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html"><span class="nav-number">1.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http-%E8%AF%B7%E6%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-number">1.3.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request"><span class="nav-number">2.</span> <span class="nav-text">Request</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#beautifulsoup"><span class="nav-number">2.1.</span> <span class="nav-text">BeautifulSoup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-1"><span class="nav-number">2.2.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium"><span class="nav-number">3.</span> <span class="nav-text">Selenium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#example-2"><span class="nav-number">3.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax"><span class="nav-number">4.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%AA%E8%A3%85%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">伪装操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#user-agent"><span class="nav-number">5.1.</span> <span class="nav-text">User-Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip-%E4%BB%A3%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">IP 代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94"><span class="nav-number">5.3.</span> <span class="nav-text">时间间隔</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/scraper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 爬虫
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-20T00:00:00+00:00">2021-03-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-03 00:00:00" itemprop="dateModified" datetime="2021-04-03T00:00:00+00:00">2021-04-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>9k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>22 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Python 爬虫 101</p>
+<span id="more"></span>
+<hr />
+<p>在浏览器输入地址并按下回车时，其实是向对应的服务器发出了 HTTP 请求，接收到返回数据后进行显示。而爬虫是通过程序发出请求，获取到原始数据，方便进行后续操作。</p>
+<h1 id="网页分析">网页分析</h1>
+<p>在爬取特定网页之前，首先应该使用浏览器对原始网页进行查看与分析。</p>
+<h2 id="html">HTML</h2>
+<p>在 Chrome 浏览器中打开开发者工具，在最上方可以看到一些面板，其中 Elements 面板是网页对应的 HTML 代码。我们可以右键网页中的任意元素来检查其在 HTML 中的对应位置，也可以在 HTML 中右键进行各种操作，比如复制元素对应的各种选择器，方便代码使用。</p>
+<h2 id="http-请求">HTTP 请求</h2>
+<p>定位至 Network 面板，刷新页面，我们可以看到发出的 HTTP 请求。点击请求的 URL，在 Headers 栏可以看到请求的详细内容：</p>
+<ul>
+<li>General:
+<ul>
+<li>Request URL: 请求的网址</li>
+<li>Request Methods: 请求方式，最主要的有 GET 和 POST。其中 GET 是获取信息，而 POST 是提交信息。</li>
+<li>Status Code: 返回码，请求成功一般是 200，不同代码有不同的含义</li>
+</ul></li>
+<li>Request Headers: 请求头，在请求时发送至服务器的数据
+<ul>
+<li>User-Agent: 表明发送请求的系统平台、浏览器等</li>
+<li>Cookie: 用于告诉服务器两个请求是否来自同一个浏览器，比如保持用户的登陆状态</li>
+</ul></li>
+<li>Response Headers: 响应头
+<ul>
+<li>Content-Type: 数据类型</li>
+</ul></li>
+</ul>
+<p>在 Preview 栏可以看到响应内容：渲染后的 html、图片、格式化后的 js 和 css。</p>
+<p>在 Response 栏可以看到响应内容的原始格式。</p>
+<h2 id="example">Example</h2>
+<p>以 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://movie.douban.com/top250">豆瓣电影 Top 250</a> 为例，目标是爬取 TOP 250 的电影信息。</p>
+<ol type="1">
+<li><p>打开网页及开发者工具，定位至 Network 面板，刷新网页，点击最上方的 URL</p></li>
+<li><p>查看 Headers 栏，发现返回文件类型为 text/html</p></li>
+<li><p>查看 Preview 栏可以看到一个新的「网页」，<mark>可能和原始网页存在区别！</mark>，因为网页上的某些内容并不是由 HTML 决定的，此时需要分析其它请求</p></li>
+<li><p>查看 Response 栏，即源格式 html，搜索找到需要的内容，并分析结构，如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">...</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>肖申克的救赎<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">...</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;rating_num&quot;</span> <span class="attr">property</span>=<span class="string">&quot;v:average&quot;</span>&gt;</span>9.7<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">...</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;inq&quot;</span>&gt;</span>希望让人自由。<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>总共有 10 页，每页存在 25 个上述条目。点击第二页可以发现 URL 变为了 <code>https://movie.douban.com/top250?start=25&amp;filter=</code>。可以猜测其中的 <code>?start=25&amp;filter=</code> 变量达到了翻页的效果，可以在浏览器更改 <code>start</code> 变量值进一步确认</p></li>
+<li><p>设计程序框架：遍历请求 URL，使用 <code>start</code> 变量进行翻页，获取响应内容后通过上述结构找到需要的内容</p></li>
+</ol>
+<h1 id="request">Request</h1>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://requests.readthedocs.io/en/master/">Request</a> 是一个模拟 HTTP 请求的 Python 库。一些常见用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get/Post Request</span></span><br><span class="line">r = requests.get(<span class="string">&#x27;https://api.github.com/events&#x27;</span>, params = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;)</span><br><span class="line">r = requests.post(<span class="string">&#x27;https://httpbin.org/post&#x27;</span>, data = &#123;<span class="string">&#x27;key&#x27;</span>:<span class="string">&#x27;value&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pretend to be a browser</span></span><br><span class="line">r = requests.get(<span class="string">&quot;https://api.github.com/events&quot;</span>, headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;[value]&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Response</span></span><br><span class="line">r.status_code  <span class="comment"># response status code</span></span><br><span class="line">r.headers  <span class="comment"># response headers</span></span><br><span class="line"><span class="comment"># Response content</span></span><br><span class="line">r.text  <span class="comment"># text</span></span><br><span class="line">r.content  <span class="comment"># binary</span></span><br><span class="line">r.json()  <span class="comment"># json</span></span><br></pre></td></tr></table></figure>
+<h2 id="beautifulsoup">BeautifulSoup</h2>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup</a> 是一个从 HTML/XML 文件提取数据的 Python 库。一些常见用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load html with lxml parser</span></span><br><span class="line">soup = BeautifulSoup(r.text, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Find an element by tag</span></span><br><span class="line">soup.p  <span class="comment"># first element</span></span><br><span class="line">soup.p.a</span><br><span class="line">soup.find(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line"><span class="comment"># Find all elements</span></span><br><span class="line">soup.find_all(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">soup.find_all([<span class="string">&#x27;p&#x27;</span>, <span class="string">&#x27;a&#x27;</span>])  <span class="comment"># pass list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Find an element by attribute</span></span><br><span class="line">soup.find(class_=<span class="string">&#x27;abc&#x27;</span>)  <span class="comment"># use keyword argument</span></span><br><span class="line">soup.find(href=re.<span class="built_in">compile</span>(<span class="string">&#x27;abc&#x27;</span>), <span class="built_in">id</span>=<span class="string">&#x27;abc&#x27;</span>)  <span class="comment"># multiple attribute</span></span><br><span class="line">soup.find(<span class="string">&#x27;p&#x27;</span>, class_=<span class="string">&#x27;abc&#x27;</span>)  <span class="comment"># together with tag</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Find by string</span></span><br><span class="line">soup.find_all(string=<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Find by css selector</span></span><br><span class="line">soup.select(<span class="string">&quot;p &gt; a&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the string of an element</span></span><br><span class="line">soup.p.string</span><br></pre></td></tr></table></figure>
+<h2 id="example-1">Example</h2>
+<p>使用 request 爬取内容，正则表达式提取信息。正则表达式可以在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://regex101.com/">regex 101</a> 进行测试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/top250&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64)&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;li&gt;.*?title&quot;&gt;(.*?)&lt;.*?average&quot;&gt;([\.\d]+)&lt;.*?inq&quot;&gt;(.*?)&lt;.*?&lt;\/li&gt;&#x27;</span>, re.S)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    params = &#123;<span class="string">&#x27;start&#x27;</span>: page*<span class="number">25</span>&#125;</span><br><span class="line">    r = requests.get(url, params, headers=headers)</span><br><span class="line">    r.raise_for_status()</span><br><span class="line"></span><br><span class="line">    items = re.findall(pattern, r.text)</span><br><span class="line">    <span class="keyword">for</span> i, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(items):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;page*<span class="number">25</span>+i+<span class="number">1</span>&#125;</span>: <span class="subst">&#123;item[<span class="number">0</span>]&#125;</span>, <span class="subst">&#123;item[<span class="number">1</span>]&#125;</span>, <span class="subst">&#123;item[<span class="number">2</span>]&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>使用 BeautifulSoup：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">    soup = BeautifulSoup(r.text, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">    movies = soup.find(class_=<span class="string">&#x27;grid_view&#x27;</span>).find_all(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movies:</span><br><span class="line">        ind = movie.find(<span class="string">&#x27;em&#x27;</span>).string</span><br><span class="line">        title = movie.find(class_=<span class="string">&#x27;title&#x27;</span>).string</span><br><span class="line">        rating = movie.find(class_=<span class="string">&#x27;rating_num&#x27;</span>).string</span><br><span class="line">        intro = <span class="string">&#x27;&#x27;</span> <span class="keyword">if</span> movie.find(class_=<span class="string">&#x27;inq&#x27;</span>) <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">else</span> movie.find(class_=<span class="string">&#x27;inq&#x27;</span>).string</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;ind&#125;</span>: <span class="subst">&#123;title&#125;</span>, <span class="subst">&#123;rating&#125;</span>, <span class="subst">&#123;intro&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="selenium">Selenium</h1>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://selenium-python.readthedocs.io/">Selenium</a> 是一个用于浏览器的自动化测试工具，用来模拟人操作网页，提供 Python 的 API。一些常见用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment"># Basics</span></span><br><span class="line">driver = webdriver.Chrome()  <span class="comment"># Create Chrome instance</span></span><br><span class="line">driver.get(<span class="string">&#x27;http://www.python.org&#x27;</span>)  <span class="comment"># Open webpage</span></span><br><span class="line">driver.close()  <span class="comment"># Close one tab</span></span><br><span class="line">driver.quit()  <span class="comment"># Close the browser</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Properties</span></span><br><span class="line">driver.current_url</span><br><span class="line">driver.get_cookie(<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line">driver.get_cookies()</span><br><span class="line">driver.add_cookie(<span class="built_in">dict</span>)</span><br><span class="line">driver.page_source</span><br><span class="line"></span><br><span class="line"><span class="comment"># Move between windows and frames</span></span><br><span class="line">driver.find_elements_by_tag_name(<span class="string">&#x27;iframe&#x27;</span>)  <span class="comment"># find all frames</span></span><br><span class="line">driver.switch_to.frame(<span class="built_in">int</span>)  <span class="comment"># switch to frame</span></span><br><span class="line">driver.switch_to_default_content()  <span class="comment"># swith back</span></span><br><span class="line">windows = driver.window_handles  <span class="comment"># get all windows</span></span><br><span class="line">driver.switch_to.window(windows[i])  <span class="comment"># switch to window</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Find an element</span></span><br><span class="line">driver.find_element_by_id(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line">driver.find_element_by_name(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">driver.find_element_by_xpath(<span class="string">&#x27;xpath&#x27;</span>)</span><br><span class="line">driver.find_element_by_link_text(<span class="string">&#x27;link text&#x27;</span>)</span><br><span class="line">driver.find_element_by_partial_link_text(<span class="string">&#x27;partial link text&#x27;</span>)</span><br><span class="line">driver.find_element_by_tag_name(<span class="string">&#x27;tag name&#x27;</span>)</span><br><span class="line">driver.find_element_by_class_name(<span class="string">&#x27;class name&#x27;</span>)  <span class="comment"># change space to .</span></span><br><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;css selector&#x27;</span>)</span><br><span class="line"><span class="comment"># Find all elements (return list)</span></span><br><span class="line">driver.find_elements_by_  <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Interaction</span></span><br><span class="line"><span class="comment"># Send texts/keys</span></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line">element.send_keys(<span class="string">&#x27;text&#x27;</span>)</span><br><span class="line">element.send_keys(<span class="string">&#x27;text&#x27;</span>, Keys.RETURN)  <span class="comment"># Using &quot;Keys&quot; class</span></span><br><span class="line">element.clear()  <span class="comment"># clear the contents of a text field</span></span><br><span class="line"><span class="comment"># Click</span></span><br><span class="line">element.click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Waits</span></span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="comment"># EC has some predefined conditions</span></span><br><span class="line">wait = WebDriverWait(driver, timeout, poll_frequency=<span class="number">0.5</span>, ignored_exceptions=<span class="literal">None</span>)</span><br><span class="line">output = wait.until(EC.presence_of_element_located((By.ID, <span class="string">&#x27;id&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+<h2 id="example-2">Example</h2>
+<p>抓取豆瓣电影 TOP250 中未看名单</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie</span>():</span></span><br><span class="line">    wait.until(EC.presence_of_element_located((By.CLASS_NAME, <span class="string">&#x27;article&#x27;</span>)))</span><br><span class="line">    soup = BeautifulSoup(driver.page_source, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">    movies = soup.find(class_=<span class="string">&#x27;grid_view&#x27;</span>).find_all(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movies:</span><br><span class="line">        ind = movie.find(<span class="string">&#x27;em&#x27;</span>).string</span><br><span class="line">        title = movie.find(class_=<span class="string">&#x27;title&#x27;</span>).string</span><br><span class="line">        rating = movie.find(class_=<span class="string">&#x27;rating_num&#x27;</span>).string</span><br><span class="line">        intro = <span class="string">&#x27;&#x27;</span> <span class="keyword">if</span> movie.find(class_=<span class="string">&#x27;inq&#x27;</span>) <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">else</span> movie.find(class_=<span class="string">&#x27;inq&#x27;</span>).string</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;ind&#125;</span>: <span class="subst">&#123;title&#125;</span>, <span class="subst">&#123;rating&#125;</span>, <span class="subst">&#123;intro&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">username = <span class="string">&#x27;&#x27;</span>  <span class="comment"># put username here</span></span><br><span class="line">password = <span class="string">&#x27;&#x27;</span>  <span class="comment"># put password here</span></span><br><span class="line"></span><br><span class="line">options = webdriver.ChromeOptions()</span><br><span class="line">options.add_argument(<span class="string">&#x27;headless&#x27;</span>)</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome(options=options)</span><br><span class="line">driver.get(<span class="string">&quot;https://www.douban.com&quot;</span>)</span><br><span class="line">wait = WebDriverWait(driver, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Logging in...&#x27;</span>)</span><br><span class="line"><span class="comment"># Swith login method</span></span><br><span class="line">driver.switch_to.frame(<span class="number">0</span>)</span><br><span class="line">login_switch = driver.find_element_by_class_name(<span class="string">&#x27;account-tab-account&#x27;</span>)</span><br><span class="line">login_switch.click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Login</span></span><br><span class="line">user_field = driver.find_element_by_class_name(<span class="string">&#x27;account-form-input&#x27;</span>)</span><br><span class="line">pass_field = driver.find_element_by_class_name(<span class="string">&#x27;account-form-input.password&#x27;</span>)</span><br><span class="line">user_field.send_keys(username)</span><br><span class="line">pass_field.send_keys(password, Keys.RETURN)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Open Top 250 and filter unseen&#x27;</span>)</span><br><span class="line"><span class="comment"># Open movie page</span></span><br><span class="line">movie = wait.until(EC.presence_of_element_located((By.XPATH, <span class="string">&#x27;//*[@id=&quot;db-global-nav&quot;]/div/div[4]/ul/li[3]/a&#x27;</span>)))</span><br><span class="line">movie.click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Navigat to 排行榜-&gt;全部-&gt;我没看过的</span></span><br><span class="line">windows = driver.window_handles</span><br><span class="line">driver.switch_to.window(windows[<span class="number">1</span>])</span><br><span class="line">top = wait.until(EC.presence_of_element_located((By.LINK_TEXT, <span class="string">&#x27;排行榜&#x27;</span>)))</span><br><span class="line">top.click()</span><br><span class="line">top = wait.until(EC.presence_of_element_located((By.LINK_TEXT, <span class="string">&#x27;全部&#x27;</span>)))</span><br><span class="line">top.click()</span><br><span class="line">unseen = wait.until(EC.presence_of_element_located((By.XPATH, <span class="string">&#x27;//*[@id=&quot;mine-selector&quot;]/input&#x27;</span>)))</span><br><span class="line">unseen.click()</span><br><span class="line"></span><br><span class="line">total = driver.find_element_by_class_name(<span class="string">&#x27;count&#x27;</span>).text</span><br><span class="line">total = <span class="built_in">int</span>(re.search(<span class="string">r&#x27;\d+&#x27;</span>, total)[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;还有 <span class="subst">&#123;total&#125;</span> 部未看&#x27;</span>)</span><br><span class="line">pages = math.ceil(total / <span class="number">25</span>)</span><br><span class="line">get_movie()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, pages + <span class="number">1</span>):</span><br><span class="line">    next_page = driver.find_element_by_class_name(<span class="string">&#x27;next&#x27;</span>)</span><br><span class="line">    next_page.click()</span><br><span class="line">    wait.until(EC.text_to_be_present_in_element((By.CLASS_NAME, <span class="string">&#x27;thispage&#x27;</span>), <span class="built_in">str</span>(page)))</span><br><span class="line">    get_movie()</span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+<h1 id="ajax">Ajax</h1>
+<p>浏览器渲染出的网页有可能包含 JavaScript 的数据，此时使用 requests 爬取下来的内容不会包含这一部分。</p>
+<p>Ajax 是 JS 异步更新页面上的内容的一种方法。即没有刷新页面，但页面内容可以变换。</p>
+<p>对于 JS 内容，在 Chrome 浏览器开发者工具上的 Network 面板，通过选取 <code>XHR</code> 进行过滤，在 preview 中查找到需要的内容后，对这一 URL 做一个单独的请求即可。</p>
+<h1 id="伪装操作">伪装操作</h1>
+<p>大部分网站都做了反爬取的操作，以豆瓣为例，需要传递 User-Agent 信息假装是浏览器。因此在爬取时需要针对反爬取做一些伪装操作，不仅是为了成功爬取，同时也在保护自己的信息（ip 地址），并且不道德的爬取会给他人服务器带来巨大负担。</p>
+<h2 id="user-agent">User-Agent</h2>
+<p>构建一个常见浏览器的 User-Agent 列表，爬取时随机选取</p>
+<h2 id="ip-代理">IP 代理</h2>
+<p>在使用 <code>requests</code> 库进行爬取时存在 IP 被封的风险，因此需要使用 IP 代理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxies = &#123;<span class="string">&#x27;http&#x27;</span>: <span class="string">&#x27;http://xx.xxx.xxx.xx&#x27;</span>&#125;</span><br><span class="line">response = requests.get(url, proxies=proxies)</span><br></pre></td></tr></table></figure>
+<p>一般会构建一个 IP 池，需要用时从里面随机选取。IP 代理可以购买，也可以先爬取网上免费的 IP，检测可用后添加至 IP 池中。GitHub 上有一些构建 IP 池的爬取的项目，通过其提供的 API 可以很方便地得到可用的代理 IP</p>
+<h2 id="时间间隔">时间间隔</h2>
+<p>在请求之间等待随机时间，一方面减缓爬虫的频率，另一方面也使得行为更像人类，避免被封</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">time.sleep(random.random()*<span class="number">3</span> + <span class="number">4</span>)  <span class="comment"># 依据实际情况调整</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/101/" rel="tag"><i class="fa fa-tag"></i> 101</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/collision-counting-puzzle/" rel="prev" title="一个计数谜题的意外答案">
+                  <i class="fa fa-chevron-left"></i> 一个计数谜题的意外答案
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/python-tricks/" rel="next" title="Python Tricks">
+                  Python Tricks <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

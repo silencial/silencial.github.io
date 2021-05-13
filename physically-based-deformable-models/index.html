@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="This paper presents the most important methods used in computer graphics to produce realistic animations and simulations: finite element&#x2F;difference&#x2F;volume methods, mass-spring systems, meshfree method">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Physically Based Deformable Models">
+<meta property="og:url" content="https://silencial.github.io/physically-based-deformable-models/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="This paper presents the most important methods used in computer graphics to produce realistic animations and simulations: finite element&#x2F;difference&#x2F;volume methods, mass-spring systems, meshfree method">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-03-15T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-03-15T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="CG">
+<meta property="article:tag" content="Paper Reading">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/physically-based-deformable-models/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;physically-based-deformable-models&#x2F;&quot;,&quot;path&quot;:&quot;physically-based-deformable-models&#x2F;&quot;,&quot;title&quot;:&quot;Physically Based Deformable Models&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Physically Based Deformable Models | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#time-integration"><span class="nav-number">1.</span> <span class="nav-text">Time Integration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lagrangian-mesh-based-methods"><span class="nav-number">2.</span> <span class="nav-text">Lagrangian Mesh Based Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#finite-element-method"><span class="nav-number">2.1.</span> <span class="nav-text">Finite Element Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finite-differences-method"><span class="nav-number">2.2.</span> <span class="nav-text">Finite Differences Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finite-volume-method"><span class="nav-number">2.3.</span> <span class="nav-text">Finite Volume Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boundary-element-method"><span class="nav-number">2.4.</span> <span class="nav-text">Boundary Element Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mass-spring-systems"><span class="nav-number">2.5.</span> <span class="nav-text">Mass-Spring Systems</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lagrangian-mesh-free-methods"><span class="nav-number">3.</span> <span class="nav-text">Lagrangian Mesh Free Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#loosely-coupled-particle-systems"><span class="nav-number">3.1.</span> <span class="nav-text">Loosely Coupled Particle Systems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#smoothed-particle-hydrodynamics"><span class="nav-number">3.2.</span> <span class="nav-text">Smoothed Particle Hydrodynamics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#point-based-animation"><span class="nav-number">3.3.</span> <span class="nav-text">Point-Based Animation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-model-analysis"><span class="nav-number">4.</span> <span class="nav-text">Linear Model Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eulerian-and-semi-lagrangian-methods"><span class="nav-number">5.</span> <span class="nav-text">Eulerian and Semi-Lagrangian Methods</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/physically-based-deformable-models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Physically Based Deformable Models
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-15T00:00:00+00:00">2018-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Graphics/" itemprop="url" rel="index"><span itemprop="name">Computer Graphics</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>37 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>This <a target="_blank" rel="noopener external nofollow noreferrer" href="http://matthias-mueller-fischer.ch/publications/egstar2005.pdf">paper</a> presents the most important methods used in computer graphics to produce realistic animations and simulations: <em>finite element/difference/volume methods, mass-spring systems, meshfree methods, coupled particle systems and reduced deformable models based on modal analysis</em>. Also, it discusses the benefits and drawbacks of each method, reports the improvement that made in other papers. <span id="more"></span></p>
+<hr />
+<h1 id="time-integration">Time Integration</h1>
+<p>Time integration schemes are evaluated by two main criteria, their stability and their accuracy. In the field of physically based animation in Computer Graphics, stability is often much more important than accuracy.</p>
+<p><strong>Explicit(forward) Euler Integration</strong> <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbf{x}(t+\Delta t) &amp;= \mathbf{x}(t) + \Delta t \mathbf{v}(t) \\
+\mathbf{v}(t+\Delta t) &amp;= \mathbf{v}(t) + \Delta t F(\mathbf{v}(t), \mathbf{x}(t), t)
+\end{aligned}
+}
+\]</span></p>
+<p>Explicit methods are easy to implement but they are only conditionally stable, i.e. stable only if ∆t is smaller than a stability threshold. This problem can be solved by using <em>implicit integration</em></p>
+<p><strong>Implicit(backward) Euler Integration</strong> <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbf{x}(t+\Delta t) &amp;= \mathbf{x}(t) + \Delta t \mathbf{v}(t + \Delta t) \\
+\mathbf{v}(t+\Delta t) &amp;= \mathbf{v}(t) + \Delta t F(\mathbf{v}(t + \Delta t), \mathbf{x}(t + \Delta t), t)
+\end{aligned}
+}
+\]</span> This method is stable for large time steps <span class="math inline">\(\Delta t\)</span> but with the price of having to solve an algebraic system of equation at each time step.</p>
+<p><strong>Forward-Backward Euler Integration</strong> <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbf{v}(t+\Delta t) &amp;= \mathbf{v}(t) + \Delta t F(\mathbf{v}(t), \mathbf{x}(t), t) \\
+\mathbf{x}(t+\Delta t) &amp;= \mathbf{x}(t) + \Delta t \mathbf{v}(t + \Delta t)
+\end{aligned}
+}
+\]</span> This method is still explicit but more stable than forward Euler integration, without any additional computational overhead.</p>
+<h1 id="lagrangian-mesh-based-methods">Lagrangian Mesh Based Methods</h1>
+<h2 id="finite-element-method">Finite Element Method</h2>
+<p>The PDE governing dynamic elastic materials is given by <span class="math display">\[
+\begin{equation}\displaylines{
+\rho \ddot{\mathbf{x}} = \nabla \cdot \boldsymbol{\sigma} + \mathbf{f}
+}
+\label{fem}
+\end{equation}
+\]</span> The function <span class="math inline">\(\tilde{\mathbf{x}}(\mathbf{m}, t)\)</span> is approximated using the nodal values by <span class="math display">\[
+\displaylines{\tilde{\mathbf{x}}(\mathbf{m}, t) = \sum_i \mathbf{x}_i(t) \mathbf{b}_i(\mathbf{m})
+}
+\]</span> The deformation energy of the element is then given by <span class="math display">\[
+\displaylines{E = \int_V \boldsymbol{\epsilon}(\mathbf{m}) \cdot \boldsymbol{\sigma}(\mathbf{m}) d \mathbf{m}
+}
+\]</span> The forces can then be computed as the derivatives of the energy with respect to the nodal positions <span class="math display">\[
+\begin{equation}\displaylines{
+\mathbf{f}_e = \mathbf{K}_e \mathbf{u}_e
+}
+\label{nodal}
+\end{equation}
+\]</span> If a linear strain measure is used and Hooke’s law for isotropic materials is substituted into <span class="math inline">\(\eqref{fem}\)</span>, Lame's linear PDE results: <span class="math display">\[
+\displaylines{\rho \ddot{\mathbf{x}} = \mu \Delta \mathbf{u} + (\lambda +\mu) \nabla (\nabla \cdot \mathbf{u})
+}
+\]</span> Where the material constants <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\mu\)</span> can be computed directly from Young's modulus and Poisson's ratio.</p>
+<p>Unfortunately, linearized elastic forces are only valid for small deformations. Large rotational deformations yield highly inaccurate restoring forces. Therefore, we replace the <span class="math inline">\(\eqref{nodal}\)</span> by <span class="math display">\[
+\displaylines{\mathbf{f} = \mathbf{RK}(\mathbf{R}^T \mathbf{x} - \mathbf{x}_0)
+}
+\]</span></p>
+<h2 id="finite-differences-method">Finite Differences Method</h2>
+<p>The method of Finite Differences is easier to implement than the general Finite Element Method. However, it is difficult to approximate the boundary of an arbitrary object with a regular mesh. Also, local adaptations are only possible with irregular meshes.</p>
+<h2 id="finite-volume-method">Finite Volume Method</h2>
+<p>In the explicit Finite Element Method, the forces acting on the nodes of an element are computed as the derivatives of the deformation energy with respect to the nodal positions.</p>
+<p>We compute the nodal force directly from the stress tensor <span class="math inline">\(\boldsymbol{\sigma}\)</span> <span class="math display">\[
+\displaylines{\mathbf{f}_A = \int_A \boldsymbol{\sigma} d \mathbf{A}
+}
+\]</span> When linear basis functions are used, the stress tensor is constant within an element. Then, for planar element faces, the surface integral reduces to the simple product <span class="math display">\[
+\displaylines{\mathbf{f}_A = A \boldsymbol{\sigma} \mathbf{n}
+}
+\]</span></p>
+<h2 id="boundary-element-method">Boundary Element Method</h2>
+<p>Roughly speaking, the integral form of the equation of motion is transformed into a surface integral by applying the Green-Gauss theorem. The method achieves substantial speedup because the three dimensional problem is reduced to two dimensions. However, the approach only works for objects whose interior is composed of a homogenous material. Also, topological changes (e.g. fractures) are more difficult to handle than in the explicit FEM approach where only local changes to the stiffness matrix or the connectivity of the elements need to be done.</p>
+<h2 id="mass-spring-systems">Mass-Spring Systems</h2>
+<p>Instead of beginning with a PDE then discretizing in space, we begin directly with a discrete model.</p>
+<p>The entire particle system can be expressed as <span class="math display">\[
+\displaylines{\mathbf{M} \ddot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \mathbf{v})
+}
+\]</span> where <span class="math inline">\(\mathbf{M}\)</span> is a <span class="math inline">\(3n \times 3n\)</span> diagonal mass matrix. Thus, mass-spring systems only require the solution of a system of coupled ODEs. This is done via time integration.</p>
+<p>The force acting on mass <span class="math inline">\(i\)</span>, generated by a spring connecting <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> together is <span class="math display">\[
+\displaylines{\mathbf{f}_i = k_s(|\mathbf{x}_{ij}| - l_{ij}) \dfrac{\mathbf{x}_{ij}}{|\mathbf{x}_{ij}|}
+}
+\]</span> The <em>viscous force</em> is defined as <span class="math display">\[
+\displaylines{\mathbf{f}_i = k_d (\mathbf{v}_j - \mathbf{v}_i)
+}
+\]</span> However, it damps rigid body rotations as well. Worse still, when modeling cloth it damps bending and wrinkling. It is preferable to use <span class="math display">\[
+\displaylines{\mathbf{f}_i = k_d \left( \dfrac{\mathbf{v}_{ij}^T \mathbf{x}_{ij}}{\mathbf{x}_{ij}^T \mathbf{x}_{ij}} \right) \mathbf{x}_{ij}
+}
+\]</span> This <em>projects</em> the velocity difference onto the vector separating the masses, and only allows a force along that direction.</p>
+<p><strong>Advantages:</strong></p>
+<ol type="1">
+<li>Particle systems tend to be intuitive and simple to implement.</li>
+<li>Computationally efficient and can handle large deformations with ease.</li>
+</ol>
+<p><strong>Limitations:</strong></p>
+<ol type="1">
+<li>Unlike the Finite Element and finite difference methods, which are built upon elasticity theory, mass-spring systems are not necessarily accurate.</li>
+<li>Most such systems are not convergent and the behavior is dependent on the mesh resolution and topology.</li>
+<li>Spring constants <span class="math inline">\(k_s\)</span> are often chosen arbitrarily so that one can say little quantitatively about the material being modeled.</li>
+<li>There is often coupling between the various spring types.</li>
+</ol>
+<p><strong>Time Integration</strong></p>
+<p><span class="math display">\[
+\displaylines{\begin{bmatrix} \Delta \mathbf{x} \\ \Delta \mathbf{v} \end{bmatrix}
+=
+\Delta t \begin{bmatrix} \mathbf{v}_n + \Delta \mathbf{v} \\ M^{-1} \mathbf{f}(\mathbf{x}_n +\Delta \mathbf{x}, \mathbf{v}_n +\Delta \mathbf{v}) \end{bmatrix}
+}
+\]</span> When using the first order Taylor series expansion of <span class="math inline">\(\mathbf{f}\)</span> <span class="math display">\[
+\displaylines{\mathbf{f}(\mathbf{x}_n +\Delta \mathbf{x}, \mathbf{v}_n +\Delta \mathbf{v}) = \mathbf{f}_n + \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} \Delta \mathbf{x} + \dfrac{\partial \mathbf{f}}{\partial \mathbf{v}} \Delta \mathbf{v}
+}
+\]</span> Then we can solve the linear system at each time step <span class="math display">\[
+\displaylines{A \Delta \mathbf{v} = \mathbf{b}
+}
+\]</span> where <span class="math display">\[
+\displaylines{\begin{aligned}
+A &amp;\equiv (I - \Delta t M^{-1} \dfrac{\partial \mathbf{f}}{\partial \mathbf{v}} - \Delta t^2 M^{-1} \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}}) \\
+\mathbf{b} &amp;\equiv \Delta t M^{-1} (\mathbf{f}_n + \Delta t \dfrac{\partial \mathbf{f}}{\partial \mathbf{x}} \mathbf{v}_n)
+\end{aligned}
+}
+\]</span></p>
+<h1 id="lagrangian-mesh-free-methods">Lagrangian Mesh Free Methods</h1>
+<h2 id="loosely-coupled-particle-systems">Loosely Coupled Particle Systems</h2>
+<p>Particles which interact with each other depending on their spatial relationship are referred to as spatially coupled particle systems. The interactions between particles evolve dynamically over time, thus, complex geometry and topological changes can be easily modeled using this approach.</p>
+<p>We define the potential energy <span class="math inline">\(\phi_i\)</span> for each particle <span class="math inline">\(p_i\)</span> as the sum of the pairwise potential energies <span class="math inline">\(\phi_{ij}\)</span> between <span class="math inline">\(p_i\)</span> and all other other particles <span class="math inline">\(p_j\)</span> <span class="math display">\[
+\displaylines{\phi_i = \sum_{j\ne i} \phi_{ij}
+}
+\]</span> The force is then <span class="math display">\[
+\displaylines{\mathbf{f}_i = -\nabla_{\mathbf{x}_i} \phi_i = -\sum_{j\ne i} \nabla_{\mathbf{x}_i} \phi_{ij}
+}
+\]</span></p>
+<p>The <strong>Lennard_Jones potential</strong> is <span class="math display">\[
+\displaylines{\phi_{LJ}(d) = \dfrac{B}{d^n} - \dfrac{A}{d^m}
+}
+\]</span> The Lennard-Jones potential is well known in molecular dynamics for modeling the interaction potential between pairs of atoms. It creates long-range at- tractive and short-range repulsive forces, yielding particles arranged into hexagonally ordered 2D layers in absence of external forces. A more convenient formulation, called the Lennard-Jones bi-reciprocal function, is written as <span class="math display">\[
+\displaylines{\phi(d) = \dfrac{-e_0}{m-n} \left( m \left( \dfrac{d_0}{d} \right)^n - n \left( \dfrac{d_0}{d} \right)^m \right)
+}
+\]</span> where <span class="math inline">\(d_0\)</span> is the <em>equilibrium separation distance</em>, and <span class="math inline">\(−e_0\)</span> is the minimal potential (the magnitude is called the dissociation energy). Increasing the dissociation energy increases the stiffness of the model, while with the exponents n and m the width of the potential well can be varied. Therefore, large dissociation energy and high exponents yield rigid and brittle material, while low dissociation energy and small exponents result in soft and elastic behavior of the object. This allows the modeling of a wide variety of physical properties ranging from stiff to fluid-like behavior.</p>
+<h2 id="smoothed-particle-hydrodynamics">Smoothed Particle Hydrodynamics</h2>
+<p>SPH is a Lagrangian technique where discrete, smoothed particles are used to compute approximate values of needed physical quantities and their spatial derivatives. Forces can be easily derived directly from the state equations. Furthermore, as a particle-based Lagrangian approach it has the advantage that mass is trivially conserved and convection is dispensable. This reduces both the programming and computational complexity and is therefore suitable for interactive applications. A drawback of SPH is that it is not possible so far to exactly maintain the <strong>incompressibility</strong> of material.</p>
+<p><mark>Do not actually understand this part</mark></p>
+<p>A function <span class="math inline">\(A\)</span> is interpolated at a position <span class="math inline">\(\mathbf{x}\)</span> from its neighboring particles using a summation interpolant: <span class="math display">\[
+\displaylines{A(\mathbf{x}) = \sum_j m_j \dfrac{A_j}{\rho_j} W(\mathbf{r}, h)
+}
+\]</span> where <span class="math inline">\(\mathbf{r} = \mathbf{x} - \mathbf{x}_j\)</span> and <span class="math inline">\(W(\mathbf{r}, h)\)</span> is a smoothing kernel with the properties <span class="math inline">\(\int W(\mathbf{r}, h) d\mathbf{r} = 1\)</span> and <span class="math inline">\(\lim_{h\rightarrow 0} W(\mathbf{x}, h) = \delta(\mathbf{x})\)</span>, where <span class="math inline">\(h\)</span> is the support radius. For efficiency reasons, <span class="math inline">\(h\)</span> is usually chosen such that the kernel <span class="math inline">\(W(\mathbf{r}, h)\)</span> has compact support. The choice of smoothing kernel is very important. Often spline Gaussian kernels are used.</p>
+<h2 id="point-based-animation">Point-Based Animation</h2>
+<p>Elastic body forces are derived via the strain energy density <span class="math display">\[
+\displaylines{U = \dfrac{1}{2} (\epsilon \cdot \sigma)
+}
+\]</span> For a Hookean material, i.e. <span class="math inline">\(\sigma = E \cdot \epsilon\)</span> <span class="math display">\[
+\displaylines{\mathbf{f}_i = -\nabla_{\mathbf{u}_i} U = -\frac{1}{2} \nabla_{\mathbf{u}_i} (\epsilon_i \cdot E \cdot \epsilon_i) = -\sigma \cdot \nabla_{\mathbf{u}_i} \epsilon_i
+}
+\]</span> where Green's nonlinear strain tensor is used for <span class="math inline">\(\epsilon_i\)</span>, the spatial derivative of the displacement field <span class="math inline">\(\nabla\mathbf{u}_i\)</span> at <span class="math inline">\(\mathbf{m}_i\)</span> is needed. To guarantee zero elastic forces for rigid body modes, the approximation of <span class="math inline">\(\nabla\mathbf{u}_i\)</span> from the displacement vectors <span class="math inline">\(\mathbf{u}_j\)</span> of the neighboring particles must be at least first order accurate. Therefore, the <strong>Moving Least Squares Method</strong> with a linear basis is used which yields first order accurate interpolation of point-sampled functions (contrary to the SPH approximation which is not even zeroth-order accurate).</p>
+<p>We only consider the x-component <span class="math inline">\(u\)</span> of the displacement field <span class="math inline">\(\mathbf{u} = (u, v, w)^T\)</span>. The first order approximation <span class="math inline">\(\tilde{u}_j\)</span> is <span class="math display">\[
+\displaylines{\tilde{u}_j = u_i + \nabla u|_{\mathbf{m}_i} \cdot \mathbf{m}_{ij}
+}
+\]</span> The weighted least-squares error of <span class="math inline">\(e_i\)</span> is given by <span class="math display">\[
+\displaylines{e_i = \sum_j (\tilde{u}_j - u_j)^2 w_{ij}
+}
+\]</span> where <span class="math inline">\(w_{ij}\)</span> is a normalized, continuously defined and monotonically decreasing weighting function. We want to find the unknowns <span class="math inline">\(\nabla u|_{\mathbf{m}_i}\)</span> such that the error is minimized. Therefore, we set the derivatives of <span class="math inline">\(e\)</span> with respect to <span class="math inline">\(u_{,x}\ u_{,y}\ u_{,z}\)</span> yielding three equations for the three unknowns <span class="math display">\[
+\displaylines{\left( \sum_j \mathbf{m}_{ij} \mathbf{m}_{ij}^T w_{ij} \right) \nabla u|_{\mathbf{m}_i} = \sum_j (u_j - u_i) \mathbf{m}_{ij} w_{ij}
+}
+\]</span> Finally <span class="math display">\[
+\displaylines{\nabla u|_{\mathbf{m}_i} = \mathbf{A}^{-1} \left( \sum_j (u_j - u_i) \mathbf{m}_{ij} w_{ij} \right)
+}
+\]</span> where the inverse of <span class="math inline">\(\mathbf{A} = \sum_j \mathbf{m}_{ij} \mathbf{m}_{ij}^T w_{ij}\)</span> needs to be computed only once per particle and can be used for computing the derivation of <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span> as well.</p>
+<h1 id="linear-model-analysis">Linear Model Analysis</h1>
+<p>Given the mass, damping and stiffness matrices <span class="math inline">\(\mathbf{M}\)</span>, <span class="math inline">\(\mathbf{C}\)</span> and <span class="math inline">\(\mathbf{K}\)</span>, we can decoupled the following equations <span class="math display">\[
+\begin{equation}\displaylines{
+\mathbf{M} \ddot{\mathbf{u}} + \mathbf{C} \dot{\mathbf{u}} + \mathbf{K} \mathbf{u} = \mathbf{f}_{ext}
+}
+\label{motion}
+\end{equation}
+\]</span> into <span class="math inline">\(N = 3n\)</span> linearly independent ODEs by solving the generalized eigenvalue problem <span class="math display">\[
+\displaylines{\mathbf{M} \Phi \Lambda = \mathbf{K} \Phi
+}
+\]</span> such that <span class="math inline">\(\Phi^T \mathbf{M} \Phi = \mathbf{I}\)</span> and <span class="math inline">\(\Phi^T \mathbf{K} \Phi = \Lambda\)</span> are diagonal matrices. The entries of <span class="math inline">\(\Lambda\)</span> contain the eigenvalues, and the columns of <span class="math inline">\(\Phi\)</span> contain the eigenvectors of <span class="math inline">\(\mathbf{M}^{-1} \mathbf{K}\)</span>. <span class="math inline">\(\Phi\)</span> is often termed the <em>modal matrix</em> or <em>modal displacement matrix</em>, where the <span class="math inline">\(i\)</span>-th column <span class="math inline">\(\Phi_i\)</span> represents the <span class="math inline">\(i\)</span>-th mode shape, and the <span class="math inline">\(i\)</span>-th entry of <span class="math inline">\(\Lambda\)</span> is proportional to the resonant frequency of the <span class="math inline">\(\Phi_i\)</span>. Any displacement <span class="math inline">\(\mathbf{u}(t) = \mathbf{x}(t) - \mathbf{x}_0\)</span> can be written as a linear combination of the columns <span class="math display">\[
+\displaylines{\mathbf{u}(t) = \Phi \mathbf{q}(t)
+}
+\]</span></p>
+<p>Substituting into <span class="math inline">\(\eqref{motion}\)</span> and premultiplying by <span class="math inline">\(\Phi^T\)</span> yields <span class="math display">\[
+\displaylines{\Phi^T \mathbf{M} \Phi \ddot{\mathbf{q}} + \Phi^T \mathbf{C} \Phi \dot{\mathbf{q}} + \Phi^T \mathbf{K} \Phi \mathbf{q} = \Phi^T \mathbf{f}_{ext}
+}
+\]</span> Note that for general damping, <span class="math inline">\(\Phi^T \mathbf{C} \Phi\)</span> is dense, but if we assume proportional (Raleigh) damping <span class="math inline">\(\mathbf{C} = \alpha \mathbf{M} + \beta \mathbf{K}\)</span>, then it is also diagonal. With <span class="math inline">\(\mathbf{g} = \Phi^T \mathbf{f}_{ext}\)</span> we can now express it as <span class="math inline">\(3n\)</span> independent scalar 2nd ODE <span class="math display">\[
+\displaylines{\ddot{q}_i + (\alpha + \beta \lambda_i) \dot{q}_i + \lambda_i q_i = g_i
+}
+\]</span> where <span class="math inline">\(\lambda_i\)</span> is the <span class="math inline">\(i\)</span>-th diagonal element of <span class="math inline">\(\Lambda\)</span>.</p>
+<p>We can solve this equation analytically.</p>
+<h1 id="eulerian-and-semi-lagrangian-methods">Eulerian and Semi-Lagrangian Methods</h1>
+<p>Lagrangian techniques are a convenient way to define an object as a connected mesh of points or simply a cloud of points. The Eulerian point of view, on the other hand, looks at a stationary set of points and calculates how the material properties stored at those stationary grid points change over time. One of the <strong>drawbacks</strong> of changing to an Eulerian perspective is that the boundary of the object is no longer explicitly defined.</p>
+<p>In Computer Graphics, fluids are often defined in an Eulerian framework.</p>
+<p>There are two parts to the Navier-Stokes equations: <span class="math display">\[
+\begin{align}
+&amp; \nabla \cdot \mathbf{u} = 0 \label{mass} \\
+&amp; \mathbf{u}_t = -(\mathbf{u} \cdot \nabla) \mathbf{u} + \nabla \cdot (\nu \nabla \mathbf{u}) - \nabla p + \mathbf{f}
+\end{align}
+\]</span> These two equations represent the conservation of mass and momentum for an incompressible fluid. In this Eulerian formulation the quantities of the fluid are stored in a grid of cells. The velocity is stored on the cell faces and the pressure is stored at the center of the cells. This is commonly called a staggered (or MAC) grid. Notice that the position, <span class="math inline">\(\mathbf{x}\)</span>, of the fluid is not defined; in this Eulerian frame work, the grid positions remain fixed.</p>
+<p>Solving these two equations is usually done in several steps (breaking up a PDE into simpler pieces and solving the pieces separately is known as <em>operator splitting</em>). The <span class="math inline">\(\mathbf{f}\)</span> term is simply scaled by the time step and added to the current velocity. The advection term, <span class="math inline">\(-(\mathbf{u} \cdot \nabla) \mathbf{u}\)</span> is then solved. One popular way to solve the advection term is with the <em>semi-Lagrangian</em> technique because it is stable for large time step sizes.</p>
+<p>After advection, we have what can be called a <em>best guess velocity</em> <span class="math display">\[
+\displaylines{\tilde{\mathbf{u}} = \mathbf{u} + \Delta t (- (\mathbf{u} \cdot \nabla) \mathbf{u} + \nabla \cdot (\nu \nabla \mathbf{u}) + \mathbf{f})
+}
+\]</span> which does not take into account pressure or mass conservation. The final step, <em>pressure-projection</em>, is in fact one of the reasons that Eulerian techniques are popular for fluids. The trick of the pressure-projection step is to solve for a pressure such that subtracting that pressure’s gradient from the best guess velocity will give a final velocity that conserves mass. <span class="math display">\[
+\begin{equation}\displaylines{
+\mathbf{u}^{new} = \tilde{\mathbf{u}} - \Delta t \nabla p
+}
+\label{unew}
+\end{equation}
+\]</span> substituting it in <span class="math inline">\(\eqref{mass}\)</span> and rearrange to get Poisson equation <span class="math display">\[
+\displaylines{\Delta t \nabla^2 p = \nabla \cdot \tilde{\mathbf{u}}
+}
+\]</span> with which we can solve for <span class="math inline">\(p\)</span>. Then plug it back <span class="math inline">\(\eqref{unew}\)</span> to find our final velocity. The final velocity is incompressible (divergence free), and for a constant density fluid this ensures mass conservation. Compressible fluids can also conserve mass, but their density must change to do so.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CG/" rel="tag"><i class="fa fa-tag"></i> CG</a>
+              <a href="/tags/Paper-Reading/" rel="tag"><i class="fa fa-tag"></i> Paper Reading</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/position-based-dynamics/" rel="next" title="Position Based Dynamics">
+                  Position Based Dynamics <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

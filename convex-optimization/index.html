@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="AA&#x2F;EE&#x2F;ME 578 Review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convex Optimization">
+<meta property="og:url" content="https://silencial.github.io/convex-optimization/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="AA&#x2F;EE&#x2F;ME 578 Review">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2019-07-05T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="UW">
+<meta property="article:tag" content="Math">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/convex-optimization/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;convex-optimization&#x2F;&quot;,&quot;path&quot;:&quot;convex-optimization&#x2F;&quot;,&quot;title&quot;:&quot;Convex Optimization&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Convex Optimization | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#convex-sets"><span class="nav-number">1.</span> <span class="nav-text">Convex Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#examples"><span class="nav-number">1.1.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subspaces"><span class="nav-number">1.1.1.</span> <span class="nav-text">Subspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#affine-sets"><span class="nav-number">1.1.2.</span> <span class="nav-text">Affine Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convex-sets-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">Convex Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convex-cone"><span class="nav-number">1.1.4.</span> <span class="nav-text">Convex Cone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#combinations-and-hulls"><span class="nav-number">1.1.5.</span> <span class="nav-text">Combinations and Hulls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hyperplanes-and-halfspaces"><span class="nav-number">1.1.6.</span> <span class="nav-text">Hyperplanes and Halfspaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#euclidean-balls-and-ellipsoids"><span class="nav-number">1.1.7.</span> <span class="nav-text">Euclidean Balls and Ellipsoids</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#norm-balls-and-norm-cones"><span class="nav-number">1.1.8.</span> <span class="nav-text">Norm Balls and Norm Cones</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#polyhedron"><span class="nav-number">1.1.9.</span> <span class="nav-text">Polyhedron</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#positive-semidefinite-cone"><span class="nav-number">1.1.10.</span> <span class="nav-text">Positive Semidefinite Cone</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operations-that-preserve-convexity"><span class="nav-number">1.2.</span> <span class="nav-text">Operations That Preserve Convexity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intersection"><span class="nav-number">1.2.1.</span> <span class="nav-text">Intersection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#affine-function"><span class="nav-number">1.2.2.</span> <span class="nav-text">Affine Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#perspective-and-linear-fractional-function"><span class="nav-number">1.2.3.</span> <span class="nav-text">Perspective and Linear-Fractional Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generalized-inequalities"><span class="nav-number">1.3.</span> <span class="nav-text">Generalized Inequalities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hyperplane-theorem"><span class="nav-number">1.4.</span> <span class="nav-text">Hyperplane Theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#separating-hyperplane"><span class="nav-number">1.4.1.</span> <span class="nav-text">Separating Hyperplane</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#supporting-hyperplane"><span class="nav-number">1.4.2.</span> <span class="nav-text">Supporting Hyperplane</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dual-cones"><span class="nav-number">1.5.</span> <span class="nav-text">Dual Cones</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convex-functions"><span class="nav-number">2.</span> <span class="nav-text">Convex Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#examples-1"><span class="nav-number">2.1.</span> <span class="nav-text">Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#convex"><span class="nav-number">2.1.1.</span> <span class="nav-text">Convex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concave"><span class="nav-number">2.1.2.</span> <span class="nav-text">Concave</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#properties"><span class="nav-number">2.2.</span> <span class="nav-text">Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#restriction-of-a-convex-function-to-a-line"><span class="nav-number">2.2.1.</span> <span class="nav-text">Restriction of a Convex Function to a Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#first-order-convexity-condition"><span class="nav-number">2.2.2.</span> <span class="nav-text">First-Order Convexity Condition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#second-order-convexity-condition"><span class="nav-number">2.2.3.</span> <span class="nav-text">Second-Order Convexity Condition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epigraph-and-sublevel-set"><span class="nav-number">2.2.4.</span> <span class="nav-text">Epigraph and Sublevel Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jensens-inequality"><span class="nav-number">2.2.5.</span> <span class="nav-text">Jensen&#39;s Inequality</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#operations-that-preserve-convexity-1"><span class="nav-number">2.3.</span> <span class="nav-text">Operations That Preserve Convexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conjugate-function"><span class="nav-number">2.4.</span> <span class="nav-text">Conjugate Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quasiconvex-function"><span class="nav-number">2.5.</span> <span class="nav-text">Quasiconvex Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log-concave-and-log-convex-function"><span class="nav-number">2.6.</span> <span class="nav-text">Log-Concave and Log-Convex Function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convex-optimization-problems"><span class="nav-number">3.</span> <span class="nav-text">Convex Optimization Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-problem"><span class="nav-number">3.1.</span> <span class="nav-text">Optimization Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feasibility-problem"><span class="nav-number">3.2.</span> <span class="nav-text">Feasibility Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#convex-optimization"><span class="nav-number">3.3.</span> <span class="nav-text">Convex Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#optimality-criterion"><span class="nav-number">3.3.1.</span> <span class="nav-text">Optimality Criterion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equivalent-convex-problems"><span class="nav-number">3.3.2.</span> <span class="nav-text">Equivalent Convex Problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quasiconvex-optimization"><span class="nav-number">3.4.</span> <span class="nav-text">Quasiconvex Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-optimization"><span class="nav-number">3.5.</span> <span class="nav-text">Linear Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-programming"><span class="nav-number">3.5.1.</span> <span class="nav-text">Linear Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-fractional-programming"><span class="nav-number">3.5.2.</span> <span class="nav-text">Linear-Fractional Programming</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadratic-optimization"><span class="nav-number">3.6.</span> <span class="nav-text">Quadratic Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quadratic-programming"><span class="nav-number">3.6.1.</span> <span class="nav-text">Quadratic Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quadratically-constrained-quadratic-programming"><span class="nav-number">3.6.2.</span> <span class="nav-text">Quadratically Constrained Quadratic Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#second-order-cone-programming"><span class="nav-number">3.6.3.</span> <span class="nav-text">Second-Order Cone Programming</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#geometric-programming"><span class="nav-number">3.7.</span> <span class="nav-text">Geometric Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generalized-inequality-constraints"><span class="nav-number">3.8.</span> <span class="nav-text">Generalized Inequality Constraints</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-and-minimal-elements"><span class="nav-number">3.8.1.</span> <span class="nav-text">Minimum and Minimal Elements</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector-optimization"><span class="nav-number">3.9.</span> <span class="nav-text">Vector Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#optimal-and-pareto-optimal-points"><span class="nav-number">3.9.1.</span> <span class="nav-text">Optimal and Pareto Optimal Points</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#duality"><span class="nav-number">4.</span> <span class="nav-text">Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lagrange-dual-function"><span class="nav-number">4.1.</span> <span class="nav-text">Lagrange Dual Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lagrange-dual-problem"><span class="nav-number">4.2.</span> <span class="nav-text">Lagrange Dual Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimality-conditions"><span class="nav-number">4.3.</span> <span class="nav-text">Optimality Conditions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slaters-constraint-qualification"><span class="nav-number">4.3.1.</span> <span class="nav-text">Slater&#39;s Constraint Qualification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kkt-conditions"><span class="nav-number">4.3.2.</span> <span class="nav-text">KKT Conditions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#applications"><span class="nav-number">5.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#geometric-problems"><span class="nav-number">5.1.</span> <span class="nav-text">Geometric Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-volume-ellipsoid-around-a-set"><span class="nav-number">5.1.1.</span> <span class="nav-text">Minimum Volume Ellipsoid Around a Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum-volume-inscribed-ellipsoid"><span class="nav-number">5.1.2.</span> <span class="nav-text">Maximum Volume Inscribed Ellipsoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-discrimination"><span class="nav-number">5.1.3.</span> <span class="nav-text">Linear Discrimination</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#support-vector-classifier"><span class="nav-number">5.1.4.</span> <span class="nav-text">Support Vector Classifier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-fitting"><span class="nav-number">5.2.</span> <span class="nav-text">Data Fitting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#norm-approximation"><span class="nav-number">5.2.1.</span> <span class="nav-text">Norm Approximation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least-norm-problems"><span class="nav-number">5.2.2.</span> <span class="nav-text">Least-Norm Problems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scalarized-problem"><span class="nav-number">5.2.3.</span> <span class="nav-text">Scalarized Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#statistical-estimation"><span class="nav-number">5.3.</span> <span class="nav-text">Statistical Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum-likelihood-estimation"><span class="nav-number">5.3.1.</span> <span class="nav-text">Maximum Likelihood Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic-regression"><span class="nav-number">5.3.2.</span> <span class="nav-text">Logistic Regression</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/convex-optimization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Convex Optimization
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-07-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-05T00:00:00+00:00">2019-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>24k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:01</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>AA/EE/ME 578 Review</p>
+<span id="more"></span>
+<hr />
+<h1 id="convex-sets">Convex Sets</h1>
+<h2 id="examples">Examples</h2>
+<h3 id="subspaces">Subspaces</h3>
+<p><span class="math inline">\(S \subseteq \mathbf{R}^{n}\)</span> is a subspace if <span class="math display">\[
+\displaylines{x, y \in S, \quad \lambda, \mu \in \mathbf{R} \quad \Longrightarrow \lambda x+\mu y \in S
+}
+\]</span> Geometrically: <span class="math inline">\(x, y \in S \Rightarrow\)</span> plane through <span class="math inline">\(0, x, y \subseteq S\)</span>.</p>
+<h3 id="affine-sets">Affine Sets</h3>
+<p><span class="math inline">\(S \subseteq \mathbf{R}^n\)</span> is affine if <span class="math display">\[
+\displaylines{x, y \in S, \quad \lambda, \mu \in \mathbf{R}, \quad \lambda+\mu=1 \Longrightarrow \lambda x+\mu y \in S
+}
+\]</span> Geometrically: <span class="math inline">\(x, y \in S \Rightarrow\)</span> line through <span class="math inline">\(x, y \subseteq S\)</span>.</p>
+<h3 id="convex-sets-1">Convex Sets</h3>
+<p><span class="math inline">\(S \subseteq \mathbf{R}^n\)</span> is a convex set if <span class="math display">\[
+\displaylines{x, y \in S, \quad \lambda, \mu \geq 0, \quad \lambda+\mu=1 \Longrightarrow \lambda x+\mu y \in S
+}
+\]</span> Geometrically: <span class="math inline">\(x, y \in S \Rightarrow\)</span> segment <span class="math inline">\([x, y] \subseteq S\)</span>.</p>
+<h3 id="convex-cone">Convex Cone</h3>
+<p><span class="math inline">\(S \subseteq \mathbf{R}^n\)</span> is a cone if <span class="math display">\[
+\displaylines{x \in S, \quad \lambda \geq 0 \Longrightarrow \lambda x \in S
+}
+\]</span> <span class="math inline">\(S \subseteq \mathbf{R}^n\)</span> is a convex cone if <span class="math display">\[
+\displaylines{x, y \in S, \quad \lambda, \mu \geq 0 \Longrightarrow \lambda x+\mu y \in S
+}
+\]</span> Geometrically: <span class="math inline">\(x, y \in S \Rightarrow\)</span> 'pie slice' between <span class="math inline">\(x, y \subseteq S\)</span>.</p>
+<h3 id="combinations-and-hulls">Combinations and Hulls</h3>
+<p><span class="math inline">\(y=\theta_{1} x_{1}+\cdots+\theta_{k} x_{k}\)</span> is a</p>
+<ul>
+<li>linear combination of <span class="math inline">\(x_1, \dots, x_k\)</span></li>
+<li>affine combination if <span class="math inline">\(\sum \theta_i = 1\)</span></li>
+<li>convex combination if <span class="math inline">\(\sum \theta_i = 1,\ \theta_i \ge 0\)</span></li>
+<li>conic combination if <span class="math inline">\(\theta_i \ge 0\)</span>.</li>
+</ul>
+<p>(linear, ...) hull of <span class="math inline">\(S\)</span> is the set of all (linear, ...) combinations from <span class="math inline">\(S\)</span>. <span class="math display">\[
+\displaylines{\operatorname{conv}(S)=\bigcap\{G \mid S \subseteq G, \ G \text { convex }\}
+}
+\]</span></p>
+<p>convex hull <span class="math inline">\(\operatorname{conv}(S)\)</span> is the set of all convex combinations of points in <span class="math inline">\(S\)</span>.</p>
+<h3 id="hyperplanes-and-halfspaces">Hyperplanes and Halfspaces</h3>
+<ul>
+<li>Hyperplane: <span class="math inline">\(\left\{x \mid a^{T} x=b\right\}(a \neq 0)\)</span></li>
+<li>Halfspace: <span class="math inline">\(\left\{x \mid a^{T} x \leq b\right\}(a \neq 0)\)</span></li>
+</ul>
+<p><span class="math inline">\(a\)</span> is the normal vector. Hyperplanes are affine and convex; halfspaces are convex.</p>
+<h3 id="euclidean-balls-and-ellipsoids">Euclidean Balls and Ellipsoids</h3>
+<p>Euclidean ball with center <span class="math inline">\(x_c\)</span> and radius <span class="math inline">\(r\)</span>: <span class="math display">\[
+\displaylines{B\left(x_{c}, r\right)=\left\{x \mid \left\|x-x_{c}\right\|_{2} \leq r\right\}=\left\{x_{c}+r u \mid \|u\|_{2} \leq 1\right\}
+}
+\]</span> Ellipsoid: <span class="math display">\[
+\displaylines{\left\{x \mid \left(x-x_{c}\right)^{T} P^{-1}\left(x-x_{c}\right) \leq 1\right\}
+}
+\]</span> with <span class="math inline">\(P \in \mathbf{S}_{++}^{n}\)</span>. Other representation: <span class="math inline">\(\left\{x_{c}+A u \mid \|u\|_{2} \leq 1\right\}\)</span> with <span class="math inline">\(A\)</span> square and nonsingular.</p>
+<h3 id="norm-balls-and-norm-cones">Norm Balls and Norm Cones</h3>
+<p>Norm: a function <span class="math inline">\(\|\cdot\|\)</span> that satisfies</p>
+<ul>
+<li><span class="math inline">\(\|x\| \geq 0 ; \ \|x\|=0\)</span> if and only if <span class="math inline">\(x=0\)</span></li>
+<li><span class="math inline">\(\|t x\|=|t|\|x\|\)</span> for <span class="math inline">\(t \in \mathbf{R}\)</span></li>
+<li><span class="math inline">\(\|x+y\| \leq\|x\|+\|y\|\)</span></li>
+</ul>
+<p>Norm ball with center <span class="math inline">\(x_c\)</span> and radius <span class="math inline">\(r\)</span>: <span class="math inline">\(\left\{x \mid \left\|x-x_{c}\right\| \leq r\right\}\)</span></p>
+<p>Norm cone: <span class="math inline">\(\{(x, t) \mid \|x\| \leq t\}\)</span></p>
+<h3 id="polyhedron">Polyhedron</h3>
+<p>Solution set of finitely many linear inequalities and equalities <span class="math display">\[
+\displaylines{A x \preceq b, \qquad C x=d
+}
+\]</span> (<span class="math inline">\(A \in \mathbf{R}^{m \times n}, \ C \in \mathbf{R}^{p \times n}, \ \preceq\)</span> is component-wise inequality)</p>
+<p>Polyhedron is intersection of finite number of halfspaces and hyperplanes.</p>
+<h3 id="positive-semidefinite-cone">Positive Semidefinite Cone</h3>
+<ul>
+<li><span class="math inline">\(\mathbf{S}_{+}^{n}=\left\{X \in \mathbf{S}^{n} \mid X \succeq 0\right\}\)</span>: PSD matrices. A convex cone.</li>
+<li><span class="math inline">\(\mathbf{S}_{++}^{n}=\left\{X \in \mathbf{S}^{n} \mid X\succ 0\right\}\)</span>: PD matrices.</li>
+</ul>
+<h2 id="operations-that-preserve-convexity">Operations That Preserve Convexity</h2>
+<p>To show <span class="math inline">\(C\)</span> is convex set</p>
+<ol type="1">
+<li><p>Definition <span class="math display">\[
+\displaylines{x_{1}, x_{2} \in C, \quad 0 \leq \theta \leq 1 \quad \Longrightarrow \quad \theta x_{1}+(1-\theta) x_{2} \in C
+}
+\]</span></p></li>
+<li><p>Show that <span class="math inline">\(C\)</span> is obtained from simple convex sets by operations that preserve convexity</p>
+<ul>
+<li>intersection</li>
+<li>affine function</li>
+<li>perspective function</li>
+<li>linear-fractional functions</li>
+</ul></li>
+</ol>
+<h3 id="intersection">Intersection</h3>
+<p>The intersection of (any number of, even infinite) convex sets is convex.</p>
+<h3 id="affine-function">Affine Function</h3>
+<p>Suppose <span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}^{m}\)</span> is affine (<span class="math inline">\(f(x)=A x+b\)</span> with <span class="math inline">\(A \in \mathbf{R}^{m \times n}, \ b \in \mathbf{R}^{m}\)</span>)</p>
+<ul>
+<li><p>The image of a convex set under <span class="math inline">\(f\)</span> is convex <span class="math display">\[
+\displaylines{S \subseteq \mathbf{R}^{n} \text { convex } \Longrightarrow f(S)=\{f(x) \mid x \in S\}
+}
+\]</span></p></li>
+<li><p>The inverse image <span class="math inline">\(f^{-1}(C)\)</span> of a convex set under <span class="math inline">\(f\)</span> is convex <span class="math display">\[
+\displaylines{C \subseteq \mathbf{R}^{m} \text{ convex } \quad \Longrightarrow \quad f^{-1}(C)=\left\{x \in \mathbf{R}^{n} \mid f(x) \in C\right\} \text{ convex }
+}
+\]</span></p></li>
+</ul>
+<h3 id="perspective-and-linear-fractional-function">Perspective and Linear-Fractional Function</h3>
+<p>Perspective function <span class="math inline">\(P : \mathbf{R}^{n+1} \rightarrow \mathbf{R}^{n}\)</span> <span class="math display">\[
+\displaylines{P(x, t)=x / t, \quad \operatorname{dom} P=\{(x, t) \mid t&gt;0\}
+}
+\]</span> images and inverse images of convex sets under perspective are convex.</p>
+<p>Linear-fractional function <span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}^{m}\)</span> <span class="math display">\[
+\displaylines{f(x)=\frac{A x+b}{c^{T} x+d}, \qquad \text { dom } f=\left\{x \mid c^{T} x+d&gt;0\right\}
+}
+\]</span> images and inverse images of convex sets under linear-fractional functions are convex.</p>
+<h2 id="generalized-inequalities">Generalized Inequalities</h2>
+<p>A convex cone <span class="math inline">\(K \subseteq \mathbf{R}^{n}\)</span> is a proper cone if</p>
+<ul>
+<li><span class="math inline">\(K\)</span> is closed (contains its boundary)</li>
+<li><span class="math inline">\(K\)</span> is solid (has nonempty interior)</li>
+<li><span class="math inline">\(K\)</span> is pointed (contains no line)</li>
+</ul>
+<p>Generalized inequality defined by a proper cone <span class="math inline">\(K\)</span>: <span class="math display">\[
+\displaylines{x \preceq_{K} y \ \Longleftrightarrow \ y-x \in K, \qquad x\preceq_{K} y \ \Longleftrightarrow \ y-x \in \operatorname{int} K
+}
+\]</span></p>
+<h2 id="hyperplane-theorem">Hyperplane Theorem</h2>
+<h3 id="separating-hyperplane">Separating Hyperplane</h3>
+<p>If <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are disjoint convex sets, then there exists <span class="math inline">\(a \ne 0, \ b\)</span> such that <span class="math display">\[
+\displaylines{a^{T} x \leq b \ \text { for }\ x \in C, \qquad a^{T} x \geq b \ \text { for } \ x \in D
+}
+\]</span> the hyperplane <span class="math inline">\(\left\{x \mid a^{T} x=b\right\}\)</span> separates <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span>. Strict separation requires additional assumptions (e.g. <span class="math inline">\(C\)</span> is closed, <span class="math inline">\(D\)</span> is a singleton).</p>
+<h3 id="supporting-hyperplane">Supporting Hyperplane</h3>
+<p>Supporting hyperplane to set <span class="math inline">\(C\)</span> at boundary point <span class="math inline">\(x_0\)</span>: <span class="math display">\[
+\displaylines{\left\{x \mid a^{T} x=a^{T} x_{0}\right\}
+}
+\]</span> where <span class="math inline">\(a \ne 0\)</span> and <span class="math inline">\(a^T x \le a^T x_0\)</span> for all <span class="math inline">\(x \in C\)</span>.</p>
+<p>Supporting hyperplane theorem: If <span class="math inline">\(C\)</span> is convex, then there exists a supporting hyperplane at every boundary point of <span class="math inline">\(C\)</span>.</p>
+<h2 id="dual-cones">Dual Cones</h2>
+<p>Dual cone of a cone <span class="math inline">\(K\)</span>: <span class="math inline">\(K^*=\left\{y \mid y^{T} x \geq 0 \text { for all } x \in K\right\}\)</span></p>
+<p>Examples:</p>
+<ul>
+<li><span class="math inline">\(K=\mathbf{R}_{+}^{n} : K^{*}=\mathbf{R}_{+}^{n}\)</span></li>
+<li><span class="math inline">\(K=\mathbf{S}_{+}^{n} : K^{*}=\mathbf{S}_{+}^{n}\)</span></li>
+<li><span class="math inline">\(K=\left\{(x, t) \mid\|x\|_{2} \leq t\right\} : K^{*}=\left\{(x, t) \mid\|x\|_{2} \leq t\right\}\)</span></li>
+<li><span class="math inline">\(K=\left\{(x, t) \mid\|x\|_{1} \leq t\right\} : K^{*}=\left\{(x, t) \mid\|x\|_{\infty} \leq t\right\}\)</span></li>
+</ul>
+<h1 id="convex-functions">Convex Functions</h1>
+<p><span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> is convex if <span class="math inline">\(\operatorname{dom} f\)</span> is a convex set and <span class="math display">\[
+\displaylines{f(\theta x+(1-\theta) y) \leq \theta f(x)+(1-\theta) f(y)
+}
+\]</span> for all <span class="math inline">\(x, y \in \operatorname{dom} f, \ 0\le \theta \le 1\)</span></p>
+<h2 id="examples-1">Examples</h2>
+<h3 id="convex">Convex</h3>
+<ul>
+<li>affine: <span class="math inline">\(a^T x + b\)</span></li>
+<li>exponential: <span class="math inline">\(e^{ax}\)</span>, for any <span class="math inline">\(a \in \mathbf{R}\)</span></li>
+<li>powers: <span class="math inline">\(x^\alpha\)</span> on <span class="math inline">\(\mathbf{R}_{++}\)</span>, for <span class="math inline">\(\alpha \ge 1\)</span> or <span class="math inline">\(a \le 0\)</span></li>
+<li>powers of absolute value: <span class="math inline">\(|x|^p\)</span> on <span class="math inline">\(\mathbf{R}\)</span>, for <span class="math inline">\(p \ge 1\)</span></li>
+<li>negative entropy: <span class="math inline">\(x\log x\)</span> on <span class="math inline">\(\mathbf{R}_{++}\)</span></li>
+<li>norms: <span class="math inline">\(\|x\|_{p}=\left(\sum_{i=1}^{n}\left|x_{i}\right|^{p}\right)^{1 / p}\)</span> for <span class="math inline">\(p \ge 1\)</span></li>
+<li>affine on matrices: <span class="math inline">\(f(X)=\operatorname{tr}\left(A^{T} X\right)+b\)</span></li>
+<li>spectral norm: <span class="math inline">\(f(X) = \|X\|_2 = \sigma_{\max}(X)\)</span></li>
+<li>quadratic: <span class="math inline">\(f(x)=(1 / 2) x^{T} P x+q^{T} x+r\)</span> with <span class="math inline">\(P \in \mathbf{S}^{n}\)</span></li>
+<li>least-squares: <span class="math inline">\(f(x) = \|Ax - b\|_2^2\)</span></li>
+<li>quadratic-over-linear: <span class="math inline">\(f(x, y) = x^2/y\)</span> with <span class="math inline">\(y &gt; 0\)</span></li>
+<li>log-sum-exp: <span class="math inline">\(f(x)=\log \sum_{k=1}^{n} \exp x_{k}\)</span></li>
+</ul>
+<h3 id="concave">Concave</h3>
+<ul>
+<li><span class="math inline">\(f\)</span> in concave if <span class="math inline">\(-f\)</span> is convex</li>
+<li>affine</li>
+<li>powers: <span class="math inline">\(x^\alpha\)</span> on <span class="math inline">\(\mathbf{R}_{++}\)</span>, for <span class="math inline">\(0\le \alpha \le 1\)</span></li>
+<li>logarithm: <span class="math inline">\(\log x\)</span> on <span class="math inline">\(\mathbf{R}_{++}\)</span></li>
+<li><span class="math inline">\(\log\det X\)</span> on <span class="math inline">\(\mathbf{S}_{++}^n\)</span></li>
+<li>geometric mean: <span class="math inline">\(f(x)=\left(\prod_{k=1}^{n} x_{k}\right)^{1 / n}\)</span> on <span class="math inline">\(\mathbf{R}_{++}^n\)</span></li>
+</ul>
+<h2 id="properties">Properties</h2>
+<h3 id="restriction-of-a-convex-function-to-a-line">Restriction of a Convex Function to a Line</h3>
+<p><span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> is convex iff the function <span class="math inline">\(g : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> <span class="math display">\[
+\displaylines{g(t)=f(x+t v), \qquad \operatorname{dom} g=\{t \mid x+t v \in \operatorname{dom} f\}
+}
+\]</span></p>
+<p>is convex (in <span class="math inline">\(t\)</span>) for any <span class="math inline">\(x \in \operatorname{dom} f, \ v\in \mathbf{R}^n\)</span></p>
+<h3 id="first-order-convexity-condition">First-Order Convexity Condition</h3>
+<p>Differentiable <span class="math inline">\(f\)</span> with convex domain is convex iff <span class="math display">\[
+\displaylines{f(y) \geq f(x)+\nabla f(x)^{T}(y-x) \quad \text { for all } x, y \in \operatorname{dom} f
+}
+\]</span></p>
+<h3 id="second-order-convexity-condition">Second-Order Convexity Condition</h3>
+<p>Twice differentiable <span class="math inline">\(f\)</span> with convex domain is convex iff <span class="math display">\[
+\displaylines{\nabla^{2} f(x) \succeq 0 \quad \text { for all } x \in \operatorname{dom} f
+}
+\]</span></p>
+<h3 id="epigraph-and-sublevel-set">Epigraph and Sublevel Set</h3>
+<p><span class="math inline">\(\alpha\)</span>-sublevel set of <span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span>: <span class="math display">\[
+\displaylines{C_{\alpha}=\{x \in \operatorname{dom} f \mid f(x) \leq \alpha\}
+}
+\]</span> sublevel sets of convex functions are convex (converse is false)</p>
+<p>Epigraph of <span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span>: <span class="math display">\[
+\displaylines{\operatorname{epi}f=\left\{(x, t) \in \mathbf{R}^{n+1} \mid x \in \operatorname{dom} f, \ f(x) \leq t\right\}
+}
+\]</span> <span class="math inline">\(f\)</span> is convex iff <span class="math inline">\(\operatorname{epi}f\)</span> is a convex set.</p>
+<h3 id="jensens-inequality">Jensen's Inequality</h3>
+<p>If <span class="math inline">\(f\)</span> is convex, then for <span class="math inline">\(0 \le \theta \le 1\)</span> <span class="math display">\[
+\displaylines{f(\theta x+(1-\theta) y) \leq \theta f(x)+(1-\theta) f(y)
+}
+\]</span> can be extended to <span class="math display">\[
+\displaylines{f(\mathbf{E}\ z) \leq \mathbf{E}\ f(z)
+}
+\]</span> for any random variable <span class="math inline">\(z\)</span></p>
+<h2 id="operations-that-preserve-convexity-1">Operations That Preserve Convexity</h2>
+<p>To show <span class="math inline">\(f\)</span> is convex function:</p>
+<ol type="1">
+<li>Verify definition (often simplified by restricting to a line)</li>
+<li>For twice differentiable functions, show <span class="math inline">\(\nabla^2 f(x) \succeq 0\)</span></li>
+<li>Show that <span class="math inline">\(f\)</span> is obtained from simple convex functions by operations that preserve convexity</li>
+</ol>
+<ul>
+<li><p>Nonnegative multiple: <span class="math inline">\(\alpha f\)</span> is convex if <span class="math inline">\(f\)</span> is convex, <span class="math inline">\(\alpha \ge 0\)</span></p></li>
+<li><p>Sum: <span class="math inline">\(f_1 + f_2\)</span> is convex if <span class="math inline">\(f_1, f_2\)</span> convex</p></li>
+<li><p>Composition with affine function: <span class="math inline">\(f(Ax + b)\)</span> is convex if <span class="math inline">\(f\)</span> is convex</p></li>
+<li><p>Pointwise maximum: if <span class="math inline">\(f_1, \dots, f_m\)</span> are convex, then <span class="math inline">\(f(x)=\max \left\{f_{1}(x), \ldots, f_{m}(x)\right\}\)</span> is convex</p></li>
+<li><p>Pointwise supremum: if <span class="math inline">\(f(x, y)\)</span> is convex in <span class="math inline">\(x\)</span> for each <span class="math inline">\(y\in \mathcal{A}\)</span>, then <span class="math inline">\(g(x)=\sup _{y \in \mathcal{A}} f(x, y)\)</span> is convex.</p></li>
+<li>Composition of <span class="math inline">\(g : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> and <span class="math inline">\(h : \mathbf{R} \rightarrow \mathbf{R}\)</span>: <span class="math inline">\(f(x) = h(g(x))\)</span> is convex if
+<ul>
+<li><span class="math inline">\(g\)</span> convex, <span class="math inline">\(h\)</span> convex, <span class="math inline">\(\tilde{h}\)</span> nondecreasing</li>
+<li><span class="math inline">\(g\)</span> concave, <span class="math inline">\(h\)</span> convex, <span class="math inline">\(\tilde{h}\)</span> nonincreasing</li>
+</ul></li>
+<li>Composition of <span class="math inline">\(g : \mathbf{R}^{n} \rightarrow \mathbf{R}^k\)</span> and <span class="math inline">\(h : \mathbf{R}^k \rightarrow \mathbf{R}\)</span>: <span class="math inline">\(f(x) = h(g(x)) = h(g_1(x), \dots, g_k(x))\)</span> is convex if
+<ul>
+<li><span class="math inline">\(g_i\)</span> convex, <span class="math inline">\(h\)</span> convex, <span class="math inline">\(\tilde{h}\)</span> nondecreasing in each argument</li>
+<li><span class="math inline">\(g_i\)</span> concave, <span class="math inline">\(h\)</span> convex, <span class="math inline">\(\tilde{h}\)</span> nonincreasing in each argument</li>
+</ul></li>
+<li><p>Minimization: if <span class="math inline">\(f(x, y)\)</span> is convex in <span class="math inline">\((x, y)\)</span> and <span class="math inline">\(C\)</span> is convex set, then <span class="math inline">\(g(x)=\inf _{y \in C} f(x, y)\)</span> is convex</p></li>
+<li><p>Perspective if a function <span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> is the function <span class="math inline">\(g : \mathbf{R}^{n} \times \mathbf{R} \rightarrow \mathbf{R}\)</span> <span class="math display">\[
+\displaylines{ g(x, t)=t f(x / t), \qquad \operatorname{dom} g=\{(x, t) \mid x / t \in \operatorname{dom} f, t&gt;0\}
+ }
+\]</span> <span class="math inline">\(g\)</span> is convex if <span class="math inline">\(f\)</span> is convex</p></li>
+</ul>
+<h2 id="conjugate-function">Conjugate Function</h2>
+<p>The conjugate of a function <span class="math inline">\(f\)</span>: <span class="math inline">\(f^{*}(y)=\sup _{x \in \operatorname{dom} f}\left(y^{T} x-f(x)\right)\)</span> is always convex.</p>
+<h2 id="quasiconvex-function">Quasiconvex Function</h2>
+<p><span class="math inline">\(f : \mathbf{R}^{n} \rightarrow \mathbf{R}\)</span> is quasiconvex if <span class="math inline">\(\operatorname{dom} f\)</span> is convex and the sublevel sets <span class="math display">\[
+\displaylines{S_{\alpha}=\{x \in \operatorname{dom} f \mid f(x) \leq \alpha\}
+}
+\]</span> are convex for all <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math inline">\(f\)</span> is quasiconcave if <span class="math inline">\(-f\)</span> is quasiconvex.</p>
+<ul>
+<li>Modified Jensen inequality: <span class="math inline">\(0 \leq \theta \leq 1 \ \Longrightarrow \ f(\theta x+(1-\theta) y) \leq \max \{f(x), f(y)\}\)</span></li>
+<li>First-order condition: <span class="math inline">\(f(y) \leq f(x) \quad \Longrightarrow \quad \nabla f(x)^{T}(y-x) \leq 0\)</span></li>
+<li>Sums of quasiconvex functions are not necessarily quasiconvex</li>
+</ul>
+<h2 id="log-concave-and-log-convex-function">Log-Concave and Log-Convex Function</h2>
+<p>A positive function <span class="math inline">\(f\)</span> is log-concave if <span class="math inline">\(\log f\)</span> is concave: <span class="math display">\[
+\displaylines{f(\theta x+(1-\theta) y) \geq f(x)^{\theta} f(y)^{1-\theta} \quad \text { for }\ 0 \leq \theta \leq 1
+}
+\]</span> Many common probability densities are log-concave, e.g., normal distribution.</p>
+<ul>
+<li>Second-order condition: <span class="math inline">\(f(x) \nabla^{2} f(x) \preceq \nabla f(x) \nabla f(x)^{T}\)</span></li>
+<li>Product of log-concave functions is log-concave</li>
+<li>Sum of log-concave functions is not always log-concave</li>
+<li>Integration: if <span class="math inline">\(f : \mathbf{R}^{n} \times \mathbf{R}^{m} \rightarrow \mathbf{R}\)</span> is log-concave, then <span class="math inline">\(\displaystyle g(x)=\int f(x, y) dy\)</span> is log-concave</li>
+</ul>
+<h1 id="convex-optimization-problems">Convex Optimization Problems</h1>
+<h2 id="optimization-problem">Optimization Problem</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}
+\operatorname{minimize} &amp; {f_{0}(x)} \\
+\text { subject to } &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\
+&amp; {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(x \in \mathbf{R}^n\)</span> is the optimization variable</li>
+<li><span class="math inline">\(f_0: \mathbf{R}^n \rightarrow \mathbf{R}\)</span> is the objective or cost function</li>
+<li><span class="math inline">\(f_0: \mathbf{R}^n \rightarrow \mathbf{R}, i = 1, \dots, m\)</span> are the inequality constraint functions</li>
+<li><span class="math inline">\(h_i: \mathbf{R}^n \rightarrow \mathbf{R}\)</span> are the equality constraint functions</li>
+</ul>
+<p>Optimal value <span class="math inline">\(p^{\star}=\inf \left\{f_{0}(x) \mid f_{i}(x) \leq 0,\  i=1, \ldots, m,\ h_{i}(x)=0, \ i=1, \ldots, p\right\}\)</span></p>
+<ul>
+<li><span class="math inline">\(p^\star = \infty\)</span> if problem is infeasible</li>
+<li><span class="math inline">\(p^\star = -\infty\)</span> if problem is unbounded below</li>
+</ul>
+<h2 id="feasibility-problem">Feasibility Problem</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {0} \\ {\text { subject to }} &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(p^\star = 0\)</span> if constraints are feasible; any feasible <span class="math inline">\(x\)</span> is optimal</li>
+<li><span class="math inline">\(p^\star = \infty\)</span> if constraints are infeasible</li>
+</ul>
+<h2 id="convex-optimization">Convex Optimization</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; Ax = b\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(f_0, \dots, f_m\)</span> are convex; equality constraints are affine</li>
+<li>Feasible set of a convex optimization problem is convex</li>
+<li>Any locally optimal point of a convex problem is globally optimal</li>
+</ul>
+<h3 id="optimality-criterion">Optimality Criterion</h3>
+<p><span class="math inline">\(x\)</span> is optimal iff it is feasible and <span class="math inline">\(\nabla f_{0}(x)^{T}(y-x) \geq 0\)</span> for all feasible <span class="math inline">\(y\)</span>. If nonzero, <span class="math inline">\(\nabla f_0(x)\)</span> defines a supporting hyperplane to feasible set <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>.</p>
+<ul>
+<li><p>unconstrained problem: <span class="math display">\[
+\displaylines{x \in \operatorname{dom} f_{0}, \quad \nabla f_{0}(x)=0
+}
+\]</span></p></li>
+<li><p>equality constrained problem: <span class="math display">\[
+\displaylines{\operatorname{minimize}\ f_{0}(x) \quad \operatorname{subject to} \ A x=b
+}
+\]</span> x is optimal iff there exists a <span class="math inline">\(\nu\)</span> such that <span class="math display">\[
+\displaylines{x \in \operatorname{dom} f_{0}, \quad A x=b, \quad \nabla f_{0}(x)+A^{T} \nu=0
+}
+\]</span></p></li>
+<li><p>minimization over nonnegative orthant: <span class="math display">\[
+\displaylines{\operatorname{minimize}\ f_{0}(x) \quad \operatorname{subject to} \ x \succeq 0
+}
+\]</span> x is optimal iff <span class="math display">\[
+\displaylines{x \in \operatorname{dom} f_{0}, \qquad x \succeq 0, \qquad\left\{\begin{array}{ll}{\nabla f_{0}(x)_{i} \geq 0} &amp; {x_{i}=0} \\ {\nabla f_{0}(x)_{i}=0} &amp; {x_{i}&gt;0}\end{array}\right.
+}
+\]</span></p></li>
+</ul>
+<h3 id="equivalent-convex-problems">Equivalent Convex Problems</h3>
+<ul>
+<li><p>eliminating equality constrains <span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}\ (\text {over } z)} &amp; {f_{0}\left(F z+x_{0}\right)} \\ {\text {subject to }} &amp; {f_{i}\left(F z+x_{0}\right) \leq 0, \quad i=1, \ldots, m}\end{array}
+}
+\]</span> where <span class="math inline">\(F\)</span> and <span class="math inline">\(x_0\)</span> such that <span class="math inline">\(A x=b \ \Longleftrightarrow \ x=F z+x_{0}\)</span> for some <span class="math inline">\(z\)</span></p></li>
+<li><p>introducing slack variables for linear inequalities <span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {a_{i}^{T} x \leq b_{i}, \quad i=1, \ldots, m}\end{array}
+}
+\]</span> is equivalent to <span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}\ (\text{over } x, s)} &amp; {f_{0}(x)} \\ {\text {subject to }} &amp; {a_{i}^{T} x+s_{i}=b_{i}, \quad i=1, \ldots, m} \\ {} &amp; {s_{i} \geq 0, \quad i=1, \ldots m}\end{array}
+}
+\]</span></p></li>
+<li><p>epigraph form: standard form convex problem is equivalent to <span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}\ (\text {over } x, t)} &amp; {t} \\ {\text {subject to }} &amp; {f_{0}(x)-t \leq 0} \\ {} &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p></li>
+</ul>
+<h2 id="quasiconvex-optimization">Quasiconvex Optimization</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<p>with <span class="math inline">\(f_0: \mathbf{R}^n \rightarrow \mathbf{R}\)</span> quasiconvex, <span class="math inline">\(f_1, \dots, f_m\)</span> convex. Can have locally optimal points that are not globally optimal</p>
+<p>If <span class="math inline">\(f_0\)</span> is quasiconvex, there exists a family of functions <span class="math inline">\(\phi_t\)</span> such that:</p>
+<ul>
+<li><span class="math inline">\(\phi_t(x)\)</span> is convex in <span class="math inline">\(x\)</span> for fixed <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(t\)</span>-sublevel set of <span class="math inline">\(f_0\)</span> is <span class="math inline">\(0\)</span>-sublevel set of <span class="math inline">\(\phi_t\)</span></li>
+</ul>
+<p>For a fixed <span class="math inline">\(t\)</span>, the quasiconvex optimization problem can be transferred to a convex feasibility problem in <span class="math inline">\(x\)</span>. Bisection method can be used to find the optimal <span class="math inline">\(t\)</span>.</p>
+<h2 id="linear-optimization">Linear Optimization</h2>
+<h3 id="linear-programming">Linear Programming</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\text { minimize }} &amp; {c^{T} x+d} \\ {\text { subject to }} &amp; {G x \preceq h} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<ul>
+<li>feasible set is a polyhedron.</li>
+</ul>
+<h3 id="linear-fractional-programming">Linear-Fractional Programming</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\text { minimize }} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {G x \preceq h} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<p>where <span class="math display">\[
+\displaylines{f_{0}(x)=\frac{c^{T} x+d}{e^{T} x+f}, \qquad \operatorname{dom} f_{0}(x)=\left\{x \mid e^{T} x+f&gt;0\right\}
+}
+\]</span></p>
+<ul>
+<li><p>a quasiconvex optimization problem</p></li>
+<li><p>equivalent to the LP <span class="math display">\[
+\displaylines{\begin{array}{cl}{\text { minimize }} &amp; {c^{T} y+d z} \\ {\text { subject to }} &amp; {G y \preceq h z} \\ {} &amp; {A y=b z} \\ {} &amp; {e^{T} y+f z=1} \\ {} &amp; {z \geq 0}\end{array}
+}
+\]</span></p></li>
+</ul>
+<h2 id="quadratic-optimization">Quadratic Optimization</h2>
+<h3 id="quadratic-programming">Quadratic Programming</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {(1 / 2) x^{T} P x+q^{T} x+r} \\ {\text { subject to }} &amp; {G x \preceq h} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(P \in \mathbf{S}_+^n\)</span>, so objective is convex quadratic</li>
+<li>minimize a convex quadratic function over a polyhedron</li>
+</ul>
+<h3 id="quadratically-constrained-quadratic-programming">Quadratically Constrained Quadratic Programming</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}} &amp; {(1 / 2) x^{T} P_{0} x+q_{0}^{T} x+r_{0}} \\ {\text { subject to }} &amp; {(1 / 2) x^{T} P_{i} x+q_{i}^{T} x+r_{i} \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(P_i \in \mathbf{S}_+^n\)</span>, objective and constraints are convex quadratic</li>
+<li>if <span class="math inline">\(P_1, \dots, P_m \in \mathbf{S}_{++}^n\)</span>, feasible region is intersection of <span class="math inline">\(m\)</span> ellipsoids and an affine set</li>
+</ul>
+<h3 id="second-order-cone-programming">Second-Order Cone Programming</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {f^{T} x} \\ {\text { subject to }} &amp; {\left\|A_{i} x+b_{i}\right\|_{2} \leq c_{i}^{T} x+d_{i}, \quad i=1, \ldots, m} \\ {} &amp; {F x=g}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(A_{i} \in \mathbf{R}^{n_{i} \times n}, F \in \mathbf{R}^{p \times n}\)</span></li>
+<li>inequalities are called second-order cone constraints</li>
+<li>for <span class="math inline">\(n_i = 0\)</span>, reduces to an LP; if <span class="math inline">\(c_i = 0\)</span>, reduces to a QCQP</li>
+</ul>
+<h2 id="geometric-programming">Geometric Programming</h2>
+<ul>
+<li><p>Monomial function <span class="math display">\[
+\displaylines{f(x)=c x_{1}^{a_{1}} x_{2}^{a_{2}} \cdots x_{n}^{a_{n}}, \qquad \text { dom } f=\mathbf{R}_{++}^{n}
+}
+\]</span> with <span class="math inline">\(c&gt;0,\ \alpha_i \in \mathbf{R}\)</span></p></li>
+<li><p>Posynomial function: sum of monomials <span class="math display">\[
+\displaylines{f(x)=\sum_{k=1}^{K} c_{k} x_{1}^{a_{1 k}} x_{2}^{a_{2 k}} \cdots x_{n}^{a_{n k}}, \qquad \operatorname{dom} f=\mathbf{R}_{++}^{n}
+}
+\]</span></p></li>
+<li><p>Geometric program <span class="math display">\[
+\displaylines{\begin{array}{ll}{\text { minimize }} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {f_{i}(x) \leq 1, \quad i=1, \ldots, m} \\ {} &amp; {h_{i}(x)=1, \quad i=1, \ldots, p}\end{array}
+}
+\]</span> with <span class="math inline">\(f_i\)</span> posynomial, <span class="math inline">\(h_i\)</span> monomial</p></li>
+</ul>
+<p>Geometric program in convex form: <span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {\log \left(\sum_{k=1}^{K} \exp \left(a_{0 k}^{T} y+b_{0 k}\right)\right)} \\ {\text { subject to }} &amp; {\log \left(\sum_{k=1}^{K} \exp \left(a_{i k}^{T} y+b_{i k}\right)\right) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {G y+d=0}\end{array}
+}
+\]</span></p>
+<h2 id="generalized-inequality-constraints">Generalized Inequality Constraints</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}} &amp; {f_{0}(x)} \\ {\text { subject to }} &amp; {f_{i}(x) \preceq_{K_{i}} 0, \quad i=1, \ldots, m} \\ {} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(f_0: \mathbf{R}^n \rightarrow \mathbf{R}\)</span> convex; <span class="math inline">\(f_i: \mathbf{R}^n \rightarrow \mathbf{R}^{k_i}\)</span> <span class="math inline">\(K_i\)</span>-convex w.r.t. proper cone <span class="math inline">\(K_i\)</span></li>
+<li>same properties as standard convex problem (convex feasible set, local optimum is global, etc.)</li>
+</ul>
+<p>Conic form problem: <span class="math display">\[
+\displaylines{\begin{array}{cl}
+\operatorname{minimize} &amp; c^{T} x \\
+\text{subject to} &amp; F x+g \preceq_{K} 0 \\
+&amp; A x=b
+\end{array}
+}
+\]</span> extends LP (<span class="math inline">\(K = \mathbf{R}_+^m\)</span>) to non-polyhedral cones</p>
+<p>Semidefinite programming: <span class="math display">\[
+\displaylines{\begin{array}{cl}
+{\operatorname{minimize}} &amp; {c^{T} x} \\
+{\text { subject to }} &amp; {x_{1} F_{1}+x_{2} F_{2}+\cdots+x_{n} F_{n}+G \preceq 0} \\
+{} &amp; {A x=b}
+\end{array}
+}
+\]</span> with <span class="math inline">\(F_i, G \in \mathbf{S}^k\)</span></p>
+<h3 id="minimum-and-minimal-elements">Minimum and Minimal Elements</h3>
+<p><span class="math inline">\(\preceq_K\)</span> is not in general a linear ordering: we can have <span class="math inline">\(x \npreceq_K y\)</span> and <span class="math inline">\(y \npreceq_K x\)</span></p>
+<ul>
+<li><span class="math inline">\(x \in S\)</span> is the minimum element of <span class="math inline">\(S\)</span> w.r.t. <span class="math inline">\(\preceq_K\)</span> if <span class="math inline">\(y \in S \ \Longrightarrow \ x \preceq_K y\)</span></li>
+<li><span class="math inline">\(x \in S\)</span> is the minimal element of <span class="math inline">\(S\)</span> w.r.t. <span class="math inline">\(\preceq_K\)</span> if <span class="math inline">\(y \in S, \ y \preceq_{K} x \ \Longrightarrow \ y=x\)</span></li>
+</ul>
+<h2 id="vector-optimization">Vector Optimization</h2>
+<p>General vector optimization problem: <span class="math display">\[
+\displaylines{\begin{array}{ll}
+\text{minimize (w.r.t. } K ) &amp; f_{0}(x) \\
+\text{subject to} &amp; f_{i}(x) \leq 0, \quad i=1, \ldots, m \\
+&amp; h_{i}(x) \leq 0, \quad i=1, \ldots, p
+\end{array}
+}
+\]</span> vector objective <span class="math inline">\(f_{0} : \mathbf{R}^{n} \rightarrow \mathbf{R}^{q}\)</span>, minimized w.r.t. proper cone <span class="math inline">\(K \in \mathbf{R}^{q}\)</span></p>
+<p>Convex vector optimization problem: <span class="math display">\[
+\displaylines{\begin{array}{ll}
+\text{minimize (w.r.t. } K ) &amp; f_{0}(x) \\
+\text{subject to} &amp; f_{i}(x) \leq 0, \quad i=1, \ldots, m \\
+&amp; A x=b
+\end{array}
+}
+\]</span></p>
+<p>with <span class="math inline">\(f_0\)</span> <span class="math inline">\(K\)</span>-convex, <span class="math inline">\(f_1,\dots, f_m\)</span> convex</p>
+<h3 id="optimal-and-pareto-optimal-points">Optimal and Pareto Optimal Points</h3>
+<p>Set of achievable objective values <span class="math inline">\(\mathcal{O}=\left\{f_{0}(x) \mid x\ \text { feasible}\right\}\)</span></p>
+<ul>
+<li>feasible <span class="math inline">\(x\)</span> is optimal if <span class="math inline">\(f_0(x)\)</span> is a minimum value of <span class="math inline">\(\mathcal{O}\)</span></li>
+<li>feasible <span class="math inline">\(x\)</span> is Pareto optimal if <span class="math inline">\(f_0(x)\)</span> is a minimal value of <span class="math inline">\(\mathcal{O}\)</span></li>
+</ul>
+<h1 id="duality">Duality</h1>
+<h2 id="lagrange-dual-function">Lagrange Dual Function</h2>
+<p>From the standard form optimization problem we define the Lagrangian <span class="math inline">\(L : \mathbf{R}^{n} \times \mathbf{R}^{m} \times \mathbf{R}^{p} \rightarrow \mathbf{R}\)</span> <span class="math display">\[
+\displaylines{L(x, \lambda, \nu)=f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{i=1}^{p} \nu_{i} h_{i}(x)
+}
+\]</span></p>
+<ul>
+<li>weighted sum of objective and constraint functions</li>
+<li><span class="math inline">\(\lambda_i\)</span> is Lagrange multiplier associated with <span class="math inline">\(f_i(x) \le 0\)</span></li>
+<li><span class="math inline">\(\nu_i\)</span> is Lagrange multiplier associated with <span class="math inline">\(h_i(x) = 0\)</span></li>
+</ul>
+<p>Lagrange dual function <span class="math inline">\(g : \mathbf{R}^{m} \times \mathbf{R}^{p} \rightarrow \mathbf{R}\)</span> <span class="math display">\[
+\displaylines{\begin{aligned}
+g(\lambda, \nu) &amp;=\inf_{x \in \mathcal{D}} L(x, \lambda, \nu) \\
+&amp;=\inf_{x \in \mathcal{D}}\left(f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{i=1}^{p} \nu_{i} h_{i}(x)\right)
+\end{aligned}
+}
+\]</span> <span class="math inline">\(g\)</span> is concave.</p>
+<p><strong>lower bound property</strong>: if <span class="math inline">\(\lambda \succeq 0\)</span>, then <span class="math inline">\(g(\lambda, \nu) \leq p^{\star}\)</span></p>
+<h2 id="lagrange-dual-problem">Lagrange Dual Problem</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}{\text { maximize }} &amp; {g(\lambda, \nu)} \\ {\text { subject to }} &amp; {\lambda \succeq 0}\end{array}
+}
+\]</span></p>
+<ul>
+<li>find best lower bound on <span class="math inline">\(p^\star\)</span>, obtained from Lagrange dual function</li>
+<li>a convex optimization problem; optimal value denoted <span class="math inline">\(d^\star\)</span></li>
+<li><span class="math inline">\(\lambda, \nu\)</span> are dual feasible if <span class="math inline">\(\lambda \succeq 0, (\lambda, \nu) \in \operatorname{dom} g\)</span></li>
+<li>often simplified by making implicit constraint <span class="math inline">\((\lambda, \nu) \in \operatorname{dom} g\)</span> explicit</li>
+</ul>
+<h2 id="optimality-conditions">Optimality Conditions</h2>
+<ul>
+<li><p>Weak duality <span class="math inline">\(d^\star \le p^\star\)</span> always holds, can be expressed as <span class="math display">\[
+\displaylines{\sup_{\lambda \succeq 0} \inf_{x} L(x, \lambda) \leq \inf_x \sup_{\lambda \succeq 0} L(x, \lambda)
+}
+\]</span></p></li>
+<li><p>Strong duality <span class="math inline">\(d^\star = p^\star\)</span> usually holds for convex problems. It means that <span class="math inline">\(x^\star\)</span> and <span class="math inline">\(\lambda^\star\)</span> from a saddle-point for the Lagrangian.</p></li>
+</ul>
+<h3 id="slaters-constraint-qualification">Slater's Constraint Qualification</h3>
+<p>Strong duality holds for a convex problem if it is strictly feasible, i.e., <span class="math display">\[
+\displaylines{\exists x \in \operatorname{int} \mathcal{D} : \qquad f_{i}(x)&lt;0, \quad i=1, \ldots, m, \qquad A x=b
+}
+\]</span></p>
+<h3 id="kkt-conditions">KKT Conditions</h3>
+<p>If strong duality holds and <span class="math inline">\(x^\star, \lambda^\star, \nu^\star\)</span> are optimal, then they must satisfy:</p>
+<ol type="1">
+<li><p>primal constraints: <span class="math inline">\(f_{i}(x^\star) \leq 0,\ h_{i}(x^\star)=0\)</span></p></li>
+<li><p>dual constraints: <span class="math inline">\(\lambda^\star \succeq 0\)</span></p></li>
+<li><p>complementary slackness: <span class="math inline">\(\lambda_i^\star f_i(x^\star) = 0\)</span></p></li>
+<li><p>gradient of Lagrangian with respect to <span class="math inline">\(x\)</span> vanishes: <span class="math display">\[
+\displaylines{\nabla f_{0}(x^\star)+\sum_{i=1}^{m} \lambda_{i}^\star \nabla f_{i}(x^\star)+\sum_{i=1}^{p} \nu_{i}^\star \nabla h_{i}(x^\star)=0
+}
+\]</span></p></li>
+</ol>
+<p>If <span class="math inline">\(\tilde{x}, \tilde{\lambda}, \tilde{\nu}\)</span> satisfy KKT for a convex problem, then they are optimal</p>
+<h1 id="applications">Applications</h1>
+<h2 id="geometric-problems">Geometric Problems</h2>
+<h3 id="minimum-volume-ellipsoid-around-a-set">Minimum Volume Ellipsoid Around a Set</h3>
+<p>Minimum volume ellipsoid <span class="math inline">\(\mathcal{E}\)</span> of a set <span class="math inline">\(C\)</span>.</p>
+<ul>
+<li><p>parametrize <span class="math inline">\(\mathcal{E}\)</span> as <span class="math inline">\(\mathcal{E}=\left\{v \mid\|A v+b\|_{2} \leq 1\right\}\)</span>, assume <span class="math inline">\(A \in \mathbf{S}_{++}^n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{vol} \mathcal{E}\)</span> is proportional to <span class="math inline">\(\det A^{-1}\)</span>, can compute <span class="math inline">\(\mathcal{E}\)</span> by solving <span class="math display">\[
+\displaylines{\begin{array}{ll}{\operatorname{minimize}}\ (\text {over } A, b) &amp; {\log \operatorname{det} A^{-1}} \\ {\text {subject to }} &amp; {\sup _{v \in C}\|A v+b\|_{2} \leq 1}\end{array}
+}
+\]</span></p></li>
+</ul>
+<h3 id="maximum-volume-inscribed-ellipsoid">Maximum Volume Inscribed Ellipsoid</h3>
+<p>Maximum volume ellipsoid <span class="math inline">\(\mathcal{E}\)</span> inside a convex set <span class="math inline">\(C \subseteq \mathbf{R}^n\)</span></p>
+<ul>
+<li><p>parametrize <span class="math inline">\(\mathcal{E}\)</span> as <span class="math inline">\(\mathcal{E}=\left\{B u+d \mid\|u\|_{2} \leq 1\right\}\)</span>, assume <span class="math inline">\(B \in \mathbf{S}_{++}^n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{vol} \mathcal{E}\)</span> is proportional to <span class="math inline">\(\det B\)</span>, can compute <span class="math inline">\(\mathcal{E}\)</span> by solving <span class="math display">\[
+\displaylines{\begin{array}{ll}{\text { maximize }} &amp; {\log \operatorname{det} B} \\ {\text { subject to }} &amp; {\sup _{\|u\|_{2} \leq 1} I_{C}(B u+d) \leq 0}\end{array}
+}
+\]</span> where <span class="math inline">\(I_C(x) = 0\)</span> for <span class="math inline">\(x\in C\)</span> and <span class="math inline">\(I_C(x) = \infty\)</span> for <span class="math inline">\(x\notin C\)</span></p></li>
+</ul>
+<h3 id="linear-discrimination">Linear Discrimination</h3>
+<p>Separate two sets of points <span class="math inline">\(\{x_1, \dots, x_N\},\ \{y_1, \dots, y_M\}\)</span> by a hyperplane: <span class="math display">\[
+\displaylines{a^{T} x_{i}+b&gt;0, \ i=1, \ldots, N, \qquad a^{T} y_{i}+b&lt;0, \ i=1, \ldots, M
+}
+\]</span> homogeneous in <span class="math inline">\(a, b\)</span>, hence equivalent to <span class="math display">\[
+\displaylines{a^{T} x_{i}+b \geq 1, \quad i=1, \ldots, N, \qquad a^{T} y_{i}+b \leq-1, \quad i=1, \ldots, M
+}
+\]</span> To separate two sets of points by maximum margin <span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {(1 / 2)\|a\|_{2}} \\ {\text { subject to }} &amp; {a^{T} x_{i}+b \geq 1, \quad i=1, \ldots, N} \\ {} &amp; {a^{T} y_{i}+b \leq-1, \quad i=1, \ldots, M}\end{array}
+}
+\]</span></p>
+<h3 id="support-vector-classifier">Support Vector Classifier</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}{\text { minimize }} &amp; {\|a\|_{2}+\gamma\left(\mathbf{1}^{T} u+\mathbf{1}^{T} v\right)} \\ {\text { subject to }} &amp; {a^{T} x_{i}+b \geq 1-u_{i}, \quad i=1, \ldots, N} \\ {} &amp; {a^{T} y_{i}+b \leq-1+v_{i}, \quad i=1, \ldots, M} \\ {} &amp; {u \succeq 0, \quad v \succeq 0}\end{array}
+}
+\]</span></p>
+<p>produces point on trade-off curve between inverse of margin <span class="math inline">\(2/\|a\|_2\)</span> and classification error, measured by total slack <span class="math inline">\(\mathbf{1}^{T} u+\mathbf{1}^{T} v\)</span></p>
+<h2 id="data-fitting">Data Fitting</h2>
+<h3 id="norm-approximation">Norm Approximation</h3>
+<p><span class="math display">\[
+\displaylines{\operatorname{minimize} \|A x-b\|
+}
+\]</span></p>
+<p>where <span class="math inline">\(A \in \mathbf{R}^{m \times n}\)</span> with <span class="math inline">\(m\ge n\)</span></p>
+<p>Linear measurement model: <span class="math inline">\(y = Ax + v\)</span>, <span class="math inline">\(y\)</span> are measurements, <span class="math inline">\(x\)</span> is unknown, <span class="math inline">\(v\)</span> is measurement error. Given <span class="math inline">\(y=b\)</span>, best guess of <span class="math inline">\(x\)</span> is <span class="math inline">\(x^\star\)</span></p>
+<h3 id="least-norm-problems">Least-Norm Problems</h3>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}{\text { minimize }} &amp; {\|x\|} \\ {\text { subject to }} &amp; {A x=b}\end{array}
+}
+\]</span></p>
+<p>where <span class="math inline">\(A \in \mathbf{R}^{m \times n}\)</span> with <span class="math inline">\(m\le n\)</span></p>
+<h3 id="scalarized-problem">Scalarized Problem</h3>
+<p><span class="math display">\[
+\displaylines{\operatorname{minimize} \|A x-b\|+\gamma\|x\|
+}
+\]</span></p>
+<p>tradeoff between error and norm</p>
+<h2 id="statistical-estimation">Statistical Estimation</h2>
+<h3 id="maximum-likelihood-estimation">Maximum Likelihood Estimation</h3>
+<p><span class="math display">\[
+\displaylines{\operatorname{maximize}\ (\text{over } x ) \quad \log p_{x}(y)
+}
+\]</span> With linear measurement model with IID noise: <span class="math inline">\(y_{i}=a_{i}^{T} x+v_{i}, \ i=1, \ldots, m\)</span>, the estimation problem becomes <span class="math display">\[
+\displaylines{\operatorname{maximize}\ l(x) = \sum_{i=1}^{m} \log p\left(y_{i}-a_{i}^{T} x\right)
+}
+\]</span> where <span class="math inline">\(y\)</span> is observed value, <span class="math inline">\(p\)</span> is the PDF of the measurement noise <span class="math inline">\(v\)</span></p>
+<ul>
+<li><p>Gaussian noise <span class="math inline">\(\mathcal{N}\left(0, \sigma^{2}\right) : p(z)=\left(2 \pi \sigma^{2}\right)^{-1 / 2} e^{-z^{2} /\left(2 \sigma^{2}\right)}\)</span> <span class="math display">\[
+\displaylines{l(x)=-\frac{m}{2} \log \left(2 \pi \sigma^{2}\right)-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{m}\left(a_{i}^{T} x-y_{i}\right)^{2}
+}
+\]</span></p></li>
+<li><p>Laplacian noise <span class="math inline">\(p(z)=(1 /(2 a)) e^{-|z| / a}\)</span> <span class="math display">\[
+\displaylines{l(x)=-m \log (2 a)-\frac{1}{a} \sum_{i=1}^{m}\left|a_{i}^{T} x-y_{i}\right|
+}
+\]</span></p></li>
+<li><p>Uniform noise on <span class="math inline">\([-a, a]\)</span> <span class="math display">\[
+\displaylines{l(x)=\left\{\begin{array}{ll}{-m \log (2 a)} &amp; {\left|a_{i}^{T} x-y_{i}\right| \leq a, \quad i=1, \ldots, m} \\ {-\infty} &amp; {\text { otherwise }}\end{array}\right.
+}
+\]</span></p></li>
+</ul>
+<h3 id="logistic-regression">Logistic Regression</h3>
+<p>Random variable <span class="math inline">\(y\in \{0,1\}\)</span> with distribution <span class="math display">\[
+\displaylines{p=\operatorname{prob}(y=1)=\frac{\exp \left(a^{T} u+b\right)}{1+\exp \left(a^{T} u+b\right)}
+}
+\]</span> log-likelihood function (for <span class="math inline">\(y_1 = \cdots = y_k = 1, \ y_{k+1} = \cdots = y_m = 0\)</span>): <span class="math display">\[
+\displaylines{\begin{aligned} l(a, b) &amp;=\log \left(\prod_{i=1}^{k} \frac{\exp \left(a^{T} u_{i}+b\right)}{1+\exp \left(a^{T} u_{i}+b\right)} \prod_{i=k+1}^{m} \frac{1}{1+\exp \left(a^{T} u_{i}+b\right)}\right) \\ &amp;=\sum_{i=1}^{k}\left(a^{T} u_{i}+b\right)-\sum_{i=1}^{m} \log \left(1+\exp \left(a^{T} u_{i}+b\right)\right) \end{aligned}
+}
+\]</span> concave in <span class="math inline">\(a, b\)</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/UW/" rel="tag"><i class="fa fa-tag"></i> UW</a>
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/machine-learning-for-big-data/" rel="prev" title="Machine Learning for Big Data">
+                  <i class="fa fa-chevron-left"></i> Machine Learning for Big Data
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/machine-learning/" rel="next" title="Machine Learning">
+                  Machine Learning <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

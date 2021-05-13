@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Linux 的基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://silencial.github.io/linux/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Linux 的基础知识">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-04-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-18T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="101">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/linux/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;linux&#x2F;&quot;,&quot;path&quot;:&quot;linux&#x2F;&quot;,&quot;title&quot;:&quot;Linux&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Linux | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Linux 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">查询目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">文件处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">常见目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.2.</span> <span class="nav-text">链接命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA%E4%B8%8E%E9%87%8D%E5%90%AF%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">关机与重启命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.</span> <span class="nav-text">其他常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="nav-number">2.4.1.</span> <span class="nav-text">查询与自动挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.2.</span> <span class="nav-text">用户登录查看命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell-%E5%9F%BA%E7%A1%80"><span class="nav-number">3.</span> <span class="nav-text">Shell 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">Shell 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">脚本执行方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">3.3.</span> <span class="nav-text">Bash 的基本功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D%E4%B8%8E%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">3.3.1.</span> <span class="nav-text">命令别名与快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.2.</span> <span class="nav-text">历史命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">3.3.3.</span> <span class="nav-text">输出重定向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">磁盘管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">4.1.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">4.2.</span> <span class="nav-text">硬盘分区和格式化</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-21T00:00:00+00:00">2018-04-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-02-18 00:00:00" itemprop="dateModified" datetime="2020-02-18T00:00:00+00:00">2020-02-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Linux 的基础知识 <span id="more"></span></p>
+<hr />
+<h1 id="linux-简介">Linux 简介</h1>
+<ol type="1">
+<li>Linux 分为内核版本和发行版本。发行版本在内核基础上增加各种功能。在服务器领域使用 redhat，ubuntu 具有图形界面偏向个人应用。</li>
+<li>Linux 严格区分大小写；所有内容以文件形式保存，包括硬件。</li>
+<li>Linux 不靠扩展名区分文件类型，但为使用方便，有一些约定俗成的扩展名。</li>
+</ol>
+<p><strong>安装</strong></p>
+<ol type="1">
+<li>使用虚拟机 VMware 安装 Ubuntu。本机系统可以与虚拟机系统网络通信；可以设定并随时修改虚拟机操作系统的硬件环境。</li>
+<li>格式化的目的是为了写入文件系统：分为等块大小；创建表格记录文件 ID 号、修改时间、权限。</li>
+</ol>
+<h1 id="常用命令">常用命令</h1>
+<h2 id="查询目录">查询目录</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">drwxr-xr-x</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">silencial</th>
+<th style="text-align: center;">silencial</th>
+<th style="text-align: center;">4096</th>
+<th style="text-align: center;">Apr 8 20:00</th>
+<th style="text-align: center;">Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">第一位表示文件类型<br/>（- 文件，d 目录，l 软链接文件）</td>
+<td style="text-align: center;">引用计数</td>
+<td style="text-align: center;">u 所有者</td>
+<td style="text-align: center;">g 所属组</td>
+<td style="text-align: center;">大小</td>
+<td style="text-align: center;">时间</td>
+<td style="text-align: center;">名称</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">之后每三位进行划分表示权限<br/>（u 所有者、g 所属组、o 其他人）<br/>（r 读、w 写、x 执行）</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件处理命令">文件处理命令</h2>
+<h3 id="常见目录">常见目录</h3>
+<ul>
+<li><code>/bin</code> 重要的系统命令</li>
+<li><code>/sbin</code> 重要的系统命令 (一般只有 root 能调用)</li>
+<li><code>/dev</code> 硬件设备文件</li>
+<li><code>/etc</code> 配置文件 (host-specific)</li>
+<li><code>/home</code> 用户主目录</li>
+<li><code>/lib</code> 系统软件库</li>
+<li><code>/opt</code> 可选应用软件</li>
+<li><code>/sys</code> 系统信息和配置</li>
+<li><code>/root</code> 超级用户家目录</li>
+<li><code>/tmp</code> 临时目录，<code>/var/tmp</code> 类似，一般在重启时删除</li>
+<li><code>/usr</code> 只读用户数据
+<ul>
+<li><code>/usr/bin</code> 非重要的系统命令 (普通用户)</li>
+<li><code>usr/sbin</code> 非重要的系统命令 (超级用户)</li>
+<li><code>/usr/local/bin</code> 用户自编译的命令</li>
+</ul></li>
+<li><code>/var</code> 系统 logs 和 caches</li>
+</ul>
+<h3 id="链接命令">链接命令</h3>
+<p>硬链接</p>
+<ul>
+<li>相同的 i 节点和存储 block 块，可以看做是同一个文件</li>
+<li>可通过 i 节点识别</li>
+<li>不能跨分区</li>
+<li>不能针对目录使用</li>
+</ul>
+<p>软链接</p>
+<ul>
+<li>类似 Windows 快捷方式</li>
+<li>软链接拥有自己的 i 节点和 block 块，但数据块中没有实际的文件数据</li>
+<li>lrwxrwxrwx 所有软链接文件</li>
+</ul>
+<p>ln -s [原文件] [目标文件]</p>
+<ul>
+<li>生成链接文件</li>
+<li>-s 创建软链接</li>
+<li><mark>原文件一定要写绝对路径</mark></li>
+</ul>
+<h2 id="关机与重启命令">关机与重启命令</h2>
+<p><code>shutdown [选项] 时间</code>: <mark>最安全，可以正确保存数据</mark></p>
+<ul>
+<li><code>-c</code> 取消前一个关机命令</li>
+<li><code>-h</code> 关机</li>
+<li><code>-r</code> 重启</li>
+<li><code>&amp;</code> 加在最后表示后台执行</li>
+</ul>
+<p><code>logout</code> 退出登录</p>
+<p><code>runlevel</code> 查询当前系统运行级别</p>
+<p>系统运行级别</p>
+<ol start="0" type="1">
+<li>关机</li>
+<li>单用户</li>
+<li>不完全多用户，不含 NFS 服务</li>
+<li>完全多用户</li>
+<li>未分配</li>
+<li>图形界面</li>
+<li>重启</li>
+</ol>
+<h2 id="其他常用命令">其他常用命令</h2>
+<h3 id="查询与自动挂载">查询与自动挂载</h3>
+<ul>
+<li><p>mount</p>
+<p>查询已挂载设备</p></li>
+<li><p>mount -a</p>
+<p>依据配置文件 /etc/fstab 的内容，自动挂载</p></li>
+<li><p>mount [-t 文件系统] [-o 特殊选项] 设备文件名 挂载点</p>
+<p>-t 文件系统：加入文件系统类型来指定挂载的类型，可以 ext3、ext4、iso9660 等文件系统</p>
+<p>-o 特殊选项：可以指定挂载的额外选项</p></li>
+<li><p>mkdir /mnt/cdrom/</p>
+<p>建立挂载点</p></li>
+<li><p>mount -t iso966 /dev/cdrom /mnt/cdrom</p>
+<p>挂载光盘</p></li>
+<li><p>umount 设备文件名或挂载点</p></li>
+<li><p>fdisk -l</p>
+<p>查看 U 盘设备文件名</p></li>
+<li><p>mount -t vfat /dev/sdb1 /mnt/usb/</p></li>
+</ul>
+<p><mark>Linux 默认不支持 NTFS 文件</mark></p>
+<h3 id="用户登录查看命令">用户登录查看命令</h3>
+<ul>
+<li><p>w 用户名</p>
+<p>命令输出：</p>
+<ul>
+<li>USER: 登录的用户名</li>
+<li>TTY: 登录终端</li>
+<li>FROM: 从哪个 IP 地址登录</li>
+<li>LOGIN@: 登录时间</li>
+<li>IDLE: 用户闲置时间</li>
+<li>JCPU: 和该终端连接的所有进程占用的时间。不包括过去的后台作业时间，但包括当前正在运行的后台作业所占用的时间</li>
+<li>PCPU: 当前进程所占用的时间</li>
+<li>WHAT: 当前正在运行的命令</li>
+</ul></li>
+<li><p>who 用户名</p>
+<p>命令输出：</p>
+<ul>
+<li>用户名</li>
+<li>登录终端</li>
+<li>登录时间</li>
+</ul></li>
+<li><p>last</p>
+<p>读取 /var/log/wtmp 文件数据</p>
+<p>查询当前和过去登录的用户信息</p>
+<p>命令输出：</p>
+<ul>
+<li>用户名</li>
+<li>登录终端</li>
+<li>登录 IP</li>
+<li>登录时间</li>
+<li>退出时间</li>
+</ul></li>
+<li><p>lastlog</p>
+<p>读取 /var/log/lastlog 文件内容</p>
+<p>查看所有用户最后一次登录时间</p>
+<p>命令输出：</p>
+<ul>
+<li>用户名</li>
+<li>登录终端</li>
+<li>登录 IP</li>
+<li>最后一次登录时间</li>
+</ul></li>
+</ul>
+<h1 id="shell-基础">Shell 基础</h1>
+<h2 id="shell-概述">Shell 概述</h2>
+<p>Shell 是一个命令行解释器，为用户提供了一个向 Linux 内核发送请求以便运行程序的界面系统级程序，用户可以用 Shell 来启动、挂起、停止甚至是编写一些程序</p>
+<p>Shell 还是一个功能相当强大的编程语言，易编写，易调试，灵活性较强。Shell 是解释执行的脚本语言，在 Shell 中可以直接调用 Linux 系统命令。</p>
+<p>Shell 两种主要语法类型有 Bourne 和 C，这两种语法彼此不兼容。Bourne 家族主要包括 sh、ksh、<mark>Bash</mark>、psh、zsh；C 家族主要包括 csh、tcsh</p>
+<ul>
+<li><p>echo $SHELL</p>
+<p>查看当前在哪个 shell 下</p></li>
+</ul>
+<h2 id="脚本执行方式">脚本执行方式</h2>
+<ul>
+<li><p>echo [选项] [输出内容]</p>
+<p>-e 支持反斜线控制的字符转换</p>
+<p>输出警告音</p>
+</li>
+</ul>
+<p>第一个脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash 必加</span></span><br><span class="line"><span class="comment">#The first program 注释</span></span><br></pre></td></tr></table></figure>
+<p>脚本执行：</p>
+<ul>
+<li><p>赋予执行权限，直接运行</p>
+<p>chmod 755 hello.sh</p>
+<p>./hello.sh</p></li>
+<li><p>通过 Bash 调用执行脚本</p>
+<p>bash hello.sh</p></li>
+</ul>
+<h2 id="bash-的基本功能">Bash 的基本功能</h2>
+<h3 id="命令别名与快捷键">命令别名与快捷键</h3>
+<ul>
+<li><p>alias</p>
+<p>查看系统中所有命令的别名</p></li>
+<li><p>alias 别名=‘原命令’</p>
+<p>设定命令别名</p></li>
+<li><p>vi ~/.bashrc</p>
+<p>写入环境变量配置文件，使别名永久生效</p>
+<p>之后调用 source .bashrc 重新载入配置文件</p></li>
+<li><p>unalias</p>
+<p>删除别名</p></li>
+</ul>
+<p>命令生效顺序：</p>
+<ol type="1">
+<li>执行用绝对路径或相对路径执行的命令</li>
+<li>别名</li>
+<li>Bash 的内部命令</li>
+<li>按照 $PATH 环境变量定义的目录查找顺序找到的第一个命令</li>
+</ol>
+<h3 id="历史命令">历史命令</h3>
+<ul>
+<li><p>history [选项] [历史命令保存文件]</p>
+<p>-c 清空历史命令</p>
+<p>-w 把缓存中的历史命令写入历史命令保存文件 ~/.bash_history</p></li>
+</ul>
+<p>历史命令默认保存 1000 条，可以再环境变量配置文件 /etc/profile 中进行修改</p>
+<ul>
+<li>使用上下箭头调用以前的历史命令</li>
+<li>使用 "!n" 重复执行第 n 条历史命令</li>
+<li>使用 "!!" 重复执行上一条命令</li>
+<li>使用 "!字串" 重复执行最后一条以该字串开头的命令</li>
+</ul>
+<h3 id="输出重定向">输出重定向</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">设备</th>
+<th style="text-align: center;">设备文件名</th>
+<th style="text-align: center;">文件描述符</th>
+<th style="text-align: center;">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">键盘</td>
+<td style="text-align: center;">/dev/stdin</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">标准输入</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">显示器</td>
+<td style="text-align: center;">/dev/stdout</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">标准输出</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">显示器</td>
+<td style="text-align: center;">/dev/stderr</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">标准错误输出</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>标准输出重定向：
+<ul>
+<li>命令 &gt; 文件： 以覆盖的方式，把命令的正确输出输出到指定的文件或设备当中。</li>
+<li>命令 &gt;&gt; 文件：以追加的方式，把命令的正确输出输出到指定的文件或设备当中。</li>
+</ul></li>
+<li>标准错误输出重定向：
+<ul>
+<li>命令 2 &gt; 文件： 以覆盖的方式，把命令的错误输出输出到指定的文件或设备当中。</li>
+<li>命令 2 &gt;&gt; 文件：以追加的方式，把命令的错误输出输出到指定的文件或设备当中。</li>
+</ul></li>
+<li>正确输出和错误输出同时保存：
+<ul>
+<li>命令 &gt; 文件 2 &gt; &amp;1：以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</li>
+<li>命令 &gt;&gt; 文件 2 &gt; &amp;1：以追加的方式，把正确输出和错误输出都保存到同一个文件当中。</li>
+<li>命令 &amp;&gt; 文件：以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</li>
+<li>命令 &amp;&gt;&gt; 文件：以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</li>
+<li>命令 &gt;&gt; 文件 1 2 &gt;&gt; 文件 2：把正确输出追加到文件 1，,错误输出追加到文件 2。</li>
+</ul></li>
+<li>ls &amp;&gt; /dev/null 丢入垃圾站</li>
+</ul>
+<p><mark>输入重定向</mark></p>
+<ul>
+<li><p>wc [选项] [文件名]</p>
+<p>-c 统计字节数</p>
+<p>-w 统计单词数</p>
+<p>-l 统计行数</p></li>
+</ul>
+<p>输入完成后 ctrl + D 统计</p>
+<ul>
+<li>命令 &lt; 文件：把文件作为命令的输入</li>
+<li>命令 &lt;&lt; 标识符：标识符把标识符之间的内容作为命令的输入</li>
+</ul>
+<h1 id="磁盘管理">磁盘管理</h1>
+<h2 id="基本命令">基本命令</h2>
+<ul>
+<li><p>df 查看磁盘分区使用状况</p>
+<p>-l 仅显示本地磁盘(默认)</p>
+<p>-a 显示所有文件系统的磁盘使用情况</p>
+<p>-h 以 1024 进制计算最合适的单位显示磁盘容量</p>
+<p>-H 以 1000 进制计算最合适的单位显示磁盘容量</p>
+<p>-T 显示磁盘分区类型</p>
+<p>-t 显示指定类型文件系统的磁盘分区</p>
+<p>-x 不显示指定类型文件系统的磁盘分区</p></li>
+<li><p>du 统计磁盘上文件大小</p>
+<p>-b 以 byte 为单位统计文件</p>
+<p>-k 以 KB 为单位统计文件</p>
+<p>-m 以 MB 为单位统计文件</p>
+<p>-h 按照 1024 进制以最合适的单位统计文件</p>
+<p>-H 按照 1000 进制以最合适的单位统计文件</p>
+<p>-s 指定统计目标</p></li>
+</ul>
+<h2 id="硬盘分区和格式化">硬盘分区和格式化</h2>
+<p>分区模式之 MBR</p>
+<ul>
+<li>主分区不超过 4 个</li>
+<li>单个分区容量最大 2 TB</li>
+</ul>
+<p>分区模式之 GPT</p>
+<ul>
+<li>主分区个数 128 个</li>
+<li><p>单个分区容量 18 EB</p></li>
+<li>fdisk 进行 MBR 硬盘分区</li>
+<li><p>parted 可以进行两种硬盘分区</p></li>
+<li><p>mkfs.ext3 /dev/sda 格式化</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/101/" rel="tag"><i class="fa fa-tag"></i> 101</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/particle-and-rigid-body-dynamics/" rel="prev" title="Particle and Rigid Body Dynamics">
+                  <i class="fa fa-chevron-left"></i> Particle and Rigid Body Dynamics
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/what-does-it-feel-like-to-invent-math/" rel="next" title="发明新数学是怎样一种体验">
+                  发明新数学是怎样一种体验 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

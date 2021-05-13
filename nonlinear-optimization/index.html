@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="EN553.762 Review. Based on Numerical Optimization Book">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nonlinear Optimization">
+<meta property="og:url" content="https://silencial.github.io/nonlinear-optimization/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="EN553.762 Review. Based on Numerical Optimization Book">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-13T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="JHU">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/nonlinear-optimization/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;nonlinear-optimization&#x2F;&quot;,&quot;path&quot;:&quot;nonlinear-optimization&#x2F;&quot;,&quot;title&quot;:&quot;Nonlinear Optimization&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Nonlinear Optimization | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#constrained-optimization"><span class="nav-number">1.</span> <span class="nav-text">Constrained Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tangent-cone-and-constraint-qualifications"><span class="nav-number">1.1.</span> <span class="nav-text">Tangent Cone and Constraint Qualifications</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-order-optimality-conditions"><span class="nav-number">1.2.</span> <span class="nav-text">First-Order Optimality Conditions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#proof"><span class="nav-number">1.2.1.</span> <span class="nav-text">Proof</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#second-order-conditions"><span class="nav-number">1.3.</span> <span class="nav-text">Second-Order Conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#geometric-viewpoint"><span class="nav-number">1.4.</span> <span class="nav-text">Geometric Viewpoint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#duality"><span class="nav-number">1.5.</span> <span class="nav-text">Duality</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-programming"><span class="nav-number">1.5.1.</span> <span class="nav-text">Linear Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quadratic-programming"><span class="nav-number">1.5.2.</span> <span class="nav-text">Quadratic Programming</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#penalty-and-augmented-lagrangian-methods"><span class="nav-number">2.</span> <span class="nav-text">Penalty and Augmented Lagrangian Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#quadratic-penalty-method"><span class="nav-number">2.1.</span> <span class="nav-text">Quadratic Penalty Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonsmooth-penalty-function"><span class="nav-number">2.2.</span> <span class="nav-text">Nonsmooth Penalty Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#augmented-lagrangian-method"><span class="nav-number">2.3.</span> <span class="nav-text">Augmented Lagrangian Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#practical-augmented-lagrangian-method"><span class="nav-number">2.4.</span> <span class="nav-text">Practical Augmented Lagrangian Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quadratic-programming-1"><span class="nav-number">3.</span> <span class="nav-text">Quadratic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equality-constraints"><span class="nav-number">3.1.</span> <span class="nav-text">Equality-Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inequality-constraints"><span class="nav-number">3.2.</span> <span class="nav-text">Inequality-Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#active-set-methods"><span class="nav-number">3.3.</span> <span class="nav-text">Active-Set Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#initial-feasible-point"><span class="nav-number">3.3.1.</span> <span class="nav-text">Initial Feasible Point</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sequential-quadratic-programming"><span class="nav-number">4.</span> <span class="nav-text">Sequential Quadratic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#local-sqp-method"><span class="nav-number">4.1.</span> <span class="nav-text">Local SQP Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sqp-framework"><span class="nav-number">4.1.1.</span> <span class="nav-text">SQP Framework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inequality-constraints-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">Inequality Constraints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithmic-development"><span class="nav-number">4.2.</span> <span class="nav-text">Algorithmic Development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#handling-inconsistent-linearizations"><span class="nav-number">4.2.1.</span> <span class="nav-text">Handling Inconsistent Linearizations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#merit-functions"><span class="nav-number">4.2.2.</span> <span class="nav-text">Merit Functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trust-region-sqp-methods"><span class="nav-number">4.3.</span> <span class="nav-text">Trust-Region SQP Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relaxation-method"><span class="nav-number">4.3.1.</span> <span class="nav-text">Relaxation Method</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/nonlinear-optimization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nonlinear Optimization
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-13T00:00:00+00:00">2021-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>23k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>58 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>EN553.762 Review. Based on <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.csie.ntu.edu.tw/~r97002/temp/num_optimization.pdf">Numerical Optimization Book</a></p>
+<span id="more"></span>
+<hr />
+<h1 id="constrained-optimization">Constrained Optimization</h1>
+<p><span class="math display">\[
+\begin{equation}\displaylines{
+\min_{x \in \mathbb{R}^n} f(x) \qquad \text{s.t. }
+\begin{cases}
+c_i(x) = 0, \quad i \in \mathcal{E} \\
+c_i(x) \ge 0, \quad i \in \mathcal{I}
+\end{cases}
+}
+\label{con-optim}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(f\)</span> and <span class="math inline">\(c_i\)</span> are all smooth, real-valued functions, and <span class="math inline">\(\mathcal{E}\)</span> and <span class="math inline">\(\mathcal{I}\)</span> are two finite sets of indices.</p>
+<p><strong>Definition</strong>: <strong>feasible set</strong> <span class="math inline">\(\Omega\)</span> <span class="math display">\[
+\displaylines{\Omega=\left\{x \mid c_{i}(x)=0, \quad i \in \mathcal{E} ; \quad c_{i}(x) \geq 0, \quad i \in \mathcal{I}\right\}
+}
+\]</span> <strong>Definition</strong>: Given <span class="math inline">\(x\in\Omega\)</span>, the <strong>active set</strong> <span class="math inline">\(\mathcal{A}(x)\)</span> is <span class="math display">\[
+\displaylines{\mathcal{A}(x)=\mathcal{E} \cup\left\{i \in \mathcal{I} \mid c_{i}(x)=0\right\}
+}
+\]</span></p>
+<h2 id="tangent-cone-and-constraint-qualifications">Tangent Cone and Constraint Qualifications</h2>
+<p><strong>Definition</strong>: The vector <span class="math inline">\(d\)</span> is said to be a <strong>tangent vector</strong> to <span class="math inline">\(\Omega\)</span> at a point <span class="math inline">\(x\)</span> if there are a feasible sequence <span class="math inline">\(\{z_k\}\)</span> approaching <span class="math inline">\(x\)</span> and a sequence of positive scalars <span class="math inline">\(\{t_k\}\)</span> approaching <span class="math inline">\(0\)</span> s.t. <span class="math display">\[
+\displaylines{\lim _{k \rightarrow \infty} \frac{z_{k}-x}{t_{k}}=d
+}
+\]</span> The set of all tangents to <span class="math inline">\(\Omega\)</span> at <span class="math inline">\(x^*\)</span> is called the <strong>tangent cone</strong> and is denoted by <span class="math inline">\(T_\Omega(x^*)\)</span></p>
+<p><strong>Definition</strong>: Given <span class="math inline">\(x\in\Omega\)</span> and <span class="math inline">\(\mathcal{A}(x)\)</span>, the set of <strong>linearized feasible directions</strong> <span class="math inline">\(\mathcal{F}(x)\)</span> is <span class="math display">\[
+\displaylines{\mathcal{F}(x)=\left\{
+d \mid \begin{array}{l}
+d^{T} \nabla c_{i}(x)=0, &amp;  \forall i \in \mathcal{E} \\
+d^{T} \nabla c_{i}(x) \geq 0, &amp; \forall i \in \mathcal{A}(x) \cap \mathcal{I}
+\end{array}
+\right\}
+}
+\]</span> <strong>Definition</strong>: Given <span class="math inline">\(x\)</span> and <span class="math inline">\(\mathcal{A}(x)\)</span>, the <strong>linear independence constraint qualification (LICQ)</strong> holds if the set of active constraint gradients <span class="math inline">\(\{\nabla c_i(x), i\in\mathcal{A}(x)\}\)</span> is linearly independent.</p>
+<h2 id="first-order-optimality-conditions">First-Order Optimality Conditions</h2>
+<p>Define the Lagrangian function <span class="math display">\[
+\displaylines{\mathcal{L}(x, \lambda)=f(x)-\sum_{i \in \mathcal{E} \cup \mathcal{I}} \lambda_{i} c_{i}(x)
+}
+\]</span> and the first-order necessary conditions (a.k.a. the KKT conditions) are <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_{x} \mathcal{L}\left(x^{*}, \lambda^{*}\right) &amp;=0 \\
+c_{i}\left(x^{*}\right) &amp;=0, \quad \forall i \in \mathcal{E} \\
+c_{i}\left(x^{*}\right) &amp; \geq 0, \quad \forall i \in \mathcal{I} \\
+\lambda_{i}^{*} &amp; \geq 0, \quad \forall i \in \mathcal{I} \\
+\lambda_{i}^{*} c_{i}\left(x^{*}\right) &amp;=0, \quad \forall i \in \mathcal{E} \cup \mathcal{I}
+\end{aligned}
+}
+\]</span></p>
+<h3 id="proof">Proof</h3>
+<p><strong>Lemma</strong>: Let <span class="math inline">\(x^*\)</span> be a feasible point. The following two statements are true</p>
+<ol type="1">
+<li><span class="math inline">\(T_{\Omega}\left(x^{*}\right) \subset \mathcal{F}\left(x^{*}\right)\)</span></li>
+<li>If the LICQ conditions is satisfied at <span class="math inline">\(x^*\)</span>, then <span class="math inline">\(\mathcal{F}\left(x^{*}\right) = T_{\Omega}\left(x^{*}\right)\)</span></li>
+</ol>
+<p><strong>Farkas' lemma</strong>: Consider the cone <span class="math inline">\(K=\{By + Cw \mid y\ge 0\}\)</span>, given any <span class="math inline">\(g\in \mathbb{R}^n\)</span>, we have either</p>
+<ol type="1">
+<li><span class="math inline">\(g\in K\)</span></li>
+<li><span class="math inline">\(\exist d \in \mathbb{R}^n\)</span> s.t. <span class="math inline">\(g^T d &lt; 0, \quad B^T d\ge 0, \quad C^Td = 0\)</span></li>
+</ol>
+<h2 id="second-order-conditions">Second-Order Conditions</h2>
+<p><strong>Definition</strong>: the <strong>critical cone</strong> <span class="math inline">\(\mathcal{C}(x^*, \lambda^*)\)</span> is <span class="math display">\[
+\displaylines{\mathcal{C}\left(x^{*}, \lambda^{*}\right)=\left\{w \in \mathcal{F}\left(x^{*}\right) \mid \nabla c_{i}\left(x^{*}\right)^{T} w=0, \text { all } i \in \mathcal{A}\left(x^{*}\right) \cap \mathcal{I} \text { with } \lambda_{i}^{*}&gt;0\right\}
+}
+\]</span> Second-order necessary conditions: if <span class="math inline">\(x^*\)</span> is a local solution and the LICQ condition is satisfied, then <span class="math display">\[
+\displaylines{w^{T} \nabla_{x x}^{2} \mathcal{L}\left(x^{*}, \lambda^{*}\right) w \geq 0, \quad \forall w \in \mathcal{C}\left(x^{*}, \lambda^{*}\right)
+}
+\]</span> Second-order sufficient conditions: <span class="math display">\[
+\displaylines{w^{T} \nabla_{x x}^{2} \mathcal{L}\left(x^{*}, \lambda^{*}\right) w &gt; 0, \quad \forall w \in \mathcal{C}\left(x^{*}, \lambda^{*}\right), w\ne 0
+}
+\]</span></p>
+<h2 id="geometric-viewpoint">Geometric Viewpoint</h2>
+<p><strong>Definition</strong>: The <strong>normal cone</strong> to the set <span class="math inline">\(\Omega\)</span> at the point <span class="math inline">\(x\in \Omega\)</span> is <span class="math display">\[
+\displaylines{N_{\Omega}(x)=\left\{v \mid v^{T} w \leq 0, \ \forall w \in T_{\Omega}(x)\right\}
+}
+\]</span> <strong>Theorem</strong>: Suppose <span class="math inline">\(x^*\)</span> is a local minimizer of the following problem: <span class="math display">\[
+\displaylines{\min f(x) \qquad \text{s.t. } x\in\Omega
+}
+\]</span> then <span class="math inline">\(-\nabla f(x^*) \in N_\Omega(x^*)\)</span></p>
+<p><strong>Lemma</strong>: Suppose the LICQ holds at <span class="math inline">\(x^*\)</span>, then <span class="math inline">\(N_\Omega(x^*) = -N\)</span>, where <span class="math inline">\(N\)</span> is defined as <span class="math display">\[
+\displaylines{N=\left\{\sum_{i \in \mathcal{A}\left(x^{*}\right)} \lambda_{i} \nabla c_{i}\left(x^{*}\right), \quad \lambda_{i} \geq 0 \text { for } i \in \mathcal{A}\left(x^{*}\right) \cap \mathcal{I}\right\}
+}
+\]</span></p>
+<h2 id="duality">Duality</h2>
+<p>Consider the problem with only inequality constraints: <span class="math display">\[
+\displaylines{\min_{x\in\mathbb{R}^n} f(x) \qquad \text{s.t. } c(x) \ge 0 \\
+c(x) \triangleq (c_1(x), \dots, c_m(x))^T
+}
+\]</span> <strong>Definition</strong>: The <strong>dual problem</strong> to the above <strong>primal problem</strong> is <span class="math display">\[
+\displaylines{\max_{\lambda\in\mathbb{R}^n} q(\lambda) \qquad \text{s.t. } \lambda \ge 0 \\
+q(\lambda) \triangleq \inf_x \mathcal{L}(x, \lambda)
+}
+\]</span> <strong>Theorem</strong>: <span class="math inline">\(q\)</span> is concave and its domain <span class="math inline">\(D=\{\lambda \mid q(\lambda) &gt; -\infty \}\)</span> is convex</p>
+<p><strong>Theorem</strong>: (Weak Duality) For any feasible <span class="math inline">\(x\)</span> of the primal problem and any <span class="math inline">\(\lambda \ge 0\)</span>, we have <span class="math inline">\(q(\lambda) \le f(x)\)</span></p>
+<p><strong>Theorem</strong>: Suppose <span class="math inline">\(x\)</span> is a solution of the primal problem and that <span class="math inline">\(f\)</span> and <span class="math inline">\(-c_i\)</span> are convex and differentiable. Then any <span class="math inline">\(\lambda\)</span> for which <span class="math inline">\((x,\lambda)\)</span> satisfies the KKT conditions is a solution of the dual problem</p>
+<h3 id="linear-programming">Linear Programming</h3>
+<p>Linear programming and its dual: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_{x} c^T x &amp;&amp;\text{s.t } Ax - b \ge 0 \\
+&amp;\max_{\lambda} b^T \lambda &amp;&amp;\text{s.t. } A^T\lambda = c,\ \lambda\ge 0
+\end{aligned}
+}
+\]</span> Another form: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\max_{x} c^T x &amp;&amp;\text{s.t. } A x - b\le 0, \ x\ge 0 \\
+&amp;\min_{\lambda} b^T\lambda &amp;&amp;\text{s.t. } A^T \lambda - c\ge 0, \ \lambda\ge 0 \\
+\end{aligned}
+}
+\]</span> <strong>Theorem</strong>:</p>
+<ol type="1">
+<li>If either primal or dual has a (finite) solution, then so does the other, and the objective values are equal</li>
+<li>If either primal or dual is unbounded, the the other problem is infeasible</li>
+</ol>
+<h3 id="quadratic-programming">Quadratic Programming</h3>
+<p>Primal problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_x &amp;&amp;\frac{1}{2}x^TGx + c^Tx \\
+&amp;\text{ s.t. } &amp;&amp;Ax-b\ge 0
+\end{aligned}
+}
+\]</span> Dual problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\max _{(\lambda, x)} &amp;&amp;\frac{1}{2} x^{T} G x+c^{T} x-\lambda^{T}(A x-b) \\
+&amp;\text { s.t. } &amp;&amp;G x+c-A^{T} \lambda=0, \quad \lambda \geq 0
+\end{aligned}
+}
+\]</span></p>
+<h1 id="penalty-and-augmented-lagrangian-methods">Penalty and Augmented Lagrangian Methods</h1>
+<h2 id="quadratic-penalty-method">Quadratic Penalty Method</h2>
+<p>Consider optimization problem with only equality constraints <span class="math display">\[
+\begin{equation}\displaylines{
+\min_x f(x) \quad \text{s.t. } c_i(x) = 0, \quad i\in \mathcal{E}
+}
+\label{equ-con}
+\end{equation}
+\]</span> The quadratic penalty function <span class="math inline">\(Q(x; \mu)\)</span> for this formulation is <span class="math display">\[
+\begin{equation}\displaylines{
+Q(x; \mu) = f(x) + \frac{\mu}{2}\sum_{i\in\mathcal{E}} c_i^2(x)
+}
+\label{qua}
+\end{equation}
+\]</span> <strong>Algorithm</strong>:</p>
+<ol type="1">
+<li>Choose <span class="math inline">\(\mu_0\)</span>, starting point <span class="math inline">\(x_0^s\)</span> and nonnegative sequence <span class="math inline">\(\{\tau_k\}\)</span> with <span class="math inline">\(\tau_k \to 0\)</span></li>
+<li>For <span class="math inline">\(k=0,1,2,\dots\)</span>
+<ol type="1">
+<li>Find <span class="math inline">\(x_k \leftarrow \min Q(\cdot;\mu_k)\)</span>, starting at <span class="math inline">\(x_k^s\)</span> and terminating when <span class="math inline">\(\|\nabla_x Q(x_k;\mu_k)\| \le \tau_k\)</span></li>
+<li>Return <span class="math inline">\(x_k\)</span> if final convergence test is satisfied</li>
+<li>Otherwise choose new <span class="math inline">\(\mu_{k+1} &gt; \mu_k\)</span>, e.g. <span class="math inline">\(\mu_{k+1} = 2\mu_k\)</span> and new starting point <span class="math inline">\(x_{k+1}^s = x_k\)</span></li>
+</ol></li>
+</ol>
+<p><strong>Theorem</strong>: Suppose <span class="math inline">\(x_k\)</span> is the exact global minimizer of <span class="math inline">\(Q(x;\mu_k)\)</span> defined by <span class="math inline">\(\eqref{qua}\)</span>, and that <span class="math inline">\(\mu_k \to \infty\)</span>. Then every limit point <span class="math inline">\(x^*\)</span> of the sequence <span class="math inline">\(\{x_k\}\)</span> is a global solution of problem <span class="math inline">\(\eqref{equ-con}\)</span></p>
+<p><strong>Theorem</strong>: Suppose in the general algorithmic framework we have <span class="math inline">\(\tau_k\to 0\)</span> and <span class="math inline">\(\mu_k\to \infty\)</span>. If <span class="math inline">\(x^*\)</span> is a limit point of <span class="math inline">\(\{x_k\}\)</span> then</p>
+<ol type="1">
+<li>If <span class="math inline">\(x^*\)</span> is infeasible, then <span class="math inline">\(x^*\)</span> is a stationary point of <span class="math inline">\(\|c(x)\|^2\)</span></li>
+<li>If <span class="math inline">\(x^*\)</span> is feasible and <span class="math inline">\(\nabla c_i(x^*)\)</span> are linearly independent, then <span class="math inline">\(x^*\)</span> is a KKT point for <span class="math inline">\(\eqref{equ-con}\)</span> with some <span class="math inline">\(\lambda^*\)</span> s.t. <span class="math inline">\(\lim_{k\to\infty} -\mu_k c_i(x_k) = \lambda_i^*\)</span></li>
+</ol>
+<h2 id="nonsmooth-penalty-function">Nonsmooth Penalty Function</h2>
+<p>For inequality constraints, we can use the <span class="math inline">\(\ell_1\)</span> penalty function defined by <span class="math display">\[
+\displaylines{\phi_{1}(x ; \mu)=f(x)+\mu \sum_{i \in \mathcal{E}}\left|c_{i}(x)\right|+\mu \sum_{i \in \mathcal{I}}\left[c_{i}(x)\right]^{-}
+}
+\]</span> <strong>Theorem</strong>: Suppose <span class="math inline">\(x^*\)</span> is a strict local solution of <span class="math inline">\(\eqref{con-optim}\)</span> at which the KKT conditions are satisfied, with Lagrange multipliers <span class="math inline">\(\lambda_i^*\)</span>. Then <span class="math inline">\(x^*\)</span> is a local minimizer of <span class="math inline">\(\phi_1(x;\mu)\)</span> for all <span class="math inline">\(\mu &gt; \mu^*\)</span>, where <span class="math display">\[
+\displaylines{\mu^* = \|\lambda^*\|_\infty = \max_{i\in \mathcal{E} \cup \mathcal{I}} |\lambda_i^*|
+}
+\]</span> If, in addition, the second-order sufficient conditions hold and <span class="math inline">\(\mu&gt;\mu^*\)</span>, then <span class="math inline">\(x^*\)</span> is a strict local minimizer of <span class="math inline">\(\phi_1(x;\mu)\)</span></p>
+<h2 id="augmented-lagrangian-method">Augmented Lagrangian Method</h2>
+<p>In the quadratic penalty method, the approximate minimizer <span class="math inline">\(x_k\)</span> of <span class="math inline">\(Q(x;\mu_k)\)</span> might not satisfy the feasibility conditions <span class="math inline">\(c_i(x) = 0\)</span>. The are perturbed so that <span class="math display">\[
+\displaylines{c_i(x_k) \approx -\lambda_i^*/\mu_k, \quad \forall i \in \mathcal{E}
+}
+\]</span> In order to make the minimizer more nearly satisfy the equality constraints, we defined the augmented Lagrangian function which is a combination of the Lagrangian and the quadratic penalty function <span class="math display">\[
+\displaylines{\mathcal{L}_{A}(x, \lambda ; \mu) \triangleq f(x)-\sum_{i \in \mathcal{E}} \lambda_{i} c_{i}(x)+\frac{\mu}{2} \sum_{i \in \mathcal{E}} c_{i}^{2}(x)
+}
+\]</span> During the <span class="math inline">\(k\)</span>-th iteration, <span class="math inline">\(\lambda^k\)</span> and <span class="math inline">\(\mu_k\)</span> are fixed and the minimization is performed only on <span class="math inline">\(x\)</span> <span class="math display">\[
+\displaylines{\nabla_x \mathcal{L}_A = \nabla f(x_k) - \sum_{i\in\mathcal{E}}[\lambda_i^k - \mu_k c_i(x_k)] \nabla c_i(x_k)
+}
+\]</span> After finding the approximate minimizer <span class="math inline">\(x_k\)</span> we can update <span class="math inline">\(\lambda_i^{k+1} = \lambda_i^k - \mu_k c_i(x_k)\)</span></p>
+<p><strong>Algorithm</strong>:</p>
+<ol type="1">
+<li>Choose <span class="math inline">\(\mu_0 &gt; 0\)</span>, tolerance <span class="math inline">\(\tau_0 &gt; 0\)</span>, starting point <span class="math inline">\(x_0^s\)</span> and <span class="math inline">\(\lambda^0\)</span></li>
+<li>For <span class="math inline">\(k=0,1,2,\dots\)</span>
+<ol type="1">
+<li>Find <span class="math inline">\(x_k \leftarrow \min \mathcal{L}_A(\cdot, \lambda^k;\mu_k)\)</span>, starting at <span class="math inline">\(x_k^s\)</span> and terminating when <span class="math inline">\(\|\nabla_x \mathcal{L}_A(x_k, \lambda^k;\mu_k)\| \le \tau_k\)</span></li>
+<li>Return <span class="math inline">\(x_k\)</span> if final convergence test is satisfied</li>
+<li>Otherwise update Lagrange multipliers <span class="math inline">\(\lambda^{k+1}=\lambda^k - \mu_k c(x_k)\)</span>, choose new penalty parameter <span class="math inline">\(\mu_{k+1} \ge \mu_k\)</span>, new tolerance <span class="math inline">\(\tau_{k+1}\)</span> and new starting point <span class="math inline">\(x_{k+1}^s = x_k\)</span></li>
+</ol></li>
+</ol>
+<p><strong>Theorem</strong>: Suppose <span class="math inline">\(x^*\)</span> is a local solution of <span class="math inline">\(\eqref{equ-con}\)</span> at which the LICQ is satisfied, and the second-order sufficient conditions are satisfied for <span class="math inline">\(\lambda^*\)</span>. Then there is a threshold value <span class="math inline">\(\bar{\mu}\)</span> s.t. for all <span class="math inline">\(\mu\ge \bar{\mu}\)</span>, <span class="math inline">\(x^*\)</span> is a strict local minimizer of <span class="math inline">\(\mathcal{L}_A(x, \lambda^*; \mu)\)</span></p>
+<h2 id="practical-augmented-lagrangian-method">Practical Augmented Lagrangian Method</h2>
+<p>Given inequality constraints, we can convert it to equality constraints and bound constraints by introducing slack variables <span class="math inline">\(s_i\)</span> <span class="math display">\[
+\displaylines{c_i(x) - s_i = 0, \quad s_i \ge 0, \quad \forall i\in\mathcal{I}
+}
+\]</span> By incorporating <span class="math inline">\(s_i\)</span> into <span class="math inline">\(x\)</span> and redefining <span class="math inline">\(c_i\)</span> accordingly, <span class="math inline">\(\eqref{con-optim}\)</span> can be written as <span class="math display">\[
+\displaylines{\min_{x \in \mathbb{R}^n} f(x) \qquad \text{s.t. }
+\begin{cases}
+c_i(x) = 0 \\
+l\le x\le u
+\end{cases}
+}
+\]</span> And the subproblem during each iteration becomes <span class="math display">\[
+\begin{equation}\displaylines{
+\min_x \mathcal{L}_A(x,\lambda;\mu)\qquad \text{s.t. } l\le x\le u
+}
+\label{sub-lag}
+\end{equation}
+\]</span> An efficient technique for solving the nonlinear program with bound constraints is the gradient projection method. The KKT conditions for <span class="math inline">\(\eqref{sub-lag}\)</span> are <span class="math display">\[
+\displaylines{x-P\left(x-\nabla_{x} \mathcal{L}_{A}(x, \lambda ; \mu), l, u\right)=0
+}
+\]</span> where <span class="math inline">\(P(g,l,u)\)</span> is the projection of the vector <span class="math inline">\(g\)</span> onto the rectangular box <span class="math inline">\([l, u]\)</span> defined as <span class="math display">\[
+\displaylines{P(g, l, u)_{i}=\begin{cases}
+l_{i} &amp; \text { if } g_{i} \le l_{i} \\
+g_{i} &amp; \text { if } g_{i} \in\left(l_{i}, u_{i}\right) \\
+u_{i} &amp; \text { if } g_{i} \ge u_{i}
+\end{cases}
+}
+\]</span></p>
+<h1 id="quadratic-programming-1">Quadratic Programming</h1>
+<p><span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_{x} &amp;&amp; \frac{1}{2} x^{T} G x+x^{T} c \\
+&amp;\text{ s.t. } &amp;&amp; a_{i}^{T} x=b_{i}, \quad i \in \mathcal{E} \\
+&amp; &amp;&amp; a_{i}^{T} x \geq b_{i}, \quad i \in \mathcal{I}
+\end{aligned}
+}
+\label{qp}
+\end{equation}
+\]</span></p>
+<p>If <span class="math inline">\(G\in\mathbb{S}_+\)</span>, then it is a convex QP, and the difficulty in solving this problem is similar to a linear program.</p>
+<h2 id="equality-constraints">Equality-Constraints</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_{x} &amp;&amp; \frac{1}{2} x^{T} G x+x^{T} c \\
+&amp;\text{ s.t. } &amp;&amp; Ax = b
+\end{aligned}
+}
+\]</span></p>
+<p>Where <span class="math inline">\(A\)</span> is the <span class="math inline">\(m\times n\)</span> Jacobian of constrains (<span class="math inline">\(m\le n\)</span>). Assume <span class="math inline">\(A\)</span> has full row rank.</p>
+<p>The KKT conditions are <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{bmatrix}
+G &amp; -A^T \\
+A &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+x^* \\ \lambda^*
+\end{bmatrix} =
+\begin{bmatrix}
+-c \\ b
+\end{bmatrix}
+}
+\label{qp-kkt}
+\end{equation}
+\]</span> By expressing <span class="math inline">\(x^* = x + p\)</span> where <span class="math inline">\(x\)</span> is some estimate of the solution, then the KKT conditions become <span class="math display">\[
+\displaylines{\begin{bmatrix}
+G &amp; A^T \\
+A &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+-p \\ \lambda^*
+\end{bmatrix} =
+\begin{bmatrix}
+c + Gx \\ Ax - b
+\end{bmatrix}
+}
+\]</span> The matrix in this equation is called the KKT matrix.</p>
+<p><strong>Theorem</strong>: Let <span class="math inline">\(Z\)</span> be the <span class="math inline">\(n\times(n-m)\)</span> matrix whose columns are a basis for the null space of <span class="math inline">\(A\)</span>. If <span class="math inline">\(A\)</span> has full row rank and the reduced-Hessian matrix <span class="math inline">\(Z^TGZ\)</span> is P.D., then the KKT matrix is nonsingular. Further the solution of <span class="math inline">\(\eqref{qp-kkt}\)</span> is the unique global solution of <span class="math inline">\(\eqref{qp}\)</span></p>
+<h2 id="inequality-constraints">Inequality-Constraints</h2>
+<p>For problem <span class="math inline">\(\eqref{qp}\)</span>, we can define the active set as <span class="math display">\[
+\displaylines{\mathcal{A}(x^*) =\{i\in\mathcal{E}\cup\mathcal{I} \mid a_i^T x^* = b_i \}
+}
+\]</span> and the KKT conditions are <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+G x^{*}+c-\sum_{i \in \mathcal{A}\left(x^{*}\right)} \lambda_{i}^{*} a_{i} &amp;=0 &amp; &amp; \\
+a_{i}^{T} x^{*} &amp;=b_{i} &amp; &amp; \forall i \in \mathcal{A}\left(x^{*}\right) \\
+a_{i}^{T} x^{*} &amp; \geq b_{i} &amp; &amp; \forall i \in \mathcal{I} \backslash \mathcal{A}\left(x^{*}\right) \\
+\lambda_{i}^{*} &amp; \geq 0 &amp; &amp; \forall i \in \mathcal{I} \cap \mathcal{A}\left(x^{*}\right)
+\end{aligned}
+}
+\label{qp-kkt-general}
+\end{equation}
+\]</span> <strong>Theorem</strong>: If <span class="math inline">\(x^*\)</span> satisfies the KKT conditions for some <span class="math inline">\(\lambda_i^*, i\in\mathcal{A}(x^*)\)</span>, and <span class="math inline">\(G\)</span> is P.S.D., then <span class="math inline">\(x^*\)</span> is a global solution of <span class="math inline">\(\eqref{qp}\)</span></p>
+<h2 id="active-set-methods">Active-Set Methods</h2>
+<p>Assume <span class="math inline">\(G\)</span> is P.S.D. Let <span class="math inline">\(q(x) = \frac{1}{2} x^{T} G x+x^{T} c\)</span>. Define the working set <span class="math inline">\(\mathcal{W}\)</span> to be some of the inequality constraints and all the equality constraints.</p>
+<p>Given <span class="math inline">\(x_k\)</span> and the working set <span class="math inline">\(\mathcal{W}_k\)</span>, first check whether <span class="math inline">\(x_k\)</span> minimizes <span class="math inline">\(q\)</span> in the subspace defined by the working set. If not, compute a step <span class="math inline">\(p\)</span> by solving the subproblem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_p &amp;&amp; q(x_k + p) \\
+&amp;\text{ s.t. } &amp;&amp; a_i^Tp = 0, \quad i\in\mathcal{W}_k
+\end{aligned}
+}
+\]</span> which is equivalent to <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_p &amp;&amp; \frac{1}{2}p^TGp + g_k^T p \\
+&amp;\text{ s.t. } &amp;&amp; a_i^Tp = 0, \quad i\in\mathcal{W}_k
+\end{aligned}
+}
+\label{qp-sub}
+\end{equation}
+\]</span> where <span class="math inline">\(g_k = G x_k + c\)</span></p>
+<p>If the optimal <span class="math inline">\(p_k\)</span> is nonzero, we need to compute a largest step length <span class="math inline">\(\alpha_k \in [0,1]\)</span> s.t. <span class="math inline">\(x_{k+1}=x_k + \alpha_k p_k\)</span> satisfies all constraints: <span class="math display">\[
+\begin{equation}\displaylines{
+\alpha_k = \min(1, \min_{i\notin\mathcal{W}_k,\ a_i^Tp_k &lt; 0} \frac{b_i-a_i^T x_k}{a_i^T p_k})
+}
+\label{alpha}
+\end{equation}
+\]</span> If <span class="math inline">\(\alpha_k&lt;1\)</span>, that means the step along <span class="math inline">\(p_k\)</span> was blocked by some constraint not in <span class="math inline">\(\mathcal{W}_k\)</span>, so we construct <span class="math inline">\(\mathcal{W}_{k+1}\)</span> by adding one of the blocking constraints to <span class="math inline">\(\mathcal{W}_k\)</span>.</p>
+<p>Continue the iterations until the subproblem has the solution <span class="math inline">\(p=0\)</span>. Then from <span class="math inline">\(\eqref{qp-kkt}\)</span> we have <span class="math display">\[
+\begin{equation}\displaylines{
+\sum_{i \in \hat{\mathcal{W}}} a_{i} \hat{\lambda}_{i}=g=G \hat{x}+c
+}
+\label{multiplier}
+\end{equation}
+\]</span> for some <span class="math inline">\(\hat{\lambda}_i,\ i\in\hat{\mathcal{W}}\)</span>. Define the multipliers not in the working set to be zero. Then the first three KKT conditions <span class="math inline">\(\eqref{qp-kkt-general}\)</span> all satisfied.</p>
+<p>If all the multipliers with indices <span class="math inline">\(i\in \hat{\mathcal{W}} \cap \mathcal{I}\)</span> are nonnegative , then <span class="math inline">\(\hat{x}\)</span> is the global solution of <span class="math inline">\(\eqref{qp}\)</span>. If one or more of the multipliers is negative, then we must remove the corresponding indices from the working set and continue the iteration.</p>
+<p><strong>Theorem</strong>: Suppose the point <span class="math inline">\(\hat{x}\)</span> satisfies the KKT conditions for the equality-constrained subproblem with working set <span class="math inline">\(\hat{\mathcal{W}}\)</span>. Suppose, too, that the <span class="math inline">\(a_i, \ i\in\hat{\mathcal{W}}\)</span> are linearly independent and there is an index <span class="math inline">\(j\in\hat{\mathcal{W}}\)</span> s.t. <span class="math inline">\(\hat{\lambda}_j &lt; 0\)</span>. Let <span class="math inline">\(p\)</span> be the solution obtained by dropping the constraint <span class="math inline">\(j\)</span> from the original problem: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_p &amp;&amp; \frac{1}{2}p^TGp + g_k^T p \\
+&amp;\text{ s.t. } &amp;&amp; a_i^Tp = 0, \quad i\in\mathcal{W}_k,\ i\ne j
+\end{aligned}
+}
+\label{drop}
+\end{equation}
+\]</span> Then <span class="math inline">\(p\)</span> is a feasible direction for constraint <span class="math inline">\(j\)</span>, that is, <span class="math inline">\(a_j^Tp \ge 0\)</span>. Moreover, if <span class="math inline">\(p\)</span> satisfies second-order sufficient conditions for <span class="math inline">\(\eqref{drop}\)</span>, then <span class="math inline">\(a_j^T p &gt; 0\)</span>, and <span class="math inline">\(p\)</span> is a descent direction for <span class="math inline">\(q\)</span>.</p>
+<p><strong>Theorem</strong>: Suppose that the solution <span class="math inline">\(p_k\)</span> of <span class="math inline">\(\eqref{qp-sub}\)</span> is nonzero and satisfies the second-order sufficient conditions for that problem. Then <span class="math inline">\(q\)</span> is strictly decreasing along the direction of <span class="math inline">\(p_k\)</span></p>
+<p><strong>Algorithm</strong>:</p>
+<ol type="1">
+<li>Compute a feasible starting point <span class="math inline">\(x_0\)</span> and set <span class="math inline">\(\mathcal{W}_0\)</span> to be subset of the active constraints at <span class="math inline">\(x_0\)</span></li>
+<li>For <span class="math inline">\(k=0,1,2,\dots\)</span>
+<ol type="1">
+<li>Solve <span class="math inline">\(\eqref{qp-sub}\)</span> to find <span class="math inline">\(p_k\)</span></li>
+<li>If <span class="math inline">\(p_k = 0\)</span>
+<ol type="1">
+<li>Compute Lagrange multipliers <span class="math inline">\(\hat{\lambda}_i\)</span> that satisfy <span class="math inline">\(\eqref{multiplier}\)</span></li>
+<li>Return <span class="math inline">\(x_k\)</span> if <span class="math inline">\(\hat{\lambda}_i \ge 0\)</span> for all <span class="math inline">\(i\in \hat{\mathcal{W}} \cap \mathcal{I}\)</span></li>
+<li>Otherwise find <span class="math inline">\(j=\arg\min_{j\in \hat{\mathcal{W}} \cap \mathcal{I}} \hat{\lambda}_j\)</span> and update <span class="math inline">\(\mathcal{W}_{k+1} = \mathcal{W}_k \setminus \{j\}\)</span>, <span class="math inline">\(x_{k+1} \leftarrow x_k\)</span></li>
+</ol></li>
+<li>Else
+<ol type="1">
+<li>Compute <span class="math inline">\(\alpha_k\)</span> from <span class="math inline">\(\eqref{alpha}\)</span> and update <span class="math inline">\(x_{k+1} \leftarrow x_k + \alpha_k p_k\)</span></li>
+<li>Add blocking constraints to <span class="math inline">\(\mathcal{W}_k\)</span> to obtain <span class="math inline">\(\mathcal{W}_{k+1}\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<h3 id="initial-feasible-point">Initial Feasible Point</h3>
+<p>We can determined the initial feasible point <span class="math inline">\(\tilde{x}\)</span> by solving the linear program: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp; \min _{(x, z)} &amp;&amp; e^{T} z &amp; &amp; \\
+&amp;\text { s.t. } &amp;&amp; a_{i}^{T} x+\gamma_{i} z_{i} =b_{i}, &amp; i \in \mathcal{E} \\
+&amp; &amp;&amp; a_{i}^{T} x+\gamma_{i} z_{i}  \geq b_{i}, &amp; i \in \mathcal{I} \\
+&amp; &amp;&amp; z  \geq 0, &amp;
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(e=(1,1,\dots, 1)^T\)</span>, <span class="math inline">\(\gamma_{i}=-\operatorname{sign}(a_i^T \tilde{x}-b_i)\)</span> for <span class="math inline">\(i\in\mathcal{E}\)</span>, and <span class="math inline">\(\gamma_i =1\)</span> for <span class="math inline">\(i\in\mathcal{I}\)</span>. A feasible point for this problem is <span class="math display">\[
+\displaylines{x = \tilde{x} \qquad z_i = \begin{cases}
+|a_i^T \tilde{x} - b_i|, &amp;i\in\mathcal{E} \\
+\max(b_i - a_i^T\tilde{x}, 0), &amp;i\in\mathcal{I}
+\end{cases}
+}
+\]</span> An alternative approach is a penalty (or <strong>big M</strong>) method which introduces a scalar artificial variable <span class="math inline">\(\eta\)</span> into <span class="math inline">\(\eqref{qp}\)</span> to measure the constraint violation, and solve the problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_{x} &amp; \frac{1}{2} x^{T} G x+x^{T} c +M\eta \\
+&amp;\text { s.t. } &amp; a_{i}^{T} x - b_{i} \le \eta, &amp;&amp; i \in \mathcal{E} \\
+&amp; &amp; -(a_{i}^{T} x - b_{i}) \le \eta, &amp;&amp; i \in \mathcal{E} \\
+&amp; &amp; b_i - a_i^T x \le \eta, &amp;&amp; i\in \mathcal{I} \\
+&amp; &amp; 0 \le \eta,
+\end{aligned}
+}
+\]</span> for some large positive value of <span class="math inline">\(M\)</span>. It can be shown that whenever there exist feasible points for the original problem <span class="math inline">\(\eqref{qp}\)</span>, then for all <span class="math inline">\(M\)</span> sufficiently large, the solution of the penalty method will have <span class="math inline">\(\eta=0\)</span>, with an <span class="math inline">\(x\)</span> component that is the solution for <span class="math inline">\(\eqref{qp}\)</span>.</p>
+<h1 id="sequential-quadratic-programming">Sequential Quadratic Programming</h1>
+<h2 id="local-sqp-method">Local SQP Method</h2>
+<p>Consider the equality constrained problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min &amp;&amp; f(x) \\
+&amp;\text{ s.t. } &amp;&amp; c(x) = 0
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(f:\mathbb{R}^n \to \mathbb{R}\)</span> and <span class="math inline">\(c:\mathbb{R}^n\to\mathbb{R}^m\)</span> are smooth. The idea behind SQP is to model this problem at the current iterate <span class="math inline">\(x_k\)</span> by a QP subproblem, then use the minimizer of this subproblem to define a new iterate <span class="math inline">\(x_{k+1}\)</span>. The simplest way is to apply Newton's method to the KKT conditions.</p>
+<p>Let <span class="math inline">\(A(x)\)</span> denote the Jacobian matrix of the constraints: <span class="math display">\[
+\displaylines{A(x)^T = [\nabla c_1(x), \nabla c_2(x), \dots, \nabla c_m(x)]
+}
+\]</span> The KKT conditions are <span class="math display">\[
+\displaylines{F(x,\lambda) = \begin{bmatrix}
+\nabla f(x) - A(x)^T \lambda \\
+c(x)
+\end{bmatrix} = 0
+}
+\]</span> This can be solved by Newton's method: <span class="math display">\[
+\displaylines{\begin{bmatrix}
+x_{k+1} \\ \lambda_{k+1}
+\end{bmatrix} =
+\begin{bmatrix}
+x_k \\ \lambda_k
+\end{bmatrix} +
+\begin{bmatrix}
+p_k \\ p_\lambda
+\end{bmatrix}
+}
+\]</span> where <span class="math inline">\(p_k\)</span> and <span class="math inline">\(p_\lambda\)</span> solve the Newton-KKT system: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{bmatrix}
+\nabla_{xx}^2 \mathcal{L}_k &amp; -A_k^T \\
+A_k &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+p_k \\ p_\lambda
+\end{bmatrix} =
+\begin{bmatrix}
+-\nabla f_k + A_k^T \lambda_k \\
+-c_k
+\end{bmatrix}
+}
+\label{newton-kkt}
+\end{equation}
+\]</span> The Newton iteration is well defined when the KKT matrix is nonsingular.</p>
+<h3 id="sqp-framework">SQP Framework</h3>
+<p>An alternative way to view the iteration is to consider a quadratic problem at the iterate <span class="math inline">\((x_k, \lambda_k)\)</span>: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_p &amp;&amp; \nabla f_k^T p + \frac{1}{2}p^T \nabla_{xx}^2 \mathcal{L}_k p \\
+&amp;\text{ s.t. } &amp;&amp; A_kp + c_k = 0
+\end{aligned}
+}
+\label{sqp-sub}
+\end{equation}
+\]</span> If the KKT matrix is nonsingular, this problem has a unique solution <span class="math inline">\((p_k, l_k)\)</span> that satisfies the KKT conditions: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{bmatrix}
+\nabla_{xx}^2 \mathcal{L}_k &amp; -A_k^T \\
+A_k &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+p_k \\ l_k
+\end{bmatrix} =
+\begin{bmatrix}
+-\nabla f_k \\
+-c_k
+\end{bmatrix}
+}
+\label{sqp-kkt}
+\end{equation}
+\]</span> Compared with <span class="math inline">\(\eqref{newton-kkt}\)</span> we can see that <span class="math inline">\(l_k = p_\lambda + \lambda_k = \lambda_{k+1}\)</span>.</p>
+<p><strong>Algorithm</strong>:</p>
+<ol type="1">
+<li>Choose an initial pair <span class="math inline">\((x_0, \lambda_0)\)</span>, set <span class="math inline">\(k=0\)</span></li>
+<li>Repeat until convergence
+<ol type="1">
+<li>Evaluate <span class="math inline">\(\nabla f_k, \nabla_{xx}^2 \mathcal{L}_k, c_k, A_k\)</span></li>
+<li>Solve <span class="math inline">\(\eqref{sqp-sub}\)</span> for <span class="math inline">\(p_k\)</span> and <span class="math inline">\(l_k\)</span></li>
+<li>Update <span class="math inline">\(x_{k+1} \leftarrow x_k + p_k\)</span> and <span class="math inline">\(\lambda_{k+1} \leftarrow l_k\)</span></li>
+</ol></li>
+</ol>
+<h3 id="inequality-constraints-1">Inequality Constraints</h3>
+<p>The SQP framework can be extended to general nonlinear programming problem <span class="math inline">\(\eqref{con-optim}\)</span> as <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_p &amp;&amp; \nabla f_k^T p + \frac{1}{2}p^T \nabla_{xx}^2 \mathcal{L}_k p \\
+&amp;\text{ s.t. } &amp;&amp; \nabla c_i(x_k)^T p + c_i(x_k) = 0, \quad i\in\mathcal{E} \\
+&amp; &amp;&amp; \nabla c_i(x_k)^T p + c_i(x_k) \ge 0, \quad i\in\mathcal{I}
+\end{aligned}
+}
+\label{qp-sub-ineq}
+\end{equation}
+\]</span> <strong>Theorem</strong>: Suppose <span class="math inline">\((x^*,\lambda^*)\)</span> is a local solution of <span class="math inline">\(\eqref{con-optim}\)</span>, and LICQ, strict complementarity condition, second-order sufficient conditions hold. Then if <span class="math inline">\((x_k, \lambda_k)\)</span> is sufficiently close to <span class="math inline">\((x^*, \lambda^*)\)</span>, there is a local solution of the subproblem <span class="math inline">\(\eqref{qp-sub-ineq}\)</span> whose active set <span class="math inline">\(\mathcal{A}_k\)</span> is the same as the active set <span class="math inline">\(\mathcal{A}(x^*)\)</span> of <span class="math inline">\(\eqref{con-optim}\)</span>.</p>
+<h2 id="algorithmic-development">Algorithmic Development</h2>
+<h3 id="handling-inconsistent-linearizations">Handling Inconsistent Linearizations</h3>
+<p>The linearizations of the nonlinear constraints <span class="math inline">\(\eqref{qp-sub-ineq}\)</span> may give an infeasible subproblem. To overcome this difficulty, we can reformulate <span class="math inline">\(\eqref{con-optim}\)</span> as the <span class="math inline">\(\ell_1\)</span> penalty problem: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\min_{x, v, w, t} &amp;&amp; f(x)+\mu \sum_{i \in \mathcal{E}}\left(v_{i}+w_{i}\right)+\mu \sum_{i \in \mathcal{I}} t_{i} \\
+&amp;\text { s.t. } &amp;&amp; c_{i}(x)=v_{i}-w_{i}, \quad i \in \mathcal{E} \\
+&amp; &amp;&amp;c_{i}(x) \geq-t_{i}, \quad i \in \mathcal{I} \\
+&amp; &amp;&amp;v,\ w,\ t \geq 0
+\end{aligned}
+}
+\label{l1-penalty}
+\end{equation}
+\]</span> for some positive choice of the penalty parameter <span class="math inline">\(\mu\)</span>. The quadratic subproblem associated with it is always feasible. When <span class="math inline">\(\mu\)</span> is sufficiently large, then the solution <span class="math inline">\(x^*\)</span> coincides with the original problem.</p>
+<h3 id="merit-functions">Merit Functions</h3>
+<p>A merit function can be used to decide whether a trial step should be accepted. In line search methods, it controls the size of the step; in trust-region methods it determines whether the step is accepted or rejected and whether the radius should be adjusted.</p>
+<p>Consider the <span class="math inline">\(\ell_1\)</span> merit function and only equality constraints: <span class="math display">\[
+\displaylines{\phi_{1}(x ; \mu)=f(x)+\mu\|c(x)\|_1
+}
+\]</span> In a line search method, a step <span class="math inline">\(\alpha_k p_k\)</span> will be accepted if the following condition holds: <span class="math display">\[
+\begin{equation}\displaylines{
+\phi_{1}(x_{k}+\alpha_{k} p_{k} ; \mu_{k}) \leq \phi_{1}(x_{k}, \mu_{k})+\eta \alpha_{k} D(\phi_1(x_{k} ; \mu) ; p_{k}), \quad \eta \in(0,1)
+}
+\label{direction}
+\end{equation}
+\]</span> where <span class="math inline">\(D(\phi_1(x_{k} ; \mu) ; p_{k})\)</span> is the directional derivative of <span class="math inline">\(\phi_1\)</span> in the direction <span class="math inline">\(p_k\)</span>.</p>
+<p><strong>Theorem</strong>: Let <span class="math inline">\(p_k\)</span> and <span class="math inline">\(\lambda_{k+1}\)</span> be generated by the SQP iteration <span class="math inline">\(\eqref{sqp-kkt}\)</span>. Then we have</p>
+<ul>
+<li><span class="math inline">\(D(\phi_1(x_{k} ; \mu) ; p_{k}) = \nabla f_k^T p_k -\mu \|c_k\|_1\)</span></li>
+<li><span class="math inline">\(D(\phi_1(x_{k} ; \mu) ; p_{k}) \le -p_k^T\nabla_{xx}^2 \mathcal{L}_k p_k - (\mu - \|\lambda_{k+1}\|_\infty) \|c_k\|_1\)</span></li>
+</ul>
+<p>## Line Search SQP Method</p>
+<p><strong>Algorithm</strong>:</p>
+<ol type="1">
+<li>Choose <span class="math inline">\(\eta\in(0,0.5)\)</span>, <span class="math inline">\(\tau\in(0, 1)\)</span> and an initial pair <span class="math inline">\((x_0, \lambda_0)\)</span></li>
+<li>Evaluate <span class="math inline">\(f_0, \nabla f_0, c_0, A_0, \nabla_{xx}^2\mathcal{L}_0\)</span></li>
+<li>Repeat until convergence
+<ol type="1">
+<li>Solve <span class="math inline">\(\eqref{qp-sub-ineq}\)</span> for <span class="math inline">\(p_k\)</span> and <span class="math inline">\(\hat{\lambda}\)</span></li>
+<li>Set <span class="math inline">\(p_\lambda \leftarrow \hat{\lambda} - \lambda_k\)</span></li>
+<li>Choose <span class="math inline">\(\mu_k\)</span> large enough so that <span class="math inline">\(p_k\)</span> is the descent direction for <span class="math inline">\(\phi_1\)</span></li>
+<li>Set <span class="math inline">\(\alpha_k \leftarrow 1\)</span> and Repeat <span class="math inline">\(\alpha_k \leftarrow \tau_a \alpha_k\)</span> for some <span class="math inline">\(\tau_a\in(0,\tau]\)</span> until <span class="math inline">\(\eqref{direction}\)</span> holds</li>
+<li>Set <span class="math inline">\(x_{k+1}\leftarrow x_k + \alpha_k p_k\)</span> and <span class="math inline">\(\lambda_{k+1}\leftarrow \lambda_k + \alpha_k p_\lambda\)</span></li>
+<li>Evaluate <span class="math inline">\(f_{k+1}, \nabla f_{k+1}, c_{k+1}, A_{k+1}, \nabla_{xx}^2\mathcal{L}_{k+1}\)</span></li>
+</ol></li>
+</ol>
+<h2 id="trust-region-sqp-methods">Trust-Region SQP Methods</h2>
+<p>Trust-region methods can control the quality of the steps even when the Hessian <span class="math inline">\(\nabla_{xx}^2 \mathcal{L}_k\)</span> is not positive definite, and they provide a mechanism for enforcing global convergence.</p>
+<p>Add a trust-region constraint to the subproblem <span class="math inline">\(\eqref{qp-sub-ineq}\)</span> to get <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_p &amp;&amp; \nabla f_k^T p + \frac{1}{2}p^T \nabla_{xx}^2 \mathcal{L}_k p \\
+&amp;\text{ s.t. } &amp;&amp; \nabla c_i(x_k)^T p + c_i(x_k) = 0, \quad i\in\mathcal{E} \\
+&amp; &amp;&amp; \nabla c_i(x_k)^T p + c_i(x_k) \ge 0, \quad i\in\mathcal{I} \\
+&amp; &amp;&amp; \|p\| \le \Delta_k
+\end{aligned}
+}
+\]</span> After adding the constraint, the problem may not have a solution. However, the idea is not to satisfy the other constraints at every step, but to improve the feasibility of these constraints.</p>
+<h3 id="relaxation-method">Relaxation Method</h3>
+<p>Consider the equality constraints only. At iteration <span class="math inline">\(x_k\)</span>, we solve the subproblem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_p &amp;&amp; \nabla f_k^T p + \frac{1}{2}p^T \nabla_{xx}^2 \mathcal{L}_k p \\
+&amp;\text{ s.t. } &amp;&amp; A_kp + c_k = r_k \\
+&amp; &amp;&amp; \|p\|_2 \le \Delta_k
+\end{aligned}
+}
+\]</span> The choice of the relaxation vector <span class="math inline">\(r_k\)</span> impacts the efficiency of the method. To do so, first solve the auxiliary problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\min_v &amp;&amp; \|A_k v + c_k\|_2^2 \\
+&amp;\text{ s.t. } &amp;&amp; \|v\|_2 \le 0.8\Delta_k
+\end{aligned}
+}
+\]</span> and set <span class="math inline">\(r_k = A_k v + c_k\)</span>. Now we can compute <span class="math inline">\(p_k\)</span> and update <span class="math inline">\(x_{k+1} = x_k+p_k\)</span> and <span class="math inline">\(\lambda_{k+1} = (A_kA_k^T)^{-1}A_k \nabla f_k\)</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+              <a href="/tags/JHU/" rel="tag"><i class="fa fa-tag"></i> JHU</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/python-tricks/" rel="prev" title="Python Tricks">
+                  <i class="fa fa-chevron-left"></i> Python Tricks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/nonlinear-control/" rel="next" title="Nonlinear Control and Planning in Robotics">
+                  Nonlinear Control and Planning in Robotics <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

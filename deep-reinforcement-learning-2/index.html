@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 1) Deep Reinforcement Learning (Part 3)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Reinforcement Learning (Part 2)">
+<meta property="og:url" content="https://silencial.github.io/deep-reinforcement-learning-2/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 1) Deep Reinforcement Learning (Part 3)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/wvfotEP.png">
+<meta property="og:image" content="https://i.imgur.com/WbAVsak.png">
+<meta property="og:image" content="https://i.imgur.com/W6HfTcy.png">
+<meta property="article:published_time" content="2020-02-06T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-12T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Open Courses">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/wvfotEP.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/deep-reinforcement-learning-2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;deep-reinforcement-learning-2&#x2F;&quot;,&quot;path&quot;:&quot;deep-reinforcement-learning-2&#x2F;&quot;,&quot;title&quot;:&quot;Deep Reinforcement Learning (Part 2)&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Deep Reinforcement Learning (Part 2) | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-control-and-planning"><span class="nav-number">1.</span> <span class="nav-text">Optimal Control and Planning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-loop-vs.-closed-loop-planning"><span class="nav-number">1.1.</span> <span class="nav-text">Open-Loop vs. Closed-Loop Planning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stochastic-optimization-methods"><span class="nav-number">1.2.</span> <span class="nav-text">Stochastic Optimization Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-shooting-method"><span class="nav-number">1.2.1.</span> <span class="nav-text">Random Shooting Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-method-cem"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cross-Entropy Method (CEM)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monte-carlo-tree-search-mcts"><span class="nav-number">1.3.</span> <span class="nav-text">Monte Carlo Tree Search (MCTS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trajectory-optimization"><span class="nav-number">1.4.</span> <span class="nav-text">Trajectory Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lqr"><span class="nav-number">1.5.</span> <span class="nav-text">LQR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stochastic-dynamics"><span class="nav-number">1.5.1.</span> <span class="nav-text">Stochastic Dynamics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ilqr"><span class="nav-number">1.6.</span> <span class="nav-text">iLQR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ddp"><span class="nav-number">1.7.</span> <span class="nav-text">DDP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#model-based-rl"><span class="nav-number">2.</span> <span class="nav-text">Model-Based RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-model"><span class="nav-number">2.1.</span> <span class="nav-text">Basic Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#naive-model"><span class="nav-number">2.1.1.</span> <span class="nav-text">Naive Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#improvements"><span class="nav-number">2.1.2.</span> <span class="nav-text">Improvements</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uncertainty-aware-models"><span class="nav-number">2.2.</span> <span class="nav-text">Uncertainty-Aware Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#models"><span class="nav-number">2.2.1.</span> <span class="nav-text">Models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latent-space-models"><span class="nav-number">2.3.</span> <span class="nav-text">Latent Space Models</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#model-based-policy-learning"><span class="nav-number">3.</span> <span class="nav-text">Model-Based Policy Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#backprop-into-policy"><span class="nav-number">3.1.</span> <span class="nav-text">Backprop Into Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-free-rl-with-model"><span class="nav-number">3.2.</span> <span class="nav-text">Model-Free RL With Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dyna"><span class="nav-number">3.2.1.</span> <span class="nav-text">Dyna</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#local-models"><span class="nav-number">3.3.</span> <span class="nav-text">Local Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#global-policy"><span class="nav-number">3.4.</span> <span class="nav-text">Global Policy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proof"><span class="nav-number">4.</span> <span class="nav-text">Proof</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-1"><span class="nav-number">4.1.</span> <span class="nav-text">Proof 1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/deep-reinforcement-learning-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep Reinforcement Learning (Part 2)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-02-06 00:00:00" itemprop="dateCreated datePublished" datetime="2020-02-06T00:00:00+00:00">2020-02-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-02-12 00:00:00" itemprop="dateModified" datetime="2020-02-12T00:00:00+00:00">2020-02-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>23k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>58 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Berkeley <a target="_blank" rel="noopener external nofollow noreferrer" href="http://rail.eecs.berkeley.edu/deeprlcourse/">CS 285</a> Review</p>
+<p>My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/DeepRL">solution</a> to the homework</p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-1/">Deep Reinforcement Learning (Part 1)</a></p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-3/">Deep Reinforcement Learning (Part 3)</a></p>
+<span id="more"></span>
+<hr />
+<h1 id="optimal-control-and-planning">Optimal Control and Planning</h1>
+<p>If we know the dynamics <span class="math inline">\(p(\mathbf{x}_{t+1} | \mathbf{x}_t, \mathbf{u}_t)\)</span></p>
+<ul>
+<li>Games (e.g. Atari games, chess, Go)</li>
+<li>Easily modeled systems (e.g. navigating a car)</li>
+<li>Simulated environment (e.g. simulated robots, video games)</li>
+</ul>
+<p>Or we can learn the dynamics:</p>
+<ul>
+<li>System identification - fit unknown parameters of a known model</li>
+<li>Learning - fit a general-purpose model to observed transition data</li>
+</ul>
+<p>Often it will make learning easier. Previous methods (policy gradient, value based, actor-critic) do not require <span class="math inline">\(p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}\right)\)</span> information to learn, so called <strong>model-free</strong> RL.</p>
+<h2 id="open-loop-vs.-closed-loop-planning">Open-Loop vs. Closed-Loop Planning</h2>
+<p><img src="https://i.imgur.com/wvfotEP.png" alt="Open-loop vs. Closed-loop" /></p>
+<p>For <strong>deterministic</strong> open-loop system, the objective is: <span class="math display">\[
+\begin{equation}\displaylines{
+\DeclareMathOperator*{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmax}{\arg\max}
+\mathbf{a}_{1}, \ldots, \mathbf{a}_{T}=\argmax _{\mathbf{a}_{1}, \ldots, \mathbf{a}_{T}} \sum_{t=1}^{T} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) \\
+\text {s.t.} \quad \mathbf{s}_{t+1}=f\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)
+}
+\label{dol}
+\end{equation}
+\]</span> For <strong>stochastic</strong> open-loop system, the objective is: <span class="math display">\[
+\displaylines{p_{\theta}\left(\mathbf{s}_{1}, \ldots, \mathbf{s}_{T} | \mathbf{a}_{1}, \ldots, \mathbf{a}_{T}\right)=p\left(\mathbf{s}_{1}\right) \prod_{t=1}^{T} p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}\right) \\
+\mathbf{a}_{1}, \ldots, \mathbf{a}_{T}=\argmax_{\mathbf{a}_{1}, \ldots, \mathbf{a}_{T}} E\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) | \mathbf{a}_{1}, \ldots, \mathbf{a}_{T}\right]
+}
+\]</span> For <strong>stochastic</strong> closed-loop system, the objective is: <span class="math display">\[
+\displaylines{p_{\theta}\left(\mathbf{s}_{1}, \ldots, \mathbf{s}_{T} | \mathbf{a}_{1}, \ldots, \mathbf{a}_{T}\right)=p\left(\mathbf{s}_{1}\right) \prod_{t=1}^{T} p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}\right) \\
+\pi=\argmax _{\pi} E_{\tau \sim p(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]
+}
+\]</span></p>
+<h2 id="stochastic-optimization-methods">Stochastic Optimization Methods</h2>
+<p>For open-loop planning, rewrite the objective <span class="math inline">\(\eqref{dol}\)</span> to be: <span class="math display">\[
+\displaylines{\mathbf{A} = \argmax_\mathbf{A} J (\mathbf{A})
+}
+\]</span> where <span class="math inline">\(\mathbf{A} = (\mathbf{a}_1, \dots, \mathbf{a}_T)\)</span>. <span class="math inline">\(J\)</span> is the general objective.</p>
+<h3 id="random-shooting-method">Random Shooting Method</h3>
+<ol type="1">
+<li>pick <span class="math inline">\(\mathbf{A}_1, \dots, \mathbf{A}_N\)</span> from some distribution (e.g. uniform)</li>
+<li>choose <span class="math inline">\(\mathbf{A}_i\)</span> based on the <span class="math inline">\(\argmax_i J(\mathbf{A}_i)\)</span></li>
+</ol>
+<h3 id="cross-entropy-method-cem">Cross-Entropy Method (CEM)</h3>
+<ol type="1">
+<li>sample <span class="math inline">\(\mathbf{A}_1, \dots, \mathbf{A}_N\)</span> from some distribution <span class="math inline">\(p(\mathbf{A})\)</span></li>
+<li>evaluate <span class="math inline">\(J(\mathbf{A}_i)\)</span> and pick the elites <span class="math inline">\(\mathbf{A}_{i_1}, \dots, \mathbf{A}_{i_M}\)</span> with the highest value</li>
+<li>refit <span class="math inline">\(p(\mathbf{A})\)</span> to the elites</li>
+</ol>
+<p>It is very fast if parallelized and extremely simple. But has very harsh dimensionality limit and only for open-loop planning.</p>
+<h2 id="monte-carlo-tree-search-mcts">Monte Carlo Tree Search (MCTS)</h2>
+<p>For discrete case</p>
+<ol type="1">
+<li>choose a leaf <span class="math inline">\(s_l\)</span> using Treepolicy(<span class="math inline">\(s_1\)</span>)</li>
+<li>evaluate the leaf using DefaultPolicy(<span class="math inline">\(s_l\)</span>)</li>
+<li>update all values in tree between <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_l\)</span></li>
+</ol>
+<p><strong>Upper Confidence Bounds for Trees (UCT) TreePolicy(<span class="math inline">\(s_t\)</span>)</strong>: if <span class="math inline">\(s_t\)</span> not fully expanded, choose new <span class="math inline">\(a_t\)</span>, else choose child with best Score(<span class="math inline">\(s_{t+1}\)</span>). Where <span class="math inline">\(\operatorname { Score } \left( s_ { t } \right) = \frac { Q \left( s _{ t } \right) } { N \left( s_ { t } \right) } + 2 C \sqrt { \frac { 2 \ln N \left( s _{ t - 1 } \right) } { N \left( s_ { t } \right) } }\)</span></p>
+<h2 id="trajectory-optimization">Trajectory Optimization</h2>
+<p>There are two different ways to optimize <span class="math inline">\(\eqref{dol}\)</span>:</p>
+<p><strong>shooting method</strong>: optimize over actions only. <mark>Extremely sensitive to the initial action</mark> <span class="math display">\[
+\displaylines{\min _{ \mathbf { u }_ { 1 } , \ldots , \mathbf { u } _{ T } } c \left( \mathbf { x }_ { 1 } , \mathbf { u } _{ 1 } \right) + c \left( f \left( \mathbf { x }_ { 1 } , \mathbf { u } _{ 1 } \right) , \mathbf { u }_ { 2 } \right) + \cdots + c \left( f ( f ( \ldots ) \ldots ) , \mathbf { u } _{ T } \right)
+}
+\]</span> <strong>collocation method</strong>: optimize over actions and states, with constraints <span class="math display">\[
+\displaylines{\min_ { \mathbf { u } _{ 1 } , \ldots , \mathbf { u }_ { T }, \mathbf { x } _{ 1 } , \ldots , \mathbf { x }_ { T } } \sum _{ t = 1 } ^ { T } c \left( \mathbf { x }_ { t } , \mathbf { u } _{ t } \right)\quad \text { s.t. }\mathbf { x }_ { t } = f \left( \mathbf { x } _{ t - 1 } , \mathbf { u }_ { t - 1 } \right)
+}
+\]</span></p>
+<h2 id="lqr">LQR</h2>
+<p>Now we focus on shooting method but assume <span class="math inline">\(f\)</span> is linear and <span class="math inline">\(c\)</span> is quadratic: <span class="math display">\[
+\displaylines{f \left( \mathbf { x } _{ t } , \mathbf { u }_ { t } \right) = \mathbf { F } _{ t } \left[ \begin{array} { c } { \mathbf { x } _ { t } } \\ { \mathbf { u } _ { t } } \end{array} \right] + \mathbf { f }_ { t } \quad c \left( \mathbf { x } _{ t } , \mathbf { u }_ { t } \right) = \frac { 1 } { 2 } \left[ \begin{array} { l } { \mathbf { x } _ { t } } \\ { \mathbf { u } _ { t } } \end{array} \right] ^ { T } \mathbf { C } _{ t } \left[ \begin{array} { l } { \mathbf { x } _ { t } } \\ { \mathbf { u } _ { t } } \end{array} \right] + \left[ \begin{array} { l } { \mathbf { x } _ { t } } \\ { \mathbf { u } _ { t } } \end{array} \right] ^ { T } \mathbf { c }_ { t }
+}
+\]</span> Then we can solve it by backward recursion and forward recursion (<a href="#proof-1">Proof</a>)</p>
+<p>Backward recursion: for <span class="math inline">\(t=T\)</span> to <span class="math inline">\(1\)</span> <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\mathbf { Q } _{ t } = \mathbf { C }_ { t } + \mathbf { F } _{ t } ^ { T } \mathbf { V }_ { t + 1 } \mathbf { F } _{ t } \\
+&amp;\mathbf { q }_ { t } = \mathbf { c } _{ t } + \mathbf { F }_ { t } ^ { T } \mathbf { V } _{ t + 1 } \mathbf { f }_ { t } + \mathbf { F } _{ t } ^ { T } \mathbf { v }_ { t + 1 } \\
+&amp;Q \left( \mathbf { x } _{ t } , \mathbf { u }_ { t } \right) = \text { const } + \frac { 1 } { 2 } \begin{bmatrix} { \mathbf { x } _{ t } } \\ { \mathbf { u }_ { t } } \end{bmatrix} ^ { T } \mathbf { Q } _{ t } \begin{bmatrix} { \mathbf { x }_ { t } } \\ { \mathbf { u } _{ t } } \end{bmatrix} + \begin{bmatrix} { \mathbf { x }_ { t } } \\ { \mathbf { u } _{ t } } \end{bmatrix} ^ { T } \mathbf { q }_ { t } \\
+&amp;\mathbf { u } _{ t } \leftarrow \argmin_ { \mathbf { u } _{ t } } Q \left( \mathbf { x }_ { t } , \mathbf { u } _{ t } \right) = \mathbf { K }_ { t } \mathbf { x } _{ t } + \mathbf { k }_ { t } \\
+&amp;{ \mathbf { K } _{ t } = - \mathbf { Q }_ { \mathbf { u } _{ t } , \mathbf { u }_ { t } } ^ { - 1 } \mathbf { Q } _{ \mathbf { u }_ { t } , \mathbf { x } _{ t } } } \\
+&amp;{ \mathbf { k }_ { t } = - \mathbf { Q } _{ \mathbf { u }_ { t } , \mathbf { u } _{ t } } ^ { - 1 } \mathbf { q }_ { \mathbf { u } _{ t } } } \\
+&amp;{ \mathbf { V }_ { t } = \mathbf { Q } _{ \mathbf { x }_ { t } , \mathbf { x } _{ t } } + \mathbf { Q }_ { \mathbf { x } _{ t } , \mathbf { u }_ { t } } \mathbf { K } _{ t } + \mathbf { K }_ { t } ^ { T } \mathbf { Q } _{ \mathbf { u }_ { t } , \mathbf { x } _{ t } } + \mathbf { K }_ { t } ^ { T } \mathbf { Q } _{ \mathbf { u }_ { t } , \mathbf { u } _{ t } } \mathbf { K }_ { t } } \\
+&amp;{ \mathbf { v } _{ t } = \mathbf { q }_ { \mathbf { x } _{ t } } + \mathbf { Q }_ { \mathbf { x } _{ t } , \mathbf { u }_ { t } } \mathbf { k } _{ t } + \mathbf { K }_ { t } ^ { T } \mathbf { Q } _{ \mathbf { u }_ { t } } + \mathbf { K } _{ t } ^ { T } \mathbf { Q }_ { \mathbf { u } _{ t } , \mathbf { u }_ { t } } \mathbf { k } _{ t } } \\
+&amp;{ V \left( \mathbf { x }_ { t } \right) = \text { const } + \frac { 1 } { 2 } \mathbf { x } _{ t } ^ { T } \mathbf { V }_ { t } \mathbf { x } _{ t } + \mathbf { x }_ { t } ^ { T } \mathbf { v } _{ t } }
+\end{aligned}
+}
+\]</span> Forward recursion: for <span class="math inline">\(t=1\)</span> to <span class="math inline">\(T\)</span> <span class="math display">\[
+\displaylines{\mathbf{u}_{t} = \mathbf{K}_{t} \mathbf{x}_{t} + \mathbf{k}_{t} \\
+\mathbf{x}_{t+1} = f(\mathbf{x}_{t}, \mathbf{u}_{t})
+}
+\]</span></p>
+<h3 id="stochastic-dynamics">Stochastic Dynamics</h3>
+<p>For stochastic dynamics, we can use Gaussians to model the dynamics: <span class="math display">\[
+\displaylines{p(\mathbf{x}_{t+1} | \mathbf{x}_{t}, \mathbf{u}_{t}) = \mathcal{N}\left( \mathbf { F }_ { t } \left[ \begin{array} { c } { \mathbf { x } _ { t } } \\ { \mathbf { u } _ { t } } \end{array} \right] + \mathbf { f } _{ t }, \Sigma_t \right)
+}
+\]</span> the algorithm stays the same. <span class="math inline">\(\Sigma_t\)</span> can be ignored due to the symmetry of Gaussians.</p>
+<h2 id="ilqr">iLQR</h2>
+<p>For nonlinear case, approximate <span class="math inline">\(f\)</span> and <span class="math inline">\(c\)</span> by first and second order approximation respectively: <span class="math display">\[
+\displaylines{f\left(\mathbf{x}_{t}, \mathbf{u}_{t}\right)-f\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right) \approx \nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}} f\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\begin{bmatrix}
+\mathbf{x}_{t}-\hat{\mathbf{x}}_{t} \\
+\mathbf{u}_{t}-\hat{\mathbf{u}}_{t}
+\end{bmatrix}\\
+c\left(\mathbf{x}_{t}, \mathbf{u}_{t}\right)-c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right) \approx \nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\begin{bmatrix}
+\mathbf{x}_{t}-\hat{\mathbf{x}}_{t} \\
+\mathbf{u}_{t}-\hat{\mathbf{u}}_{t}
+\end{bmatrix}+\frac{1}{2}\begin{bmatrix}
+\mathbf{x}_{t}-\hat{\mathbf{x}}_{t} \\
+\mathbf{u}_{t}-\hat{\mathbf{u}}_{t}
+\end{bmatrix}^{T} \nabla_{\mathbf{x}_{t}, u_{t}}^{2} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\begin{bmatrix}
+\mathbf{x}_{t}-\hat{\mathbf{x}}_{t} \\
+\mathbf{u}_{t}-\hat{\mathbf{u}}_{t}
+\end{bmatrix}
+}
+\]</span> Let <span class="math inline">\(\delta \mathbf{x}_{t} = \mathbf{x}_{t} - \hat{\mathbf{x}}_{t}\)</span>, <span class="math inline">\(\delta \mathbf{u}_{t} = \mathbf{u}_{t} - \hat{\mathbf{u}}_{t}\)</span>. Rearrange to get: <span class="math display">\[
+\displaylines{\bar{f}\left(\delta \mathbf{x}_{t}, \delta \mathbf{u}_{t}\right)=\mathbf{F}_{t}\begin{bmatrix}
+\delta \mathbf{x}_{t} \\
+\delta \mathbf{u}_{t}
+\end{bmatrix} \\
+\bar{c}\left(\delta \mathbf{x}_{t}, \delta \mathbf{u}_{t}\right)=\frac{1}{2}\begin{bmatrix}
+\delta \mathbf{x}_{t} \\
+\delta \mathbf{u}_{t}
+\end{bmatrix}^{T} \mathbf{C}_{t}\begin{bmatrix}
+\delta \mathbf{x}_{t} \\
+\delta \mathbf{u}_{t}
+\end{bmatrix}+\begin{bmatrix}
+\delta \mathbf{x}_{t} \\
+\delta \mathbf{u}_{t}
+\end{bmatrix}_{L}^{T} \mathbf{c}_{t}
+}
+\]</span> and run LQR with <span class="math inline">\(\bar{f}, \bar{c}, \delta \mathbf{x}_t, \delta \mathbf{u}_t\)</span>.</p>
+<p>iLQR may have overshoot problem, <strong>line search</strong> can be applied to correct this problem. During the forward pass, search for the lowest point to avoid overshoot. The final algorithm becomes</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbf{F}_{t}=\nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}} f\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\)</span></li>
+<li><span class="math inline">\(\mathbf{c}_{t}=\nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\)</span></li>
+<li><span class="math inline">\(\mathbf{C}_{t}=\nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}}^{2} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)\)</span></li>
+<li>Run LQR backward pass on <span class="math inline">\(\delta \mathbf{x}_t, \delta \mathbf{u}_t\)</span></li>
+<li>Run forward pass with <span class="math inline">\(\mathbf{u}_{t} = \mathbf{K}_{t} \mathbf{x}_{t} + \alpha \mathbf{k}_{t} + \hat{\mathbf{u}}_t\)</span></li>
+</ol>
+<h2 id="ddp">DDP</h2>
+<p>Compare to Newton's method for computing <span class="math inline">\(\min_\mathbf{x} g(\mathbf{x})\)</span>: <span class="math display">\[
+\displaylines{\mathbf{g}=\nabla_{\mathbf{x}} g(\hat{\mathbf{x}}) \\
+\mathbf{H}=\nabla_{\mathbf{x}}^{2} g(\hat{\mathbf{x}}) \\
+\hat{\mathbf{x}} \leftarrow \arg \min_{\mathbf{x}} \frac{1}{2}(\mathbf{x}-\hat{\mathbf{x}})^{T} \mathbf{H}(\mathbf{x}-\hat{\mathbf{x}})+\mathbf{g}^{T}(\mathbf{x}-\hat{\mathbf{x}})
+}
+\]</span> If we use second order dynamics approximation, the method is called differential dynamic programming (DDP)</p>
+<h1 id="model-based-rl">Model-Based RL</h1>
+<h2 id="basic-model">Basic Model</h2>
+<h3 id="naive-model">Naive Model</h3>
+<ol type="1">
+<li>run base policy <span class="math inline">\(\pi_0(\mathbf{a}_t | \mathbf{s}_t)\)</span> to collect <span class="math inline">\(\mathcal { D } = \left\{ \left( \mathbf { s } , \mathbf { a } , \mathbf { s } ^ { \prime } \right)_ { i } \right\}\)</span></li>
+<li>learn dynamics model <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> to minimize <span class="math inline">\(\sum _{ i } \left\| f \left( \mathbf { s }_ { i } , \mathbf { a } _{ i } \right) - \mathbf { s }_ { i } ^ { \prime } \right\| ^ { 2 }\)</span></li>
+<li>plan through <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> to choose actions</li>
+</ol>
+<p>This is how system identification works in classical robotics and particularly effective if we can hand-engineer a dynamics representation using our knowledge of physics, and fit just a few parameters.</p>
+<h3 id="improvements">Improvements</h3>
+<p>Similar to imitation learning, naive model can suffer from distribution mismatch problem, which can be solved by <strong>DAgger</strong> for model <span class="math inline">\(f\)</span> instead of policy <span class="math inline">\(\pi\)</span>.</p>
+<p>Instead of doing open-loop planning in step 3, which can cause cumulative error, we do replanning every time.</p>
+<p>Combine these two strategies:</p>
+<ol type="1">
+<li>run base policy <span class="math inline">\(\pi_0(\mathbf{a}_t | \mathbf{s}_t)\)</span> to collect <span class="math inline">\(\mathcal { D } = \left\{ \left( \mathbf { s } , \mathbf { a } , \mathbf { s } ^ { \prime } \right)_ { i } \right\}\)</span>
+<ol start="2" type="1">
+<li>learn dynamics model <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> to minimize <span class="math inline">\(\sum _{ i } \left\| f \left( \mathbf { s }_ { i } , \mathbf { a } _{ i } \right) - \mathbf { s }_ { i } ^ { \prime } \right\| ^ { 2 }\)</span>
+<ol start="3" type="1">
+<li>plan through <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> to choose actions</li>
+<li>execute the first planned action, observe resulting state <span class="math inline">\(\mathbf{s}&#39;\)</span> (MPC)</li>
+<li>append <span class="math inline">\(\left( \mathbf { s } , \mathbf { a } , \mathbf { s } ^ { \prime } \right)\)</span> to <span class="math inline">\(\mathcal{D}\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id="uncertainty-aware-models">Uncertainty-Aware Models</h2>
+<p>Basic model-based RL suffers from overfitting problem and can easily stuck in local minimum since in step 3 we only take actions for which we think the expectation reward is high.</p>
+<p>To solve this problem we must consider uncertainty in the model:</p>
+<ul>
+<li>Use <strong>output entropy</strong> of <span class="math inline">\(p(\mathbf{s}_{t+1} | \mathbf{s}_t, \mathbf{a}_t)\)</span>. This is not enough because the model might be uncertain itself even if it is certain about the data.</li>
+<li>estimate model uncertainty <span class="math inline">\(p(\theta | \mathcal{D})\)</span> and combine it with statistical uncertainty to get <span class="math inline">\(\int p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}, \theta\right) p(\theta | \mathcal{D}) d \theta\)</span></li>
+</ul>
+<h3 id="models">Models</h3>
+<p><strong>Bayesian neural network (BNN)</strong>: In BNN, nodes are connected by distributions instead of weights. <span class="math display">\[
+\displaylines{p ( \theta | \mathcal { D } ) = \prod _{ i } p \left( \theta_ { i } | \mathcal { D } \right) \\
+p \left( \theta _{ i } | \mathcal { D } \right) = \mathcal { N } \left( \mu_ { i }, \sigma _{ i } \right)
+}
+\]</span> <strong>Bootstrap ensembles</strong>: Train multiple models and see if they agree. <span class="math display">\[
+\displaylines{\int p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}, \theta\right) p(\theta | \mathcal{D}) d \theta \approx \frac{1}{N} \sum_{i} p\left(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}, \theta_{i}\right)
+}
+\]</span> Need to generate <strong>independent</strong> datasets to get independent models. However, resampling with replacement is usually unnecessary, because SGD and random initialization usually makes the models sufficiently independent.</p>
+<h2 id="latent-space-models">Latent Space Models</h2>
+<p>For standard (fully observed) model, the goal is <span class="math display">\[
+\displaylines{\max _{ \phi } \frac { 1 } { N } \sum_ { i = 1 } ^ { N } \sum _{ t = 1 } ^ { T } \log p_ { \phi } \left( \mathbf { s } _{ t + 1 , i } | \mathbf { s }_ { t , i } , \mathbf { a } _ { t , i } \right)
+}
+\]</span> For <strong>complex</strong> observations (high dimensionality, redundancy, partial observability), we have to separately learn</p>
+<ul>
+<li><span class="math inline">\(p(\mathbf{o}_t | \mathbf{s}_t)\)</span>: high-dimension but not dynamic</li>
+<li><span class="math inline">\(p(\mathbf{s}_{t+1} | \mathbf{s}_t, \mathbf{a}_t)\)</span>: low-dimension but dynamic</li>
+</ul>
+<p>For latent space model, the goal is <span class="math display">\[
+\displaylines{\max _{ \phi } \frac { 1 } { N } \sum_ { i = 1 } ^ { N } \sum _{ t = 1 } ^ { T } \mathbb{E}_{\left( \mathbf { s } _{ t } , \mathbf { s }_ { t + 1 } \right) \sim p \left( \mathbf { s } _{ t } , \mathbf { s }_ { t + 1 } | \mathbf { o } _{ 1 : T } , \mathbf { a }_ { 1 : T } \right)} \left[ \log p _ { \phi } \left( \mathbf { s } _ { t + 1 , i } | \mathbf { s } _ { t , i } , \mathbf { a } _ { t , i } \right) + \log p _ { \phi } \left( \mathbf { o } _ { t , i } | \mathbf { s } _ { t , i } \right) \right]
+}
+\]</span> We have many choices to approximate <span class="math inline">\(p \left( \mathbf { s } _{ t } , \mathbf { s }_ { t + 1 } | \mathbf { o } _{ 1 : T } , \mathbf { a }_ { 1 : T } \right)\)</span>:</p>
+<ul>
+<li><span class="math inline">\(q_\psi ( \mathbf { s }_ { t } | \mathbf { o } _{ 1 : T } , \mathbf { a }_ { 1 : T } )\)</span>: encoder</li>
+<li><span class="math inline">\(q_\psi ( \mathbf { s }_ { t }, \mathbf { s } _{ t+1} | \mathbf { o }_ { 1 : T } , \mathbf { a } _ { 1 : T } )\)</span>: full smoothing posterior. Most accurate but complicated</li>
+<li><span class="math inline">\(q_\psi ( \mathbf { s }_ { t } | \mathbf { o } _ { t } )\)</span>: single-step encoder. Simplest but least accurate</li>
+</ul>
+<p>Assume <span class="math inline">\(q(\mathbf{s}_t | \mathbf{o}_t)\)</span> is <strong>deterministic</strong>, we can get single-step deterministic encoder: <span class="math inline">\(q_\psi ( \mathbf { s }_ { t } | \mathbf { o } _{ t } ) = \delta(\mathbf{s}_t = g_\psi(\mathbf{o}_t)) \Rightarrow \mathbf { s } _{ t } = g_\psi(\mathbf { o } _{ t })\)</span>. Add the reward model, the latent space model can be written as: <span class="math display">\[
+\displaylines{\max_ { \phi , \psi } \frac { 1 } { N } \sum _{ i = 1 } ^ { N } \sum_ { t = 1 } ^ { T } \log p _{ \phi } \left( g_ { \psi } \left( \mathbf { o } _{ t + 1 , i } \right) | g_ { \psi } \left( \mathbf { o } _{ t , i } \right) , \mathbf { a }_ { t , i } \right) + \log p _{ \phi } \left( \mathbf { o }_ { t , i } | g _{ \psi } \left( \mathbf { o }_ { t , i } \right) \right) + \log p _{ \phi } \left( r_ { t , i } | g _{ \psi } \left( \mathbf { o }_ { t , i } \right) \right)
+}
+\]</span> Everything is differentiable here so can be trained with backprop.</p>
+<ol type="1">
+<li>run base policy <span class="math inline">\(\pi_0(\mathbf{a}_t | \mathbf{o}_t)\)</span> to collect <span class="math inline">\(\mathcal { D } = \left\{ \left( \mathbf { o } , \mathbf { a } , \mathbf { o } ^ { \prime } \right)_ { i } \right\}\)</span>
+<ol start="2" type="1">
+<li>learn <span class="math inline">\(p _{ \phi } \left( \mathbf { s }_ { t + 1} | \mathbf { s } _{ t} , \mathbf { a }_ { t } \right)\)</span>, <span class="math inline">\(p _{ \phi } \left( \mathbf { o }_ { t } | \mathbf { s } _{ t } \right)\)</span>, <span class="math inline">\(p_ { \phi } \left( r _{ t } | \mathbf { s }_ { t } \right)\)</span>, <span class="math inline">\(g _{ \psi } \left( \mathbf { o }_ { t } \right)\)</span>
+<ol start="3" type="1">
+<li>plan through the model to choose actions</li>
+<li>execute the first planned action, observe resulting <span class="math inline">\(\mathbf{o}&#39;\)</span> (MPC)</li>
+<li>append <span class="math inline">\(\left( \mathbf { o } , \mathbf { a } , \mathbf { o } ^ { \prime } \right)\)</span> to <span class="math inline">\(\mathcal{D}\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<h1 id="model-based-policy-learning">Model-Based Policy Learning</h1>
+<h2 id="backprop-into-policy">Backprop Into Policy</h2>
+<p><img src="https://i.imgur.com/WbAVsak.png" alt="Backpropagation" /></p>
+<ol type="1">
+<li>run base policy <span class="math inline">\(\pi_0(\mathbf{a}_t | \mathbf{s}_t)\)</span> to collect <span class="math inline">\(\mathcal { D } = \left\{ \left( \mathbf { s } , \mathbf { a } , \mathbf { s } ^ { \prime } \right)_ { i } \right\}\)</span>
+<ol start="2" type="1">
+<li>learn dynamics model <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> to minimize <span class="math inline">\(\sum _{ i } \left\| f \left( \mathbf { s }_ { i } , \mathbf { a } _{ i } \right) - \mathbf { s }_ { i } ^ { \prime } \right\| ^ { 2 }\)</span></li>
+<li>backprop through <span class="math inline">\(f(\mathbf{s}, \mathbf{a})\)</span> into the policy to optimize <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{s}_t)\)</span></li>
+<li>run <span class="math inline">\(\pi_\theta(\mathbf{a}_t | \mathbf{s}_t)\)</span>, appending <span class="math inline">\(\left( \mathbf { s } , \mathbf { a } , \mathbf { s } ^ { \prime } \right)\)</span> to <span class="math inline">\(\mathcal{D}\)</span></li>
+</ol></li>
+</ol>
+<p>Problems:</p>
+<ul>
+<li>Similar parameter sensitivity problems as shooting methods. Policy parameters couple all the time steps, dynamic programming unavailable.</li>
+<li>Similar problems to training long RNNs with BPTT
+<ul>
+<li>vanishing and exploding gradients.</li>
+<li>Unlike LSTM, we can't choose a simple dynamics.</li>
+</ul></li>
+</ul>
+<p>Solutions:</p>
+<ul>
+<li>Use derivative-free (<strong>model-free</strong>) RL algorithms, with the model used to generate synthetic samples. Works well in practice; essentially "model-based acceleration" for model-free RL.</li>
+<li>Use <strong>simpler policies</strong> than neural nets.
+<ul>
+<li>LQR with learned models (<strong>LQR-FLM</strong>)</li>
+<li>Train <strong>local policies</strong> to solve simple tasks</li>
+<li>Combine them into <strong>global policies</strong> via supervised learning</li>
+</ul></li>
+</ul>
+<h2 id="model-free-rl-with-model">Model-Free RL With Model</h2>
+<p><span class="math display">\[
+\displaylines{\nabla _ { \theta } J ( \theta ) = \sum _ { t = 1 } ^ { T } \frac { d r _ { t } } { d \mathbf { s } _ { t } } \prod _ { t ^ { \prime } = 2 } ^ { t } \frac { d \mathbf { s } _ { t ^ { \prime } } } { d \mathbf { a } _ { t ^ { \prime } - 1 } } \frac { d \mathbf { a } _ { t ^ { \prime } - 1 } } { d \mathbf { s } _ { t ^ { \prime } - 1 } }
+}
+\]</span></p>
+<p>Policy gradient might be more stable because it does not require multiplying many Jacobians.</p>
+<h3 id="dyna">Dyna</h3>
+<p>Online <span class="math inline">\(Q\)</span>-learning algorithm that performs model-free RL with a model:</p>
+<ol type="1">
+<li>given state <span class="math inline">\(\mathbf{s}\)</span>, pick action <span class="math inline">\(\mathbf{a}\)</span> using exploration policy</li>
+<li>observe <span class="math inline">\(\mathbf{s}&#39;\)</span> and <span class="math inline">\(r\)</span>, to get transition <span class="math inline">\((\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;, r)\)</span></li>
+<li>update model <span class="math inline">\(\hat{p}(\mathbf{s}&#39; | \mathbf{s}, \mathbf{a})\)</span> and <span class="math inline">\(\hat{r}(\mathbf{s}, \mathbf{a})\)</span> using <span class="math inline">\((\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;)\)</span></li>
+<li><span class="math inline">\(Q\)</span>-update: <span class="math inline">\(Q(\mathbf{s},\mathbf{a}) \leftarrow Q(\mathbf{s},\mathbf{a}) + \alpha \mathbb{E}_{\mathbf{s}&#39;, r} [r + \max_{\mathbf{a}&#39;} Q(\mathbf{s}&#39;,\mathbf{a}&#39;) - Q(\mathbf{s},\mathbf{a})]\)</span>
+<ol start="5" type="1">
+<li>sample <span class="math inline">\((\mathbf{s},\mathbf{a}) \sim \mathcal{B}\)</span> from buffer of past states and actions</li>
+<li><span class="math inline">\(Q\)</span>-update: <span class="math inline">\(Q(\mathbf{s},\mathbf{a}) \leftarrow Q(\mathbf{s}, \mathbf{a}) + \alpha \mathbb{E}_{\mathbf{s}&#39; ,r} [r + \max_{\mathbf{a}&#39;} Q(\mathbf{s}&#39;, \mathbf{a}&#39;) - Q(\mathbf{s},\mathbf{a})]\)</span></li>
+</ol></li>
+</ol>
+<p>Model is used in <span class="math inline">\(Q\)</span>-update to calculate the expectation instead of using samples as in <span class="math inline">\(Q\)</span>-learning.</p>
+<p><strong>General Dyna-style model-based RL</strong>:</p>
+<p>Generate samples from model for RL to learn. (step 5)</p>
+<ol type="1">
+<li>collect some data, consisting of transitions <span class="math inline">\((\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;, r)\)</span></li>
+<li>learn model <span class="math inline">\(\hat{p}(\mathbf{s}&#39; | \mathbf{s}, \mathbf{a})\)</span> and <span class="math inline">\(\hat{r}(\mathbf{s}, \mathbf{a})\)</span>
+<ol start="3" type="1">
+<li>sample <span class="math inline">\(\mathbf{s} \sim \mathcal{B}\)</span> from buffer</li>
+<li>choose action <span class="math inline">\(\mathbf{a}\)</span> (from <span class="math inline">\(\mathcal{B}\)</span>, <span class="math inline">\(\pi\)</span>, or random)</li>
+<li>simulate <span class="math inline">\(\mathbf{s}&#39; \sim \hat{p}(\mathbf{s}&#39; | \mathbf{s}, \mathbf{a})\)</span> and <span class="math inline">\(r = \hat{r}(\mathbf{s}, \mathbf{a})\)</span></li>
+<li>train on <span class="math inline">\((\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;, r)\)</span> with model-free RL</li>
+<li>(optional) take <span class="math inline">\(N\)</span> more model-based steps</li>
+</ol></li>
+</ol>
+<h2 id="local-models">Local Models</h2>
+<p>Remember <a href="#lqr">LQR</a> gives a linear feedback controller: <span class="math display">\[
+\displaylines{{ p \left( \mathbf { x } _{ t + 1 } | \mathbf { x }_ { t } , \mathbf { u } _{ t } \right) = \mathcal { N } \left( f \left( \mathbf { x }_ { t } , \mathbf { u } _{ t } \right) , \Sigma \right) } \\
+{ f \left( \mathbf { x }_ { t } , \mathbf { u } _{ t } \right) \approx \mathbf { A }_ { t } \mathbf { x } _{ t } + \mathbf { B }_ { t } \mathbf { u } _{ t } } \\
+{ \mathbf { A }_ { t } = \frac { d f } { d \mathbf { x } _{ t } } \quad \mathbf { B }_ { t } = \frac { d f } { d \mathbf { u } _{ t } } }
+}
+\]</span> And <span class="math inline">\(\mathbf{A}_t, \mathbf{B}_t\)</span> can be learned instead of learning <span class="math inline">\(f\)</span>. The whole algorithm can be seen below:</p>
+<p><img src="https://i.imgur.com/W6HfTcy.png" alt="iLQR" /></p>
+<p>Choices to update controller with iLQR output <span class="math inline">\(\hat{\mathbf{x}}_t, \hat{\mathbf{u}}_t, \mathbf{K}_t, \mathbf{k}_t\)</span>:</p>
+<ul>
+<li><span class="math inline">\(p \left( \mathbf { u } _{ t } | \mathbf { x }_ { t } \right) = \delta(\mathbf { u } _{ t } = \hat{\mathbf { u } }_t)\)</span> : doesn't correct deviations or drift.</li>
+<li><span class="math inline">\(p \left( \mathbf { u } _{ t } | \mathbf { x }_ { t } \right) = \delta(\mathbf { u } _{ t } = \mathbf{K}_t (\mathbf{x}_t - \hat{\mathbf{x}}_t) + \mathbf{k}_t + \hat{\mathbf { u } }_t)\)</span>: too strict.</li>
+<li><span class="math inline">\(p \left( \mathbf { u } _{ t } | \mathbf { x }_ { t } \right) = \mathcal{N}( \mathbf{K}_t (\mathbf{x}_t - \hat{\mathbf{x}}_t) + \mathbf{k}_t + \hat{\mathbf { u } }_t, \Sigma_t)\)</span> where <span class="math inline">\(\Sigma_t = \mathbf{Q}_{\mathbf{u}_t, \mathbf{u}_t}^{-1}\)</span>: add noise so that samples don't look the same.</li>
+</ul>
+<p>Choices to fit the dynamics:</p>
+<ul>
+<li>Linear regression: <span class="math inline">\(p \left( \mathbf { x } _{ t + 1 } | \mathbf { x }_ { t } , \mathbf { u } _{ t } \right) = \mathcal { N } \left( \mathbf { A }_ { t } \mathbf { x } _{ t } + \mathbf { B }_ { t } \mathbf { u } _{ t } + \mathbf { c } , \mathbf { N }_ { t } \right)\)</span></li>
+<li>Bayesian linear regression: use favorite global model as prior.</li>
+</ul>
+<p>Since we assume the model is locally linear, the updated controller is only good when it is close to old controller. Use trajectories generated from two controllers to measure their closeness by KL divergence <span class="math inline">\(D_{\mathrm { KL }}(p(\tau) \| \bar{p}(\tau)) \le \epsilon\)</span>.</p>
+<h2 id="global-policy">Global Policy</h2>
+<p><strong>Guided policy search</strong>:</p>
+<ol type="1">
+<li>optimize each local policy <span class="math inline">\(\pi_{\mathrm{LQR}, i}(\mathbf{u}_t | \mathbf{x}_t)\)</span> on initial state <span class="math inline">\(\mathbf{x}_{0, i}\)</span> w.r.t. <span class="math inline">\(\tilde{c}_{k, i}(\mathbf{x}_t, \mathbf{u}_t)\)</span></li>
+<li>use samples from step 1 to train <span class="math inline">\(\pi_\theta(\mathbf{u}_t | \mathbf{x}_t)\)</span> to mimic each <span class="math inline">\(\pi_{\mathrm{LQR}, i}(\mathbf{u}_t | \mathbf{x}_t)\)</span></li>
+<li>update cost function <span class="math inline">\(\tilde{c}_{k+1, i}(\mathbf{x}_t, \mathbf{u}_t) = c(\mathbf{x}_t, \mathbf{u}_t) - \lambda_{k+1, i} \log \pi_\theta(\mathbf{u}_t | \mathbf{x}_t)\)</span></li>
+</ol>
+<p><strong>Distillation</strong>: make a single model as good as ensemble. Train on the ensemble's predictions as <strong>soft targets</strong> <span class="math display">\[
+\displaylines{p_i = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}
+}
+\]</span> For multi-task transfer, train independent model for different task <span class="math inline">\(\pi_i\)</span>, then use supervised learning/distillation: <span class="math display">\[
+\displaylines{\mathcal{L} = \sum_{\mathbf{a}} \pi_i(\mathbf{a} | \mathbf{s}) \log \pi_{AMN}(\mathbf{a} | \mathbf{s})
+}
+\]</span></p>
+<h1 id="proof">Proof</h1>
+<h2 id="proof-1">Proof 1</h2>
+<p>From the relation between <span class="math inline">\(Q\)</span> and <span class="math inline">\(V\)</span> we can get <span class="math display">\[
+\begin{equation}\displaylines{
+Q\left(\mathbf{x}_{T-1}, \mathbf{u}_{T-1}\right)=\text { const } + \frac{1}{2}\begin{bmatrix}
+\mathbf{x}_{T-1} \\
+\mathbf{u}_{T-1}
+\end{bmatrix}^{T} \mathbf{C}_{T-1} \begin{bmatrix}
+\mathbf{x}_{T-1} \\
+\mathbf{u}_{T-1}
+\end{bmatrix}+\begin{bmatrix}
+\mathbf{x}_{T-1} \\
+\mathbf{u}_{T-1}
+\end{bmatrix}^{T} \mathbf{c}_{T-1}+V\left(\mathbf{x}_{T}\right)
+}
+\label{lqrqv}
+\end{equation}
+\]</span> At step <span class="math inline">\(T\)</span>, <span class="math inline">\(V = 0\)</span>. Take the gradient of <span class="math inline">\(\eqref{lqrqv}\)</span> w.r.t. <span class="math inline">\(\mathbf{u}_T\)</span>: <span class="math display">\[
+\begin{equation}\displaylines{
+\nabla_{\mathbf{u}_{T}} Q\left(\mathbf{x}_{T}, \mathbf{u}_{T}\right)=\mathbf{C}_{\mathbf{u}_{T}, \mathbf{x}_{T}} \mathbf{x}_{T}+\mathbf{C}_{\mathbf{u}_{T}, \mathbf{u}_{T}} \mathbf{u}_{T}+\mathbf{c}_{\mathbf{u}_{T}}^{T}
+}
+\label{lqrg}
+\end{equation}
+\]</span> Here we have expanded <span class="math inline">\(\mathbf{C}_T\)</span> and <span class="math inline">\(\mathbf{c}_T\)</span> to sub-matrices as follows: <span class="math display">\[
+\displaylines{\mathbf{C}_{T} =\begin{bmatrix}
+\mathbf{C}_{\mathbf{x}_{T}, \mathbf{x}_{T}} &amp; \mathbf{C}_{\mathbf{x}_{T}, \mathbf{u}_{T}} \\
+\mathbf{C}_{\mathbf{u}_{T}, \mathbf{x}_{T}} &amp; \mathbf{C}_{\mathbf{u}_{T}, \mathbf{u}_{T}}
+\end{bmatrix} \qquad
+\mathbf{c}_{T} =\begin{bmatrix}
+\mathbf{c}_{\mathbf{x}_{T}} \\
+\mathbf{c}_{\mathbf{u}_{T}}
+\end{bmatrix}
+}
+\]</span> Set the gradient <span class="math inline">\(\eqref{lqrg}\)</span> to <span class="math inline">\(0\)</span> and solve for <span class="math inline">\(\mathbf{u}_T\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbf{u}_{T} &amp;= -\mathbf{C}_{\mathbf{u}_{T}, \mathbf{u}_{T}}^{-1}\left(\mathbf{C}_{\mathbf{u}_{T}, \mathbf{x}_{T}} \mathbf{x}_{T}+\mathbf{c}_{\mathbf{u}_{T}}\right) \\
+&amp;= \mathbf{K}_T\mathbf{x}_T + \mathbf{k}_T
+\end{aligned}
+}
+\]</span> At step <span class="math inline">\(T-1\)</span>, first compute <span class="math inline">\(V(\mathbf{x}_T)\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}
+V(\mathbf{x}_T) &amp;= \text { const } + \frac{1}{2}\begin{bmatrix}
+\mathbf{x}_{T} \\
+\mathbf{K}_T\mathbf{x}_T + \mathbf{k}_T
+\end{bmatrix}^{T} \mathbf{C}_{T} \begin{bmatrix}
+\mathbf{x}_{T} \\
+\mathbf{K}_T\mathbf{x}_T + \mathbf{k}_T
+\end{bmatrix}+\begin{bmatrix}
+\mathbf{x}_{T} \\
+\mathbf{K}_T\mathbf{x}_T + \mathbf{k}_T
+\end{bmatrix}^{T} \mathbf{c}_{T} \\
+&amp;= \frac{1}{2} \mathbf{x}_T^T \mathbf{V}_T \mathbf{x}_T + \mathbf{x}_T^T \mathbf{v}_{T} \\
+\mathbf{V}_{T} = &amp;\mathbf{C}_{\mathbf{x}_{T}, \mathbf{x}_{T}}+\mathbf{C}_{\mathbf{x}_{T}, \mathbf{u}_{T}} \mathbf{K}_{T}+\mathbf{K}_{T}^{T} \mathbf{C}_{\mathbf{u}_{T}, \mathbf{x}_{T}}+\mathbf{K}_{T}^{T} \mathbf{C}_{\mathbf{u}_{T}, \mathbf{u}_{T}} \mathbf{K}_{T} \\
+\mathbf{v}_{T} = &amp;\mathbf{c}_{\mathbf{x}_{T}}+\mathbf{C}_{\mathbf{x}_{T}, \mathbf{u}_{T}} \mathbf{k}_{T}+\mathbf{K}_{T}^{T} \mathbf{C}_{\mathbf{u}_{T}}+\mathbf{K}_{T}^{T} \mathbf{C}_{\mathbf{u}_{T}, \mathbf{u}_{T}} \mathbf{k}_{T}
+\end{aligned}
+}
+\]</span> Plug in the model <span class="math inline">\(\mathbf{x}_{T}=f\left(\mathbf{x}_{T-1}, \mathbf{u}_{T-1}\right)\)</span> in <span class="math inline">\(V\)</span> and then plug in <span class="math inline">\(V\)</span> in <span class="math inline">\(Q\)</span> to get <span class="math display">\[
+\displaylines{Q\left(\mathbf{x}_{T-1}, \mathbf{u}_{T-1}\right)=\text { const }+\frac{1}{2}\begin{bmatrix}
+{\mathbf{x}_{T-1}} \\
+{\mathbf{u}_{T-1}}
+\end{bmatrix}^{T} \mathbf{Q}_{T-1}\begin{bmatrix}
+{\mathbf{x}_{T-1}} \\
+{\mathbf{u}_{T-1}}
+\end{bmatrix}+\begin{bmatrix}
+{\mathbf{x}_{T-1}} \\
+{\mathbf{u}_{T-1}}
+\end{bmatrix}^{T} \mathbf{q}_{T-1} \\
+\mathbf{Q}_{T-1}=\mathbf{C}_{T-1}+\mathbf{F}_{T-1}^{T} \mathbf{V}_{T} \mathbf{F}_{T-1} \\
+\mathbf{q}_{T-1}=\mathbf{c}_{T-1}+\mathbf{F}_{T-1}^{T} \mathbf{V}_{T} \mathbf{f}_{T-1}+\mathbf{F}_{T-1}^{T} \mathbf{v}_{T}
+}
+\]</span> Take the gradient and set it to <span class="math inline">\(0\)</span> to get <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbf{u}_{T-1} &amp;= -\mathbf{Q}_{\mathbf{u}_{T-1}, \mathbf{u}_{T-1}}^{-1}\left(\mathbf{Q}_{\mathbf{u}_{T-1}, \mathbf{x}_{T-1}} \mathbf{x}_{T-1}+\mathbf{q}_{\mathbf{u}_{T-1}}\right) \\
+&amp;= \mathbf{K}_{T-1}\mathbf{x}_{T-1} + \mathbf{k}_{T-1}
+\end{aligned}
+}
+\]</span> Continue this process we can get the backward pass.</p>
+<h1 id="references">References</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://medium.com/@jonathan_hui/rl-lqr-ilqr-linear-quadratic-regulator-a5de5104c750">RL — LQR &amp; iLQR</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Open-Courses/" rel="tag"><i class="fa fa-tag"></i> Open Courses</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/deep-reinforcement-learning-1/" rel="prev" title="Deep Reinforcement Learning (Part 1)">
+                  <i class="fa fa-chevron-left"></i> Deep Reinforcement Learning (Part 1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/deep-reinforcement-learning-3/" rel="next" title="Deep Reinforcement Learning (Part 3)">
+                  Deep Reinforcement Learning (Part 3) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

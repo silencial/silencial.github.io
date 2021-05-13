@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="EN530.603 Review.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Applied Optimal Control">
+<meta property="og:url" content="https://silencial.github.io/optimal-control/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="EN530.603 Review.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-13T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="ME">
+<meta property="article:tag" content="JHU">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/optimal-control/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;optimal-control&#x2F;&quot;,&quot;path&quot;:&quot;optimal-control&#x2F;&quot;,&quot;title&quot;:&quot;Applied Optimal Control&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Applied Optimal Control | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#unconstrained-optimization"><span class="nav-number">1.</span> <span class="nav-text">Unconstrained Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimality-conditions"><span class="nav-number">1.1.</span> <span class="nav-text">Optimality Conditions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#necessary-optimality-conditions"><span class="nav-number">1.1.1.</span> <span class="nav-text">Necessary Optimality Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sufficient-optimality-conditions"><span class="nav-number">1.1.2.</span> <span class="nav-text">Sufficient Optimality Conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numerical-solution"><span class="nav-number">1.2.</span> <span class="nav-text">Numerical Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#search-direction"><span class="nav-number">1.2.1.</span> <span class="nav-text">Search Direction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stepsize"><span class="nav-number">1.2.2.</span> <span class="nav-text">Stepsize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#regularized-newton-method"><span class="nav-number">1.2.3.</span> <span class="nav-text">Regularized Newton Method</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#constrained-optimization"><span class="nav-number">2.</span> <span class="nav-text">Constrained Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#equality-constraints"><span class="nav-number">2.1.</span> <span class="nav-text">Equality Constraints</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#necessary-optimality-conditions-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">Necessary Optimality Conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sufficient-optimality-conditions-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">Sufficient Optimality Conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inequality-constraints"><span class="nav-number">2.2.</span> <span class="nav-text">Inequality Constraints</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trajectory-optimization"><span class="nav-number">3.</span> <span class="nav-text">Trajectory Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#euler-lagrange-equation"><span class="nav-number">3.1.</span> <span class="nav-text">Euler-Lagrange Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#free-final-time"><span class="nav-number">3.2.</span> <span class="nav-text">Free Final-Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#differential-constraints"><span class="nav-number">3.3.</span> <span class="nav-text">Differential Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-boundary-constraints"><span class="nav-number">3.4.</span> <span class="nav-text">General Boundary Constraints</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#continuous-optimal-control"><span class="nav-number">4.</span> <span class="nav-text">Continuous Optimal Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hamiltonian-conservation"><span class="nav-number">4.1.</span> <span class="nav-text">Hamiltonian Conservation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-quadratic-regulator"><span class="nav-number">5.</span> <span class="nav-text">Linear-Quadratic Regulator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimal-cost"><span class="nav-number">5.1.</span> <span class="nav-text">Optimal Cost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trajectory-tracking"><span class="nav-number">5.2.</span> <span class="nav-text">Trajectory Tracking</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#constrained-optimal-control"><span class="nav-number">6.</span> <span class="nav-text">Constrained Optimal Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pontryagins-minimum-principle"><span class="nav-number">6.1.</span> <span class="nav-text">Pontryagin&#39;s Minimum Principle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-time-problems"><span class="nav-number">6.2.</span> <span class="nav-text">Minimum-Time Problems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-control-effort-problems"><span class="nav-number">6.3.</span> <span class="nav-text">Minimum Control Effort Problems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singular-controls"><span class="nav-number">6.4.</span> <span class="nav-text">Singular Controls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-constraints"><span class="nav-number">6.5.</span> <span class="nav-text">General Constraints</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inequality-constraints-on-the-state-only"><span class="nav-number">6.5.1.</span> <span class="nav-text">Inequality Constraints on the State Only</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-programming"><span class="nav-number">7.</span> <span class="nav-text">Dynamic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#discrete-time-dp"><span class="nav-number">7.1.</span> <span class="nav-text">Discrete-Time DP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-time-lqr"><span class="nav-number">7.1.1.</span> <span class="nav-text">Discrete-Time LQR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continuous-dp"><span class="nav-number">7.2.</span> <span class="nav-text">Continuous DP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numerical-methods-for-optimal-control"><span class="nav-number">8.</span> <span class="nav-text">Numerical Methods for Optimal Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#indirect-methods"><span class="nav-number">8.1.</span> <span class="nav-text">Indirect Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indirect-shooting"><span class="nav-number">8.1.1.</span> <span class="nav-text">Indirect Shooting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indirect-multiple-shooting"><span class="nav-number">8.1.2.</span> <span class="nav-text">Indirect Multiple-Shooting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#direct-methods"><span class="nav-number">8.2.</span> <span class="nav-text">Direct Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#direct-shooting"><span class="nav-number">8.3.</span> <span class="nav-text">Direct Shooting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#direct-multiple-shooting"><span class="nav-number">8.3.1.</span> <span class="nav-text">Direct Multiple-Shooting</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#optimal-state-estimation"><span class="nav-number">9.</span> <span class="nav-text">Optimal State Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#least-squares-for-static-estimation"><span class="nav-number">9.1.</span> <span class="nav-text">Least-Squares for Static Estimation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#propagation-of-uncertainty"><span class="nav-number">9.2.</span> <span class="nav-text">Propagation of Uncertainty</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-system"><span class="nav-number">9.2.1.</span> <span class="nav-text">Linear System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continuous-to-discrete"><span class="nav-number">9.2.2.</span> <span class="nav-text">Continuous to Discrete</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-optimal-estimation"><span class="nav-number">9.3.</span> <span class="nav-text">Linear-Optimal Estimation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stochastic-control"><span class="nav-number">10.</span> <span class="nav-text">Stochastic Control</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-measurements"><span class="nav-number">10.1.</span> <span class="nav-text">Perfect Measurements</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#continuous-linear-quadratic-systems"><span class="nav-number">10.1.1.</span> <span class="nav-text">Continuous Linear-Quadratic Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-linear-quadratic-systems"><span class="nav-number">10.1.2.</span> <span class="nav-text">Discrete Linear-Quadratic Systems</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/optimal-control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Applied Optimal Control
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-29 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-29T00:00:00+00:00">2020-12-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-13 00:00:00" itemprop="dateModified" datetime="2021-02-13T00:00:00+00:00">2021-02-13</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mechanical-Engineering/" itemprop="url" rel="index"><span itemprop="name">Mechanical Engineering</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>27k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:08</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://asco.lcsr.jhu.edu/en530-603-f2020-applied-optimal-control/">EN530.603</a> Review.</p>
+<span id="more"></span>
+<hr />
+<h1 id="unconstrained-optimization">Unconstrained Optimization</h1>
+<h2 id="optimality-conditions">Optimality Conditions</h2>
+<h3 id="necessary-optimality-conditions">Necessary Optimality Conditions</h3>
+<p><span class="math display">\[
+\displaylines{\nabla f = 0 \qquad \text{First-order Necessary Conditions} \\
+\nabla^2 f \ge 0 \qquad \text{Second-order Necessary Conditions}
+}
+\]</span></p>
+<h3 id="sufficient-optimality-conditions">Sufficient Optimality Conditions</h3>
+<p><span class="math display">\[
+\displaylines{\nabla f(x^*) = 0, \quad \nabla^2 f(x^*) &gt; 0
+}
+\]</span></p>
+<h2 id="numerical-solution">Numerical Solution</h2>
+<p><span class="math display">\[
+\displaylines{x^{k+1} = x^k + \alpha^k d^k, \quad k=0,1,\dots
+}
+\]</span></p>
+<p>where <span class="math inline">\(d^k\)</span> is called the <em>search direction</em> and <span class="math inline">\(\alpha^k &gt; 0\)</span> is called the <em>stepsize</em>. The most common methods for finding <span class="math inline">\(\alpha^k\)</span> and <span class="math inline">\(d^k\)</span> are gradient-based.</p>
+<ol type="1">
+<li><p>Choose direction <span class="math inline">\(d^k\)</span> so that whenever <span class="math inline">\(\nabla f(x^k) \ne 0\)</span> we have <span class="math display">\[
+\displaylines{\nabla f(x^k)^T d^k &lt; 0
+}
+\]</span></p></li>
+<li><p>Choose stepsize <span class="math inline">\(\alpha^k &gt; 0\)</span> so that <span class="math display">\[
+\displaylines{f(x^k + \alpha d^k) &lt; f(x^k)
+}
+\]</span></p></li>
+</ol>
+<h3 id="search-direction">Search Direction</h3>
+<p>Many gradient methods are specified in the form <span class="math display">\[
+\displaylines{x^{k+1} = x^k - \alpha^k D^k \nabla f(x^k)
+}
+\]</span> where <span class="math inline">\(D^k \in \mathbb{S}^n_{++}\)</span></p>
+<p><strong>Steepest Descent</strong>: <span class="math display">\[
+\displaylines{D^k = I
+}
+\]</span> <strong>Newton's Method</strong>: <span class="math display">\[
+\displaylines{D^k = [\partial^2 f(x^k)]^{-1}
+}
+\]</span> <strong>Gauss-Newton Method</strong>: When the cost has a special <em>least squares form</em> <span class="math display">\[
+\displaylines{f(x) = \frac{1}{2} \|g(x)\|^2
+}
+\]</span> we can choose <span class="math display">\[
+\displaylines{D^k = \left[ \nabla g(x^k) \nabla g(x^k)^T \right]^{-1}
+}
+\]</span> <strong>Conjugate-Gradient Method</strong>: Choose linearly independent (conjugate) search directions <span class="math inline">\(d^k\)</span> <span class="math display">\[
+\displaylines{d^k = -\nabla f(x^k) + \beta d^{k-1}
+}
+\]</span> The most common way to compute <span class="math inline">\(\beta^k\)</span> is <span class="math display">\[
+\displaylines{\beta^{k}=\frac{\nabla f\left(x^{k}\right)^{T}\left(\nabla f\left(x^{k}\right)-\nabla f\left(x^{k-1}\right)\right)}{\nabla f\left(x^{k-1}\right)^{T} \nabla f\left(x^{k-1}\right)}
+}
+\]</span></p>
+<h3 id="stepsize">Stepsize</h3>
+<p><strong>Minimization Rule</strong>: Choose <span class="math inline">\(\alpha^k \in [0,s]\)</span> so that <span class="math inline">\(f\)</span> is minimized <span class="math display">\[
+\displaylines{f(x^k + \alpha^k d^k) = \min_{\alpha \in [0, s]} f(x^k + \alpha d^k)
+}
+\]</span> <strong>Successive Stepsize Reduction - Armijo Rule</strong>:</p>
+<ol type="1">
+<li>Choose <span class="math inline">\(s&gt;0, 0&lt;\beta&lt;1, 0&lt;\sigma&lt;1\)</span></li>
+<li>Increase: <span class="math inline">\(m = 0, 1, \dots\)</span></li>
+<li>Until: <span class="math inline">\(f(x^k) - f(x^k+\beta^m s d^k) \ge -\sigma \beta^m s \nabla f(x^k)^T d^k\)</span></li>
+</ol>
+<p>where <span class="math inline">\(\beta\)</span> is the rate of decrease and <span class="math inline">\(\sigma\)</span> is the acceptance ratio</p>
+<h3 id="regularized-newton-method">Regularized Newton Method</h3>
+<p>Drawbacks of pure Newton's method:</p>
+<ul>
+<li>The inverse Hessian <span class="math inline">\([\nabla^2 f(x)]^{-1}\)</span> might not be computable</li>
+<li>When <span class="math inline">\(\nabla^2 f(x) \nsucc 0\)</span> the method can be attracted by global maxima</li>
+</ul>
+<p>Add a <em>regularizing</em> term to the Hessian and solve the system <span class="math display">\[
+\displaylines{(\nabla^2 f(x^k) + \Delta^k) d^k = -\nabla f(x^k)
+}
+\]</span> where <span class="math inline">\(\Delta^k\)</span> is chosen so that <span class="math inline">\(\nabla^2 f(x^k) + \Delta^k \succ 0\)</span></p>
+<p>In <strong>trust-region</strong> methods one sets <span class="math display">\[
+\displaylines{\Delta^k = \delta^k I
+}
+\]</span> and <span class="math inline">\((\nabla^2 f(x^k) + \delta^k I) d^k = -\nabla f(x^k)\)</span> is equivalent to <span class="math display">\[
+\displaylines{\DeclareMathOperator*{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmax}{\arg\max}
+d^k \in \argmin_{\|d\| \le \gamma^k} f^k(d)
+}
+\]</span></p>
+<h1 id="constrained-optimization">Constrained Optimization</h1>
+<h2 id="equality-constraints">Equality Constraints</h2>
+<p>Minimize <span class="math inline">\(L(x): \mathbb{R}^n \rightarrow \mathbb{R}\)</span>, subject to <span class="math inline">\(k\)</span> constraints <span class="math inline">\(f(x) = 0\)</span>.</p>
+<h3 id="necessary-optimality-conditions-1">Necessary Optimality Conditions</h3>
+<p>Let <span class="math inline">\(H(x, \lambda) = L(x) + \lambda^T f(x)\)</span> be the <strong>Hamiltonian</strong>, where <span class="math inline">\(\lambda\)</span> are scalars and called the <em>Lagrangian multipliers</em> <span class="math display">\[
+\displaylines{\nabla_x H(x^*, \lambda^*) = 0 \qquad \text{First-order Necessary Condtions} \\
+dx^T [\nabla_{xx} H(x^*, \lambda^*)] dx \ge 0 \qquad \text{Secon-order Necessary Condtions}
+}
+\]</span> Note that <span class="math inline">\(dx\)</span> is not arbitrary, i.e. we require <span class="math inline">\(\nabla f_i(x^*)^T dx = 0\)</span></p>
+<p><strong>Geometric meaning</strong>: any feasible <span class="math inline">\(dx\)</span> must be spanned by the gradients <span class="math inline">\(\nabla f_i\)</span>. At an optimum <span class="math inline">\(x^*\)</span> we must also have <span class="math inline">\(\nabla L (x^*)^T dx = 0\)</span>, so that <span class="math inline">\(\nabla L(x)\)</span> must be spanned by gradients as well: <span class="math display">\[
+\displaylines{\nabla L(x^*) = \sum_{i=1}^n \lambda_i \nabla f_i(x^*)
+}
+\]</span></p>
+<h3 id="sufficient-optimality-conditions-1">Sufficient Optimality Conditions</h3>
+<p><span class="math display">\[
+\displaylines{\nabla_x H = 0, \quad dx^T [\nabla_{xx} H] dx &gt; 0
+}
+\]</span></p>
+<h2 id="inequality-constraints">Inequality Constraints</h2>
+<p>Minimize <span class="math inline">\(L(x)\)</span> subject to <span class="math inline">\(f(x) \le 0\)</span>.</p>
+<p>Now the Lagrangian multipliers have to satisfy <span class="math display">\[
+\displaylines{\lambda = \begin{cases}
+\ge 0, \quad f(x)=0 \\
+=0, \quad f(x) &lt; 0
+\end{cases}
+}
+\]</span></p>
+<p><strong>Geometric meaning</strong>: the gradient of <span class="math inline">\(L\)</span> w.r.t. <span class="math inline">\(x\)</span> at a minimum must be pointed in a way that decrease of <span class="math inline">\(L\)</span> can only come by violating the constraints: <span class="math display">\[
+\displaylines{-\nabla L = \sum_{i=1}^n \lambda_i \nabla f_i \qquad (\lambda_i \ge 0)
+}
+\]</span></p>
+<h1 id="trajectory-optimization">Trajectory Optimization</h1>
+<p>Solving the optimal control problems <span class="math display">\[
+\displaylines{\begin{array}{ll}
+\text{minimize} &amp;J(x(t), u(t), t_f) = \displaystyle\int_{t_0}^{t_f} L(x(t), u(t), t) dt \\
+\text{subject to} &amp;\dot{x}= f(x,u,t) \\
+&amp;\text{other constratins}
+\end{array}
+}
+\]</span> The cost <span class="math inline">\(J\)</span> is called a <strong>functional</strong>, i.e. a function of functions. <span class="math display">\[
+\displaylines{\text{differential of a function}\quad \nabla g = 0 \quad \Longleftrightarrow \quad \text{variation of a functional}\quad \delta J = 0
+}
+\]</span></p>
+<h2 id="euler-lagrange-equation">Euler-Lagrange Equation</h2>
+<p>Consider <span class="math display">\[
+\displaylines{J = \int_{t_0}^{t_f} g(x(t), \dot{x}(t)) dt
+}
+\]</span> given <span class="math inline">\(x(t_0)\)</span></p>
+<p>The variation is <span class="math display">\[
+\displaylines{\delta J=\int_{t_{0}}^{t_{f}}\left[g_{x}(x, \dot{x}) \delta x-\frac{d}{d t} g_{\dot{x}}(x, \dot{x}) \delta x\right] dt+g_{\dot{x}}(x(t_{f}), \dot{x}(t_{f})) \delta x(t_{f})
+}
+\]</span> <strong>Fixed boundary conditions</strong>: if <span class="math inline">\(x(t_f)\)</span> is given, <span class="math inline">\(\delta J=0\)</span> is equivalent to <span class="math display">\[
+\displaylines{g_x(x, \dot{x}) - \frac{d}{dt}g_{\dot{x}}(x, \dot{x}) = 0
+}
+\]</span> <strong>Free boundary conditions</strong>: if <span class="math inline">\(x(t_f)\)</span> is not fixed, <span class="math inline">\(\delta J=0\)</span> is equivalent to <span class="math display">\[
+\displaylines{g_x(x, \dot{x}) - \frac{d}{dt}g_{\dot{x}}(x, \dot{x}) = 0 \\
+g_{\dot{x}}(x(t_f), \dot{x}(t_f)) = 0
+}
+\]</span></p>
+<h2 id="free-final-time">Free Final-Time</h2>
+<p>When <span class="math inline">\(t_f\)</span> is allowed to vary <span class="math display">\[
+\displaylines{\begin{aligned}
+\delta J=&amp; \int_{t_{0}}^{t_{f}}\left[g_{x}(x^{*}, \dot{x}^{*}, t) \delta x-\frac{d}{d t} g_{\dot{x}}(x^{*}, \dot{x}^{*}, t) \delta x\right] d t \\
+&amp;+g_{\dot{x}}(x^{*}(t_{f}), \dot{x}^{*}(t_{f}), t) \delta x(t_{f})+g(x^{*}(t_{f}), \dot{x}^{*}(t_{f}), t_{f}) \delta t_{f} \\
+=&amp; \int_{t_{0}}^{t_{f}}\left[g_{x}(x^{*}, \dot{x}^{*}, t) \delta x-\frac{d}{d t} g_{\dot{x}}(x^{*}, \dot{x}^{*}, t) \delta x\right] d t \\
+&amp;+\left(g_{\dot{x}}(x^{*}, \dot{x}^{*}, t) \delta x_{f}+ [g(x^{*}, \dot{x}^{*}, t_{f}) - g_{\dot{x}}(x^{*}, \dot{x}^{*}, t_{f})\dot{x}] \delta t_{f}\right)_{t=t_f} \\
+\end{aligned}
+}
+\]</span></p>
+<p>where <span class="math inline">\(\delta x_f\)</span> is the total space-time variation defined as <span class="math display">\[
+\displaylines{\delta x_f = \delta x(t_f) + \dot{x}(t_f)\delta t_f
+}
+\]</span> <strong>Unrelated <span class="math inline">\(t_f\)</span> and <span class="math inline">\(x(t_f)\)</span></strong>: the additional necessary conditions are <span class="math display">\[
+\displaylines{g_{\dot{x}}(t_f) = 0 \\
+g(t_f) = 0
+}
+\]</span> <strong>Function related</strong>: when <span class="math inline">\(x(t_f) = \Theta(t_f)\)</span>, then <span class="math inline">\(\delta x_f = \frac{d\Theta}{dt} \delta t_f\)</span>, the additional necessary conditions becomes <span class="math display">\[
+\displaylines{g_{\dot{x}}(t_f) \left[\frac{d\Theta}{dt} - \dot{x}^*\right]_{t=t_f} + g(t_f) = 0
+}
+\]</span></p>
+<h2 id="differential-constraints">Differential Constraints</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}
+\text{minimize} &amp; \displaystyle J = \int_{t_0}^{t_f} g(x, \dot{x}, t) dt \\
+\text{subject to} &amp; f(x(t), \dot{x}(t), t) = 0
+\end{array}
+}
+\]</span></p>
+<p>where <span class="math inline">\(t_f\)</span> and <span class="math inline">\(x(t_f)\)</span> are fixed. Define the Lagrangian multipliers <span class="math inline">\(\lambda : [t_0, t_f] \rightarrow \mathbb{R}^n\)</span> and the augmented cost <span class="math display">\[
+\displaylines{J_a = \int_{t_0}^{t_f} g_a dt \\
+g_a = g + \lambda^T f
+}
+\]</span> The necessary optimality conditions are the Euler-Lagrange equations w.r.t. <span class="math inline">\(g_a\)</span></p>
+<h2 id="general-boundary-constraints">General Boundary Constraints</h2>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}
+\text{minimize} &amp; \displaystyle J = \varphi(x(t_f), t_f) + \int_{t_0}^{t_f} g(x, \dot{x}, t) dt \\
+\text{subject to} &amp; \psi(x(t_f), t_f) = 0
+\end{array}
+}
+\]</span></p>
+<p>where <span class="math inline">\(t_f\)</span> is free. Defined the augmented cost <span class="math display">\[
+\displaylines{J_a = \omega(x(t_f), \nu, t_f) + \int_{t_0}^{t_f} g(x, \dot{x}, t) dt \\
+\omega(x(t_f), \nu, t_f) = \varphi(x(t_f), t_f) + \nu^T \psi(x(t_f), t_f)
+}
+\]</span> The necessary optimality conditions are <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\nabla_x \omega(x(t_f), \nu, t_f) + \nabla_{\dot{x}} g(x(t_f), \dot{x}(t_f), t_f) = 0 \qquad (\delta x_f) \\
+&amp;\frac{\partial}{\partial t_f} \omega(x(t_f), \nu, t_f) + g(x(t_f), \dot{x}(t_f), t_f) - \nabla_{\dot{x}} g(x(t_f), \dot{x}(t_f), t_f)^T \dot{x}(t_f) = 0 \qquad (\delta t_f) \\
+&amp;\psi(x(t_f), t_f) = 0 \qquad (\text{constraints}) \\
+&amp;\nabla_x g(x,\dot{x}, t) - \frac{d}{dt}\nabla_{\dot{x}}g(x,\dot{x},t) = 0, \quad t\in (t_0, t_f) \qquad (\delta x(t))
+\end{aligned}
+}
+\]</span></p>
+<h1 id="continuous-optimal-control">Continuous Optimal Control</h1>
+<p><span class="math display">\[
+\displaylines{\begin{array}{cl}
+\text{minimize} &amp; \displaystyle J = \varphi(x(t_f), t_f) + \int_{t_0}^{t_f} L(x, u, t) dt \\
+\text{subject to} &amp; \psi(x(t_f), t_f) = 0 \\
+&amp; \dot{x} = f(x, u, t)
+\end{array}
+}
+\]</span></p>
+<p>Define the augmented cost <span class="math display">\[
+\displaylines{J_a = \varphi(t_f) + \nu^T \psi(t_f) + \int_{t_0}^{t_f} [H(x,u,\lambda,t) -\lambda^T \dot{x}] dt \\
+H = L(x,u,t) + \lambda^T(t)f(x,u,t)
+}
+\]</span> The necessary optimality conditions are <span class="math display">\[
+\displaylines{\text{Euler-Lagrange:} \qquad \begin{aligned}
+&amp;\dot{x} = f(x,u,t) \qquad (\text{dynamics}) \\
+&amp;\dot{\lambda} = -\nabla_x H \qquad (\delta x(t)) \\
+\end{aligned}
+}
+\]</span></p>
+<p><span class="math display">\[
+\displaylines{\text{Control Opimization:}\qquad \nabla_u H = 0
+}
+\]</span></p>
+<p><span class="math display">\[
+\displaylines{\text{Transversality Conditions (TC):}\qquad \begin{aligned}
+&amp;\psi(x(t_f), t_f) = 0 \qquad(\text{boundary constraint})\\
+&amp;\lambda(t_f) = \nabla_x \varphi(t_f) + \nabla_x \psi(t_f)\cdot \nu \qquad (\delta x_f) \\
+&amp;(\partial_t \varphi + \nu^T \partial_t \psi + L + \lambda^T f)_{t=t_f} = 0 \qquad (\delta t_f)
+\end{aligned}
+}
+\]</span></p>
+<h2 id="hamiltonian-conservation">Hamiltonian Conservation</h2>
+<p>When the Hamiltonian does not depend on time (<span class="math inline">\(f\)</span> and <span class="math inline">\(L\)</span> do not depend on time): <span class="math display">\[
+\displaylines{\partial_t H(x,u,\lambda, t) = 0
+}
+\]</span> then <span class="math inline">\(H\)</span> is a conserved quantity along optimal trajectories <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{H}(x,u,\lambda,t) &amp;= \partial_x H \cdot \dot{x} + \partial_u H \cdot \dot{u} + \partial_\lambda H \cdot \dot{\lambda} + \partial_t H \\
+&amp;= -\dot{\lambda}^T f(x,u,t) + 0 + f(x,u,t)^T \dot{\lambda} + 0 \\
+&amp;= 0
+\end{aligned}
+}
+\]</span></p>
+<h1 id="linear-quadratic-regulator">Linear-Quadratic Regulator</h1>
+<p>Dynamics is linear and cost function is quadratic <span class="math display">\[
+\displaylines{\dot{x} = Ax + Bu \\
+J = \frac{1}{2}x^T(t_f) P_f x(t_f) + \int_{t_0}^{t_f} \frac{1}{2} [x(t)^T Q(t) x(t) + u(t)^T R(t) u (t)] dt
+}
+\]</span> where <span class="math inline">\(P_f, Q \in \mathbb{S}_{+}\)</span> and <span class="math inline">\(R\in\mathbb{S}_{++}\)</span></p>
+<p>Using the optimality conditions to get <span class="math display">\[
+\displaylines{\begin{pmatrix}
+\dot{x} \\ \dot{\lambda}
+\end{pmatrix} = \begin{pmatrix}
+A &amp; -BR^{-1}B^T \\
+-Q &amp; -A^T
+\end{pmatrix} \begin{pmatrix}
+x \\ \lambda
+\end{pmatrix} \\
+u = -R^{-1}B^T\lambda \\
+\lambda(t_f) = P_f x(t_f) \\
+}
+\]</span> Kalman showed that <span class="math inline">\(\lambda(t)\)</span> are linear functions of the states <span class="math inline">\(\lambda(t) = P(t) x(t)\)</span>, then we have the <strong>Riccati ODE</strong> <span class="math display">\[
+\displaylines{\dot{P} = -A^T P - PA + PBR^{-1}B^TP - Q, \qquad P(t_f) = P_f
+}
+\]</span> and the control is <span class="math display">\[
+\displaylines{u(t) = -R^{-1}B^TP(t)x(t) = -K(t) x(t)
+}
+\]</span></p>
+<h2 id="optimal-cost">Optimal Cost</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+J(t) &amp;=\frac{1}{2} x^{T}\left(t_{f}\right) P_{f} x\left(t_{f}\right)+\int_{t}^{t_{f}} \frac{1}{2}\left[x^{T} Q x+u^{T} R u\right] \mathrm{d} t \\
+&amp;=\frac{1}{2} x^{T}\left(t_{f}\right) P_{f} x\left(t_{f}\right)+\int_{t}^{t_{f}} \frac{1}{2}\left[x(t)^{T}\left(Q+K^{T} R K\right) x\right] \mathrm{d} t \\
+&amp;=\frac{1}{2} x^{T}\left(t_{f}\right) P_{f} x\left(t_{f}\right)-\int_{t}^{t_{f}} \frac{d}{d t}\left(\frac{1}{2} x^{T} P x\right) \mathrm{d} t \\
+&amp;=\frac{1}{2} x^{T}(t) P(t) x(t)
+\end{aligned}
+}
+\]</span></p>
+<h2 id="trajectory-tracking">Trajectory Tracking</h2>
+<p>Consider the problem of not stabilizing to the origin, i.e. <span class="math inline">\(x\rightarrow 0\)</span> but tracking a given reference trajectory <span class="math inline">\(x_d(t)\)</span>, i.e. <span class="math inline">\(x\rightarrow x_d\)</span>.</p>
+<p>Define the <em>error state</em> and <em>control error</em> <span class="math display">\[
+\displaylines{e = x - x_d \\
+v = u - u_d
+}
+\]</span> then <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{e} &amp;= \dot{x} - \dot{x}_d \\
+&amp;= f(x_d+e, u_d+v) - f(x_d, u_d) \\
+&amp;\approx \left.\frac{\partial f}{\partial x}\right|_{x=x_d} e + \left.\frac{\partial f}{\partial u}\right|_{u=u_d} u \\
+&amp;= Ae + Bv
+\end{aligned}
+}
+\]</span> Use LQR to solve <span class="math inline">\(v = -K e\)</span> and the control is <span class="math display">\[
+\displaylines{u = -K(x - x_d) + u_d
+}
+\]</span></p>
+<h1 id="constrained-optimal-control">Constrained Optimal Control</h1>
+<p>Consider optimal control problems subject to constraints <span class="math inline">\(|u(t)| \le 1\)</span></p>
+<h2 id="pontryagins-minimum-principle">Pontryagin's Minimum Principle</h2>
+<p>The optimal control must minimize the Hamiltonian: <span class="math display">\[
+\displaylines{H(x^*(t), u^*(t) + \delta u(t), \lambda^*(t), t) \ge H(x^*(t), u^*(t), \lambda^*(t), t)
+}
+\]</span></p>
+<h2 id="minimum-time-problems">Minimum-Time Problems</h2>
+<p>Consider a linear system <span class="math display">\[
+\displaylines{\dot{x} = Ax + Bu, \qquad x(0) = x_0
+}
+\]</span> with a single control <span class="math inline">\(u\)</span> constrained by <span class="math inline">\(|u(t)| \le 1\)</span> and is required to reach to origin <span class="math inline">\(x(t_f) = 0\)</span> in minimum time. The cost function is then <span class="math display">\[
+\displaylines{J = \int_{t_0}^{t_f} (1) dt
+}
+\]</span> So the Hamiltonian is <span class="math inline">\(H = 1+ \lambda^T(Ax + Bu)\)</span>. According to the minimum principle, we have <span class="math display">\[
+\displaylines{u^* = +1, \quad \text{if } \lambda^TB &lt; 0 \\
+u^* = -1, \quad \text{if } \lambda^TB &gt; 0
+}
+\]</span> where <span class="math inline">\(\lambda^TB\)</span> is called the <em>switching function</em>. This is an example of <em>bang-bang</em> control since the control is always at its max or min.</p>
+<p>In addition, to ensure smoothness in the trajectory during transitions we need <span class="math display">\[
+\displaylines{\lambda(t^-) = \lambda(t^+) \\
+H(t^-) = H(t^+)
+}
+\]</span> where <span class="math inline">\(t\)</span> is the time of transition. These conditions are called <em>Weierstrass-Erdmann conditions</em></p>
+<h2 id="minimum-control-effort-problems">Minimum Control Effort Problems</h2>
+<p>Consider a nonlinear system with affine controls defined by <span class="math display">\[
+\displaylines{\dot{x} = a(x(t),t) + B(x(t), t) u(t)
+}
+\]</span> where <span class="math inline">\(B\)</span> is a <span class="math inline">\(n\times m\)</span> matrix and <span class="math inline">\(|u_i(t)| \le 1\)</span> for <span class="math inline">\(i=1,\dots,m\)</span>. The cost function is <span class="math display">\[
+\displaylines{J = \int_{t_0}^{t_f} \left(\sum_{i=1}^m |u_i(t)|\right) dt
+}
+\]</span> Express <span class="math inline">\(B\)</span> as <span class="math inline">\([b_1 \,|\, b_2 \,|\, \cdots \,|\, b_n]\)</span> and assume the components of <span class="math inline">\(u\)</span> are independent of one another, from the minimum principle we have <span class="math display">\[
+\displaylines{u_i^* = \begin{cases}
+1, &amp; \text{for } \lambda^{*T}b_i &lt; -1 \\
+0, &amp; \text{for } -1 &lt; \lambda^{*T}b_i &lt; 1 \\
+-1, &amp; \text{for } 1 &lt; \lambda^{*T}b_i \\
+\ge 0, &amp; \text{for } \lambda^{*T}b_i = -1 \\
+\le 0, &amp; \text{for } \lambda^{*T}b_i = 1
+\end{cases}
+}
+\]</span></p>
+<h2 id="singular-controls">Singular Controls</h2>
+<p>Singular controls are controls that cannot be directly determined by either the optimality conditions or the minimum principle.</p>
+<p>In the unconstrained case this generally occurs when <span class="math inline">\(\nabla_u H = 0\)</span> cannot be solved for <span class="math inline">\(u\)</span> which is caused by the conditions <span class="math inline">\(\nabla_u^2 H = 0\)</span>, i.e. when the Hamiltonian is not convex.</p>
+<p>Consider the LQR setting where <span class="math inline">\(R = 0\)</span>, then the first order condition <span class="math display">\[
+\displaylines{\nabla_u H = B^T \lambda = 0
+}
+\]</span> which does not provide information about <span class="math inline">\(u\)</span>. The solution is to consider higher-order derivative of <span class="math inline">\(H_u\)</span> until <span class="math inline">\(u\)</span> apperas explicitly: <span class="math display">\[
+\displaylines{\frac{d}{dt} \nabla_u H = B^T \dot{\lambda} = -B^T(Qx + A^T \lambda) = 0 \\
+\frac{d^2}{dt^2} \nabla_u H = B^T \dot{\lambda} = -B^T(Q(Ax + Bu) + A^T (Qx + A^T\lambda)) = 0
+}
+\]</span> which now provides enough information to obtain the singular control <span class="math inline">\(u\)</span></p>
+<h2 id="general-constraints">General Constraints</h2>
+<p>Now consider general constraints <span class="math inline">\(c(x,u,t) \le 0\)</span>. The Hamiltonian is defined by <span class="math display">\[
+\displaylines{H = L + \lambda^T f + \mu^T c, \qquad \text{where } \begin{cases}
+\mu \ge 0, \quad \text{if } c = 0 \\
+\mu = 0, \quad \text{if } c &lt; 0
+\end{cases}
+}
+\]</span> The adjoint equations are <span class="math display">\[
+\displaylines{\dot{\lambda} = \begin{cases}
+-\nabla_x L - \nabla_x f^T \lambda, &amp; c&lt;0 \\
+-\nabla_x L - \nabla_x f^T \lambda - \nabla_x c^T \mu, &amp; c=0
+\end{cases}
+}
+\]</span> The control is found by setting <span class="math inline">\(\nabla_u H = 0\)</span>: <span class="math display">\[
+\displaylines{0 = \begin{cases}
+\nabla_u L + \nabla_u f^T \lambda, &amp; c&lt;0 \\
+\nabla_u L + \nabla_u f^T \lambda + \nabla_u c^T \mu, &amp; c=0
+\end{cases}
+}
+\]</span></p>
+<h3 id="inequality-constraints-on-the-state-only">Inequality Constraints on the State Only</h3>
+<p>Constraints with the form <span class="math inline">\(c(x(t), t) \le 0\)</span> is more difficult to handle and require differentiation until the control appears explicitly.</p>
+<p>In general, if the constraint is differentiated <span class="math inline">\(q\)</span> times until <span class="math inline">\(u\)</span> shows up, then the Hamiltonian is defined as <span class="math display">\[
+\displaylines{H = L + \lambda^T f + \mu^T c^{(q)}
+}
+\]</span> In addition, the <em>tangency</em> constraints are enforced at time <span class="math inline">\(t\)</span> when <span class="math inline">\(c(x,t)\)</span> becomes active. <span class="math display">\[
+\displaylines{\begin{bmatrix}
+c(x,t) \\
+\dot{c}(c,t) \\
+\vdots \\
+c^{(q-1)}(x,t)
+\end{bmatrix} = 0
+}
+\]</span></p>
+<h1 id="dynamic-programming">Dynamic Programming</h1>
+<h2 id="discrete-time-dp">Discrete-Time DP</h2>
+<p>Consider a discrete optimization problem <span class="math display">\[
+\displaylines{\begin{array}{ll}
+\text{minimize} &amp;J = \phi(x_N, t_N) + \sum_{i=0}^{N-1} L_i(x_i, u_i) \\
+\text{subject to} &amp; x_{i+1} = f_i(x_i, u_i)
+\end{array}
+}
+\]</span> with given <span class="math inline">\(x(t_0)\)</span>, <span class="math inline">\(t_0\)</span>, <span class="math inline">\(t_N\)</span>.</p>
+<p>Define the cost from discrete stage <span class="math inline">\(i\)</span> to <span class="math inline">\(N\)</span> by <span class="math display">\[
+\displaylines{J_i \triangleq \phi(x_N, t_N) + \sum_{k=i}^{N-1} L_k(x_k, u_k)
+}
+\]</span> and the optimal cost-to-go function (or <em>optimal value function</em>) at stage <span class="math inline">\(i\)</span> as <span class="math display">\[
+\displaylines{V_i(x) \triangleq \min_{u_{i:N-1}} J_i
+}
+\]</span> <strong>Bellman equation</strong>: <span class="math display">\[
+\displaylines{V_i(x) = \min_u [L_i(x, u) + V_{i+1}(x&#39;)]
+}
+\]</span> with <span class="math inline">\(V_N(x) = \phi(x, t_N)\)</span></p>
+<h3 id="discrete-time-lqr">Discrete-Time LQR</h3>
+<p><span class="math display">\[
+\displaylines{x_{i+1} = A_i x_i + B_i u_i \\
+\phi(x) = \frac{1}{2} x^T P_f x, \qquad L_i(x,u) = x^TQ_ix + u^TR_iu
+}
+\]</span></p>
+<p>Assume the value function is of the form <span class="math display">\[
+\displaylines{V_i(x) = \frac{1}{2}x^TP_ix
+}
+\]</span> for <span class="math inline">\(P_i \in \mathbb{S}_{++}\)</span> with boundary condition <span class="math inline">\(P_N = P_f\)</span>. Using Bellman's principle we can get <span class="math display">\[
+\displaylines{u^{*}=-\left(R_{i}+B_{i}^{T} P_{i+1} B_{i}\right)^{-1} B_{i}^{T} P_{i+1} A_{i} x \equiv -K_{i} x
+}
+\]</span> Substituting <span class="math inline">\(u^*\)</span> back into the Bellman equation to obtain <span class="math display">\[
+\displaylines{x^{T} P_{i} x=x^{T}\left[K_{i}^{T} R_{i} K_{i}+Q_{i}+\left(A_{i}-B_{i} K_{i}\right)^{T} P_{i+1}\left(A_{i}-B_{i} K_{i}\right)\right] x
+}
+\]</span> This relationship can be cycled backward starting from <span class="math inline">\(P_N\)</span> to <span class="math inline">\(P_0\)</span>.</p>
+<p>It can also be expressed without gains <span class="math inline">\(K_i\)</span> according to <span class="math display">\[
+\displaylines{P_{i}=Q_{i}+A_{i}^{T}\left[P_{i+1}-P_{i+1} B_{i}\left(R_{i}+B_{i}^{T} P_{i+1} B_{i}\right)^{-1} B_{i}^{T} P_{i+1}\right] A_{i}
+}
+\]</span></p>
+<h2 id="continuous-dp">Continuous DP</h2>
+<p>Define the continuous value function <span class="math inline">\(V(x,t)\)</span> as <span class="math display">\[
+\displaylines{V(x(t), t)=\min _{u(t), t \in\left[t, t_{f}\right]}\left[\phi\left(x\left(t_{f}\right), t_{f}\right)+\int_{t}^{t_{f}} L(x(\tau), u(\tau), \tau) d \tau\right]
+}
+\]</span> Bellman equation can be expressed as <span class="math display">\[
+\displaylines{V(x(t), t)=\min_{u(t), t \in[t, t+\Delta]}\left[\int_{t}^{t+\Delta} L(x(\tau), u(\tau), \tau) \mathrm{d} \tau+V(x(t+\Delta), t+\Delta)\right]
+}
+\]</span> Expand <span class="math inline">\(V(x(t+\Delta), t+\Delta)\)</span> according to <span class="math display">\[
+\displaylines{V(x(t+\Delta), t+\Delta) = V(x(t), t) + [\partial_t V(x(t), t) + \nabla_x V(x(t), t)^T \dot{x}] \Delta + o(\Delta)
+}
+\]</span> Substituting back into Bellman equation we can get the <strong>Hamilton-Jacobi-Bellman equation (HJB)</strong>: <span class="math display">\[
+\displaylines{-\partial_{t} V(x, t)=\min_{u(t)}\left[L(x, u, t)+\nabla_{x} V(x, t)^{T} f(x, u, t)\right]
+}
+\]</span></p>
+<h1 id="numerical-methods-for-optimal-control">Numerical Methods for Optimal Control</h1>
+<p>General optimal control problem: <span class="math display">\[
+\displaylines{\begin{aligned}
+\text{minimize}\quad &amp;J=\phi\left(x(t_{f}), t_{f}\right)+\int_{t_{0}}^{t_{f}} L(x(t), u(t), t) d t \\
+\text{subject to}\quad &amp;x\left(t_{0}\right)=x_{0}, \quad x\left(t_{f}\right) \text{ and } t_{f} \text{ free} \\
+&amp;\dot{x}(t)=f(x(t), u(t), t) \\
+&amp;c(x(t), u(t), t) \leq 0, \text { for all } t \in\left[t_{0}, t_{f}\right] \\
+&amp;\psi\left(x\left(t_{f}\right), t_{f}\right) \leq 0
+\end{aligned}
+}
+\]</span></p>
+<p>Consider three families of numerical methods for solving this:</p>
+<ul>
+<li><em>dynamic programming</em>: i.e. solution to the HJB equations</li>
+<li><em>indirect methods</em>: base on calculus of variations, and Pontryagin's principle</li>
+<li><em>direct methods</em>: based on a finite-dimensional representation</li>
+</ul>
+<h2 id="indirect-methods">Indirect Methods</h2>
+<p>Start with the necessary conditions (ignore the path constraints): <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\dot{x}=f(x, u, t) \\
+&amp;\dot{\lambda}=-\nabla_{x} H(x, u, \lambda, t) \\
+&amp;u^{*}=\min_{u} H(x, u, \lambda, t) \\
+&amp;\lambda\left(t_{f}\right)=\nabla_{x} \phi\left(x\left(t_{f}\right), t_{f}\right)+\nabla_{x} \psi\left(x\left(t_{f}\right), t_{f}\right)^{T} \nu \\
+&amp;\left(\partial_{t} \phi+\nu^{T} \partial_{t} \psi+H\right)_{t=t_{f}}=0
+\end{aligned}
+}
+\]</span></p>
+<h3 id="indirect-shooting">Indirect Shooting</h3>
+<p>Shooting methods are based on integrating the EL equations forward from time <span class="math inline">\(t_0\)</span> to time <span class="math inline">\(t_f\)</span> using a starting guess and then satisfying the boundary and transversality conditions at time <span class="math inline">\(t_f\)</span> by formulating a root-finding problem solved by e.g. Newton-type method.</p>
+<p>The optimization variables are <span class="math display">\[
+\displaylines{\lambda(t_0), \nu, t_f
+}
+\]</span> and the equations to be solved are <span class="math display">\[
+\displaylines{\left[\begin{array}{c}
+\psi\left(x\left(t_{f}\right), t_{f}\right) \\
+\lambda\left(t_{f}\right)-\left[\nabla_{x} \phi\left(x\left(t_{f}\right), t_{f}\right)+\nabla_{x} \psi\left(x\left(t_{f}\right), t_{f}\right)^{T} \nu\right] \\
+\left(\partial_{t} \phi+\nu^{T} \partial_{t} \psi+H\right)_{t=t_{f}}
+\end{array}\right]=0
+}
+\]</span></p>
+<h3 id="indirect-multiple-shooting">Indirect Multiple-Shooting</h3>
+<p>Split the time-interval into segments and use indirect shooting.</p>
+<p>First choose discrete time <span class="math inline">\([t_0, t_1, \dots, t_N]\)</span> and let <span class="math inline">\(v_i=(x(t_i), \lambda(t_i))\)</span>. Let <span class="math inline">\(\bar{v}_i\)</span> be the result of integrating the EL equations on <span class="math inline">\([t_i, t_{i+1}]\)</span>. The optimization variables are <span class="math display">\[
+\displaylines{\lambda(t_0), v_1, v_2, \dots, v_N, \nu, t_f
+}
+\]</span> and the equations are <span class="math display">\[
+\displaylines{\left[\begin{array}{c}
+\bar{v}_{0}-v_{1} \\
+\vdots \\
+\bar{v}_{N-1}-v_{N} \\
+\psi\left(x\left(t_{f}\right), t_{f}\right) \\
+\lambda\left(t_{f}\right)-\left[\begin{array}{c}
+\nabla_{x} \phi\left(x\left(t_{f}\right), t_{f}\right)+\nabla_{x} \psi\left(x\left(t_{f}\right), t_{f}\right)^{T} \nu
+\end{array}\right] \\
+\left(\partial_{t} \phi+\nu^{T} \partial_{t} \psi+H\right)_{t=t_{f}}
+\end{array}\right]=0
+}
+\]</span></p>
+<h2 id="direct-methods">Direct Methods</h2>
+<p>Start with either discretizing time and solving a discrete-time optimal control problems, or by parametrizing the controls using a finite set of parameters. This then becomes a <em>nonlinear programming (NLP)</em> problem.</p>
+<h2 id="direct-shooting">Direct Shooting</h2>
+<p>Based on parametrizing the control <span class="math inline">\(u(t)\)</span> by a finite number of parameters <span class="math inline">\(p_k\)</span>: <span class="math display">\[
+\displaylines{u(t) = \sum_{k=1}^M p_k B_k(t)
+}
+\]</span> where <span class="math inline">\(B_k(t)\)</span> are a set of basis functions.</p>
+<p>The NLP variables are <span class="math inline">\([p, t_f]\)</span> and the state can be obtained by forward integration of the dynamics.</p>
+<h3 id="direct-multiple-shooting">Direct Multiple-Shooting</h3>
+<p>Choose discrete times <span class="math inline">\([t_0, t_1, \dots, t_N]\)</span>, discrete trajectory <span class="math inline">\([x_0, x_1, \dots, x_N]\)</span> and a discrete set of parametrized control <span class="math inline">\([u(p_0), u(p_1), \dots, u(p_N)]\)</span>. Then perform direct shooting step on each interval <span class="math inline">\([t_i, t_{i+1}]\)</span> by integrating the dynamics from <span class="math inline">\(x_i\)</span> and obtaining <span class="math inline">\(\bar{x}_i\)</span></p>
+<p>The NLP variables are <span class="math inline">\(p_0, \dots, p_{N-1}, x_1,\dots,x_N, t_f\)</span> and the equations to be solved are <span class="math display">\[
+\displaylines{\left[\begin{array}{c}
+\bar{x}_{0}-x_{1} \\
+\vdots \\
+\bar{x}_{N-1}-x_{N} \\
+\psi\left(x_{N}, t_{N}\right)
+\end{array}\right]=0
+}
+\]</span></p>
+<h1 id="optimal-state-estimation">Optimal State Estimation</h1>
+<p>Linear model, Gaussian noise:</p>
+<ul>
+<li>Kalman filter (KF): linear discrete-time dynamics, linear measurement model, Gaussian noise</li>
+<li>Kalman-Bucy filter: same as KF but continuous-time dynamics</li>
+</ul>
+<p>Nonlinear model, Gaussian noise:</p>
+<ul>
+<li>Extended Kalman filter (EKF): linearize dynamics and sensor model and apply KF</li>
+<li>Unscented Kalman filter (UKF): linearization is avoided during uncertainty propagation by propagating the principle axes of the uncertainty ellipsoid through the nonlinear dynamics and then reconstructing the updated ellipsoid; measurements are still processed through linearization</li>
+</ul>
+<p>Nonlinear model, arbitrary noise:</p>
+<ul>
+<li>Particle filter (PF): states are approximated using weighted samples whose weights are updated by obtained measurements</li>
+</ul>
+<h2 id="least-squares-for-static-estimation">Least-Squares for Static Estimation</h2>
+<p>Consider the sensor model with <span class="math inline">\(x\in\mathbb{R}^n\)</span> and <span class="math inline">\(z\in\mathbb{R}^k\)</span> <span class="math display">\[
+\displaylines{z = Hx + v
+}
+\]</span> where <span class="math inline">\(v\)</span> is a random variable denoting the measurement error. The goal is find the optimal estimate <span class="math inline">\(\hat{x}\)</span> which can be accomplished by first defining the measurement estimate error <span class="math inline">\(e_z = z - H \hat{x}\)</span> and minimizing <span class="math display">\[
+\displaylines{J = \frac{1}{2}e_z^T e_z
+}
+\]</span></p>
+<ul>
+<li>Necessary condition: <span class="math inline">\(\hat{x} = (H^TH)^{-1}H^Tz\)</span></li>
+<li>The sufficient condition: <span class="math inline">\(\nabla^2J = H^TH \succ 0\)</span>. This is satisfied when <span class="math inline">\(\operatorname{rank}(H) = n\)</span></li>
+</ul>
+<p>Now assume there are some prior information about <span class="math inline">\(x\)</span> and <span class="math inline">\(v\)</span> <span class="math display">\[
+\displaylines{\mathbb{E}[x] = \hat{x}_0, \qquad \mathbb{E}[(x - \hat{x}_0)(x - \hat{x}_0)^T] = P_0 \\
+\mathbb{E}[v] = 0, \qquad \mathbb{E}[vv^T] = R
+}
+\]</span> where <span class="math inline">\(R\)</span> is a diagonal matrix. Then a meaningful cost function can be defined as <span class="math display">\[
+\displaylines{J(\hat{x})=\frac{1}{2}\left(\hat{x}-\hat{x}_{0}\right)^{T} P_{0}^{-1}\left(\hat{x}-\hat{x}_{0}\right)+\frac{1}{2}(z-H \hat{x})^{T} R^{-1}(z-H \hat{x})
+}
+\]</span></p>
+<ul>
+<li>Necessary condition: <span class="math inline">\(\hat{x}=\left(H^{T} R^{-1} H+P_{0}^{-1}\right)^{-1}\left(H^{T} R^{-1} z+P_{0}^{-1} \hat{x}_{0}\right)\)</span></li>
+<li>The sufficient condition: <span class="math inline">\(\nabla^2J = P_0^{-1} + H^TR^{-1}H \succ 0\)</span></li>
+</ul>
+<p>The necessary condition can be expressed as <span class="math display">\[
+\displaylines{\begin{aligned}
+\hat{x} &amp;= \hat{x}_0 + (P_0^{-1} + H^TR^{-1}H)^{-1} H^T R^{-1} (z - H \hat{x}_0) \\
+&amp;\triangleq \hat{x}_0 + PH^TR^{-1} (z - H \hat{x}_0) \\
+&amp;\triangleq \hat{x}_0 + K^{-1} (z - H \hat{x}_0) \\
+\end{aligned}
+}
+\]</span> The matrix <span class="math inline">\(P\)</span> is actually the covariance matrix of the error in the estimate <span class="math inline">\(\hat{x}\)</span>, i.e. <span class="math inline">\(P=\mathbb{E}[(\hat{x} - x)(\hat{x}- x)^T]\)</span>.</p>
+<p>The recursive least-squares algorithm:</p>
+<ol type="1">
+<li>Given prior: mean <span class="math inline">\(\hat{x}_0\)</span> and covariance <span class="math inline">\(P_0\)</span></li>
+<li>For each new measurement <span class="math inline">\(z_i = H_ix+v_i\)</span>, where <span class="math inline">\(v_i \sim \mathcal{N}(0, R_i)\)</span>
+<ol type="1">
+<li><span class="math inline">\(\hat{x}_{i} =\hat{x}_{i-1}+K_{i}\left(z_{i}-H_{i} \hat{x}_{i-1}\right)\)</span></li>
+<li><span class="math inline">\(P_{i} =P_{i-1}-P_{i-1} H_{i}^{T}\left(H_{i} P_{i-1} H_{i}^{T}+R_{i}\right)^{-1} H_{i} P_{i-1}\)</span></li>
+<li><span class="math inline">\(K_{i} =P_{i} H_{i}^{T} R_{i}^{-1}\)</span></li>
+</ol></li>
+</ol>
+<p>Here <span class="math inline">\(P_i\)</span> is updated using the matrix inversion lemma: <span class="math display">\[
+\displaylines{\begin{aligned}
+P_i &amp;= \left(P_{i-1}^{-1}+H_{i}^{T} R_{i}^{-1} H_{i}\right)^{-1} \\
+&amp;= P_{i-1}-P_{i-1} H_{i}^{T}\left(H_{i} P_{i-1} H_{i}^{T}+R_{i}\right)^{-1} H_{i} P_{i-1}
+\end{aligned}
+}
+\]</span></p>
+<h2 id="propagation-of-uncertainty">Propagation of Uncertainty</h2>
+<p>Consider the restricted class of systems <span class="math display">\[
+\displaylines{\dot{x}(t) = f(x(t), u(t)) + L(t)w(t)
+}
+\]</span> where <span class="math inline">\(L(t)\)</span> is a given matrix and where the noise <span class="math inline">\(w(t)\)</span> evolves in continuous time. Assume <span class="math inline">\(w(t)\)</span> is uncorrelated in time, i.e. <span class="math display">\[
+\displaylines{\mathbb{E}[w(t)w(\tau)^T] = Q_c&#39;(t) \delta(t - \tau)
+}
+\]</span></p>
+<h3 id="linear-system">Linear System</h3>
+<p>Consider linear systems with Gaussian noise <span class="math display">\[
+\displaylines{x_k = \Phi_{k-1}x_{k-1} + \Gamma_{k-1}u_{k-1} + \Lambda_{k-1}w_{k-1}
+}
+\]</span> where <span class="math inline">\(\mathbb{E}[w_k]=0\)</span>, <span class="math inline">\(\mathbb{E}[w_k w_l^T] = Q_k&#39;\delta_{kl}\)</span> and <span class="math inline">\(x_0 \sim \mathcal{N}(\hat{x}_0, P_0)\)</span></p>
+<p>The goal is to propagate the mean and covariance: <span class="math display">\[
+\displaylines{\hat{x}_k = \mathbb{E}[x] = \Phi_{k-1}\hat{x}_{k-1} + \Gamma_{k-1}u_{k-1}
+}
+\]</span></p>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+P_k &amp;= \mathbb{E}[(x_k - \hat{x}_k)(x_k-\hat{x}_k)^T] \\
+&amp;= \Phi_{k-1}P_{k-1}\Phi_{k-1}^T + \Lambda_{k-1}Q_{k-1}&#39;\Gamma_{k-1}^T
+\end{aligned}
+}
+\]</span></p>
+<p>The resulting update <span class="math inline">\(\left(\hat{x}_{k-1}, P_{k-1}\right) \rightarrow\left(\hat{x}_{k}, P_{k}\right)\)</span> are called a <em>Gauss-Markov sequence</em>, given by <span class="math display">\[
+\displaylines{\begin{aligned}
+\hat{x}_{k} &amp;=\Phi_{k-1} \hat{x}_{k-1}+\Gamma_{k-1} u_{k-1} \\
+P_{k} &amp;=\Phi_{k-1} P_{k-1} \Phi_{k-1}^{T}+Q_{k-1} \\
+Q_{k} &amp;= \Lambda_k Q_k&#39; \Lambda_k&#39;
+\end{aligned}
+}
+\]</span></p>
+<h3 id="continuous-to-discrete">Continuous to Discrete</h3>
+<p>Consider <span class="math display">\[
+\displaylines{\dot{x}(t)=F(t) x(t)+G(t) u(t)+L(t) w(t)
+}
+\]</span> We have <span class="math display">\[
+\displaylines{x(t_k) =\Phi(t_{k}, t_{k-1}) x(t_{k-1})+\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) [G(\tau) u(\tau)+L(\tau) w(\tau)] d\tau
+}
+\]</span> where <span class="math inline">\(\Phi(t_k, t_{k-1})\)</span> is the <em>state transition matrix</em> such that <span class="math display">\[
+\displaylines{\Phi(t_{k}, t_{k-1}) x(t_{k-1})=x(t_{k-1})+\int_{t_{k-1}}^{t_{k}}[F(\tau) x(\tau)] d \tau
+}
+\]</span> The mean evolves according to (assume the control is constant during the sampling interval) <span class="math display">\[
+\displaylines{\begin{aligned}
+\hat{x}_{k} &amp;= \Phi_{k-1} \hat{x}_{k-1}+\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) G(\tau) u(\tau) d \tau \\
+&amp;= \Phi_{k-1} \hat{x}_{k-1}+\left[\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) G(\tau) d \tau\right] u_{k-1} \\
+&amp;= \Phi_{k-1} \hat{x}_{k-1} + \Gamma_{k-1}u_{k-1}
+\end{aligned}
+}
+\]</span> The covariance evolves according to <span class="math display">\[
+\displaylines{\begin{aligned}
+P_{k} &amp;=\Phi_{k-1} P_{k-1} \Phi_{k-1}^{T}+\mathbb{E}\left\{\left[\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) L(\tau) w(\tau) d \tau\right]\left[\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \alpha) L(\alpha) w(\alpha) d \alpha\right]^{T}\right\} \\
+&amp;=\Phi_{k-1} P_{k-1} \Phi_{k-1}^{T}+\int_{t_{k-1}}^{t_{k}} \int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) L(\tau) \underbrace{\mathbb{E}\left[w(\tau) w(\alpha)^{T}\right]}_{Q_{c}^{\prime} \delta(\tau-\alpha)} L(\alpha)^{T} \Phi(t_{k}, \alpha)^T d \tau d \alpha \\
+&amp;=\Phi_{k-1} P_{k-1} \Phi_{k-1}^{T}+\int_{t_{k-1}}^{t_{k}} \Phi(t_{k}, \tau) L(\tau) Q_{c}^{\prime} L(\tau)^{T} \Phi(t_{k}, \tau)^T d \tau \\
+&amp; \triangleq \Phi_{k-1} P_{k-1} \Phi_{k-1}^{T}+Q_{k-1}
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(Q_{k-1}\)</span> can be approximated by <span class="math display">\[
+\displaylines{Q_{k-1} \approx L(t_{k-1}) Q_{c}^{\prime}(t_{k-1}) L(t_{k-1})^T \Delta t
+}
+\]</span></p>
+<h2 id="linear-optimal-estimation">Linear-Optimal Estimation</h2>
+<p>Combine measurement updates and uncertainty propagation to optimally estimate the state. Consider a discrete LTV model <span class="math display">\[
+\displaylines{\begin{array}{l}
+x_{k}=\Phi_{k-1} x_{k-1}+\Gamma_{k-1} u_{k-1}+\Lambda_{k-1} w_{k-1} \\
+z_{k}=H_{k} x_{k}+v_{k}
+\end{array}
+}
+\]</span> Estimating the state <span class="math inline">\(x_k\)</span> is performed by iterating between uncertainty propagation and measurement updates. The mean and covariance after an uncertainty propagation from step <span class="math inline">\(k-1\)</span> to step <span class="math inline">\(k\)</span> are denoted by <span class="math inline">\((x_{k|k-1}, P_{k|k-1})\)</span>. The mean and covariance after a measurement update at step <span class="math inline">\(k\)</span> are denoted by <span class="math inline">\((x_{k|k}, P_{k|k})\)</span> <strong>Kalman filter</strong>:</p>
+<p>Prediction: <span class="math display">\[
+\displaylines{\begin{array}{l}
+\hat{x}_{k | k-1}=\Phi_{k-1} \hat{x}_{k-1 | k-1}+\Gamma_{k-1} u_{k-1} \\
+P_{k | k-1}=\Phi_{k-1} P_{k-1 | k-1} \Phi_{k-1}^{T}+Q_{k-1}
+\end{array}
+}
+\]</span> Correction: <span class="math display">\[
+\displaylines{\begin{array}{l}
+\hat{x}_{k | k}=\hat{x}_{k | k-1}+K_{k}\left(z_{k}-H_{k} \hat{x}_{k | k-1}\right) \\
+P_{k | k}=P_{k | k-1}-P_{k | k-1} H_{k}^{T}\left(H_{k} P_{k | k-1} H_{k}^{T}+R_{k}\right)^{-1} H_{k} P_{k | k-1} \\
+K_{k}=P_{k | k} H_{k}^{T} R_{k}^{-1}
+\end{array}
+}
+\]</span></p>
+<h1 id="stochastic-control">Stochastic Control</h1>
+<p><span class="math display">\[
+\displaylines{\begin{array}{ll}
+\text{minimize} &amp;J(u(\cdot))=\mathbb{E}\left[\phi\left(x(t_{f}), t_{f}\right)+\int_{t_{0}}^{t_{f}} \mathcal{L}(x(\tau), u(\tau), \tau) d \tau\right] \\
+\text{subject to} &amp; \dot{x}(t) = f(x(t), u(t), w(t), t)
+\end{array}
+}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbb{E}[w(t)]=0\)</span> and <span class="math inline">\(\mathbb{E}[w(t)w(\tau)^T] = W(t) \delta(t-\tau)\)</span> for <span class="math inline">\(W(t) \in \mathbb{S}_+\)</span></p>
+<h2 id="perfect-measurements">Perfect Measurements</h2>
+<p>Consider <span class="math display">\[
+\displaylines{\dot{x}(t)=f(x(t), u(t))+L(t) w(t)
+}
+\]</span> The value function is defined as <span class="math display">\[
+\displaylines{\begin{aligned}
+V(x(t), t)&amp;=\min _{u(t), t \in[t, t_{f}]} \mathbb{E}\left[\phi\left(x(t_{f}), t_{f}\right)+\int_{t}^{t_{f}} \mathcal{L}(x(\tau), u(\tau), \tau) d \tau\right] \\
+&amp;= \min_{u(t), t \in[t, t+\Delta t]} \mathbb{E}\left[\int_{t}^{t+\Delta t} \mathcal{L}(x(\tau), u(\tau), \tau) d \tau + V(x(t+\Delta t), t+\Delta t)\right]
+\end{aligned}
+}
+\]</span> Expand <span class="math inline">\(V(x,t)\)</span> to first order in <span class="math inline">\(\Delta t\)</span> according to <span class="math display">\[
+\displaylines{\begin{aligned}
+V(x+\Delta x, t+\Delta t) &amp;=V(x, t)+\partial_{t} V(x, t) \Delta t+\nabla_{x} V(x, t)^{T} \Delta x+\frac{1}{2} \Delta x^{T} \nabla_{x}^{2} V(x, t) \Delta x+o(\Delta t) \\
+&amp;=V+\partial_{t} V \Delta t+\nabla_{x} V^{T}(f+L w) \Delta t+\frac{1}{2}(f+L w)^{T} \nabla_{x}^{2} V(f+L w) \Delta t^{2}+o(\Delta t)
+\end{aligned}
+}
+\]</span> Note that in the above it is necessary to expand <span class="math inline">\(V\)</span> to second order in <span class="math inline">\(\Delta x\)</span> since <span class="math inline">\(w\)</span> is of order <span class="math inline">\(1/\sqrt{\Delta t}\)</span></p>
+<p>Substituting back to get the <strong>stochastic HJB equation</strong> <span class="math display">\[
+\displaylines{-\partial_t V(x, t) =\min_{u(t)}\left\{\mathcal{L}(x, u, t)+\nabla_{x} V(x, t)^{T} f(x, u)+\frac{1}{2} \operatorname{tr}\left[\nabla_{x}^{2} V(x, t) L(t) W(t) L(t)^{T}\right]\right\}
+}
+\]</span></p>
+<h3 id="continuous-linear-quadratic-systems">Continuous Linear-Quadratic Systems</h3>
+<p><span class="math display">\[
+\displaylines{\dot{x} = Fx + Gu + Lw \\
+J = \frac{1}{2} \mathbb{E}\left\{x^T(t_f) S_f x(t_f) + \int_{t_0}^{t_f} \begin{bmatrix} x(t) \\ u(t) \end{bmatrix}^T
+\begin{bmatrix}
+Q(t) &amp; M(t) \\
+M(t)^T &amp; R(t)
+\end{bmatrix}
+\begin{bmatrix} x(t) \\ u(t) \end{bmatrix}
+\right\}
+}
+\]</span></p>
+<p>with <span class="math inline">\(x(0)=x_0\)</span> and given <span class="math inline">\(t_0\)</span> and <span class="math inline">\(t_f\)</span>.</p>
+<p>To solve the stochastic HJB, consider the value function of the form <span class="math display">\[
+\displaylines{V(t)=\frac{1}{2} x^{T}(t) S(t) x(t)+v(t)
+}
+\]</span> where <span class="math inline">\(v(t)\)</span> is the <em>stochastic value function increment</em> defined by <span class="math display">\[
+\displaylines{v(t)=\frac{1}{2} \int_{t}^{t_{f}} \operatorname{tr}\left[S(\tau) L W L^{T}\right] d \tau
+}
+\]</span> Plug into the stochastic HJB equation and solve for <span class="math inline">\(u\)</span>, and substitute back to get the following equations: <span class="math display">\[
+\displaylines{-\dot{S}=\left(F-G R^{-1} M^{T}\right)^{T} S+S\left(F-G R^{-1} M^{T}\right)+Q-S G R^{-1} G^{T} S-M R^{-1} M^{T} \\
+-\dot{v} = \frac{1}{2}\operatorname{tr}(SLWL^T)
+}
+\]</span></p>
+<h3 id="discrete-linear-quadratic-systems">Discrete Linear-Quadratic Systems</h3>
+<p><span class="math display">\[
+\displaylines{x_{k+1} = F_k x_k + G_k u_k + L_k w_k \\
+J = \frac{1}{2} \mathbb{E}\left\{x_N^T S_N x_N + \sum_{k=0}^{N-1} \begin{bmatrix} x_k \\ u_k \end{bmatrix}^T
+\begin{bmatrix}
+Q &amp; M \\
+M^T &amp; R
+\end{bmatrix}
+\begin{bmatrix} x_k \\ u_k \end{bmatrix}
+\right\}
+}
+\]</span></p>
+<p>with <span class="math inline">\(x(0)=x_0\)</span> and given <span class="math inline">\(t_0\)</span> and <span class="math inline">\(t_f\)</span>.</p>
+<p>Similarly use value function of the form <span class="math display">\[
+\displaylines{V_k = \frac{1}{2}x_k S_k x_k + v_k \\
+v_k = \frac{1}{2} \operatorname{tr}[S_{k+1} L W_k L^T] + v_{k+1}
+}
+\]</span> Plug into the stochastic HJB equation we can get <span class="math display">\[
+\displaylines{S_{k}=\left(F^{T} S_{k+1} F+Q\right)-\left(M^{T}+G^{T} S_{k+1} F\right)^{T}\left(R+G^{T} S_{k+1} G\right)^{-1}\left(M^{T}+G^{T} S_{k+1} F\right)
+}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ME/" rel="tag"><i class="fa fa-tag"></i> ME</a>
+              <a href="/tags/JHU/" rel="tag"><i class="fa fa-tag"></i> JHU</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/first-aid/" rel="prev" title="现场生命急救知识与技能">
+                  <i class="fa fa-chevron-left"></i> 现场生命急救知识与技能
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/robotic-manipulation/" rel="next" title="Robotic Manipulation">
+                  Robotic Manipulation <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

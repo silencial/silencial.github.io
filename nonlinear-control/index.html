@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="EN530.678 Review.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nonlinear Control and Planning in Robotics">
+<meta property="og:url" content="https://silencial.github.io/nonlinear-control/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="EN530.678 Review.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/d8N5xMv.png">
+<meta property="article:published_time" content="2021-05-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-13T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="ME">
+<meta property="article:tag" content="JHU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/d8N5xMv.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/nonlinear-control/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;nonlinear-control&#x2F;&quot;,&quot;path&quot;:&quot;nonlinear-control&#x2F;&quot;,&quot;title&quot;:&quot;Nonlinear Control and Planning in Robotics&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Nonlinear Control and Planning in Robotics | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#system-models"><span class="nav-number">1.</span> <span class="nav-text">System Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#constraints"><span class="nav-number">1.1.</span> <span class="nav-text">Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamics"><span class="nav-number">1.2.</span> <span class="nav-text">Dynamics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#holonomic-systems"><span class="nav-number">1.2.1.</span> <span class="nav-text">holonomic systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonholonomic-systems"><span class="nav-number">1.2.2.</span> <span class="nav-text">nonholonomic systems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stability"><span class="nav-number">2.</span> <span class="nav-text">Stability</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#manifolds-and-vector-fields"><span class="nav-number">3.</span> <span class="nav-text">Manifolds and Vector Fields</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#manifolds"><span class="nav-number">3.1.</span> <span class="nav-text">Manifolds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tangents"><span class="nav-number">3.2.</span> <span class="nav-text">Tangents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector-fileds"><span class="nav-number">3.3.</span> <span class="nav-text">Vector fileds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lie-bracket"><span class="nav-number">3.4.</span> <span class="nav-text">Lie bracket</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#distributions-and-controllability"><span class="nav-number">4.</span> <span class="nav-text">Distributions and Controllability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#distributions"><span class="nav-number">4.1.</span> <span class="nav-text">Distributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#controllability"><span class="nav-number">4.2.</span> <span class="nav-text">Controllability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reachable-sets"><span class="nav-number">4.2.1.</span> <span class="nav-text">reachable sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controllability-conditions"><span class="nav-number">4.2.2.</span> <span class="nav-text">controllability conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#good-and-bad-brackets"><span class="nav-number">4.2.3.</span> <span class="nav-text">good and bad brackets</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stabilizability-and-chained-forms"><span class="nav-number">5.</span> <span class="nav-text">Stabilizability and Chained Forms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trajectory-generation"><span class="nav-number">6.</span> <span class="nav-text">Trajectory generation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#differential-flatness"><span class="nav-number">6.1.</span> <span class="nav-text">Differential flatness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trajectory-generation-1"><span class="nav-number">6.2.</span> <span class="nav-text">Trajectory generation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#feedback-linearization"><span class="nav-number">7.</span> <span class="nav-text">Feedback Linearization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#input-output-linearization"><span class="nav-number">7.1.</span> <span class="nav-text">Input-output linearization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-feedback"><span class="nav-number">7.2.</span> <span class="nav-text">Static feedback</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fully-actuated-manipulator-control"><span class="nav-number">7.2.1.</span> <span class="nav-text">fully-actuated manipulator control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-feedback-linearization"><span class="nav-number">7.2.2.</span> <span class="nav-text">partial feedback linearization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-feedback"><span class="nav-number">7.3.</span> <span class="nav-text">Dynamic feedback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-case"><span class="nav-number">7.4.</span> <span class="nav-text">General case</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#siso-system"><span class="nav-number">7.4.1.</span> <span class="nav-text">SISO system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mimo-system"><span class="nav-number">7.4.2.</span> <span class="nav-text">MIMO system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-forms"><span class="nav-number">7.4.3.</span> <span class="nav-text">normal forms</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#backstepping"><span class="nav-number">8.</span> <span class="nav-text">Backstepping</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#integrator-backstepping"><span class="nav-number">8.1.</span> <span class="nav-text">Integrator Backstepping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#block-backstepping"><span class="nav-number">8.2.</span> <span class="nav-text">Block backstepping</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lyapunov-redesign-and-robust-backstepping"><span class="nav-number">9.</span> <span class="nav-text">Lyapunov Redesign and Robust Backstepping</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#uncertainty-and-lyapunov-redesign"><span class="nav-number">9.1.</span> <span class="nav-text">Uncertainty and Lyapunov redesign</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robust-backstepping"><span class="nav-number">9.2.</span> <span class="nav-text">Robust backstepping</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/nonlinear-control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nonlinear Control and Planning in Robotics
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-13 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-13T00:00:00+00:00">2021-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mechanical-Engineering/" itemprop="url" rel="index"><span itemprop="name">Mechanical Engineering</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>24k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:01</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://asco.lcsr.jhu.edu/en530-678-s2021-nonlinear-control-and-planning-in-robotics/">EN530.678</a> Review.</p>
+<span id="more"></span>
+<hr />
+<h1 id="system-models">System Models</h1>
+<h2 id="constraints">Constraints</h2>
+<p>The configurations space a mechanical system is denoted by <span class="math inline">\(Q\)</span> and is assumed to be an <span class="math inline">\(n\)</span>-dimensional <strong>manifold</strong>, locally <strong>isomorphic</strong> to <span class="math inline">\(\mathbb{R}^n\)</span>. A configuration is denoted by <span class="math inline">\(q\in Q\)</span></p>
+<p><strong>Holonomic</strong> (or geometric) constraints: restrict possible motions to a <span class="math inline">\(n-k\)</span> dimensional sub-manifold <span class="math display">\[
+\displaylines{h_i(q) = 0, \quad i = 1,\dots,k
+}
+\]</span> <strong>Linear (Pfaffian) nonholonomic</strong> (or kinematic): restrict the direction of velocities but it is still possible to reach any configuration in <span class="math inline">\(Q\)</span> <span class="math display">\[
+\displaylines{A^T(q) \dot{q} = 0
+}
+\]</span> Nonholonomic constraints are not integrable, i.e. it is not possible to find <span class="math inline">\(k\)</span> functions <span class="math inline">\(h_i\)</span> s.t. <span class="math display">\[
+\displaylines{\nabla_{q} h_{i}(q)=a_{i}(q), \quad i=1, \ldots, k
+}
+\]</span> where <span class="math inline">\(c\)</span> is a constant</p>
+<h2 id="dynamics">Dynamics</h2>
+<h3 id="holonomic-systems">holonomic systems</h3>
+<p>Assume the system has a Lagrangian <span class="math display">\[
+\displaylines{L(q, \dot{q})=\frac{1}{2} \dot{q}^{T} M(q) \dot{q}-V(q)
+}
+\]</span> with inertial matrix <span class="math inline">\(M(q) \succ 0\)</span> and potential energy <span class="math inline">\(V(q)\)</span>. The system is subject to external forces <span class="math inline">\(f_\text{ext}(q,\dot{q})\in \mathbb{R}^n\)</span> and control inputs <span class="math inline">\(u\in \mathbb{R}^m\)</span>. The equations of motions are given by <span class="math display">\[
+\displaylines{\frac{d}{d t} \nabla_{\dot{q}} L-\nabla_{q} L=f_{\text{ext}}(q, \dot{q})+B(q) u
+}
+\]</span> where <span class="math inline">\(B(q)\in\mathbb{R}^{n\times m}\)</span> is a matrix mapping from <span class="math inline">\(m\)</span> control inputs to the forces/torques acting on the generalized coordinates <span class="math inline">\(q\)</span>.</p>
+<p>The actual equations take the form <span class="math display">\[
+\displaylines{M(q) \ddot{q}+b(q, \dot{q})=B(q) u
+}
+\]</span> where <span class="math display">\[
+\begin{equation}\displaylines{
+b(q, \dot{q})=\dot{M}(q) \dot{q}-\frac{1}{2} \nabla_{q}\left(\dot{q}^{T} M(q) \dot{q}\right)+\nabla_{q} V(q)-f_{\text{ext}}(q, \dot{q})
+}
+\label{bq}
+\end{equation}
+\]</span></p>
+<h3 id="nonholonomic-systems">nonholonomic systems</h3>
+<p>Similar to holonomic systems but the Euler-Lagrange equations become <span class="math display">\[
+\displaylines{\frac{d}{d t} \nabla_{\dot{q}} L-\nabla_{q} L=A(q) \lambda+f_{\text{ext}}(q, \dot{q})+B(q) u
+}
+\]</span> where <span class="math inline">\(\lambda\in\mathbb{R}^k\)</span> is a vector of the Lagrange multipliers and the extra term <span class="math inline">\(A(q)\lambda\)</span> denotes the force that counters any motion in directions spanned by <span class="math inline">\(A(q)\)</span>.</p>
+<p>The actual equations take the form <span class="math display">\[
+\displaylines{M(q) \ddot{q}+b(q, \dot{q})=A(q)\lambda + B(q) u \\
+A^T(q)\dot{q} = 0
+}
+\]</span> where <span class="math inline">\(b(q)\)</span> has the same form as <span class="math inline">\(\eqref{bq}\)</span>.</p>
+<p>The Lagrange multipliers can be eliminated by noting <span class="math inline">\(A^T(q)G(q) = 0\)</span> and multiplying the dynamics by <span class="math inline">\(G^T(q)\)</span> to obtain a reduced set of <span class="math inline">\(m=n-k\)</span> differential equations: <span class="math display">\[
+\displaylines{G^{T}(q)(K(q) \ddot{q}+n(q, \dot{q}))=G^{T}(q) S(q) u
+}
+\]</span> A standard assumption will be that <span class="math inline">\(G^T(q)S(q)\ne 0\)</span> or that all feasible directions are controllable. The final equations are <span class="math display">\[
+\displaylines{\dot{q}=G(q) v \\
+K(q) \dot{v}+n(q, v)=S(q) u
+}
+\]</span> where <span class="math display">\[
+\displaylines{K(q)=G^{T}(q) M(q) G(q)&gt;0 \\
+n(q, v)=G^{T} M(q) \dot{G}(q) v+G^{T}(q) b(q, G(q) v) \\
+S(q)=G^{T}(q) B(q)
+}
+\]</span></p>
+<h1 id="stability">Stability</h1>
+<p>See <a href="https://silencial.github.io/nonlinear-system">Nonlinear System</a></p>
+<h1 id="manifolds-and-vector-fields">Manifolds and Vector Fields</h1>
+<h2 id="manifolds">Manifolds</h2>
+<p>A <strong>manifold</strong> is a set <span class="math inline">\(M\)</span> that locally "looks like" linear space, e.g. <span class="math inline">\(\mathbb{R}^n\)</span>. A <strong>chart</strong> on <span class="math inline">\(M\)</span> is a subset <span class="math inline">\(U\)</span> of <span class="math inline">\(M\)</span> together with a bijective map <span class="math inline">\(\varphi:U\to \varphi(U) \subset \mathbb{R}^n\)</span>. Two charts <span class="math inline">\(U, \varphi\)</span> and <span class="math inline">\(U&#39;, \varphi&#39;\)</span> s.t. <span class="math inline">\(U\cap U&#39;\ne \emptyset\)</span> are called <strong>compatible</strong> if <span class="math inline">\(\varphi(U \cap U&#39;)\)</span> and <span class="math inline">\(\varphi&#39;(U\cap U&#39;)\)</span> are open subsets of <span class="math inline">\(\mathbb{R}^n\)</span> and the maps <span class="math display">\[
+\displaylines{\left.\varphi^{\prime} \circ \varphi^{-1}\right|_{\varphi\left(U \cap U^{\prime}\right)}: \varphi\left(U \cap U&#39; \right) \rightarrow \varphi^{\prime}\left(U \cap U&#39;\right) \\
+\left.\varphi \circ\left(\varphi^{\prime}\right)^{-1}\right|_{\varphi^{\prime}\left(U \cap U^{\prime}\right)}: \varphi^{\prime}\left(U \cap U&#39; \right) \rightarrow \varphi\left(U \cap U&#39;\right)
+}
+\]</span> are <span class="math inline">\(C^\infty\)</span></p>
+<p><img src="https://i.imgur.com/d8N5xMv.png" alt="Manifold" /></p>
+<p>We call <span class="math inline">\(M\)</span> a <strong>differentiable <span class="math inline">\(n\)</span>-manifold</strong> when:</p>
+<ol type="1">
+<li>The set <span class="math inline">\(M\)</span> is covered by a collections of charts, that is, every point is represented in at least one chart</li>
+<li><span class="math inline">\(M\)</span> has an <strong>atlas</strong>; that is, <span class="math inline">\(M\)</span> can be written as a union of compatible charts</li>
+</ol>
+<h2 id="tangents">Tangents</h2>
+<p>Two curves <span class="math inline">\(t\to c_1(t)\)</span> and <span class="math inline">\(t\to c_2(t)\)</span> in an <span class="math inline">\(n\)</span>-manifold <span class="math inline">\(M\)</span> are called <strong>equivalent</strong> at the point <span class="math inline">\(m\)</span> if <span class="math display">\[
+\displaylines{c_1(0) = c_2(0) = m
+}
+\]</span> and <span class="math display">\[
+\displaylines{\left.\frac{d}{d t}\left(\varphi \circ c_{1}\right)\right|_{t=0}=\left.\frac{d}{d t}\left(\varphi \circ c_{2}\right)\right|_{t=0}
+}
+\]</span> in some chart <span class="math inline">\(\varphi\)</span></p>
+<p>A <strong>tangent vector</strong> <span class="math inline">\(v\)</span> to a manifold <span class="math inline">\(M\)</span> at point <span class="math inline">\(m\)</span> is an equivalent class of curves at <span class="math inline">\(m\)</span>. The set of tangent vectors to <span class="math inline">\(M\)</span> at <span class="math inline">\(m\)</span> is a vector space, denoted by <span class="math inline">\(T_m M\)</span></p>
+<p>The <strong>tangent bundle</strong> of <span class="math inline">\(M\)</span> denoted by <span class="math inline">\(TM\)</span> is the disjoint union of the tangent spaces to <span class="math inline">\(M\)</span> at the points <span class="math inline">\(m\in M\)</span>, i.e. <span class="math display">\[
+\displaylines{T M=\bigcup_{m \in M} T_{m} M
+}
+\]</span></p>
+<h2 id="vector-fileds">Vector fileds</h2>
+<p>A <strong>vector field</strong> <span class="math inline">\(X\)</span> on <span class="math inline">\(M\)</span> is a map <span class="math inline">\(X: M \to TM\)</span> that assigns a vector <span class="math inline">\(X(m)\)</span> at the point <span class="math inline">\(m\in M\)</span>.</p>
+<p>An <strong>integral curve</strong> of <span class="math inline">\(X\)</span> with initial condition <span class="math inline">\(m_0\)</span> at <span class="math inline">\(t=0\)</span> is a map <span class="math inline">\(c: (a,b) \to M\)</span> s.t. <span class="math inline">\((a,b)\)</span> is an open interval containing <span class="math inline">\(0\)</span>, <span class="math inline">\(c(0) = m_0\)</span> and <span class="math inline">\(c&#39;(t) = X(c(t))\)</span> for all <span class="math inline">\(t\in (a,b)\)</span>.</p>
+<p>The <strong>flow</strong> of <span class="math inline">\(X\)</span> is a collection of maps <span class="math inline">\(\Phi_t: M\to M\)</span> s.t. <span class="math inline">\(t\to \Phi_t(m)\)</span> is the integral curve of <span class="math inline">\(X\)</span> with initial condition <span class="math inline">\(m\)</span>.</p>
+<h2 id="lie-bracket">Lie bracket</h2>
+<p>Given two vector fields <span class="math inline">\(g_1(x)\)</span> and <span class="math inline">\(g_2(x)\)</span>, do their flows commute? e.g. <span class="math inline">\(\Phi_{t}^{g_{2}} \circ \Phi_{t}^{g_{1}}=\Phi_{t}^{g_{1}} \circ \Phi_{t}^{g_{2}}\)</span></p>
+<p>The difference is quantified by <span class="math display">\[
+\displaylines{\Phi_{t}^{-g_{2}} \circ \Phi_{t}^{-g_{1}} \circ \Phi_{t}^{g_{2}} \circ \Phi_{t}^{g_{1}}\left(x_{0}\right)=x_{0}+t^{2}\left[g_{1}, g_{2}\right]+O\left(t^{3}\right)
+}
+\]</span> where <span class="math inline">\([g_1, g_2]\)</span> is the <strong>Lie bracket</strong> defined by <span class="math display">\[
+\displaylines{\left[g_{1}, g_{2}\right]=\frac{\partial g_{2}}{\partial x} g_{1}-\frac{\partial g_{1}}{\partial x} g_{2}
+}
+\]</span> or as applied to a function <span class="math inline">\(\alpha\)</span> by <span class="math display">\[
+\displaylines{\left[g_{1}, g_{2}\right] \alpha=g_{1}\left(g_{2} \alpha\right)-g_{2}\left(g_{1} \alpha\right)
+}
+\]</span></p>
+<p>A vector space <span class="math inline">\(V\)</span> with a bilinear operator <span class="math inline">\([\cdot, \cdot]: V\times V\to V\)</span> is called a <strong>Lie algebra</strong> when satisfying:</p>
+<ol type="1">
+<li>Skew-symmetry: <span class="math inline">\([v, w] = -[w, v]\)</span> for all <span class="math inline">\(v, w \in V\)</span></li>
+<li>Jacobi identity: <span class="math inline">\([[v, w], z]+[[z, v], w]+[[w, z], v]=0\)</span></li>
+</ol>
+<h1 id="distributions-and-controllability">Distributions and Controllability</h1>
+<h2 id="distributions">Distributions</h2>
+<ul>
+<li>Distributions determine possible directions of motion</li>
+<li>Controllability determines which states can be reached</li>
+</ul>
+<p>Let <span class="math inline">\(g_1(x), \dots, g_m(x)\)</span> be linearly independent vector fields on <span class="math inline">\(M\)</span></p>
+<p>A <strong>distribution</strong> <span class="math inline">\(\Delta\)</span> assigns a subspace of the tangent space to each point defined by <span class="math display">\[
+\displaylines{\Delta=\operatorname{span}\left\{g_{1}, \dots, g_{m}\right\}
+}
+\]</span> A distribution <span class="math inline">\(\Delta\)</span> is <strong>involutive</strong> if it is closed under the Lie bracket, i.e. <span class="math display">\[
+\displaylines{\forall f(x), g(x) \in \Delta(x), \quad[f(x), g(x)] \in \Delta(x)
+}
+\]</span> A distribution <span class="math inline">\(\Delta\)</span> is <strong>regular</strong> if the dimension of <span class="math inline">\(\Delta(x)\)</span> does not vary with <span class="math inline">\(x\)</span></p>
+<p>A distribution <span class="math inline">\(\Delta\)</span> of constant dimension <span class="math inline">\(k\)</span> is <strong>integrable</strong> if <span class="math inline">\(\forall x\in\mathbb{R}^n\)</span> there are smooth functions <span class="math inline">\(h_i: \mathbb{R}^n \to \mathbb{R}\)</span> s.t. <span class="math inline">\(\frac{\partial h_i}{\partial x}\)</span> are linearly independent at <span class="math inline">\(x\)</span> and <span class="math inline">\(\forall f\in\Delta\)</span> we have <span class="math display">\[
+\displaylines{L_{f} h_{i}=\frac{\partial h_{i}}{\partial x} f(x)=0, i=1, \ldots, n-k
+}
+\]</span> The <strong>integral manifolds</strong> of the distribution is defined as the level sets <span class="math display">\[
+\displaylines{\left\{q: h_{1}(x)=c_{1}, \ldots, h_{n-k}(x)=c_{n-k}\right\}
+}
+\]</span> <strong>Frobenius Theorem</strong>: A regular distribution is integrable iff it is involutive</p>
+<h2 id="controllability">Controllability</h2>
+<h3 id="reachable-sets">reachable sets</h3>
+<p>Consider the nonlinear control system (NCS) with <span class="math inline">\(x\in\mathbb{R}^n\)</span> and <span class="math inline">\(u\in U \subset \mathbb{R}^m\)</span>: <span class="math display">\[
+\begin{equation}\displaylines{
+\quad \dot{x}=g_{0}(x)+\sum_{i=1}^{m} g_{i}(x) u_{i}
+}
+\label{ncs}
+\end{equation}
+\]</span> A system is <strong>controllable</strong> if <span class="math inline">\(\forall x_0, x_f \in \mathbb{R}^n\)</span> there exists a time <span class="math inline">\(T\)</span> and <span class="math inline">\(u:[0, T] \to U\)</span> s.t <span class="math inline">\(\eqref{ncs}\)</span> satisfies <span class="math inline">\(x(0)=x_0\)</span> and <span class="math inline">\(x(T)=x_f\)</span></p>
+<p>A system is <strong>small-time locally controllable</strong> (STLC) at <span class="math inline">\(x_0\)</span> if it can reach nearby points in arbitrary small times and stay near <span class="math inline">\(x_0\)</span></p>
+<p>The <strong>reachable set</strong> <span class="math inline">\(\mathcal{R}^V(x_0, T)\)</span> is the set of states <span class="math inline">\(x(T)\)</span> for which there is a control <span class="math inline">\(u:[0, T]\to U\)</span> that steers the system from <span class="math inline">\(x(0)\)</span> to <span class="math inline">\(x(T)\)</span> without leaving an open set <span class="math inline">\(V\)</span> around <span class="math inline">\(x_0\)</span></p>
+<p>The set of states reachable up to time <span class="math inline">\(T\)</span> is defined by <span class="math display">\[
+\displaylines{\mathcal{R}^{V}\left(x_{0}, \leq T\right)=\bigcup_{0&lt;\tau \leq T} \mathcal{R}^{V}\left(x_{0}, \tau\right)
+}
+\]</span></p>
+<h3 id="controllability-conditions">controllability conditions</h3>
+<p>NCS is <strong>locally accessible</strong> (LA) from <span class="math inline">\(x_0\)</span> if for all neighborhood <span class="math inline">\(V\)</span> of <span class="math inline">\(x_0\)</span> and <span class="math inline">\(T &gt; 0\)</span> there exists an open set <span class="math inline">\(\Omega\)</span> s.t. <span class="math display">\[
+\displaylines{\Omega \subset \mathcal{R}^{V}\left(x_{0}, \leq T\right)
+}
+\]</span> NCS is STLC if for all neighborhood <span class="math inline">\(V\)</span> of <span class="math inline">\(x_0\)</span> and <span class="math inline">\(T &gt;0\)</span>, <span class="math inline">\(\mathcal{R}^{V}(x_{0}, T)\)</span> contains a neighborhood of <span class="math inline">\(x_0\)</span></p>
+<p>STLC <span class="math inline">\(\Rightarrow\)</span> controllable <span class="math inline">\(\Rightarrow\)</span> LA</p>
+<p>NCS is LA from <span class="math inline">\(x_0\)</span> iff <span class="math inline">\(\dim\bar{\Delta}(x_0)=n\)</span> (LA rank condition (LARC)) where <span class="math display">\[
+\displaylines{\bar{\Delta}=\operatorname{span}\left\{v \in \bigcup_{k \geq 0} \Delta^{k}\right\} \text { with }\begin{cases}
+\Delta^{0}=\operatorname{span}\left\{g_{0}, g_{1}, \ldots, g_{m}\right\} \\
+\Delta^{k}=\Delta^{k-1}+\operatorname{span}\left\{\left[g_{j}, v\right], j=0, \ldots, m; v \in \Delta^{k-1}\right\}
+\end{cases}
+}
+\]</span> For <strong>driftless</strong> control systems (<span class="math inline">\(g_0 = 0\)</span>), STLC <span class="math inline">\(\Leftrightarrow\)</span> controllable <span class="math inline">\(\Leftrightarrow\)</span> LA. The equivalence also holds when <span class="math inline">\(g_0(x) \in \operatorname{span}\{g_{1}, \ldots, g_{m}\}\)</span> (trivial drift)</p>
+<p>If the driftless control system <span class="math display">\[
+\displaylines{\dot{q} = \sum_{i=1}^m g_i(q) v_i
+}
+\]</span> with state <span class="math inline">\(q\)</span> and inputs <span class="math inline">\(v\)</span> is controllable, then its <strong>dynamic extension</strong> <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\dot{q}=\sum_{i=1}^{m} g_{i}(q) v_{i} \\
+&amp;\dot{v}_{i}=u_{i}, \quad i=1, \ldots, m
+\end{aligned}
+}
+\]</span> with state <span class="math inline">\(x=(q,v)\)</span> and controls <span class="math inline">\(u\)</span> is also controllable (vice versa)</p>
+<p>The <strong>degree of nonholonomy</strong>is defined as the smallest <span class="math inline">\(k\)</span> s.t. <span class="math display">\[
+\displaylines{\dim \Delta^{k+1}=\dim \Delta^{k}
+}
+\]</span></p>
+<ul>
+<li>Completely nonholonomic: <span class="math inline">\(\dim \Delta^k = n\)</span></li>
+<li>Partially nonholonomic: <span class="math inline">\(m &lt; \dim \Delta^k &lt; n\)</span></li>
+<li>Holonomic: <span class="math inline">\(\dim \Delta^k = m = n-k\)</span></li>
+</ul>
+<h3 id="good-and-bad-brackets">good and bad brackets</h3>
+<p>A <strong>bad bracket</strong> is a Lie bracket generated using an odd number of <span class="math inline">\(g_0\)</span> and even number of <span class="math inline">\(g_i\)</span> vectors. A <strong>good bracket</strong> is one that is not bag.</p>
+<p>NCS <span class="math inline">\(\eqref{ncs}\)</span> is STLC at <span class="math inline">\(x^*\)</span> if</p>
+<ol type="1">
+<li><span class="math inline">\(g_0(x^*) = 0\)</span></li>
+<li><span class="math inline">\(U\)</span> is open and its convex hull contains <span class="math inline">\(0\)</span></li>
+<li>LARC is satisfied using brackets of degree <span class="math inline">\(k\)</span></li>
+<li>Any bad bracket of degree <span class="math inline">\(j \le k\)</span> can be expressed as linear combinations of good brackets of degree <span class="math inline">\(&lt; j\)</span></li>
+</ol>
+<h1 id="stabilizability-and-chained-forms">Stabilizability and Chained Forms</h1>
+<p>Given a NCS <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(x,u)
+}
+\label{ncs_simple}
+\end{equation}
+\]</span> the goal is to construct a control law <span class="math inline">\(u=K(x)\)</span> s.t.</p>
+<ul>
+<li>Stabilization: an equilibrium point <span class="math inline">\(x_e\)</span> is made asymptotically stable, or</li>
+<li>Tracking: a desired feasible trajectory <span class="math inline">\(x_d(t)\)</span> is asymptotically stable</li>
+</ul>
+<p>The linear approximation of the system at <span class="math inline">\(x_e\)</span> is <span class="math display">\[
+\displaylines{\delta\dot{x}=A \delta x+B \delta u \quad (\delta x=x-x_{e},\ \delta u=u-u_{e}) \\
+A \triangleq \partial_x f(x_e, u_e), \qquad B \triangleq \partial_u f(x_e, u_e)
+}
+\]</span> The NCS can be locally smoothly stabilized at <span class="math inline">\(x_e\)</span> using <span class="math inline">\(\delta u = K\delta x\)</span> if the linearized system is controllable</p>
+<p>Necessary conditions by <strong>Brockett's theorem</strong>: If <span class="math inline">\(\eqref{ncs_simple}\)</span> is locally asymptotically <span class="math inline">\(C^1\)</span>-stabilizable (<span class="math inline">\(u\)</span> is <span class="math inline">\(C^1\)</span>-smooth) at <span class="math inline">\(x_e = 0\)</span> then the image of the map <span class="math display">\[
+\displaylines{f: \mathbb{R}^{n} \times U \rightarrow \mathbb{R}^{n}
+}
+\]</span> contains some neighborhood of <span class="math inline">\(x_e\)</span></p>
+<p>Nonholonomic mechanical systems cannot be stabilized at a point by smooth feedback, alternatives are</p>
+<ol type="1">
+<li>Time-varying feedback <span class="math inline">\(u = K(t,x)\)</span></li>
+<li>Non-smooth feedback</li>
+</ol>
+<h1 id="trajectory-generation">Trajectory generation</h1>
+<h2 id="differential-flatness">Differential flatness</h2>
+<p>A system is differentially flat if one can find a set of outputs (equal to the number of inputs) which completely determine the whole state and the inputs without the need to integrate the system. More formally, a system with state <span class="math inline">\(x\in\mathbb{R}^n\)</span> and inputs <span class="math inline">\(u\in\mathbb{R}^m\)</span> is differentially flat if one can find outputs <span class="math inline">\(y\in\mathbb{R}^m\)</span> of the form <span class="math display">\[
+\displaylines{y = h(x, u, \dot{u}, \dots, u^{(a)})
+}
+\]</span> s.t. <span class="math display">\[
+\displaylines{x=\varphi(y, \dot{y}, \ldots, y^{(b)}) \\
+u=\alpha(y, \dot{y}, \ldots, y^{(c)})
+}
+\]</span> The coordinates <span class="math inline">\(y\)</span> are called <strong>flat outputs</strong></p>
+<h2 id="trajectory-generation-1">Trajectory generation</h2>
+<p>Consider the problem of generating a trajectory between two given states <span class="math display">\[
+\displaylines{\dot{x} = f(x,u), \qquad x(0) = x_0,\ x(T) = x_f
+}
+\]</span> The boundary conditions of a differentially flat systems are expressed as <span class="math display">\[
+\displaylines{\begin{array}{l}
+x(0)=\varphi\left(y(0), \dot{y}(0), \ldots, y^{(b)}(0)\right) \\
+x(T)=\varphi\left(y(T), \dot{y}(T), \ldots, y^{(b)}(T)\right)
+\end{array}
+}
+\]</span> The general strategy is to assume a parametric form <span class="math display">\[
+\displaylines{y(t) = A\lambda(t)
+}
+\]</span> where <span class="math inline">\(\lambda(t)\in\mathbb{R}^N\)</span> are basis functions and <span class="math inline">\(A\in \mathbb{R}^{m\times N}\)</span> is a constant matrix that satisfies the boundary conditions: <span class="math display">\[
+\displaylines{Y = A \Lambda
+}
+\]</span> where <span class="math inline">\(Y\in\mathbb{R}^{m\times 2(b+1)}\)</span> and <span class="math inline">\(\Lambda\in\mathbb{R}^{N\times 2(b+1)}\)</span> are <span class="math display">\[
+\displaylines{Y = \left[y(0), \dots, y^{(b)}(0), y(T), \dots, y^{(b)}(T)\right] \\
+\Lambda = \left[\lambda(0), \dots, \lambda^{(b)}(0), \lambda(T), \dots, \lambda^{(b)}(T)\right]
+}
+\]</span> It is necessary that <span class="math inline">\(N\ge 2(b+1)\)</span></p>
+<h1 id="feedback-linearization">Feedback Linearization</h1>
+<h2 id="input-output-linearization">Input-output linearization</h2>
+<p>Consider the nonlinear control system <span class="math display">\[
+\displaylines{\dot{x}=f(x)+G(x) u \\
+y=h(x)
+}
+\]</span> Input-output linearization is to use transformation of <span class="math inline">\(u\)</span> so that the input-output response between <span class="math inline">\(v\)</span> and <span class="math inline">\(y\)</span> is linear.</p>
+<p><strong>Static feedback</strong>: <span class="math display">\[
+\displaylines{u=a(x) + B(x)v
+}
+\]</span> where <span class="math inline">\(B(x)\)</span> is a nonsingular matrix, and <span class="math inline">\(v\)</span> is called <strong>virtual input</strong></p>
+<p><strong>Dynamic feedback</strong>: <span class="math display">\[
+\displaylines{u=a(x, \xi)+B(x, \xi) v \\
+\dot{\xi}=c(x, \xi)+D(x, \xi) v
+}
+\]</span> where <span class="math inline">\(\xi\)</span> is the <strong>compensator state</strong></p>
+<h2 id="static-feedback">Static feedback</h2>
+<h3 id="fully-actuated-manipulator-control">fully-actuated manipulator control</h3>
+<p><span class="math display">\[
+\begin{equation}\displaylines{
+M(q) \ddot{q}+b(q, \dot{q})=u
+}
+\label{fully-actuated}
+\end{equation}
+\]</span></p>
+<p>Assume that one is interested in tracking a desired path <span class="math inline">\(q_d(t)\)</span>. The task is specified by the output <span class="math display">\[
+\displaylines{y=q
+}
+\]</span> Choose the virtual input <span class="math inline">\(v = \ddot{q}\)</span> and control law <span class="math display">\[
+\displaylines{v=\ddot{q}_{d}-k_{d}\left(\dot{q}-\dot{q}_{d}\right)-k_{p}\left(q-q_{d}\right)
+}
+\]</span> which result in a closed-loop linear dynamics <span class="math display">\[
+\displaylines{\dot{z} = Az \\
+z=\begin{pmatrix}
+q-q_{d} \\
+\dot{q}-\dot{q}_{d}
+\end{pmatrix} \\
+A=\begin{pmatrix}
+0 &amp; I \\
+-k_p I &amp; -k_d I
+\end{pmatrix}
+}
+\]</span> where <span class="math inline">\(A\)</span> is Hurwitz. The virtual controls are mapped back to the original input <span class="math inline">\(u\)</span> using <span class="math inline">\(\eqref{fully-actuated}\)</span>.</p>
+<p>In general, whenever <span class="math inline">\(\dim(Q) = \dim(U)\)</span> one can always use nonlinear static feedback to achieve linearization.</p>
+<h3 id="partial-feedback-linearization">partial feedback linearization</h3>
+<p>Consider an underactuated system <span class="math display">\[
+\displaylines{M(q) \ddot{q}+b(q, \dot{q})=\begin{pmatrix}
+0 \\ u
+\end{pmatrix}
+}
+\]</span></p>
+<p>which can be equivalently expressed as <span class="math display">\[
+\displaylines{\begin{bmatrix}
+M_{11} &amp; M_{12} \\
+M_{21} &amp; M_{22}
+\end{bmatrix}
+\begin{bmatrix}
+\ddot{q_1} \\
+\ddot{q_2}
+\end{bmatrix} +
+\begin{bmatrix}
+b_1 \\ b_2
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\ u
+\end{bmatrix}
+}
+\]</span> <strong>Collocated input/output linearization</strong>: If the output is <span class="math inline">\(y=q_2\in\mathbb{R}^m\)</span>, we can get <span class="math display">\[
+\displaylines{\bar{M}_{22}\ddot{q}_2 + \bar{b}_2 = u
+}
+\]</span> where <span class="math display">\[
+\displaylines{\bar{M}_{22} = M_{22} - M_{21}M_{11}^{-1}M_{12} \\
+\bar{b}_2 = b_2 - M_{21}M_{11}^{-1}b_1
+}
+\]</span> The rest is similar as the fully actuated control case.</p>
+<p>The <span class="math inline">\(q_1\)</span> is the remaining "non-linearized" coordinates. We can define <span class="math display">\[
+\displaylines{\eta = \begin{bmatrix}
+\eta_1 \\ \eta_2
+\end{bmatrix} =
+\begin{bmatrix}
+q_1 \\ \dot{q}_1
+\end{bmatrix}
+}
+\]</span> and we have the dynamics <span class="math display">\[
+\displaylines{\dot{\eta}_1 = \eta_2 \\
+\dot{\eta}_2 = -M_{11}^{-1}(M_{12}(\ddot{q}_d - k_p z_1 - k_d z_2) + b_1)
+}
+\]</span> and the complete system can be written as <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+&amp;\dot{z} = Az &amp;&amp;\text{linearized} \\
+&amp;\dot{\eta} = w(t, z,\eta) &amp;&amp;\text{non-linearized}
+\end{aligned}
+}
+\label{collocated}
+\end{equation}
+\]</span> The <strong>zero dynamics</strong> of the system is defined as the evolution of the non-linearized part after the linear part has stabilized, i.e. <span class="math display">\[
+\displaylines{\dot{\eta} = w(t, 0, \eta)
+}
+\]</span> Suppose <span class="math inline">\(w(t, 0,\eta_0) = 0\)</span> for <span class="math inline">\(t\ge 0\)</span>, i.e. <span class="math inline">\((0, \eta_0)\)</span> is the equilibrium of the full system <span class="math inline">\(\eqref{collocated}\)</span>, and <span class="math inline">\(A\)</span> is Hurwitz. Then <span class="math inline">\((0, \eta_0)\)</span> is locally stable if <span class="math inline">\(\eta_0\)</span> is locally stable for the zero dynamics. (respectively, locally asymptotically stable, unstable)</p>
+<p><strong>Non-collocated input/output linearization</strong>: If the output is <span class="math inline">\(y = q_1\in \mathbb{R}^l\)</span>, then it can only be linearized when <span class="math inline">\(l\le m\)</span> and <span class="math inline">\(\operatorname{rank}(M_{12}) = l\)</span>. We can get <span class="math display">\[
+\displaylines{\tilde{M}_{21} \ddot{q}_1 + \tilde{b}_2 = u
+}
+\]</span> where <span class="math display">\[
+\displaylines{\tilde{M}_{21} = M_{21} = M_{22}M_{12}^\dagger M_{11} \\
+\tilde{b}_2 = b_2 - M_{22}M_{12}^\dagger b_1
+}
+\]</span> <span class="math inline">\(M_{12}^\dagger = M_{12}^T(M_{12} M_{12}^T)^{-1}\)</span> is the right pseudo-inverse of <span class="math inline">\(M_{12}\)</span></p>
+<p>The rest is similar.</p>
+<h2 id="dynamic-feedback">Dynamic feedback</h2>
+<p>If a control system is differentially flat then it is dynamic feedback linearizable on an open dense set, with the dynamic feedback possibly depending explicitly on time</p>
+<h2 id="general-case">General case</h2>
+<h3 id="siso-system">SISO system</h3>
+<p>Consider <span class="math display">\[
+\displaylines{\dot{x} = f(x) + g(x) u \\
+y = h(x)
+}
+\]</span> where <span class="math inline">\(u\in\mathbb{R}\)</span>. Let <span class="math inline">\(x^*\)</span> be the equilibrium, then we have <span class="math display">\[
+\displaylines{\dot{y} = \nabla h^T [f(x) + g(x) u] = L_f h + u L_g h
+}
+\]</span></p>
+<p>If <span class="math inline">\(|L_g h| \ne 0\)</span> <span class="math display">\[
+\displaylines{u = \frac{1}{L_g h}(-L_f h + v) \\
+\dot{y} = v
+}
+\]</span></p>
+<p>More generally, we can keep differentiating <span class="math inline">\(\dot{y}, \ddot{y}, \dots\)</span> and denote <span class="math inline">\(\gamma\)</span> to be the smallest integer s.t. <span class="math display">\[
+\displaylines{L_gL_f^i h = 0 \qquad (i = 0, \dots, \gamma - 2) \\
+L_gL_f^{\gamma -1} h \ne 0
+}
+\]</span></p>
+<p>Then we have <span class="math display">\[
+\displaylines{u = \frac{1}{L_gL_f^{\gamma-1}h}(-L_f^\gamma h + v) \\
+y^{(\gamma)} = v
+}
+\]</span> i.e. the output becomes a <span class="math inline">\(\gamma\)</span>-order linear system. <span class="math inline">\(\gamma\)</span> is called the <strong>strict relate degree</strong></p>
+<h3 id="mimo-system">MIMO system</h3>
+<p>Consider a two-input two-output system <span class="math display">\[
+\displaylines{\dot{x}=f(x)+g_{1}(x) u_{1}+g_{2}(x) u_{2} \\
+y=\begin{bmatrix}
+y_{1} \\
+y_{2}
+\end{bmatrix}=\begin{bmatrix}
+h_{1}(x) \\
+h_{2}(x)
+\end{bmatrix}
+}
+\]</span> Differentiate both outputs until inputs appeared: <span class="math display">\[
+\displaylines{\begin{aligned}
+\begin{bmatrix}
+y_1^{(\gamma_1)} \\ y_2^{(\gamma_2)}
+\end{bmatrix} &amp; =
+\begin{bmatrix}
+L_{g_{1}} L_{f}^{\gamma_{1}-1} h_{1} &amp; L_{g_{2}} L_{f}^{\gamma_{1}-1} h_{1} \\
+L_{g_{1}} L_{f}^{\gamma_{2}-1} h_{2} &amp; L_{g_{2}} L_{f}^{\gamma_{2}-1} h_{2}
+\end{bmatrix}
+\begin{bmatrix}
+u_1 \\ u_2
+\end{bmatrix} +
+\begin{bmatrix}
+L_f^{\gamma_1}h_1 \\ L_f^{\gamma_2}h
+\end{bmatrix} \\
+&amp;\triangleq G(x) u + H(x)
+\end{aligned}
+}
+\]</span> The system has a relative degree <span class="math inline">\((\gamma_1, \gamma_2)\)</span> at <span class="math inline">\(x^*\)</span> if <span class="math display">\[
+\displaylines{L_{g_{j}} L_{f}^{k} h_{i}(x)=0, \quad j=1,2, \quad 0 \leq k \leq \gamma_{i}-2, \quad i=1,2
+}
+\]</span> and <span class="math inline">\(G\)</span> is non-singular. Then <span class="math display">\[
+\displaylines{u = G^{-1}(x) [H(x) + v] \\
+\begin{bmatrix}
+y_1^{(\gamma_1)} \\ y_2^{(\gamma_2)}
+\end{bmatrix} =
+\begin{bmatrix}
+v_1 \\ v_2
+\end{bmatrix}
+}
+\]</span></p>
+<h3 id="normal-forms">normal forms</h3>
+<p>If a SISO has a relative degree <span class="math inline">\(\gamma \le n\)</span> at some point <span class="math inline">\(x^*\)</span> then it can be transformed into a normal form, i.e. one can find a change of coordinates <span class="math inline">\(x\to\Phi(x)\)</span> s.t. <span class="math display">\[
+\displaylines{\Phi(x) = \begin{bmatrix}
+z \\ \eta
+\end{bmatrix} \triangleq
+\begin{bmatrix}
+h(x) \\ L_f h \\ \vdots \\ L_f^{\gamma-1}h \\
+\eta_1(x) \\ \vdots \\ \eta_{n-\gamma}(x)
+\end{bmatrix}
+}
+\]</span> The last <span class="math inline">\(n-\gamma\)</span> coordinates <span class="math inline">\(\eta\)</span> are chosen so that the following conditions holds:</p>
+<ol type="1">
+<li><span class="math inline">\(\Phi(x)\)</span> is a <strong>diffeomorphism</strong>, i.e. a smooth map with smooth inverse. Equivalent to <span class="math inline">\(\partial \Phi\)</span> has full rank</li>
+<li>The dynamics of <span class="math inline">\(\dot{\eta}\)</span> is not directly affected by <span class="math inline">\(u\)</span>, i.e. <span class="math inline">\(L_g\eta_i = 0\)</span>. It means that <span class="math inline">\(\eta\)</span> are the internal dynamics <span class="math inline">\(\dot{\eta} = w(t,z,\eta)\)</span></li>
+</ol>
+<p>So we have two parts of the dynamics: <span class="math inline">\(z\)</span>-dynamics and internal dynamics <span class="math display">\[
+\displaylines{\dot{z}=A z+B v \\
+\dot{\eta}=w(t, z, \eta)
+}
+\]</span> where <span class="math display">\[
+\displaylines{A = \begin{bmatrix}
+0 \\
+\vdots &amp; I_{\gamma-1} \\
+0 &amp; \cdots &amp; 0
+\end{bmatrix} \qquad
+B = \begin{bmatrix}
+0 \\ \vdots \\ 0 \\ 1
+\end{bmatrix}
+}
+\]</span> <span class="math inline">\(z\)</span> is controllable. The virtual input <span class="math inline">\(u\)</span> can be chosen as <span class="math inline">\(v=Kz\)</span> s.t. <span class="math inline">\(A+BK\)</span> is Hurwitz. And the control is <span class="math display">\[
+\displaylines{u = \frac{1}{L_gL_f^{\gamma-1}h}(-L_f^\gamma h + v)
+}
+\]</span> If the zero dynamics <span class="math display">\[
+\displaylines{\dot{\eta} = w(t, 0, \eta)
+}
+\]</span> is A.S. then the system is <strong>minimum phase</strong>, otherwise it is non-minimum phase</p>
+<h1 id="backstepping">Backstepping</h1>
+<p>Backstepping is a nonlinear control design tool for underactuated systems.</p>
+<h2 id="integrator-backstepping">Integrator Backstepping</h2>
+<p>Consider <span class="math display">\[
+\begin{align}
+\dot{\eta} &amp;= f(\eta) + g(\eta)\xi \label{integrator} \\
+\dot{\xi} &amp;= u \nonumber
+\end{align}
+\]</span> where <span class="math inline">\([\eta^T, \xi]\in\mathbb{R}^{n+1}\)</span> and <span class="math inline">\(u\in\mathbb{R}\)</span> is the control input. The functions <span class="math inline">\(f,g\)</span> are smooth in the domain that contains <span class="math inline">\(0\)</span> and <span class="math inline">\(f(0)=0\)</span>. The goal is to design a controller which stabilizes the origin <span class="math inline">\((\eta, \xi)=(0,0)\)</span></p>
+<p>Assume there is a control law <span class="math inline">\(\xi=\phi(\eta)\)</span> which makes the subsystem <span class="math inline">\(\eqref{integrator}\)</span> A.S. with <span class="math inline">\(\phi(0)=0\)</span> and the Lyapunov function <span class="math inline">\(V_0(\eta)\)</span> s.t. <span class="math display">\[
+\displaylines{\frac{\partial V_{0}}{\partial \eta}[f(\eta)+g(\eta) \phi(\eta)] \leq-W(\eta) \qquad (\forall \eta \in D)
+}
+\]</span> where <span class="math inline">\(W(\eta)\)</span> is P.D. Now using</p>
+<p><span class="math display">\[
+\displaylines{V(\eta, \xi) = V_0(\eta) + \frac{1}{2} \|\xi-\phi(\eta)\|^2
+}
+\]</span> and we can obtain <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{V} &amp;=\frac{\partial V_{0}}{\partial \eta}(f+g\xi) + (\xi-\phi) (u - \frac{\partial \phi}{\partial \eta} \dot{\eta}) \\
+&amp; \le -W(\eta) + (\xi-\phi) (u - \frac{\partial \phi}{\partial \eta} \dot{\eta} + \frac{\partial V_{0}}{\partial \eta} g)
+\end{aligned}
+}
+\]</span></p>
+<p>If we set <span class="math display">\[
+\displaylines{u=\frac{\partial \phi}{\partial \eta}(f+g\xi)-\frac{\partial V_{0}}{\partial \eta} g-k(\xi-\phi) \qquad (k&gt; 0)
+}
+\]</span> then <span class="math inline">\(\dot{V} &lt; 0\)</span>. So that the origin <span class="math inline">\((\eta, z)=(0,0)\)</span> is A.S. From <span class="math inline">\(\phi(0)=0\)</span> we can get the <span class="math inline">\((\eta,\xi)=(0,0)\)</span> is A.S.</p>
+<h2 id="block-backstepping">Block backstepping</h2>
+<p>Consider <span class="math display">\[
+\begin{align}
+\dot{\eta}&amp;=f(\eta)+G(\eta) \xi \label{block} \\
+\dot{\xi}&amp;=f_{a}(\eta, \xi)+G_{a}(\eta, \xi) u \nonumber
+\end{align}
+\]</span> where <span class="math inline">\(\eta\in\mathbb{R}^n\)</span>, <span class="math inline">\(\xi\in\mathbb{R}^m\)</span> and <span class="math inline">\(u\in\mathbb{R}^m\)</span> is the control input. The functions <span class="math inline">\(f, f_a, G, G_a\)</span> are smooth in the interested domain, <span class="math inline">\(f(0) = f_a(0) = 0\)</span> and <span class="math inline">\(G_a\)</span> is a non-singular <span class="math inline">\(m\times m\)</span> matrix.</p>
+<p>Assume there is a control law <span class="math inline">\(\xi=\phi(\eta)\)</span> which makes the subsystem <span class="math inline">\(\eqref{block}\)</span> A.S. with <span class="math inline">\(\phi(0)=0\)</span> and the Lyapunov function <span class="math inline">\(V_0\)</span> s.t. <span class="math display">\[
+\displaylines{\frac{\partial V_{0}}{\partial \eta}[f(\eta)+G(\eta) \phi(\eta)] \le -W(\eta) \qquad \forall \eta \in D
+}
+\]</span> where <span class="math inline">\(W(\eta)\)</span> is P.D. Now using <span class="math display">\[
+\displaylines{V(\eta, \xi) = V_0(\eta) + \frac{1}{2} \|\xi-\phi(\eta)\|^2
+}
+\]</span> and we can obtain <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{V}&amp;=\frac{\partial V_{0}}{\partial \eta}(f+G \xi)+[\xi-\phi]^{T}\left[f_{a}+G_{a} u-\frac{\partial \phi}{\partial \eta}\dot{\eta}\right] \\
+&amp;\le -W(\eta) + [\xi-\phi]^{T}\left[f_{a}+G_{a} u-\frac{\partial \phi}{\partial \eta}\dot{\eta} + \left(\frac{\partial V_{0}}{\partial \eta} G\right)^T \right] 
+\end{aligned}
+}
+\]</span> If we set <span class="math display">\[
+\displaylines{u=G_{a}^{-1}\left[\frac{\partial \phi}{\partial \eta}(f+G \xi) - \left(\frac{\partial V_{0}}{\partial \eta} G\right)^{T} - f_a - k(\xi-\phi)\right] \qquad (k&gt;0)
+}
+\]</span> then <span class="math inline">\(\dot{V} &lt; 0\)</span>. So that the origin <span class="math inline">\((\eta, \xi)=(0,0)\)</span> is A.S.</p>
+<h1 id="lyapunov-redesign-and-robust-backstepping">Lyapunov Redesign and Robust Backstepping</h1>
+<h2 id="uncertainty-and-lyapunov-redesign">Uncertainty and Lyapunov redesign</h2>
+<p>Consider <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(t,x) + G(t,x)[u + \delta(t,x,u)]
+}
+\label{uncertain}
+\end{equation}
+\]</span> where <span class="math inline">\(x\in\mathbb{R}^n\)</span> is the state and <span class="math inline">\(u\in\mathbb{R}^p\)</span> is the control. The functions <span class="math inline">\(f,G,\delta\)</span> are defined for <span class="math inline">\((x,u)\in D\times \mathbb{R}^p\)</span> (<span class="math inline">\(D\)</span> contains the origin), piecewise continuous and Lipschitz in <span class="math inline">\(x\)</span> and <span class="math inline">\(u\)</span>. Assume <span class="math inline">\(f,G\)</span> is know while <span class="math inline">\(\delta\)</span> is unknown.</p>
+<p>When the uncertainty acts only along the control vector fields (the column of the matrix <span class="math inline">\(G\)</span>) it is said to satisfy the <strong>matching condition</strong>, i.e. it matches the controls. <span class="math inline">\(\eqref{uncertain}\)</span> is in such form. Stabilizing controls for this case can be done by <strong>Lyapunov redesign</strong>. In the non-matching case, it is necessary to assume more restrictive assumptions about the bounds of <span class="math inline">\(\delta\)</span> and employ recursive techniques such as <strong>robust backstepping</strong>.</p>
+<p>Assume that a feedback controller <span class="math inline">\(u=\psi(t,x)\)</span> was designed so that the nominal system <span class="math display">\[
+\displaylines{\dot{x} = f(t,x) + G(t,x)u
+}
+\]</span> is A.S. And the Lyapunov function <span class="math inline">\(V(t,x)\)</span> satisfies <span class="math display">\[
+\displaylines{\alpha_{1}(\|x\|) \leq V(t, x) \le \alpha_{2}(\|x\|) \\
+\partial_{t} V+\partial_{x} V \cdot[f(t, x)+G(t, x) \psi(t, x)] \le -\alpha_{3}(\|x\|)
+}
+\]</span> for all <span class="math inline">\(x\in D\)</span>,<span class="math inline">\(\alpha_i\)</span> are strictly increasing and <span class="math inline">\(\alpha_i(0)=0\)</span></p>
+<p>Assume the uncertainty satisfies the bound <span class="math display">\[
+\begin{equation}\displaylines{
+\|\delta(t, x, \psi(t, x)+v)\| \leq \rho(t, x)+k_{0}\|v\| \qquad (0 \leq k_{0}&lt;1)
+}
+\label{bound}
+\end{equation}
+\]</span> where <span class="math inline">\(\rho:[0,t_f]\times D\to \mathbb{R}\)</span> is a non-negative continuous function and specifies the magnitude of the uncertainty. The idea behind Lyapunov redesign is to augment the nominal control law <span class="math inline">\(\psi(t,x)\)</span> with an extra term <span class="math inline">\(v\in\mathbb{R}^p\)</span> which suppresses the uncertainty so that the combined control <span class="math inline">\(u=\psi(t,x)+v\)</span> stabilizes the real system.</p>
+<p>Now <span class="math inline">\(\dot{V}\)</span> becomes <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{V}&amp;=\partial_{t} V+\partial_{x} V \cdot[f+G \psi]+\partial_{x} V \cdot G[v+\delta] \\
+&amp;\le -\alpha_{3}(\|x\|)+\partial_{x} V \cdot G[v+\delta]
+\end{aligned}
+}
+\]</span> Setting <span class="math inline">\(w^T = \partial_x V\cdot G\)</span> and it becomes <span class="math display">\[
+\displaylines{\dot{V}\le -\alpha_3 \|x\| + w^T v + w^T \delta
+}
+\]</span> Using the bound <span class="math inline">\(\eqref{bound}\)</span> we have <span class="math display">\[
+\displaylines{w^{T} v+w^{T} \delta \leq w^{T} v+\|w\| (\rho+k_{0}\|v\|)
+}
+\]</span> Setting <span class="math display">\[
+\displaylines{v = -\eta(t,x)\frac{w}{\|w\|} \\
+\eta(t,x) \ge \frac{\rho(t,x)}{1-k_0}
+}
+\]</span> we have <span class="math display">\[
+\displaylines{\begin{aligned}
+w^{T} v+w^{T} \delta &amp;\leq-\eta(x)\|w\|+\|w\|\left(\rho+k_{0} \eta(x)\right) \\
+&amp;=\|w\|\left(\rho-\eta\left(1-k_{0}\right)\right) \\
+&amp;\leq 0
+\end{aligned}
+}
+\]</span> So that <span class="math inline">\(\dot{V} \le 0\)</span> for the whole system.</p>
+<p>The controller is discontinuous at <span class="math inline">\(w=0\)</span>, e.g. typically at the origin. In addition to this theoretical limitation, practical issues also occur due to digital switching, delays, and other physical imperfections. This results in oscillatory behavior near the equilibrium called <strong>chattering</strong>. The solution is to smooth the control law near the origin: <span class="math display">\[
+\displaylines{\begin{aligned}
+v&amp;=-\eta(t, x) \frac{w}{\|w\|} &amp;&amp; \text { if } \eta(t, x)\|w\| \geq \epsilon \\
+v&amp;=-\eta(t, x)^{2} \frac{w}{\epsilon} &amp;&amp; \text { if } \eta(t, x)\|w\|&lt;\epsilon
+\end{aligned}
+}
+\]</span></p>
+<h2 id="robust-backstepping">Robust backstepping</h2>
+<p>Consider the single-input system <span class="math display">\[
+\begin{align}
+\dot{\eta}&amp;=f(\eta)+g(\eta) \xi+\delta_{\eta}(\eta, \xi) \label{robust-bs} \\
+\dot{\xi}&amp;=f_{a}(\eta, \xi)+g_{a}(\eta, \xi) u+\delta_{\xi}(\eta, \xi) \nonumber
+\end{align}
+\]</span> where <span class="math inline">\(\eta\in\mathbb{R}^n\)</span>, <span class="math inline">\(\xi\in\mathbb{R}\)</span> are defined over a domain <span class="math inline">\(D\)</span> that contains the origin. Assume <span class="math inline">\(f,g,f_a,g_a\)</span> are smooth and known, <span class="math inline">\(f(0)=f_a(0)=0\)</span>. And <span class="math inline">\(\delta_n, \delta_\xi\)</span> are uncertain terms that satisfy <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+\left\|\delta_{\eta}(\eta, \xi)\right\|_{2} &amp;\leq a_{1}\|\eta\|_{2} \\
+\left|\delta_{\xi}(\eta, \xi)\right| &amp;\leq a_{2}\|\eta\|_{2}+a_{3}|\xi|
+\end{aligned}
+}
+\label{assume-1}
+\end{equation}
+\]</span> for all <span class="math inline">\((\eta, \xi)\)</span></p>
+<p>Assume we have a stabilizing controller <span class="math inline">\(\xi=\phi(\eta)\)</span> for the subsystem <span class="math inline">\(\eqref{robust-bs}\)</span> and a Lyapunov function <span class="math inline">\(V_0(\eta)\)</span> s.t. <span class="math display">\[
+\displaylines{\frac{\partial V_{0}}{\partial \eta}\left[f(\eta)+g(\eta) \phi(\eta)+\delta_{\eta}(\eta, \xi)\right] \leq-b\|\eta\|^{2}
+}
+\]</span> for some <span class="math inline">\(b&gt;0\)</span>. Suppose further that <span class="math inline">\(\phi(\eta)\)</span> satisfies <span class="math display">\[
+\begin{equation}\displaylines{
+|\phi(\eta)| \leq a_{4}\|\eta\|, \quad\left\|\frac{\partial \phi}{\partial \eta}\right\| \leq a_{5}
+}
+\label{assume-2}
+\end{equation}
+\]</span> Consider a Lyapunov function <span class="math display">\[
+\displaylines{V(\eta, \xi) = V_0(\eta) +\frac{1}{2}[\xi - \phi(\eta)]^2 
+}
+\]</span> we have <span class="math display">\[
+\displaylines{\dot{V}=\frac{\partial V_{0}}{\partial \eta}\left[f+g \phi+\delta_{\eta}\right]+\frac{\partial V_{0}}{\partial \eta} g(\xi-\phi)+(\xi-\phi)\left[f_{a}+g_{a} u+\delta_{\xi}-\frac{\partial \phi}{\partial \eta}\left(f+g \xi+\delta_{\eta}\right)\right]
+}
+\]</span> Taking <span class="math display">\[
+\displaylines{u=\frac{1}{g_{a}}\left[\frac{\partial \phi}{\partial \eta}(f+g \xi)-\frac{\partial V_{0}}{\partial \eta} g-f_{a}-k(\xi-\phi)\right] \qquad (k&gt;0)
+}
+\]</span> so we have <span class="math display">\[
+\displaylines{\dot{V} \leq-b\|\eta\|^{2}+(\xi-\phi)\left[\delta_{\xi}-\frac{\partial \phi}{\partial \eta} \delta_{\eta}\right]-k(\xi-\phi)^{2}
+}
+\]</span> Using assumptions <span class="math inline">\(\eqref{assume-1}\)</span>, <span class="math inline">\(\eqref{assume-2}\)</span> then <span class="math display">\[
+\displaylines{\begin{aligned}
+\dot{V} &amp; \leq-b\|\eta\|^{2}+2 a_{6}|\xi-\phi|\|\eta\|-\left(k-a_{3}\right)|\xi-\phi|^{2} \\
+&amp;=-\begin{bmatrix}
+\|\eta\| \\
+|\xi-\phi|
+\end{bmatrix}^T\begin{bmatrix}
+b &amp; -a_{6} \\
+-a_{6} &amp; (k-a_{3})
+\end{bmatrix}\begin{bmatrix}
+\|\eta\| \\
+|\xi-\phi|
+\end{bmatrix}
+\end{aligned}
+}
+\]</span> for some <span class="math inline">\(a_6 &gt; 0\)</span>. Taking <span class="math inline">\(k\ge a_3 + a_6^2/b\)</span> yields <span class="math inline">\(\dot{V} \le 0\)</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ME/" rel="tag"><i class="fa fa-tag"></i> ME</a>
+              <a href="/tags/JHU/" rel="tag"><i class="fa fa-tag"></i> JHU</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/nonlinear-optimization/" rel="prev" title="Nonlinear Optimization">
+                  <i class="fa fa-chevron-left"></i> Nonlinear Optimization
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

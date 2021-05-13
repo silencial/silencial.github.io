@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="ME 583 Review. Based on Nonlinear Systems (Hassan K. Khalil) book.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nonlinear System">
+<meta property="og:url" content="https://silencial.github.io/nonlinear-system/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="ME 583 Review. Based on Nonlinear Systems (Hassan K. Khalil) book.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/AAiIAzy.png">
+<meta property="og:image" content="https://i.imgur.com/8WUz8uH.png">
+<meta property="og:image" content="https://i.imgur.com/JE06Yz4.png">
+<meta property="og:image" content="https://i.imgur.com/apnAVsF.png">
+<meta property="og:image" content="https://i.imgur.com/MF52Bh5.png">
+<meta property="article:published_time" content="2019-10-12T00:00:00.000Z">
+<meta property="article:modified_time" content="2019-12-08T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="UW">
+<meta property="article:tag" content="ME">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/AAiIAzy.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/nonlinear-system/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;nonlinear-system&#x2F;&quot;,&quot;path&quot;:&quot;nonlinear-system&#x2F;&quot;,&quot;title&quot;:&quot;Nonlinear System&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Nonlinear System | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#second-order-system"><span class="nav-number">2.</span> <span class="nav-text">Second-Order System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#qualitative-behavior-of-linear-systems"><span class="nav-number">2.1.</span> <span class="nav-text">Qualitative Behavior of Linear Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#case-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">Case 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case-2"><span class="nav-number">2.1.2.</span> <span class="nav-text">Case 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case-3"><span class="nav-number">2.1.3.</span> <span class="nav-text">Case 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case-4"><span class="nav-number">2.1.4.</span> <span class="nav-text">Case 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#periodic-orbits"><span class="nav-number">2.2.</span> <span class="nav-text">Periodic Orbits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fundamental-properties"><span class="nav-number">3.</span> <span class="nav-text">Fundamental Properties</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition"><span class="nav-number">3.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#existence-and-uniqueness"><span class="nav-number">3.2.</span> <span class="nav-text">Existence and Uniqueness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continuous-dependence-on-initial-conditions-and-parameters"><span class="nav-number">3.3.</span> <span class="nav-text">Continuous Dependence on Initial Conditions and Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sensitivity-equations"><span class="nav-number">3.4.</span> <span class="nav-text">Sensitivity Equations</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lyapunov-stability"><span class="nav-number">4.</span> <span class="nav-text">Lyapunov Stability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#autonomous-system"><span class="nav-number">4.1.</span> <span class="nav-text">Autonomous System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invariance-principle"><span class="nav-number">4.2.</span> <span class="nav-text">Invariance Principle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lti-systems-and-linearization"><span class="nav-number">4.3.</span> <span class="nav-text">LTI Systems and Linearization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comparison-functions"><span class="nav-number">4.4.</span> <span class="nav-text">Comparison Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nonautonomous-system"><span class="nav-number">4.5.</span> <span class="nav-text">Nonautonomous System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ltv-systems-and-linearization"><span class="nav-number">4.6.</span> <span class="nav-text">LTV Systems and Linearization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#converse-theorems"><span class="nav-number">4.7.</span> <span class="nav-text">Converse Theorems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boundedness"><span class="nav-number">4.8.</span> <span class="nav-text">Boundedness</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input-to-state-stability"><span class="nav-number">4.9.</span> <span class="nav-text">Input-to-State Stability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#input-output-stability"><span class="nav-number">5.</span> <span class="nav-text">Input-Output Stability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcall-stability"><span class="nav-number">5.1.</span> <span class="nav-text">\(\mathcal{L}\) Stability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcall-stability-of-state-models"><span class="nav-number">5.2.</span> <span class="nav-text">\(\mathcal{L}\) Stability of State Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcall_2-gain"><span class="nav-number">5.3.</span> <span class="nav-text">\(\mathcal{L}_2\) Gain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feedback-systems"><span class="nav-number">5.4.</span> <span class="nav-text">Feedback Systems</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/nonlinear-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nonlinear System
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-10-12 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-12T00:00:00+00:00">2019-10-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-12-08 00:00:00" itemprop="dateModified" datetime="2019-12-08T00:00:00+00:00">2019-12-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mechanical-Engineering/" itemprop="url" rel="index"><span itemprop="name">Mechanical Engineering</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>39k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:36</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>ME 583 Review. Based on <em>Nonlinear Systems (Hassan K. Khalil)</em> book.</p>
+<span id="more"></span>
+<hr />
+<h1 id="introduction">Introduction</h1>
+<p>Dynamical system can be represented by a finite number of coupled ODEs: <span class="math display">\[
+\displaylines{\dot{x} = f(t, x, u) \\
+y = h(t, x, u)
+}
+\]</span> When <span class="math inline">\(f\)</span> does not depend explicitly on <span class="math inline">\(u\)</span>, the state equation becomes: <span class="math display">\[
+\displaylines{\dot{x} = f(t, x)
+}
+\]</span> Furthermore, the system is said to be <strong>autonomous</strong> or <strong>time invariant</strong> if <span class="math inline">\(f\)</span> does not depend explicitly on <span class="math inline">\(t\)</span>: <span class="math display">\[
+\displaylines{\dot{x} = f(x)
+}
+\]</span></p>
+<p>Compared to Linear systems, nonlinear systems have some unique phenomenons:</p>
+<ol type="1">
+<li><strong>Finite escape time</strong>:
+<ul>
+<li>Linear system: state can only go to infinity in infinite time.</li>
+<li>Nonlinear system: can go in finite time.</li>
+</ul></li>
+<li><strong>Multiple isolated equilibriums</strong>:
+<ul>
+<li>Linear system: can have only one isolated <em>equi.</em> point.</li>
+<li>Nonlinear system: state may converge to one of several steady-state operating points, depending on the initial state of the system.</li>
+</ul></li>
+<li><strong>Limit cycles</strong>:
+<ul>
+<li>Linear system: must have a pair of eigenvalues on the imaginary axis to oscillate, which is nonrobust (unstable to perturbations).</li>
+<li>Nonlinear system: can go into an oscillation of fixed amplitude and frequency, irrespective of the initial state.</li>
+</ul></li>
+<li><strong>Subharmonic, harmonic, or almost-periodic oscillations</strong>:
+<ul>
+<li>Linear system: produces an output of the same frequency under a periodic input.</li>
+<li>Nonlinear system: can oscillate with frequencies that are submultiples or multiples. It may even generate an almost-periodic oscillation.</li>
+</ul></li>
+<li><strong>Chaos</strong>:
+<ul>
+<li>Linear system: deterministic steady-state behavior.</li>
+<li>Nonlinear system: can have more complicated steady-state behavior that is not equilibrium, periodic oscillation, or almost-periodic oscillation.</li>
+</ul></li>
+<li><strong>Multiple modes of behavior</strong>: Nonlinear system may exhibit multiple models of behavior based on type of excitations. When the property of excitation change smoothly, the behavior mode can have discontinuous jump.</li>
+</ol>
+<h1 id="second-order-system">Second-Order System</h1>
+<p>Consider a <em>second-order autonomous system</em>: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{split}
+\dot{x}_1 = f_1(x_1, x_2) \\
+\dot{x}_2 = f_2(x_1, x_2)
+\end{split}
+}
+\label{second}
+\end{equation}
+\]</span></p>
+<h2 id="qualitative-behavior-of-linear-systems">Qualitative Behavior of Linear Systems</h2>
+<p>For a <em>second-order LTI system</em>, <span class="math inline">\(\eqref{second}\)</span> becomes: <span class="math display">\[
+\displaylines{\dot{x} = Ax
+}
+\]</span> and the solution given <span class="math inline">\(x(0) = x_0\)</span> is <span class="math display">\[
+\displaylines{x(t) = M e^{J t} M^{-1} x_0
+}
+\]</span> where <span class="math inline">\(J\)</span> is the Jordan form of <span class="math inline">\(A\)</span> and <span class="math inline">\(M\)</span> is a real nonsingular matrix s.t. <span class="math inline">\(M^{-1} A M = J\)</span>. <span class="math inline">\(J\)</span> can have three forms depending on the eigenvalues of <span class="math inline">\(A\)</span>.</p>
+<h3 id="case-1">Case 1</h3>
+<p><span class="math inline">\(\lambda_1 \ne \lambda_2 \ne 0\)</span>, <span class="math inline">\(J = \begin{bmatrix} \lambda_1 &amp; 0 \\ 0 &amp; \lambda_2 \end{bmatrix}\)</span></p>
+<p>The change of coordinates <span class="math inline">\(z = M^{-1} x\)</span> transforms the system into <em>two decoupled first-order DE</em>: <span class="math display">\[
+\displaylines{\dot{z}_1 = \lambda_1 z_1 \\
+\dot{z}_2 = \lambda_2 z_2
+}
+\]</span></p>
+<ol type="1">
+<li><p><span class="math inline">\(\lambda_1 &lt; 0, \lambda_2 &lt; 0\)</span>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> is stable. The phase portrait in <span class="math inline">\(z_1\)</span>-<span class="math inline">\(z_2\)</span> plane <img src="https://i.imgur.com/AAiIAzy.png" alt="Stable Point" style="width:60.0%" /></p></li>
+<li><p><span class="math inline">\(\lambda_1 &gt; 0, \lambda_2 &gt; 0\)</span>: <span class="math inline">\(x=0\)</span> is unstable. Change the arrow direction in the above image to get the phase portrait.</p></li>
+<li><p><span class="math inline">\(\lambda_1 &gt; 0 &gt; \lambda_2\)</span>: <span class="math inline">\(x=0\)</span> is a saddle point. <img src="https://i.imgur.com/8WUz8uH.png" alt="Saddle Point" /></p></li>
+</ol>
+<h3 id="case-2">Case 2</h3>
+<p><span class="math inline">\(\lambda_1 = \lambda_2 \in \mathbb{R}\)</span>, <span class="math inline">\(J = \begin{bmatrix} \lambda_1 &amp; k \\ 0 &amp; \lambda_2 \end{bmatrix}\)</span>, <span class="math inline">\(k\)</span> is either 0 or 1</p>
+<p>The phase portrait for <span class="math inline">\(k=0\)</span> and <span class="math inline">\(k=1\)</span> respectively:</p>
+<p><img src="https://i.imgur.com/JE06Yz4.png" alt="Double Root Stable" /></p>
+<h3 id="case-3">Case 3</h3>
+<p><span class="math inline">\(\lambda_{1,2} = \alpha \pm j \beta\)</span>, <span class="math inline">\(J = \begin{bmatrix} \alpha &amp; -\beta \\ \beta &amp; \alpha \end{bmatrix}\)</span></p>
+<p>The phase portrait for <span class="math inline">\(\alpha &lt; 0\)</span>, $&gt; 0 $, <span class="math inline">\(\alpha = 0\)</span> respectively:</p>
+<p><img src="https://i.imgur.com/apnAVsF.png" alt="Complex Root" /></p>
+<p><span class="math inline">\(x=0\)</span> is referred as a stable focus if <span class="math inline">\(\alpha &lt; 0\)</span>, unstable focus if <span class="math inline">\(\alpha &gt; 0\)</span>, and center if <span class="math inline">\(\alpha = 0\)</span></p>
+<h3 id="case-4">Case 4</h3>
+<p><span class="math inline">\(\lambda_1 \lambda_2 = 0\)</span></p>
+<p><span class="math inline">\(A\)</span> has a nontrivial null space and the system has a equilibrium subspace.</p>
+<h2 id="periodic-orbits">Periodic Orbits</h2>
+<p>Consider the <em>second-order autonomous system</em> <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(x)
+}
+\label{sys}
+\end{equation}
+\]</span> where <span class="math inline">\(f(x)\)</span> is <em>cont. diff.</em>.</p>
+<p><strong>Poincare-Bendixson Criterion</strong>: Consider system <span class="math inline">\(\eqref{sys}\)</span> and let <span class="math inline">\(M\)</span> be a <em>closed bounded</em> subset of the plane s.t.</p>
+<ul>
+<li><span class="math inline">\(M\)</span> contains no <em>equi. points</em>, or contains only one <em>equi. point</em> s.t. the Jacobian matrix <span class="math inline">\(\partial f / \partial x\)</span> at this point has eigenvalues with positive real parts.</li>
+<li>Every trajectory starting in <span class="math inline">\(M\)</span> stays in <span class="math inline">\(M\)</span> for all future time</li>
+</ul>
+<p>Then, <span class="math inline">\(M\)</span> contains a periodic orbit of <span class="math inline">\(\eqref{sys}\)</span>.</p>
+<p><strong>Bendixson Criterion</strong>: If, on a <em>simply connected region</em> <span class="math inline">\(D\)</span> of the plane, <span class="math inline">\(\nabla \cdot f\)</span> is not identically zero and does not change sign, then system <span class="math inline">\(\eqref{sys}\)</span> has no periodic orbits lying entirely in <span class="math inline">\(D\)</span></p>
+<h1 id="fundamental-properties">Fundamental Properties</h1>
+<h2 id="definition">Definition</h2>
+<ul>
+<li><strong>Connected set</strong> is a set that can not be partitioned into two open nonempty sets</li>
+<li><strong>Compact set</strong>: closed and bounded</li>
+<li><strong>Domain</strong>: open and connected set</li>
+<li><strong>Locally Lipschitz (LL)</strong> on a domain <span class="math inline">\(D \in \mathbb{R}^n\)</span> if each point of <span class="math inline">\(D\)</span> has a neighborhood <span class="math inline">\(D_0\)</span> s.t. <span class="math inline">\(f\)</span> satisfies the Lipschitz condition for all points in <span class="math inline">\(D_0\)</span> with some Lipschitz const. <span class="math inline">\(L_0\)</span>.</li>
+<li><strong>Globally Lipschitz (GL)</strong>: Lipschitz on <span class="math inline">\(\mathbb{R}^n\)</span> with a uniform Lipschitz const..</li>
+</ul>
+<h2 id="existence-and-uniqueness">Existence and Uniqueness</h2>
+<p><strong>Theorem 1 (Local Existence and Uniqueness)</strong>: Let <span class="math inline">\(f(t, x)\)</span> be <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and satisfy the <em>Lipschitz condition</em> <span class="math display">\[
+\displaylines{\| f(t, x) - f(t, y) \| \le L \| x - y \|
+}
+\]</span> <span class="math inline">\(\forall x, y\in B = \{ x\in \mathbb{R}^n \mid \| x - x_0 \| \le r \}\)</span>, <span class="math inline">\(\forall t \in [t_0, t_1]\)</span>. Then there exists some <span class="math inline">\(\delta &gt; 0\)</span> s.t. the state equation <span class="math inline">\(\dot{x} = f(t, x)\)</span> with <span class="math inline">\(x(t_0) = x_0\)</span> has a unique solution over <span class="math inline">\([t_0, t_0 + \delta]\)</span>.</p>
+<p>We have some lemmas below to prove Lipschitz condition by <span class="math inline">\(\partial f / \partial x\)</span>.</p>
+<p><strong>Lemma 1</strong>: Let <span class="math inline">\(f : [a, b] \times D \rightarrow \mathbb{R}^m\)</span> be <em>cont.</em> on <span class="math inline">\(D\subseteq \mathbb{R}^n\)</span>. Suppose that <span class="math inline">\([\partial f / \partial x]\)</span> <em>exists and is cont.</em> on <span class="math inline">\([a,b] \times D\)</span>. If, for a <em>convex set</em> <span class="math inline">\(W \subseteq D\)</span>, there is a const. <span class="math inline">\(L \ge 0\)</span> s.t. <span class="math display">\[
+\displaylines{\left\| \frac { \partial f } { \partial x } ( t , x ) \right\| \leq L
+}
+\]</span> on <span class="math inline">\([a,b] \times W\)</span>, then <span class="math display">\[
+\displaylines{\left\| f ( t , x ) - f ( t , y ) \right\| \leq L \| x - y \|
+}
+\]</span> for all <span class="math inline">\(t \in [a,b]\)</span>, <span class="math inline">\(x\in W\)</span>, and <span class="math inline">\(y\in W\)</span>.</p>
+<p><strong>Lemma 2</strong>: If <span class="math inline">\(f(t,x)\)</span> and <span class="math inline">\([\partial f / \partial x](t,x)\)</span> are <em>cont.</em> on <span class="math inline">\([a,b]\times D\)</span>, for <span class="math inline">\(D\in \mathbb{R}^n\)</span>, then <span class="math inline">\(f\)</span> is <em>LL</em> in <span class="math inline">\(x\)</span> on <span class="math inline">\([a,b] \times D\)</span>.</p>
+<p><strong>Lemma 3</strong>: If <span class="math inline">\(f(t,x)\)</span> and <span class="math inline">\([\partial f / \partial x](t,x)\)</span> are <em>cont.</em> on <span class="math inline">\([a,b] \times \mathbb{R}^n\)</span>, then <span class="math inline">\(f\)</span> is <em>GL</em> in <span class="math inline">\(x\)</span> on <span class="math inline">\([a,b]\times \mathbb{R}^n\)</span> iff <span class="math inline">\([\partial f / \partial x]\)</span> is <strong>uniformly bounded (UB)</strong> on <span class="math inline">\([a,b]\times \mathbb{R}^n\)</span>.</p>
+<p><br/></p>
+<p><strong>Theorem 2 (Global Existence and Uniqueness)</strong>: Let <span class="math inline">\(f(t,x)\)</span> be <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and satisfy <span class="math display">\[
+\displaylines{\| f(t, x) - f(t, y) \| \le L \| x - y \|
+}
+\]</span> <span class="math inline">\(\forall x, y \in \mathbb{R}^n\)</span>, <span class="math inline">\(\forall t \in [t_0, t_1]\)</span>. Then, the state equation <span class="math inline">\(\dot{x} = f(t, x)\)</span>, with <span class="math inline">\(x(t_0) = x_0\)</span>, has a unique solution over <span class="math inline">\([t_0, t_1]\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 3</strong>: Global existence and uniqueness theorem that requires <span class="math inline">\(f\)</span> to be only <em>LL</em>:</p>
+<p>Let <span class="math inline">\(f(t,x)\)</span> be <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>LL</em> in <span class="math inline">\(x\)</span> for all <span class="math inline">\(t \ge t_0\)</span> and all <span class="math inline">\(x\)</span> in <span class="math inline">\(D\subset \mathbb{R}^n\)</span>. Let <span class="math inline">\(W\)</span> be a <em>compact subset</em> of <span class="math inline">\(D\)</span>, <span class="math inline">\(x_0 \in W\)</span>, and suppose every solution of <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(t,x) \qquad x(t_0) = x_0
+}
+\label{init}
+\end{equation}
+\]</span> lies entirely in <span class="math inline">\(W\)</span>. Then, there is a unique solution that is defined for all <span class="math inline">\(t \ge t_0\)</span>.</p>
+<h2 id="continuous-dependence-on-initial-conditions-and-parameters">Continuous Dependence on Initial Conditions and Parameters</h2>
+<p>The solution of <span class="math inline">\(\eqref{init}\)</span> must depend <em>cont.</em> on the initial state <span class="math inline">\(x_0\)</span>, the initial time <span class="math inline">\(t_0\)</span>, and the right-hand side function <span class="math inline">\(f(t, x)\)</span>.</p>
+<p><br/></p>
+<p><strong>Theorem 4</strong>: Let <span class="math inline">\(f(t, x)\)</span> be <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>Lipschitz</em> in <span class="math inline">\(x\)</span> on <span class="math inline">\([t_0, t_1] \times W\)</span> with a <em>Lipschitz const.</em> <span class="math inline">\(L\)</span>, where <span class="math inline">\(W \subset \mathbb{R}^n\)</span> is an <em>open connected set</em>. Let <span class="math inline">\(y(t)\)</span> and <span class="math inline">\(z(t)\)</span> be the solution of <span class="math display">\[
+\displaylines{\dot{y} = f(t, y), \qquad y(t_0) = y_0 \\
+\dot{z} = f(t, z) + g(t, z), \qquad z(t_0) = z_0
+}
+\]</span> s.t. <span class="math inline">\(y(t), z(t) \in W\)</span> for all <span class="math inline">\(t \in [t_0, t)_1]\)</span>. Suppose that <span class="math display">\[
+\displaylines{\|g(t, x)\| \le \mu,\quad \forall (t, x) \in [t_0, t_1] \times W
+}
+\]</span> for some <span class="math inline">\(\mu &gt;0\)</span>, Then <span class="math display">\[
+\displaylines{\| y ( t ) - z ( t ) \| \leq \left\| y _{ 0 } - z_ { 0 } \right\| e^{L \left( t - t _{ 0 } \right)} + \frac { \mu } { L } \left( e^{ L \left( t - t_ { 0 } \right) } - 1 \right)
+}
+\]</span> <span class="math inline">\(\forall t \in [t_0, t_1]\)</span>.</p>
+<p><br/></p>
+<p>And the next theorem shows the continuity of solutions in terms of initial states and parameters.</p>
+<p><strong>Theorem 5</strong>: Let <span class="math inline">\(f(t, x, \lambda)\)</span> be <em>cont.</em> in <span class="math inline">\((t, x, \lambda)\)</span> and <em>LL</em> in <span class="math inline">\(x\)</span> (<em>uniformly</em> in <span class="math inline">\(t\)</span> and <span class="math inline">\(\lambda\)</span>) on <span class="math inline">\([t_0, t_1] \times D \times \{ \|\lambda - \lambda_0 \| \le c \}\)</span>, where <span class="math inline">\(D \subset \mathbb{R}^n\)</span> is an <em>open connected set</em>. Let <span class="math inline">\(y(t, \lambda_0)\)</span> be a solution of <span class="math inline">\(\dot{x} = f(t, x, \lambda_0)\)</span> with <span class="math inline">\(y(t_0, \lambda_0) = y_0 \in D\)</span>. Suppose <span class="math inline">\(y(t, \lambda_0)\)</span> is defined and belongs to <span class="math inline">\(D\)</span> for all <span class="math inline">\(t \in [t_0, t_1]\)</span>. Then, given <span class="math inline">\(\epsilon &gt; 0\)</span>, there is <span class="math inline">\(\delta &gt;0\)</span> s.t. if <span class="math display">\[
+\displaylines{\| z_0 - y_0 \| &lt; \delta, \qquad \| \lambda - \lambda_0 \| &lt; \delta
+}
+\]</span> then there is a unique solution <span class="math inline">\(z(t, \lambda)\)</span> of <span class="math inline">\(\dot{x} = f(t, x, \lambda)\)</span> defined on <span class="math inline">\([t_0, t_1]\)</span>, with <span class="math inline">\(z(t_0, \lambda) = z_0\)</span>, and <span class="math inline">\(z(t, \lambda)\)</span> satisfies <span class="math display">\[
+\displaylines{\| z(t, \lambda) - y(t, \lambda_0) \| &lt; \epsilon, \quad \forall t\in [t_0, t_1]
+}
+\]</span></p>
+<h2 id="sensitivity-equations">Sensitivity Equations</h2>
+<p>Suppose that <span class="math inline">\(f(t, x, \lambda)\)</span> is <em>cont.</em> in <span class="math inline">\((t, x, \lambda)\)</span> and has <em>cont. first partial derivatives</em> w.r.t. <span class="math inline">\(x\)</span> and <span class="math inline">\(\lambda\)</span> for all <span class="math inline">\((t, x, \lambda) \in [t_0, t_1] \times \mathbb{R}^n \times \mathbb{R}^p\)</span>. Let <span class="math inline">\(\lambda_0\)</span> be a nominal value of <span class="math inline">\(\lambda\)</span>, and suppose that the nominal state equation <span class="math display">\[
+\displaylines{\dot{x} = f(t,x,\lambda_0), \qquad x(t_0) = x_0
+}
+\]</span> has a <em>unique solution</em> <span class="math inline">\(x(t, \lambda_0)\)</span> over <span class="math inline">\([t_0, t_1]\)</span>. We know that for all <span class="math inline">\(\lambda\)</span> sufficiently close to <span class="math inline">\(\lambda_0\)</span>, the state equation <span class="math display">\[
+\displaylines{\dot{x} = f(t,x,\lambda), \qquad x(t_0) = x_0
+}
+\]</span> has a <em>unique solution</em> <span class="math inline">\(x(t, \lambda)\)</span> over <span class="math inline">\([t_0, t_1]\)</span> that is close to the nominal solution <span class="math inline">\(x(t, \lambda_0)\)</span>. The <em>cont. diff.</em> of <span class="math inline">\(f\)</span> w.r.t. <span class="math inline">\(x\)</span> and <span class="math inline">\(\lambda\)</span> implies the additional property that the solution <span class="math inline">\(x(t, \lambda)\)</span> is <em>diff.</em> w.r.t. <span class="math inline">\(\lambda\)</span> near <span class="math inline">\(\lambda_0\)</span>. <span class="math display">\[
+\displaylines{x ( t , \lambda ) = x _{ 0 } + \int_ { t _{ 0 } } ^ { t } f ( s , x ( s , \lambda ) , \lambda ) d s
+}
+\]</span> Take partial derivatives w.r.t. <span class="math inline">\(\lambda\)</span> yields <span class="math display">\[
+\displaylines{x_ { \lambda } ( t , \lambda ) = \int _{ t_ { 0 } } ^ { t } \left[ \frac { \partial f } { \partial x } ( s , x ( s , \lambda ) , \lambda ) x _ { \lambda } ( s , \lambda ) + \frac { \partial f } { \partial \lambda } ( s , x ( s , \lambda ) , \lambda ) \right] d s
+}
+\]</span> where <span class="math inline">\(x_\lambda (t_0, \lambda) = 0\)</span>. Differentiating w.r.t. <span class="math inline">\(t\)</span> yields <span class="math display">\[
+\displaylines{\begin{aligned}
+\frac{\partial}{\partial t} x_\lambda (t, \lambda) &amp;= \left.\frac{\partial f(t, x, \lambda)}{\partial x} \right|_{x = x(t, \lambda)} x_\lambda (t, \lambda) + \left.\frac{\partial f(t, x, \lambda)}{\partial \lambda} \right|_{x = x(t, \lambda)} \\
+&amp;= A(t, \lambda) x_\lambda (t, \lambda) + B(t, \lambda)
+\end{aligned}
+}
+\]</span> For <span class="math inline">\(\lambda\)</span> sufficiently close to <span class="math inline">\(\lambda_0\)</span>, the matrix <span class="math inline">\(A(t, \lambda)\)</span> and <span class="math inline">\(B(t, \lambda)\)</span> are defined on <span class="math inline">\([t_0, t_1]\)</span>. Hence, <span class="math inline">\(x_\lambda(t, \lambda)\)</span> is defined on the same interval. Let <span class="math inline">\(S(t) = x_\lambda(t, \lambda_0)\)</span>, then <span class="math inline">\(S(t)\)</span> is the unique solution of the equation <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{S}(t) = A(t, \lambda_0) S(t) + B(t, \lambda_0), \qquad S(t_0) = 0
+}
+\label{sens}
+\end{equation}
+\]</span> <span class="math inline">\(S(t)\)</span> is called the <strong>sensitivity function</strong>, and <span class="math inline">\(\eqref{sens}\)</span> is called the <strong>sensitivity equation</strong>.</p>
+<h1 id="lyapunov-stability">Lyapunov Stability</h1>
+<h2 id="autonomous-system">Autonomous System</h2>
+<p>Consider the autonomous system <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(x)
+}
+\label{as}
+\end{equation}
+\]</span> where <span class="math inline">\(f:D\rightarrow \mathbb{R}^n\)</span> is a <em>LL</em> map from <span class="math inline">\(D\subset \mathbb{R}^n\)</span> into <span class="math inline">\(\mathbb{R}^n\)</span>. <span class="math inline">\(\bar{x}\)</span> is an <strong>equilibrium point</strong> of the system if <span class="math inline">\(f(\bar{x}) = 0\)</span>. Without loss of generality, we can assume the <em>equi. point</em> is at the origin.</p>
+<p><br/></p>
+<p><strong>Definition 1</strong>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> of <span class="math inline">\(\eqref{as}\)</span> is</p>
+<ul>
+<li><p><strong>stable</strong> if, for each <span class="math inline">\(\epsilon &gt;0\)</span>, there is <span class="math inline">\(\delta &gt; 0\)</span> s.t. <span class="math display">\[
+\displaylines{\| x(0) \| &lt; \delta \Rightarrow \| x(t) \| &lt; \epsilon, \quad\forall t \ge 0
+}
+\]</span></p></li>
+<li><p><strong>unstable</strong> if it is not stable</p></li>
+<li><p><strong>asymptotically stable (AS)</strong> if it is stable and <span class="math inline">\(\delta\)</span> can be chosen s.t. <span class="math display">\[
+\displaylines{\| x(0) \| &lt; \delta \Rightarrow \lim_{t\to \infty} x(t) = 0
+}
+\]</span></p></li>
+</ul>
+<p><br/></p>
+<p><strong>Theorem 1</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{as}\)</span> and <span class="math inline">\(D\subset \mathbb{R}^n\)</span> be a <em>domain containing</em> <span class="math inline">\(x=0\)</span>. Let <span class="math inline">\(V : D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math display">\[
+\displaylines{\begin{aligned}
+V(0) &amp;= 0 \\
+V(x) &amp;&gt; 0 \quad \forall x \in D -\{0\} \\
+\dot{V}(x) &amp;\le 0 \quad \forall x \in D
+\end{aligned}
+}
+\]</span> which is called a <strong>Lyapunov function</strong>. Then, <span class="math inline">\(x=0\)</span> is <em>stable</em>. Moreover, if <span class="math display">\[
+\displaylines{\dot{V}(x) &lt; 0 \quad \forall x \in D - \{0\}
+}
+\]</span> then <span class="math inline">\(x=0\)</span> is <em>AS</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 2</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{as}\)</span>. Let <span class="math inline">\(V : \mathbb{R}^n \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math display">\[
+\displaylines{V(0) = 0 \\
+V(x) &gt; 0 \quad \forall x \ne 0 \\
+\| x \| \rightarrow \infty \Rightarrow V(x) \rightarrow \infty \\
+\dot{V}(x) &lt; 0 \quad \forall x \ne 0
+}
+\]</span> then <span class="math inline">\(x=0\)</span> is <strong>globally asymptotically stable (GAS)</strong>.</p>
+<p>A function <span class="math inline">\(V(x)\)</span> satisfying the condition <span class="math inline">\(V(x) \rightarrow \infty\)</span> as <span class="math inline">\(\| x \| \rightarrow \infty\)</span> is said to be <strong>radially unbounded (RU)</strong>.</p>
+<p>If the origin is a <em>GAS</em>, then it must be the <em>unique equi. point</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 3</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{as}\)</span>. Let <span class="math inline">\(V: D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math inline">\(V(0) = 0\)</span> and <span class="math inline">\(V(x_0) &gt; 0\)</span> for some <span class="math inline">\(x_0\)</span> with arbitrarily small <span class="math inline">\(\| x_0 \|\)</span>. Define a set <span class="math inline">\(U=\{x \in B_r \mid V(x) &gt; 0\}\)</span> and suppose <span class="math inline">\(\dot{V}(x) &gt; 0\)</span> in <span class="math inline">\(U\)</span>. Then <span class="math inline">\(x=0\)</span> is <em>unstable</em>.</p>
+<h2 id="invariance-principle">Invariance Principle</h2>
+<p><strong>Definition 2</strong>: A point <span class="math inline">\(p\)</span> is said to be a <strong>positive limit point</strong> of <span class="math inline">\(x(t)\)</span> if there is a sequence <span class="math inline">\(\{ t_n \}\)</span>, with <span class="math inline">\(t_n \to \infty\)</span> as <span class="math inline">\(n\to \infty\)</span>, s.t. <span class="math inline">\(x(t_n) \to p\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p><br/></p>
+<p><strong>Definition 3</strong>: A set <span class="math inline">\(M\)</span> is said to be an <strong>invariant set</strong> w.r.t. <span class="math inline">\(\eqref{as}\)</span> if <span class="math display">\[
+\displaylines{x(0) \in M \Rightarrow x(t) \in M, \quad \forall t \in \mathbb{R}
+}
+\]</span> it is <strong>positively invariant set</strong> if <span class="math display">\[
+\displaylines{x(0) \in M \Rightarrow x(t) \in M, \quad \forall t \ge 0
+}
+\]</span> <br/></p>
+<p><strong>Lemma 1</strong>: If a solution <span class="math inline">\(x(t)\)</span> of <span class="math inline">\(\eqref{as}\)</span> is bounded and belongs to <span class="math inline">\(D\)</span> for <span class="math inline">\(t \ge 0\)</span>, then its <em>positive limit set</em> <span class="math inline">\(L^+\)</span> is a <em>nonempty</em>, <em>compact</em>, <em>invariant</em> set. Moreover, <span class="math inline">\(x(t)\)</span> approaches <span class="math inline">\(L^+\)</span> as <span class="math inline">\(t \to \infty\)</span>.</p>
+<p><strong>Theorem 4</strong>: Let <span class="math inline">\(\Omega \subset D\)</span> be a <em>compact set</em> that is <em>PI</em> w.r.t. <span class="math inline">\(\eqref{as}\)</span>. Let <span class="math inline">\(V : D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math inline">\(\dot{V}(x) \le 0\)</span> in <span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(E=\{x \in \Omega \mid \dot{V}(x)=0 \}\)</span>. Let <span class="math inline">\(M\)</span> be the <em>largest invariant set</em> in <span class="math inline">\(E\)</span>. Then every solution starting in <span class="math inline">\(\Omega\)</span> approaches <span class="math inline">\(M\)</span> as <span class="math inline">\(t \to \infty\)</span>.</p>
+<p><strong>Corollary 1</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{as}\)</span>. Let <span class="math inline">\(V : D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. PD function</em> on a domain <span class="math inline">\(D\)</span> containing the origin, s.t. <span class="math inline">\(\dot{V}(x) \le 0\)</span> in <span class="math inline">\(D\)</span>. Let <span class="math inline">\(S = \{ x \in D \mid \dot{V}(x) = 0 \}\)</span> and suppose that no solution can stay identically in <span class="math inline">\(S\)</span>, other than the trivial solution <span class="math inline">\(x(t) \equiv 0\)</span>. Then the origin is <em>AS</em>.</p>
+<p><strong>Corollary 2</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{as}\)</span>. Let <span class="math inline">\(V : \mathbb{R}^n \rightarrow \mathbb{R}\)</span> be a <em>cont. diff., RU, PD function</em> s.t. <span class="math inline">\(\dot{V}(x) \le 0\)</span> for all <span class="math inline">\(x \in \mathbb{R}^n\)</span>. Let <span class="math inline">\(S = \{ x \in \mathbb{R}^n \mid \dot{V}(x) = 0 \}\)</span> and suppose that no solution can stay identically in <span class="math inline">\(S\)</span>, other than the trivial solution <span class="math inline">\(x(t) \equiv 0\)</span>. Then the origin is <em>GAS</em>.</p>
+<h2 id="lti-systems-and-linearization">LTI Systems and Linearization</h2>
+<p><strong>Theorem 5</strong>: The <em>equi. point</em> <span class="math inline">\(x = 0\)</span> of <span class="math inline">\(\dot{x} = Ax\)</span> is <em>stable</em> iff all eigenvalues of <span class="math inline">\(A\)</span> satisfy <span class="math inline">\(\operatorname{Re}\lambda_i \le 0\)</span> and for every eigenvalues with <span class="math inline">\(\operatorname{Re}\lambda_i = 0\)</span> and <em>algebraic multiplicity</em> <span class="math inline">\(q_i \ge 2\)</span>, <span class="math inline">\(\operatorname{rank}(A - \lambda_i I) = n - q_i\)</span>, where <span class="math inline">\(n\)</span> is the dimension of <span class="math inline">\(x\)</span>. The <em>equi. point</em> <span class="math inline">\(x=0\)</span> is <em>(globally) AS</em> iff all eigenvalues of <span class="math inline">\(A\)</span> satisfy <span class="math inline">\(\operatorname{Re}\lambda_i &lt; 0\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 6</strong>: A matrix <span class="math inline">\(A\)</span> is <strong>Hurwitz</strong> (<span class="math inline">\(\operatorname{Re}\lambda_i \le 0\)</span>) iff for any given <em>PSD</em> <span class="math inline">\(Q\)</span> there exists a <em>PSD</em> that satisfies the <strong>Lyapunov equation</strong>: <span class="math display">\[
+\displaylines{PA + A^T P = -Q
+}
+\]</span> Moreover, if <span class="math inline">\(A\)</span> is <em>Hurwitz</em>, then <span class="math inline">\(P\)</span> is the unique solution.</p>
+<p><br/></p>
+<p><strong>Theorem 7 (Lyapunov's indirect method)</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> for <span class="math inline">\(\eqref{as}\)</span>, where <span class="math inline">\(f:D\rightarrow \mathbb{R}^n\)</span> is <em>cont. diff.</em> and <span class="math inline">\(D\)</span> is a <em>neighborhood</em> of the origin. Let <span class="math inline">\(A = \left. \frac{\partial f}{\partial x} \right|_{x=0}\)</span>, then</p>
+<ul>
+<li>The origin is <em>AS</em> if <span class="math inline">\(\operatorname{Re}\lambda_i &lt; 0\)</span> for all eigenvalues of <span class="math inline">\(A\)</span>.</li>
+<li>The origin is <em>unstable</em> if <span class="math inline">\(\operatorname{Re}\lambda_i &gt; 0\)</span> for at least one eigenvalue of <span class="math inline">\(A\)</span>.</li>
+</ul>
+<h2 id="comparison-functions">Comparison Functions</h2>
+<p><strong>Definition 4</strong>: A <em>cont. function</em> <span class="math inline">\(\alpha: [0, a) \rightarrow [0, \infty)\)</span> is said to belong to <span class="math inline">\(\mathcal{K}\)</span> if it is <em>strictly increasing</em> and <span class="math inline">\(\alpha(0) = 0\)</span>. It is said to belong to <span class="math inline">\(\mathcal{K}_\infty\)</span> if <span class="math inline">\(a = \infty\)</span> and <span class="math inline">\(\alpha(r) \rightarrow \infty\)</span> as <span class="math inline">\(r \rightarrow \infty\)</span>.</p>
+<p><strong>Definition 5</strong>: A <em>cont. function</em> <span class="math inline">\(\beta: [0, a) \times [0, \infty) \rightarrow [0, \infty)\)</span> is said to belong to <span class="math inline">\(\mathcal{KL}\)</span> if, for each fixed <span class="math inline">\(s\)</span>, the mapping <span class="math inline">\(\beta(r, s)\)</span> belongs to <span class="math inline">\(\mathcal{K}\)</span> w.r.t. <span class="math inline">\(r\)</span> and, for each fixed <span class="math inline">\(r\)</span>, the mapping <span class="math inline">\(\beta(r, s)\)</span> is decreasing w.r.t. <span class="math inline">\(s\)</span> and <span class="math inline">\(\beta(r, s) \rightarrow 0\)</span> as <span class="math inline">\(s \rightarrow \infty\)</span>.</p>
+<p><br/></p>
+<p><strong>Lemma 2</strong>: Let <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> be <span class="math inline">\(\mathcal{K}\)</span> functions on <span class="math inline">\([0, a)\)</span>, <span class="math inline">\(\alpha_3\)</span> and <span class="math inline">\(\alpha_4\)</span> be <span class="math inline">\(\mathcal{K}_\infty\)</span> functions, and <span class="math inline">\(\beta\)</span> be a <span class="math inline">\(\mathcal{KL}\)</span> function. Denote the inverse of <span class="math inline">\(\alpha_i\)</span> by <span class="math inline">\(\alpha_i^{-1}\)</span>. Then</p>
+<ul>
+<li><span class="math inline">\(\alpha_1^{-1}\)</span> is defined on <span class="math inline">\([0, \alpha_1(a))\)</span> and belongs to <span class="math inline">\(\mathcal{K}\)</span></li>
+<li><span class="math inline">\(\alpha_3^{-1}\)</span> is defined on <span class="math inline">\([0, \infty)\)</span> and belongs to <span class="math inline">\(\mathcal{K}_\infty\)</span></li>
+<li><span class="math inline">\(\alpha_1 \circ \alpha_2\)</span> belongs to <span class="math inline">\(\mathcal{K}\)</span></li>
+<li><span class="math inline">\(\alpha_3 \circ \alpha_4\)</span> belongs to <span class="math inline">\(\mathcal{K}_\infty\)</span></li>
+<li><span class="math inline">\(\sigma(r, s) = \alpha_1( \beta(\alpha_2(r), s))\)</span> belongs to <span class="math inline">\(\mathcal{KL}\)</span></li>
+</ul>
+<p><br/></p>
+<p><strong>Lemma 3</strong>: Let <span class="math inline">\(V : D \rightarrow \mathbb{R}\)</span> be a <em>cont. PD function</em> defined on a domain <span class="math inline">\(D \subset \mathbb{R}^n\)</span> that <em>contains the origin</em>. Let <span class="math inline">\(B_r \subset D\)</span> for some <span class="math inline">\(r &gt; 0\)</span>. Then, there exist <span class="math inline">\(\mathcal{K}\)</span> functions <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span>, defined on <span class="math inline">\([0, r]\)</span>, s.t. <span class="math display">\[
+\displaylines{\alpha_1(\|x\|) \le V(x) \le \alpha_2(\|x\|)
+}
+\]</span> for all <span class="math inline">\(x\in B_r\)</span>. If <span class="math inline">\(D = \mathbb{R}^n\)</span>, the functions <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> will be defined on <span class="math inline">\([0, \infty)\)</span> and the foregoing inequality will hold for all <span class="math inline">\(x\in \mathbb{R}^n\)</span>. Moreover, if <span class="math inline">\(V(x)\)</span> is <em>RU</em>, then <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> can be chosen to belong to <span class="math inline">\(\mathcal{K}_\infty\)</span></p>
+<p><strong>Lemma 4</strong>: Consider the <em>scalar autonomous DE</em> <span class="math display">\[
+\displaylines{\dot{y} = -\alpha(y), \qquad y(t_0) = y_0
+}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha\)</span> is a <em>LL</em> <span class="math inline">\(\mathcal{K}\)</span> function defined on <span class="math inline">\([0,a)\)</span>. For all <span class="math inline">\(0 \le y_0 \le a\)</span>, this equation has a unique solution <span class="math inline">\(y(t)\)</span> defined for all <span class="math inline">\(t \ge t_0\)</span>. Moreover, <span class="math display">\[
+\displaylines{y(t) = \sigma(y_0, t_0)
+}
+\]</span> where <span class="math inline">\(\sigma\)</span> is a <span class="math inline">\(\mathcal{KL}\)</span> function defined on <span class="math inline">\([0, a) \times [0, \infty)\)</span>.</p>
+<h2 id="nonautonomous-system">Nonautonomous System</h2>
+<p>Consider the <em>nonautonomous system</em> <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(t, x)
+}
+\label{nas}
+\end{equation}
+\]</span> where <span class="math inline">\(f: [0, \infty) \times D \rightarrow \mathbb{R}^n\)</span> is <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>LL</em> in <span class="math inline">\(x\)</span> on <span class="math inline">\([0, \infty) \times D\)</span>, and <span class="math inline">\(D \subset \mathbb{R}^n\)</span> is a domain that <em>contains the origin</em>. The origin is an <em>equi. point</em> at <span class="math inline">\(t=0\)</span> if <span class="math display">\[
+\displaylines{f(t, 0) = 0, \quad \forall t \ge 0
+}
+\]</span> <br/></p>
+<p><strong>Definition 6</strong>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> of <span class="math inline">\(\eqref{nas}\)</span> is</p>
+<ul>
+<li><p><strong>stable</strong> if, for each <span class="math inline">\(\epsilon &gt;0\)</span>, there is <span class="math inline">\(\delta = \delta(\epsilon, t_0) &gt; 0\)</span> s.t. <span class="math display">\[
+\begin{equation}\displaylines{
+\left\| x \left( t_ { 0 } \right) \right\| &lt; \delta \Rightarrow \| x ( t ) \| &lt; \varepsilon , \quad \forall t \geq t _ { 0 } \ge 0
+}
+\label{nastable}
+\end{equation}
+\]</span></p></li>
+<li><p><strong>uniformly stable (US)</strong> if, for each <span class="math inline">\(\epsilon &gt;0\)</span>, there is <span class="math inline">\(\delta = \delta(\epsilon) &gt; 0\)</span>, independent of <span class="math inline">\(t_0\)</span> s.t. <span class="math inline">\(\eqref{nastable}\)</span> is satisfied.</p></li>
+<li><p><strong>unstable</strong> if it is not stable</p></li>
+<li><p><strong>AS</strong> if it is stable and there is a const. <span class="math inline">\(c=c(t_0) &gt; 0\)</span> s.t. <span class="math display">\[
+\begin{equation}\displaylines{
+\| x(t_0) \| &lt; c \Rightarrow \lim_{t\to \infty} x(t) = 0
+}
+\label{naas}
+\end{equation}
+\]</span></p></li>
+<li><p><strong>uniformly asymptotically stable (UAS)</strong> if it is US and there exists <span class="math inline">\(c&gt;0\)</span>, independent of <span class="math inline">\(t_0\)</span> s.t. <span class="math inline">\(\eqref{naas}\)</span> is satisfied.</p></li>
+<li><p><strong>globally uniformly asymptotically stable (GUAS)</strong> if it is US, <span class="math inline">\(\delta(\epsilon)\)</span> can be chosen to satisfy <span class="math inline">\(\lim_{\epsilon \to \infty} \delta(\epsilon) = \infty\)</span>, and, for each pair of <span class="math inline">\(\eta &gt; 0\)</span> and <span class="math inline">\(c &gt; 0\)</span>, there is <span class="math inline">\(T = T(\eta, c) &gt; 0\)</span> s.t. <span class="math display">\[
+\displaylines{\| x ( t ) \| &lt; \eta , \quad \forall t \geq t_ { 0 } + T ( \eta , c ) , \quad \forall \left\| x \left( t _ { 0 } \right) \right\| &lt; c
+}
+\]</span></p></li>
+</ul>
+<p><br/></p>
+<p><strong>Definition 7</strong>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> of <span class="math inline">\(\eqref{nas}\)</span> is</p>
+<ul>
+<li><p><strong>US</strong> iff there exist a <span class="math inline">\(\mathcal{K}\)</span> function <span class="math inline">\(\alpha\)</span> and a const. <span class="math inline">\(c&gt;0\)</span>, independent of <span class="math inline">\(t_0\)</span>, s.t. <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq \alpha \left( \left\| x \left( t_ { 0 } \right) \right\| \right) , \quad \forall t \geq t _{ 0 } \geq 0 ,\ \forall \left\| x \left( t_ { 0 } \right) \right\| &lt; c
+}
+\]</span></p></li>
+<li><p><strong>UAS</strong> iff there exist a <span class="math inline">\(\mathcal{KL}\)</span> function <span class="math inline">\(\beta\)</span> and a const. <span class="math inline">\(c&gt;0\)</span>, independent of <span class="math inline">\(t_0\)</span>, s.t. <span class="math display">\[
+\begin{equation}\displaylines{
+\| x ( t ) \| \leq \beta \left( \left\| x \left( t_ { 0 } \right) \right\| , t - t _{ 0 } \right) , \quad \forall t \geq t_ { 0 } \geq 0 ,\ \forall \left\| x \left( t _ { 0 } \right) \right\| &lt; c
+}
+\label{uaskl}
+\end{equation}
+\]</span></p></li>
+<li><p><strong>GUAS</strong> iff <span class="math inline">\(\eqref{uaskl}\)</span> is satisfied for any initial state <span class="math inline">\(x(t_0)\)</span></p></li>
+</ul>
+<p><br/></p>
+<p><strong>Definition 8</strong>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> of <span class="math inline">\(\eqref{nas}\)</span> is <strong>exponentially stable (ES)</strong> if there exist const. <span class="math inline">\(c &gt; 0\)</span>, <span class="math inline">\(k &gt; 0\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span> s.t. <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq k \left\| x \left( t _{ 0 } \right) \right\| e ^ { - \lambda \left( t - t_ { 0 } \right) } , \quad \forall \left\| x \left( t _{ 0 } \right) \right\| &lt; c
+}
+\]</span> and <strong>globally exponentially stable (GES)</strong> if it holds for any initial state <span class="math inline">\(x(t_0)\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 8</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{nas}\)</span> and <span class="math inline">\(D\subset \mathbb{R}^n\)</span> be a <em>domain containing</em> <span class="math inline">\(x=0\)</span>. Let <span class="math inline">\(V : [0, \infty) \times D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math display">\[
+\displaylines{W_1(x) \le V(t, x) \le W_2(x) \\
+\frac{\partial V}{\partial t} + \frac{\partial V}{\partial x}f(t, x) \le 0
+}
+\]</span> <span class="math inline">\(\forall t \ge 0\)</span> and <span class="math inline">\(\forall x \in D\)</span>, where <span class="math inline">\(W_1(x)\)</span> and <span class="math inline">\(W_2(x)\)</span> are <em>cont. PD functions</em> on <span class="math inline">\(D\)</span>. Then, <span class="math inline">\(x=0\)</span> is <em>US</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 9</strong>: Suppose the assumptions of <em>Theorem 8</em> are satisfied with inequality strengthened to <span class="math display">\[
+\displaylines{\frac{\partial V}{\partial t} + \frac{\partial V}{\partial x}f(t, x) \le -W_3(x)
+}
+\]</span> <span class="math inline">\(\forall t \ge 0\)</span> and <span class="math inline">\(\forall x \in D\)</span>, where <span class="math inline">\(W_3(x)\)</span> is a <em>cont. PD function</em> on <span class="math inline">\(D\)</span>. Then, <span class="math inline">\(x=0\)</span> is <em>UAS</em>. Moreover, if <span class="math inline">\(r\)</span> and <span class="math inline">\(c\)</span> are chosen s.t. <span class="math inline">\(B_r = \{ \|x\| \le r \} \subset D\)</span> and <span class="math inline">\(c &lt; \min_{\|x\| = r} W_1(x)\)</span>, then every trajectory starting in <span class="math inline">\(\{ x \in B_r \mid W_2(x) \le c\}\)</span> satisfies <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq \beta \left( \left\| x \left( t_ { 0 } \right) \right\| , t - t _{ 0 } \right) , \quad \forall t \geq t_ { 0 } \geq 0
+}
+\]</span> for some class <span class="math inline">\(\mathcal{KL}\)</span> function <span class="math inline">\(\beta\)</span>. Finally, if <span class="math inline">\(D = \mathbb{R}^n\)</span> and <span class="math inline">\(W_1(x)\)</span> is <em>RU</em>, then <span class="math inline">\(x=0\)</span> is <em>GUAS</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 10</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> of <span class="math inline">\(\eqref{nas}\)</span> and <span class="math inline">\(D\subset \mathbb{R}^n\)</span> be a <em>domain containing</em> <span class="math inline">\(x=0\)</span>. Let <span class="math inline">\(V : [0, \infty) \times D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math display">\[
+\begin{equation}\displaylines{
+{ k _{ 1 } \| x \| ^ { a } \leq V ( t , x ) \leq k_ { 2 } \| x \| ^ { a } } \\
+{ \frac { \partial V } { \partial t } + \frac { \partial V } { \partial x } f ( t , x ) \leq - k _{ 3 } \| x \| ^ { a } }
+}
+\label{es}
+\end{equation}
+\]</span> <span class="math inline">\(\forall t \ge 0\)</span> and <span class="math inline">\(\forall x \in D\)</span>, where <span class="math inline">\(k_1, k_2, k_3, a\)</span> are positive const.. Then <span class="math inline">\(x=0\)</span> is <em>ES</em>. If the assumptions hold globally, then <span class="math inline">\(x=0\)</span> is <em>GES</em>.</p>
+<h2 id="ltv-systems-and-linearization">LTV Systems and Linearization</h2>
+<p>The stability for the <em>LTV system</em> <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x}(t) = A(t) x
+}
+\label{ltv}
+\end{equation}
+\]</span> can be completely characterized in terms of the state transition matrix <span class="math display">\[
+\displaylines{x(t) = \Phi(t, t_0) x(t_0)
+}
+\]</span> <br/></p>
+<p><strong>Theorem 11</strong>: The <em>equi. point</em> <span class="math inline">\(x=0\)</span> of <span class="math inline">\(\eqref{ltv}\)</span> is <em>(globally) UAS</em> iff the state transition matrix satisfies <span class="math display">\[
+\displaylines{\left\| \Phi \left( t , t _{ 0 } \right) \right\| \leq k e ^ { - \lambda \left( t - t_ { 0 } \right) } , \quad \forall t \geq t _ { 0 } \geq 0
+}
+\]</span> for some positive const. <span class="math inline">\(k\)</span> and <span class="math inline">\(\lambda\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 12</strong>: Let <span class="math inline">\(x=0\)</span> be the <em>ES equi. point</em> of <span class="math inline">\(\eqref{ltv}\)</span>. Suppose <span class="math inline">\(A(t)\)</span> is <em>cont.</em> and <em>bounded</em>. Let <span class="math inline">\(Q(t)\)</span> be a <em>cont., bounded, PD, symmetric matrix</em>. Then, there is a <em>cont. diff. bounded, PD, symmetric matrix</em> <span class="math inline">\(P(t)\)</span> that satisfies <span class="math display">\[
+\displaylines{-\dot { P } ( t ) = P ( t ) A ( t ) + A ^ { T } ( t ) P ( t ) + Q ( t )
+}
+\]</span> and <span class="math inline">\(V(t,x) = x^T P(t) x\)</span> is a <em>Lyapunov function</em> for the system that satisfies <span class="math inline">\(\eqref{es}\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 13</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> for <span class="math inline">\(\eqref{nas}\)</span>, where <span class="math inline">\(f: [0, \infty) \times D \rightarrow \mathbb{R}^n\)</span> is <em>cont. diff.</em>, $D = { x  |x|_2 &lt; r } $, and the <em>Jacobian matrix</em> $ f / x $ is <em>bounded</em> and <em>Lipschitz</em> on <span class="math inline">\(D\)</span>, <em>uniformly</em> in $ t $. Let <span class="math display">\[
+\displaylines{A(t) = \left. \frac{\partial f}{\partial x} (t, x) \right|_{x=0}
+}
+\]</span></p>
+<p>Then, the origin is <em>ES</em> for the <em>nonlinear system</em> iff it is an <em>ES</em> for the <em>linear system</em> <span class="math inline">\(\dot{x} = A(t) x\)</span></p>
+<h2 id="converse-theorems">Converse Theorems</h2>
+<p><strong>Theorem 14</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>equi. point</em> for <span class="math inline">\(\eqref{nas}\)</span>, where <span class="math inline">\(f: [0, \infty) \times D \rightarrow \mathbb{R}^n\)</span> is <em>cont. diff.</em>, $D = { x  |x| &lt; r } $, and the <em>Jacobian matrix</em> $ f / x $ is <em>bounded</em> on <span class="math inline">\(D\)</span>, <em>uniformly</em> in <span class="math inline">\(t\)</span>. Let <span class="math inline">\(k, \lambda, r_0\)</span> be positive const. with <span class="math inline">\(r_0 &lt; r/ k\)</span>. Let $D_0 = { x  |x| &lt; r_0 } $. Assume that the trajectories of the system satisfy <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq k \left\| x \left( t _{ 0 } \right) \right\| e ^ { - \lambda \left( t - t_ { 0 } \right) } , \quad \forall x \left( t _{ 0 } \right) \in D_ { 0 } , \ \forall t \geq t _{ 0 } \geq 0
+}
+\]</span> Then, there is a function <span class="math inline">\(V: [0, \infty) \times D_0 \rightarrow \mathbb{R}\)</span> that satisfies the inequalities <span class="math display">\[
+\displaylines{c _{ 1 } \| x \| ^ { 2 } \leq V ( t , x ) \leq c_ { 2 } \| x \| ^ { 2 } \\
+\frac { \partial V } { \partial t } + \frac { \partial V } { \partial x } f ( t , x ) \leq - c _{ 3 } \| x \| ^ { 2 } \\
+\left\| \frac { \partial V } { \partial x } \right\| \leq c_ { 4 } \| x \|
+}
+\]</span> for some positive const. <span class="math inline">\(c_1, c_2, c_3, c_4\)</span>. Moreover, if <span class="math inline">\(r=\infty\)</span> and the origin is <em>GES</em>, then <span class="math inline">\(V(t,x)\)</span> is defined and satisfies the above inequalities on <span class="math inline">\(\mathbb{R}^n\)</span>. Furthermore, if the system is <em>autonomous</em>, <span class="math inline">\(V\)</span> can be chosen <em>independent</em> of <span class="math inline">\(t\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 15</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>AS equil. point</em> for <span class="math inline">\(\eqref{nas}\)</span> where <span class="math inline">\(f: [0, \infty) \times D \rightarrow \mathbb{R}^n\)</span> is <em>cont. diff.</em>, $D = { x  |x| &lt; r } $, and the <em>Jacobian matrix</em> $ f / x $ is <em>bounded</em> on <span class="math inline">\(D\)</span>, <em>uniformly</em> in <span class="math inline">\(t\)</span>. Let <span class="math inline">\(\beta\)</span> be a <span class="math inline">\(\mathcal{KL}\)</span> function and <span class="math inline">\(r_0\)</span> be a positive const. s.t. <span class="math inline">\(\beta(r_0, 0) &lt; r\)</span>. Let <span class="math inline">\(D_0 = \{x\in \mathbb{R}^n \mid \|x\| &lt; r_0 \}\)</span>. Assume that the trajectory of the system satisfies <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq \beta \left( \left\| x \left( t _{ 0 } \right) \right\| , t - t_ { 0 } \right) , \quad \forall x \left( t _{ 0 } \right) \in D_ { 0 } ,\ \forall t \geq t _{ 0 } \geq 0
+}
+\]</span> Then, there is a <em>cont. diff. function</em> <span class="math inline">\(V: [0, \infty) \times D_0 \rightarrow \mathbb{R}\)</span> that satisfies <span class="math display">\[
+\displaylines{\alpha _{ 1 } ( \| x \| ) \leq V ( t , x ) \leq \alpha_ { 2 } ( \| x \| ) \\
+\frac { \partial V } { \partial t } + \frac { \partial V } { \partial x } f ( t , x ) \leq - \alpha _{ 3 } ( \| x \| ) \\
+\left\| \frac { \partial V } { \partial x } \right\| \leq \alpha_ { 4 } ( \| x \| )
+}
+\]</span> where <span class="math inline">\(\alpha_{1,2,3,4}\)</span> are <span class="math inline">\(\mathcal{K}\)</span> functions defined on <span class="math inline">\([0, r_0]\)</span>. If the system is <em>autonomous</em>, <span class="math inline">\(V\)</span> can be chosen <em>independent</em> of <span class="math inline">\(t\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 16</strong>: Let <span class="math inline">\(x=0\)</span> be an <em>AS equil. point</em> for <span class="math inline">\(\eqref{as}\)</span> where <span class="math inline">\(f: D \rightarrow \mathbb{R}^n\)</span> is <em>LL</em> and <span class="math inline">\(D \subset \mathbb{R^n}\)</span> is a <em>domain contains the origin</em>. Let <span class="math inline">\(R_A \subset D\)</span> be the <em>region of attraction</em> of <span class="math inline">\(x=0\)</span>. Then there is a <em>smooth, PD function</em> <span class="math inline">\(V(x)\)</span> and a <em>cont. PD function</em> <span class="math inline">\(W(x)\)</span>, both defined for all <span class="math inline">\(x\in R_A\)</span>, s.t. <span class="math display">\[
+\displaylines{\lim_{x \rightarrow \partial R_ { A }} V ( x ) \rightarrow \infty \\
+\frac { \partial V } { \partial x } f ( x ) \leq - W ( x ) , \quad \forall x \in R _{ A }
+}
+\]</span> and for any <span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(\{V(x) \le c\}\)</span> is a <em>compact subset</em> of <span class="math inline">\(R_A\)</span>. When <span class="math inline">\(R_A = \mathbb{R}^n\)</span>, <span class="math inline">\(V(x)\)</span> is <em>RU</em>.</p>
+<h2 id="boundedness">Boundedness</h2>
+<p><strong>Definition 9</strong>: The solution of <span class="math inline">\(\eqref{nas}\)</span> are</p>
+<ul>
+<li><strong>uniformly bounded (UB)</strong> if there exists a positive const. <span class="math inline">\(c\)</span>, independent of <span class="math inline">\(t_0 \ge 0\)</span>, and for every <span class="math inline">\(a \in (0, c)\)</span>, there is <span class="math inline">\(\beta = \beta(a) &gt; 0\)</span>, independent of <span class="math inline">\(t_0\)</span>, s.t. <span class="math inline">\(\left\| x \left( t _{ 0 } \right) \right\| \leq a \Rightarrow \| x ( t ) \| \leq \beta , \quad \forall t \geq t_ { 0 }\)</span></li>
+<li><strong>globally uniformly bounded (GUB)</strong> if <em>UB</em> holds for <span class="math inline">\(c=\infty\)</span></li>
+<li><strong>uniformly ultimately bounded (UUB) with ultimate bound <span class="math inline">\(b\)</span></strong> if there exist positive const. <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, independent of <span class="math inline">\(t_0 \ge 0\)</span>, and for every <span class="math inline">\(a\in (0, c)\)</span>, there is <span class="math inline">\(T = T(a, b) \ge 0\)</span>, independent of <span class="math inline">\(t_0\)</span>, s.t. <span class="math inline">\(\left\| x \left( t _{ 0 } \right) \right\| \leq a \Rightarrow \| x ( t ) \| \leq b , \quad \forall t \geq t_ { 0 } + T\)</span></li>
+<li><strong>globally uniformly ultimately bounded (GUUB)</strong> if <em>UUB</em> holds for <span class="math inline">\(c=\infty\)</span></li>
+</ul>
+<p><br/></p>
+<p><strong>Theorem 17</strong>: Let <span class="math inline">\(D \subset \mathbb{R}^n\)</span> be a <em>domain containing</em> <span class="math inline">\(x=0\)</span> and <span class="math inline">\(V : [0, \infty) \times D \rightarrow \mathbb{R}\)</span> be a <em>cont. diff. function</em> s.t. <span class="math display">\[
+\displaylines{\alpha _{ 1 } ( \| x \| ) \leq V ( t , x ) \leq \alpha_ { 2 } ( \| x \| ) \\
+\frac { \partial V } { \partial t } + \frac { \partial V } { \partial x } f ( t , x ) \leq - W _{ 3 } ( x ) , \quad \forall \|x\| \ge \mu &gt; 0
+}
+\]</span> <span class="math inline">\(\forall t \ge 0\)</span> and <span class="math inline">\(\forall x \in D\)</span>, where <span class="math inline">\(\alpha_{1,2}\)</span> are <span class="math inline">\(\mathcal{K}\)</span> functions and <span class="math inline">\(W_3(x)\)</span> is a <em>cont. PD function</em>. Take <span class="math inline">\(r &gt; 0\)</span> s.t. <span class="math inline">\(B_r \subset D\)</span> and suppose that <span class="math inline">\(\mu &lt; \alpha_2^{-1}(\alpha_1(r))\)</span>, then, there exists a <span class="math inline">\(\mathcal{KL}\)</span> function <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\forall x(t_0)\)</span> that satisfies <span class="math inline">\(\|x(t_0)\| \le \alpha_2^{-1}(\alpha_1(r))\)</span>, there is <span class="math inline">\(T \ge 0\)</span> (dependent on <span class="math inline">\(x(t_0)\)</span> and <span class="math inline">\(\mu\)</span>) s.t. the solution of <span class="math inline">\(\eqref{nas}\)</span> satisfies <span class="math display">\[
+\displaylines{\| x ( t ) \| \leq \beta \left( \left\| x \left( t_ { 0 } \right) \right\| , t - t _{ 0 } \right) , \forall t_ { 0 } \leq t \leq t _{ 0 } + T \\
+\| x ( t ) \| \leq \alpha_ { 1 } ^ { - 1 } \left( \alpha _{ 2 } ( \mu ) \right) , \forall t \geq t_ { 0 } + T
+}
+\]</span> Moreover, if <span class="math inline">\(D = \mathbb{R}^n\)</span> and <span class="math inline">\(\alpha_1\)</span> belongs to <span class="math inline">\(\mathcal{K}_\infty\)</span>, then it holds <span class="math inline">\(\forall x(t_0)\)</span></p>
+<h2 id="input-to-state-stability">Input-to-State Stability</h2>
+<p>Consider the system <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(t, x, u)
+}
+\label{nasinput}
+\end{equation}
+\]</span> where <span class="math inline">\(f: [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n\)</span> is <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>LL</em> in <span class="math inline">\(x\)</span> and <span class="math inline">\(u\)</span>. The input <span class="math inline">\(u(t)\)</span> is a <em>piecewise cont.</em>, <em>bounded</em> function of <span class="math inline">\(t\)</span> for all <span class="math inline">\(t \ge 0\)</span>. Suppose the unforced system <span class="math inline">\(\dot{x} = f(t, x, 0)\)</span> has a <em>GUAS equi. point</em> at the origin. What can we say about the system <span class="math inline">\(\eqref{nasinput}\)</span> in the presence of a bounded input <span class="math inline">\(u(t)\)</span>.</p>
+<p>For the <em>LTI</em> system: <span class="math display">\[
+\displaylines{\dot{x} = Ax + Bu
+}
+\]</span> with a Hurwitz matrix <span class="math inline">\(A\)</span>, we can write the solution as <span class="math display">\[
+\displaylines{x(t)=e^{\left(t-t_{0}\right) A} x\left(t_{0}\right)+\int_{t_{0}}^{t} e^{(t-\tau) A} B u(\tau) d \tau
+}
+\]</span> and use the bound <span class="math inline">\(\left\|e^{\left(t-t_{0}\right) A}\right\| \leq k e^{-\lambda\left(t-t_{0}\right)}\)</span> to estimate the solution by <span class="math display">\[
+\displaylines{\begin{aligned}
+\|x(t)\| &amp; \leq k e^{-\lambda\left(t-t_{0}\right)}\left\|x\left(t_{0}\right)\right\|+\int_{t_{0}}^{t} k e^{-\lambda(t-\tau)}\|B\|\|u(\tau)\| d \tau \\
+&amp; \leq k e^{-\lambda\left(t-t_{0}\right)}\left\|x\left(t_{0}\right)\right\|+\frac{k\|B\|}{\lambda} \sup _{t_{0} \leq \tau \leq t}\|u(\tau)\|
+\end{aligned}
+}
+\]</span> This estimate shows that the <em>zero-input response</em> decays to zero exponentially fast, while the <em>zero-state response</em> is bounded for every bounded input (BIBS).</p>
+<p><br/></p>
+<p><strong>Definition 10</strong>: The system <span class="math inline">\(\eqref{nasinput}\)</span> is said to be <strong>input-to-state stable (ISS)</strong> if there exist a <span class="math inline">\(\mathcal{KL}\)</span> function <span class="math inline">\(\beta\)</span> and a <span class="math inline">\(\mathcal{K}\)</span> function <span class="math inline">\(\gamma\)</span> s.t. for any initial state <span class="math inline">\(x(t_0)\)</span> and any bounded input <span class="math inline">\(u(t)\)</span>, the solution <span class="math inline">\(x(t)\)</span> exists for all <span class="math inline">\(t \ge t_0\)</span> and satisfies <span class="math display">\[
+\displaylines{\|x(t)\| \leq \beta\left(\left\|x\left(t_{0}\right)\right\|, t-t_{0}\right)+\gamma\left(\sup _{t_{0} \leq \tau \leq t}\|u(\tau)\|\right)
+}
+\]</span> <br/></p>
+<p><strong>Theorem 18</strong>: Let <span class="math inline">\(V : [0, \infty) \times \mathbb{R}^n \rightarrow \mathbb{R}\)</span> be a <em>cont. diff.</em> function s.t. <span class="math display">\[
+\displaylines{\begin{aligned}
+\alpha_{1}(\|x\|) &amp; \leq V(t, x) \leq \alpha_{2}(\|x\|) \\
+\frac{\partial V}{\partial t}+\frac{\partial V}{\partial x} f(t, x, u) &amp;\leq-W_{3}(x), \quad \forall\|x\| \geq \rho(\|u\|)&gt;0
+\end{aligned}
+}
+\]</span> <span class="math inline">\(\forall (t,x,u) \in [0, \infty) \times \mathbb{R}^n \times \mathbb{R}^m\)</span>, where <span class="math inline">\(\alpha_{1,2}\)</span> are <span class="math inline">\(\mathcal{K}_\infty\)</span> functions, <span class="math inline">\(\rho\)</span> is <span class="math inline">\(\mathcal{K}\)</span> function, and <span class="math inline">\(W_3(x)\)</span> is a <em>cont. PD</em> function on <span class="math inline">\(\mathbb{R}^n\)</span>. Then, the system <span class="math inline">\(\eqref{nasinput}\)</span> is <em>ISS</em> with <span class="math inline">\(\gamma = \alpha_1^{-1} \circ \alpha_2 \circ \rho\)</span></p>
+<p><strong>Lemma 5</strong>: Suppose <span class="math inline">\(f(t,x,u)\)</span> is <em>cont. diff.</em> and <em>GL</em> in <span class="math inline">\((x,u)\)</span>, <em>uniformly</em> in <span class="math inline">\(t\)</span>. If the unforced system <span class="math inline">\(\dot{x} = f(t, x, 0)\)</span> has a <em>GES equi. point</em> at the origin, then the system <span class="math inline">\(\eqref{nasinput}\)</span> is <em>ISS</em>.</p>
+<p><br/></p>
+<p>Consider the <strong>cascade system</strong>: <span class="math display">\[
+\begin{align}
+ dot{x}_{1}&amp;=f_{1}\left(t, x_{1}, x_{2}\right) \label{cascade1} \\
+\dot{x}_{2}&amp;=f_{2}\left(t, x_{2}\right) \label{cascade2}
+\end{align}
+\]</span> where <span class="math inline">\(f_1 : [0, \infty) \times \mathbb{R}^{n_1} \times \mathbb{R}^{n_2} \rightarrow \mathbb{R}^{n_1}\)</span> and <span class="math inline">\(f_2 : [0, \infty) \times \mathbb{R}^{n_2} \rightarrow \mathbb{R}^{n_2}\)</span> are <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>LL</em> in <span class="math inline">\(x\)</span>. Suppose both <span class="math inline">\(\dot{x}_1 = f_1(t, x_1, 0)\)</span> and <span class="math inline">\(\dot{x}_{2}=f_{2}\left(t, x_{2}\right)\)</span> have <em>GUAS equi. point</em> at their respective origins.</p>
+<p><strong>Lemma 6</strong>: If the system <span class="math inline">\(\eqref{cascade1}\)</span>, with <span class="math inline">\(x_2\)</span> as input, is <em>ISS</em> and the origin of <span class="math inline">\(\eqref{cascade2}\)</span> is <em>GUAS</em>, then the origin of the cascade system is <em>GUAS</em>.</p>
+<h1 id="input-output-stability">Input-Output Stability</h1>
+<h2 id="mathcall-stability"><span class="math inline">\(\mathcal{L}\)</span> Stability</h2>
+<p>Consider a system with input-output relation represented by <span class="math display">\[
+\displaylines{y = H u
+}
+\]</span> Where <span class="math inline">\(H\)</span> is a mapping from <span class="math inline">\(u\)</span> to <span class="math inline">\(y\)</span>, <span class="math inline">\(u : [0, \infty) \rightarrow \mathbb{R}^m\)</span>.</p>
+<p>Define the space <span class="math inline">\(\mathcal{L}_p^m\)</span> for <span class="math inline">\(1\le p \le \infty\)</span> as the set of all <em>piecewise cont.</em> functions <span class="math inline">\(u : [0, \infty) \rightarrow \mathbb{R}^m\)</span> s.t. <span class="math display">\[
+\displaylines{\|u\|_{\mathcal{L}_{p}}=\left(\int_{0}^{\infty}\|u(t)\|^{p} d t\right)^{1 / p}&lt;\infty
+}
+\]</span></p>
+<p>Specifically, for <span class="math inline">\(p=2\)</span> and <span class="math inline">\(p=\infty\)</span>, the space are defined respectively as <span class="math display">\[
+\displaylines{\begin{aligned}
+\|u\|_{\mathcal{L}_{2}} &amp;= \sqrt{\int_{0}^{\infty} u^{T}(t) u(t) d t}&lt;\infty \\
+\| u \|_ { \mathcal { L } _{ \infty } } &amp;= \sup_ { t \geq 0 } \| u ( t ) \| &lt; \infty
+\end{aligned}
+}
+\]</span> Define the <strong>extended</strong> space <span class="math inline">\(\mathcal{L}_e^m\)</span> as <span class="math display">\[
+\displaylines{\mathcal{L}_{e}^{m}=\left\{u | u_{\tau} \in \mathcal{L}^{m}, \forall \tau \in[0, \infty)\right\}
+}
+\]</span> where <span class="math inline">\(u_\tau\)</span> is a truncation of <span class="math inline">\(u\)</span> defined by <span class="math display">\[
+\displaylines{u_{\tau}(t)=\left\{\begin{array}{cc}{u(t),} &amp; {0 \leq t \leq \tau} \\ {0,} &amp; {t&gt;\tau}\end{array}\right.
+}
+\]</span> <br/></p>
+<p><strong>Definition 1</strong>: A mapping <span class="math inline">\(H : \mathcal{L}_e^m \rightarrow \mathcal{L}_e^q\)</span> is <strong><span class="math inline">\(\mathcal{L}\)</span> stable</strong> if there exist a <span class="math inline">\(\mathcal{K}\)</span> function <span class="math inline">\(\alpha\)</span>, defined on <span class="math inline">\([0, \infty)\)</span>, and a <em>nonnegative constant</em> <span class="math inline">\(\beta\)</span> s.t. <span class="math display">\[
+\displaylines{\left\|(H u)_{\tau}\right\|_{\mathcal{L}} \leq \alpha\left(\left\|u_{\tau}\right\|_{\mathcal{L}}\right)+\beta
+}
+\]</span> for all <span class="math inline">\(u \in \mathcal{L}_e^m\)</span> and <span class="math inline">\(\tau \in [0, \infty)\)</span>. It is <strong>finite-gain <span class="math inline">\(\mathcal{L}\)</span> stable</strong> if there exist <em>nonnegative const.</em> <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\beta\)</span> s.t. <span class="math display">\[
+\displaylines{\left\|(H u)_{\tau}\right\|_{\mathcal{L}} \leq \gamma \left\|u_{\tau}\right\|_{\mathcal{L}} + \beta
+}
+\]</span> for all <span class="math inline">\(u \in \mathcal{L}_e^m\)</span> and <span class="math inline">\(\tau \in [0, \infty)\)</span>.</p>
+<p>Note that the definition of <span class="math inline">\(\mathcal{L}_\infty\)</span> stability is same as <strong>BIBO stability</strong>.</p>
+<p><br/></p>
+<p><strong>Definition 2</strong>: A mapping <span class="math inline">\(H : \mathcal{L}_e^m \rightarrow \mathcal{L}_e^q\)</span> is <strong>small-signal <span class="math inline">\(\mathcal{L}\)</span> stable</strong> (small-signal finite-gain <span class="math inline">\(\mathcal{L}\)</span> stable) if there is a <em>positive const.</em> <span class="math inline">\(r\)</span> s.t. inequality in definition 1 is satisfied for all <span class="math inline">\(u \in \mathcal{L}_e^m\)</span> with <span class="math inline">\(\sup_{0 \le t \le \tau} \|u(t)\| \le r\)</span></p>
+<h2 id="mathcall-stability-of-state-models"><span class="math inline">\(\mathcal{L}\)</span> Stability of State Models</h2>
+<p>Consider the system: <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+\dot{x} &amp;=f(t, x, u), \quad x(0)=x_{0} \\
+y &amp;=h(t, x, u)
+\end{aligned}
+}
+\label{statemodel}
+\end{equation}
+\]</span> where <span class="math inline">\(x\in \mathbb{R}^n\)</span>, <span class="math inline">\(u\in \mathbb{R}^m\)</span>, <span class="math inline">\(y\in \mathbb{R}^q\)</span>, <span class="math inline">\(f:[0, \infty) \times D \times D_u \rightarrow \mathbb{R}^n\)</span> is <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>LL</em> in <span class="math inline">\((x,u)\)</span>; <span class="math inline">\(u:[0, \infty) \times D \times D_u \rightarrow \mathbb{R}^q\)</span> is <em>piecewise cont.</em> in <span class="math inline">\(t\)</span> and <em>cont.</em> in <span class="math inline">\((x,u)\)</span>; <span class="math inline">\(D \subset \mathbb{R}^n\)</span> is a <em>domain</em> that contains <span class="math inline">\(x=0\)</span>, and <span class="math inline">\(D_u \subset \mathbb{R}^m\)</span> is a <em>domain</em> that contains <span class="math inline">\(u = 0\)</span>. Suppose <span class="math inline">\(x=0\)</span> is an <em>equi. point</em> of the unforced system <span class="math display">\[
+\begin{equation}\displaylines{
+\dot{x} = f(t,x,0)
+}
+\label{unforced}
+\end{equation}
+\]</span> <strong>Theorem 1</strong>: Consider the system <span class="math inline">\(\eqref{statemodel}\)</span> and take <span class="math inline">\(r &gt; 0\)</span> and <span class="math inline">\(r_u &gt; 0\)</span> s.t. <span class="math inline">\(\{ \|x\| \le r \} \subset D\)</span> and <span class="math inline">\(\{ \|u\| \le r_u \} \subset D_u\)</span>. Suppose that</p>
+<ul>
+<li><p><span class="math inline">\(x=0\)</span> is an <em>ES equi. ponit</em> of <span class="math inline">\(\eqref{unforced}\)</span>, and there is a <span class="math inline">\(V(t, x)\)</span> that satisfies <span class="math display">\[
+\displaylines{c_{1}\|x\|^{2} \leq V(t, x) \leq c_{2}\|x\|^{2} \\
+\frac{\partial V}{\partial t}+\frac{\partial V}{\partial x} f(t, x, 0) \leq -c_{3}\|x\|^{2} \\
+\left\|\frac{\partial V}{\partial x}\right\| \leq c_{4}\|x\|
+}
+\]</span> for all <span class="math inline">\((t,x) \in [0, \infty) \times D\)</span> for some <em>positive const.</em> <span class="math inline">\(c_{1,2,3,4}\)</span></p></li>
+<li><p><span class="math inline">\(f\)</span> and <span class="math inline">\(h\)</span> satisfy the inequalities <span class="math display">\[
+\begin{align}
+\|f(t, x, u)-f(t, x, 0)\| \leq L\|u\| \\
+\|h(t, x, u)\| \leq \eta_{1}\|x\|+\eta_{2}\|u\| \label{hbound}
+\end{align}
+\]</span> for all <span class="math inline">\((t,x,u) \in [0, \infty) \times D \times D_u\)</span> for some <em>nonnegative const.</em> <span class="math inline">\(L, \eta_{1,2}\)</span></p></li>
+</ul>
+<p>Then, for each <span class="math inline">\(x_0\)</span> with <span class="math inline">\(\|x_0\| \le r \sqrt{c_1 / c_2}\)</span>, the system <span class="math inline">\(\eqref{statemodel}\)</span> is <em>small-signal finite-gain <span class="math inline">\(\mathcal{L}_p\)</span> stable</em> for each <span class="math inline">\(p \in [1, \infty]\)</span>. In particular, for each <span class="math inline">\(u \in \mathcal{L}_{pe}\)</span> with <span class="math inline">\(\sup_{0 \le t \le \tau} \| u(t) \| \le \min \{ r_u, c_1 c_3 r / (c_2 c_4 L) \}\)</span>, the output <span class="math inline">\(y(t)\)</span> satisfies <span class="math display">\[
+\begin{equation}\displaylines{
+\left\|y_{\tau}\right\|_{\mathcal{L}_{p}} \leq \gamma \left\|u_{\tau}\right\|_{\mathcal{L}_{p}} + \beta
+}
+\label{outputgain}
+\end{equation}
+\]</span> for all <span class="math inline">\(\tau \in [0, \infty)\)</span>, with <span class="math display">\[
+\displaylines{\gamma=\eta_{2}+\frac{\eta_{1} c_{2} c_{4} L}{c_{1} c_{3}}, \quad \beta=\eta_{1}\left\|x_{0}\right\| \sqrt{\frac{c_{2}}{c_{1}}} \rho, \text { where } \rho=\left\{\begin{array}{ll}
+{1,} &amp; {\text { if } p=\infty} \\
+{\left(\frac{2 c_{2}}{c_{3} p}\right)^{1 / p},} &amp; {\text { if } p \in[1, \infty)}
+\end{array}\right.
+}
+\]</span> Furthermore, if the origin is <em>GES</em> and all the assumptions hold globally (with <span class="math inline">\(D = \mathbb{R}^n\)</span> and <span class="math inline">\(D_u = \mathbb{R}^m\)</span>), then, for each <span class="math inline">\(x_0 \in \mathbb{R}^n\)</span>, the system <span class="math inline">\(\eqref{statemodel}\)</span> if <em>finite-gain <span class="math inline">\(\mathcal{L}_p\)</span> stable</em> for each <span class="math inline">\(p \in [1, \infty)\)</span>.</p>
+<p><strong>Corollary 1</strong>: Suppose that in some neighborhood of <span class="math inline">\((x=0, u=0)\)</span>, the function <span class="math inline">\(f(t,x,u)\)</span> is <em>cont. diff.</em>, the Jacobian matrices <span class="math inline">\(\partial f / \partial x\)</span> and <span class="math inline">\(\partial f / \partial u\)</span> are <em>bounded</em>, <em>uniformly</em> in <span class="math inline">\(t\)</span>, and <span class="math inline">\(h(t,x,u)\)</span> satisfies <span class="math inline">\(\eqref{hbound}\)</span>. If the origin is an <em>ES equi. point</em> of <span class="math inline">\(\eqref{unforced}\)</span>, then there is a <em>const.</em> <span class="math inline">\(r_0 &gt; 0\)</span> s.t. for each <span class="math inline">\(x_0\)</span> with <span class="math inline">\(\|x_0\| &lt; r_0\)</span>, the system <span class="math inline">\(\eqref{statemodel}\)</span> is <em>small-signal finite-gain <span class="math inline">\(\mathcal{L}_p\)</span> stable</em> for each <span class="math inline">\(p \in [1, \infty]\)</span>. Furthermore, if all the assumptions hold globally and the origin is a <em>GES equi. point</em> of <span class="math inline">\(\eqref{unforced}\)</span>, then for each <span class="math inline">\(x_0 \in \mathbb{R}^n\)</span>, the system <span class="math inline">\(\eqref{statemodel}\)</span> if <em>finite-gain <span class="math inline">\(\mathcal{L}_p\)</span> stable</em> for each <span class="math inline">\(p \in [1, \infty]\)</span></p>
+<p><strong>Corollary 2</strong>: The <em>LTI</em> system <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+\dot{x} &amp;=A x+B u \\
+y &amp;=C x+D u
+\end{aligned}
+}
+\label{ltiinput}
+\end{equation}
+\]</span> is <em>finite-gain <span class="math inline">\(\mathcal{L}_p\)</span> stable</em> for each <span class="math inline">\(p \in [1, \infty]\)</span> if <span class="math inline">\(A\)</span> is <em>Hurwitz</em>. Moreover, <span class="math inline">\(\eqref{outputgain}\)</span> is satisfied with <span class="math display">\[
+\displaylines{\gamma=\|D\|_{2}+\frac{2 \lambda_{\max }^{2}(P)\|B\|_{2}\|C\|_{2}}{\lambda_{\min }(P)}, \quad \beta=\rho\|C\|_{2}\left\|x_{0}\right\| \sqrt{\frac{\lambda_{\max }(P)}{\lambda_{\min }(P)}}, \text { where } \rho=\left\{\begin{array}{ll}
+{1,} &amp; {\text { if } p=\infty} \\
+{\left(\frac{2 \lambda_\max(P)}{p}\right)^{1 / p},} &amp; {\text { if } p \in[1, \infty)}
+\end{array}\right.
+}
+\]</span> and <span class="math inline">\(P\)</span> is the solution of the Lyapunov equation <span class="math inline">\(PA + A^TP = - I\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 2</strong>: Consider the system <span class="math inline">\(\eqref{statemodel}\)</span> and take <span class="math inline">\(r &gt; 0\)</span> s.t. <span class="math inline">\(\{ \|x\| \le r \} \subset D\)</span>. Suppose that</p>
+<ul>
+<li><p><span class="math inline">\(x=0\)</span> is an <em>UAS equi. ponit</em> of <span class="math inline">\(\eqref{unforced}\)</span>, and there is a <span class="math inline">\(V(t, x)\)</span> that satisfies <span class="math display">\[
+\displaylines{\alpha_{1}(\|x\|) \leq V(t, x) \leq \alpha_{2}(\|x\|) \\
+\frac{\partial V}{\partial t}+\frac{\partial V}{\partial x} f(t, x, 0) \leq -\alpha_{3}(\|x\|) \\
+\left\|\frac{\partial V}{\partial x}\right\| \leq \alpha_4(\|x\|)
+}
+\]</span> for all <span class="math inline">\((t,x) \in [0, \infty) \times D\)</span> for some <span class="math inline">\(\mathcal{K}\)</span> functions <span class="math inline">\(\alpha_{1,2,3,4}\)</span></p></li>
+<li><p><span class="math inline">\(f\)</span> and <span class="math inline">\(h\)</span> satisfy the inequalities <span class="math display">\[
+\begin{align}
+\|f(t, x, u)-f(t, x, 0)\| \leq \alpha_5(\|u\|) \\
+\|h(t, x, u)\| \leq \alpha_6(\|x\|) + \alpha_7(\|u\|) + \eta \label{hbound2}
+\end{align}
+\]</span> for all <span class="math inline">\((t,x,u) \in [0, \infty) \times D \times D_u\)</span> for some <span class="math inline">\(\mathcal{K}\)</span> functions <span class="math inline">\(\alpha_{5,6,7}\)</span>, and a <em>nonnegative const.</em> <span class="math inline">\(\eta\)</span></p></li>
+</ul>
+<p>Then, for each <span class="math inline">\(x_0\)</span> with <span class="math inline">\(\|x_0\| \le \alpha_2^{-1}(\alpha_1(r))\)</span>, the system <span class="math inline">\(\eqref{statemodel}\)</span> is <em>small-signal <span class="math inline">\(\mathcal{L}_\infty\)</span> stable</em>.</p>
+<p><strong>Corollary 3</strong>: Suppose that in some neighborhood of <span class="math inline">\((x=0, u=0)\)</span>, the function <span class="math inline">\(f(t,x,u)\)</span> is <em>cont. diff.</em>, the Jacobian matrices <span class="math inline">\(\partial f / \partial x\)</span> and <span class="math inline">\(\partial f / \partial u\)</span> are <em>bounded</em>, <em>uniformly</em> in <span class="math inline">\(t\)</span>, and <span class="math inline">\(h(t,x,u)\)</span> satisfies <span class="math inline">\(\eqref{hbound2}\)</span>. If the origin is an <em>UAS equi. point</em> of <span class="math inline">\(\eqref{unforced}\)</span>, then the system <span class="math inline">\(\eqref{statemodel}\)</span> is <em>small-signal <span class="math inline">\(\mathcal{L}_\infty\)</span> stable</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 3</strong>: Consider the system <span class="math inline">\(\eqref{statemodel}\)</span> with <span class="math inline">\(D = \mathbb{R}^n\)</span> and <span class="math inline">\(D_u = \mathbb{R}^m\)</span>. Suppose that</p>
+<ul>
+<li>The system <span class="math inline">\(\dot{x} =f(t, x, u), \quad x(0)=x_{0}\)</span> is <em>ISS</em></li>
+<li><span class="math inline">\(h\)</span> satisfies <span class="math inline">\(\eqref{hbound2}\)</span></li>
+</ul>
+<p>Then, for each <span class="math inline">\(x_0 \in \mathbb{R}^n\)</span>, the system <em><span class="math inline">\(\eqref{statemodel}\)</span> is <span class="math inline">\(\mathcal{L}_\infty\)</span> stable</em>.</p>
+<h2 id="mathcall_2-gain"><span class="math inline">\(\mathcal{L}_2\)</span> Gain</h2>
+<p><strong>Theorem 4</strong>: Consider the system <span class="math inline">\(\eqref{ltiinput}\)</span> where <span class="math inline">\(A\)</span> is <em>Hurwitz</em>. Let <span class="math inline">\(G(s) = C (sI - A)^{-1} B + D\)</span>. Then, the <span class="math inline">\(\mathcal{L}_2\)</span> gain of the system is <span class="math inline">\(\sup_{\omega \in \mathbb{R}} \| G(j \omega) \|_2\)</span></p>
+<p><br/></p>
+<p><strong>Theorem 5</strong>: Consider the <em>time-invariant nonlinear system</em> <span class="math display">\[
+\begin{equation}\displaylines{
+\begin{aligned}
+\dot{x} &amp;=f(x)+G(x) u, \quad x(0)=x_{0} \\
+y &amp;=h(x)
+\end{aligned}
+}
+\label{tinonlinear}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(f(x)\)</span> is <em>LL</em>, and <span class="math inline">\(G(x), h(x)\)</span> are <em>cont.</em> over <span class="math inline">\(\mathbb{R}^n\)</span>. The matrix <span class="math inline">\(G \in \mathbb{R}^{n \times m}\)</span> and <span class="math inline">\(h : \mathbb{R}^n \rightarrow \mathbb{R}^q\)</span>. <span class="math inline">\(f(0)=0, h(0)=0\)</span>. Let <span class="math inline">\(\gamma\)</span> be a <em>positive number</em> and suppose there is a <em>cont. diff. PSD</em> function <span class="math inline">\(V(x)\)</span> that satisfies the <strong>Hamilton-Jacobi inequality</strong> <span class="math display">\[
+\displaylines{\mathcal{H}(V, f, G, h, \gamma) \stackrel{\text { def }}{=} \frac{\partial V}{\partial x} f(x)+\frac{1}{2 \gamma^{2}} \frac{\partial V}{\partial x} G(x) G^{T}(x)\left(\frac{\partial V}{\partial x}\right)^{T}+\frac{1}{2} h^{T}(x) h(x) \leq 0
+}
+\]</span> for all <span class="math inline">\(x \in \mathbb{R}^n\)</span>. Then, for each <span class="math inline">\(x_0 \in \mathbb{R}^n\)</span>, the system <span class="math inline">\(\eqref{tinonlinear}\)</span> is <em>finite-gain <span class="math inline">\(\mathcal{L}_2\)</span> stable</em> and its <span class="math inline">\(\mathcal{L}_2\)</span> gain is less than or equal to <span class="math inline">\(\gamma\)</span>.</p>
+<p><strong>Corollary 4</strong>: Suppose the assumption of <em>Theorem 5</em> are satisfied on a <em>domain</em> <span class="math inline">\(D \subset \mathbb{R}^n\)</span> that contains the origin. Then, for any <span class="math inline">\(x_0 \in D\)</span> and any <span class="math inline">\(u \in \mathcal{L}_{2e}\)</span> for which the solution <span class="math inline">\(x\)</span> of <span class="math inline">\(\eqref{tinonlinear}\)</span> satisfies <span class="math inline">\(x(t) \in D\)</span> for all <span class="math inline">\(t \in [0, \tau]\)</span>, we have <span class="math display">\[
+\displaylines{\left\|y_{\tau}\right\|_{\mathcal{L}_{2}} \leq \gamma\left\|u_{\tau}\right\|_{\mathcal{L}_{2}}+\sqrt{2 V\left(x_{0}\right)}
+}
+\]</span> <br/></p>
+<p><strong>Lemma 1</strong>: Suppose the assumption of <em>Theorem 5</em> are satisfied on a <em>domain</em> <span class="math inline">\(D \subset \mathbb{R}^n\)</span> that contains the origin, <span class="math inline">\(f(x)\)</span> is a <em>cont. diff</em> function, and <span class="math inline">\(x=0\)</span> is an <em>AS equi. point</em> of <span class="math inline">\(\dot{x} = f(x)\)</span>. Then, there is <span class="math inline">\(k_1 &gt; 0\)</span> s.t. for each <span class="math inline">\(x_0\)</span> with <span class="math inline">\(\| x_0 \| \le k_1\)</span>, the system <span class="math inline">\(\eqref{tinonlinear}\)</span> is <em>small-signal finite-gain <span class="math inline">\(\mathcal{L}_2\)</span> stable</em> with <span class="math inline">\(\mathcal{L}_2\)</span> gain less than or equal to <span class="math inline">\(\gamma\)</span></p>
+<p><strong>Lemma 2</strong>: Suppose the assumption of <em>Theorem 5</em> are satisfied on a <em>domain</em> <span class="math inline">\(D \subset \mathbb{R}^n\)</span> that contains the origin, <span class="math inline">\(f(x)\)</span> is a <em>cont. diff</em> function, and no solution of <span class="math inline">\(\dot{x} = f(x)\)</span> can <em>stay identically</em> in <span class="math inline">\(S = \{ x\in D | h(x) =0 \}\)</span> other than <span class="math inline">\(x(t) \equiv 0\)</span>. Then, the origin of <span class="math inline">\(\dot{x} = f(x)\)</span> is <em>AS</em> and there is <span class="math inline">\(k_1 &gt; 0\)</span> s.t. for each <span class="math inline">\(x_0\)</span> with <span class="math inline">\(\| x_0 \| \le k_1\)</span>, the system <span class="math inline">\(\eqref{tinonlinear}\)</span> is <em>small-signal finite-gain <span class="math inline">\(\mathcal{L}_2\)</span> stable</em> with <span class="math inline">\(\mathcal{L}_2\)</span> gain less than or equal to <span class="math inline">\(\gamma\)</span></p>
+<h2 id="feedback-systems">Feedback Systems</h2>
+<p><img src="https://i.imgur.com/MF52Bh5.png" alt="Feedback System" /></p>
+<p>Consider two systems <span class="math inline">\(H_1 : \mathcal{L}_e^m \rightarrow \mathcal{L}_e^q\)</span> and <span class="math inline">\(H_2 : \mathcal{L}_e^q \rightarrow \mathcal{L}_e^m\)</span>. Suppose both systems are <em>finite-gain <span class="math inline">\(\mathcal{L}\)</span> stable</em>, that is <span class="math display">\[
+\displaylines{{\left\|y_{1 \tau}\right\|_{\mathcal{L}} \leq} {\gamma_{1}\left\|e_{1 \tau}\right\|_{\mathcal{L}}+\beta_{1}, \quad \forall e_{1} \in \mathcal{L}_{e}^{m}, \forall \tau \in[0, \infty)} \\
+{\left\|y_{2 \tau}\right\|_{\mathcal{L}}} {\leq \gamma_{2}\left\|e_{2 \tau}\right\|_{\mathcal{L}}+\beta_{2}, \quad \forall e_{2} \in \mathcal{L}_{e}^{q}, \forall \tau \in[0, \infty)}
+}
+\]</span> Suppose further that the <strong>feedback system</strong> is <strong>well defined</strong>: for every pair of inputs <span class="math inline">\(u_1 \in \mathcal{L}_e^m\)</span> and <span class="math inline">\(u_2 \in \mathcal{L}_e^q\)</span>, there exist unique outputs <span class="math inline">\(e_1, y_2 \in \mathcal{L}_e^m\)</span> and <span class="math inline">\(e_2, y_1 \in \mathcal{L}_e^q\)</span>. Define <span class="math display">\[
+\displaylines{u=\begin{bmatrix}{u_{1}} \\ {u_{2}}\end{bmatrix}, \quad y=\begin{bmatrix}{y_{1}} \\ {y_{2}}\end{bmatrix}, \quad e=\begin{bmatrix} {e_{1}} \\ {e_{2}}\end{bmatrix}
+}
+\]</span> The question is whether the feedback connection, when viewed as a mapping from <span class="math inline">\(u\)</span> to <span class="math inline">\(e\)</span> or a mapping from <span class="math inline">\(u\)</span> to <span class="math inline">\(y\)</span>, is <em>finite-gain <span class="math inline">\(\mathcal{L}\)</span> stable</em>. The two statements are <em>equivalent</em>.</p>
+<p><br/></p>
+<p><strong>Theorem 6</strong>: The feedback connection is <em>finite-gain <span class="math inline">\(\mathcal{L}\)</span> stable</em> if <span class="math inline">\(\gamma_1 \gamma_2 &lt; 1\)</span>.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/UW/" rel="tag"><i class="fa fa-tag"></i> UW</a>
+              <a href="/tags/ME/" rel="tag"><i class="fa fa-tag"></i> ME</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/matrix-derivative/" rel="prev" title="Matrix Derivatives">
+                  <i class="fa fa-chevron-left"></i> Matrix Derivatives
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/deep-reinforcement-learning-1/" rel="next" title="Deep Reinforcement Learning (Part 1)">
+                  Deep Reinforcement Learning (Part 1) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

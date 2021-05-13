@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Machine Learning notes.  Coursera Andrew Ng Machine Learning. My solution Stanford CS231n Convolutional Neural Networks for Visual Recognition. My solution">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning">
+<meta property="og:url" content="https://silencial.github.io/machine-learning/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Machine Learning notes.  Coursera Andrew Ng Machine Learning. My solution Stanford CS231n Convolutional Neural Networks for Visual Recognition. My solution">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/xMHZRZZ.png">
+<meta property="og:image" content="https://i.imgur.com/3w1EOxp.png">
+<meta property="og:image" content="https://i.imgur.com/A2oVjho.png">
+<meta property="article:published_time" content="2019-07-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2019-09-14T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="101">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/xMHZRZZ.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/machine-learning/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;machine-learning&#x2F;&quot;,&quot;path&quot;:&quot;machine-learning&#x2F;&quot;,&quot;title&quot;:&quot;Machine Learning&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Machine Learning | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cost-function"><span class="nav-number">1.1.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-variables"><span class="nav-number">1.2.</span> <span class="nav-text">Multiple Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-descent"><span class="nav-number">1.3.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normal-equation"><span class="nav-number">1.4.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regularization"><span class="nav-number">2.</span> <span class="nav-text">Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#l1-regularization"><span class="nav-number">2.1.</span> <span class="nav-text">L1 Regularization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l2-regularization"><span class="nav-number">2.2.</span> <span class="nav-text">L2 Regularization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradient-descent-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-equation-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#logistic-regression"><span class="nav-number">3.</span> <span class="nav-text">Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#classification"><span class="nav-number">3.1.</span> <span class="nav-text">Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-class-classification"><span class="nav-number">3.2.</span> <span class="nav-text">Multi-Class Classification</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#neural-network"><span class="nav-number">4.</span> <span class="nav-text">Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#weight-initialization"><span class="nav-number">4.1.</span> <span class="nav-text">Weight Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activation-function"><span class="nav-number">4.2.</span> <span class="nav-text">Activation Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hidden-layer"><span class="nav-number">4.2.1.</span> <span class="nav-text">Hidden Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output-layer"><span class="nav-number">4.2.2.</span> <span class="nav-text">Output Layer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cost-function-1"><span class="nav-number">4.3.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backpropagation"><span class="nav-number">4.4.</span> <span class="nav-text">Backpropagation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradient-check"><span class="nav-number">4.5.</span> <span class="nav-text">Gradient Check</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#batch-normalization"><span class="nav-number">4.6.</span> <span class="nav-text">Batch Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dropout-regularization"><span class="nav-number">4.7.</span> <span class="nav-text">Dropout Regularization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convolutional-neural-network"><span class="nav-number">5.</span> <span class="nav-text">Convolutional Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#convolution"><span class="nav-number">5.1.</span> <span class="nav-text">Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pooling"><span class="nav-number">5.2.</span> <span class="nav-text">Pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transfer-learning"><span class="nav-number">5.3.</span> <span class="nav-text">Transfer Learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recurrent-neural-network"><span class="nav-number">6.</span> <span class="nav-text">Recurrent Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vanilla-rnn"><span class="nav-number">6.1.</span> <span class="nav-text">Vanilla RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lstm"><span class="nav-number">6.2.</span> <span class="nav-text">LSTM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generative-adversarial-network"><span class="nav-number">7.</span> <span class="nav-text">Generative Adversarial Network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reinforcement-learning"><span class="nav-number">8.</span> <span class="nav-text">Reinforcement Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#markov-decision-process"><span class="nav-number">8.1.</span> <span class="nav-text">Markov Decision Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basics"><span class="nav-number">8.2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#value-function"><span class="nav-number">8.2.1.</span> <span class="nav-text">Value Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-value-function"><span class="nav-number">8.2.2.</span> <span class="nav-text">Q-Value Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bellman-equation"><span class="nav-number">8.2.3.</span> <span class="nav-text">Bellman Equation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solver"><span class="nav-number">8.3.</span> <span class="nav-text">Solver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#value-iteration"><span class="nav-number">8.3.1.</span> <span class="nav-text">Value Iteration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q-learning"><span class="nav-number">8.3.2.</span> <span class="nav-text">Q-Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#policy-gradients"><span class="nav-number">8.3.3.</span> <span class="nav-text">Policy Gradients</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#variance-reduction"><span class="nav-number">8.3.4.</span> <span class="nav-text">Variance Reduction</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#naive-bayes"><span class="nav-number">9.</span> <span class="nav-text">Naive Bayes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#distribution"><span class="nav-number">9.1.</span> <span class="nav-text">Distribution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#support-vector-machine"><span class="nav-number">10.</span> <span class="nav-text">Support Vector Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kernels"><span class="nav-number">10.1.</span> <span class="nav-text">Kernels</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression-vs.-svm"><span class="nav-number">10.2.</span> <span class="nav-text">Logistic Regression vs. SVM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clustering"><span class="nav-number">11.</span> <span class="nav-text">Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hierarchical-clustering"><span class="nav-number">11.1.</span> <span class="nav-text">Hierarchical Clustering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means-algorithm"><span class="nav-number">11.2.</span> <span class="nav-text">\(k\)-Means Algorithm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#decision-tree"><span class="nav-number">12.</span> <span class="nav-text">Decision Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#purity"><span class="nav-number">12.1.</span> <span class="nav-text">Purity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#information-gain"><span class="nav-number">12.1.1.</span> <span class="nav-text">Information Gain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gini-index"><span class="nav-number">12.1.2.</span> <span class="nav-text">Gini Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pruning"><span class="nav-number">12.2.</span> <span class="nav-text">Pruning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ensemble-learning"><span class="nav-number">13.</span> <span class="nav-text">Ensemble Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bagging"><span class="nav-number">13.1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boosting"><span class="nav-number">13.2.</span> <span class="nav-text">Boosting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pca"><span class="nav-number">14.</span> <span class="nav-text">PCA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradient-descent-2"><span class="nav-number">15.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#variants"><span class="nav-number">15.1.</span> <span class="nav-text">Variants</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#momentum"><span class="nav-number">15.2.</span> <span class="nav-text">Momentum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adam"><span class="nav-number">15.3.</span> <span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#second-order"><span class="nav-number">15.4.</span> <span class="nav-text">Second-Order</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#evaluation"><span class="nav-number">16.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#validation-set"><span class="nav-number">16.1.</span> <span class="nav-text">Validation Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hold-out-validation"><span class="nav-number">16.1.1.</span> <span class="nav-text">Hold-Out Validation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-fold-cross-validation"><span class="nav-number">16.1.2.</span> <span class="nav-text">K-Fold Cross Validation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hyperparameter-searching"><span class="nav-number">16.2.</span> <span class="nav-text">Hyperparameter Searching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overunder-fitting"><span class="nav-number">16.3.</span> <span class="nav-text">Over&#x2F;Under Fitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#metrics"><span class="nav-number">16.4.</span> <span class="nav-text">Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#classification-1"><span class="nav-number">16.4.1.</span> <span class="nav-text">Classification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#regression"><span class="nav-number">16.4.2.</span> <span class="nav-text">Regression</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/machine-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Machine Learning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-07-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-26T00:00:00+00:00">2019-07-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-09-14 00:00:00" itemprop="dateModified" datetime="2019-09-14T00:00:00+00:00">2019-09-14</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>25k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:03</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Machine Learning notes.</p>
+<ul>
+<li>Coursera Andrew Ng <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.coursera.org/learn/machine-learning/home/welcome">Machine Learning</a>. My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/Machine-Learning">solution</a></li>
+<li>Stanford CS231n <a target="_blank" rel="noopener external nofollow noreferrer" href="http://cs231n.stanford.edu/index.html">Convolutional Neural Networks for Visual Recognition</a>. My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/CNN-for-Visual-Recognition">solution</a></li>
+</ul>
+<span id="more"></span>
+<hr />
+<p>Learning = Representation + Evaluation + Optimization</p>
+<p><img src="https://i.imgur.com/xMHZRZZ.png" alt="ML Algorithms" /></p>
+<h1 id="linear-regression">Linear Regression</h1>
+<h2 id="cost-function">Cost Function</h2>
+<p>Hypothesis: <span class="math display">\[
+\displaylines{h_{\theta}(x)=\theta_{0}+\theta_{1} x
+}
+\]</span> Parameters: <span class="math display">\[
+\displaylines{\theta_0,\quad \theta_1
+}
+\]</span> Cost function: <span class="math display">\[
+\displaylines{J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}
+}
+\]</span> Goal: <span class="math display">\[
+\displaylines{\underset{\theta_{0}, \theta_{1}}{\operatorname{minimize}} J\left(\theta_{0}, \theta_{1}\right)
+}
+\]</span></p>
+<h2 id="multiple-variables">Multiple Variables</h2>
+<p><span class="math display">\[
+\displaylines{h_{\theta}(x)=\theta^{T} x=\theta_{0} x_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\cdots+\theta_{n} x_{n}
+}
+\]</span></p>
+<p>Make sure to scale every feature into approximately <span class="math inline">\(-1 \le x_i \le 1\)</span> range. <mark>(Mean normalization)</mark></p>
+<p>Be carful of the model interpretation when <strong>Multicollinearity</strong> (multiple variables are correlated to each other) is present.</p>
+<h2 id="gradient-descent">Gradient Descent</h2>
+<p>Repeat until convergence: <span class="math display">\[
+\displaylines{\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)
+}
+\]</span> where <span class="math inline">\(\alpha\)</span> is the learning rate.</p>
+<ul>
+<li>If <span class="math inline">\(\alpha\)</span> is too small, gradient descent can be slow.</li>
+<li>If <span class="math inline">\(\alpha\)</span> is too large, gradient descent can overshoot. It may fail to converge, or even diverge.</li>
+</ul>
+<p>Gradient descent can get stuck in a local minimum if the cost function is not convex.</p>
+<p>For linear/logistic regression the formula are the same: <span class="math display">\[
+\displaylines{\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}
+}
+\]</span></p>
+<h2 id="normal-equation">Normal Equation</h2>
+<p>Solve for <span class="math inline">\(\theta\)</span> analytically. <span class="math display">\[
+\displaylines{\begin{aligned}
+&amp;\frac{\partial}{\partial \theta_j} J(\theta) = 0 \\
+\Longrightarrow\ &amp; \theta = (X^T X)^{-1} X^T y
+\end{aligned}
+}
+\]</span></p>
+<h1 id="regularization">Regularization</h1>
+<p>Overfitting: If we have too many features, the learned hypothesis may fit the training set very well, but fail to generalize to new examples.</p>
+<h2 id="l1-regularization">L1 Regularization</h2>
+<p><span class="math display">\[
+\displaylines{\|\theta\|_1 = \sum_i |\theta_i|​
+}
+\]</span></p>
+<p>In model relying on sparse features, L1 regularization helps drive the weights of irrelevant or barely relevant features to <strong>exactly 0</strong>.</p>
+<h2 id="l2-regularization">L2 Regularization</h2>
+<p><span class="math display">\[
+\displaylines{\|\theta\|_2 = \sum_i \theta_i^2
+}
+\]</span></p>
+<p>L2 regularization helps drive outlier weights <strong>closer to 0</strong> but not quite to 0</p>
+<h3 id="gradient-descent-1">Gradient Descent</h3>
+<p>Modify the cost function to be: <span class="math display">\[
+\displaylines{J(\theta)=\frac{1}{2 m}\left[\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}+\lambda \sum_{j=1}^{n} \theta_{j}^{2}\right]
+}
+\]</span> then <span class="math display">\[
+\displaylines{\begin{aligned}
+\theta_0 &amp;:= \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)}) x_0^{(i)} \\
+\theta_j &amp;:= \theta_j \left( 1 - \alpha \frac{\lambda}{m} \right) - \alpha \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)}) x_j^{(i)}
+\end{aligned}
+}
+\]</span></p>
+<h3 id="normal-equation-1">Normal Equation</h3>
+<p><span class="math display">\[
+\displaylines{\theta =
+\left(
+X^T X + \lambda
+\left[\begin{smallmatrix}
+0 &amp; &amp; &amp; \\
+&amp; 1 &amp; &amp; \\
+&amp; &amp; \ddots &amp; \\
+&amp; &amp; &amp; 1
+\end{smallmatrix}\right]^{-1}
+\right)
+X^T y
+}
+\]</span></p>
+<h1 id="logistic-regression">Logistic Regression</h1>
+<h2 id="classification">Classification</h2>
+<p>With <span class="math inline">\(y \in \{0, 1\}\)</span>. Use <span class="math inline">\(h_\theta(x)\)</span> as the estimated probability that <span class="math inline">\(y=1\)</span> on input <span class="math inline">\(x\)</span>. We want <span class="math inline">\(0 \le h_\theta(x)\le 1\)</span>. <span class="math display">\[
+\displaylines{\begin{aligned}
+h_\theta(x) &amp;= g(\theta^T x) \\
+&amp;= \frac{1}{1 + e^{-\theta^T x}}
+\end{aligned}
+}
+\]</span> where <span class="math inline">\(g\)</span> is called the <strong>Sigmoid function</strong>.</p>
+<p>Cost function: <span class="math display">\[
+\displaylines{\begin{aligned}
+\text{Cost}(h_\theta(x), y) =
+\begin{cases}
+-\log(h_\theta(x)) \quad &amp;\text{if } y=1\\
+-\log(1 - h_\theta(x)) \quad &amp;\text{if } y=0
+\end{cases}
+\end{aligned}
+}
+\]</span> And <span class="math display">\[
+\displaylines{\begin{aligned}
+J(\theta) &amp;=\frac{1}{m} \sum_{i=1}^{m} \operatorname{Cost}(h_{\theta}(x^{(i)}), y^{(i)}) \\
+&amp;= -\frac{1}{m}\left[\sum_{i=1}^{m} y^{(i)} \log h_{\theta}(x^{(i)})+(1-y^{(i)}) \log (1-h_{\theta}(x^{(i)}))\right]
+\end{aligned}
+}
+\]</span></p>
+<h2 id="multi-class-classification">Multi-Class Classification</h2>
+<p>Train a logistic regression classifier <span class="math inline">\(h_\theta^{(i)}(x)\)</span> for each class <span class="math inline">\(i\)</span> to predict the probability that <span class="math inline">\(y = i\)</span>.</p>
+<p>On a new input <span class="math inline">\(x\)</span> to make a prediction, pick the class <span class="math inline">\(i\)</span> that maximizes <span class="math inline">\(\max_i h_\theta^{(i)}(x)\)</span>.</p>
+<h1 id="neural-network">Neural Network</h1>
+<ol type="1">
+<li>Initialize weights.</li>
+<li>Choose the activation function.</li>
+<li>Implement forward propagation to get <span class="math inline">\(h_\Theta(x^{(i)})\)</span> for any <span class="math inline">\(x^{(i)}\)</span>.</li>
+<li>Implement code to compute cost function <span class="math inline">\(J(\Theta).\)</span></li>
+<li>Implement backprop to compute partial derivatives.</li>
+<li>Use gradient checking to see whether backprop is correct. Then disable the code.</li>
+<li>Use gradient descent or other optimization method with backpropagation to minimize <span class="math inline">\(J(\Theta)\)</span>.</li>
+</ol>
+<h2 id="weight-initialization">Weight Initialization</h2>
+<p>Assign the weights from a Gaussian distribution with zero mean and small variance is okay for small networks, but problems with deeper network.</p>
+<p>Since the goal is to keep variance stays the same through each layer, we can use Xavier initialization. <span class="math display">\[
+\displaylines{\mathop{var}(w_i) = \frac{1}{N_{avg}} = \frac{2}{N_{in} + N_{out}}
+}
+\]</span> <mark>Xavier assumes zero centered activation function, double the variance if using ReLU</mark></p>
+<h2 id="activation-function">Activation Function</h2>
+<h3 id="hidden-layer">Hidden Layer</h3>
+<p><mark>ReLU is a good default choice for most problems</mark></p>
+<p>Consider when choosing activation function:</p>
+<ul>
+<li>Vanishing/Exploding gradients: When local gradient is very small/large, it will kill/blow the gradient during backprop.</li>
+<li>Zero-centered: Could introduce undesirable zig-zagging dynamics in gradient updates.</li>
+</ul>
+<p><img src="https://i.imgur.com/3w1EOxp.png" alt="Activation Functions" /></p>
+<h3 id="output-layer">Output Layer</h3>
+<ul>
+<li>Use SoftMax function for classification problem.</li>
+<li>Use Linear function for regression problem.</li>
+</ul>
+<h2 id="cost-function-1">Cost Function</h2>
+<p><span class="math inline">\(h_\Theta (x) \in \mathbb{R}^K, \quad (h_\Theta(x))_i = i^{th}\)</span> output. <span class="math display">\[
+\displaylines{\begin{aligned}
+J(\Theta)=&amp;-\frac{1}{m}\left[\sum_{i=1}^{m} \sum_{k=1}^{K} y_{k}^{(i)} \log \left(h_{\Theta}\left(x^{(i)}\right)\right)_{k}+\left(1-y_{k}^{(i)}\right) \log \left(1-\left(h_{\Theta}\left(x^{(i)}\right)\right)_{k}\right)\right] \\
+&amp;+\frac{\lambda}{2 m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}}\left(\Theta_{j i}^{(l)}\right)^{2}
+\end{aligned}
+}
+\]</span></p>
+<h2 id="backpropagation">Backpropagation</h2>
+<p>Given one training example <span class="math inline">\((x, y)\)</span>, use the Forward propagation to compute the cost: <span class="math display">\[
+\displaylines{\begin{aligned}
+a^{(1)} &amp;= x \\
+z^{(2)} &amp;= \Theta^{(1)} a^{(1)} \\
+a^{(2)} &amp;= g(z^{(2)}) \quad (\text{add } a_0^{(2)}) \\
+z^{(3)} &amp;= \Theta^{(2)} a^{(2)} \\
+a^{(3)} &amp;= g(z^{(3)}) \quad (\text{add } a_0^{(3)}) \\
+z^{(4)} &amp;= \Theta^{(3)} a^{(3)} \\
+a^{(4)} &amp;= h_\Theta(x) =  g(z^{(4)})
+\end{aligned}
+}
+\]</span> In Backpropagation, first compute <span class="math inline">\(\delta_j^{(l)} = \frac{\partial}{\partial z_j^{(l)}} J(\Theta)\)</span>, which is the "error" of node <span class="math inline">\(j\)</span> in layer <span class="math inline">\(l\)</span>. <span class="math display">\[
+\displaylines{\begin{aligned}
+\delta^{(4)} &amp;= a^{(4)} - y \\
+\delta^{(3)} &amp;= (\Theta^{(3)})^T \delta^{(4)} .* g&#39;(z^{(3)}) \\
+\delta^{(2)} &amp;= (\Theta^{(2)})^T \delta^{(3)} .* g&#39;(z^{(2)}) \\
+\end{aligned}
+}
+\]</span> Then the gradient: <span class="math display">\[
+\displaylines{\begin{aligned}
+\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) &amp;= \frac{1}{m} a_j^{(l)} \delta_i^{(l + 1)} + \lambda \Theta_{ij}^{(l)}  &amp;\text{if } j \ne 0 \\
+\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) &amp;= \frac{1}{m} a_j^{(l)} \delta_i^{(l + 1)} &amp;\text{if } j = 0 \\
+\end{aligned}
+}
+\]</span></p>
+<h2 id="gradient-check">Gradient Check</h2>
+<p>A numerical method to check the backprop is correct. Useful in implementation. <span class="math display">\[
+\displaylines{\frac{\partial}{\partial \theta_j} J(\theta) \approx \frac{J(\theta_1,\dots, \theta_j + \epsilon, \dots, \theta_n) - J(\theta_1,\dots, \theta_j - \epsilon, \dots, \theta_n)}{2\epsilon}
+}
+\]</span></p>
+<h2 id="batch-normalization">Batch Normalization</h2>
+<p>Apply feature scaling not just to the input layer, but also to the hidden units.</p>
+<p><strong>Make it possible to use significantly higher learning rates, and reduces the sensitivity to initialization.</strong></p>
+<p>Before activation function, normalize <span class="math inline">\(z\)</span> to <span class="math inline">\(z_{norm}\)</span> and then scale and shift to <span class="math inline">\(\tilde{z}\)</span>: <span class="math display">\[
+\displaylines{\tilde{z} = \gamma z_{norm} + \beta
+}
+\]</span> where <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> are learned during training.</p>
+<h2 id="dropout-regularization">Dropout Regularization</h2>
+<p>Besides using early stopping and L1/L2 regularization, dropout regularization is another popular approach to prevent overfitting in neural network.</p>
+<ul>
+<li>Each time an example is read, some hidden units are removed with probability.</li>
+<li>During testing there is no dropout applied, but with averaging.</li>
+<li>Different hidden layer can have different dropout probability.</li>
+<li>It can be viewed as a form of model averaging.</li>
+</ul>
+<h1 id="convolutional-neural-network">Convolutional Neural Network</h1>
+<p>Useful in computer vision:</p>
+<ul>
+<li>Classification</li>
+<li>Segmentation</li>
+<li>Localization</li>
+<li>Detection</li>
+</ul>
+<p>Since using regular neural network on large images requires huge number of parameters, CNN use <strong>convolution</strong> + <strong>pooling</strong> layers to first perform feature extraction before passing it to a fully connected hidden layers.</p>
+<p>Two main advantages of CNN over just fully connected layers:</p>
+<ul>
+<li>Parameter sharing: feature detector is likely invariant to locations.</li>
+<li>Sparsity of connection: only connect each neuron to only a local region of the input.</li>
+<li>Translation invariant.</li>
+</ul>
+<h2 id="convolution">Convolution</h2>
+<p>A convolution layer is made up of some predetermined number of filters. <strong>Each filter acts as a detector for a particular feature</strong>.</p>
+<p>Always use <strong>multiple filters</strong> at the same time and stack all these feature maps together.</p>
+<p>Treat convolution matrix as parameter and <strong>learn</strong> them through backprop.</p>
+<p>Use <strong>activation function</strong> to introduce nonlinearity to output, e.g. ReLU.</p>
+<p><mark>Since all neurons in a feature map share the same parameters, CNN can recognize a pattern in any location once it is learned.</mark></p>
+<h2 id="pooling">Pooling</h2>
+<p>Pooling layers are in charge of <strong>downsampling</strong> the input. It can decrease feature map size while at the same time keeping the important information.</p>
+<p>The most common type of pooling is <strong>max pooling</strong>.</p>
+<ul>
+<li>Given pooling window size, stride size and padding size.</li>
+<li>Take the max value in the pooling window.</li>
+</ul>
+<p>Pooling also helps to make the representation become approximately <strong>invariant to small translations</strong>. This property is useful if we care more about whether some feature is present than exactly where it is.</p>
+<p>Padding (zero-padding) is used in CNN to preserve the size of the feature maps, otherwise they would shrink at each layer.</p>
+<h2 id="transfer-learning">Transfer Learning</h2>
+<p>Transfer learning in CNN is common. When your interested dataset is small, train the CNN on a large dataset with similar data, then transfer learn to your dataset.</p>
+<p>Usually only the FC layers needs to be relearned during transfer. The number of layers needs to be relearned depends on the size of your dataset.</p>
+<h1 id="recurrent-neural-network">Recurrent Neural Network</h1>
+<p>More flexible in architecture design:</p>
+<ul>
+<li>Image Captioning</li>
+<li>Sentiment Classification</li>
+<li>Machine Translation</li>
+<li>Video Classification on frame level</li>
+</ul>
+<h2 id="vanilla-rnn">Vanilla RNN</h2>
+<p>We can process a sequence of vectors <span class="math inline">\(x\)</span> by applying a recurrence formula at every time step: <span class="math display">\[
+\displaylines{\begin{aligned}
+h_t &amp;= f_W (h_{t-1}, x_t) \\
+&amp;= \tanh(W_{hh} h_{t-1} + W_{xh} x_t) \\
+\\
+y_t &amp;=W_{hy} h_t
+\end{aligned}
+}
+\]</span> <mark>Computing gradient of <span class="math inline">\(h_0\)</span> involves many factors of <span class="math inline">\(W\)</span> and <span class="math inline">\(\tanh\)</span>, easily lead to gradient exploding/vanishing.</mark></p>
+<h2 id="lstm">LSTM</h2>
+<p>Long Short Term Memory (LSTM) <span class="math display">\[
+\displaylines{\begin{aligned}
+\begin{pmatrix}
+{i} \\ {f} \\ {o} \\ {g}
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+{\sigma} \\ {\sigma} \\ {\sigma} \\ {\tanh }
+\end{pmatrix} W
+\begin{pmatrix}
+{h_{t-1}} \\ {x_{t}}
+\end{pmatrix} \\
+c_{t} &amp;= f \odot c_{t-1}+i \odot g \\
+h_{t} &amp;= o \odot \tanh \left(c_{t}\right)
+\end{aligned}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(f\)</span>: Forget gate, whether to erase cell</li>
+<li><span class="math inline">\(i\)</span>: Input gate, whether to write to cell</li>
+<li><span class="math inline">\(g\)</span>: Gate gate, how much to write to cell</li>
+<li><span class="math inline">\(o\)</span>: Output gate, how much to reveal cell</li>
+</ul>
+<h1 id="generative-adversarial-network">Generative Adversarial Network</h1>
+<ul>
+<li>Generator network: try to fool the discriminator by generating real-looking images.</li>
+<li>Discriminator network: try to distinguish between real and fake images.</li>
+</ul>
+<p>Train jointly with the minimax objective function: <span class="math display">\[
+\displaylines{\min _{\theta_{g}} \max _{\theta_{d}}\left[\mathbb{E}_{x \sim p_{d a t a}} \log D_{\theta_{d}}(x)+\mathbb{E}_{z \sim p(z)} \log \left(1-D_{\theta_{d}}\left(G_{\theta_{g}}(z)\right)\right)\right]
+}
+\]</span> In practice, alternate between:</p>
+<ol type="1">
+<li><p>Gradient ascent on discriminator <span class="math display">\[
+\displaylines{\max _{\theta_{d}}\left[\mathbb{E}_{x \sim p_{d a t a}} \log D_{\theta_{d}}(x)+\mathbb{E}_{z \sim p(z)} \log \left(1-D_{\theta_{d}}\left(G_{\theta_{g}}(z)\right)\right)\right]
+}
+\]</span></p></li>
+<li><p>Gradient ascent on generator <span class="math display">\[
+\displaylines{\min _{\theta_{g}} \mathbb{E}_{z \sim p(z)} \log \left(D_{\theta_{d}}\left(G_{\theta_{g}}(z)\right)\right)
+}
+\]</span> <mark>The reason to use gradient ascent instead of gradient descent for the generator is to put more gradient signal on the region where samples are bad.</mark></p></li>
+</ol>
+<h1 id="reinforcement-learning">Reinforcement Learning</h1>
+<p>Problems involving an <strong>agent</strong> interacting with an <strong>environment</strong>, which provides numeric <strong>reward</strong> signals. The goal is to learn how to take actions in order to maximize reward.</p>
+<h2 id="markov-decision-process">Markov Decision Process</h2>
+<ul>
+<li><span class="math inline">\(\mathcal{S}\)</span>: set of possible states</li>
+<li><span class="math inline">\(\mathcal{A}\)</span>: set of possible actions</li>
+<li><span class="math inline">\(\mathcal{R}\)</span>: distribution of reward given state and action</li>
+<li><span class="math inline">\(\mathbb{P}\)</span>: transition probability</li>
+<li><span class="math inline">\(\gamma\)</span>: discount factor</li>
+</ul>
+<ol type="1">
+<li>At time step <span class="math inline">\(t=0\)</span>, environment samples initial state <span class="math inline">\(s_0 \sim p(s_0)\)</span></li>
+<li>For <span class="math inline">\(t=0\)</span> until done:
+<ol type="1">
+<li>Agent selects action <span class="math inline">\(a_t\)</span></li>
+<li>Environment samples reward <span class="math inline">\(r_t \sim R(\cdot \mid s_t, a_t)\)</span></li>
+<li>Environment samples next state <span class="math inline">\(s_{t+1} \sim P(\cdot \mid s_t, a_t)\)</span></li>
+<li>Agent receives reward <span class="math inline">\(r_t\)</span> and next state <span class="math inline">\(s_{t+1}\)</span></li>
+</ol></li>
+</ol>
+<p>A policy <span class="math inline">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> specifies what action to take in each state.</p>
+<p>Objective: find policy <span class="math inline">\(\pi^* = \arg\max_\pi \mathbb{E}[\sum_t \gamma^t r_t]\)</span></p>
+<h2 id="basics">Basics</h2>
+<h3 id="value-function">Value Function</h3>
+<p>Measure how good is a state.</p>
+<p>The value function at state <span class="math inline">\(s\)</span>, is the expected cumulative reward from following the policy from state <span class="math inline">\(s\)</span>: <span class="math display">\[
+\displaylines{V^{\pi}(s)=\mathbb{E}\left[\sum_{t \geq 0} \gamma^{t} r_{t} | s_{0}=s, \pi\right]
+}
+\]</span></p>
+<h3 id="q-value-function">Q-Value Function</h3>
+<p>Measure how good is a state-action pair.</p>
+<p>The Q-value function at state <span class="math inline">\(s\)</span> and action <span class="math inline">\(a\)</span>, is the cumulative reward from taking action <span class="math inline">\(a\)</span> in state <span class="math inline">\(s\)</span> and then following the policy: <span class="math display">\[
+\displaylines{Q^{\pi}(s, a)=\mathbb{E}\left[\sum_{t \geq 0} \gamma^{t} r_{t} | s_{0}=s, a_{0}=a, \pi\right]
+}
+\]</span></p>
+<h3 id="bellman-equation">Bellman Equation</h3>
+<p>The optimal Q-value function <span class="math inline">\(Q^*\)</span> is the maximum expected cumulative reward achievable from a given state-action pair: <span class="math display">\[
+\displaylines{Q^*(s, a) = \max_\pi \mathbb{E}\left[\sum_{t \geq 0} \gamma^{t} r_{t} | s_{0}=s, a_{0}=a, \pi\right]
+}
+\]</span> <span class="math inline">\(Q^*\)</span> satisfies the Bellman equation: <span class="math display">\[
+\displaylines{Q^{*}(s, a)=\mathbb{E}_{s^{\prime} \sim \mathcal{E}}\left[r+\gamma \max _{a^{\prime}} Q^{*}\left(s^{\prime}, a^{\prime}\right) | s, a\right]
+}
+\]</span></p>
+<h2 id="solver">Solver</h2>
+<h3 id="value-iteration">Value Iteration</h3>
+<p>Use Bellman equation as an iterative update: <span class="math display">\[
+\displaylines{Q_{i+1}(s, a)=\mathbb{E}\left[r+\gamma \max _{a^{\prime}} Q_i\left(s^{\prime}, a^{\prime}\right) | s, a\right]
+}
+\]</span> <span class="math inline">\(Q_i\)</span> will converge to <span class="math inline">\(Q^*\)</span> as <span class="math inline">\(i\to \infty\)</span></p>
+<p><mark>Problem: Must compute <span class="math inline">\(Q(s,a)\)</span> for every state-action pair.</mark></p>
+<h3 id="q-learning">Q-Learning</h3>
+<p>Use a function approximator to estimate <span class="math inline">\(Q(s,a)\)</span>, e.g. a neural network. <span class="math inline">\(Q(s,a; \theta) \approx Q^*(s,a)\)</span>. Loss function is <span class="math display">\[
+\displaylines{L_{i}\left(\theta_{i}\right)=\mathbb{E}_{s, a \sim \rho(\cdot)}\left[\left(y_{i}-Q\left(s, a ; \theta_{i}\right)\right)^{2}\right]
+}
+\]</span> where <span class="math inline">\(y_i = \mathbb{E}_{s&#39;\sim \mathcal{E}}\left[r+\gamma \max _{a^{\prime}} Q_i\left(s^{\prime}, a^{\prime}\right) | s, a\right]\)</span></p>
+<h3 id="policy-gradients">Policy Gradients</h3>
+<p>Sometimes the <span class="math inline">\(Q\)</span>-function can be very complicated while the policy are much simpler.</p>
+<p>Gradient ascent on policy parameters with rewards: <span class="math display">\[
+\displaylines{\begin{aligned}
+J(\theta) &amp;= \mathbb{E}\left[ \sum_{t\ge 0} \gamma^t r_t | \pi_\theta \right] \\
+&amp;= \mathbb{E}_{\tau\sim p(\tau; \theta)} [r(\tau)] \\
+&amp;= \int_\tau r(\tau) p(\tau; \theta) d\tau
+\end{aligned}
+}
+\]</span> and <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_\theta J(\theta) &amp;= \int_\tau r(\tau) \nabla_\theta p(\tau; \theta) d\tau \\
+&amp;= \int_\tau \big(r(\tau) \nabla_\theta \log p(\tau; \theta)\big) p(\tau; \theta) d\tau \\
+&amp;= \mathbb{E}_{\tau\sim p(\tau; \theta)} [r(\tau) \nabla_\theta \log p(\tau; \theta)]
+\end{aligned}
+}
+\]</span> plug in <span class="math inline">\(p(\tau ; \theta)=\prod_{t \geq 0} p\left(s_{t+1} | s_{t}, a_{t}\right) \pi_{\theta}\left(a_{t} | s_{t}\right)\)</span> to get <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta) \approx \sum_{t\ge 0} r(\tau) \nabla_\theta \log \pi_\theta (a_t | s_t)
+}
+\]</span></p>
+<h3 id="variance-reduction">Variance Reduction</h3>
+<p>The basic of policy gradients is that if a trajectory is good then all its actions were good. In expectation, it averages out. But it also suffers from high variance because credit assignment is really hard.</p>
+<ul>
+<li><p>Push up probabilities of an action seen, only by the cumulative future reward from that state <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t&#39;\ge t} r_{t&#39;} \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
+}
+\]</span></p></li>
+<li><p>Use discount factor <span class="math inline">\(\gamma\)</span> to ignore delayed effects <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t&#39;\ge t} \gamma^{t&#39; - t} r_{t&#39;} \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
+}
+\]</span></p></li>
+<li><p>Introduce a baseline function dependent on the state <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t&#39;\ge t} \gamma^{t&#39; - t} r_{t&#39;} - b(s_t) \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
+}
+\]</span></p></li>
+<li><p>Baseline <span class="math display">\[
+\displaylines{\nabla_\theta J(\theta) \approx \sum_{t\ge 0} \big( Q^{\pi_\theta}(s_t, a_t) - V^{\pi_\theta}(s_t) \big) \nabla_\theta \log \pi_\theta (a_t | s_t)
+}
+\]</span></p></li>
+</ul>
+<h1 id="naive-bayes">Naive Bayes</h1>
+<p>Assumption: <strong>independence</strong> between the features.</p>
+<p>It simplifies the classification task dramatically and work well in document classification and spam filtering.</p>
+<p>Given training data <span class="math inline">\(X = (X_1, X_2, \dots, X_n)\)</span>, the probability of <span class="math inline">\(X\)</span> belonging to class <span class="math inline">\(C_k\)</span> is given by <span class="math display">\[
+\displaylines{\begin{aligned}
+P\left(C_{k} | X_{1}, \ldots, X_{\mathrm{n}}\right) &amp;= \frac{P\left(X_{1}, \ldots, X_{\mathrm{n}} | C_{k}\right) P\left(C_{k}\right)}{P\left(X_{1}, \ldots, X_{\mathrm{n}}\right)} \\
+&amp;=\frac{P\left(X_{1} | C_{k}\right) \ldots P\left(X_{\mathrm{n}} | C_{k}\right) P\left(C_{k}\right)}{P\left(X_{1}, \ldots,X_{\mathrm{n}}\right)}
+\end{aligned}
+}
+\]</span> Ignore the normalize term and use <strong>Maximum A Posteriori (MAP)</strong> classification rule to get the class number <span class="math display">\[
+\displaylines{\hat{y} = \mathop{\arg\max}_x p(C_k) \prod_{i=1}^n p(x_i | C_k)
+}
+\]</span></p>
+<h2 id="distribution">Distribution</h2>
+<p>For discrete value, the Bayes approach is intuitive.</p>
+<p>For continuous value, we can either</p>
+<ul>
+<li>Use <strong>binning</strong> to discretize the feature values to obtain a new set of Bernoulli-distributed features.</li>
+<li>Or assuming it has <strong>Gaussian distribution</strong>.</li>
+</ul>
+<p>To avoid unseen features <span class="math inline">\(p(\mathbf{x} | C_k) = 0\)</span> wipe out all information in the other probabilities, use <strong>Laplacian correction</strong> to add 1 to each case.</p>
+<h1 id="support-vector-machine">Support Vector Machine</h1>
+<p>Alternative view of logistic regression: <span class="math display">\[
+\displaylines{\min _{\theta} C \sum_{i=1}^{m}\left[y^{(i)} \operatorname{cost}_{1}\left(\theta^{T} x^{(i)}\right)+\left(1-y^{(i)}\right) \operatorname{cost}_{0}\left(\theta^{T} x^{(i)}\right)\right]+\frac{1}{2} \sum_{i=1}^{n} \theta_{j}^{2}
+}
+\]</span> An intuitive choice for the cost function is <strong>Hinge loss</strong>. It can be represented as <span class="math display">\[
+\displaylines{\begin{array}{cl}{\operatorname{minimize}} &amp; {(1 / 2)\|a\|_{2}} \\ {\text { subject to }} &amp; {a^{T} x_{i}+b \geq 1, \quad i=1, \ldots, N} \\ {} &amp; {a^{T} y_{i}+b \leq-1, \quad i=1, \ldots, M}\end{array}
+}
+\]</span></p>
+<h2 id="kernels">Kernels</h2>
+<p>Using kernel allows the algorithm to fit the maximum-margin hyperplane in a transformed feature space.</p>
+<p>Given <span class="math inline">\(x\)</span>, compute new feature <span class="math inline">\(f_i\)</span> depending on proximity to landmarks <span class="math inline">\(l^{(1)}, \dots, l^{(n)}\)</span>: <span class="math display">\[
+\displaylines{f_i = \operatorname{similarity}(x, l^{(i)})
+}
+\]</span> Then predict <span class="math inline">\(y = 1\)</span> if <span class="math inline">\(\theta^T f \ge 0\)</span>.</p>
+<p><mark>To make valid kernels, similarity function need to satisfy Mercer's condition.</mark></p>
+<p>Gaussian kernel: <span class="math display">\[
+\displaylines{f_{i}=\exp \left(-\frac{\left\|x-l^{(i)}\right\|^{2}}{2 \sigma^{2}}\right)
+}
+\]</span> where <span class="math inline">\(l^{(i)} = x^{(i)}\)</span>. <mark>Do perform feature scaling before using the Gaussian kernel.</mark></p>
+<h2 id="logistic-regression-vs.-svm">Logistic Regression vs. SVM</h2>
+<p><span class="math inline">\(n=\)</span> number of features, <span class="math inline">\(m=\)</span> number of training examples.</p>
+<p>If <span class="math inline">\(n \gg m\)</span>: Use logistic regression, or SVM without a kernel.</p>
+<p>If <span class="math inline">\(n\)</span> is small, <span class="math inline">\(m\)</span> is intermediate: Use SVM with Gaussian kernel.</p>
+<p>If <span class="math inline">\(n\)</span> is small, <span class="math inline">\(m\)</span> is large: Add more features, then use logistic regression or SVM without a kernel.</p>
+<h1 id="clustering">Clustering</h1>
+<h2 id="hierarchical-clustering">Hierarchical Clustering</h2>
+<ul>
+<li>Agglomerative (bottom up): Each point is a cluster at first and then repeatedly combine the two "nearest" clusters into one.</li>
+<li>Divisive (top down): Start with one cluster and recursively split it.</li>
+</ul>
+<p>To represent a cluster, for Euclidean case, we can simply use the average of points as the centroid. For non-Euclidean case, we can define clustroid to be the point "closest" to other points, where the "closest" can be measured in different ways.</p>
+<p>To find nearest clusters, we can use the distance from the centroid/clustroid, or other measures like the minimum distance between two points from each cluster, the diameter of the merged cluster, or the average distance between points in the cluster.</p>
+<p>Stop merging clusters when <span class="math inline">\(k\)</span> clusters are found (if we know the number of clusters), or criterion is met based on the merging criterion, or there is only 1 cluster left.</p>
+<p><mark>The best choice depends on the shape of clusters.</mark></p>
+<h2 id="k-means-algorithm"><span class="math inline">\(k\)</span>-Means Algorithm</h2>
+<p>Assumes Euclidean space.</p>
+<ul>
+<li>Randomly initialize <span class="math inline">\(K\)</span> cluster centroids <span class="math inline">\(\mu_1, \dots, \mu_K\)</span>.</li>
+<li>Find the index <span class="math inline">\(c^{(i)}\)</span> of cluster centroid closest to point <span class="math inline">\(x^{(i)}\)</span>.</li>
+<li>Update cluster centroids by averaging points assigned to each cluster.</li>
+</ul>
+<p>Optimization objective: <span class="math display">\[
+\displaylines{J = \frac{1}{m} \sum_{i=1}^m \| x^{(i)} - \mu_{c^{(i)}} \|^2
+}
+\]</span></p>
+<p>To choose the value of <span class="math inline">\(k\)</span>:</p>
+<ul>
+<li>Elbow method: try different <span class="math inline">\(k\)</span> and look at the changes in the average distance to centroid. As <span class="math inline">\(k\)</span> increases, the average falls rapidly until right <span class="math inline">\(k\)</span>, then changes little. <strong>A well-defined elbow is rarely seen in practice</strong>.</li>
+<li>Silhouette method: the silhouette value is a measure of how similar an object is to its own cluster compared to other clusters.</li>
+</ul>
+<p>Weakness:</p>
+<ul>
+<li>Sensitive to outliers and noise. Discover and eliminate them beforehand.</li>
+<li>Can only handle numerical data.</li>
+<li>Difficult to detect clusters with non-spherical shapes or widely different sizes/densities.</li>
+</ul>
+<h1 id="decision-tree">Decision Tree</h1>
+<p>Decision trees can be used for classification or regression with a tree structure.</p>
+<ul>
+<li>Select attribute for root node.</li>
+<li>Split instances into subsets</li>
+<li>Repeat recursively for each branch, using only instances that reach the branch.</li>
+</ul>
+<h2 id="purity">Purity</h2>
+<p>To decide which attribute to split on, use <strong>Information Gain</strong> or <strong>Gini Index</strong> to measure the purity of the split.</p>
+<p>Entropy = <span class="math inline">\(-\sum_i p_i \log p_i\)</span> measures the disorder or uncertainty.</p>
+<h3 id="information-gain">Information Gain</h3>
+<p>The difference of entropy after splitting. The higher, the better. <span class="math display">\[
+\displaylines{IG(S, A) = H(S) - \sum_{v\in A} \frac{|S_v|}{|S|} H(S_v)
+}
+\]</span> Use <strong>Information Gain Ratio</strong> instead to prevent "super attributes" being selected as root. <span class="math display">\[
+\displaylines{IGR(A) = \frac{IG(A)}{IV(A)} = IG(A) \bigg/ -\sum_{v} \frac{|S_v|}{|S|} \log\left(\frac{|S_v|}{|S|}\right)
+}
+\]</span></p>
+<h3 id="gini-index">Gini Index</h3>
+<p>The smaller, the better. <span class="math display">\[
+\displaylines{G_i = 1 - \sum_{k=1}^n p_{ik}^2
+}
+\]</span> where <span class="math inline">\(p_{ik}\)</span> is the ratio of class <span class="math inline">\(k\)</span> instances among the training instances in the <span class="math inline">\(i\)</span>-th node</p>
+<h2 id="pruning">Pruning</h2>
+<p>Change the model by deleting the child nodes of a branch node to prevent overfitting.</p>
+<ul>
+<li>Pre-pruning: stop the growth early if a split would result in the purity below a threshold.</li>
+<li>Post-pruning: remove non-significant branches form a fully grown tree. Replace subtree by a leaf node labeled with the most frequent class.</li>
+</ul>
+<p><mark>Post-pruning is more successful in practice because it is not easy to precisely estimate when to stop growing the tree.</mark></p>
+<h1 id="ensemble-learning">Ensemble Learning</h1>
+<p>Multiple learners are trained and combined to solve the same problem.</p>
+<ul>
+<li>Bagging (bootstrap aggregating): build several learners independently and then to average their predictions.</li>
+<li>Boosting: base learners are built sequentially and one tries to reduce the bias of the combined learner.</li>
+</ul>
+<h2 id="bagging">Bagging</h2>
+<ul>
+<li>Sampling <strong>with replacement</strong> from the training dataset.</li>
+<li>Train base learners on each sample separately.</li>
+<li>Average predictions from multiple base learners.
+<ul>
+<li>Majority voting for classification</li>
+<li>Averaging for regression</li>
+</ul></li>
+</ul>
+<p>Often used with tree, an extension is <strong>random forest</strong>.</p>
+<h2 id="boosting">Boosting</h2>
+<p>Extremely useful in <strong>computer vision</strong>.</p>
+<ul>
+<li>Train a base learner on the entire dataset.</li>
+<li>Find the data that are incorrectly predicted and assigned it with more weight.</li>
+<li>Train the next learner on the weighted dataset.</li>
+<li>Repeat the process to sequentially train base learners.</li>
+<li>Combine the base learners using a weighted average. More weight to those with better performance.</li>
+</ul>
+<p><strong>AdaBoost</strong> computes the weight by <span class="math display">\[
+\displaylines{\alpha_t = \frac{1}{2} \ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right)
+}
+\]</span> where <span class="math inline">\(\epsilon_t\)</span> is the error rate.</p>
+<h1 id="pca">PCA</h1>
+<p>PCA (Principal Component Analysis) is the most popular algorithm in <strong>dimensionality reduction</strong>. It is widely used for</p>
+<ol type="1">
+<li>Data compression: Reduce memory. Speed up learning algorithm.</li>
+<li>Data visualization.</li>
+<li>Feature extraction.</li>
+</ol>
+<p><mark>Before you implement PCA, first try running whatever you want to do with the original data/raw data. Only if that doesn't do what you want, then implement PCA.</mark></p>
+<p>There are two points of view leading to the same result of PCA, one is to <strong>minimize the reconstruction error</strong> with SVD:</p>
+<ul>
+<li>Perform feature scaling/mean normalization to get <span class="math inline">\(X\)</span></li>
+<li>SVD: <span class="math inline">\(X = U \Sigma V^T\)</span></li>
+<li>The reduced PCA projections will be given by <span class="math inline">\(Z = X V_{:, 1:k}\)</span></li>
+<li>Reconstruct data by <span class="math inline">\(\hat{X} = V_{:, 1:k}^T Z\)</span></li>
+</ul>
+<p>Here <span class="math inline">\(V\)</span> are <strong>principal directions</strong> and <span class="math inline">\(XV = US\)</span> are <strong>principal components</strong>.</p>
+<p>The other is to <strong>maximize the variance</strong> of the projected data.</p>
+<ul>
+<li>Perform feature scaling/mean normalization to get <span class="math inline">\(X\)</span></li>
+<li>Compute the covariance matrix: <span class="math inline">\(S = X^T X\)</span></li>
+<li>Eigen decomposition: <span class="math inline">\(S = V \Sigma^2 V\)</span></li>
+<li>Same as SVD</li>
+</ul>
+<h1 id="gradient-descent-2">Gradient Descent</h1>
+<h2 id="variants">Variants</h2>
+<ul>
+<li>Batch gradient descent: Use all examples in each update. <strong>Not suitable for huge datasets</strong>.</li>
+<li>Stochastic gradient descent: Use 1 example in each update. <strong>The randomness is good to escape from local optima</strong>. <strong>But it can never settle at the minimum</strong>. One solution is to gradually reduce the learning rate.</li>
+<li>Mini-batch gradient descent: Take the best of both batch GD and SGD.</li>
+</ul>
+<h2 id="momentum">Momentum</h2>
+<p>GD can get trapped in local minima or saddle points. Momentum helps accelerate SGD in the relevant direction and dampens oscillations. <span class="math display">\[
+\displaylines{\begin{aligned}
+v_t &amp;= \beta v_{t-1} + \eta \nabla_\theta J(\theta) \\
+\theta_t &amp;= \theta_{t-1} - v_t
+\end{aligned}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(v\)</span> : plays the role of velocity.</li>
+<li><span class="math inline">\(\beta\)</span> : plays the role of friction. Must be between 0 to 1, typical choice is about 0.9</li>
+</ul>
+<h2 id="adam">Adam</h2>
+<p>Adam (Adaptive Moment Estimation) automatically computes adaptive learning rates for each parameter.</p>
+<ul>
+<li><p>Compute gradient <span class="math inline">\(g_t\)</span></p></li>
+<li><p>Update biased 1st moment estimate <span class="math display">\[
+\displaylines{m_{t} = \beta_{1} m_{t-1}+\left(1-\beta_{1}\right) g_{t}
+}
+\]</span></p></li>
+<li><p>Update biased 2nd raw moment estimate <span class="math display">\[
+\displaylines{v_{t} = \beta_{2} v_{t-1}+\left(1-\beta_{2}\right) g_{t}^{2}
+}
+\]</span></p></li>
+<li><p>Update bias-corrected 1st moment estimate <span class="math display">\[
+\displaylines{\hat{m}_{t} = \frac{m_{t}}{1-\beta_{1}^t}
+}
+\]</span></p></li>
+<li><p>Update bias-corrected 2nd raw moment estimate <span class="math display">\[
+\displaylines{\hat{v}_{t} = \frac{v_{t}}{1-\beta_{2}^t}
+}
+\]</span></p></li>
+<li><p>Update parameters <span class="math display">\[
+\displaylines{w_{t} =w_{t-1}-\eta \frac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}
+}
+\]</span></p></li>
+</ul>
+<p><mark>Default choice to use, especially for sparse data sets.</mark></p>
+<h2 id="second-order">Second-Order</h2>
+<ul>
+<li>Quasi-Newton methods (BGFS most popular): Approximate inverse Hessian with rank 1 updates over time.</li>
+<li>L-BFGS: Does not form the full inverse Hessian. Usually works very well in full batch, deterministic mode.</li>
+</ul>
+<h1 id="evaluation">Evaluation</h1>
+<h2 id="validation-set">Validation Set</h2>
+<p>Separate the dataset to training/validation/test sets, use the validation set for model selection and hyperparameter tuning.</p>
+<h3 id="hold-out-validation">Hold-Out Validation</h3>
+<p>For relatively small dataset, split the data to <span class="math inline">\(6:2:2\)</span>.</p>
+<p>For big data set, split the data to <span class="math inline">\(98:1:1\)</span>.</p>
+<h3 id="k-fold-cross-validation">K-Fold Cross Validation</h3>
+<p>For small dataset, divide the training set into <span class="math inline">\(k\)</span> equal size subsets. Each time, one of the <span class="math inline">\(k\)</span> subsets is used as the validation set. Repeat this process for <span class="math inline">\(k\)</span> times and average the errors.</p>
+<h2 id="hyperparameter-searching">Hyperparameter Searching</h2>
+<ul>
+<li>Grid search: Brutal force to search every combination of hyperparameters.</li>
+<li>Random search: Randomly sample and narrow the range. <strong>More effective in high-dimensional spaces.</strong></li>
+<li>Bayesian Optimization:</li>
+</ul>
+<h2 id="overunder-fitting">Over/Under Fitting</h2>
+<p>Plot the learning curves for test and validation sets for debugging.</p>
+<ul>
+<li>High Bias: Underfit. Both training/validation error will be high.
+<ul>
+<li>Get additional features</li>
+<li>More complex model</li>
+<li>Better optimization algorithm such as Adam</li>
+</ul></li>
+<li>Use ensemble learning — Boosting
+<ul>
+<li>Decrease <span class="math inline">\(\lambda\)</span></li>
+</ul></li>
+<li>High Variance: Overfit. Low training error, high validation error.
+<ul>
+<li>Get more training examples</li>
+<li>Try smaller sets of features</li>
+<li>Use ensemble learning — Bagging &amp; Random Forest</li>
+<li>Increase <span class="math inline">\(\lambda\)</span></li>
+</ul></li>
+</ul>
+<h2 id="metrics">Metrics</h2>
+<h3 id="classification-1">Classification</h3>
+<p>The <strong>confusion matrix</strong>:</p>
+<p><img src="https://i.imgur.com/A2oVjho.png" alt="Confusion Matrix" /></p>
+<ul>
+<li><p>Accuracy: <span class="math display">\[
+\displaylines{\frac{\text{TP + TN}}{\text{TP + FN + FP + TN}}
+}
+\]</span></p></li>
+<li><p>Precision: <span class="math display">\[
+\displaylines{\frac{\text{TP}}{\text{TP + FP}}
+}
+\]</span></p></li>
+<li><p>Recall: <span class="math display">\[
+\displaylines{\frac{\text{TP}}{\text{TP + FN}}
+}
+\]</span></p></li>
+</ul>
+<p>How to choose the trade-off between precision and recall depends on the actual problem.</p>
+<p>Single metric:</p>
+<ul>
+<li><p>F score: <span class="math display">\[
+\displaylines{F_1 = 2\frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
+}
+\]</span></p></li>
+<li><p>AUC (area under the curve): ROC curve plots False Positive Rate TP / (TP + FN) vs. True Positive Rate FP / (FP + TN) at different classification thresholds.</p></li>
+</ul>
+<h3 id="regression">Regression</h3>
+<ul>
+<li>MAE (Mean Absolute Error): <span class="math inline">\(\displaystyle \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|\)</span></li>
+<li>MSE (Mean Squared Error): <span class="math inline">\(\displaystyle \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span></li>
+<li>RMSE (Root Mean Squared Error): <span class="math inline">\(\displaystyle \frac{1}{n} \sqrt{\sum_{i=1}^n (y_i - \hat{y}_i)^2}\)</span></li>
+<li>MAPE (Mean Absolute Percentage Error): <span class="math inline">\(\displaystyle \frac{1}{n} \sum_{i=1}^n \left| \frac{y_i - \hat{y}_i}{y_i} \right|\)</span></li>
+<li><span class="math inline">\(R^2\)</span> (coefficient of determination): <span class="math inline">\(\displaystyle \frac{\left( \sum (x_i - \bar{x}) (y - \bar{y})\right)^2}{\sum (x_i - \bar{x})^2 (y - \bar{y})^2} = \frac{\sum_i (\hat{y}_i - \bar{y})^2}{\sum_i (\hat{y}_i - \bar{y})^2 + \sum_i (\hat{y}_i - y_i)^2}\)</span></li>
+<li>Adjusted <span class="math inline">\(R^2\)</span> (Prevent overfitting): <span class="math inline">\(\displaystyle R _{adj}^2 = 1-\frac{(1-R^2) (n-1)}{n-k-1}\)</span> where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(k\)</span> the total number of explanatory variables (not including the constant term).</li>
+</ul>
+<p>lstm</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/101/" rel="tag"><i class="fa fa-tag"></i> 101</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/convex-optimization/" rel="prev" title="Convex Optimization">
+                  <i class="fa fa-chevron-left"></i> Convex Optimization
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/matrix-derivative/" rel="next" title="Matrix Derivatives">
+                  Matrix Derivatives <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

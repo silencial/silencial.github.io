@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="In combinatorial mathematics, the Catalan numbers form a sequence of natural numbers that occur in various counting problems, often involving recursively-defined objects.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Catalan Numbers">
+<meta property="og:url" content="https://silencial.github.io/catalan-numbers/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="In combinatorial mathematics, the Catalan numbers form a sequence of natural numbers that occur in various counting problems, often involving recursively-defined objects.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-12-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-12-05T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Discrete Math">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/catalan-numbers/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;catalan-numbers&#x2F;&quot;,&quot;path&quot;:&quot;catalan-numbers&#x2F;&quot;,&quot;title&quot;:&quot;Catalan Numbers&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Catalan Numbers | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#paths-and-catalan-numbers"><span class="nav-number">1.</span> <span class="nav-text">Paths and Catalan Numbers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#well-formed-sequences-of-parentheses"><span class="nav-number">2.</span> <span class="nav-text">Well-Formed Sequences of Parentheses</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stack-permutations"><span class="nav-number">3.</span> <span class="nav-text">Stack Permutations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#well-parenthesized-products"><span class="nav-number">4.</span> <span class="nav-text">Well-Parenthesized Products</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#full-binary-trees"><span class="nav-number">5.</span> <span class="nav-text">Full Binary Trees</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#triangulations-of-a-convex-polygon"><span class="nav-number">6.</span> <span class="nav-text">Triangulations of a Convex Polygon</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/catalan-numbers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Catalan Numbers
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-05T00:00:00+00:00">2018-12-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>6.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>15 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>In combinatorial mathematics, the Catalan numbers form a sequence of natural numbers that occur in various counting problems, often involving recursively-defined objects.</p>
+<span id="more"></span>
+<hr />
+<h1 id="paths-and-catalan-numbers">Paths and Catalan Numbers</h1>
+<p>Suppose a path in the plane from the origin to the point <span class="math inline">\((2n,0)\)</span> whose steps are the line segments between <span class="math inline">\((i-1,s_{i-1})\)</span> and <span class="math inline">\((i,s_i)\)</span>, for <span class="math inline">\(i\)</span>. The <span class="math inline">\(i\)</span>-th step in this path has slope <span class="math inline">\(s_i-s_{i-1}=x_i\in\{1,-1\}\)</span>.</p>
+<p>We call a path from <span class="math inline">\((0,0)\)</span> to <span class="math inline">\((2n,0)\)</span> <strong>nonnegative</strong> if all <span class="math inline">\(s_i\ge 0\)</span> and <strong>positive</strong> if <span class="math inline">\(s_i&gt;0\)</span> for <span class="math inline">\(i=1,2,\dots,2n-1\)</span>. The number of nonnegative paths and positive paths from the origin to the point <span class="math inline">\((2n,0)\)</span> are both Catalan numbers: <span class="math display">\[
+\displaylines{c_n=\dfrac{1}{n+1}C(2n,n)
+}
+\]</span> The number of positive paths from the origin to <span class="math inline">\((2n,0)\)</span> are <span class="math inline">\(c_{n-1}\)</span>, the number of nonnegative paths are <span class="math inline">\(c_n\)</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">\((s_0,s_1,\dots,s_{2n})\)</span> be the partial sum sequence of a positive path <span class="math inline">\(P\)</span>. Then <span class="math inline">\(s_0=s_{2n}=0\)</span> and <span class="math inline">\(s_i\ge 1\)</span> for <span class="math inline">\(i=1,2,\dots,2n-1\)</span>. Let <span class="math inline">\(x_i=s_i-s_{i-1}\in\{1,-1\}\)</span>. Since <span class="math inline">\(P\)</span> must pass through the point <span class="math inline">\((1,1)\)</span> and <span class="math inline">\((2n-1,1)\)</span>. If we omit the first and last terms from the slope sequence, we have a sequence <span class="math inline">\(x&#39;\)</span> that has <span class="math inline">\(n-1\)</span> <span class="math inline">\(1\)</span>s and <span class="math inline">\(n-1\)</span> <span class="math inline">\(-1\)</span>s. Further, the partial sums for <span class="math inline">\(x&#39;\)</span> satisfy <span class="math display">\[
+\displaylines{\begin{aligned}
+s_i&#39;&amp;=x_1&#39;+x_2&#39;+\cdots+x_i&#39; \\
+&amp;=x_2+x_3+\cdots+x_{i+1} \\
+&amp;=s_{i+1}-1 \\
+&amp;\ge 0
+\end{aligned}
+}
+\]</span> for <span class="math inline">\(0\le i \le 2n-2\)</span>. Thus the positive path <span class="math inline">\(P\)</span> from the origin to <span class="math inline">\((2n,0)\)</span> corresponds to a nonnegative path <span class="math inline">\(P&#39;\)</span> from the origin to <span class="math inline">\((2n-2,0)\)</span>.</p>
+<p>A positive path <span class="math inline">\(P\)</span> from the origin to <span class="math inline">\((2n,0)\)</span> is determined uniquely by its segment <span class="math inline">\(P&#39;\)</span> from <span class="math inline">\((1, 1)\)</span> to <span class="math inline">\((2n − 1,1)\)</span>, which lies entirely above the <span class="math inline">\(x\)</span>-axis. The number of such paths <span class="math inline">\(P&#39;\)</span> is the difference between <span class="math inline">\(C(2n−2,n−1)\)</span>, the total number of paths, and the number of paths <span class="math inline">\(Q\)</span> that meet the <span class="math inline">\(x\)</span>-axis.</p>
+<p>Consider a path <span class="math inline">\(Q^*\)</span> from <span class="math inline">\((1,-1)\)</span> to <span class="math inline">\((2n-1,1)\)</span>. Every such path must cross the <span class="math inline">\(x\)</span>-axis. We can obtain the path <span class="math inline">\(Q\)</span> from <span class="math inline">\(Q^*\)</span> by reflecting the segment of <span class="math inline">\(Q^*\)</span> from <span class="math inline">\((1,-1)\)</span> to its first point on the <span class="math inline">\(x\)</span>-axis. Since <span class="math inline">\(Q^*\)</span> must have two more increasing steps than decreasing steps, the number of such paths is <span class="math inline">\(C(2n-1,n-2)\)</span>.</p>
+<p>Now we have the number of <span class="math inline">\(P\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}
+a_n&amp;=C(2n-2,n-1)-C(2n-2,n-2) \\
+&amp;=c_{n-1}
+\end{aligned}
+}
+\]</span></p>
+<h1 id="well-formed-sequences-of-parentheses">Well-Formed Sequences of Parentheses</h1>
+<p>A sequence of parentheses is <strong>well-formed</strong> if and only if it can be derived by a finite sequence of the following rules:</p>
+<ul>
+<li>The empty sequence is well-formed.</li>
+<li>If <span class="math inline">\(A\)</span> is well-formed, then <span class="math inline">\((A)\)</span> is well-formed.</li>
+<li>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are well-formed, then <span class="math inline">\(AB\)</span> is well-formed.</li>
+</ul>
+<p>We can easily see the number of well-formed sequences of parentheses of length <span class="math inline">\(2n\)</span> is the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<h1 id="stack-permutations">Stack Permutations</h1>
+<p>A <strong>stack</strong> is a list which can only be changed by insertions or deletions at one end, called the top of the list. When characters are individually inserted and deleted from the stack, the last one inserted must be the first one deleted from the stack (lifo). An insertion to the top of the stack is called a <strong>push</strong>; a deletion from the top is called a <strong>pop</strong>.</p>
+<p>A sequence of pushes and pops is <strong>admissible</strong> if the sequence has an equal number <span class="math inline">\(n\)</span> of pushes and pops, and at each stage the sequence has at least as many pushes as pops. The number of admissible sequences of pushes and pops of length <span class="math inline">\(2n\)</span> is the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<p>After <span class="math inline">\(n\)</span> pushes and <span class="math inline">\(n\)</span> pops, the output string is a permutation of <span class="math inline">\(N\)</span> called a <strong>stack permutation</strong>. The number of stack permutations is also the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<h1 id="well-parenthesized-products">Well-Parenthesized Products</h1>
+<p>Consider a binary operation which we will refer to as multiplication. We assume that the operation is neither commutative nor associative. Then a product <span class="math inline">\(x_1x_2\cdots x_{n+1}\)</span> is defined only after parentheses have been suitably inserted.</p>
+<p>A product is <strong>well-parenthesized</strong> if it can be obtained recursively by a finite sequence of the following rules:</p>
+<ul>
+<li>Each single term <span class="math inline">\(x\)</span> is well-parenthesized.</li>
+<li>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are well-parenthesized, then <span class="math inline">\((AB)\)</span> is well-parenthesized.</li>
+</ul>
+<p>We can see that if the <span class="math inline">\(n+1\)</span> variables are deleted from a well-parenthesized product, the <span class="math inline">\(n\)</span> pairs of parentheses that remain must be a well-formed sequence of parentheses, but not the other way around.</p>
+<p>The number of well-parenthesized products of <span class="math inline">\(n+1\)</span> variables is the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<p><strong>Proof:</strong> A well-parenthesized product forms string <span class="math inline">\(p\)</span> of length <span class="math inline">\(3n+1\)</span> with three types of characters: <span class="math inline">\(n\)</span> left parentheses, <span class="math inline">\(n+1\)</span> variables, and <span class="math inline">\(n\)</span> right parentheses. Set another string <span class="math inline">\(q\)</span> of length <span class="math inline">\(2n\)</span> by deleting the last variable <span class="math inline">\(x_{n+1}\)</span> and the <span class="math inline">\(n\)</span> right parentheses. We can show that there is one-to-one correspondence between <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. Also, the number of left parentheses in the string <span class="math inline">\(q\)</span> is at least as large as the number of variables. By defining left parenthesis as <span class="math inline">\(1\)</span> and variable <span class="math inline">\(-1\)</span>, we transform this problem to partial sums and get the conclusion.</p>
+<h1 id="full-binary-trees">Full Binary Trees</h1>
+<p>A full binary tree is a rooted tree in which each internal vertex has exactly two children. Thus, a full binary tree with <span class="math inline">\(n\)</span> internal vertices have <span class="math inline">\(2n\)</span> edges, <span class="math inline">\(2n+1\)</span> vertices, and <span class="math inline">\(n+1\)</span> leaves.</p>
+<p>The number of full binary trees with <span class="math inline">\(n\)</span> internal vertices is the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<p><strong>Proof:</strong> Suppose we label the leaves of a full binary tree <span class="math inline">\(T\)</span> with <span class="math inline">\(x_1,x_2,\dots,x_{n+1}\)</span>. Then <span class="math inline">\(T\)</span> recursively defines a well-parenthesized product of <span class="math inline">\(x_1,x_2,\dots,x_{n+1}\)</span> by the following rule:</p>
+<ul>
+<li>Labeling rule: If <span class="math inline">\(v\)</span> is an internal vertex with left child <span class="math inline">\(a\)</span> and right child <span class="math inline">\(b\)</span>, having labels <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, respectively, then label <span class="math inline">\(v\)</span> with <span class="math inline">\((AB)\)</span>.</li>
+</ul>
+<p>The label on the root of the tree will be the well-parenthesized product.</p>
+<h1 id="triangulations-of-a-convex-polygon">Triangulations of a Convex Polygon</h1>
+<p>An <span class="math inline">\(n\)</span>-gon (<span class="math inline">\(n\ge 3\)</span>) in the plane is a polygon <span class="math inline">\(P\)</span> with <span class="math inline">\(n\)</span> vertices and <span class="math inline">\(n\)</span> sides. A <strong>diagonal</strong> of <span class="math inline">\(P\)</span> is a line segment joining two nonadjacent vertices of <span class="math inline">\(P\)</span>. An <span class="math inline">\(n\)</span>-gon <span class="math inline">\(P\)</span> is <strong>convex</strong> if every diagonal lies wholly in the interior of <span class="math inline">\(P\)</span>.</p>
+<p>Let <span class="math inline">\(D\)</span> be a set of diagonals, no two of which meet in the interior of a convex <span class="math inline">\(n\)</span>-gon <span class="math inline">\(P\)</span>, that partitions the interior of <span class="math inline">\(P\)</span> into triangles. The sides of the triangles are either diagonals in <span class="math inline">\(D\)</span> or sides of <span class="math inline">\(P\)</span>. The set <span class="math inline">\(T\)</span> of triangles obtained in this way is called a <strong>triangulation</strong> of <span class="math inline">\(P\)</span>.</p>
+<p>A triangulation of a convex <span class="math inline">\(n\)</span>-gon has <span class="math inline">\(n-2\)</span> triangles determined by <span class="math inline">\(n-3\)</span> diagonals. Every triangulation <span class="math inline">\(T\)</span> of a convex <span class="math inline">\((n+2)\)</span>-gon <span class="math inline">\(P\)</span> has at least two <strong>outer triangles</strong> when <span class="math inline">\(n\ge 2\)</span>. An outer triangle is made of two adjacent sides of <span class="math inline">\(P\)</span> and one diagonal of <span class="math inline">\(D\)</span>.</p>
+<p>The number of triangulations of a convex <span class="math inline">\((n + 2)\)</span>-gon is the Catalan number <span class="math inline">\(c_n\)</span>.</p>
+<p><strong>Proof:</strong> Consider the string <span class="math inline">\(s_1s_2\cdots s_{n+1}\)</span> formed by taking the <span class="math inline">\(n+1\)</span> sides of <span class="math inline">\(P\)</span> other than <span class="math inline">\(s_0\)</span> in order around <span class="math inline">\(P\)</span>. Then the product <span class="math inline">\(s_1s_2\cdots s_{n+1}\)</span> is well-parenthesized by a triangulation of <span class="math inline">\(P\)</span>. We can always find an outer triangle that does not have <span class="math inline">\(s_0\)</span>, and replace sides <span class="math inline">\(s_i,s_{i+1}\)</span> of <span class="math inline">\(P\)</span> by the diagonal labeled <span class="math inline">\((s_is_{i+1})\)</span>. Now we have a convex <span class="math inline">\((n+1)\)</span>-gon and by the inductive hypothesis we can establish a one-to-one correspondence.</p>
+<p></br> <strong>Reference:</strong></p>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Catalan_number">Catalan Number</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+              <a href="/tags/Discrete-Math/" rel="tag"><i class="fa fa-tag"></i> Discrete Math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/stirling-numbers/" rel="prev" title="Stirling Numbers">
+                  <i class="fa fa-chevron-left"></i> Stirling Numbers
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ramsey-numbers/" rel="next" title="Ramsey Numbers">
+                  Ramsey Numbers <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

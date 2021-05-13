@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Find the smallest integer \(n\) that there must be either three mutual friends or three mutual strangers among \(n\) people, suppose each pair of people are either friends or strangers?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ramsey Numbers">
+<meta property="og:url" content="https://silencial.github.io/ramsey-numbers/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Find the smallest integer \(n\) that there must be either three mutual friends or three mutual strangers among \(n\) people, suppose each pair of people are either friends or strangers?">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-12-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-12-13T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Discrete Math">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://silencial.github.io/ramsey-numbers/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;ramsey-numbers&#x2F;&quot;,&quot;path&quot;:&quot;ramsey-numbers&#x2F;&quot;,&quot;title&quot;:&quot;Ramsey Numbers&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Ramsey Numbers | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ramsey-numbers"><span class="nav-number">1.</span> <span class="nav-text">Ramsey Numbers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generalizations"><span class="nav-number">2.</span> <span class="nav-text">Generalizations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#schurs-theorem"><span class="nav-number">3.</span> <span class="nav-text">Schur&#39;s Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convex-sets"><span class="nav-number">4.</span> <span class="nav-text">Convex Sets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#graph-ramsey-numbers"><span class="nav-number">5.</span> <span class="nav-text">Graph Ramsey Numbers</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/ramsey-numbers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ramsey Numbers
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-12-13 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-13T00:00:00+00:00">2018-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>7.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>19 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Find the smallest integer <span class="math inline">\(n\)</span> that there must be either three mutual friends or three mutual strangers among <span class="math inline">\(n\)</span> people, suppose each pair of people are either friends or strangers?</p>
+<span id="more"></span>
+<hr />
+<h1 id="ramsey-numbers">Ramsey Numbers</h1>
+<p>The answer to the above problem is <span class="math inline">\(6\)</span>. To prove it, we first rephrase this problem as an edge-coloring problem: Show that if every edge of <span class="math inline">\(K_6\)</span> is colored red or green, then there must be either a red triangle or a green triangle.</p>
+<p>The proof is a simple application of the pigeonhole principle. Pick a vertex <span class="math inline">\(v\)</span> in <span class="math inline">\(K_6\)</span>, there are at least three red edges or three green edges incident on <span class="math inline">\(v\)</span>. Assuming that <span class="math inline">\(v\)</span> has at least three red edges, say <span class="math inline">\(\{v,a\},\{v,b\}\)</span> and <span class="math inline">\(\{v,c\}\)</span>, we examine the edges joining <span class="math inline">\(a,b,c\)</span>. If any of these three edges is red, we obtain a red triangle. If non of the three edges is red, then we have a green triangle joining <span class="math inline">\(a,b,c\)</span>.</p>
+<p>We extend this idea to be a more general definition:</p>
+<ul>
+<li>Let <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> be integers such that <span class="math inline">\(i\ge 2\)</span> and <span class="math inline">\(j\ge 2\)</span>. A positive integer <span class="math inline">\(m\)</span> has the <span class="math inline">\((i,j)\)</span>-Ramsey property if <span class="math inline">\(K_m\)</span> contains either a red <span class="math inline">\(K_i\)</span> ore a green <span class="math inline">\(K_j\)</span> as a subgraph, no matter how the edges of <span class="math inline">\(K_m\)</span> are colored red or green.</li>
+<li>The Ramsey number <span class="math inline">\(R(i,j)\)</span> is the smallest positive integer that has the <span class="math inline">\((i,j)\)</span>-Ramsey property.</li>
+</ul>
+<p></br></p>
+<p>We can see some properties of the Ramsey Numbers:</p>
+<ol type="1">
+<li><span class="math inline">\(R(2,k)=k\)</span>.</li>
+<li><span class="math inline">\(R(i,j)=R(j,i)\)</span>.</li>
+<li>If <span class="math inline">\(m\)</span> has the <span class="math inline">\((i,j)\)</span>-Ramsey property, then so does every integer <span class="math inline">\(n&gt;m\)</span>.</li>
+<li>If <span class="math inline">\(m\)</span> does not have the <span class="math inline">\((i,j)\)</span>-Ramsey property, then neither does integer <span class="math inline">\(n&lt;m\)</span>.</li>
+<li>If <span class="math inline">\(i_1&gt;i_2\)</span>, then <span class="math inline">\(R(i_1,j)\ge R(i_2,j)\)</span>.</li>
+</ol>
+<p>We also give an upper bound for <span class="math inline">\(R(i,j)\)</span>. If <span class="math inline">\(i\ge 3\)</span> and <span class="math inline">\(j\ge 3\)</span>, then <span class="math display">\[
+\displaylines{R(i,j)\le R(i,j-1)+R(i-1,j)
+}
+\]</span> <strong>Proof:</strong> Let <span class="math inline">\(m=R(i,j-1)+R(i-1,j)\)</span>. Suppose the edges of <span class="math inline">\(K_m\)</span> have been colored red or green and <span class="math inline">\(v\)</span> is a vertex of <span class="math inline">\(K_m\)</span>. Partition the vertex set <span class="math inline">\(V\)</span> into two subsets:</p>
+<ul>
+<li><span class="math inline">\(A=\)</span> all vertices adjacent to <span class="math inline">\(v\)</span> along a red edge</li>
+<li><span class="math inline">\(B=\)</span> all vertices adjacent to <span class="math inline">\(v\)</span> along a green edge</li>
+</ul>
+<p>Since <span class="math display">\[
+\displaylines{|A|+|B|=|A\cup B|=m-1=R(i,j-1)+R(i-1,j)-1
+}
+\]</span> either <span class="math inline">\(|A|\ge R(i-1,j)\)</span> or <span class="math inline">\(|B|\ge R(i,j-1)\)</span>. Consider the case where <span class="math inline">\(|A|\ge R(i-1,j)\)</span>. We call the complete subgraph on the vertices in <span class="math inline">\(A\)</span> as <span class="math inline">\(K_{|A|}\)</span>. Since <span class="math inline">\(|A|\ge R(i-1,j)\)</span>, <span class="math inline">\(K_{|A|}\)</span> has either a red <span class="math inline">\(K_{i-1}\)</span> or a green <span class="math inline">\(K_j\)</span>. If we have a red <span class="math inline">\(K_{i-1}\)</span>, we add the red edges joining <span class="math inline">\(v\)</span> to the vertices of <span class="math inline">\(K_{i-1}\)</span> to obtain a red <span class="math inline">\(K_i\)</span>. Thus, <span class="math inline">\(K_{|A|}\)</span>, and hence <span class="math inline">\(K_m\)</span>, has either a red <span class="math inline">\(K_i\)</span> or a green <span class="math inline">\(K_j\)</span>.</p>
+<p>Furthermore, if <span class="math inline">\(R(i,j-1)\)</span> and <span class="math inline">\(R(i-1,j)\)</span> are even, then <span class="math inline">\(R(i,j)\le R(i,j-1)+R(i-1,j)-1\)</span>.</p>
+<p>Another upper bound for Ramsey number is <span class="math inline">\(R(i,j)\le C(i+j-2,i-1)\)</span>.</p>
+<p></br></p>
+<p>The list of Ramsey numbers whose exact values are known is very short</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">i/j</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">43~48</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">35~41</td>
+<td style="text-align: center;">58~87</td>
+<td style="text-align: center;">102~165</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">49~61</td>
+<td style="text-align: center;">80~143</td>
+<td style="text-align: center;">115~298</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">59~84</td>
+<td style="text-align: center;">101~216</td>
+<td style="text-align: center;">134~495</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">73~115</td>
+<td style="text-align: center;">133~316</td>
+<td style="text-align: center;">183~780</td>
+</tr>
+</tbody>
+</table>
+<h1 id="generalizations">Generalizations</h1>
+<p>The Ramsey numbers discussed in the last section represent only one family of Ramsey numbers. In this section we will briefly study some other families of these numbers.</p>
+<p>Suppose <span class="math inline">\(i_1,i_2,\dots,i_n\)</span> are positive integers, where each <span class="math inline">\(i_j\ge 2\)</span>. A positive integer <span class="math inline">\(m\)</span> has the <span class="math inline">\((i_1,\dots,i_n;2)\)</span>-Ramsey property if, given <span class="math inline">\(n\)</span> colors <span class="math inline">\(1,2,\dots,n\)</span>, <span class="math inline">\(K_m\)</span> has a subgraph <span class="math inline">\(K_{i_j}\)</span> of color <span class="math inline">\(j\)</span>, for some <span class="math inline">\(j\)</span>, no matter how the edges of <span class="math inline">\(K_m\)</span> are colored with the <span class="math inline">\(n\)</span> colors.</p>
+<p>The smallest positive with the <span class="math inline">\((i_1,\dots,i_n;2)\)</span>-Ramsey property is called the Ramsey number <span class="math inline">\(R(i_1,\dots,i_n;2)\)</span>.</p>
+<p>Very little is also known about the number <span class="math inline">\(R(i_1,\dots,i_n;2)\)</span> if <span class="math inline">\(n\ge 3\)</span>. However, if <span class="math inline">\(i_j=2\)</span> for all <span class="math inline">\(j\)</span>, then <span class="math display">\[
+\displaylines{R(2,\dots,2;2)=2
+}
+\]</span> </br></p>
+<p>We can also represent Ramsey numbers without graph but only in terms of a set and properties of a certain collection of its subsets.</p>
+<p>Suppose that <span class="math inline">\(i_1,i_2,\dots,i_n,r\)</span> are positive integers where <span class="math inline">\(n\ge 2\)</span> and each <span class="math inline">\(i_j\ge r\)</span>. A positive integer <span class="math inline">\(m\)</span> has the <span class="math inline">\((i_1,\dots,i_n;r)\)</span>-Ramsey property if the following statement is true:</p>
+<p>If <span class="math inline">\(S\)</span> is a set of size <span class="math inline">\(m\)</span> and the <span class="math inline">\(r\)</span>-element subsets of <span class="math inline">\(S\)</span> are partitioned into <span class="math inline">\(n\)</span> collections <span class="math inline">\(C_1,\dots,C_n\)</span>, then for some <span class="math inline">\(j\)</span> there is a subset of <span class="math inline">\(S\)</span> of size <span class="math inline">\(i_j\)</span> such that each of its <span class="math inline">\(r\)</span>-element subsets belong to <span class="math inline">\(C_j\)</span>.</p>
+<p>The Ramsey number <span class="math inline">\(R(i_1,\dots,i_n;r)\)</span> is the smallest positive integer that has the <span class="math inline">\((i_1,\dots,i_n;r)\)</span>-Ramsey property. If <span class="math inline">\(r=1\)</span>, this number is easy to find: <span class="math display">\[
+\displaylines{R(i_1,\dots,i_n;1)=i_1+\dots+i_n-(n-1)
+}
+\]</span> <strong>Proof:</strong> Let <span class="math inline">\(i_1+\dots+i_n-(n-1)=m\)</span>. Take a set <span class="math inline">\(S\)</span> of size <span class="math inline">\(m\)</span> and divide its <span class="math inline">\(1\)</span>-element subsets into <span class="math inline">\(n\)</span> classes <span class="math inline">\(C_1,\dots,C_n\)</span>. There must be a subscript <span class="math inline">\(j_0\)</span> such that <span class="math inline">\(|C_{j_0}|\ge i_{j_0}\)</span>. If we take any <span class="math inline">\(i_{j_0}\)</span> elements of <span class="math inline">\(C_{j_0}\)</span>, we have a subset of <span class="math inline">\(S\)</span> of size <span class="math inline">\(i_{j_0}\)</span> that has all its <span class="math inline">\(i\)</span>-element subsets belonging to <span class="math inline">\(C_{j_0}\)</span>. This shows that <span class="math inline">\(R(i_1,\dots,i_n;1)\le i_1+\dots+i_n-(n-1)\)</span>.</p>
+<p>Take a set <span class="math inline">\(S\)</span> of size <span class="math inline">\(m-1\)</span>. Partition its <span class="math inline">\(1\)</span>-element subsets into <span class="math inline">\(n\)</span> classes <span class="math inline">\(C_1,\dots,C_n\)</span> where <span class="math inline">\(|C_j|=i_j-1\)</span>. With this partition there is no subset of <span class="math inline">\(S\)</span> of size <span class="math inline">\(i_j\)</span> that has all its <span class="math inline">\(1\)</span>-element subsets belonging to <span class="math inline">\(C_j\)</span>.</p>
+<h1 id="schurs-theorem">Schur's Theorem</h1>
+<p><span class="math inline">\(S(c)\)</span>, called the Schur's number, is the smallest positive integers that for any partition of the set <span class="math inline">\(\{1,2,\dots,S(c)\}\)</span> into <span class="math inline">\(c\)</span> subparts, one of the parts contains three integers <span class="math inline">\(x,y,z\)</span> with <span class="math inline">\(x+y=z\)</span>.</p>
+<p>Schur's Theorem states that the numbers <span class="math inline">\(S(k)\)</span> always exist and are bounded by the Ramsey numbers <span class="math display">\[
+\displaylines{S(k)\le R(3,\dots,3;2)
+}
+\]</span> where there are <span class="math inline">\(k\)</span> <span class="math inline">\(3\)</span>s.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">\(n=R(3,\dots,3;2)\)</span> and color the integers <span class="math inline">\(1,2,\dots,n\)</span> with <span class="math inline">\(k\)</span> colors. This gives a partition of <span class="math inline">\(1,2,\dots,n\)</span> into <span class="math inline">\(k\)</span> sets, <span class="math inline">\(S_1,S_2,\dots,S_k\)</span>, where integers in the same set have the same color. Now take the graph <span class="math inline">\(K_n\)</span>, label its vertices <span class="math inline">\(1,2,\dots,n\)</span> and label its edges <span class="math inline">\(\{i,j\}\)</span> with color <span class="math inline">\(m\)</span> if <span class="math inline">\(|i-j|\in S_m\)</span>. This gives a coloring of <span class="math inline">\(K_n\)</span> with <span class="math inline">\(k\)</span> colors. There must be a monochromatic triangle in <span class="math inline">\(K_n\)</span>. if its <span class="math inline">\(3\)</span> vertices are <span class="math inline">\(i_1,i_2,i_3\)</span>, and we let <span class="math inline">\(x=i_1-i_2,y=i_2-i_3\)</span>, and <span class="math inline">\(z=i_1-i_3\)</span>, then we have <span class="math inline">\(x+y=z\)</span> where all <span class="math inline">\(3\)</span> values have the same color.</p>
+<h1 id="convex-sets">Convex Sets</h1>
+<p>A <strong>convex polygon</strong> is a polygon <span class="math inline">\(P\)</span> such that if <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are points in the interior of <span class="math inline">\(P\)</span>, then the line segment joining <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> lies completely inside <span class="math inline">\(P\)</span>.</p>
+<p>Suppose <span class="math inline">\(m\)</span> is a positive integer and there are <span class="math inline">\(n\)</span> given points, no three of which are collinear. If <span class="math inline">\(n\ge R(m,5;4)\)</span>, then a convex <span class="math inline">\(m\)</span>-gon can be obtained from <span class="math inline">\(m\)</span> of the <span class="math inline">\(n\)</span> points.</p>
+<p><strong>Proof:</strong> Suppose <span class="math inline">\(n\ge R(m,5;4)\)</span> and <span class="math inline">\(S\)</span> is a set of <span class="math inline">\(n\)</span> points in the plane, with not three points collinear. With Ramsey property, no matter how we divide the <span class="math inline">\(4\)</span>-element subsets of <span class="math inline">\(S\)</span> into two collections <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, either</p>
+<ol type="1">
+<li>There is a subset of <span class="math inline">\(S\)</span> of size <span class="math inline">\(m\)</span> with all its <span class="math inline">\(4\)</span>-element subsets in <span class="math inline">\(C_1\)</span>, or</li>
+<li>There is a subset of <span class="math inline">\(S\)</span> of size <span class="math inline">\(5\)</span> with all its <span class="math inline">\(4\)</span>-element subsets in <span class="math inline">\(C_2\)</span></li>
+</ol>
+<p>We now take <span class="math inline">\(C_1\)</span> to be the collection of all subsets of <span class="math inline">\(S\)</span> of size four where the <span class="math inline">\(4\)</span>-gon determined by the points is convex and take <span class="math inline">\(C_2\)</span> to be not convex. Note that (ii) cannot happen. That is, we can always find a convex <span class="math inline">\(4\)</span>-gon among <span class="math inline">\(5\)</span> points in the plane. Therefore, we are guaranteed of having a subset <span class="math inline">\(A\subseteq S\)</span> where <span class="math inline">\(|A|=m\)</span> and all <span class="math inline">\(4\)</span>-gons determined by <span class="math inline">\(A\)</span> are convex.</p>
+<p>We will now show that the <span class="math inline">\(m\)</span> points of <span class="math inline">\(A\)</span> determine a convex <span class="math inline">\(m\)</span>-gon. Let <span class="math inline">\(k\)</span> be the largest positive integer such that <span class="math inline">\(k\)</span> of the <span class="math inline">\(m\)</span> points form a convex <span class="math inline">\(k\)</span>-gon <span class="math inline">\(G\)</span>. If <span class="math inline">\(k&lt;m\)</span>, then at least one of the elements of <span class="math inline">\(A\)</span>, say <span class="math inline">\(a_1\)</span>, lies inside the convex <span class="math inline">\(k\)</span>-gon <span class="math inline">\(G\)</span>. Therefore there are three vertices of <span class="math inline">\(G\)</span>, say <span class="math inline">\(a_2,a_3,a_4\)</span>, such that <span class="math inline">\(a_1\)</span> lies inside the triangle determined by these vertices. Hence, the set <span class="math inline">\(\{a_1,a_2,a_3,a_4\}\)</span> determines a nonconvex <span class="math inline">\(4\)</span>-gon, contradicting the property of <span class="math inline">\(A\)</span> that all its <span class="math inline">\(4\)</span>-gons are convex. Therefore we must have <span class="math inline">\(k=m\)</span>.</p>
+<h1 id="graph-ramsey-numbers">Graph Ramsey Numbers</h1>
+<p>So far, we have examined colorings of <span class="math inline">\(K_m\)</span> and looked for monochromatic <span class="math inline">\(K_i\)</span> subgraphs. But suppose we don't look for complete subgraphs <span class="math inline">\(K_i\)</span>, but rather try to find other subgraphs, such as cycle graphs <span class="math inline">\((C_i)\)</span>, wheels <span class="math inline">\((W_i)\)</span>, complete bipartite graphs <span class="math inline">\((K_{i,j})\)</span> or trees?</p>
+<p>Suppose <span class="math inline">\(G_1,\dots,G_n\)</span> are graphs, each with at least one edge. An integer <span class="math inline">\(m\)</span> has the <span class="math inline">\((G_1,\dots,G_n)\)</span>-Ramsey property if every coloring of the edges of <span class="math inline">\(K_m\)</span> with the <span class="math inline">\(n\)</span> colors <span class="math inline">\(1,2,\dots,n\)</span> yields a subgraph <span class="math inline">\(G_j\)</span> of color <span class="math inline">\(j\)</span>, for some <span class="math inline">\(j\)</span>.</p>
+<p>The graph Ramsey number <span class="math inline">\(R(G_1,\dots,G_n)\)</span> is the smallest positive integer with the <span class="math inline">\((G_1,\dots,G_n)\)</span>-Ramsey property.</p>
+<p>For <span class="math inline">\(j=1,\dots,n\)</span>, suppose that <span class="math inline">\(G_j\)</span> is a graph with <span class="math inline">\(i_j\)</span> vertices (where <span class="math inline">\(i_j\ge 2\)</span>). Then the graph Ramsey number <span class="math inline">\(R(G_1,\dots,G_n)\)</span> exists, and <span class="math display">\[
+\displaylines{R(G_1,\dots,G_n)\le R(i_1,\dots,i_n;2)
+}
+\]</span> </br> <strong>Reference:</strong></p>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Ramsey%27s_theorem#Ramsey_numbers">Ramsey's Theorem</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Schur%27s_theorem">Schur's Theorem</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Complete_graph">Complete Graph</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Wheel_graph">Wheel Graph</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Bipartite_graph">Bipartite Graph</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Math/" rel="tag"><i class="fa fa-tag"></i> Math</a>
+              <a href="/tags/Discrete-Math/" rel="tag"><i class="fa fa-tag"></i> Discrete Math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/catalan-numbers/" rel="prev" title="Catalan Numbers">
+                  <i class="fa fa-chevron-left"></i> Catalan Numbers
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/the-assignment-problem/" rel="next" title="The Assignment Problem">
+                  The Assignment Problem <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

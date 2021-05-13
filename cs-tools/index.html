@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="介绍 CS 中常用工具，参考 The Missing Semester of Your CS Education 课程。 其它相关 Blog:  常用软件: Notion 个人主页 Setup: 自用工具及配置 Git 101: 常见的 git 命令 Regular Expression: 常见的正则表达式用法 Linux: 介绍 Linux 基本知识与操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS Tools">
+<meta property="og:url" content="https://silencial.github.io/cs-tools/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="介绍 CS 中常用工具，参考 The Missing Semester of Your CS Education 课程。 其它相关 Blog:  常用软件: Notion 个人主页 Setup: 自用工具及配置 Git 101: 常见的 git 命令 Regular Expression: 常见的正则表达式用法 Linux: 介绍 Linux 基本知识与操作">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/KR5bTON.png">
+<meta property="article:published_time" content="2020-03-27T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-30T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="101">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/KR5bTON.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/cs-tools/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;cs-tools&#x2F;&quot;,&quot;path&quot;:&quot;cs-tools&#x2F;&quot;,&quot;title&quot;:&quot;CS Tools&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>CS Tools | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shell"><span class="nav-number">1.</span> <span class="nav-text">Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash"><span class="nav-number">1.1.</span> <span class="nav-text">Bash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.2.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">快捷键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh"><span class="nav-number">1.2.</span> <span class="nav-text">Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.1.</span> <span class="nav-text">文件处理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE"><span class="nav-number">1.3.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.3.3.</span> <span class="nav-text">任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.4.</span> <span class="nav-text">其它命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh"><span class="nav-number">2.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vim"><span class="nav-number">3.</span> <span class="nav-text">Vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">操作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">Vim 参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8"><span class="nav-number">3.4.</span> <span class="nav-text">移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91"><span class="nav-number">3.5.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A"><span class="nav-number">3.6.</span> <span class="nav-text">特殊</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmux"><span class="nav-number">4.</span> <span class="nav-text">Tmux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git"><span class="nav-number">5.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#debugging-profiling"><span class="nav-number">6.</span> <span class="nav-text">Debugging &amp; Profiling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#debugging"><span class="nav-number">6.1.</span> <span class="nav-text">Debugging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#profiling"><span class="nav-number">6.2.</span> <span class="nav-text">Profiling</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make"><span class="nav-number">7.</span> <span class="nav-text">Make</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile"><span class="nav-number">7.1.</span> <span class="nav-text">Makefile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">7.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make-%E5%91%BD%E4%BB%A4"><span class="nav-number">7.3.</span> <span class="nav-text">Make 命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c"><span class="nav-number">8.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc"><span class="nav-number">8.1.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cmakelists.txt"><span class="nav-number">8.2.</span> <span class="nav-text">CMakeLists.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%8F%8A%E5%AE%89%E8%A3%85"><span class="nav-number">8.3.</span> <span class="nav-text">编译及安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake-package-registry"><span class="nav-number">8.3.1.</span> <span class="nav-text">CMake Package Registry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find_package"><span class="nav-number">8.4.</span> <span class="nav-text">find_package</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q-a"><span class="nav-number">9.</span> <span class="nav-text">Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#source-exec-.script"><span class="nav-number">9.1.</span> <span class="nav-text">source &amp; exec &amp; .&#x2F;script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-%E4%B8%8A%E6%9F%90%E4%BA%9B%E5%91%BD%E4%BB%A4%E5%92%8C-linux-%E4%B8%8D%E5%90%8C"><span class="nav-number">9.2.</span> <span class="nav-text">Mac 上某些命令和 Linux 不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%A7%84%E5%88%99"><span class="nav-number">9.3.</span> <span class="nav-text">文件夹&#x2F;文件命令规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trivia"><span class="nav-number">10.</span> <span class="nav-text">Trivia</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/cs-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CS Tools
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-03-27 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-27T00:00:00+00:00">2020-03-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-30 00:00:00" itemprop="dateModified" datetime="2021-04-30T00:00:00+00:00">2021-04-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>8.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>21 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>介绍 CS 中常用工具，参考 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> 课程。</p>
+<p>其它相关 Blog:</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.notion.so/silencial/6dedf8a81bf840528e2b442477a3928c">常用软件</a>: Notion 个人主页</li>
+<li><a href="https://silencial.github.io/setup/">Setup</a>: 自用工具及配置</li>
+<li><a href="https://silencial.github.io/git/">Git 101</a>: 常见的 git 命令</li>
+<li><a href="https://silencial.github.io/regex/">Regular Expression</a>: 常见的正则表达式用法</li>
+<li><a href="https://silencial.github.io/linux/">Linux</a>: 介绍 Linux 基本知识与操作</li>
+</ul>
+<span id="more"></span>
+<hr />
+<h1 id="shell">Shell</h1>
+<h2 id="bash">Bash</h2>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://wangdoc.com/bash/">Bash 脚本教程</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://betterdev.blog/minimal-safe-bash-script-template/">Minimal safe Bash script template</a></p>
+<h3 id="基本知识">基本知识</h3>
+<ul>
+<li><code>shebang</code>: 写在脚本第一行，用来表示用什么执行。例如 <code>#!/usr/bin/env bash</code> 或 <code>#!/usr/bin/env python</code>。使用 <code>env</code> 会自动搜索 <code>PATH</code> 环境变量。</li>
+<li>变量赋值 <code>foo=bar</code>。<mark>注意不可以使用 <code>foo = bar</code>，因为空格起到执行变量分隔的作用</mark></li>
+<li>字符串可由 <code>''</code> 或 <code>""</code> 表示，但 <code>""</code> 会替代变量，如 <code>echo "$foo"</code> 会输出 <code>bar</code>。<mark>而单引号保持内部所有字符的本义</mark></li>
+<li>脚本执行完会有返回值，0 表示正常</li>
+<li>通配符
+<ul>
+<li><code>?</code> 表示一个字符</li>
+<li><code>*</code> 表示任意个数字符</li>
+<li><code>[]</code> 匹配任意一个括号内的字符</li>
+<li><code>&#123;&#125;</code> 自动展开所有括号内的字符。例如 <code>&#123;a,b&#125;/c</code> 表示 <code>a/c b/c</code></li>
+<li><code>..</code> 循环。例如 <code>1..3</code> 表示 <code>1,2,3</code></li>
+</ul></li>
+<li>执行比较时使用 <code>[[]]</code>。<a target="_blank" rel="noopener external nofollow noreferrer" href="http://man7.org/linux/man-pages/man1/test.1.html">比较详细命令</a></li>
+<li><p>多命令:</p>
+<ul>
+<li><code>CMD1; CMD2</code>: 顺序执行</li>
+<li><code>CMD1 &amp;&amp; CMD2</code>: 当 1 被正确执行时才会执行 2</li>
+<li><code>CMD1 || CMD2</code>: 当 1 未被正确执行时才会执行 2</li>
+<li><code>CMD1 | CMD2</code>: 1 的正确输出作为 2 的操作对象</li>
+</ul></li>
+<li><p>将命令返回作为变量</p>
+<ul>
+<li>command substitution: <code>for file in $(ls)</code></li>
+<li>process substitution: <code>&lt;(CMD)</code> 执行 <code>CMD</code> 并将输出保存至临时文件，再返回文件名</li>
+</ul></li>
+</ul>
+<h3 id="特殊字符">特殊字符</h3>
+<ul>
+<li><code>$0</code>: 脚本名</li>
+<li><code>$1</code> to <code>$9</code>: 传递至脚本的变量，<code>$1</code> 代表第一个变量，以此类推</li>
+<li><code>$@</code>: 所有的变量</li>
+<li><code>$#</code>: 变量个数</li>
+<li><code>$?</code>: 前一条命令的返回值</li>
+<li><code>$$</code>: 当前脚本执行的进程 ID</li>
+<li><code>!!</code>: 上一条命令。例如 <code>sudo !!</code></li>
+<li><code>$_</code>: 上一条命令的最后一个变量。在交互式 shell 中还可以通过 <code>Esc</code> + <code>.</code> 的方式实现</li>
+</ul>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.tldp.org/LDP/abs/html/special-chars.html">完整列表</a></p>
+<h3 id="快捷键">快捷键</h3>
+<p><strong>移动</strong>:</p>
+<ul>
+<li>ctrl+u: 清空当前行</li>
+<li>ctrl+a: 移动至行首</li>
+<li>ctrl+e: 移动至行尾</li>
+<li>alt+f: 按单词前移</li>
+<li>alt+b: 按单词后移</li>
+<li>ctrl+k: 删除光标到行尾的内容</li>
+<li>alt+backspace: 从光标删除至字首</li>
+<li>alt+d: 从光标删除至字尾</li>
+<li>ctrl+c: 终止命令</li>
+</ul>
+<p><strong>任务控制</strong>:</p>
+<p>在 shell 中，窗口和会话是绑定的。</p>
+<ul>
+<li>ctrl+c: 向进程传递 <code>SIGINT</code> 信号，不一定停止</li>
+<li>ctrl+\: 向进程传递 <code>SIGQUIT</code> 信号，终止进程</li>
+<li>ctrl+z: 向进程传递 <code>SIGSTOP</code> 信号，暂停进程</li>
+<li>关闭命令行窗口等于向进程传递 <code>SIGHUP</code>，终止进程</li>
+</ul>
+<h2 id="zsh">Zsh</h2>
+<ul>
+<li><code>cd</code> 可以省略</li>
+<li>快速往上跳转 n 层目录: n+1 个 <code>.</code></li>
+<li>进程补全: <code>kill process_name</code> 并按 Tab 键自动替换进程 id。</li>
+<li>使用 <code>d</code> 可以列出最近访问过的目录，然后输入对应数字进入目录。</li>
+<li>如果要进入到 <code>~/workspace/src/dict</code> 目录，可以输入 <code>cd ~/w/s/d</code> 并按 Tab 进行补全。</li>
+<li>快速重复上一条命令: <code>r</code>。</li>
+<li>历史记录支持受限查找: 先输入 <code>git</code>，再按 ↑ 会搜索所有用过的 <code>git</code> 命令。</li>
+<li>通配符搜索: <code>ls **/*.png</code> 搜索当前目录下所有 .png 文件。</li>
+</ul>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="文件处理命令">文件处理命令</h3>
+<p><code>ls [选项] [文件或目录]</code>，<code>l='ls -lah'</code> 详细显示所有文件</p>
+<p><code>du -h -d 0 [目录]</code> 查看文件夹大小，<code>-d</code> 代表 depth</p>
+<p><code>mkdir -p [目录名]</code> 递归创建目录，<code>md='mkdir -p'</code></p>
+<p><code>cd [目录]</code> 打开目录</p>
+<p><code>rm -rf [文件或目录]</code> 强制删除文件或目录。<code>-r</code> 参数为了递归删除目录</p>
+<p><code>cp [选项] [原文件或目录] [目标目录]</code> 拷贝</p>
+<ul>
+<li><code>-r</code> 复制目录</li>
+<li><code>-p</code> 连带文件属性复制</li>
+<li><code>-d</code> 若源文件是链接文件，则复制链接属性</li>
+<li><code>-a</code> 相当于 <code>-rpd</code></li>
+</ul>
+<p><code>mv [原文件或目录] [目标目录]</code> 剪切或改名</p>
+<p><code>x=extract</code> 解压文件</p>
+<h3 id="查找">查找</h3>
+<p><strong>查找文件</strong></p>
+<p><code>locate [文件名]</code> 在后台数据库(默认一天更新一次)中按文件名搜索，速度更快。</p>
+<ul>
+<li><p><code>updatedb</code> 强制更新数据库</p></li>
+<li><p><code>/etc/updatedb.conf</code> 搜索条件配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PRUNE_BIND_MOUNTS=<span class="string">&quot;yes&quot;</span>  <span class="comment"># 开启搜索限制</span></span><br><span class="line">PRUNEFS=  <span class="comment">#　不搜索的文件系统</span></span><br><span class="line">PRUNENAMES=  <span class="comment"># 不搜索的文件类型</span></span><br><span class="line">PRUNEPATHS=  <span class="comment"># 不搜索的路径</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><code>find [搜索范围] [搜索条件]</code> 使用通配符，属于完全匹配</p>
+<ul>
+<li><code>-name</code> 搜索名字</li>
+<li><code>-iname</code> 不区分大小写</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找修改时间超过十天的文件</span></span><br><span class="line">find . -mtime +10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找小于 25 KB 的文件</span></span><br><span class="line">find . -size -25k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找大于 50 KB 或小于 20 KB 的文件</span></span><br><span class="line">find . -size +50k -o -size -20k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找大于 20 KB 且小于 50 KB 的文件，并显示详细信息</span></span><br><span class="line">find . -size +20k -size -50k -<span class="built_in">exec</span> ls -lh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p><strong>查找命令</strong></p>
+<p><code>whereis [命令名]</code> 搜索命令所在路径及帮助文档所在位置</p>
+<ul>
+<li><code>-b</code> 只查找可执行文件</li>
+<li><code>-m</code> 只查找帮助文件</li>
+</ul>
+<p><code>which [命令名]</code> 查找当前环境下调用的命令所在位置，可显示别名</p>
+<p><strong>查找文件内容</strong></p>
+<p><code>grep [选项] 字符串 文件名</code> 在文件当中匹配符合条件的字符串，使用正则表达式，属于包含匹配。也可以用来搜索命令返回值</p>
+<ul>
+<li><code>-i</code> 忽略大小写</li>
+<li><code>-v</code> 排除指定字符串</li>
+<li><code>-C</code> 打印 context，例如 <code>grep -C 2</code> 会打印目标上下各 2 行。</li>
+</ul>
+<h3 id="任务">任务</h3>
+<p><code>kill [PID]</code>: 终止进程</p>
+<p><code>pkill [PIDNAME]</code> 按照名称终止进程，可使用 Tab 补全</p>
+<p><code>fg/bg</code>: 在前台/后台继续暂停的进程</p>
+<p><code>jobs</code>: 查看未完成的进程</p>
+<h3 id="其它命令">其它命令</h3>
+<p><code>man [命令]</code>: 命令帮助文档</p>
+<p><code>systemctl suspend</code>: 休眠</p>
+<p><code>cat [file] | xclip -selection clipboard</code>: 复制文件内容至系统剪贴板</p>
+<p><code>sips --resampleWidth []</code>：脚本图像处理，<strong>MacOS 独有</strong></p>
+<h1 id="ssh">SSH</h1>
+<p>Unix 系统中 ssh 分为 openssh-client 和 openssh-server。前者自带，允许连接其它机器。</p>
+<p>开启 ssh server:</p>
+<ul>
+<li>Ubuntu: 安装 <code>sudo apt-get install openssh-server</code></li>
+<li>Mac: 打开 <code>Sharing -&gt; Remote Login</code></li>
+</ul>
+<p>查看 ssh 服务否打开: <code>ps -e | grep ssh</code>。如果出现 sshd 字样则已经启动</p>
+<p>server 的配置文件在 <code>/etc/ssh/sshd_config</code> 中，可以修改端口等设置，默认端口为 22</p>
+<p>使用 <code>ifconfig</code> 查看本机 ip 地址，其它机器使用 <code>ssh username@ip</code> 方式进行连接</p>
+<p>配置 <code>~/.ssh/config</code> 文件，加入如下内容，之后可以使用 <code>ssh [Host]</code> 来进行连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host [自定义名称]</span><br><span class="line">HostName [ip 地址]</span><br><span class="line">User [server 用户名]</span><br><span class="line">Port [端口号]</span><br><span class="line">IdentityFile [私钥路径]</span><br></pre></td></tr></table></figure>
+<p>免密码登录:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成密钥（公钥+私钥）</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;comment&quot;</span></span><br><span class="line"><span class="comment"># 将公钥传至 server</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub username@ip</span><br></pre></td></tr></table></figure>
+<p>外网连接: 使用路由外网 ip 地址并在路由上设置端口转发</p>
+<p><strong>注意事项:</strong></p>
+<ul>
+<li>ip 地址分清是内网还是公网。例如连接在同一个路由器的设备都属于一个内网，由路由器分配的内网 ip 地址只允许在内网内进行连接</li>
+<li>查询路由中自动分配的 ip 地址是否为外网，<mark>有可能属于更大的运营商内网</mark></li>
+<li>如果想通过外网连接，由于 ip 地址为动态，需要购买 DDNS (动态域名) 进行解析</li>
+<li>美国这边 ip 基本不变</li>
+</ul>
+<h1 id="vim">Vim</h1>
+<p><img src="https://i.imgur.com/KR5bTON.png" alt="Vim Keyboard" /></p>
+<p>使用 <code>vimtutor</code> 命令学习</p>
+<h2 id="操作模式">操作模式</h2>
+<ul>
+<li>Normal: 移动光标。<code>Esc</code> 切换</li>
+<li>Insert: 插入文本。<code>i</code> 切换</li>
+<li>Replace: 替换文本。<code>R</code> 切换</li>
+<li>Visual: 选择文本。<code>v</code> 切换</li>
+<li>Command-line: 执行命令。<code>:</code> 切换</li>
+</ul>
+<p>同样的按键在不同的模式中可以实现不同的功能</p>
+<h2 id="vim-参数">Vim 参数</h2>
+<ul>
+<li><code>vim + [file]</code> 定位到最后一行</li>
+<li><code>vim +3 [file]</code> 定位到第三行</li>
+<li><code>vim +/xxx [file]</code> 定位到 xxx 第一次出现的一行，<code>n</code> 进行切换</li>
+<li><code>vim [file1] [file2] [file3]</code> 一次性打开多个文件，<code>:n</code> 切换下一个文件，<code>:N</code> 或 <code>:prev</code> 切换上一个文件，<code>:b [tab]</code> 自动补全切换文件</li>
+<li><code>vim -p [file1] [file2] [file3]</code> 标签页打开多个文件，<code>gt/gT</code> 切换下/上一个标签</li>
+</ul>
+<h2 id="命令">命令</h2>
+<ul>
+<li><code>:w</code> 保存</li>
+<li><code>:q</code> 退出</li>
+<li><code>:wq</code> 保存且退出</li>
+<li><code>:x</code> 保存（仅在文件有修改时）且退出</li>
+<li><code>:e [file]</code> 打开文档</li>
+<li><code>:[command]!</code> 强制执行</li>
+<li><code>:ls</code> 列出打开的所有文件</li>
+<li><code>:xxx</code> 定位到第一次出现 xxx 的地方</li>
+<li><code>?xxx</code> 向前搜索</li>
+<li><code>:h [topic]</code> 打开帮助文档，可以是命令或按键</li>
+<li><code>:w [name]</code> 当前文档另存为，若有 visual 选中则只另存为选中部分</li>
+<li><code>:r [name]</code> 读取文件内容插入至光标下方，也可以读取命令 <code>:r !ls</code></li>
+</ul>
+<h2 id="移动">移动</h2>
+<ul>
+<li><code>h/j/k/l</code> 光标左/下/右/上移</li>
+<li><code>w/b/e</code> 下一个单词/单词开头/单词结尾</li>
+<li><code>0/^/$</code> 行首/行第一个非空字符/行尾</li>
+<li><code>H/M/L</code> 屏幕顶部/中部/底部</li>
+<li><code>C+b/f</code> 向上/下翻页</li>
+<li><code>C+u/d</code> 向上/下翻半页</li>
+<li><code>gg/G</code> 文件开头/结尾</li>
+<li><code>:15</code> 到第 15 行</li>
+<li><code>15G</code> 到第 15 行</li>
+<li><code>/[regex]</code> 搜索，<code>n/N</code> 寻找下/上一个</li>
+<li><code>f/F</code> 向后/前查找，光标移动至查找对象</li>
+<li><code>t/T</code> 向后/前查找，光标移动至查找对象前一个位置</li>
+<li><code>m[X]</code> 设定一个 mark，可以通过 `<code>[X]</code> 定位</li>
+<li><code>ctrl+o/i</code> 回到前一个/后一个位置</li>
+<li><code>%</code> 匹配括号</li>
+</ul>
+<p>在 Visual 模式使用移动来进行选取</p>
+<h2 id="编辑">编辑</h2>
+<ul>
+<li><code>o/O</code> 在下/上一行插入</li>
+<li><code>&gt;</code> 缩进。<code>&gt;&gt;</code> 缩进本行</li>
+<li><code>d[motion]</code> 删除。<code>dw</code> 删除单词，<code>d$</code> 删除至行尾，<code>d0</code> 删除至行首，<code>dd</code> 删除整行</li>
+<li><code>c[motion]</code> 修改。<code>cw</code> 修改单词。等价于 <code>d[motion]</code> + <code>i</code></li>
+<li>尽量使用 text objects 替换 motion。<code>iw</code>: inner word; <code>it</code>: inner tag; <code>i"</code>: inner quotes; <code>ip</code>: inner paragraph; <code>as</code>: a sentence.</li>
+<li><code>x</code> 删除字符。等价于 <code>dl</code></li>
+<li><code>s</code> 替换字符。等价于 <code>xi</code></li>
+<li><code>:s/[a]/[b]</code> 将光标所在行的第一个匹配 a 替换为 b。<code>:s/a/b/g</code> 替换该行所有匹配</li>
+<li><code>:[#],[#]s/[a]/[b]/g</code> 将 <code>#,#</code> 之间的行进行匹配替换</li>
+<li><code>:%s/[a]/[b]/g</code> 匹配替换整个文件</li>
+<li><code>:%s/[a]/[b]/gc</code> 在每次替换时进行询问</li>
+<li><code>r</code> 替换字符。区别在于不进入插入模式</li>
+<li><code>R</code> 进入替换模式</li>
+<li><code>yy</code> 复制一行，<code>yw</code> 复制单词</li>
+<li><code>p/P</code> 在光标所在行下/上方粘贴</li>
+<li><code>u/U/ctrl+r</code> 撤销/撤销整行/重做</li>
+<li>Visual 模式选取后 <code>d</code> 删除，<code>c</code> 修改</li>
+</ul>
+<h2 id="特殊">特殊</h2>
+<ul>
+<li><code>.</code> 重复上次操作</li>
+<li>搜索可以搭配 <code>c/d</code> 使用，如 <code>dt"</code> 删除该行在第一个 " 前的内容</li>
+<li>数字+字母可以进行重复操作。例如 <code>3w</code> 向前移动三个单词</li>
+<li>删除文本会自动放入 register 中</li>
+<li><code>ctrl+g</code> 显示当前文件路径和状态</li>
+<li>在命令前加 <code>no</code> 关闭选项，例如 <code>:set noic</code></li>
+<li>命令模式下 <code>ctrl+d</code> 会显示补全选项</li>
+<li><code>:so %</code> 表示加载当前文件为配置文件，<code>:so ~/.vimrc</code> 指定文件</li>
+</ul>
+<h1 id="tmux">Tmux</h1>
+<p><strong>会话</strong>: 每个会话都是一个独立的工作空间，可以有多个窗口</p>
+<ul>
+<li><code>tmux</code> 开启新会话</li>
+<li><code>tmux new -s [NAME]</code> 开启新会话并命名</li>
+<li><code>tmux new -A</code> 接入最后一个会话，如果没有则新建</li>
+<li><code>tmux ls</code> 显示当前的所有会话</li>
+<li><code>&lt;C-b&gt; d</code> 分离当前会话（退出窗口，进程在后台运行）</li>
+<li><code>tmux a</code> 接入最后一个会话</li>
+<li><code>tmux a -t [name]</code> 接入特定名称的会话</li>
+</ul>
+<p><strong>窗口</strong>: 类似编辑器的标签页，同属于一个会话。</p>
+<ul>
+<li><code>&lt;C-b&gt; c</code> 新建窗口</li>
+<li><code>&lt;C-d&gt;</code> 关闭窗口</li>
+<li><code>&lt;C-b&gt; [N]</code> 跳到第 N 个窗口</li>
+<li><code>&lt;C-b&gt; p/n</code> 跳到前/后一个</li>
+<li><code>&lt;C-b&gt; ,</code> 重命名当前窗口</li>
+<li><code>&lt;C-b&gt; w</code> 列出当前所有窗口</li>
+</ul>
+<p><strong>窗格</strong>: 对一个窗口进行分栏</p>
+<ul>
+<li><code>&lt;C-b&gt; "</code> 水平划分窗格</li>
+<li><code>&lt;C-b&gt; %</code> 垂直划分窗格</li>
+<li><code>&lt;C-b&gt; [方向键]</code> 切换到方向键对应的其它窗格</li>
+<li><code>&lt;C-b&gt; z</code> 全屏/取消当前窗格</li>
+<li><code>&lt;C-b&gt; &lt;space&gt;</code> 改变窗格排列</li>
+</ul>
+<h1 id="git">Git</h1>
+<p>参见这篇 <a href="https://silencial.github.io/git/">Blog</a></p>
+<h1 id="debugging-profiling">Debugging &amp; Profiling</h1>
+<h2 id="debugging">Debugging</h2>
+<p><code>ipdb</code>: 用来 debug Python，为 <code>IPython</code> 版本的 <code>pdb</code>，支持补全，高亮等功能。</p>
+<p><code>python -m ipdb [文件]</code></p>
+<ul>
+<li><strong>l</strong>(ist): 显示当前行周围的 11 行代码，可以重复使用</li>
+<li><strong>s</strong>(tep): 执行当前行</li>
+<li><strong>c</strong>(ontinue): 执行到断点或出错的位置</li>
+<li><strong>b</strong>(reak): 设置断点</li>
+<li><strong>p</strong>(rint): 打印当前环境下变量</li>
+<li><strong>r</strong>(eturn): 继续执行直到当前函数返回</li>
+<li><strong>q</strong>(uit): 退出</li>
+</ul>
+<h2 id="profiling">Profiling</h2>
+<p><code>time</code>: 计算命令耗时</p>
+<ul>
+<li>real: 实际花费总时间</li>
+<li>user: 在用户空间花费的 CPU 时间</li>
+<li>sys: 在内核空间花费的 CPU 时间</li>
+</ul>
+<p>python 中可以使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/rkern/line_profiler">line_profiler</a> 模块对每一行计时，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://pypi.org/project/memory-profiler/">memory_profiler</a> 进行内存计算</p>
+<h1 id="make">Make</h1>
+<p>Make 是最常用的构建系统。任何只要文件变化就要重新构建的项目都可以用 Make 构建。</p>
+<p>本质上，Make 只是一个根据指定的 Shell 命令进行构建的工具，规则通过 Makefile 编写。</p>
+<h2 id="makefile">Makefile</h2>
+<p>Makefile 范例：（注意第二行需要以 tab 键开头）</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[target]: [dependency1] [dependency2] ...</span></span><br><span class="line">    [command]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>dependency</code> 也可以有自己的构建规则，并组成 <code>dependency graph</code></li>
+<li><code>target</code> 除了可以是文件之外也可以是命令，称为 <code>phony target</code>。为了避免与将当前目录下的同名文件混淆，需要在开头声明 <code>.PHONY</code> 变量</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.PHONY clean all</span><br><span class="line"></span><br><span class="line"><span class="section">all: hello.out  # PHONY target</span></span><br><span class="line"></span><br><span class="line"><span class="section">hello.out: hello.c min.o max.o</span></span><br><span class="line">    gcc -o hello.out hello.c min.o max.o</span><br><span class="line"><span class="comment"># 若存在依赖文件无法找到，继续向后搜索该文件的依赖性，如此递进下去</span></span><br><span class="line"><span class="section">min.o: min.c</span></span><br><span class="line">    gcc -c -o min.o min.c</span><br><span class="line"><span class="section">max.o: max.c</span></span><br><span class="line">    gcc -c -o max.o max.c</span><br><span class="line"></span><br><span class="line"><span class="section">clean:  # PHONY target</span></span><br><span class="line">    rm *.out *.o</span><br></pre></td></tr></table></figure>
+<h2 id="语法">语法</h2>
+<p>使用变量：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">txt=HELLO</span><br><span class="line"><span class="section">test:</span></span><br><span class="line">    echo <span class="variable">$(txt)</span></span><br></pre></td></tr></table></figure>
+<p>关闭打印：<code>make</code> 默认执行时会打印每条语句</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">test:</span></span><br><span class="line">    @<span class="comment"># test</span></span><br></pre></td></tr></table></figure>
+<p>自动变量：</p>
+<ul>
+<li><code>$@</code>: 表示 target</li>
+<li><code>$^</code>: 表示所有 dependency</li>
+<li><code>$&lt;</code>: 表示第一个 dependency</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">a.txt: b.txt</span></span><br><span class="line">    echo <span class="variable">$^</span> &gt; <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+<p>模式匹配：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.PHONY all</span><br><span class="line"></span><br><span class="line"><span class="section">all: a.csv b.csv c.csv</span></span><br><span class="line"></span><br><span class="line"><span class="section">%.csv: %.txt  # 匹配所有 a/b/c.csv，同时 dependency 保持和 target 相同的匹配</span></span><br><span class="line">    echo <span class="variable">$^</span> &gt; <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+<p>内置函数：</p>
+<ul>
+<li><code>wilcard</code>: 通配符匹配</li>
+<li><code>patsubst [pattern],[replacement],[text]</code>: 模式匹配替换</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="variable">$(<span class="built_in">wildcard</span> src/*.txt)</span></span><br><span class="line"><span class="variable">$(<span class="built_in">patsubst</span> %.txt,$.csv,a.txt,b.txt)</span></span><br></pre></td></tr></table></figure>
+<h2 id="make-命令">Make 命令</h2>
+<p>运行 <code>make</code> 时，会在当前目录下寻找 Makefile，只有当 <code>target</code> 不存在或比 <code>dependency</code> 旧时才会执行 <code>command</code></p>
+<ul>
+<li><code>make [target]</code>: 指定 make 目标，若没有则默认执行第一个</li>
+<li><code>make -n [target]</code>: dry-run</li>
+<li><code>make -B [target]</code>: 无条件构建目标</li>
+<li><code>make -C [dir] [target]</code>: 改变 make 的运行目录</li>
+<li><code>make -f [file] [target]</code>: 指定 makefile 文件</li>
+</ul>
+<h1 id="c">C++</h1>
+<h2 id="gcc">GCC</h2>
+<p>GCC (GNU Compiler Collection) 是 C 的编译器，编译 C 源码有四个步骤：预处理-----&gt; 编译 ----&gt; 汇编 ----&gt; 链接</p>
+<ol type="1">
+<li><p>预处理阶段，编译器将 C 源代码中的包含的头文件编译进来。</p>
+<p><code>gcc -E hello.c -o hello.i</code></p></li>
+<li><p>编译阶段，gcc 检查代码的规范性、是否有语法错误等，以确定代码的实际要做的工作。检查无误后，把代码翻译成汇编语言。</p>
+<p><code>gcc -S hello.i -o hello.s</code></p></li>
+<li><p>汇编阶段，把编译阶段生成的 .s 文件转成二进制目标代码。</p></li>
+<li><p>链接阶段，生成可执行文件</p></li>
+</ol>
+<ul>
+<li><code>-E</code> 仅执行编译处理</li>
+<li><code>-S</code> 将 c 代码转换为汇编代码</li>
+<li><code>-c</code> 仅执行编译操作，不进行连接操作</li>
+<li><code>-o</code> 指定生成的输出文件</li>
+<li><code>-wall</code> 显示警告信息</li>
+</ul>
+<h2 id="cmakelists.txt">CMakeLists.txt</h2>
+<p>CMake 是 Makefile 的上层工具，目的为了自动产生可移植的 Makefile。CMake 的配置文件：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmake 最低版本需求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.19</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 工程名称</span></span><br><span class="line"><span class="keyword">project</span>(<span class="keyword">Test</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置编译模式 Debug/Release</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_BUILD_TYPE <span class="string">&quot;Debug&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加可执行程序</span></span><br><span class="line"><span class="keyword">add_executable</span>(a a.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加库</span></span><br><span class="line"><span class="keyword">add_library</span>(b b.cpp)  <span class="comment"># 静态库</span></span><br><span class="line"><span class="keyword">add_library</span>(b_ SHARED b.cpp)  <span class="comment"># 共享库</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加可执行程序并链接至库</span></span><br><span class="line"><span class="keyword">add_executable</span>(c c.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(c b)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 <code>a.cpp</code> 编译为可执行文件（执行 <code>main</code> 函数）</li>
+<li>将 <code>b.cpp</code> 编译为库文件，静态或共享</li>
+<li><code>c.cpp</code> 中调用了 <code>b.cpp</code> 的函数，因此需要链接到 <code>b</code> 的库文件。同时需要定义一个 <code>b.h</code> 的头文件声明 b 中的函数，并在 <code>c.cpp</code> 中使用 <code>include "b.h"</code></li>
+</ul>
+<h2 id="编译及安装">编译及安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;project&gt;</span><br><span class="line">mkdir build &amp;&amp; <span class="built_in">cd</span> build</span><br><span class="line">cmake ..  <span class="comment"># 在上一级文件夹中按照 CMakeLists.txt 生成 Makefile 至当前文件夹</span></span><br><span class="line">make  <span class="comment"># 编译</span></span><br><span class="line">make install  <span class="comment"># 安装</span></span><br></pre></td></tr></table></figure>
+<p>通过生成 <code>build</code> 文件夹，将源码和生成文件分开。<code>make install</code> 需要 <code>CMakeLists.txt</code> 中定义 <code>install</code> 命令。</p>
+<p>一般第三方库文件的 <code>install</code> 命令会将头文件、库文件、可执行文件分别安装至 <code>CMAKE_INSTALL_PREFIX</code> 变量（默认为 <code>/usr/local</code>）下的 <code>include/</code>, <code>lib/</code> 和 <code>bin/</code> 文件夹中。之后即可以在 <code>CMakeLists.txt</code> 中使用 <code>find_package</code> 语句方便调用。</p>
+<p>卸载时使用<code>make uninstall</code>，但作者可能没有定义 <code>uninstall</code> 命令，此时可在 <code>make install</code> 执行的文件夹中找到 <code>install_manifest.txt</code> 文件，列出了所有安装文件的路径。使用 <code>xargs rm &lt; install_manifest.txt</code> 删除即可。</p>
+<p>可以通过 <code>cmake -DCMAKE_INSTALL_PREFIX=&lt;path&gt;</code> 来改变安装位置，方便管理。</p>
+<h3 id="cmake-package-registry">CMake Package Registry</h3>
+<p>当 CMake 只通过 <code>make</code> 而没有 <code>install</code> 时依旧能通过 <code>find_package</code> 找到包时，说明原先的 <code>CMakeLists.txt</code> 中存在 <code>export</code> 语句，通过 User Package Registry 的方式指定了路径。文件位置在 <code>~/.cmake/package/&lt;package&gt;</code> ，其中的文件可以为任意名称，内容是搜索路径。</p>
+<h2 id="find_package">find_package</h2>
+<p>导入第三方库。使用方法为</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(&lt;package&gt; REQUIRED)</span><br></pre></td></tr></table></figure>
+<p>该语句主要会在以下变量定义的地址寻找 <code>&lt;package&gt;Config.cmake</code> 的文件并导入，或通过上面所说的 Cmake Package Registry 的方式。完整寻找方式参照 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://cmake.org/cmake/help/latest/command/find_package.html#search-procedure">Search Procedure</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PackageName&gt;_DIR</span><br><span class="line">CMAKE_PREFIX_PATH</span><br><span class="line">PATH</span><br></pre></td></tr></table></figure>
+<p>一般来说使用 <code>find_package</code> 语句后会得一些关于该包的变量，以便之后进行调用</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;package&gt;_INCLUDE_DIRS</span><br><span class="line">&lt;package&gt;_LIBS</span><br></pre></td></tr></table></figure>
+<h1 id="q-a">Q &amp; A</h1>
+<h2 id="source-exec-.script">source &amp; exec &amp; ./script</h2>
+<ul>
+<li><code>source</code> 会在当前 shell 中执行命令</li>
+<li><code>exec</code> 会终止当前 shell，并重新生成一个新的进程来执行命令</li>
+<li><code>./script</code> 生成一个新的 shell 环境，在该 shell 中执行命令后退出</li>
+</ul>
+<p>应使用 <code>exec zsh</code> 而非 <code>source ~/.zshrc</code> 来重新加载 <code>.zshrc</code> 文件</p>
+<h2 id="mac-上某些命令和-linux-不同">Mac 上某些命令和 Linux 不同</h2>
+<p>Linux 使用的命令为 GNU 版本，Mac 上可以使用 <code>brew install coreutils</code> 来进行安装，安装后的命令可以在 <code>/usr/local/bin</code> 中找到，以 <code>g</code> 作为前缀，若想替代 Mac 本身的命令则直接在该目录下建立软链接即可。（默认 <code>PATH</code> 中 <code>/usr/local/bin</code> 的优先级高于 <code>/usr/bin</code>）</p>
+<h2 id="文件夹文件命令规则">文件夹/文件命令规则</h2>
+<p><strong>不要不要不要</strong>加空格，在命令行中会造成很多麻烦。如果无法避免且只是少数文件/文件夹的情况，可以在同一位置建立良好命名的软链接。</p>
+<h1 id="trivia">Trivia</h1>
+<ul>
+<li><code>.zshrc</code> 中的 <code>rc</code> 是 run command 的意思</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/101/" rel="tag"><i class="fa fa-tag"></i> 101</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/mobile-robots/" rel="prev" title="Mobile Robots">
+                  <i class="fa fa-chevron-left"></i> Mobile Robots
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/algorithms-2/" rel="next" title="Algorithm II">
+                  Algorithm II <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="RG_pV7KXR-iEHaDizvgpHfVn9eoTzhTnICgt1Kxu_58">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;silencial.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 1) Deep Reinforcement Learning (Part 2)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Reinforcement Learning (Part 3)">
+<meta property="og:url" content="https://silencial.github.io/deep-reinforcement-learning-3/index.html">
+<meta property="og:site_name" content="silencial">
+<meta property="og:description" content="Berkeley CS 285 Review My solution to the homework Deep Reinforcement Learning (Part 1) Deep Reinforcement Learning (Part 2)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/m2gWqmB.png">
+<meta property="og:image" content="https://i.imgur.com/noJ490o.png">
+<meta property="og:image" content="https://i.imgur.com/8lHrVl4.png">
+<meta property="og:image" content="https://i.imgur.com/GzDIOKe.png">
+<meta property="article:published_time" content="2020-02-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-13T00:00:00.000Z">
+<meta property="article:author" content="silencial">
+<meta property="article:tag" content="Open Courses">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/m2gWqmB.png">
+
+
+<link rel="canonical" href="https://silencial.github.io/deep-reinforcement-learning-3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;silencial.github.io&#x2F;deep-reinforcement-learning-3&#x2F;&quot;,&quot;path&quot;:&quot;deep-reinforcement-learning-3&#x2F;&quot;,&quot;title&quot;:&quot;Deep Reinforcement Learning (Part 3)&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>Deep Reinforcement Learning (Part 3) | silencial</title><script src="/js/config.js"></script>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="silencial" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">silencial</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#variational-inference"><span class="nav-number">1.</span> <span class="nav-text">Variational Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#amortized-variational-inference"><span class="nav-number">1.1.</span> <span class="nav-text">Amortized Variational Inference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variational-autoencoders"><span class="nav-number">1.2.</span> <span class="nav-text">Variational Autoencoders</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#control-as-inference-problem"><span class="nav-number">2.</span> <span class="nav-text">Control as Inference Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#graphical-model"><span class="nav-number">2.1.</span> <span class="nav-text">Graphical Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backward-message"><span class="nav-number">2.2.</span> <span class="nav-text">Backward Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compute-policy"><span class="nav-number">2.3.</span> <span class="nav-text">Compute Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forward-message"><span class="nav-number">2.4.</span> <span class="nav-text">Forward Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optimism-problem"><span class="nav-number">2.5.</span> <span class="nav-text">Optimism Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#soft-optimality"><span class="nav-number">2.6.</span> <span class="nav-text">Soft Optimality</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inverse-rl"><span class="nav-number">3.</span> <span class="nav-text">Inverse RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-matching-irl"><span class="nav-number">3.1.</span> <span class="nav-text">Feature Matching IRL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxent-irl"><span class="nav-number">3.2.</span> <span class="nav-text">MaxEnt IRL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unknown-dynamics"><span class="nav-number">3.3.</span> <span class="nav-text">Unknown Dynamics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inverse-rl-as-gan"><span class="nav-number">3.4.</span> <span class="nav-text">Inverse RL as GAN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transfer-learning"><span class="nav-number">4.</span> <span class="nav-text">Transfer Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#forward-transfer"><span class="nav-number">4.1.</span> <span class="nav-text">Forward Transfer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-task-transfer"><span class="nav-number">4.2.</span> <span class="nav-text">Multi-Task Transfer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exploration"><span class="nav-number">5.</span> <span class="nav-text">Exploration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#multi-arm-bandits-problem"><span class="nav-number">5.1.</span> <span class="nav-text">Multi-Arm Bandits Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#optimistic-exploration"><span class="nav-number">5.1.1.</span> <span class="nav-text">Optimistic Exploration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#posterior-sampling"><span class="nav-number">5.1.2.</span> <span class="nav-text">Posterior Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#information-gain"><span class="nav-number">5.1.3.</span> <span class="nav-text">Information Gain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-problems"><span class="nav-number">5.2.</span> <span class="nav-text">General Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#count-based-exploration"><span class="nav-number">5.2.1.</span> <span class="nav-text">Count-Based Exploration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#implicit-density-model"><span class="nav-number">5.2.2.</span> <span class="nav-text">Implicit Density Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#heuristic-estimation"><span class="nav-number">5.2.3.</span> <span class="nav-text">Heuristic Estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rl-problems"><span class="nav-number">5.3.</span> <span class="nav-text">RL Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#posterior-sampling-1"><span class="nav-number">5.3.1.</span> <span class="nav-text">Posterior Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#information-gain-1"><span class="nav-number">5.3.2.</span> <span class="nav-text">Information Gain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#imitation-vs.-rl"><span class="nav-number">5.4.</span> <span class="nav-text">Imitation vs. RL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#learning-with-demonstrations"><span class="nav-number">5.4.1.</span> <span class="nav-text">Learning With Demonstrations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hybrid-goal"><span class="nav-number">5.4.2.</span> <span class="nav-text">Hybrid Goal</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#meta-rl"><span class="nav-number">6.</span> <span class="nav-text">Meta-RL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithms"><span class="nav-number">6.1.</span> <span class="nav-text">Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#recurrence"><span class="nav-number">6.1.1.</span> <span class="nav-text">Recurrence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimization"><span class="nav-number">6.1.2.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#latent-model"><span class="nav-number">6.1.3.</span> <span class="nav-text">Latent Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#information-theoretic-exploration"><span class="nav-number">7.</span> <span class="nav-text">Information-Theoretic Exploration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#challenges-in-deep-rl"><span class="nav-number">8.</span> <span class="nav-text">Challenges in Deep RL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proof"><span class="nav-number">9.</span> <span class="nav-text">Proof</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-1"><span class="nav-number">9.1.</span> <span class="nav-text">Proof 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proof-2"><span class="nav-number">9.2.</span> <span class="nav-text">Proof 2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">10.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="silencial"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">silencial</p>
+  <div class="site-description" itemprop="description">Any Sufficiently Advanced Technology is Indistinguishable from Magic</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/silencial" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;silencial" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shawnxiex@gmail.com" title="E-Mail → mailto:shawnxiex@gmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.notion.so/silencial/70fd91a68d9b471f99d1656e4143ff5f" title="Notion → https:&#x2F;&#x2F;www.notion.so&#x2F;silencial&#x2F;70fd91a68d9b471f99d1656e4143ff5f" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-user fa-fw"></i>Notion</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://silencial.github.io/deep-reinforcement-learning-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="silencial">
+      <meta itemprop="description" content="Any Sufficiently Advanced Technology is Indistinguishable from Magic">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="silencial">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Deep Reinforcement Learning (Part 3)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-02-07 00:00:00" itemprop="dateCreated datePublished" datetime="2020-02-07T00:00:00+00:00">2020-02-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-02-13 00:00:00" itemprop="dateModified" datetime="2020-02-13T00:00:00+00:00">2020-02-13</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>32k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1:19</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Berkeley <a target="_blank" rel="noopener external nofollow noreferrer" href="http://rail.eecs.berkeley.edu/deeprlcourse/">CS 285</a> Review</p>
+<p>My <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/silencial/DeepRL">solution</a> to the homework</p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-1/">Deep Reinforcement Learning (Part 1)</a></p>
+<p><a href="https://silencial.github.io/deep-reinforcement-learning-2/">Deep Reinforcement Learning (Part 2)</a></p>
+<span id="more"></span>
+<hr />
+<h1 id="variational-inference">Variational Inference</h1>
+<p>Implicit <strong>latent variable model</strong> can be used to model complicated distributions: <span class="math display">\[
+\displaylines{p(x) = \int p(x|z)p(z)dz
+}
+\]</span> and the maximum likelihood fit becomes <span class="math display">\[
+\displaylines{\DeclareMathOperator*{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmax}{\arg\max}
+\theta \leftarrow \argmax _{ \theta } \frac { 1 } { N } \sum_ { i } \log \left( \int p _{ \theta } \left( x_ { i } | z \right) p ( z ) d z \right)
+}
+\]</span> the integral is intractable so we replace it by expectation <span class="math display">\[
+\begin{equation}\displaylines{
+\theta \leftarrow \argmax _{ \theta } \frac { 1 } { N } \sum_ { i } \mathbb{E}_{z \sim p(z | x_i)} \left[ \log p _ { \theta } \left( x _ { i } | z \right) \right]
+}
+\label{maxlikely}
+\end{equation}
+\]</span> We use another distribution <span class="math inline">\(q(z)\)</span> to approximate <span class="math inline">\(p(z | x_i)\)</span>, with KL-divergence as metrics: <span class="math display">\[
+\displaylines{\begin{aligned}
+D_{\mathrm{KL}}(q_i(z) \| p(z | x_i)) &amp;= -\mathbb{E}_{z \sim q_{i}(z)}\left[\log p\left(x_{i} | z\right)+\log p(z)\right]+ \mathbb{E}_{z \sim q_{i}(z)}\left[\log q_{i}(z)\right] + \log p(x_i) \\
+&amp;= - \mathcal{L}_i(p, q_i) + \log p(x_i)
+\end{aligned}
+}
+\]</span> <span class="math inline">\(\mathcal{L}_i (p, q_i)\)</span> is called the <strong>evidence lower bound (ELBO)</strong>, since <span class="math inline">\(\log p(x_i) \ge \mathcal{L}_i(p, q_i)\)</span>. Maximizing ELBO w.r.t. <span class="math inline">\(q_i\)</span> minimizes KL divergence. So now <span class="math inline">\(\eqref{maxlikely}\)</span> becomes <span class="math display">\[
+\displaylines{\theta \leftarrow \argmax _{ \theta } \frac { 1 } { N } \sum_ { i } \mathcal{L}_i(p, q_i)
+}
+\]</span></p>
+<p><span class="math inline">\(\mathcal{L}_{i}\left(p, q_{i}\right)=\mathbb{E}_{z \sim q_{i}(z)}\left[\log p\left(x_{i} | z\right)+\log p(z)\right]+\mathcal{H}(q)\)</span>. The reason to optimize over two parts can be seen below:</p>
+<p><img src="https://i.imgur.com/m2gWqmB.png" alt="Maximize Likelihood and Entropy Together" /></p>
+<p>Update scheme:</p>
+<ol type="1">
+<li>sample <span class="math inline">\(z \sim q_i(x_i)\)</span></li>
+<li>calculate <span class="math inline">\(\nabla_\theta \mathcal{L}_i(p, q_i) \approx \nabla_\theta \log p_\theta(x_i | z)\)</span></li>
+<li><span class="math inline">\(\theta \leftarrow \theta + \alpha \nabla_\theta \mathcal{L}_i(p, q_i)\)</span></li>
+<li>update <span class="math inline">\(q_i\)</span> to maximize <span class="math inline">\(\nabla_\theta \mathcal{L}_i(p, q_i)\)</span></li>
+</ol>
+<p>If <span class="math inline">\(q_i(z) = \mathcal{N}(\mu_i, \sigma_i)\)</span>, step 4 becomes gradient ascent on <span class="math inline">\(\mu_i, \sigma_i\)</span></p>
+<p><strong>Problems</strong>: parameter size too large <span class="math inline">\(|\theta|+\left(\left|\mu_{i}\right|+\left|\sigma_{i}\right|\right) \times N\)</span></p>
+<h2 id="amortized-variational-inference">Amortized Variational Inference</h2>
+<p>If we can learn a network <span class="math inline">\(q_\phi(z | x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi(x))\)</span>, step 4 will become <span class="math inline">\(\phi \leftarrow \phi + \nabla_\phi \mathcal{L}_i(p_\theta, q_\phi)\)</span>. Parameter size problem can be solved.</p>
+<p>Expand <span class="math inline">\(\mathcal{L}_i\)</span>: <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathcal { L }_ { i } &amp;= \mathbb{E} _{ z \sim q_ { \phi } ( z | x _{ i } ) } \left[ \log p _ { \theta } \left( x _ { i } | z \right) + \log p ( z ) \right] + \mathcal { H } \left( q_ { \phi } ( z | x _{ i } ) \right) \\
+&amp;= \mathbb{E}_{ z \sim q _{ \phi } ( z | x_ { i } ) } [r(x_i, z)] + \mathcal { H } \left( q _{ \phi } ( z | x_ { i } ) \right) \\
+&amp;= J(\phi) + \mathcal { H } \left( q _{ \phi } ( z | x_ { i } ) \right)
+\end{aligned}
+}
+\]</span> The second term is the entropy of a Gaussian. For the first term, we can use policy gradient: <span class="math display">\[
+\displaylines{\nabla J(\phi) \approx \frac{1}{M} \sum_j \nabla_\phi \log q _{ \phi } ( z_j | x _{ i } ) r(x_i, z_j)
+}
+\]</span> Another way to do it is to use <strong>reparameterization</strong> trick: <span class="math display">\[
+\displaylines{\begin{aligned}
+J ( \phi ) &amp; = \mathbb{E}_ { z \sim q _{ \phi } \left( z | x_ { i } \right) } \left[ r \left( x _ { i } , z \right) \right] \\
+&amp; = \mathbb{E} _{ \epsilon \sim \mathcal { N } ( 0,1 ) } \left[ r \left( x _ { i } , \mu _ { \phi } \left( x _ { i } \right) + \epsilon \sigma _ { \phi } \left( x _ { i } \right) \right) \right]
+\end{aligned}
+}
+\]</span> so that <span class="math inline">\(\nabla J(\phi)\)</span> can be computed by samples <span class="math inline">\(\epsilon_j\)</span> from <span class="math inline">\(\mathcal{N}(0, 1)\)</span>: <span class="math display">\[
+\displaylines{J ( \phi ) \approx \frac{1}{M} \sum_j \nabla_\phi r \left( x _{ i } , \mu_ { \phi } \left( x _{ i } \right) + \epsilon_j \sigma _{ \phi } \left( x_ { i } \right) \right)
+}
+\]</span></p>
+<h2 id="variational-autoencoders">Variational Autoencoders</h2>
+<p><strong>Encoder</strong>: <span class="math inline">\(q_\phi(z | x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi(x))\)</span></p>
+<p><strong>Decoder</strong>: <span class="math inline">\(p_\theta(x | z) = \mathcal{N}(\mu_\theta(z), \sigma_\theta(z))\)</span></p>
+<p>Algorithm: The first term maximize the likelihood from the decoder, the second term makes the encoder and the prior stay close. <span class="math display">\[
+\displaylines{\max _{\theta, \phi} \frac{1}{N} \sum_{i} \log p_{\theta}\left(x_{i} | \mu_{\phi}\left(x_{i}\right)+\epsilon \sigma_{\phi}\left(x_{i}\right)\right)-D_{\mathrm{KL}}\left(q_{\phi}\left(z | x_{i}\right) \| p(z)\right)
+}
+\]</span></p>
+<h1 id="control-as-inference-problem">Control as Inference Problem</h1>
+<h2 id="graphical-model">Graphical Model</h2>
+<p><strong>Deterministic model</strong> of decision making: <span class="math display">\[
+\displaylines{\mathbf{a}_1, \dots, \mathbf{a}_T = \argmax_{\mathbf{a}_1, \dots, \mathbf{a}_T} \sum_{t=1}^T r(\mathbf{s}_t, \mathbf{a}_t) \\
+\mathbf{s}_{t+1} = f(\mathbf{s}_t, \mathbf{a}_t)
+}
+\]</span> which has one optimal solution. In order to explain stochastic behavior, we need a <strong>probabilistic graphical model</strong>: <span class="math display">\[
+\begin{equation}\displaylines{
+p(\mathcal{O}_t | \mathbf{s}_t, \mathbf{a}_t) = \exp(r(\mathbf{s}_t, \mathbf{a}_t)) \\
+p \left( \tau | \mathcal { O } _{ 1 : T } \right)  = \frac { p \left( \tau , \mathcal { O }_ { 1 : T } \right) } { p \left( \mathcal { O } _{ 1 : T } \right) }  \propto p ( \tau ) \exp \left( \sum_ { t } r \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) \right)
+}
+\label{pgm}
+\end{equation}
+\]</span> where <span class="math inline">\(\mathcal{O}\)</span> represent the <em>binary</em> optimality.</p>
+<p><img src="https://i.imgur.com/noJ490o.png" alt="Graphical Model for Control Problems" /></p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>Can model suboptimal behavior (important for inverse RL).</li>
+<li>Can apply inference algorithms to solve control and planning problems.</li>
+<li>Provides an explanation for why stochastic behavior might be preferred (useful for exploration and transfer learning).</li>
+</ul>
+<p>Steps to do <strong>Inference</strong>:</p>
+<ol type="1">
+<li>compute backward messages <span class="math inline">\(\beta_t(\mathbf{s}_t, \mathbf{a}_t) = p(\mathcal{O}_{t:T} | \mathbf{s}_t, \mathbf{a}_t)\)</span></li>
+<li>compute policy <span class="math inline">\(p(\mathbf{a}_T | \mathbf{s}_T, \mathcal{O}_{1:T})\)</span></li>
+<li>compute forward messages <span class="math inline">\(\alpha_t(\mathbf{s}_t) = p(\mathbf{s}_t | \mathcal{O}_{1:t-1})\)</span></li>
+</ol>
+<h2 id="backward-message">Backward Message</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+\beta _ { t } \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) &amp; = p \left( \mathcal { O } _ { t : T } | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) \\
+&amp; = \int p \left( \mathcal { O } _ { t : T } , \mathbf { s } _ { t + 1 } | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) d \mathbf { s } _ { t + 1 } \\
+&amp; = \int p \left( \mathcal { O } _ { t + 1 : T } | \mathbf { s } _ { t + 1 } \right) p \left( \mathbf { s } _ { t + 1 } | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) p \left( \mathcal { O } _ { t } | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) d \mathbf { s } _ { t + 1 }
+\end{aligned}
+}
+\]</span></p>
+<p>The second and third term are known, the first term can be expressed as <span class="math display">\[
+\displaylines{\begin{aligned}
+\beta _{ t } \left( \mathbf { s }_ { t+1 } \right) &amp;= p \left( \mathcal { O } _{ t + 1 : T } | \mathbf { s }_ { t + 1 } \right) \\
+&amp;= \int p \left( \mathcal { O } _{ t + 1 : T } | \mathbf { s }_ { t + 1 }, \mathbf { a } _{ t + 1 } \right) p(\mathbf { a }_ { t + 1 } | \mathbf { s } _{ t + 1 }) d \mathbf { a }_ { t + 1 } \\
+&amp;= \int \beta _{ t } \left( \mathbf { s }_ { t+1 } , \mathbf { a } _{ t+1 } \right) p(\mathbf { a }_ { t + 1 } | \mathbf { s } _{ t + 1 }) d \mathbf { a }_ { t + 1 }
+\end{aligned}
+}
+\]</span> Without loss of generality, assume <span class="math inline">\(p(\mathbf { a } _{ t + 1 } | \mathbf { s }_ { t + 1 })\)</span> is uniform (<a href="#proof-1">Proof</a>). Then the algorithm is</p>
+<ol type="1">
+<li>For <span class="math inline">\(t=T-1\)</span> to <span class="math inline">\(1\)</span></li>
+<li><span class="math inline">\(\beta _{ t } \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) = p \left( \mathcal { O }_ { t } | \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) \mathbb{E} _{ \mathbf { s }_ { t + 1 } \sim p \left( \mathbf { s } _{ t + 1 } | \mathbf { s }_ { t } , \mathbf { a } _ { t } \right) } \left[ \beta _ { t + 1 } \left( \mathbf { s } _ { t + 1 } \right) \right]\)</span></li>
+<li><span class="math inline">\(\beta _{ t } \left( \mathbf { s }_ { t } \right) = E _{ \mathbf { a }_ { t } \sim p \left( \mathbf { a } _{ t } | \mathbf { s }_ { t } \right) } \left[ \beta _ { t } \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) \right]\)</span></li>
+</ol>
+<p><strong>Relationship</strong> to value iteration algorithm:</p>
+<p>Let <span class="math inline">\(V(\mathbf{s}_t) = \log \beta_t(\mathbf{s}_t)\)</span> and <span class="math inline">\(Q(\mathbf { s }_ { t } , \mathbf { a } _{ t }) = \log \beta_t(\mathbf { s } _{ t } , \mathbf { a }_ { t })\)</span>, then the backward pass can be written as <span class="math display">\[
+\begin{equation}\displaylines{
+Q(\mathbf { s } _{ t } , \mathbf { a }_ { t }) = r(\mathbf { s } _{ t } , \mathbf { a }_ { t }) + \log \mathbb{E} \big[ \exp(V(\mathbf { s } _ { t+1})) \big] \\
+V(\mathbf{s}_t) = \log \int \exp(Q(\mathbf { s }_ { t } , \mathbf { a } _{ t })) d \mathbf{a}_t
+}
+\label{backmessage}
+\end{equation}
+\]</span> Note that when <span class="math inline">\(Q\)</span> gets bigger, <span class="math inline">\(V \rightarrow \max_{\mathbf{a}_t} Q\)</span></p>
+<h2 id="compute-policy">Compute Policy</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+p(\mathbf{a}_t | \mathbf{s}_t,\mathcal{O}_{1:T}) &amp;= \pi (\mathbf{a}_t | \mathbf{s}_t) \\
+&amp;= p(\mathbf{a}_t | \mathbf{s}_t, \mathcal{O}_{t:T}) \\
+&amp;= \frac{p(\mathcal{O}_{t:T} | \mathbf{s}_t, \mathbf{a}_t) p(\mathbf{s}_t, \mathbf{a}_t)}{p(\mathcal{O}_{t:T} | \mathbf{s}_t) p(\mathbf{s}_t)} \\
+&amp;= \frac{\beta_t(\mathbf{s}_t, \mathbf{a}_t)}{\beta_t(\mathbf{s}_t)}  p(\mathbf{a}_t | \mathbf{s}_t)
+\end{aligned}
+}
+\]</span></p>
+<p>Ignore the action prior we can get that <span class="math inline">\(\pi (\mathbf{a}_t | \mathbf{s}_t) = \beta_t(\mathbf{s}_t, \mathbf{a}_t) / \beta_t(\mathbf{s}_t)\)</span>. Plug in <span class="math inline">\(Q\)</span>, <span class="math inline">\(V\)</span> we can see <span class="math inline">\(\pi \left( \mathbf { a }_ { t } | \mathbf { s } _{ t } \right) = \exp \left( Q \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) - V \left( \mathbf { s }_ { t } \right) \right) = \exp \left( A \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) \right)\)</span></p>
+<h2 id="forward-message">Forward Message</h2>
+<p><span class="math display">\[
+\displaylines{\begin{aligned}
+\alpha_t(\mathbf{s}_t) &amp;= p(\mathbf{s}_t | \mathcal{O}_{1:t-1}) \\
+&amp;= \int p(\mathbf{s}_t, \mathbf{s}_{t-1}, \mathbf{a}_{t-1} | \mathcal{O}_{1:t-1}) d\mathbf{s}_{t-1} d\mathbf{a}_{t-1} \\
+&amp;= \int p ( \mathbf { s } _ { t } | \mathbf { s } _ { t - 1 } , \mathbf { a } _ { t - 1 } ) p ( \mathbf { a } _ { t - 1 } | \mathbf { s } _ { t - 1 } , \mathcal { O } _ { t - 1 } ) p ( \mathbf { s } _ { t - 1 } | \mathcal { O } _ { 1 : t - 1 } ) d \mathbf { s } _ { t - 1 } d \mathbf { a } _ { t - 1 }
+\end{aligned}
+}
+\]</span></p>
+<p>The first term is the dynamics, the rest can be further simplified: <span class="math display">\[
+\displaylines{\begin{aligned}
+p ( \mathbf { a } _{ t - 1 } | \mathbf { s }_ { t - 1 } , \mathcal { O } _{ t - 1 } ) p ( \mathbf { s }_ { t - 1 } | \mathcal { O } _{ 1 : t - 1 } ) &amp;= \frac{p ( \mathcal { O }_ { t - 1 } | \mathbf { s } _{ t - 1 } , \mathbf { a }_ { t - 1 } ) p ( \mathbf { a } _{ t - 1 } | \mathbf { s }_ { t - 1 } )}{p ( \mathcal { O } _{ t - 1 } | \mathbf { s }_ { t - 1 } )} \frac{ p ( \mathcal { O } _{ t - 1 } | \mathbf { s }_ { t - 1 } ) p ( \mathbf { s } _{ t - 1 } | \mathcal { O }_ { 1 : t - 2 } )}{p(\mathcal { O } _{ t - 1 } | \mathcal { O }_ { 1 : t - 2 })} \\
+&amp;= \frac{p ( \mathcal { O } _{ t - 1 } | \mathbf { s }_ { t - 1 } , \mathbf { a } _{ t - 1 } ) p ( \mathbf { a }_ { t - 1 } | \mathbf { s } _{ t - 1 } )}{p(\mathcal { O }_ { t - 1 } | \mathcal { O } _{ 1 : t - 2 })} \alpha_{t-1}(\mathbf{s}_{t-1})
+\end{aligned}
+}
+\]</span> If we want <span class="math inline">\(p(\mathbf{s}_t | \mathcal{O}_{1:T})\)</span>: <span class="math display">\[
+\displaylines{p(\mathbf{s}_t | \mathcal{O}_{1:T}) = \frac{p(\mathcal{O}_{t:T} | \mathbf{s}_t) p(\mathbf{s}_t \mathcal{O}_{1:t-1})}{p(\mathcal{O}_{1:T})} \propto \beta_t(\mathbf{s}_t) \alpha_t(\mathbf{s}_t)
+}
+\]</span></p>
+<h2 id="optimism-problem">Optimism Problem</h2>
+<p>In the backward pass <span class="math inline">\(\eqref{backmessage}\)</span> is optimistic about the <span class="math inline">\(Q\)</span> since <span class="math inline">\(\log\mathbb{E} \big[ \exp(V_{t+1}(\mathbf { s } _ { t+1})) \big]\)</span> is like the <em>maximum</em>. This happens because the dynamics from the inference problem is not real dynamics. Marginalizing the inference problem <span class="math inline">\(p(\mathbf{s}_{1:T}, \mathbf{a}_{1:T} | \mathcal{O}_{1:T})\)</span> to get</p>
+<ul>
+<li>policy: <span class="math inline">\(p(\mathbf{a}_{t} | \mathbf{s}_{t}, \mathcal{O}_{1:T})\)</span> (given high reward obtained, what was the action probability? This is good.)</li>
+<li>dynamics: <span class="math inline">\(p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}, \mathcal{O}_{1:T}) \ne p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t})\)</span> (given high reward obtained, what was the transition probability? This is bad.)</li>
+</ul>
+<p>The solution is to find a distribution <span class="math inline">\(q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T})\)</span> that is close to <span class="math inline">\(p(\mathbf{s}_{1:T}, \mathbf{a}_{1:T} | \mathcal{O}_{1:T})\)</span> but has dynamics <span class="math inline">\(p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t})\)</span>.</p>
+<p>Let <span class="math inline">\(\mathbf{x} = \mathcal{O}_{1:T}\)</span> and <span class="math inline">\(\mathbf{z} = (\mathbf{s}_{1:T}, \mathbf{a}_{1:T})\)</span>, <span class="math inline">\(q(\mathbf{z})\)</span> can be built by <mark>(same dynamics and initial state as <span class="math inline">\(p\)</span>)</mark> <span class="math display">\[
+\displaylines{q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) = p(\mathbf{s}_{1}) \prod_t p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}) q(\mathbf{a}_{t} | \mathbf{s}_{t})
+}
+\]</span> Applying the <em>ELBO</em> and solve for <span class="math inline">\(q(\mathbf{a}_{t} | \mathbf{s}_{t})\)</span> by dynamic programming we can get (<a href="#proof-2">Proof</a>) <span class="math display">\[
+\begin{equation}\displaylines{
+Q(\mathbf { s } _{ t } , \mathbf { a }_ { t }) = r(\mathbf { s } _{ t } , \mathbf { a }_ { t }) + \mathbb{E} \big[ V(\mathbf { s } _ { t+1}) \big] \\
+V(\mathbf{s}_t) = \log \int \exp(Q(\mathbf { s }_ { t } , \mathbf { a } _{ t })) d \mathbf{a}_t \\
+q ( \mathbf{a}_t | \mathbf{s}_t) = \exp(Q(\mathbf{s}_t, \mathbf{a}_t) - V(\mathbf{s}_t))
+}
+\label{softoptimal}
+\end{equation}
+\]</span> which corresponds to a standard <strong>Bellman backup</strong> with a <strong>soft maximization</strong> for the value function.</p>
+<h2 id="soft-optimality">Soft Optimality</h2>
+<p>Value iteration algorithm with soft optimality:</p>
+<ol type="1">
+<li>set <span class="math inline">\(Q(\mathbf { s }, \mathbf { a }) \leftarrow r(\mathbf { s }, \mathbf { a }) + \gamma\mathbb{E} \big[ V(\mathbf { s&#39; }) \big]\)</span></li>
+<li>set <span class="math inline">\(V(\mathbf{s}) \leftarrow \text{softmax}_\mathbf{a} Q(\mathbf { s }, \mathbf { a })\)</span></li>
+</ol>
+<p><span class="math inline">\(Q\)</span>-learning with soft optimality:</p>
+<p>compute <span class="math inline">\(y_j = r_j + \gamma \operatorname{softmax}_{\mathbf{a}_j&#39;} Q_{\phi&#39;}(\mathbf{s}_j&#39;, \mathbf{a}_j&#39;)\)</span></p>
+<p>Policy gradient with soft optimality:</p>
+<p><span class="math inline">\(J ( \theta ) = \sum _{ t } \mathbb{E}_ { \pi \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) } \left[ r \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) \right] + \mathbb{E} _{ \pi \left( \mathbf { s }_ { t } \right) } [ \mathcal { H } \left( \pi \left( \mathbf { a } | \mathbf { s } _ { t } \right) \right) ] = \sum _{ t } \mathbb{E}_ { \pi \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) } \left[ r \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) - \log \pi \left( \mathbf { a } _ { t } | \mathbf { s } _ { t } \right) \right]\)</span></p>
+<p><strong>Pros</strong> of soft optimality:</p>
+<ul>
+<li>Improve exploration and prevent entropy collapse</li>
+<li>Easier to specialize (fine tune) policies for more specific tasks</li>
+<li>Principled approach to break ties</li>
+<li>Better robustness (due to wider coverage of states)</li>
+<li>Can reduce to hard optimality as reward magnitude increases</li>
+<li>Good model for modeling human behavior</li>
+</ul>
+<h1 id="inverse-rl">Inverse RL</h1>
+<p>Learn the reward function from observing an expert, and then use RL.</p>
+<p>Forward RL: Given states <span class="math inline">\(\mathbf{s} \in \mathcal{S}\)</span>, actions <span class="math inline">\(\mathbf{a} \in \mathcal{A}\)</span>, transitions <span class="math inline">\(p(\mathbf{s}^{\prime} | \mathbf{s}, \mathbf{a})\)</span> (sometimes), reward function <span class="math inline">\(r(\mathbf{s}, \mathbf{a})\)</span>. Learn <span class="math inline">\(\pi^{\star}(\mathbf{a} | \mathbf{s})\)</span>.</p>
+<p>Inverse RL: Given states <span class="math inline">\(\mathbf{s} \in \mathcal{S}\)</span>, actions <span class="math inline">\(\mathbf{a} \in \mathcal{A}\)</span>, transitions <span class="math inline">\(p(\mathbf{s}^{\prime} | \mathbf{s}, \mathbf{a})\)</span> (sometimes), samples <span class="math inline">\(\{ \tau_i \}\)</span> from <span class="math inline">\(\pi^{\star}(\tau)\)</span>. Learn reward function <span class="math inline">\(r_\psi(\mathbf{s}, \mathbf{a})\)</span>.</p>
+<h2 id="feature-matching-irl">Feature Matching IRL</h2>
+<p>Assume linear reward function: <span class="math inline">\(r_{\psi}(\mathbf{s}, \mathbf{a})=\sum_{i} \psi_{i} f_{i}(\mathbf{s}, \mathbf{a})=\psi^{T} \mathbf{f}(\mathbf{s}, \mathbf{a})\)</span></p>
+<p>So we can choose <span class="math inline">\(\psi\)</span> s.t. <span class="math inline">\(\mathbb{E}_{\pi^{r_\psi}}[\mathbf{f}(\mathbf{s}, \mathbf{a})] = \mathbb{E}_{\pi^{*}}[\mathbf{f}(\mathbf{s}, \mathbf{a})]\)</span> to match the expectation of the important features <span class="math inline">\(\mathbf{f}\)</span>.</p>
+<p>Since there could be multiple reward functions, we choose the one with the maximum margin: <span class="math display">\[
+\displaylines{\max _{\psi, m} m \\
+\text {s.t.} \quad \psi^{T} \mathbb{E}_{\pi^{*}}[\mathbf{f}(\mathbf{s}, \mathbf{a})] \geq \max _{\pi \in \Pi} \psi^{T} \mathbb{E}_{\pi}[\mathbf{f}(\mathbf{s}, \mathbf{a})]+m
+}
+\]</span> using the SVM trick, the optimization problem becomes: <span class="math display">\[
+\displaylines{\min _{\psi} \frac{1}{2}\|\psi\|^{2} \\
+\text {s.t.} \quad \psi^{T} \mathbb{E}_{\pi^{*}}[\mathbf{f}(\mathbf{s}, \mathbf{a})] \geq \max _{\pi \in \Pi} \psi^{T} \mathbb{E}_{\pi}[\mathbf{f}(\mathbf{s}, \mathbf{a})]+D\left(\pi, \pi^{\star}\right)
+}
+\]</span> where <span class="math inline">\(D\left(\pi, \pi^{\star}\right)\)</span> represent the difference between policies.</p>
+<h2 id="maxent-irl">MaxEnt IRL</h2>
+<p>From <span class="math inline">\(\eqref{pgm}\)</span> we can get another way to learn the reward: <span class="math display">\[
+\displaylines{\max _{\psi} \frac{1}{N} \sum_{i=1}^{N} \log p\left(\tau_{i} | \mathcal{O}_{1: T}, \psi\right)=\max _{\psi} \frac{1}{N} \sum_{i=1}^{N} r_{\psi}\left(\tau_{i}\right)-\log Z \\
+Z = \int p(\tau) \exp( r_\psi(\tau)) d\tau
+}
+\]</span> Taking the derivative we can get <span class="math display">\[
+\displaylines{\begin{aligned}
+\nabla_{\psi} \mathcal{L} &amp;= \frac{1}{N} \sum_{i=1}^{N} \nabla_{\psi} r_{\psi}\left(\tau_{i}\right)-\frac{1}{Z} \int p(\tau) \exp \left(r_{\psi}(\tau)\right) \nabla_{\psi} r_{\psi}(\tau) d \tau \\
+&amp;= \mathbb{E}_{\tau \sim \pi^{\star}(\tau)}\left[\nabla_{\psi} r_{\psi}\left(\tau_{i}\right)\right] - \mathbb{E}_{\tau \sim p\left(\tau | \mathcal{O}_{1: T}, \psi\right)}\left[\nabla_{\psi} r_{\psi}(\tau)\right]
+\end{aligned}
+}
+\]</span> The first term can be computed by sampling from the expert policy, the second term needs more work <span class="math display">\[
+\displaylines{\begin{aligned}
+\mathbb{E}_{\tau \sim p\left(\tau | \mathcal{O}_{1: T}, \psi\right)}\left[\nabla_{\psi} r_{\psi}(\tau)\right] &amp;= \mathbb{E}_{\tau \sim p\left(\tau | \mathcal{O}_{1: T}, \psi\right)}\left[\nabla_{\psi} \sum_{t=1}^{T} r_{\psi}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right] \\
+&amp;= \sum_{t=1}^{T} \mathbb{E}_{\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) \sim p\left(\mathbf{s}_{t}, \mathbf{a}_{t} | \mathcal{O}_{1: T}, \psi\right)}\left[\nabla_{\psi} r_{\psi}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]
+\end{aligned}
+}
+\]</span> <span class="math inline">\(p\left(\mathbf{s}_{t}, \mathbf{a}_{t} | \mathcal{O}_{1: T}, \psi\right)\)</span> can be further decomposed to <span class="math display">\[
+\displaylines{p\left(\mathbf{a}_{t} | \mathbf{s}_{t}, \mathcal{O}_{1: T}, \psi\right) p\left(\mathbf{s}_{t} | \mathcal{O}_{1: T}, \psi\right) \propto \beta(\mathbf{s}_t, \mathbf{a}_t) \alpha(\mathbf{s}_t)
+}
+\]</span></p>
+<p>So we have the Max Entropy IRL algorithm:</p>
+<ol type="1">
+<li>Given <span class="math inline">\(\psi\)</span>, compute backward message <span class="math inline">\(\beta(\mathbf{s}_t, \mathbf{a}_t)\)</span> and forward message <span class="math inline">\(\alpha(\mathbf{s}_t)\)</span></li>
+<li>Compute <span class="math inline">\(\mu_t(\mathbf{s}_t, \mathbf{a}_t) \propto \beta(\mathbf{s}_t, \mathbf{a}_t) \alpha(\mathbf{s}_t)\)</span></li>
+<li>Evaluate <span class="math inline">\(\displaystyle \nabla_{\psi} \mathcal{L}=\frac{1}{N} \sum_{i=1}^{N} \sum_{t=1}^{T} \nabla_{\psi} r_{\psi}\left(\mathbf{s}_{i, t}, \mathbf{a}_{i, t}\right)-\sum_{t=1}^{T} \iint \mu_{t}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) \nabla_{\psi} r_{\psi}\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) d \mathbf{s}_{t} d \mathbf{a}_{t}\)</span></li>
+<li><span class="math inline">\(\psi \leftarrow \psi + \eta \nabla_\psi \mathcal{L}\)</span></li>
+</ol>
+<p>This algorithm is called MaxEnt because it optimizes <span class="math inline">\(\max_\psi \mathcal{H}(\pi^{r_\psi})\)</span> s.t. <span class="math inline">\(\mathbb{E}_{\pi^{r_\psi}}[\mathbf{f}] = \mathbb{E}_{\pi^{*}}[\mathbf{f}]\)</span></p>
+<h2 id="unknown-dynamics">Unknown Dynamics</h2>
+<p>Learn the dynamics <span class="math inline">\(p(\mathbf{a}_t | \mathbf{s}_t, \mathcal{O}_{1:T}, \psi)\)</span> using any MaxEnt RL algorithm, then run this policy to sample <span class="math inline">\(\{\tau_j\}\)</span>. <span class="math inline">\(\nabla_\psi \mathcal{L}\)</span> becomes <span class="math display">\[
+\displaylines{\nabla_{\psi} \mathcal{L} \approx \frac{1}{N} \sum_{i=1}^{N} \nabla_{\psi} r_{\psi}\left(\tau_{i}\right)-\frac{1}{M} \sum_{j=1}^{M} \nabla_{\psi} r_{\psi}\left(\tau_{j}\right)
+}
+\]</span> The first sum uses expert samples while the second uses the policy samples.</p>
+<p>Instead of learning the dynamics, use importance sampling (expert -&gt; policy) to make the algorithm more efficient: <span class="math display">\[
+\displaylines{\nabla_{\psi} \mathcal{L} \approx \frac{1}{N} \sum_{i=1}^{N} \nabla_{\psi} r_{\psi}\left(\tau_{i}\right)-\frac{1}{\sum_{j} w_{j}} \sum_{j=1}^{M} w_{j} \nabla_{\psi} r_{\psi}\left(\tau_{j}\right) \\
+w_{j}=\frac{p(\tau) \exp \left(r_{\psi}\left(\tau_{j}\right)\right)}{\pi\left(\tau_{j}\right)} = \frac{\exp(\sum_t r_\psi(\mathbf{s}_t, \mathbf{a}_t))}{\prod_t \pi(\mathbf{a}_t | \mathbf{s}_t)}
+}
+\]</span></p>
+<h2 id="inverse-rl-as-gan">Inverse RL as GAN</h2>
+<p><img src="https://i.imgur.com/8lHrVl4.png" alt="Inverse RL vs. GAN" /></p>
+<p>The best discriminator in a GAN is <span class="math inline">\(D^{\star}(\mathbf{x})=\dfrac{p^{\star}(\mathbf{x})}{p_{\theta}(\mathbf{x})+p^{\star}(\mathbf{x})}\)</span>. In IRL, optimal policy approaches <span class="math inline">\(\pi_{\theta}(\tau) \propto p(\tau) \exp \left(r_{\psi}(\tau)\right)\)</span>, plug it in to get <span class="math display">\[
+\displaylines{\begin{aligned}
+D_{\psi}(\tau) &amp;= \frac{p(\tau) \frac{1}{Z} \exp (r(\tau))}{p_{\theta}(\tau)+p(\tau) \frac{1}{Z} \exp (r(\tau))} \\
+&amp;= \frac{\frac{1}{Z} \exp (r(\tau))}{\prod_t \pi_\theta (\mathbf{a}_t | \mathbf{s}_t) + \frac{1}{Z} \exp (r(\tau))}
+\end{aligned}
+}
+\]</span> and optimize it w.r.t. <span class="math inline">\(\psi\)</span> <span class="math display">\[
+\displaylines{\psi \leftarrow \arg \max_{\psi} \mathbb{E}_{\tau \sim p^{*}}\left[\log D_{\psi}(\tau)\right]+\mathbb{E}_{\tau \sim \pi_{\theta}}\left[\log \left(1-D_{\psi}(\tau)\right)\right]
+}
+\]</span></p>
+<h1 id="transfer-learning">Transfer Learning</h1>
+<p><strong>Definition</strong>: Using experience from one set of tasks for faster learning and better performance on a new task.</p>
+<p>Prior understanding of problem structure can help us solve complex tasks quickly.</p>
+<p>RL store the prior knowledge in:</p>
+<ul>
+<li>Q-function: which actions or states are good</li>
+<li>Policy: which actions are potentially useful</li>
+<li>Models: laws of physics that govern the world</li>
+<li>Feature/Hidden states: good representation</li>
+</ul>
+<h2 id="forward-transfer">Forward Transfer</h2>
+<ul>
+<li>Fine-tuning: The most popular TL method in (supervised) deep learning.</li>
+</ul>
+<p>Challenges:</p>
+<ol type="1">
+<li>RL tasks are generally much less diverse
+<ul>
+<li>Features are less general</li>
+<li>Policies &amp; value functions become overly specialized</li>
+</ul></li>
+<li>Optimal policies in fully observed MDPs are deterministic
+<ul>
+<li>Loss of exploration at convergence</li>
+<li>Low-entropy policies adapt very slowly to new settings</li>
+</ul></li>
+</ol>
+<p>If we can manipulate the source domain, and we have a difficult target domain (sim to real transfer), <strong>randomize</strong> the source domain to add more diversity at training time to make the model more flexible.</p>
+<p>If we can have some prior knowledge about the target domain, use <strong>domain adaption</strong> (GAN) to make the network unable to distinguish observations from the two domains.</p>
+<h2 id="multi-task-transfer">Multi-Task Transfer</h2>
+<p>More diversity = Better transfer. Transfer from multiple different tasks is closer to what people do.</p>
+<ul>
+<li>Model-based RL: train model on past tasks and use it to solve new tasks; or fine-tuning the model.</li>
+<li>Model distillation: Instead of learning a model, learn a multi-task policy that can simultaneously perform many tasks. Construct a joint MDP, train each separately, then combine the policies.</li>
+<li>Contextual policies: Policies are told what to do in the same environment.</li>
+<li>Modular network: Architectures (neural network) with reusable components.</li>
+</ul>
+<h1 id="exploration">Exploration</h1>
+<p>Exploitation: doing what you know will yield highest reward.</p>
+<p>Exploration: doing things you haven't done before, in the hopes of getting even higher reward.</p>
+<p>Assume <span class="math inline">\(r(a_i) \sim p_{\theta_i}(r_i)\)</span> and define the regret as the difference from optimal policy at time step <span class="math inline">\(T\)</span>: <span class="math inline">\(\text{Reg}(T) = T \mathbb{E}[r(a^\star)] - \sum_{t=1}^T r(a_t)\)</span></p>
+<h2 id="multi-arm-bandits-problem">Multi-Arm Bandits Problem</h2>
+<p>First let's discuss exploration in simple 1-step stateless RL problems.</p>
+<h3 id="optimistic-exploration">Optimistic Exploration</h3>
+<p>Keep track of average reward <span class="math inline">\(\hat{\mu}_a\)</span> for each action <span class="math inline">\(a\)</span> and pick the action by <span class="math inline">\(a = \argmax \hat{\mu}_a + C \sigma_a\)</span>.</p>
+<p>The intuition behind this algorithm is to try each action until you are sure it is not great.</p>
+<p>One popular model is <strong>UCB (Upper Confidence Bound)</strong>: <span class="math display">\[
+\displaylines{a=\argmax \hat{\mu}_{a}+\sqrt{\frac{2 \ln T}{N(a)}}
+}
+\]</span> which yields <span class="math inline">\(\text{Reg}(T)\)</span> to <span class="math inline">\(\mathcal{O}(\log T)\)</span>.</p>
+<h3 id="posterior-sampling">Posterior Sampling</h3>
+<p><span class="math inline">\(r(a_i) \sim p_{\theta_i}(r_i)\)</span> defines a POMDP with <span class="math inline">\(\mathbf{s} = [\theta_q, \cdots, \theta_n]\)</span>, belief state is <span class="math inline">\(\hat{p}(\theta_1, \cdots, \theta_n)\)</span>.</p>
+<ol type="1">
+<li>Sample <span class="math inline">\(\theta_1, \cdots, \theta_n \sim \hat{p}(\theta_1, \cdots, \theta_n)\)</span></li>
+<li>Use the <span class="math inline">\(\theta_1, \cdots, \theta_n\)</span> model to take the optimal action</li>
+<li>update the model</li>
+</ol>
+<h3 id="information-gain">Information Gain</h3>
+<p><strong>Bayesian experimental design</strong>: Learn some latent variable <span class="math inline">\(z\)</span> and use it to choose action.</p>
+<p>Let <span class="math inline">\(\mathcal{H}(\hat{p}(z))\)</span> be the entropy of <span class="math inline">\(z\)</span> estimate.</p>
+<p>Let <span class="math inline">\(\mathcal{H}(\hat{p}(z) | y)\)</span> be the entropy of <span class="math inline">\(z\)</span> estimate after observation <span class="math inline">\(y\)</span>.</p>
+<p>The information gain: <span class="math inline">\(\text{IG}(z, y) = \mathbb{E}_y [\mathcal{H}(\hat{p}(z)) - \mathcal{H}(\hat{p}(z) | y)]\)</span>.</p>
+<p>Choose action to maximize the IG.</p>
+<h2 id="general-problems">General Problems</h2>
+<h3 id="count-based-exploration">Count-Based Exploration</h3>
+<p>Similar to optimistic exploration, we can add bonus with MDPs: <span class="math inline">\(r^+(\mathbf{s}, \mathbf{a}) = r(\mathbf{s}, \mathbf{a}) + \mathcal{B}(N(\mathbf{s}))\)</span>, where <span class="math inline">\(\mathcal{B}\)</span> decreases with <span class="math inline">\(N(\mathbf{s})\)</span>.</p>
+<p>In practice, counts of states are hard to calculate. Instead fit a model <span class="math inline">\(p_\theta(\mathbf{s})\)</span> to estimate the density of <span class="math inline">\(\mathbf{s}\)</span>, and use it to get a "pseudo-count". With <span class="math display">\[
+\displaylines{p_{\theta}\left(\mathbf{s}_{i}\right)=\frac{\hat{N}\left(\mathbf{s}_{i}\right)}{\hat{n}} \qquad p_{\theta^{\prime}}\left(\mathbf{s}_{i}\right)=\frac{\hat{N}\left(\mathbf{s}_{i}\right)+1}{\hat{n}+1}
+}
+\]</span> we can get <span class="math display">\[
+\displaylines{\hat{N}(\mathbf{s}_{i})=\hat{n} p_{\theta}(\mathbf{s}_{i}) \qquad \hat{n}=\frac{1-p_{\theta^{\prime}}(\mathbf{s}_{i})} {p_{\theta^{\prime}}(\mathbf{s}_{i})-p_{\theta}(\mathbf{s}_{i})} p_{\theta}(\mathbf{s}_{i})
+}
+\]</span></p>
+<h3 id="implicit-density-model">Implicit Density Model</h3>
+<p>A state is novel if it is easy to distinguish from all previous seen states by a classifier. So we can estimate the density by a classifier <span class="math inline">\(D\)</span>: <span class="math display">\[
+\displaylines{p_{\theta}(\mathbf{s})=\frac{1-D_{\mathbf{s}}(\mathbf{s})}{D_{\mathbf{s}}(\mathbf{s})}
+}
+\]</span> Training one classifier per state is too much and in practice we often train one <strong>amortized</strong> model: single network that takes in exemplar as input.</p>
+<h3 id="heuristic-estimation">Heuristic Estimation</h3>
+<p>Given target function <span class="math inline">\(f^\star(\mathbf{s}, \mathbf{a})\)</span> and buffer <span class="math inline">\(\mathcal{D} = \{ (\mathbf{s}_i, \mathbf{a}_i) \}\)</span>, fit <span class="math inline">\(\hat{f}_\theta(\mathbf{s}, \mathbf{a})\)</span> and use <span class="math inline">\(\mathcal{E}(\mathbf{s}, \mathbf{a})=\left\|\hat{f}_{\theta}(\mathbf{s}, \mathbf{a})-f^{\star}(\mathbf{s}, \mathbf{a})\right\|^{2}\)</span> as bonus.</p>
+<p>One common choice for target function is the next state prediction: <span class="math inline">\(f^\star(\mathbf{s}, \mathbf{a}) = \mathbf{s}&#39;\)</span>, or simpler <span class="math inline">\(f^{\star}(\mathbf{s}, \mathbf{a})=f_{\phi}(\mathbf{s}, \mathbf{a})\)</span> where <span class="math inline">\(\phi\)</span> is a random parameter.</p>
+<h2 id="rl-problems">RL Problems</h2>
+<h3 id="posterior-sampling-1">Posterior Sampling</h3>
+<p>In the bandits problem, we sample from <span class="math inline">\(p_{\theta_i}(r_i)\)</span>, which is a distribution over awards. In RL, we can sample from <span class="math inline">\(Q\)</span>-function.</p>
+<ol type="1">
+<li>sample <span class="math inline">\(Q\)</span>-function from <span class="math inline">\(p(Q)\)</span></li>
+<li>act according to <span class="math inline">\(Q\)</span> for one episode</li>
+<li>update <span class="math inline">\(p(Q)\)</span></li>
+</ol>
+<p>We can represent a distribution over functions by bootstrap:</p>
+<ol type="1">
+<li>given dataset <span class="math inline">\(\mathcal{D}\)</span>, resample with replacement <span class="math inline">\(N\)</span> times to get <span class="math inline">\(\mathcal{D}_1, \dots, \mathcal{D}_N\)</span></li>
+<li>train each model <span class="math inline">\(f_{\theta_i}\)</span> on <span class="math inline">\(\mathcal{D}_i\)</span></li>
+<li>to sample from <span class="math inline">\(p(\theta)\)</span>, sample <span class="math inline">\(i \in [1, \dots, N]\)</span> and use <span class="math inline">\(f_{\theta_i}\)</span></li>
+</ol>
+<h3 id="information-gain-1">Information Gain</h3>
+<p>Choices for <span class="math inline">\(\text{IG}(z,y|a)\)</span>:</p>
+<ul>
+<li>reward <span class="math inline">\(r(\mathbf{s}, \mathbf{a})\)</span>: not very useful if reward is sparse</li>
+<li>state density <span class="math inline">\(p(\mathbf{s})\)</span>: strange but somewhat makes sense</li>
+<li>dynamics <span class="math inline">\(p(\mathbf{s}&#39;|\mathbf{s}, \mathbf{a})\)</span>: good for learning the MDP, but still heuristic</li>
+</ul>
+<p>IG is generally intractable to use exactly, but we can do approximations:</p>
+<ul>
+<li>prediction gain: <span class="math inline">\(\log p_{\theta^{\prime}}(\mathbf{s})-\log p_{\theta}(\mathbf{s})\)</span>. If density changes a lot, the state is novel.</li>
+<li>variational inference: IG is equivalent to <span class="math inline">\(D_{\mathrm{KL}}(p(z | y) \| p(z))\)</span>. To learn about dynamics <span class="math inline">\(p_{\theta}\left(s_{t+1} | s_{t}, a_{t}\right)\)</span>, let <span class="math inline">\(z=\theta\)</span>, <span class="math inline">\(y = (s_{t+1} | s_{t}, a_{t})\)</span>. Then use variational inference to estimate <span class="math inline">\(q(\theta | \phi) \approx p(\theta | h)\)</span></li>
+</ul>
+<h2 id="imitation-vs.-rl">Imitation vs. RL</h2>
+<p><strong>Imitation learning</strong>:</p>
+<ul>
+<li>Require demonstrations</li>
+<li>Distributional shift</li>
+<li>Simple, stable supervised learning</li>
+<li>Only as good as the demo</li>
+</ul>
+<p><strong>RL</strong>:</p>
+<ul>
+<li>Requires reward function</li>
+<li>Must address exploration</li>
+<li>Potentially non-convergent RL</li>
+<li>Can become arbitrarily good</li>
+</ul>
+<p>Can we combine the best of both if we have demonstrations and rewards?</p>
+<p><img src="https://i.imgur.com/GzDIOKe.png" alt="Combine Imitation Learning and RL" /></p>
+<p>IRL already addresses distributional shift via RL, but it doesn't use a known reward function.</p>
+<p>The simplest way is to use pretrain &amp; finetune:</p>
+<ol type="1">
+<li>collected demonstrations data <span class="math inline">\((\mathbf{s}_i, \mathbf{a}_i)\)</span></li>
+<li>initialize <span class="math inline">\(\pi_\theta\)</span> as <span class="math inline">\(\max_\theta \sum_i \log \pi_\theta(\mathbf{a}_i | \mathbf{s}_i)\)</span></li>
+<li>run <span class="math inline">\(\pi_\theta\)</span> to collect experience</li>
+<li>improve <span class="math inline">\(\pi_\theta\)</span> with any RL algorithm</li>
+</ol>
+<p>The problem is in step 3 and 4 where the policy can be very bad due to distribution shift, and the first batch of bad data can destroy initialization.</p>
+<p>The solution is to use off-policy RL and treat demonstrations as off-policy samples.</p>
+<h3 id="learning-with-demonstrations">Learning With Demonstrations</h3>
+<p>Since policy gradient if on-policy, we need to use demonstrations together with importance sampling: <span class="math display">\[
+\displaylines{\nabla_{\theta} J(\theta)=\sum_{\tau \in \mathcal{D}}\left[\sum_{t=1}^{T} \nabla_{\theta} \log \pi_{\theta}\left(\mathbf{a}_{t} | \mathbf{s}_{t}\right)\left(\prod_{t^{\prime}=1}^{t} \frac{\pi_{\theta}\left(\mathbf{a}_{t^{\prime}} | \mathbf{s}_{t^{\prime}}\right)}{q\left(\mathbf{a}_{t^{\prime}} | \mathbf{s}_{t^{\prime}}\right)}\right)\left(\sum_{t^{\prime}=t}^{T} r\left(\mathbf{s}_{t^{\prime}}, \mathbf{a}_{t^{\prime}}\right)\right)\right]
+}
+\]</span> Sample distribution choice:</p>
+<ol type="1">
+<li>use supervised behavior cloning to approximate <span class="math inline">\(\pi_{\text{demo}}\)</span></li>
+<li>assume Dirac delta <span class="math inline">\(\pi_{\text{demo}}(\tau) = \delta(\tau \in D) / N\)</span></li>
+</ol>
+<p>Fusion multiple distributions (demo &amp; policy sample): <span class="math inline">\(q(x) = \sum_i q_i(x) / M\)</span></p>
+<p><span class="math inline">\(Q\)</span>-learning is already off-policy, no need to use importance sampling. Simple solution is to drop demonstrations into the replay buffer.</p>
+<h3 id="hybrid-goal">Hybrid Goal</h3>
+<ul>
+<li>Imitation objective: <span class="math inline">\(\sum_{(\mathbf{s}, \mathbf{a}) \in \mathcal{D}_{\text {demo}}} \log \pi_{\theta}(\mathbf{a} | \mathbf{s})\)</span></li>
+<li>RL objective: <span class="math inline">\(\mathbb{E}_{\pi_{\theta}}[r(\mathbf{s}, \mathbf{a})]\)</span></li>
+<li><strong>Hybrid objective</strong>: <span class="math inline">\(\mathbb{E}_{\pi_{\theta}}[r(\mathbf{s}, \mathbf{a})] + \lambda \sum_{(\mathbf{s}, \mathbf{a}) \in \mathcal{D}_{\text {demo}}} \log \pi_{\theta}(\mathbf{a} | \mathbf{s})\)</span></li>
+</ul>
+<h1 id="meta-rl">Meta-RL</h1>
+<p>Regular RL: learn policy for single task <span class="math inline">\(\mathcal{M}\)</span> <span class="math display">\[
+\displaylines{\begin{aligned}\theta^{\star} &amp;=\argmax_{\theta} \mathbb{E}_{\pi_{\theta}(\tau)}[R(\tau)] \\&amp;=f_{\mathrm{RL}}(\mathcal{M})\end{aligned}
+}
+\]</span> Meta-RL: learn adaptation rule <span class="math display">\[
+\displaylines{\theta^{\star}=\arg \max _{\theta} \sum_{i=1}^{n} \mathbb{E}_{\pi_{\phi_{i}}(\tau)}[R(\tau)] \\\phi_{i}=f_{\theta}\left(\mathcal{M}_{i}\right)
+}
+\]</span></p>
+<p>General Meta-RL Algorithm:</p>
+<ol type="1">
+<li>sample task <span class="math inline">\(i\)</span>, collect data <span class="math inline">\(\mathcal{D}_i\)</span></li>
+<li>adapt policy by computing <span class="math inline">\(\phi_i = f(\theta, \mathcal{D}_i)\)</span></li>
+<li>collect data <span class="math inline">\(\mathcal{D}&#39;_i\)</span> with adapted policy <span class="math inline">\(\pi_{\phi_i}\)</span></li>
+<li>update <span class="math inline">\(\theta\)</span> according to <span class="math inline">\(\mathcal{L}(\mathcal{D}&#39;_i, \phi_i)\)</span></li>
+</ol>
+<p>Specific algorithms depend on the choice of <span class="math inline">\(f\)</span> and <span class="math inline">\(\mathcal{L}\)</span></p>
+<h2 id="algorithms">Algorithms</h2>
+<h3 id="recurrence">Recurrence</h3>
+<p>Implement the policy as a recurrent network so that it can remember old data.</p>
+<ol type="1">
+<li>initialize hidden state <span class="math inline">\(\mathbf{h}_0 = 0\)</span> for task <span class="math inline">\(i\)</span></li>
+<li>sample transition <span class="math inline">\(\mathcal{D}_{i}=\mathcal{D}_{i} \cup\left\{\left(\mathbf{s}_{t}, \mathbf{a}_{t}, \mathbf{s}_{t+1}, r_{t}\right)\right\}\)</span> from <span class="math inline">\(\pi_{\mathbf{h}_t}\)</span></li>
+<li>update policy hidden state <span class="math inline">\(\mathbf{h}_{t+1} = f_\theta(\mathbf{h}_t,\mathbf{s}_{t}, \mathbf{a}_{t}, \mathbf{s}_{t+1}, r_{t})\)</span></li>
+<li>update policy parameters <span class="math inline">\(\theta \leftarrow \theta-\nabla_{\theta} \sum_{i} \mathcal{L}_{i}\left(\mathcal{D}_{i}, \pi_{\mathbf{h}}\right)\)</span></li>
+</ol>
+<h3 id="optimization">Optimization</h3>
+<ol type="1">
+<li>sample <span class="math inline">\(k\)</span> episodes <span class="math inline">\(\mathcal{D}_{i}=\left\{\left(\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;, r\right)_{1:k}\right\}\)</span> from <span class="math inline">\(\pi_{\theta}\)</span></li>
+<li>compute adapted parameters <span class="math inline">\(\theta&#39;_{i}=\theta-\alpha \nabla_{\theta} \mathcal{L}_{i}\left(\pi_{\theta}, \mathcal{D}_{i}\right)\)</span></li>
+<li>sample <span class="math inline">\(k\)</span> episodes <span class="math inline">\(\mathcal{D}&#39;_{i}=\left\{\left(\mathbf{s}, \mathbf{a}, \mathbf{s}&#39;, r\right)_{1:k}\right\}\)</span> from <span class="math inline">\(\pi_{\theta&#39;}\)</span></li>
+<li><span class="math inline">\(\theta \leftarrow \theta-\nabla_{\theta} \sum_{i} \mathcal{L}_{i}\left(\mathcal{D}&#39;_{i}, \pi_{\theta&#39;_i}\right)\)</span></li>
+</ol>
+<p>Step 4 requires second order derivatives.</p>
+<h3 id="latent-model">Latent Model</h3>
+<p>Use adaptation data <span class="math inline">\(\mathbf{c}\)</span> to train a latent variable <span class="math inline">\(\mathbf{z}\)</span> to represent task-belief states <span class="math inline">\(p(\mathbf{z} | \mathbf{c})\)</span>. The training objective: <span class="math display">\[
+\displaylines{\mathbb{E}_{\mathcal{T}}\left[\mathbb{E}_{\mathbf{z} \sim q_{\phi}\left(\mathbf{z} | \mathbf{c}^{\mathcal{T}}\right)}\left[R(\mathcal{T}, \mathbf{z})+\beta D_{\mathrm{KL}}(q_{\phi}(\mathbf{z} | \mathbf{c}^{\mathcal{T}})|| p(\mathbf{z}))\right]\right]
+}
+\]</span> where <span class="math inline">\(R\)</span> is the "likelihood" term (Bellman error), KL-divergence is the "Regularization" term.</p>
+<h1 id="information-theoretic-exploration">Information-Theoretic Exploration</h1>
+<p><mark>TODO</mark></p>
+<h1 id="challenges-in-deep-rl">Challenges in Deep RL</h1>
+<p><mark>TODO</mark></p>
+<h1 id="proof">Proof</h1>
+<h2 id="proof-1">Proof 1</h2>
+<p>If the action prior is not uniform, then <span class="math display">\[
+\displaylines{V \left( \mathbf { s } _{ t } \right) = \log \int \exp \left( Q \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) + \log p \left( \mathbf { a }_ { t } | \mathbf { s } _{ t } \right) \right) \mathbf { a }_ { t } \\
+Q \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) = r \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) + \log \mathbb{E} \left[ \exp \left( V \left( \mathbf { s } _ { t + 1 } \right) \right) \right]
+}
+\]</span> Let <span class="math inline">\(\tilde { Q } \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) = r \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) + \log p \left( \mathbf { a } _{ t } | \mathbf { s }_ { t } \right) + \log \mathbb{E} \left[ \exp \left( V \left( \mathbf { s } _ { t + 1 } \right) \right) \right]\)</span>, we can fold the action prior into reward, and <span class="math inline">\(V\)</span> becomes <span class="math display">\[
+\displaylines{V \left( \mathbf { s } _{ t } \right) = \log \int \exp \left( \tilde{Q} \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) \right) \mathbf { a }_ { t }
+}
+\]</span></p>
+<h2 id="proof-2">Proof 2</h2>
+<p>The <em>ELBO</em> is <span class="math display">\[
+\displaylines{\log p(\mathcal{O}_{1:T}) \ge \mathbb{E}_{(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) \sim q} \left[ \log p(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}, \mathcal{O}_{1:T}) - \log q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) \right]
+}
+\]</span> Plug in <span class="math inline">\(q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T})\)</span> and <span class="math inline">\(p(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}, \mathcal{O}_{1:T}) = p(\mathbf{s}_{1}) \prod_t p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}) p(\mathcal{O}_{t} | \mathbf{s}_{t}, \mathbf{a}_{t})\)</span> we can get <span class="math display">\[
+\displaylines{\begin{aligned}
+\log p(\mathcal{O}_{1:T}) &amp;\ge \mathbb{E}_{(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) \sim q} \left[ \sum_{t=1}^T \log p(\mathcal{O}_{t} | \mathbf{s}_{t}, \mathbf{a}_{t}) - \sum_{t=1}^T \log q(\mathbf{a}_{t} | \mathbf{s}_{t}) \right] \\
+&amp;= \mathbb{E}_{(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) \sim q} \left[ \sum_{t=1}^T \big( r(\mathbf{s}_{t}, \mathbf{a}_{t}) -  \log q(\mathbf{a}_{t} | \mathbf{s}_{t}) \big) \right] \\
+&amp;= \sum_{t=1}^T \mathbb{E}_{(\mathbf{s}_{t}, \mathbf{a}_{t}) \sim q} \left[ r(\mathbf{s}_{t}, \mathbf{a}_{t}) + \mathcal{H}(q(\mathbf{a}_{t} | \mathbf{s}_{t})) \right]
+\end{aligned}
+}
+\]</span></p>
+<p>Optimizing the base case <span class="math inline">\(t = T\)</span>: <span class="math display">\[
+\displaylines{\mathbb{E} _{ \left( \mathbf { s }_ { T } , \mathbf { a } _{ T } \right) \sim q } \left[ r \left( \mathbf { s } _ { T } , \mathbf { a } _ { T } \right) - \log q \left( \mathbf { a } _ { T } | \mathbf { s } _ { T } \right) \right] = \\
+\mathbb{E}_ { \mathbf { s } _{ T } \sim q \left( \mathbf { s }_ { T } \right) } \left[ - D _ { \mathrm { KL } } \left( q \left( \mathbf { a } _ { T } | \mathbf { s } _ { T } \right) \| \frac { 1 } { \exp \left( V \left( \mathbf { s } _ { T } \right) \right) } \exp \left( r \left( \mathbf { s } _ { T } , \mathbf { a } _ { T } \right) \right) \right) + V \left( \mathbf { s } _ { T } \right) \right]
+}
+\]</span> where <span class="math inline">\(V(\mathbf{s}_t) = \log \int \exp(Q(\mathbf { s }_ { t } , \mathbf { a } _{ t })) d \mathbf{a}_t\)</span> and <span class="math inline">\(\exp(V(\mathbf{s}_T))\)</span> is the normalizing constant for <span class="math inline">\(\exp(r ( \mathbf { s }_ { T } , \mathbf { a } _{ T } ))\)</span>. So the optimal policy is <span class="math display">\[
+\displaylines{q ( \mathbf { a }_ { T } | \mathbf { s } _{ T } ) = \exp(r ( \mathbf { s }_ { T } , \mathbf { a } _{ T } ) - V(\mathbf{s}_T))
+}
+\]</span> For a given time step <span class="math inline">\(t\)</span>, <span class="math inline">\(q ( \mathbf { a } _{ t } | \mathbf { s }_ { t } )\)</span> must maximize two terms: <span class="math display">\[
+\begin{equation}\displaylines{
+\mathbb{E} _{ \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) \sim q \left( \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) } \left[ r \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) - \log q \left( \mathbf { a } _ { t } | \mathbf { s } _ { t } \right) \right] + \mathbb{E}_ { \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) \sim q \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) } \left[ \mathbb{E} _ { \mathbf { s } _ { t + 1 } \sim p \left( \mathbf { s } _ { t + 1 } | \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) } \left[ V \left( \mathbf { s } _ { t + 1 } \right) \right] \right]
+}
+\label{dpobj}
+\end{equation}
+\]</span> where the second term represents the contribution of <span class="math inline">\(q ( \mathbf { a } _{ T } | \mathbf { s }_ { T } )\)</span> to the expectations of all subsequent time steps. This can be seen by plugging the optimal policy into the base case to leave only <span class="math inline">\(V(\mathbf{s}_T)\)</span>. Rewrite <span class="math inline">\(\eqref{dpobj}\)</span> as <span class="math display">\[
+\displaylines{\mathbb{E}_ { \mathbf { s } _{ t } \sim q \left( \mathbf { s }_ { t } \right) } \left[ - D _ { \mathrm { KL } } \left( q \left( \mathbf { a } _ { t } | \mathbf { s } _ { t } \right) \| \frac { 1 } { \exp \left( V \left( \mathbf { s } _ { t } \right) \right) } \exp \left( Q \left( \mathbf { s } _ { t } , \mathbf { a } _ { t } \right) \right) \right) + V \left( \mathbf { s } _ { t } \right) \right]
+}
+\]</span> where we now define <span class="math display">\[
+\displaylines{\begin{aligned}
+Q \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) &amp; = r \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) + \mathbb{E} _{ \mathbf { s }_ { t + 1 } \sim p \left( \mathbf { s } _{ t + 1 } | \mathbf { s }_ { t } , \mathbf { a } _{ t } \right) } \left[ V \left( \mathbf { s } _ { t + 1 } \right) \right] \\
+V \left( \mathbf { s }_ { t } \right) &amp; = \log \int \exp \left( Q \left( \mathbf { s } _{ t } , \mathbf { a }_ { t } \right) \right) d \mathbf { a } _{ t }
+\end{aligned}
+}
+\]</span> and the optimal policy is <span class="math inline">\(q ( \mathbf{a}_t | \mathbf{s}_t) = \exp(Q(\mathbf{s}_t, \mathbf{a}_t) - V(\mathbf{s}_t))\)</span></p>
+<h1 id="references">References</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://ermongroup.github.io/cs228-notes/inference/variational/">Variational inference</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://arxiv.org/pdf/1805.00909.pdf">Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/c_1069618504881377280">UCB CS285 DRL 课程笔记</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="silencial WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="silencial Alipay">
+        <span>Alipay</span>
+      </div>
+      <div>
+        <img src="/images/venmo.jpg" alt="silencial Venmo">
+        <span>Venmo</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Open-Courses/" rel="tag"><i class="fa fa-tag"></i> Open Courses</a>
+              <a href="/tags/CS/" rel="tag"><i class="fa fa-tag"></i> CS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/deep-reinforcement-learning-2/" rel="prev" title="Deep Reinforcement Learning (Part 2)">
+                  <i class="fa fa-chevron-left"></i> Deep Reinforcement Learning (Part 2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/setup/" rel="next" title="Setup">
+                  Setup <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+<script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silencial</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">566k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">23:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Muse</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5deb5bd08954a45e" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script class="next-config" data-name="pdf" type="application/json">{&quot;object_url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pdfobject@2.2.5&#x2F;pdfobject.min.js&quot;,&quot;url&quot;:&quot;&#x2F;lib&#x2F;pdf&#x2F;web&#x2F;viewer.html&quot;}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{&quot;enable&quot;:true,&quot;theme&quot;:&quot;forest&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mermaid@8.9.3&#x2F;dist&#x2F;mermaid.min.js&quot;}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
