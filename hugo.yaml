@@ -1,0 +1,120 @@
+baseURL: 'https://example.org/'
+languageCode: 'en-us'
+title: 'Silencial Blog'
+theme: 'PaperMod'
+hasCJKLanguage: true
+enableEmoji: true
+enableRobotsTXT: true
+
+frontmatter:
+  lastmod:
+    - lastmod
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+          - - $$
+            - $$
+          inline:
+          - - $
+            - $
+  highlight:
+    lineNos: true
+    style: dracula
+
+menu:
+  main:
+    - identifier: archive
+      name: Archive
+      url: /archives/
+      weight: 1
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      post: '&#9207;'
+      weight: 2
+    - identifier: fun
+      parent: categories
+      name: Fun
+      url: /categories/fun/
+      weight: 1
+      pre: ':tada: '
+    - identifier: study
+      parent: categories
+      name: Study
+      url: /categories/study/
+      pre: ':books:'
+      weight: 2
+    - identifier: tech
+      parent: categories
+      name: Tech
+      url: /categories/tech/
+      weight: 3
+      pre: ':computer:'
+    - identifier: personal
+      parent: categories
+      name: Personal
+      url: /categories/personal/
+      weight: 4
+      pre: ':knot:'
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 3
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 4
+    - identifier: search
+      name: Search
+      url: search/
+      weight: 5
+
+params:
+  math: true
+  defaultTheme: auto # to switch between dark or light according to browser theme
+  description: "Test description."
+  ShowReadingTime: true
+  ShowToc: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowFullTextinRSS: true
+
+  homeInfoParams:
+    Title: 👋🏻 Welcome to Silencial Blog
+    Content: Any Sufficiently Advanced Technology is Indistinguishable from Magic.
+
+  socialIcons: # optional
+    - name: "Github"
+      url: "https://github.com/silencial"
+    - name: "Notion"
+      url: "https://silencial.notion.site/silencial/70fd91a68d9b471f99d1656e4143ff5f "
+    - name: "Mastodon"
+      url: "https://mastodon.social/@silencial"
+    - name: "Instagram"
+      url: "https://www.instagram.com/silencial"
+    - name: "RSS"
+      url: "/index.xml"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
