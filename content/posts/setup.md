@@ -19,8 +19,6 @@ cover:
 
 ---
 
-本文所有 [dotfiles](https://github.com/silencial/dotfiles)
-
 **工作/摸鱼环境**：当前使用的是 MBP 14" M3 Pro + Dell 2720Q 4K 显示器。时常会命令行或 VSCode ssh 到 Lab 的 Ubuntu 下。之前有过一台 Alienware 17" R4 安装了 Windows&Ubuntu 双系统。Ubuntu 为主系统，Windows 只用来 Steam。由于需要搬家 + 感觉 MBP 买了不用有些浪费所以卖掉了。目前没有配台式的打算，游戏环境完全交给 Xbox。
 
 # 系统配置
