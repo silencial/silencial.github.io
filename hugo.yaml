@@ -44,7 +44,7 @@ menu:
       name: Fun
       url: /categories/fun/
       weight: 1
-      pre: ':tada: '
+      pre: ':tada:'
     - identifier: study
       parent: categories
       name: Study
@@ -79,7 +79,6 @@ menu:
 params:
   math: true
   defaultTheme: auto # to switch between dark or light according to browser theme
-  description: "Test description."
   ShowReadingTime: true
   ShowToc: true
   ShowBreadCrumbs: true
