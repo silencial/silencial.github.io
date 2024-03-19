@@ -14,9 +14,9 @@ Berkeley [CS 285](http://rail.eecs.berkeley.edu/deeprlcourse/) Review
 
 My [solution](https://github.com/silencial/DeepRL) to the homework
 
-[Deep Reinforcement Learning (Part 1)](https://silencial.github.io/deep-reinforcement-learning-1/)
+[Deep Reinforcement Learning (Part 1)]({{< ref "deep-reinforcement-learning-1" >}})
 
-[Deep Reinforcement Learning (Part 3)](https://silencial.github.io/deep-reinforcement-learning-3/)
+[Deep Reinforcement Learning (Part 3)]({{< ref "deep-reinforcement-learning-3" >}})
 
 <!--more-->
 

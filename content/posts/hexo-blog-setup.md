@@ -266,7 +266,7 @@ npm install hexo-renderer-pandoc --save
 
 在数学渲染引擎更改为 MathJax3 之后，由于 MathJax3 暂不支持 `\\` 自动换行（参考 [issue](https://github.com/mathjax/MathJax/issues/2312)），因此很多文章出现问题。
 
-想了一下其实是没有遵守正规的写法，参考 [AMS 规范](https://silencial.github.io/writing-rule/#ams-规范)
+想了一下其实是没有遵守正规的写法，参考 [AMS 规范]({{< ref "writing-rule#ams-规范" >}})
 
 ## 仅在摘要显示图片
 

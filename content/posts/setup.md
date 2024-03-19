@@ -13,7 +13,7 @@ cover:
 收集当前使用的工具及配置。其它相关 Blog:
 
 - [常用软件](https://silencial.notion.site/cb9a9089382f4f76ba1d82ba3e50ec3f?v=15faca853b4a45d3a085a8238f6220b4)：Notion 个人主页
-- [CS Tools](https://silencial.github.io/cs-tools/)：记录 CS 中常用工具
+- [CS Tools]({{< ref "cs-tools" >}})：记录 CS 中常用工具
 
 <!--more-->
 

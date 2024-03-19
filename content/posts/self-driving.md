@@ -638,7 +638,7 @@ Using EKF:
 
 ### Camera Projective Geometry
 
-See [SLAM->相机与图像](https://silencial.github.io/slam/#%E7%9B%B8%E6%9C%BA%E4%B8%8E%E5%9B%BE%E5%83%8F)
+See [SLAM->相机与图像]({{< ref "slam#相机与图像" >}})
 
 ### Camera Calibration
 
@@ -668,13 +668,13 @@ so that $P = K[R | -RC]$. Apply QR decomposition on $(KR)^{-1}$ to get $K$ and $
 
 ### Visual Depth Perception
 
-See [SLAM->双目相机模型](https://silencial.github.io/slam/#%E5%8F%8C%E7%9B%AE%E7%9B%B8%E6%9C%BA%E6%A8%A1%E5%9E%8B)
+See [SLAM->双目相机模型]({{< ref "slam#双目相机模型" >}})
 
 ## Visual Features - Detection, Description and Matching
 
 ### Feature Descriptors
 
-See [SLAM->特征点法](https://silencial.github.io/slam/特征点法)
+See [SLAM->特征点法]({{< ref "slam#特征点法" >}})
 
 ### Feature Matching
 
@@ -701,7 +701,7 @@ RANSAC (Random Sample Consensus) Algorithm:
 
 ### Visual Odometry
 
-See [SLAM->相机运动](https://silencial.github.io/slam/#相机运动)
+See [SLAM->相机运动]({{< ref "slam#相机运动" >}})
 
 VO is the process of incrementally estimating the pose of the vehicle by examining the changes that motion induces on the images of its onboard cameras
 
@@ -960,7 +960,7 @@ Highest level in motion planning.
 
 Problem: given a graph (vertices and edges), weighted or unweighted, compute a shortest path from start to goal.
 
-See [Planning Algorithm](https://silencial.github.io/mobile-robots/#planning-algorithm) for Dijkstra's and A* algorithm
+See [Planning Algorithm]({{< ref "mobile-robots#planning-algorithm" >}}) for Dijkstra's and A* algorithm
 
 ## Dynamic Object Interactions
 

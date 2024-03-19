@@ -100,7 +100,7 @@ $$
 
 # Stability
 
-See [Nonlinear System](https://silencial.github.io/nonlinear-system)
+See [Nonlinear System]({{< ref "nonlinear-system" >}})
 
 # Manifolds and Vector Fields
 

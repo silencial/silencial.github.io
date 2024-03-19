@@ -12,7 +12,7 @@ tags:
 
 Review of Princeton [Algorithms I](https://www.coursera.org/learn/algorithms-part1) course on Coursera.
 
-[Algorithms II Review](https://silencial.github.io/algorithms-2/)
+[Algorithms II Review]({{< ref "algorithms-2" >}})
 
 My [solution](https://github.com/silencial/Algorithms) to the homework
 

@@ -14,10 +14,10 @@ tags:
 其它相关 Blog:
 
 - [常用软件](https://silencial.notion.site/cb9a9089382f4f76ba1d82ba3e50ec3f?v=15faca853b4a45d3a085a8238f6220b4): Notion 个人主页
-- [Setup](https://silencial.github.io/setup/): 自用工具及配置
-- [Git 101](https://silencial.github.io/git/): 常见的 git 命令
-- [Regular Expression](https://silencial.github.io/regex/): 常见的正则表达式用法
-- [Linux](https://silencial.github.io/linux/): 介绍 Linux 基本知识与操作
+- [Setup]({{< ref "setup" >}}): 自用工具及配置
+- [Git 101]({{< ref "git" >}}): 常见的 git 命令
+- [Regular Expression]({{< ref "regex" >}}): 常见的正则表达式用法
+- [Linux]({{< ref "linux" >}}): 介绍 Linux 基本知识与操作
 
 <!--more-->
 
@@ -364,7 +364,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub username@ip
 
 # Git
 
-参见这篇 [Blog](https://silencial.github.io/git/)
+参见这篇 [Blog]({{< ref "git" >}})
 
 # Debugging & Profiling
 

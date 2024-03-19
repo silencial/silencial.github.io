@@ -53,7 +53,7 @@ $$
 
 # 三维空间刚体运动
 
-参考 [Robotic Manipulation](https://silencial.github.io/robotic-manipulation) Rigid Body Motion 一章，主要包括「旋转矩阵」、「欧拉角」、「四元数」等概念。
+参考 [Robotic Manipulation]({{< ref "robotic-manipulation" >}}) Rigid Body Motion 一章，主要包括「旋转矩阵」、「欧拉角」、「四元数」等概念。
 
 # 李群与李代数
 
@@ -716,7 +716,7 @@ $$
 
 ## Kalman Filter
 
-参考 [Mobile Robots](https://silencial.github.io/mobile-robots/#kalman-filter)
+参考 [Mobile Robots]({{< ref "mobile-robots#kalman-filter" >}})
 
 在线性高斯系统中，Kalman Filter 构成了该系统中的最大后验概率估计，同时也是最优无偏估计。
 
