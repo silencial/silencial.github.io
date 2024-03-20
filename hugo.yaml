@@ -5,6 +5,7 @@ theme: 'PaperMod'
 hasCJKLanguage: true
 enableEmoji: true
 enableRobotsTXT: true
+googleAnalytics: 'G-CER92VFVHN'
 
 frontmatter:
   lastmod:
