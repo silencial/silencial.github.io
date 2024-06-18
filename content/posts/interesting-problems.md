@@ -1,6 +1,6 @@
 ---
 title: Interesting Problems
-date: 2023-10-13
+date: 2024-06-18
 categories:
 - Fun
 tags:
@@ -176,3 +176,27 @@ $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
 [Stromquist moving-knives procedure](https://www.wikiwand.com/en/Stromquist_moving-knife_procedure)
 
 [Selfridge–Conway procedure](https://www.wikiwand.com/en/Selfridge%E2%80%93Conway_discrete_procedure)
+
+# 红眼问题
+
+**问题**：一个岛上有 100 个人，其中有 5 个红眼睛，95 个蓝眼睛。岛上有三个奇怪的怪则：
+
+1. 他们不能照镜子，不能看到自己眼睛的颜色。
+2. 他们不能告诉别人对方的眼睛是什么颜色。
+3. 一旦有人知道了自己眼睛的颜色，他就必须在当天夜里自杀。
+
+某天有个旅行者到了这个岛上，但不知道这里的规矩。当他在和全岛人狂欢的时候，说了一句话：你们这里有红眼睛的人。
+
+假设这个岛上的人都足够聪明，即都有严密的逻辑推理能力。请问接下来会发生什么事？
+
+
+
+通过数学归纳法可以容易得出，假设这个岛上有 N 个红眼睛的人，那么在第 N 天红眼睛的人会一起自杀，在第 N+1 天蓝眼睛的人也会一起自杀。
+
+这里的有趣之处在于，看似旅行者说了一句废话，因为岛上的每个人都知道「这里有红眼睛的人」。但其实是混淆了 Mutual Knowledge 和 Common Knowledge 的区别。对于命题 P，前者只需要每个人都知道 P，而后者需要：
+
+1. 所有人都知道 P
+2. 所有人都知道所有人知道 P
+3. ...
+
+一直下去，直到无穷。
