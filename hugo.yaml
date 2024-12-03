@@ -1,6 +1,6 @@
 baseURL: 'https://example.org/'
 languageCode: 'en-us'
-title: 'Silencial Blog'
+title: 'silencial Blog'
 theme: 'PaperMod'
 hasCJKLanguage: true
 enableEmoji: true
@@ -88,7 +88,7 @@ params:
   ShowFullTextinRSS: true
 
   homeInfoParams:
-    Title: 👋🏻 Welcome to Silencial Blog
+    Title: 👋🏻 Welcome to silencial Blog
     Content: Any Sufficiently Advanced Technology is Indistinguishable from Magic.
 
   socialIcons: # optional
@@ -98,8 +98,8 @@ params:
       url: "https://silencial.notion.site/d085d7c7a5324152be1978d1d237fe46"
     - name: "Mastodon"
       url: "https://mastodon.social/@silencial"
-    - name: "Instagram"
-      url: "https://www.instagram.com/silencial"
+    # - name: "Instagram"
+    #   url: "https://www.instagram.com/silencial"
     - name: "RSS"
       url: "/index.xml"
 
