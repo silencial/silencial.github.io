@@ -171,7 +171,7 @@ content
 Every interaction is both precious and an opportunity to delight.
 {% endblockquote %}
 
-{% cq %}茕茕白兔</br>东奔西顾</br>衣不如新</br>人不如故{% endcq %}
+{% cq %}茕茕白兔<br>东奔西顾<br>衣不如新<br>人不如故{% endcq %}
 
 ## Gist
 

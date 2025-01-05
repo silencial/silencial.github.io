@@ -66,7 +66,7 @@ Well To Wheel (WTW): WTT + TTW
 
 光源并不是点光源，影子有本影和半影。物体相互靠近时距离光源更近的物体会遮住另一个物体的半影，因此另一个物体的影子看起来像变大了
 
-[Wiki](https://www.wikiwand.com/en/Shadow_blister_effect)
+[Wiki](https://en.wikipedia.org/wiki/Shadow_blister_effect)
 
 # 火车怎么变轨
 
@@ -90,7 +90,7 @@ Check Rail: 在 wing rail 的区域，主轨道内侧增加一段铁轨，确保
 
 目前确信的解释是体型大的物种中抗癌基因更多
 
-[Wikiwand - Peto's paradox](https://www.wikiwand.com/en/Peto's_paradox)
+[Wiki](https://en.wikipedia.org/wiki/Peto's_paradox)
 
 # 人为什么有两个鼻孔
 

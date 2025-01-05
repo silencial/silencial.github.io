@@ -1541,14 +1541,14 @@ Regular Expression Pattern:
 |    operation    | order |    example RE     |          matches           |      dose not match       |
 | :-------------: | :---: | :---------------: | :------------------------: | :-----------------------: |
 |  concatenation  |   3   |      AABAAB       |           AABAAB           |    every other string     |
-|       or        |   4   |    AA \| BAAB     |        AA<br />BAAB        |    every other string     |
-|     closure     |   2   |       AB*A        |      AA<br />ABBBBBA       |       AB<br />ABABA       |
-|   parentheses   |   1   |   A(A \| B)AAB    |      AAAAB<br />ABAAB      |    every other string     |
-|   parentheses   |   1   |      (AB)*A       |      A<br />ABABABABA      |       AA<br />ABBA        |
-|    wildcard     |       |      .U.U.U.      |    CUMULUS<br />JUGULUM    | SUCCUBUS<br />TUMULTUOUS  |
-| character class |       |  [A-Za-z]\[a-z]*  |   word<br />Captitalized   |  camelCase<br />4illegal  |
-|   at least 1    |       |     A(BC)+DE      |     ABCDE<br />ABCBCDE     |       ADE<br />BCDE       |
-|    exactly k    |       | [0-9]{5}-[0-9]{4} | 08540-1321<br />19072-5541 | 111111111<br />166-54-111 |
+|       or        |   4   |    AA \| BAAB     |         AA<br>BAAB         |    every other string     |
+|     closure     |   2   |       AB*A        |      AA<br>ABBBBBA       |       AB<br>ABABA       |
+|   parentheses   |   1   |   A(A \| B)AAB    |      AAAAB<br>ABAAB      |    every other string     |
+|   parentheses   |   1   |      (AB)*A       |      A<br>ABABABABA      |       AA<br>ABBA        |
+|    wildcard     |       |      .U.U.U.      |    CUMULUS<br>JUGULUM    | SUCCUBUS<br>TUMULTUOUS  |
+| character class |       |  [A-Za-z]\[a-z]*  |   word<br>Captitalized   |  camelCase<br>4illegal  |
+|   at least 1    |       |     A(BC)+DE      |     ABCDE<br>ABCBCDE     |       ADE<br>BCDE       |
+|    exactly k    |       | [0-9]{5}-[0-9]{4} | 08540-1321<br>19072-5541 | 111111111<br>166-54-111 |
 
 ## NFA
 

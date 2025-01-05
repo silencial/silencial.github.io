@@ -199,9 +199,9 @@ BIBO state response
 
 |      | LTI | LTV |
 | :--: | :-------: | :--: |
-| BIBO | $\int_0^\infty\abs{g(t)}<\infty$<br />RF: all poles on LHP<br /> RF: $g(t)\to 0$ as $t\to\infty$<br />$\centernot\implies$ asymptotically stable<br /><font color="red">unchanged</font> | $\int_0^\infty\abs{g(t,\tau)}<\infty$<br />$\begin{cases}\norm{D(t)}<\infty \\ \int_{t_0}^t\norm{C(t)\Phi(t,\tau)B(\tau)}d\tau<\infty \end{cases}$<br /><font color="red">unchanged</font> |
-| marginally | $\eig(A)$ non-positive. $0$ real part are simple root<br /><font color="red">unchanged</font> | $\norm{\Phi(t,t_0)}<\infty$ for any $t_0,t$ that $t>t_0$<br /><font color="red">unchanged</font> |
-| asymptotically | $\eig(A)$ negative $\implies$ BIBO<br /><font color="red">unchanged</font> | $\begin{cases}\norm{\Phi(t,t_0)||<\infty \\ \norm\Phi(t,t_0)}\to 0 \text{ as } t\to\infty \end{cases}$ $\centernot\implies$ BIBO<br /><font color="red">unchanged under Lyapunov transformation:</font> $P(t),P^{-1}(t)$ bounded |
+| BIBO | $\int_0^\infty\abs{g(t)}<\infty$<br>RF: all poles on LHP<br> RF: $g(t)\to 0$ as $t\to\infty$<br>$\centernot\implies$ asymptotically stable<br><font color="red">unchanged</font> | $\int_0^\infty\abs{g(t,\tau)}<\infty$<br>$\begin{cases}\norm{D(t)}<\infty \\ \int_{t_0}^t\norm{C(t)\Phi(t,\tau)B(\tau)}d\tau<\infty \end{cases}$<br><font color="red">unchanged</font> |
+| marginally | $\eig(A)$ non-positive. $0$ real part are simple root<br><font color="red">unchanged</font> | $\norm{\Phi(t,t_0)}<\infty$ for any $t_0,t$ that $t>t_0$<br><font color="red">unchanged</font> |
+| asymptotically | $\eig(A)$ negative $\implies$ BIBO<br><font color="red">unchanged</font> | $\begin{cases}\norm{\Phi(t,t_0)||<\infty \\ \norm\Phi(t,t_0)}\to 0 \text{ as } t\to\infty \end{cases}$ $\centernot\implies$ BIBO<br><font color="red">unchanged under Lyapunov transformation:</font> $P(t),P^{-1}(t)$ bounded |
 
 Discrete system just like Continuous system except
 

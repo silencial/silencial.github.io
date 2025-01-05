@@ -79,7 +79,7 @@ $$
 
 该策略被证明为最优的
 
-[100 prisoners problem - Wiki](https://www.wikiwand.com/en/100_prisoners_problem)
+[100 prisoners problem - Wiki](https://en.wikipedia.org/wiki/100_prisoners_problem)
 
 # Reservoir Sampling
 
@@ -91,7 +91,7 @@ $$
 
 使用归纳法可以证明每个元素被选取的概率相同
 
-[Reservoir sampling - Wiki](https://www.wikiwand.com/en/Reservoir_sampling)
+[Reservoir sampling - Wiki](https://en.wikipedia.org/wiki/Reservoir_sampling)
 
 # Ramsey's Numbers
 
@@ -101,7 +101,7 @@ $$
 
 $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
 
-[Ramsey's theorem - Wiki](https://www.wikiwand.com/en/Ramsey%27s_theorem)
+[Ramsey's theorem - Wiki](https://en.wikipedia.org/wiki/Ramsey%27s_theorem)
 
 # Nim Game
 
@@ -119,7 +119,7 @@ $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
 
 在另一种玩法中：将最后石子拿完的人判定为输，必胜的策略几乎相同，只有在当石子数 $>1$ 的堆刚好只有一个时存在区别，此时玩家可以选取将该堆的石子全部拿走或只留下一个来控制最后一个拿走石子的人是自己或对手。
 
-[Nim - Wiki](https://www.wikiwand.com/en/Nim)
+[Nim - Wiki](https://en.wikipedia.org/wiki/Nim)
 
 # Fisher–Yates Shuffle
 
@@ -130,7 +130,7 @@ $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
    1. generate a random integer $j$ s.t. $0\le j \le i$
    2. swap $a[j]$ and $a[i]$
 
-[Fisher–Yates shuffle - Wiki](https://www.wikiwand.com/en/Fisher%E2%80%93Yates_shuffle)
+[Fisher–Yates shuffle - Wiki](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
 
 # Shape in a Lattice
 
@@ -148,7 +148,7 @@ $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
 
 **问题**：三人分一块蛋糕，如何设计策略使得三人都满意？
 
-这是 [Cake Cutting 问题](https://www.wikiwand.com/en/Fair_cake-cutting#Proportionality)，首先我们需要定义满意，常见的有两种
+这是 [Cake Cutting 问题](https://en.wikipedia.org/wiki/Fair_cake-cutting#Proportionality)，首先我们需要定义满意，常见的有两种
 
 - Proportionality: 每个人都认为自己的一份不少于 1/n
 - Envy-free: 每个人都不觉得别人拿的比自己多
@@ -174,9 +174,9 @@ $R(5,5)$ 的数值依旧未知，暴力计算复杂度为 $\mathcal{O}(2^{n^2})$
 7. PB 将 A2 分为三份
 8. 按照 PA，P1， PB 的顺序依次选
 
-[Stromquist moving-knives procedure](https://www.wikiwand.com/en/Stromquist_moving-knife_procedure)
+[Stromquist moving-knives procedure](https://en.wikipedia.org/wiki/Stromquist_moving-knife_procedure)
 
-[Selfridge–Conway procedure](https://www.wikiwand.com/en/Selfridge%E2%80%93Conway_discrete_procedure)
+[Selfridge–Conway procedure](https://en.wikipedia.org/wiki/Selfridge%E2%80%93Conway_discrete_procedure)
 
 # 红眼问题
 
