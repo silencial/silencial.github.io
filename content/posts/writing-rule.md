@@ -1,15 +1,16 @@
 ---
-title: Writing Rules For Hexo Blog
+title: Writing Rules For Markdown
 date: 2018-01-01
-lastmod: 2022-04-20
+lastmod: 2025-01-07
 categories:
 - Tech
 tags:
 - Tool
 ---
 
+博客写作时的一些规范和特殊用法参考。
 
-博客写作时的一些规范和特殊用法参考
+[Markdown 语法参考](https://www.markdownguide.org/)
 
 <!--more-->
 
@@ -18,7 +19,7 @@ tags:
 # File
 
 1. 使用文件名为链接名，因此使用英文，用 `-` 代替空格
-1. Front Matter 中写上 `date` 和 `updated` 属性
+1. Front Matter 中写上 `date` 和 `lastmod` 属性
 
 # Markdown
 
@@ -150,168 +151,6 @@ commit
 2. 中文使用直角引号「」
 3. 中文和英文之间空格
 4. 数字和单位之间空格，如 8 GB
-
-# Tags
-
-## 代码块头信息
-
-```python title https://www.google.com link text
-imoprt numpy as np
-```
-
-## Quote
-
-```text
-{% blockquote [author[, source]] [link] [source_link_title] %}
-content
-{% endblockquote %}
-```
-
-{% blockquote Seth Godin https://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
-Every interaction is both precious and an opportunity to delight.
-{% endblockquote %}
-
-{% cq %}茕茕白兔<br>东奔西顾<br>衣不如新<br>人不如故{% endcq %}
-
-## Gist
-
-{% gist f572e65dadb525a3ee501c001f657328 demo_gist_hello_func.py %}
-
-## Group Pictures
-
-```text
-{% grouppicture [number]-[layout] %}
-{% endgrouppicture %}
-```
-
-格式参见：
-
-![图片排列格式](https://theme-next.js.org/images/group-picture-1.png)
-
-示例：
-
-{% gp 5-2 %}
-![1](../../../../../../images/logo.svg)
-![2](../../../../../../images/logo.svg)
-![3](../../../../../../images/logo.svg)
-![4](../../../../../../images/logo.svg)
-![5](../../../../../../images/logo.svg)
-
-{% endgp %}
-
-## iframe
-
-{% iframe https://www2.imm.dtu.dk/pubdb/views/edoc_download.php/3274/pdf/imm3274.pdf 900 500 %}
-
-## PDF
-
-{% pdf https://www2.imm.dtu.dk/pubdb/views/edoc_download.php/3274/pdf/imm3274.pdf 500 %}
-
-## Video
-
-```text
-{% video https://example.com/sample.mp4 %}
-```
-
-## YouTube
-
-可以选择视频或播放列表
-
-{% youtube LQF27xBvC9c %}
-
-{% youtube PLzpTV3l6KkbBvBXS-nY613VH8q7MsgH2m 'playlist' %}
-
-## Button
-
-```text
-{% btn url, text, icon [class], [title] %}
-```
-
-- `url` : Absolute or relative path to URL.
-- `text` : Button text. Required if no icon specified.
-- `icon` : Font Awesome icon name. Required if no text specified.
-- `[class]` : *Optional parameter.* Font Awesome class(es): `fa-fw` | `fa-lg` | `fa-2x` | `fa-3x` | `fa-4x` | `fa-5x`
-- `[title]` : *Optional parameter.* Tooltip at mouseover.
-
-{% btn #math, Math, infinity fa-fw fa-lg, to math chapter %}
-
-## Note
-
-{% note default %}
-default tag
-{% endnote %}
-
-{% note primary no-icon %}
-primary tag without icon
-{% endnote %}
-
-{% note success Summary %}
-success tag with summary
-{% endnote %}
-
-{% note info %}
-info tag
-{% endnote %}
-
-{% note warning %}
-warning tag
-{% endnote %}
-
-{% note danger %}
-danger tag
-{% endnote %}
-
-## Label
-
-{% label default @Text %} {% label primary @Text %} {% label success @Text %} {% label info @Text %} {% label warning @Text %} {% label danger @Text %}
-
-## Tabs
-
-{% tabs Tab 1, -1 %}
-<!-- tab -->
-**Tab with automatic label and None selected**
-<!-- endtab -->
-
-<!-- tab -->
-**Tab with automatic label and None selected**
-<!-- endtab -->
-
-<!-- tab -->
-**Tab with automatic label and None selected**
-<!-- endtab -->
-{% endtabs %}
-
-{% tabs Tab 2, 3 %}
-<!-- tab -->
-**This is Tab 1.**
-<!-- endtab -->
-
-<!-- tab -->
-**This is Tab 2.**
-<!-- endtab -->
-
-<!-- tab -->
-**Tab with automatic label and 3rd selected**
-<!-- endtab -->
-{% endtabs %}
-
-{% tabs Tab 3 %}
-
-<!-- tab Solution 1 -->
-**Tab 1 with custom label only**
-<!-- endtab -->
-
-<!-- tab @text-width -->
-**Tab 2 with icons only**
-<!-- endtab -->
-
-<!-- tab Solution 3@font -->
-**Tab 3 with icon and label**
-<!-- endtab -->
-{% endtabs %}
-
-- Permalink for > [Tab three](#tab-3)
-- Permalink for > [Tab three 2](#tab-3-2)
 
 # Math
 
