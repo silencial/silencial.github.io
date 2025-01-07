@@ -28,7 +28,7 @@ tags:
 
 # 纯风力车超越风速
 
-[Risking My Life To Settle A Physics Debate](https://www.youtube.com/watch?v=jyQwgBAaBag)
+[Risking My Life To Settle A Physics Debate](https://youtu.be/jyQwgBAaBag)
 
 帆船可以超越风速：不直接依靠风的推力，而是依靠伯努利原理的压强差来推动
 
@@ -80,7 +80,7 @@ Wing Rail: 由于 gap 的存在，火车在通过时会有颠簸，因此在 gap
 
 Check Rail: 在 wing rail 的区域，主轨道内侧增加一段铁轨，确保火车不会沿着 wing rail 行驶而脱轨
 
-[How do trains change the tracks?](https://www.youtube.com/watch?v=_M6vhDvmtrI)
+[How do trains change the tracks?](https://youtu.be/_M6vhDvmtrI)
 
 # Peto’s paradox
 

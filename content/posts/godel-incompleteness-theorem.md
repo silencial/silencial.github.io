@@ -97,4 +97,4 @@ int U(P){
 
 1. [Gödel's incompleteness theorems](https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems)
 2. [Halting Problem](https://en.wikipedia.org/wiki/Halting_problem)
-3. [Proof That Computers Can't Do Everything](https://www.youtube.com/watch?v=92WHN-pAFCs)
+3. [Proof That Computers Can't Do Everything](https://youtu.be/92WHN-pAFCs)
