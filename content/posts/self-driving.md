@@ -285,7 +285,7 @@ where $l_d$ is the lookahead distance. The steering angle can be determined by t
 $$
 \begin{gather*}
 \frac{L}{\tan\delta} = R = \frac{l_d}{2\sin\alpha} \\
-\Rightarrow \delta = \tan^{-1}\left(\frac{2L\sin\alpha}{l{_d}}\right)
+\implies \delta = \tan^{-1}\left(\frac{2L\sin\alpha}{l{_d}}\right)
 \end{gather*}
 $$
 In practice, $l_d$ is defined as a linear function of vehicle speed: $l_d K v_f$
@@ -660,8 +660,8 @@ The 3D camera center $C$ projects to zero:
 $$
 \begin{split}
 &PC = 0 \\
-\Rightarrow \ &K(RC + t) = 0 \\
-\Rightarrow \ &t = -RC
+\implies &K(RC + t) = 0 \\
+\implies &t = -RC
 \end{split}
 $$
 so that $P = K[R | -RC]$. Apply QR decomposition on $(KR)^{-1}$ to get $K$ and $R$ respectively, and $t$ can be recovered from $t = -K^{-1} P[:, 4]$
@@ -920,7 +920,7 @@ $$
 $$
 \begin{gather*}
 \text{logit}(p(m^i|y_{1:t})) = \text{logit}(p(m^i|y_t)) + \text{logit}(p(m^i|y_{1:t-1})) - \text{logit}(p(m^i)) \\
-\Longleftrightarrow \quad l_{t,i} = \text{logit}(p(m^i|y_t)) + l_{t-1, i} - l_{0,i}
+\iff l_{t,i} = \text{logit}(p(m^i|y_t)) + l_{t-1, i} - l_{0,i}
 \end{gather*}
 $$
 

@@ -10,8 +10,6 @@ tags:
 
 博客写作时的一些规范和特殊用法参考。
 
-[Markdown 语法参考](https://www.markdownguide.org/)
-
 <!--more-->
 
 ------
@@ -23,26 +21,31 @@ tags:
 
 # Markdown
 
-## 列表不空行
+[Markdown 语法参考](https://www.markdownguide.org/)
 
-列表之间不要空行，否则会被 pandoc 渲染为段落，间距会增大：
+## 脚注
 
-不空行：
+示例[^footnote]
 
-1. 111
-2. 222
-3. 333
+[^footnote]: 这是一个脚注
 
-空行：
+## 标题引用 {#id0}
 
-1. 111
+可以为标题增加 ID，以便在文内[引用](#id0)
 
-2. 222
+## 告示
 
-3. 333
+可以使用 引用 + emoji + 加粗 实现
 
+> :memo: **Note:** Sunrises are beautiful.
+
+> :bulb: **Tip:** Remember to appreciate the little things in life.
+
+> :warning: **Warning:** Do not push the big red button.
 
 ## Mermaid Graph
+
+<mark>需要 Markdown 支持</mark>
 
 ```mermaid
 flowchart LR
@@ -162,6 +165,7 @@ commit
 - 盒装公式：$\boxed{a+b}$
 - 对比 $|-k|, \lvert - k\rvert, |{-k}|$; $\lVert -k \rVert, \|-k\|$
 - `\mod` 相关：$a\mod b$, $a\pmod b$, $a\bmod b$
+- 数学推导：$\implies, \iff$
 - 连分数使用 `cfrac`:
   $$
   \cfrac{1}{\sqrt{2}+ \cfrac{1}{\sqrt{2}+ \cfrac{1}{\sqrt{2}+\dotsb }}}

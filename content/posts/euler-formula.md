@@ -35,7 +35,7 @@ tags:
 $$
 \begin{align*}
 &V_S - 1 + V_{S^*} - 1 = E_S + E_{S^*} \\
-\Rightarrow \ & V_G + F_G - 2 = E_G
+\implies & V_G + F_G - 2 = E_G
 \end{align*}
 $$
 

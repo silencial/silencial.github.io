@@ -229,7 +229,7 @@ $$
 $$
 NCS is STLC if for all neighborhood $V$ of $x_0$ and $T >0$, $\mathcal{R}^{V}(x_{0}, T)$ contains a neighborhood of $x_0$
 
-STLC $\Rightarrow$ controllable $\Rightarrow$ LA
+STLC $\implies$ controllable $\implies$ LA
 
 NCS is LA from $x_0$ iff $\dim\bar{\Delta}(x_0)=n$ (LA rank condition (LARC)) where
 $$

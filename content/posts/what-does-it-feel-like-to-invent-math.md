@@ -24,7 +24,7 @@ $$
 $$
 \begin{align*}
 &(1-p) + p(1-p) + p^2(1-p) \cdots = 1 \\
-\Rightarrow \ & \sum_{n=0}^\infty p^n = \frac{1}{1-p}
+\implies & \sum_{n=0}^\infty p^n = \frac{1}{1-p}
 \end{align*}
 $$
 该式只在 $0<p<1$ 时成立，但如果我们想推广其使得 $p = 2$ 成立，则需要重新思考**距离**的定义。
