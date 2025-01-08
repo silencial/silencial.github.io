@@ -22,7 +22,7 @@ tags:
 
 ![PHC 1](https://i.imgur.com/89p5k2d.png)
 
-进一步将正方形划分为 $4\times 4$ 的网格，分别画出 $4$ 个 $PHC_1$ 并首尾相接，之后进行调整，得到 **Order 2 PHC** ，记为 $PHC_2$ 。
+进一步将正方形划分为 $4\times 4$ 的网格，分别画出 $4$ 个 $PHC_1$ 并首尾相接，之后进行调整，得到 **Order 2 PHC** ，记为 $PHC_2$。
 
 ![PHC 2](https://i.imgur.com/pr3wzG5.png)
 

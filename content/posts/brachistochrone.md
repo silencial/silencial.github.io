@@ -62,7 +62,7 @@ $$
 
 ![Tangent Crosses the Lowest Point on Circle](https://i.imgur.com/ZX63jAn.jpg)
 
-设直线与切线的夹角为 $\theta$ ，根据相似三角形，我们可以算出点 P 到水平线的距离：
+设直线与切线的夹角为 $\theta$，根据相似三角形，我们可以算出点 P 到水平线的距离：
 
 ![Distance from P to C](https://i.imgur.com/5y8lXzp.jpg)
 
@@ -74,7 +74,7 @@ $$
 
 # 变分法
 
-从数学的方法思考这一问题，设曲线方程为 $y=y(x)$ ，速度与纵坐标有 $v=\sqrt{2gy}$ 的关系，同时
+从数学的方法思考这一问题，设曲线方程为 $y=y(x)$，速度与纵坐标有 $v=\sqrt{2gy}$ 的关系，同时
 $$
 v = \frac{ds}{dt} = \sqrt{1+y'^2} \dfrac{dx}{dt}
 $$

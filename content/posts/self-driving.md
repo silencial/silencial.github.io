@@ -279,7 +279,7 @@ Feedforward and feedback are often used together:
 
 ### Pure Pursuit
 
-<img src="https://i.imgur.com/j9UjOpY.png" alt="Pure Pursuit" style="zoom: 33%;" />
+![Pure Pursuit](https://i.imgur.com/j9UjOpY.png)
 
 where $l_d$ is the lookahead distance. The steering angle can be determined by target point location and angle between the vehicle's heading direction and lookahead direction:
 $$
@@ -952,7 +952,7 @@ Lanelet Map:
 
 A new lanelet is created when a new regulatory element is encountered or ends
 
-<img src="https://i.imgur.com/vpRLN8f.png" alt="Lanelet" style="zoom: 33%;" />
+![Lanelet](https://i.imgur.com/vpRLN8f.png)
 
 ## Mission Planning
 
@@ -1016,7 +1016,7 @@ One approach to represent the set of rules to solve the behavior selection is fi
 - Transitions define the rule implementation that needs to be met before a transition can occur
 - Entry action are constraints specific to the state
 
-<img src="https://i.imgur.com/oCpCyk3.png" alt="Finite State Machine Example: stop sign intersection with no traffic" style="zoom:33%;" />
+![Finite State Machine Example: stop sign intersection with no traffic](https://i.imgur.com/oCpCyk3.png)
 
 Hierarchical state machine is used to deal with multiple scenarios to simplify structures and reduce computational time.
 
