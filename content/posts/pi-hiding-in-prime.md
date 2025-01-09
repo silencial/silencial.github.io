@@ -69,7 +69,7 @@ $$
 $$
 \chi(n) = \begin{cases}
 1 &n=4k+1 \\
--1 &n=4k+3 \quad (k\in N) \\
+-1 &n=4k+3 \quad (k\in \mathbb{N}) \\
 0 &n=2k
 \end{cases}
 $$
@@ -112,6 +112,6 @@ $$
 
 # 参考
 
-1. [Video](https://www.bilibili.com/video/av12131743)
-2. [Proofs of Fermat's Theorem on Sums of Two Squares](https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_theorem_on_sums_of_two_squares)
-3. [Gaussian Integer](https://en.wikipedia.org/wiki/Gaussian_integer#Gaussian_primes)
+1. [3Blue1Brown Video](https://youtu.be/NaL_Cb42WyY)
+2. [Fermat's Theorem on Sums of Two Squares — Wiki](https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_theorem_on_sums_of_two_squares)
+3. [Gaussian Integer — Wiki](https://en.wikipedia.org/wiki/Gaussian_integer#Gaussian_primes)
