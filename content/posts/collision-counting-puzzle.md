@@ -64,7 +64,7 @@ $$
 $$
 当 $x \to 0$ 时，$\arctan(x) \sim x$，因此当 $m_1 \gg m_2$ 时
 $$
-N = \left\lfloor \frac{\pi}{\theta} \right\rfloor = \left\lfloor \pi\sqrt{\frac{ m_1}{m_2}}\right\rfloor
+N = \left\lceil \frac{\pi}{\theta} \right\rceil - 1 = \left\lceil \pi\sqrt{\frac{ m_1}{m_2}}\ \right\rceil - 1
 $$
 可以看出当 $m_1/m_2 = 100^k$ 时，总共发生碰撞的次数为 $10^k \pi$
 
@@ -78,7 +78,7 @@ $$
 $$
 x = \sqrt{m_1} d_1, \qquad y = \sqrt{m_2}d_2
 $$
-在该坐标下，能量守恒表现为光线的速度保持恒定：$(dx/dt)^2 + (dy/dt)^2 = const$；动量守恒表现为入射角等于反射角。为了得到后一个结论，将动量方程改写为
+在该坐标下，能量守恒表现为光线的速度保持恒定：$(dx/dt)^2 + (dy/dt)^2 = \text{const}$；动量守恒表现为入射角等于反射角。为了得到后一个结论，将动量方程改写为
 $$
 \begin{bmatrix}
 \sqrt{m_1} \\ \sqrt{m_2}
@@ -97,9 +97,10 @@ $$
 
 ![Equivalent Reflection](https://i.imgur.com/FuJqGbC.png)
 
-此时碰撞次数即等于光线穿过的镜子数量，即 $\lfloor \pi/\theta \rfloor$，而 $\theta$ 的值和等价计算与解法 1 相同，证明完毕。
+此时碰撞次数即等于光线穿过的镜子数量，即 $\lceil \pi/\theta \rceil - 1$，而 $\theta$ 的值和等价计算与解法 1 相同，证明完毕。
 
 # 参考
 
-1. [Video of Proof 1](https://www.bilibili.com/video/av41712219)
-2. [Video of Proof 2](https://www.bilibili.com/video/BV1Mb41187jL)
+1. [3Blue1Brown Video — Proof 1](https://youtu.be/jsYwFizhncE)
+2. [3Blue1Brown Video — Proof 2](https://youtu.be/brU5yLm9DZM)
+

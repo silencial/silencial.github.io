@@ -16,35 +16,31 @@ tags:
 
 ---
 
-这一问题被称为最速降线问题（Brachistochrone），由约翰·伯努利在 1696 年提出来挑战欧洲的数学家。
+这一问题被称为最速降线问题（Brachistochrone），由约翰·伯努利在 1696 年提出。
 
 # 费马原理与斯涅耳定律
 
-约翰·伯努利的证明实际上非常巧妙，利用了**费马原理**：
+约翰·伯努利的证明非常巧妙，利用了**费马原理**：一束光从 A 点传播到 B 点总是沿着所需时间最短的路径。
 
-一束光从 A 点传播到 B 点总是沿着尽可能快的路径。
+从费马原理可以导出**斯涅尔定律 (Snell's Law)**。当光线从一种介质传播到另一种具有不同折射率的介质时，其与界面法线的夹角和在不同介质中的光速满足以下关系：
 
-从费马原理实际上可以导出**斯涅尔定律（Snell's Law）**：
-
-考虑光线跟一条垂直于两介质边界所成的角度，该角的正弦值除以光速在从一种介质移到另一种介质时保持不变。
 $$
 \frac{\sin(\theta_1)}{v_{\text{air}}} = \frac{\sin(\theta_2)}{v_{\text{water}}}
 $$
-![Snell's Law](https://i.imgur.com/grhevoi.jpg)
+![Snell's Law](https://i.imgur.com/uPl2gsF.jpeg)
 
 # 光的传播
 
-因此原问题可以想象为一束光在不同折射率的介质中传播，既以不同的速度连续地沿着滑道向下走：
+因此可以用光代替原问题中的质点，用不同折射率的介质代替曲线，使得在任意一点，光在其中的速度等于质点的速度，则光的传播路径就是原问题所求的曲线。
 
-![Equivalence to Light Refraction](https://i.imgur.com/HuYwICL.jpg)
+![Equivalence to Light Refraction](https://i.imgur.com/t32yOJx.jpeg)
 
-当层数不断增加，我们就得到的想要的路径。
+剩下的问题就是找到光在任意一点的速度。由能量守恒原理，重力势能转化为动能，因此小球在曲线上的速度只与竖直距离有关，记曲线到顶点的竖直距离为 $y$，则有：
 
-有能量守恒原理，重力势能转化为动能，因此：
 $$
 v = \sqrt{2gy}
 $$
-又根据斯涅尔定律可得：
+则根据斯涅尔定律可得：
 $$
 \frac{\sin(\theta)}{\sqrt{y}} = \text{constant}
 $$
@@ -52,26 +48,20 @@ $$
 
 # 摆线
 
-这一曲线方程实际上就是**旋轮线**，即滚动的轮子边缘上的一点所描出的形状。
+这一曲线方程实际上就是**摆线**，即圆在一条直线上滚动时，圆边界上一定点所形成的轨迹。下面证明为什么摆线满足该方程。
 
-圆上定点为 P，圆与水平线的切点为 C，圆滚动时，点 C 充当点 P 的瞬时旋转中心：
+设圆上定点为 P，圆与水平线的切点为 C，圆滚动时，点 C 充当点 P 的瞬时旋转中心：
 
-![Instant Rotation Center](https://i.imgur.com/yMiZO8r.jpg)
+![Instant Rotation Center](https://i.imgur.com/RwkCvqT.jpeg)
 
-所以 CP 垂直于摆线过点 P 的切线，又因直角圆周角对应直径，所以该切线一定过圆的最低点，交点与 C 的连线即为圆的直径：
+所以 CP 垂直于摆线过点 P 的切线，又因直角圆周角对应直径，所以该切线一定过圆的最低点，交点与 C 的连线即为圆的直径。设直线与切线的夹角为 $\theta$，根据相似三角形，我们可以算出点 P 到水平线的距离：
 
-![Tangent Crosses the Lowest Point on Circle](https://i.imgur.com/ZX63jAn.jpg)
-
-设直线与切线的夹角为 $\theta$，根据相似三角形，我们可以算出点 P 到水平线的距离：
-
-![Distance from P to C](https://i.imgur.com/5y8lXzp.jpg)
+![Distance from P to C](https://i.imgur.com/omiKQOW.jpeg)
 
 即
 $$
 \frac{\sin(\theta)}{\sqrt{y}} = \frac{1}{\sqrt{D}} = \text{constant}
 $$
-由此证明最速降线实际上就是摆线。
-
 # 变分法
 
 从数学的方法思考这一问题，设曲线方程为 $y=y(x)$，速度与纵坐标有 $v=\sqrt{2gy}$ 的关系，同时
@@ -86,9 +76,9 @@ $$
 $$
 t = J(y) = \int_A^B \frac{\sqrt{1+y'^2}}{\sqrt{2gy}}dx
 $$
-这样时间 $t$ 就被写成了关于 $y$ 的泛函，而求时间最短问题变成了在满足边界条件
+这样时间 $t$ 就被写成了关于 $y$ 的泛函，而求时间最短问题变成了在满足边界条件：
 $$
-y(A) = 0, y(B) = y_B
+y(A) = 0\quad y(B) = y_B
 $$
 下的对泛函 $J(y)$ 求极值问题，即变分问题。
 
@@ -110,6 +100,5 @@ $$
 
 # 参考
 
-1. [Video](https://www.bilibili.com/video/av6385842)
-2. [Brachistochrone Curve](https://en.wikipedia.org/wiki/Brachistochrone_curve)
-3. [变分法](http://blog.sciencenet.cn/blog-1319915-1013924.html)
+1. [3Blue1Brown Video](https://youtu.be/Cld0p3a43fU)
+2. [Brachistochrone Curve — Wiki](https://en.wikipedia.org/wiki/Brachistochrone_curve)

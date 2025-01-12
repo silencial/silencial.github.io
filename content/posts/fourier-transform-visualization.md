@@ -45,6 +45,6 @@ $$
 
 # 参考
 
-1. [Video](https://www.bilibili.com/video/av19141078)
-2. [Fourier Transform](https://en.wikipedia.org/wiki/Fourier_transform)
+1. [3Blue1Brown Video](https://youtu.be/spUNpyF58BY)
+2. [Fourier Transform — Wiki](https://en.wikipedia.org/wiki/Fourier_transform)
 3. [以线性组合的思想看待傅里叶变换](https://www.matongxue.com/madocs/619.html)

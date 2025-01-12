@@ -6,7 +6,6 @@ categories:
 tags:
 - Math
 - 3Blue1Brown
-image:
 ---
 
 **问题：**
@@ -37,13 +36,13 @@ image:
 
 ![Equivalence in Circles](https://i.imgur.com/AykC1B2.png)
 
-因为直径所对应的圆周角为直角，由倒数勾股定理可知，这两座灯塔的亮度之和等价于原灯塔亮度。继续重复此过程，将两座灯塔变为四座：
+因为直径所对应的圆周角为直角，由倒数勾股定理可知，这两座灯塔的亮度之和等价于原灯塔亮度。现在再作一个两倍大的圆，连接每座灯塔与旧圆的顶端，即新圆的圆心，并延长直线使之与大圆相交于两点。可以看出倒数勾股定理依旧成立，因此可以将两座灯塔替换为新的大圆上的四座，并保持亮度不变：
 
 ![Repeating Process](https://i.imgur.com/UnMv08O.png)
 
-同时由对称性可以证明这四座灯塔在圆上等距分布，相邻灯塔的距离为 $2$。将这一过程无限进行下去，即得到了一条水平线，在两个方向上均匀分布着无限座灯塔，亮度总和依旧为 $\dfrac{\pi^2}{4}$。这个结果等价于下式：
+同时可以证明这四座灯塔在圆上等距分布，相邻灯塔的距离为 $2$。将这一过程无限进行下去，即得到了一条水平线，等距为 $2$ 分布着无限座灯塔，且对于原点的亮度总和依旧为 $\dfrac{\pi^2}{4}$。这个结果等价于下式：
 $$
-\sum_{k=-\infty}^{+\infty} \left(\frac{1}{2k+1}\right)^2 = \frac{\pi^2}{4}
+\sum_{k\in\mathbb{Z}} \left(\frac{1}{2k+1}\right)^2 = \frac{\pi^2}{4}
 $$
 由于
 $$
@@ -54,16 +53,13 @@ $$
 $$
 因此
 $$
-\begin{equation*}
-\begin{split}
-\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 &= \frac{1}{4}\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 + \frac{\pi^2}{8} \\
-&= \frac{\pi^2}{8}\times\frac{4}{3} \\
-&=\frac{\pi^2}{6}
-\end{split}
-\end{equation*}
+\begin{align*}
+&\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 = \frac{1}{4}\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 + \frac{\pi^2}{8} \\
+\implies &\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2= \frac{\pi^2}{8}\times\frac{4}{3} =\frac{\pi^2}{6}
+\end{align*}
 $$
 
 # 参考
 
-1. [Video](https://www.bilibili.com/video/av20400157)
-2. [Basel Problem](https://en.wikipedia.org/wiki/Basel_problem)
+1. [3Blue1Brown Video](https://youtu.be/d-o3eB9sfls)
+2. [Basel Problem — Wiki](https://en.wikipedia.org/wiki/Basel_problem)
