@@ -9,7 +9,7 @@ tags:
 ---
 
 
-EN553.762 Review. Based on [Numerical Optimization Book](https://www.csie.ntu.edu.tw/~r97002/temp/num_optimization.pdf)
+EN553.762 Review. Based on [Numerical Optimization Book](https://www.math.uci.edu/~qnie/Publications/NumericalOptimization.pdf)
 
 <!--more-->
 

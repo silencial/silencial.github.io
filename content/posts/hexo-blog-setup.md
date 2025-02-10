@@ -81,10 +81,6 @@ NexT 是一个主题，可以运行在 Hexo 所搭建的 blog 上。
 
 安装 [hexo-neat](https://github.com/rozbo/hexo-neat) 插件，修改 `_config.yml` 文件
 
-## 分享按钮
-
-使用 [AddThis Share](https://www.addthis.com)，修改 `_config.next.yml` 文件
-
 ## 评论功能
 
 使用 [Utterances](https://utteranc.es)，修改 `_config.next.yml` 文件

@@ -240,7 +240,7 @@ Dotfiles 管理工具。基本工作原理即是在 `~` 目录下建立一个 gi
 - 音乐记录：使用 Apple Music，如果歌曲不存在则从其它地方下载并上传。
 - 播客记录：使用 Pocket Cast
 
-- 个人学习笔记：本地写 markdown 文件，同步至 Github 自动发布静态网页。搭建参照 [Readme](https://github.com/silencial/silencial.github.io/blob/master/README.md)
+- 个人学习笔记：本地写 markdown 文件，同步至 Github 自动发布静态网页。搭建参照 [Hugo 博客搭建](https://silencial.github.io/posts/hugo-blog-setup/)
 - 论文记录：使用 Zotero + Notion
 - 运动记录：Apple Watch 记录。主要攀岩，使用 Redpoint，其它则用自带训练
 - 其它记录：日记、学过的东西、有用的工具、购买的物品等则手动记录至 Notion

@@ -10,7 +10,7 @@ tags:
 ---
 
 
-[EN530.603](https://asco.lcsr.jhu.edu/en530-603-f2020-applied-optimal-control/) Review.
+EN530.603 Review.
 
 <!--more-->
 

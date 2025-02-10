@@ -8,7 +8,7 @@ tags:
 - Robotics
 ---
 
-EN530.646 Review. Based on *[A Mathematical Introduction to Robotic Manipulation](https://www.cds.caltech.edu/~murray/books/MLS/pdf/mls94-complete.pdf)* book.
+EN530.646 Review. Based on *[A Mathematical Introduction to Robotic Manipulation](https://www.cse.lehigh.edu/~trink/Courses/RoboticsII/reading/murray-li-sastry-94-complete.pdf)* book.
 
 <!--more-->
 

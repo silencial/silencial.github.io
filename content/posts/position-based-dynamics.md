@@ -8,7 +8,7 @@ tags:
 - Paper Reading
 ---
 
-This [paper](http://interactive-graphics.de/index.php/research/89-position-based-simulation-methods-in-computer-graphics) introduces position-based methods and its differences from other methods. Moreover, it presents the algorithm and several solvers. Specific constraints are also discussed in detail. Finally, Implementation and application are briefly presented.
+This paper [Position-Based Simulation Methods in Computer Graphics](https://mmacklin.com/EG2015PBD.pdf) introduces position-based methods and its differences from other methods. Moreover, it presents the algorithm and several solvers. Specific constraints are also discussed in detail. Finally, Implementation and application are briefly presented.
 <!-- more -->
 
 ---

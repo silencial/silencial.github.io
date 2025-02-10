@@ -10,7 +10,7 @@ image:
 ---
 
 
-[EN530.678](https://asco.lcsr.jhu.edu/en530-678-s2021-nonlinear-control-and-planning-in-robotics/) Review.
+EN530.678 Review.
 
 <!--more-->
 
@@ -34,8 +34,6 @@ Nonholonomic constraints are not integrable, i.e. it is not possible to find $k$
 $$
 \nabla_{q} h_{i}(q)=a_{i}(q) \quad (i=1, \dots, k)
 $$
-where $c$ is a constant
-
 ## Dynamics
 
 ### holonomic systems
