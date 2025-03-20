@@ -1,6 +1,7 @@
 ---
 title: Hugo 博客搭建
 date: 2024-03-19
+lastmod: 2025-03-19
 categories:
 - Tech
 tags:
@@ -64,7 +65,7 @@ hugo new site <site_name> --format yaml
    </script>
    ```
 
-3. 主题文件夹下修改 `layouts_default/baseof.html`，引入 `math.html` 处理。
+3. 主题文件夹下修改 `layouts/_default/baseof.html`，引入 `math.html` 处理。
 
    ```css
    <head>
@@ -106,23 +107,23 @@ hugo new site <site_name> --format yaml
 
 ## 图片 Caption
 
-由于 Markdown 语言中图片的语法
+Markdown 语言中图片的语法
 
 ```markdown
-![alt text](image.png)
+![alt text](image.png "title text")
 ```
 
 在转化为 html 时会变为
 
 ```html
-<img src="image.png" alt="alt text">
+<img src="image.png" alt="alt text" title="title text">
 ```
 
-因此希望将 `alt` 作为图片的标题使用。修改 `layouts/_default/_markup/render-image.html` 为
+目前我的做法是将 `alt` 作为图片的标题使用。修改 `layouts/_default/_markup/render-image.html` 为
 
 ```html
 <figure>
-<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+<img ... >
 {{ if .Text}}
 <figcaption>{{ .Text | safeHTML }}</figcaption>
 {{ end }}
@@ -167,6 +168,14 @@ hugo new site <site_name> --format yaml
 {{- $scratch.Add "meta" (slice (printf "Updated:&nbsp;%s" (.Lastmod | time.Format ":date_medium"))) }}
 {{- end }}
 ```
+
+## Mermaid 图支持
+
+参照[官方文档](https://gohugo.io/content-management/diagrams/)进行修改
+
+## Callout 支持
+
+使用 [hugo-admonitions](https://github.com/KKKZOZ/hugo-admonitions) 模块
 
 # GitHub Pages 发布
 

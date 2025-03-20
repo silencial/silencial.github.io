@@ -1,14 +1,14 @@
 ---
 title: Writing Rules For Markdown
 date: 2018-01-01
-lastmod: 2025-01-07
+lastmod: 2025-03-19
 categories:
 - Tech
 tags:
 - Tool
 ---
 
-博客写作时的一些规范和特殊用法参考。
+博客写作时的一些规范和特殊用法参考。同时作为 Markdown 渲染时的标准参考文件。
 
 <!--more-->
 
@@ -33,119 +33,36 @@ tags:
 
 可以为标题增加 ID，以便在文内[引用](#id0)
 
-## 告示
+## Callout
 
-可以使用 引用 + emoji + 加粗 实现
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
 
-> :memo: **Note:** Sunrises are beautiful.
+> [!TIP]
+> Helpful advice for doing things better or more easily.
 
-> :bulb: **Tip:** Remember to appreciate the little things in life.
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
 
-> :warning: **Warning:** Do not push the big red button.
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+## Image Caption
+
+![test alt](https://picsum.photos/640/480 "test caption")
 
 ## Mermaid Graph
 
-<mark>需要 Markdown 支持</mark>
-
-```mermaid
-flowchart LR
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-sequenceDiagram
-Alice->>John: Hello John, how are you?
-loop Healthcheck
-    John->>John: Fight against hypochondria
-end
-Note right of John: Rational thoughts!
-John-->>Alice: Great!
-John->>Bob: How about you?
-Bob-->>John: Jolly good!
-```
-
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-<<interface>> Class01
-Class09 --> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-class Class10 {
-  <<service>>
-  int id
-  size()
-}
-```
-
-```mermaid
-stateDiagram
-[*] --> Still
-Still --> [*]
-Still --> Moving
-Moving --> Still
-Moving --> Crash
-Crash --> [*]
-```
-
-```mermaid
-erDiagram
-CUSTOMER ||--o{ ORDER : places
-ORDER ||--|{ LINE-ITEM : contains
-CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-```
-
-```mermaid
-journey
-title My working day
-section Go to work
-  Make tea: 5: Me
-  Go upstairs: 3: Me
-  Do work: 1: Me, Cat
-section Go home
-  Go downstairs: 5: Me
-  Sit down: 3: Me
-```
-
-```mermaid
-gantt
-dateFormat  YYYY-MM-DD
-section Section
-Completed :done,    des1, 2014-01-06,2014-01-08
-Active        :active,  des2, 2014-01-07, 3d
-Parallel 1   :         des3, after des1, 1d
-Parallel 2   :         des4, after des1, 1d
-Parallel 3   :         des5, after des3, 1d
-Parallel 4   :         des6, after des4, 1d
-```
+[Mermaid 语法参考](https://mermaid.js.org/syntax/flowchart.html)
 
 ```mermaid
 pie
 "Dogs" : 386
 "Cats" : 85
 "Rats" : 15
-```
-
-```mermaid
-gitGraph
-commit
-commit
-branch develop
-checkout develop
-commit
-commit
-checkout main
-merge develop
-commit
-commit
 ```
 
 # Grammar
@@ -289,7 +206,6 @@ x&=y           &  w &=z              &  a&=b+c\\
 -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
 \end{align}
 $$
-
 `align` 会在列之间加入空格，如果希望自己控制距离则使用 `alignat`:
 $$
 \begin{alignat}{3}
@@ -307,7 +223,6 @@ x&=y           &  w &=z              &  a&=b+c\\
 -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
 \end{flalign}
 $$
-
 **主环境都可以在名字最后加入 `*` 来抑制自动编号**
 
 ### 从属环境

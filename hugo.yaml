@@ -1,7 +1,7 @@
 baseURL: 'https://example.org/'
 languageCode: 'en-us'
 title: 'silencial Blog'
-theme: 'PaperMod'
+theme: ['hugo-admonitions', 'PaperMod']
 hasCJKLanguage: true
 enableEmoji: true
 enableRobotsTXT: true
