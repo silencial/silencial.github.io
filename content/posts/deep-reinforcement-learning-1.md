@@ -210,9 +210,9 @@ So we get our **REINFORCE** algorithm:
 2. Compute $\nabla_\theta J(\theta)$
 3. $\theta \gets \theta + \alpha \nabla_\theta J(\theta)$
 
-<mark>Does not require the initial state distribution or the transition probabilities.</mark>
+==Does not require the initial state distribution or the transition probabilities.==
 
-<mark>Can be used in POMDP (partially observed MDP) since Markov property is not use.</mark>
+==Can be used in POMDP (partially observed MDP) since Markov property is not use.==
 
 ## Variance
 
@@ -295,13 +295,13 @@ the policy update will have smaller variance:
 $$
 \nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\left[\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})Q(\mathbf{s}_t,\mathbf{a}_t)\right]
 $$
-Use the baseline $b_t = V(\mathbf{s}_t) = \mathbb{E}_{\mathbf{a}_t \sim \pi_\theta (\mathbf{a}_t | \mathbf{s}_t)} Q(\mathbf{s}_t, \mathbf{a}_t)$ <mark>(it is still unbiased as proved in the homework)</mark>
+Use the baseline $b_t = V(\mathbf{s}_t) = \mathbb{E}_{\mathbf{a}_t \sim \pi_\theta (\mathbf{a}_t | \mathbf{s}_t)} Q(\mathbf{s}_t, \mathbf{a}_t)$ ==(it is still unbiased as proved in the homework)==
 $$
 \nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\left[\nabla_\theta\log \pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})A^\pi(\mathbf{s}_{i, t},\mathbf{a}_{i, t})\right]
 $$
 where $A^\pi(\mathbf{s}_t,\mathbf{a}_t)=Q^\pi(\mathbf{s}_t,\mathbf{a}_t)-V^\pi(\mathbf{s}_t)$ is called the **advantage function**.
 
-Now we have 3 choices of function fitting: $Q^\pi, V^\pi, A^\pi$. Since $V^\pi$ <mark>is only a function of state rather than state-action pair</mark>, most actor-critic algorithms choose value function fitting. Also $Q^\pi, A^\pi$ can be approximated by $V^\pi$:
+Now we have 3 choices of function fitting: $Q^\pi, V^\pi, A^\pi$. Since $V^\pi$ ==is only a function of state rather than state-action pair==, most actor-critic algorithms choose value function fitting. Also $Q^\pi, A^\pi$ can be approximated by $V^\pi$:
 $$
 \begin{align*}
 Q^\pi(\mathbf{s}_t,\mathbf{a}_t) &= r(\mathbf{s}_t,\mathbf{a}_t) + \sum_{t'=t+1}^T\mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t'},\mathbf{a}_{t'})|\mathbf{s}_t,\mathbf{a}_t] \\
@@ -337,7 +337,7 @@ The ideal choice for $y_{i,t}$ is the actual reward:
 $$
 y_{i,t}=\sum_{t'=t}^T\mathbb{E}_{\pi_\theta}[r(\mathbf{s}_{t'},\mathbf{a}_{t'})|\mathbf{s}_{i,t}]\approx r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})+V^\pi(\mathbf{s}_{i,t+1})\approx r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})+\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})
 $$
-We can directly use previous fitted value function for $\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})$. <mark>We are trading off some accuracy for smaller variance.</mark>
+We can directly use previous fitted value function for $\hat{V}_\phi^\pi(\mathbf{s}_{i,t+1})$. ==We are trading off some accuracy for smaller variance.==
 
 Sometimes referred to as a "**bootstrapped**" estimate.
 
@@ -400,7 +400,7 @@ Actor-critic has lower variance but is biased, policy gradient is unbiased but h
 $$
 \nabla_\theta J(\theta)\approx\frac{1}{N}\sum_{i=1}^N\sum_{t=1}^T\nabla_\theta\log\pi_\theta(\mathbf{a}_{i,t}|\mathbf{s}_{i,t})\left(\left(\sum_{t'=t}^T\gamma^{t'-t}r(\mathbf{s}_{i,t'},\mathbf{a}_{i,t'})\right)-\hat{V}^\pi_\phi(\mathbf{s}_{i,t})\right)
 $$
-<mark>This is like using the baseline that depends on state.</mark>
+==This is like using the baseline that depends on state.==
 $$
 \hat{A}^\pi(\mathbf{s}_t,\mathbf{a}_t)=\sum_{t'=t}^\infty \gamma^{t'-t}r(\mathbf{s}_{t'},\mathbf{a}_{t'})-V^\pi_\phi(\mathbf{s}_t)
 $$
@@ -525,7 +525,7 @@ Fitted value iteration can be represented by $V \gets \Pi \mathcal{B} V$, but $\
 
 Same applies to $Q$ iteration and fitted $Q$ iteration.
 
-<mark>Online $Q$ iteration is not gradient descent since $y_i$ depends on $\phi$, not converge.</mark>
+==Online $Q$ iteration is not gradient descent since $y_i$ depends on $\phi$, not converge.==
 
 Also applies to batch actor-critic algorithm
 
@@ -655,7 +655,7 @@ J(\theta')-J(\theta) &=J(\theta')-\mathbb{E}_{\mathbf{s}_{0} \sim p(\mathbf{s}_{
 &=\mathbb{E}_{\tau \sim p_{\theta'}(\tau)}\left[\sum_{t=0}^{\infty} \gamma^{t} A^{\pi_{\theta}}(\mathbf{s}_{t}, \mathbf{a}_{t})\right]
 \end{split}
 $$
-<mark>The second line is because the expectation only depends on the initial state distribution.</mark>
+==The second line is because the expectation only depends on the initial state distribution.==
 
 The advantage is under $\pi_\theta$, but expectation is under $\pi_{\theta'}$, so use importance sampling:
 $$
@@ -733,7 +733,7 @@ $$
 &= \nabla_\theta J(\theta)
 \end{split}
 $$
-<mark>which is exactly the normal policy gradient.</mark>
+==which is exactly the normal policy gradient.==
 
 To deal with constraints, first approximate by second order Taylor expansion:
 $$

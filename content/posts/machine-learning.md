@@ -50,7 +50,7 @@ $$
 h_{\theta}(x)=\theta^{T} x=\theta_{0} x_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\dots+\theta_{n} x_{n}
 $$
 
-Make sure to scale every feature into approximately $-1 \le x_i \le 1$ range. <mark>(Mean normalization)</mark>
+Make sure to scale every feature into approximately $-1 \le x_i \le 1$ range. ==(Mean normalization)==
 
 Be carful of the model interpretation when **Multicollinearity** (multiple variables are correlated to each other) is present.
 
@@ -189,13 +189,13 @@ Since the goal is to keep variance stays the same through each layer, we can use
 $$
 \operatorname{var}(w_i) = \frac{1}{N_{avg}} = \frac{2}{N_{in} + N_{out}}
 $$
-<mark>Xavier assumes zero centered activation function, double the variance if using ReLU</mark>
+==Xavier assumes zero centered activation function, double the variance if using ReLU==
 
 ## Activation Function
 
 ### Hidden Layer
 
-<mark>ReLU is a good default choice for most problems</mark>
+==ReLU is a good default choice for most problems==
 
 Consider when choosing activation function:
 
@@ -301,7 +301,7 @@ Treat convolution matrix as parameter and **learn** them through backprop.
 
 Use **activation function** to introduce nonlinearity to output, e.g. ReLU.
 
-<mark>Since all neurons in a feature map share the same parameters, CNN can recognize a pattern in any location once it is learned.</mark>
+==Since all neurons in a feature map share the same parameters, CNN can recognize a pattern in any location once it is learned.==
 
 ## Pooling
 
@@ -341,7 +341,7 @@ h_t &= f_W (h_{t-1}, x_t) \\
 y_t &=W_{hy} h_t
 \end{align*}
 $$
-<mark>Computing gradient of $h_0$ involves many factors of $W$ and $\tanh$, easily lead to gradient exploding/vanishing.</mark>
+==Computing gradient of $h_0$ involves many factors of $W$ and $\tanh$, easily lead to gradient exploding/vanishing.==
 
 ## LSTM
 
@@ -387,7 +387,7 @@ In practice, alternate between:
    $$
    \min _{\theta_{g}} \mathbb{E}_{z \sim p(z)} \log \Big(D_{\theta_{d}}\big(G_{\theta_{g}}(z)\big)\Big)
    $$
-   <mark>The reason to use gradient ascent instead of gradient descent for the generator is to put more gradient signal on the region where samples are bad.</mark>
+   ==The reason to use gradient ascent instead of gradient descent for the generator is to put more gradient signal on the region where samples are bad.==
 
 # Reinforcement Learning
 
@@ -454,7 +454,7 @@ Q_{i+1}(s, a)=\mathbb{E}\left[r+\gamma \max _{a^{\prime}} Q_i\left(s^{\prime}, a
 $$
 $Q_i$ will converge to $Q^*$ as $i\to \infty$
 
-<mark>Problem: Must compute $Q(s,a)$ for every state-action pair.</mark>
+==Problem: Must compute $Q(s,a)$ for every state-action pair.==
 
 ### Q-Learning
 
@@ -567,13 +567,13 @@ f_i = \text{sim}(x, l^{(i)})
 $$
 Then predict $y = 1$ if $\theta^T f \ge 0$.
 
-<mark>To make valid kernels, similarity function need to satisfy Mercer's condition.</mark>
+==To make valid kernels, similarity function need to satisfy Mercer's condition.==
 
 Gaussian kernel:
 $$
 f_{i}=\exp \left(-\frac{\norm{x-l^{(i)}}^{2}}{2 \sigma^{2}}\right)
 $$
-where $l^{(i)} = x^{(i)}$. <mark>Do perform feature scaling before using the Gaussian kernel.</mark>
+where $l^{(i)} = x^{(i)}$. ==Do perform feature scaling before using the Gaussian kernel.==
 
 ## Logistic Regression vs. SVM
 
@@ -598,7 +598,7 @@ To find nearest clusters, we can use the distance from the centroid/clustroid, o
 
 Stop merging clusters when $k$ clusters are found (if we know the number of clusters), or criterion is met based on the merging criterion, or there is only 1 cluster left.
 
-<mark>The best choice depends on the shape of clusters.</mark>
+==The best choice depends on the shape of clusters.==
 
 ## $k$-Means Algorithm
 
@@ -664,7 +664,7 @@ Change the model by deleting the child nodes of a branch node to prevent overfit
 - Pre-pruning: stop the growth early if a split would result in the purity below a threshold.
 - Post-pruning: remove non-significant branches form a fully grown tree. Replace subtree by a leaf node labeled with the most frequent class.
 
-<mark>Post-pruning is more successful in practice because it is not easy to precisely estimate when to stop growing the tree.</mark>
+==Post-pruning is more successful in practice because it is not easy to precisely estimate when to stop growing the tree.==
 
 # Ensemble Learning
 
@@ -708,7 +708,7 @@ PCA (Principal Component Analysis) is the most popular algorithm in **dimensiona
 2. Data visualization.
 3. Feature extraction.
 
-<mark>Before you implement PCA, first try running whatever you want to do with the original data/raw data. Only if that doesn't do what you want, then implement PCA.</mark>
+==Before you implement PCA, first try running whatever you want to do with the original data/raw data. Only if that doesn't do what you want, then implement PCA.==
 
 There are two points of view leading to the same result of PCA, one is to **minimize the reconstruction error** with SVD:
 
@@ -778,7 +778,7 @@ Adam (Adaptive Moment Estimation) automatically computes adaptive learning rates
   w_{t} =w_{t-1}-\eta \frac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}
   $$
 
-<mark>Default choice to use, especially for sparse data sets.</mark>
+==Default choice to use, especially for sparse data sets.==
 
 ## Second-Order
 

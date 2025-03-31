@@ -104,7 +104,7 @@ For discrete case
 
 There are two different ways to optimize $\eqref{dol}$:
 
-**shooting method**: optimize over actions only. <mark>Extremely sensitive to the initial action</mark>
+**shooting method**: optimize over actions only. ==Extremely sensitive to the initial action==
 $$
 \min _{ \mathbf { u }_ { 1 } , \ldots , \mathbf { u } _{ T } } c \left( \mathbf { x }_ { 1 } , \mathbf { u } _{ 1 } \right) + c \big( f \left( \mathbf { x }_ { 1 } , \mathbf { u } _{ 1 } \right) , \mathbf { u }_ { 2 } \big) + \cdots + c \big( f ( f ( \ldots ) \ldots ) , \mathbf { u } _{ T } \big)
 $$

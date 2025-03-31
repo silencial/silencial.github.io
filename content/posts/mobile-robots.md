@@ -97,7 +97,7 @@ $$
 
 $p(z_t | x_t, m)$ is the probability of sensor reading $z_t$ given state $x_t$ and map $m$. Calculate simulated sensor reading $z^*$ form $x$ and $m$ and then compare with $z$.
 
-Assume individual beams are conditionally independent given map <mark>(may result in overconfidence problem)</mark>:
+Assume individual beams are conditionally independent given map ==(may result in overconfidence problem)==:
 $$
 p\left(z_{t} | x_{t}, m\right)=\prod_{i=1}^{K} p\left(z_{t}^{k} | x_{t}, m\right)
 $$
@@ -392,7 +392,7 @@ $$
 1. Store path info
 2. Define utility functions: get reference pose by index, get pose and pose_ref error
 
-<mark>Find reference pose function is the same for all controllers: Find the nearest point on the path and lookahead some distance.</mark>
+==Find reference pose function is the same for all controllers: Find the nearest point on the path and lookahead some distance.==
 
 `pid.py`:
 
@@ -504,7 +504,7 @@ Choose $f(s) = g(s) + \epsilon h(s)$, where $\epsilon > 1$. It is more efficient
 
 ### Lazy A*
 
-Instead of checking edge collision for all neighbors, only check the edge to parent when expanding. <mark>OPEN list will have multiple copies of a node since we haven't collision check.</mark>
+Instead of checking edge collision for all neighbors, only check the edge to parent when expanding. ==OPEN list will have multiple copies of a node since we haven't collision check.==
 
 ### Shortcut
 
@@ -569,7 +569,7 @@ After a path is found, we can randomly pick two nodes and connect them directly 
 
 `Dubins.py`: utility function for Dubins path
 
-`ROSPlanner.py`: take goal from rviz and do planning. <mark>Be careful of the frame change between map and world</mark>
+`ROSPlanner.py`: take goal from rviz and do planning. ==Be careful of the frame change between map and world==
 
 1. Load map info
 2. Construct graph and save for later use

@@ -359,7 +359,7 @@ $$
 \end{split}
 $$
 
-<mark>Note</mark> that $\frac{d}{dt}e^{A(t)} = \dot{A}(t) e^{A(t)} = e^{A(t)}\dot{A}(t)$ iff $A$ and $\dot{A}$ commute
+==Note== that $\frac{d}{dt}e^{A(t)} = \dot{A}(t) e^{A(t)} = e^{A(t)}\dot{A}(t)$ iff $A$ and $\dot{A}$ commute
 
 ### Coordinate Transformation
 

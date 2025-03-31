@@ -188,7 +188,7 @@ where $d_0$ is the *equilibrium separation distance*, and $−e_0$ is the minima
 
 SPH is a Lagrangian technique where discrete, smoothed particles are used to compute approximate values of needed physical quantities and their spatial derivatives. Forces can be easily derived directly from the state equations. Furthermore, as a particle-based Lagrangian approach it has the advantage that mass is trivially conserved and convection is dispensable. This reduces both the programming and computational complexity and is therefore suitable for interactive applications. A drawback of SPH is that it is not possible so far to exactly maintain the **incompressibility** of material.
 
-<mark>Do not actually understand this part</mark>
+==Do not actually understand this part==
 
 A function $A$ is interpolated at a position $\mathbf{x}$ from its neighboring particles using a summation interpolant:
 $$

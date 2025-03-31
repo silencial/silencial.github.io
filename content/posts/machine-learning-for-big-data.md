@@ -49,7 +49,7 @@ $$
 2. For every subset $A$ of $I$, generate a rule $A \to I\setminus A$.
 3. Compute the rule confidence.
 
-<mark>Finding frequent itemsets is the most challenging part.</mark>
+==Finding frequent itemsets is the most challenging part.==
 
 ## Finding Frequent Itemset
 
@@ -170,7 +170,7 @@ To find nearest clusters, we can use the distance from the centroid/clustroid, o
 
 Stop merging clusters when $k$ clusters are found (if we know the number of clusters), or criterion is met based on the merging criterion, or there is only 1 cluster left.
 
-<mark>The best choice depends on the shape of clusters.</mark>
+==The best choice depends on the shape of clusters.==
 
 ## $k$-Means Clustering
 
@@ -293,7 +293,7 @@ Cons:
 - Cannot recommend items that has not been previously rated.
 - Tends to recommend popular items. Cannot recommend items to someone with unique taste.
 
-<mark>In practice, item-item CF often works better since items are simpler, users have multiple tastes.</mark>
+==In practice, item-item CF often works better since items are simpler, users have multiple tastes.==
 
 ## Latent Factor Model
 

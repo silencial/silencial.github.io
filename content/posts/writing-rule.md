@@ -258,7 +258,7 @@ MathJax 尚不支持从属编号环境 `subequations`
 
 ## 自定义
 
-### 宏<mark>TODO</mark>
+### 宏==TODO==
 
 $$
 \def\specialFrac#1#2{\frac{x + #1}{y + #2}}
@@ -285,7 +285,7 @@ $$
 
 ## MathJax Extensions
 
-See [MathJax Extension List](https://docs.mathjax.org/en/latest/input/tex/extensions/index.html) <mark>TODO</mark>
+See [MathJax Extension List](https://docs.mathjax.org/en/latest/input/tex/extensions/index.html) ==TODO==
 $$
 \toggle{math1}{math2}\endtoggle
 $$

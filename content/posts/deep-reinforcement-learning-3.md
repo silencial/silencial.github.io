@@ -224,7 +224,7 @@ In the backward pass $\eqref{backmessage}$ is optimistic about the $Q$ since $\l
 
 The solution is to find a distribution $q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T})$ that is close to $p(\mathbf{s}_{1:T}, \mathbf{a}_{1:T} | \mathcal{O}_{1:T})$ but has dynamics $p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t})$.
 
-Let $\mathbf{x} = \mathcal{O}_{1:T}$ and $\mathbf{z} = (\mathbf{s}_{1:T}, \mathbf{a}_{1:T})$, $q(\mathbf{z})$ can be built by <mark>(same dynamics and initial state as $p$)</mark>
+Let $\mathbf{x} = \mathcal{O}_{1:T}$ and $\mathbf{z} = (\mathbf{s}_{1:T}, \mathbf{a}_{1:T})$, $q(\mathbf{z})$ can be built by ==(same dynamics and initial state as $p$)==
 $$
 q(\mathbf{s}_{1:T}, \mathbf{a}_{1:T}) = p(\mathbf{s}_{1}) \prod_t p(\mathbf{s}_{t+1} | \mathbf{s}_{t}, \mathbf{a}_{t}) q(\mathbf{a}_{t} | \mathbf{s}_{t})
 $$
@@ -614,11 +614,11 @@ where $R$ is the "likelihood" term (Bellman error), KL-divergence is the "Regula
 
 # Information-Theoretic Exploration
 
-<mark>TODO</mark>
+==TODO==
 
 # Challenges in Deep RL
 
-<mark>TODO</mark>
+==TODO==
 
 # Proof
 

@@ -317,7 +317,7 @@ public class KosarajuSharirSCC {
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/wordnet/specification.php)
 
 - **WordNet digraph**: build digraph from input files. [WordNet.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/WordNet.java)
-  - `synsets.txt` saves all the id and corresponding words <mark>(one id can have one or more words, and one word can have one or more ids)</mark>
+  - `synsets.txt` saves all the id and corresponding words ==(one id can have one or more words, and one word can have one or more ids)==
   - `hypernyms.txt` contains hypernym relationships
 - **Shortest ancestral path**: given two vertices, find the directed paths to their common ancestor with the max total length. [SAP.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/SAP.java)
 - **Outcast detection**: given a list of WordNet nouns, find the noun least related to the others. This can be measured by the sum of SAP distances to all the other vertices. [Outcast.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/Outcast.java)
@@ -1557,7 +1557,7 @@ Regular Expression Pattern:
 - For any DFA, there exists a RE that describes the same set of strings
 - For any RE, there exists a DFA that recognized the same set of strings
 
-<mark>The DFA built from RE may have exponential number of states, so instead we use NFA (Nondeterministic finite state automata).</mark>
+==The DFA built from RE may have exponential number of states, so instead we use NFA (Nondeterministic finite state automata).==
 
 Regular-expression-matching NFA:
 

@@ -119,7 +119,7 @@ public class QuickUnionUF {
 1. `Initialization`: addition array `sz[i]` to count number of objects in the tree rooted at `i`
 2. `Union(p, q)`: change the root of smaller tree to root of larger tree and update `sz[]`
 3. `Find`: same as quick-union
-4. <mark>Path compression: we can add extra line of code to make the tree more flat when computing the root of a node</mark>
+4. ==Path compression: we can add extra line of code to make the tree more flat when computing the root of a node==
 
 ```java
 public class WeightedQuickUnionUF {
@@ -196,7 +196,7 @@ How to check whether an $N$-by-$N$ system percolates:
 - Create an object for each site and name them $0$ to $N^2 - 1$.
 - Sites are in same component if connected by open sites.
 - Percolates iff any site on bottom row is connected to site on top row (brute-force algorithm: $N^2$ calls to `connected()`).
-- <mark>Clever trick: introduce $2$ virtual sites connected to top and bottom separately and check if virtual top site is connected to virtual bottom site.</mark> (only $1$ call to `connected()`)
+- ==Clever trick: introduce $2$ virtual sites connected to top and bottom separately and check if virtual top site is connected to virtual bottom site.== (only $1$ call to `connected()`)
 
 ![Virtual Node](https://i.imgur.com/i7S0poS.png)
 
@@ -658,7 +658,7 @@ public class Insertion {
 ## Shellsort
 
 - Insertion sort with stride length $h$.
-- <mark>A $g$-sorted array remains $g$-sorted after $h$-sorting it.</mark>
+- ==A $g$-sorted array remains $g$-sorted after $h$-sorting it.==
 - Use a sequence of increment steps to shellsort the array.
 
 Which increment sequence to use?
@@ -1140,7 +1140,7 @@ public class OrderedArrayMaxPQ<Key extends Comparable<Key>> {
 - If parent's key becomes smaller than one (or both) of its children's, then repeatedly exchange parent's key with larger child's key.
 - When **insert** a key, add node at end, then swim it up.
 - When **delete** the maximum, exchange root with node at end, then sink it down.
-- <mark>Index starts from $1$.</mark>
+- ==Index starts from $1$.==
 
 ```java
 public class MaxPQ<Key extends Comparable<Key>> {
@@ -1810,7 +1810,7 @@ BST but alternate using x and y coordinates as key.
 - Delete an interval.
 - Given an interval, find all intervals in data structure that intersects it.
 
-<mark>Non-degeneracy assumption: No two intervals have the same left endpoint.</mark>
+==Non-degeneracy assumption: No two intervals have the same left endpoint.==
 
 Create BST, where each node stores an interval. Use left endpoint as BST key and store max endpoint in subtree rooted at node.
 
@@ -1827,7 +1827,7 @@ To find intersections for query interval $(lo, hi)$:
 
 Find all intersections among a set of $N$ orthogonal rectangles.
 
-<mark>Non-degeneracy assumption: All x and y coordinates are distinct.</mark>
+==Non-degeneracy assumption: All x and y coordinates are distinct.==
 
 Sweep-line algorithm: reduces 2d orthogonal rectangle intersection search to 1d interval search.
 

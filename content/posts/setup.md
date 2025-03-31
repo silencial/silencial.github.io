@@ -200,13 +200,13 @@ zsh 增强。开启一些自带插件：
 
 ## PATH 路径问题
 
-<mark>注意 Tmux 下的 PATH 值可能会发生变化</mark>
+==注意 Tmux 下的 PATH 值可能会发生变化==
 
 # [Ranger](https://github.com/ranger/ranger)
 
 命令行文件管理器，按键模式和 Vim 类似。支持自定义快捷键和命令。新手请阅读 [wiki](https://github.com/ranger/ranger/wiki)
 
-<mark>Bug</mark>：快速预览有时会卡死，需要 `ctrl+c` 后继续。参考 [issue](https://github.com/ranger/ranger/issues/1787) 解决方法
+==Bug==：快速预览有时会卡死，需要 `ctrl+c` 后继续。参考 [issue](https://github.com/ranger/ranger/issues/1787) 解决方法
 
 # [Yadm](https://yadm.io/)
 
@@ -253,7 +253,7 @@ Dotfiles 管理工具。基本工作原理即是在 `~` 目录下建立一个 gi
 
 进入 Win 下控制面板中的电源选项关闭快速启动。
 
-使用磁盘管理工具在 Win 下将磁盘压缩出一块可用空间，100 GB 左右。<mark>如果硬盘为动态磁盘，需先使用[傲梅分区助手](https://www.disktool.cn/)将磁盘转化为基本磁盘</mark>。
+使用磁盘管理工具在 Win 下将磁盘压缩出一块可用空间，100 GB 左右。==如果硬盘为动态磁盘，需先使用[傲梅分区助手](https://www.disktool.cn/)将磁盘转化为基本磁盘==。
 
 在 Ubuntu [官网](https://ubuntu.com/download/desktop)下载安装文件。按照官网[教程](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0)制作装机 U 盘。
 
@@ -265,7 +265,7 @@ U 盘插入电脑，重启进入 BIOS 选择从 U 盘启动。按照安装步骤
 
 ## WOL
 
-<mark>首先查看主板是否支持 WOL</mark>
+==首先查看主板是否支持 WOL==
 
 开启 WOL 服务:
 

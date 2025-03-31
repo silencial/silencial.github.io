@@ -76,7 +76,7 @@ ln -s [原文件] \[目标文件]
 
 ## 关机与重启命令
 
-`shutdown [选项] 时间`: <mark>最安全，可以正确保存数据</mark>
+`shutdown [选项] 时间`: ==最安全，可以正确保存数据==
 
 - `-c` 取消前一个关机命令
 - `-h` 关机
@@ -131,7 +131,7 @@ ln -s [原文件] \[目标文件]
 
 - mount -t vfat /dev/sdb1 /mnt/usb/
 
-<mark>Linux 默认不支持 NTFS 文件</mark>
+==Linux 默认不支持 NTFS 文件==
 
 ### 用户登录查看命令
 
@@ -191,7 +191,7 @@ Shell 是一个命令行解释器，为用户提供了一个向 Linux 内核发�
 
 Shell 还是一个功能相当强大的编程语言，易编写，易调试，灵活性较强。Shell 是解释执行的脚本语言，在 Shell 中可以直接调用 Linux 系统命令。
 
-Shell 两种主要语法类型有 Bourne 和 C，这两种语法彼此不兼容。Bourne 家族主要包括 sh、ksh、<mark>Bash</mark>、psh、zsh；C 家族主要包括 csh、tcsh
+Shell 两种主要语法类型有 Bourne 和 C，这两种语法彼此不兼容。Bourne 家族主要包括 sh、ksh、==Bash==、psh、zsh；C 家族主要包括 csh、tcsh
 
 - echo $SHELL
 
@@ -308,7 +308,7 @@ Shell 两种主要语法类型有 Bourne 和 C，这两种语法彼此不兼容�
 
 - ls &> /dev/null 丢入垃圾站
 
-<mark>输入重定向</mark>
+==输入重定向==
 
 - wc [选项] \[文件名]
 

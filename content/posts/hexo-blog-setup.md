@@ -24,7 +24,7 @@ NexT 是一个主题，可以运行在 Hexo 所搭建的 blog 上。
 
 通过 [NexT 官方网址](https://theme-next.js.org/) 进行与 Hexo 的配置。
 
-<mark>推荐使用 `node_modules` 安装，而非下载至 `theme` 文件夹中</mark>
+==推荐使用 `node_modules` 安装，而非下载至 `theme` 文件夹中==
 
 # 写作
 
@@ -173,7 +173,7 @@ reward:
              hexo g -d
    ```
 
-6. 之后只需要 push 到 GiHub 仓库上即会自动部署。<mark>本地记得定期更新插件以及对应配置</mark>
+6. 之后只需要 push 到 GiHub 仓库上即会自动部署。==本地记得定期更新插件以及对应配置==
 
 # CSS 样式更改
 
@@ -322,7 +322,7 @@ fancybox 会解析 `alt` 标签作为图片标题，并且有良好的格式，�
 
 ## 双大括号
 
-双大括号 `{{}}` 是 nunjucks 语法，要避免在文章中出现 <mark>一般是数学环境</mark>
+双大括号 `{{}}` 是 nunjucks 语法，要避免在文章中出现 ==一般是数学环境==
 
 # Future
 

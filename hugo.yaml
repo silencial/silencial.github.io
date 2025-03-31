@@ -25,6 +25,13 @@ markup:
           inline:
           - - $
             - $
+      extras:
+        mark:
+          enable: true
+        subscript:
+          enable: true
+        superscript:
+          enable: true
   highlight:
     lineNos: true
     style: dracula

@@ -129,7 +129,7 @@ Calculate the gradient:
 $$
 f(W)=\ln p(T | X, W, \beta)=\text{const}-\frac{\beta}{2} \sum_{n}\norm*{\mathbf{t}_{n}-W^{T} \phi\left(\mathbf{x}_{n}\right)}_{2}^{2}
 $$
-Use F-norm: <mark>The sum of 2-norm square of vectors equals the F-norm square of a big matrix</mark>
+Use F-norm: ==The sum of 2-norm square of vectors equals the F-norm square of a big matrix==
 $$
 \begin{split}
 \nabla f &= \nabla\left( \frac{\beta}{2} \sum_{n}\norm*{\mathbf{t}_{n}-W^{T} \phi\left(\mathbf{x}_{n}\right)}_{2}^{2} \right) \\
