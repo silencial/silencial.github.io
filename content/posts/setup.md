@@ -1,7 +1,7 @@
 ---
 title: Setup
 date: 2020-02-25
-lastmod: 2023-10-12
+lastmod: 2025-04-04
 categories:
 - Tech
 tags:
@@ -68,10 +68,14 @@ macOS 键盘映射软件。添加 `~/.config/karabiner/assets/complex_modificati
 
 - [Apple Music Playlists](https://github.com/gustavosaez/Alfred-Workflow-Apple-Music)：打开 Apple Music 心情/场景歌单
 - [Calculate Anything](https://github.com/biati-digital/alfred-calculate-anything)：计算器、单位转换、货币换算、等等
+- [Calendar++](https://github.com/zeitlings/alfred-calendar)：与 macOS 自带日历交互
 - [Colors](https://www.packal.org/workflow/colors)：通过 RGB，HSL，Hex 搜索颜色
 - [Douban](https://github.com/h3l/douban-workflow)：搜索豆瓣上的书籍和电影并显示评分
 - [Menu Bar Search](https://github.com/BenziAhamed/Menu-Bar-Search)：搜索当前 App 下的菜单选项
+- [OCR](https://github.com/zeitlings/alfred-workflows)：截图 OCR 识别
 - [Reminders for Alfred](https://github.com/surrealroad/alfred-reminders/releases)：自然语言添加 Reminders 事项
+- [Search ALL the docs!](https://alfred.app/workflows/chrisgrieser/search-all-the-docs/)：文档搜索，和其它小工具
+- [Shrieking Chimes](https://alfred.app/workflows/vitor/shrieking-chimes/)：设置闹钟和倒计时
 - [Toggl](https://github.com/jason0x43/alfred-toggl)：和 Toggl Time Tracker 互动
 - [Word Search](https://github.com/isaacpz/Alfred-WordSearch)：搜索近义词、反义词、押韵词、形容词
 - [Youdao translate](https://github.com/wensonsmith/YoudaoTranslate)：中英单词翻译
@@ -119,7 +123,9 @@ Markdown 编辑器，平时用来做笔记，写 Blog。Typora 天下第一 :dog
 一些推荐插件
 
 - Bookmarks：给行添加书签，方便跳转
-- Code GPT：GPT 侧栏
+- Catppuccin for VSCode：主题
+- Compare Folders：对比文件夹
+- Data Wrangler：在 Jupyter Notebook 中查看 Data
 - Everforest：主题
 - Git Graph：查看 Git Graph
 - GitHub Copilot：AI 代码补全，强到离谱
@@ -128,6 +134,7 @@ Markdown 编辑器，平时用来做笔记，写 Blog。Typora 天下第一 :dog
 - Paste-Indent：保持缩进格式粘贴
 - Path Intellisense：自动补全文件路径
 - Python Indent：解决一些 Python 自动缩进问题
+- Rainbow CSV：CSV 高亮
 - Tabster：保存标签页至工作组
 - Todo Tree：高亮关键字
 
@@ -137,8 +144,8 @@ macOS 终端工具。一些设置：
 
 - 默认终端：`iTerm2 -> Make iTerm2 Default Term`
 - 快捷键：`iTerm2 -> Preferences -> Keys -> Hotkey`。设置为 `⌥Space`
-- 字体问题：安装 [Nerd Fonts](https://www.nerdfonts.com/)，在 `iTerm2 -> Preferences -> Profiles -> Text` 中选择字体。推荐 `14 pt CaskaydiaCove Nerd Font Regular`
-- 下载 iTerm2 的[配色方案](https://github.com/mbadolato/iTerm2-Color-Schemes)。推荐 `Snazzy`, `ayu`
+- 字体问题：安装 [Nerd Fonts](https://www.nerdfonts.com/)，在 `iTerm2 -> Preferences -> Profiles -> Text` 中选择字体。推荐 [Maple Mono NF CN](https://github.com/subframe7536/maple-font)
+- 下载 iTerm2 的[配色方案](https://github.com/mbadolato/iTerm2-Color-Schemes)。推荐 `GruvboxDark`，`Penumbra Dark++`
 
 备份：
 
@@ -165,6 +172,7 @@ zsh 增强。开启一些自带插件：
 其它插件：
 
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)：主题，可定制化选项多，傻瓜式引导配置
+- [zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)：当使用的命令有 alias 时进行提示
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)：根据历史提示命令，一键补全
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)：高亮命令（注意需要放在 `.zshrc` 插件列表最后一位）
 
@@ -206,8 +214,6 @@ zsh 增强。开启一些自带插件：
 
 命令行文件管理器，按键模式和 Vim 类似。支持自定义快捷键和命令。新手请阅读 [wiki](https://github.com/ranger/ranger/wiki)
 
-==Bug==：快速预览有时会卡死，需要 `ctrl+c` 后继续。参考 [issue](https://github.com/ranger/ranger/issues/1787) 解决方法
-
 # [Yadm](https://yadm.io/)
 
 > Yet Another Dotfiles Manager.
@@ -218,15 +224,17 @@ Dotfiles 管理工具。基本工作原理即是在 `~` 目录下建立一个 gi
 
 - [autojump](https://github.com/wting/autojump)：目录快速跳转
 - [bat](https://github.com/sharkdp/bat)：`cat` 增强版，输出高亮，多种语法
+- [bottom](https://github.com/ClementTsang/bottom)：系统监控仪表
 - [cheat](https://github.com/cheat/cheat)：提示命令的用法，可以自己编写
+- [delta](https://github.com/dandavison/delta)：支持高亮的比对工具，可以搭配 git 使用
+- [duf](https://github.com/muesli/duf)：查看磁盘使用情况
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)：显示系统信息，可定制选项多
+- [fd](https://github.com/sharkdp/fd)：`find` 增强版
 - [fzf](https://github.com/junegunn/fzf)：模糊搜索，可以用来搜索文件、历史命令、等等
 - [htop](https://github.com/htop-dev/htop)：交互式进程管理器
-- [icdiff](https://github.com/jeffkaufman/icdiff)：支持高亮的比对工具，可以搭配 git 使用
 - [lsd](https://github.com/Peltoche/lsd)：`ls` 增强版
-- [neofetch](https://github.com/dylanaraps/neofetch)：显示系统信息，可定制选项多
 - [nvidia-htop](https://github.com/peci1/nvidia-htop)：`nvidia-smi` 增强版，显示进程对应用户与 CPU，Memory 使用率
 - [ripgrep](https://github.com/BurntSushi/ripgrep)：类似于 `grep`，使用正则表达式搜索文件内容
-- tree：树形显示文件夹结构
 - [xclip](https://github.com/astrand/xclip) (Linux)：复制文件内容至剪切板，Mac 自带 `pbcopy`
 
 # 个人记录
