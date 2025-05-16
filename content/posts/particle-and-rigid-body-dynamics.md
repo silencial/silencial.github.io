@@ -9,7 +9,8 @@ tags:
 ---
 
 The [course notes](http://www.cs.cmu.edu/~baraff/sigcourse/) give detailed code implementation and mathematical derivation.
-<!-- more -->
+
+<!--more-->
 
 ---
 

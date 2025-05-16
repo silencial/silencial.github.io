@@ -1,6 +1,7 @@
 ---
 title: Hamming Code
 date: 2018-11-19
+lastmod: 2025-04-20
 categories:
 - Fun
 tags:
@@ -14,36 +15,40 @@ It is extremely difficult, and often impossible, to prevent errors when data are
 
 ---
 
-# Error Detecting Codes
+# Error Detection Codes
 
 A simple way to detect errors when a bit string is transmitted is to add a **parity check bit** at the end of the string. We encode the message $x_1x_2\cdots x_n$ as $x_1x_2\cdots x_nx_{n+1}$ , where the parity check bit $x_{n+1}$ is given by
+
 $$
 x_{n+1}=(x_1+x_2+\dots+x_n) \bmod 2
 $$
+
 Adding the parity check bit guarantees that the number of $1$s in the extended string must be even.
 
-Note that this method can only detect odd number of errors.
+Note that this method can only detect an odd number of errors.
 
-# Error Correcting Codes
+# Error Correction Codes
 
-When redundancy is included in codewords, such as when a parity check bit is added to a bit string, we can detect transmission errors. When we include more redundancy, we will also be able to correct errors.
+When redundancy is included in codewords, such as when a parity check bit is added to a bit string, we can detect transmission errors. Including more redundancy allows us to also correct errors.
 
-We use *triple repetition* code as an example. If the message is $x_1x_2x_3$, we encode it as $x_1x_2x_3x_4x_5x_6x_7x_8x_9$ where $x_1=x_4=x_7$, $x_2=x_5=x_8$, $x_3=x_6=x_9$.
+We use the *triple repetition* code as an example. If the message is $x_1x_2x_3$, we encode it as $x_1x_2x_3x_4x_5x_6x_7x_8x_9$ where $x_1=x_4=x_7$, $x_2=x_5=x_8$, $x_3=x_6=x_9$.
 
 We decode a bit string, which may contain errors, using the *simple majority rule*. For example, when a triple repetition code is used, if we receive $011111010$, we conclude that the message sent was $011$.
 
 # Hamming Distance
 
-The **Hamming distance** $d(x,y)$ between the bit strings $x$ and $y$ is the number of positions in which these strings differ.
+The **Hamming distance** $d(x,y)$ between bit strings $x$ and $y$ is the number of positions in which these strings differ.
 
-When a codeword $x$ from a code set $C$ is sent and the bit string $y$ is received, we compute the Hamming distance between $y$ and each of the codewords in $C$ and choose the minimum. If the distance between the closest codewords in $C$ is large enough and if sufficiently few errors were made in transmission, this codeword should be $x$, the codeword sent. This type of decoding is called *nearest neighbor decoding*.
+When a codeword $x$ from a code set $C$ is sent and the bit string $y$ is received, we compute the Hamming distance between $y$ and each codeword in $C$ and choose the minimum distance. If the minimum distance between $y$ and any codeword is small enough, and if the minimum distance between codewords in $C$ is sufficiently large, $y$ is most likely the transmitted codeword $x$. This type of decoding is called *nearest neighbor decoding*.
 
-It is easy to see that nearest neighbor decoding gives us the most likely codeword sent, so it is also *maximum likelihood decoding*.
+It is easy to see that nearest neighbor decoding gives us the most likely sent codeword, so it is also *maximum likelihood decoding*.
 
 The **minimum distance** of a binary code $C$ is the smallest distance between two distinct codewords, that is
+
 $$
 d(C)=\min\{d(x,y) \mid x,y\in C, x\ne y\}
 $$
+
 The minimum distance of a code tells us how many errors it can detect and how many errors it can correct, as the following two theorems show:
 
 1. A binary code $C$ can detect up to $k$ errors in any codeword if and only if $d(C)\ge k+1$.
@@ -51,27 +56,32 @@ The minimum distance of a code tells us how many errors it can detect and how ma
 
 # Perfect Codes
 
-To allow error correction we want to make the minimum distance between codewords large. But doing so limits how many codewords are available. Here we will develop a bound on the number of codewords in a binary code with a given minimum distance.
+To allow error correction, we want to make the minimum distance between codewords large. However, doing so limits how many codewords are available. Here we will develop a bound on the number of codewords in a binary code with a given minimum distance.
 
 **Lemma 1**: Suppose $x$ is a bit string of length $n$ and that $k$ is a nonnegative integer not exceeding $n$. Then there are
+
 $$
 C(n,0)+C(n,1)+\dots+C(n,k)
 $$
+
 bit strings $y$ of length $n$ such that $d(x,y)\le k$.
 
 **Lemma 2**: Let $C$ be a binary code containing codewords of length $n$ and let $d(C)=2k+1$. Then given a bit string $y$ of length $n$, there is at most one codeword $x$ such that $y$ is in the sphere of radius $k$ centered at $x$.
 
-With two lemmas above, we can derive **The Sphere Packing or (Hamming) Bound**:
+With the two lemmas above, we can derive **The Sphere Packing or (Hamming) Bound**:
 
 Suppose that $C$ is a code of bit strings of length $n$ with $d(C)=2k+1$. Then $|C|$, the number of codewords in $C$, cannot exceed
+
 $$
 \frac{2^n}{C(n,0)+C(n,1)+\dots+C(n,k)}
 $$
-The code that actually achieve this bound are the most efficient error correcting codes and known as **perfect codes**.
+
+Codes that actually achieve this bound are the most efficient error correcting codes and are known as **perfect codes**.
 
 # Generator Matrices
 
-Consider a $k$-bit message $x_1x_2\cdots x_k$ as a $1\times k$ matrix $x$. Let $G$ be a $k\times n$ matrix that begins with the $k\times k$ identity matrix $I_k$. That is, $G=(I_k|A)$, where $A$ is a $k\times(n-k)$ matrix, known as a **generator matrix**. We encode $x$ as $E(x)=xG$. For example, the $G$ matrix of adding the parity check bit to a three-bit message is
+Consider a $k$-bit message $x_1x_2\cdots x_k$ as a $1\times k$ matrix $x$. Let $G$ be a $k\times n$ matrix that begins with the $k\times k$ identity matrix $I_k$. That is, $G=(I_k|A)$, where $A$ is a $k\times(n-k)$ matrix, known as a **generator matrix**. We encode $x$ as $E(x)=xG$. For example, the generator matrix $G$ for adding a parity check bit to a three-bit message is
+
 $$
 G=\begin{pmatrix}
 1 & 0 & 0 & 1 \\
@@ -79,23 +89,27 @@ G=\begin{pmatrix}
 0 & 0 & 1 & 1
 \end{pmatrix}
 $$
-It is easy to see that we can find the codewords in a binary code generated
-by a generator matrix $G$ by taking all possible linear combinations of the rows
-of $G$. Also binary codes formed using generator matrices have the property that the sum of any two codewords is again a codeword. That is, they are **linear codes**.
+
+It is easy to see that the codewords in a binary code generated by a generator matrix $G$ can be found by taking all possible linear combinations of the rows of $G$. Also, binary codes formed using generator matrices have the property that the sum of any two codewords is again a codeword. That is, they are **linear codes**.
 
 # Parity Check Matrices
 
 Suppose that $G$ is a $k\times n$ generator matrix with
+
 $$
 G=(I_k|A)
 $$
-where $A$ is a $k\times(n-k)$ matrix. To $G$ we associate the parity check matrix $H$, where
+
+where $A$ is a $k\times(n-k)$ matrix. The parity check matrix $H$ associated with $G$ is
+
 $$
 H=(A^T|I_{n-k})
 $$
+
 Then $x$ is a codeword if and only if $Hx^T=0$.
 
-Not only can the parity check matrix be used to detect errors, but when the columns of this matrix are distinct and are all nonzero, it also can be used to correct errors. Suppose the codeword $x$ is sent and $y=x+e$ is received, where $e$ is an error string. Now suppose that only one error has been introduced when $x$ was transmitted, then
+Not only can the parity check matrix be used to detect errors, but when its columns are distinct and all nonzero, it can also be used to correct errors. Suppose the codeword $x$ is sent and $y=x+e$ is received, where $e$ is an error string. Now suppose that only one error has been introduced when $x$ was transmitted; then
+
 $$
 \begin{split}
 Hy^T&=H(x^T+e^T) \\
@@ -104,19 +118,21 @@ Hy^T&=H(x^T+e^T) \\
 &=c_j
 \end{split}
 $$
+
 where $c_j$ is the $j$-th column of $H$.
 
 # Hamming Codes
 
-A Hamming code of order $r$ where $r$ is a positive integer, is a code generated when we take as parity check matrix $H$ an $r\times(2^r-1)$ matrix with columns that are all the $2^r-1$ nonzero bit strings of length $r$ in any order such that the last $r$ columns form the identity matrix.
+A Hamming code of order $r$, where $r$ is a positive integer, is a code generated when we take as the parity check matrix $H$ an $r\times(2^r-1)$ matrix with columns that are all the $2^r-1$ nonzero bit strings of length $r$ in any order such that the last $r$ columns form the identity matrix.
 
-To show that the Hamming codes are perfect codes we first need to establish two lemmas.
+To show that Hamming codes are perfect codes, we first need to establish two lemmas.
 
 **Lemma 1**: A Hamming code of order $r$ contains $2^{n-r}$ codewords where $n=2^r-1$.
 
 **Lemma 2**: The minimum distance of a Hamming code of order $r$ is $3$ whenever $r$ is a positive integer.
 
-**Proof:** Since $H$ has columns which are all nonzero and no two of which are the same, it can correct single errors. Then the minimum distance of this code is at least $3$. Among the columns of $H$ are the following three columns:
+**Proof:** Since $H$ has columns which are all nonzero and no two are the same, it can correct single errors. Thus, the minimum distance of this code is at least $3$. Among the columns of $H$ are the following three columns:
+
 $$
 c_1=\begin{pmatrix}
 1 \\ 1 \\0 \\ \vdots \\ 0
@@ -130,13 +146,16 @@ c_3=\begin{pmatrix}
 0 \\ 1 \\0 \\ \vdots \\ 0
 \end{pmatrix}
 $$
-Note that $c_1+c_2+c_3=0$. Let $x$ be the bit string with $1$ in the positions of these columns and zero elsewhere. Then $Hx^T=0$, $x$ is a codeword. $d(C)\le d(x,\mathbf{0})=3$. We conclude that the minimum distance of a Hamming code of order $r$ is $3$.
 
-Let $n=2^r-1$. Since Hamming code of order $r$ contains $2^{n-r}$ codewords and the minimum distance is $3$. We see that this code achieves that maximum number of codewords allowed by the sphere packing bound.
+Note that $c_1+c_2+c_3=0$. Let $x$ be the bit string with $1$ in the positions corresponding to these columns and zero elsewhere. Then $Hx^T=0$, so $x$ is a codeword. The distance $d(x,\mathbf{0})=3$. Therefore, $d(C)\le 3$. We conclude that the minimum distance of a Hamming code of order $r$ is $3$.
+
+Let $n=2^r-1$. Since a Hamming code of order $r$ contains $2^{n-r}$ codewords and has a minimum distance of $3$, we see that this code achieves the maximum number of codewords allowed by the sphere packing bound:
+
 $$
-2^{n-r}[1+C(n,1)]=2^{n-r}(1+n)=2^{n-r}(1+2^r-1)=2^n
+2^{n-r}[C(n,0)+C(n,1)]=2^{n-r}(1+n)=2^{n-r}(1+2^r-1)=2^n
 $$
-Hence Hamming code of order $r$ is a perfect code.
+
+Hence, a Hamming code of order $r$ is a perfect code.
 
 # Reference
 

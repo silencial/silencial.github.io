@@ -199,7 +199,7 @@ iLQR may have overshoot problem, **line search** can be applied to correct this 
 2. $\mathbf{c}_{t}=\nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)$
 3. $\mathbf{C}_{t}=\nabla_{\mathbf{x}_{t}, \mathbf{u}_{t}}^{2} c\left(\hat{\mathbf{x}}_{t}, \hat{\mathbf{u}}_{t}\right)$
 4. Run LQR backward pass on $\delta \mathbf{x}_t, \delta \mathbf{u}_t$
-5. Run forward pass with $\mathbf{u}_{t} = \mathbf{K}_{t} \mathbf{x}_{t} + \alpha \mathbf{k}_{t} + \hat{\mathbf{u}}_t$
+5. Run forward pass with $\mathbf{u}_{t} = \mathbf{K}_{t} \delta\mathbf{x}_{t} + \alpha \mathbf{k}_{t} + \hat{\mathbf{u}}_t$
 
 ## DDP
 

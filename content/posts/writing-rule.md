@@ -293,10 +293,12 @@ $$
 physics:
 $$
 \require{physics}
+\begin{pmatrix}
+\imat{5}
+\end{pmatrix}
 $$
 centernot:
 $$
-\require{centernot}
 \centernot\implies \qquad \not\implies
 $$
 
@@ -313,3 +315,4 @@ mathtools:
 5. Conditional probability: $p(a | b)$
 6. Set with conditions: $\{a \mid a\in A\}$
 7. $i$-th
+

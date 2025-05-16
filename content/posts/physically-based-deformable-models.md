@@ -9,7 +9,8 @@ tags:
 ---
 
 This [paper](http://matthias-mueller-fischer.ch/publications/egstar2005.pdf) presents the most important methods used in computer graphics to produce realistic animations and simulations: *finite element/difference/volume methods, mass-spring systems, meshfree methods, coupled particle systems and reduced deformable models based on modal analysis*. Also, it discusses the benefits and drawbacks of each method, reports the improvement that made in other papers.
-<!-- more -->
+
+<!--more-->
 
 ---
 

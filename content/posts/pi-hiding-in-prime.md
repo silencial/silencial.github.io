@@ -12,7 +12,7 @@ tags:
 
 证明 $\dfrac{\pi}{4} = 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots$
 
-<!-- more -->
+<!--more-->
 
 ---
 

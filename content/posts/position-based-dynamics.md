@@ -9,7 +9,8 @@ tags:
 ---
 
 This paper [Position-Based Simulation Methods in Computer Graphics](https://mmacklin.com/EG2015PBD.pdf) introduces position-based methods and its differences from other methods. Moreover, it presents the algorithm and several solvers. Specific constraints are also discussed in detail. Finally, Implementation and application are briefly presented.
-<!-- more -->
+
+<!--more-->
 
 ---
 

@@ -19,12 +19,15 @@ In combinatorial mathematics, the Catalan numbers form a sequence of natural num
 Suppose a path in the plane from the origin to the point $(2n,0)$ whose steps are the line segments between $(i-1,s_{i-1})$ and $(i,s_i)$, for $i$. The $i$-th step in this path has slope $s_i-s_{i-1}=x_i\in\{1,-1\}$.
 
 We call a path from $(0,0)$ to $(2n,0)$ **nonnegative** if all $s_i\ge 0$ and **positive** if $s_i>0$ for $i=1,2,\dots,2n-1$. The number of nonnegative paths and positive paths from the origin to the point $(2n,0)$ are both Catalan numbers:
+
 $$
 c_n=\frac{1}{n+1} \binom{2n}{n}
 $$
+
 The number of positive paths from the origin to $(2n,0)$ are $c_{n-1}$, the number of nonnegative paths are $c_n$.
 
 **Proof:** Let $(s_0,s_1,\dots,s_{2n})$ be the partial sum sequence of a positive path $P$. Then $s_0=s_{2n}=0$ and $s_i\ge 1$ for $i=1,2,\dots,2n-1$. Let $x_i=s_i-s_{i-1}\in\{1,-1\}$. Since $P$ must pass through the point $(1,1)$ and $(2n-1,1)$. If we omit the first and last terms from the slope sequence, we have a sequence $x'$ that has $n-1$ $1$s and $n-1$ $-1$s. Further, the partial sums for $x'$ satisfy
+
 $$
 \begin{equation*}
 \begin{split}
@@ -35,13 +38,15 @@ s_i'&=x_1'+x_2'+\cdots+x_i' \\
 \end{split}
 \end{equation*}
 $$
+
 for $0\le i \le 2n-2$. Thus the positive path $P$ from the origin to $(2n,0)$ corresponds to a nonnegative path $P'$ from the origin to $(2n-2,0)$.
 
-A positive path $P$ from the origin to $(2n,0)$ is determined uniquely by its segment $P'$ from $(1, 1)$ to $(2n − 1,1)$, which lies entirely above the $x$-axis. The number of such paths $P'$ is the difference between $C^{2n-2}_{n-1}$, the total number of paths, and the number of paths $Q$ that meet the $x$-axis.
+A positive path $P$ from the origin to $(2n,0)$ is determined uniquely by its segment $P'$ from $(1, 1)$ to $(2n − 1,1)$, which lies entirely above the $x$-axis. The number of such paths $P'$ is the difference between the total number of paths $C^{2n-2}_{n-1}$, and the number of paths $Q$ that meet the $x$-axis.
 
-Consider a path $Q^*$ from $(1,-1)$ to $(2n-1,1)$. Every such path must cross the $x$-axis. We can obtain the path $Q$ from $Q^*$ by reflecting the segment of $Q^*$ from $(1,-1)$ to its first point on the $x$-axis. Since $Q^*$ must have two more increasing steps than decreasing steps, the number of such paths is $C^{2n-1}_{n-2}$.
+Consider a path $Q^*$ from $(1,-1)$ to $(2n-1,1)$. Every such path must cross the $x$-axis. We can obtain the path $Q$ from $Q^*$ by reflecting the segment of $Q^*$ from $(1,-1)$ to its first point on the $x$-axis. Since $Q^*$ must have two more increasing steps than decreasing steps, the number of such paths is $C^{2n-2}_{n-2}$.
 
 Now we have the number of $P$:
+
 $$
 \begin{equation*}
 \begin{split}
@@ -78,7 +83,7 @@ A product is **well-parenthesized** if it can be obtained recursively by a finit
 - Each single term $x$ is well-parenthesized.
 - If $A$ and $B$ are well-parenthesized, then $(AB)$ is well-parenthesized.
 
-We can see that if the $n+1$ variables are deleted from a well-parenthesized product, the $n$ pairs of parentheses that remain must be a well-formed sequence of parentheses, but not the other way around.
+We can see that if all the $n+1$ variables are deleted from a well-parenthesized product, the $n$ pairs of parentheses that remain must be a well-formed sequence of parentheses, but not the other way around.
 
 The number of well-parenthesized products of $n+1$ variables is the Catalan number $c_n$.
 

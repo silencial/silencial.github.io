@@ -9,7 +9,8 @@ tags:
 ---
 
 [Paper](http://sofienbouaziz.com/publications.php) Reading Note
-<!-- more -->
+
+<!--more-->
 
 ---
 

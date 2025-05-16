@@ -12,6 +12,8 @@ tags:
 
 <!--more-->
 
+---
+
 # Hexo
 
 Hexo 是一个博客框架，使用 Markdown 解析文章生成静态网页。
@@ -300,7 +302,7 @@ excerpt_description: false
   {% endif %}
 ```
 
-如果要显示图片则在 `.md` 文件的 `Front-matter` 中增加 `image: [image_path]`，此时不需要写 `<!-- more -->`
+如果要显示图片则在 `.md` 文件的 `Front-matter` 中增加 `image: [image_path]`，此时不需要写 `<!--more-->`
 
 若使用 `node_modules` 安装 `NexT`，且使用 GitHub 自动部署，则应该将修改后的 `post.njk` 文件复制到 `source/_data/post.njk_custom` （以 `.njk` 结尾的文件好像会被自动加载，因此改名），在自动部署时复制回原始位置覆盖。
 

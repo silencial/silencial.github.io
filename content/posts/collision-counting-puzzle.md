@@ -14,6 +14,8 @@ tags:
 
 ![Collision](https://i.imgur.com/43fJNPK.png)
 
+---
+
 当右滑块的质量为 $100^k$ 时，总共发生碰撞的次数为 $\lfloor 10^k \pi \rfloor$
 
 | 右滑块质量 | 碰撞次数 |
@@ -23,23 +25,26 @@ tags:
 |   10000    |   314    |
 |  1000000   |   3141   |
 
-
 # 解法 1
 
 考虑能量守恒和动量守恒方程
+
 $$
 \begin{gather*}
 \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \text{const} \\
 m_1 v_1 + m_2 v_2 = \text{const}
 \end{gather*}
 $$
+
 令 $x = \sqrt{m_1} v_1, y = \sqrt{m_2} v_2$, 则方程可以被改写为
+
 $$
 \begin{gather*}
 x^2 + y^2 = \text{const} \\
 \sqrt{m_1} x + \sqrt{m_2} y = \text{const}
 \end{gather*}
 $$
+
 分别对应平面上的圆和直线。在此相空间上考虑碰撞问题。
 
 初始状态对应圆的左端点位置，当第一次碰撞发生时，状态转移至直线和圆的交点：
@@ -59,13 +64,17 @@ $$
 ![Phase Space](https://i.imgur.com/l8KPfHr.png)
 
 由动量方程可知
+
 $$
 \theta = \arctan\left(-\sqrt{\frac{m_1}{m_2}}\right) + \frac{\pi}{2} = \arctan\left(\sqrt{\frac{m_2}{m_1}}\right)
 $$
+
 当 $x \to 0$ 时，$\arctan(x) \sim x$，因此当 $m_1 \gg m_2$ 时
+
 $$
 N = \left\lceil \frac{\pi}{\theta} \right\rceil - 1 = \left\lceil \pi\sqrt{\frac{ m_1}{m_2}}\ \right\rceil - 1
 $$
+
 可以看出当 $m_1/m_2 = 100^k$ 时，总共发生碰撞的次数为 $10^k \pi$
 
 # 解法 2
@@ -75,10 +84,13 @@ $$
 ![Phase Space](https://i.imgur.com/SeCuJrc.gif)
 
 这个过程类似于光线在两面镜子之间进行反射，但入射角和反射角并不相同，因此我们进行坐标变换：
+
 $$
 x = \sqrt{m_1} d_1, \qquad y = \sqrt{m_2}d_2
 $$
+
 在该坐标下，能量守恒表现为光线的速度保持恒定：$(dx/dt)^2 + (dy/dt)^2 = \text{const}$；动量守恒表现为入射角等于反射角。为了得到后一个结论，将动量方程改写为
+
 $$
 \begin{bmatrix}
 \sqrt{m_1} \\ \sqrt{m_2}
@@ -87,6 +99,7 @@ $$
 dx/dt \\ dy/dt
 \end{bmatrix} = \text{const}
 $$
+
 第一个向量即为 $d_1 = d_2$ 表示的镜子，由于第二个向量大小保持不变，因此在反射时这两个向量的角度保持不变，所以入射角等于反射角。在与墙壁碰撞时，$dx/dt$ 不变，$dy/dt$ 取反，因此也满足反射定律。
 
 ![Mirror Reflection](https://i.imgur.com/oSb6TT2.png)
@@ -103,4 +116,3 @@ $$
 
 1. [3Blue1Brown Video — Proof 1](https://youtu.be/jsYwFizhncE)
 2. [3Blue1Brown Video — Proof 2](https://youtu.be/brU5yLm9DZM)
-

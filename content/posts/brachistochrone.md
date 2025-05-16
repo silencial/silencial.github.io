@@ -12,7 +12,7 @@ tags:
 
 在只考虑重力作用的情况下，一质点从点 A 沿某条曲线到点 B，问怎样的曲线能使所需时间最短？
 
-<!-- more -->
+<!--more-->
 
 ---
 
@@ -27,6 +27,7 @@ tags:
 $$
 \frac{\sin(\theta_1)}{v_{\text{air}}} = \frac{\sin(\theta_2)}{v_{\text{water}}}
 $$
+
 ![Snell's Law](https://i.imgur.com/uPl2gsF.jpeg)
 
 # 光的传播
@@ -40,10 +41,13 @@ $$
 $$
 v = \sqrt{2gy}
 $$
+
 则根据斯涅尔定律可得：
+
 $$
 \frac{\sin(\theta)}{\sqrt{y}} = \text{constant}
 $$
+
 这就是我们要求的曲线方程。
 
 # 摆线
@@ -59,30 +63,41 @@ $$
 ![Distance from P to C](https://i.imgur.com/omiKQOW.jpeg)
 
 即
+
 $$
 \frac{\sin(\theta)}{\sqrt{y}} = \frac{1}{\sqrt{D}} = \text{constant}
 $$
+
 # 变分法
 
 从数学的方法思考这一问题，设曲线方程为 $y=y(x)$，速度与纵坐标有 $v=\sqrt{2gy}$ 的关系，同时
+
 $$
 v = \frac{ds}{dt} = \sqrt{1+y'^2} \dfrac{dx}{dt}
 $$
+
 其中 $s$ 代表曲线的弧长，$t$ 表示时间，于是
+
 $$
 dt = \frac{\sqrt{1+y'^2}}{v}dx = \frac{\sqrt{1+y'^2}}{\sqrt{2gy}}dx
 $$
+
 所以从 A 到 B 的时间为
+
 $$
 t = J(y) = \int_A^B \frac{\sqrt{1+y'^2}}{\sqrt{2gy}}dx
 $$
+
 这样时间 $t$ 就被写成了关于 $y$ 的泛函，而求时间最短问题变成了在满足边界条件：
+
 $$
 y(A) = 0\quad y(B) = y_B
 $$
+
 下的对泛函 $J(y)$ 求极值问题，即变分问题。
 
 考虑对泛函 $\displaystyle J(y) = \int_b^a F(x,y,y')dx$ 变分
+
 $$
 \begin{equation*}
 \begin{split}
@@ -92,10 +107,13 @@ $$
 \end{split}
 \end{equation*}
 $$
+
 令 $\delta J(y) = 0$ 即得
+
 $$
 \frac{\partial F}{\partial y} - \frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right) = 0
 $$
+
 将上述方程代入，即将变分问题转化为了微分方程问题，解此微分方程即得所求曲线。
 
 # 参考

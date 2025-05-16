@@ -9,7 +9,8 @@ tags:
 ---
 
 使用 dual graph 证明欧拉公式：$V-E+F=2$
-<!-- more -->
+
+<!--more-->
 
 ---
 
@@ -32,6 +33,7 @@ tags:
 2. 如果 $S^*$ 有环，则对应 $S$ 中必定有顶点不能取到，因此 $S^*$ 无环
 
 又根据 tree 的性质我们有 $V-1=E$，从对偶图的性质又有 $V_{S^*} = F_G$，$E_S + E_{S^*} = E_G$，因此可以得到：
+
 $$
 \begin{align*}
 &V_S - 1 + V_{S^*} - 1 = E_S + E_{S^*} \\
@@ -42,4 +44,4 @@ $$
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/-9OUyo8NFZg)
-1. [Dual Graph — Wiki](https://en.wikipedia.org/wiki/Dual_graph)
+2. [Dual Graph — Wiki](https://en.wikipedia.org/wiki/Dual_graph)

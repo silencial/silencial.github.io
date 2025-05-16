@@ -12,7 +12,7 @@ tags:
 
 证明 $1+\dfrac{1}{4}+\dfrac{1}{9}+\dfrac{1}{16}+\cdots=\dfrac{\pi^2}{6}$
 
-<!-- more -->
+<!--more-->
 
 ---
 
@@ -41,17 +41,22 @@ tags:
 ![Repeating Process](https://i.imgur.com/UnMv08O.png)
 
 同时可以证明这四座灯塔在圆上等距分布，相邻灯塔的距离为 $2$。将这一过程无限进行下去，即得到了一条水平线，等距为 $2$ 分布着无限座灯塔，且对于原点的亮度总和依旧为 $\dfrac{\pi^2}{4}$。这个结果等价于下式：
+
 $$
 \sum_{k\in\mathbb{Z}} \left(\frac{1}{2k+1}\right)^2 = \frac{\pi^2}{4}
 $$
+
 由于
+
 $$
 \begin{gather*}
 \frac{1}{4}\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 = \sum_{k=1}^{\infty} \left(\frac{1}{2k}\right)^2 \\
 \sum_{k=1}^{\infty}\left(\frac{1}{2k}\right)^2 + \sum_{k=0}^{\infty}\left(\frac{1}{2k+1}\right)^2 = \sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2
 \end{gather*}
 $$
+
 因此
+
 $$
 \begin{align*}
 &\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 = \frac{1}{4}\sum_{k=1}^{\infty} \left(\frac{1}{k}\right)^2 + \frac{\pi^2}{8} \\

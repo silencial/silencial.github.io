@@ -12,7 +12,7 @@ tags:
 
 于是又开始了新一轮的折腾。原来是用 Hexo + NexT 在 GitHub Pages 上搭建的 Blog，并通过 Github Actions 实现本地修改 push 到仓库后自动 build。详情参照 [Hexo + NexT 博客搭建]({{< ref "hexo-blog-setup" >}})。但 Hexo 的包管理实在太麻烦，多年以前搞好了一个模板之后实在不想再在上面改动了，恰巧发现 Hugo 这个更简单清爽静态博客引擎，于是打算换过来。
 
-<!-- more -->
+<!--more-->
 
 ---
 

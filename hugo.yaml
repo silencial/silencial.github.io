@@ -93,6 +93,7 @@ params:
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
+  DateFormat: "2006-01-02"
 
   homeInfoParams:
     Title: 👋🏻 Welcome to silencial Blog
