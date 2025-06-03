@@ -44,4 +44,3 @@ $$
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/-9OUyo8NFZg)
-2. [Dual Graph — Wiki](https://en.wikipedia.org/wiki/Dual_graph)

@@ -67,4 +67,3 @@ $$
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/d-o3eB9sfls)
-2. [Basel Problem — Wiki](https://en.wikipedia.org/wiki/Basel_problem)

@@ -159,5 +159,4 @@ Hence, a Hamming code of order $r$ is a perfect code.
 
 # Reference
 
-1. [Wiki Hamming Code](https://en.wikipedia.org/wiki/Hamming_code)
-2. [Hamming Code](https://www.geeksforgeeks.org/computer-network-hamming-code/)
+1. [Hamming Code](https://www.geeksforgeeks.org/computer-network-hamming-code/)

@@ -1,5 +1,5 @@
 ---
-title: Catalan Numbers
+title: Catalan Number
 date: 2018-12-05
 categories:
 - Fun
@@ -112,7 +112,3 @@ A triangulation of a convex $n$-gon has $n-2$ triangles determined by $n-3$ diag
 The number of triangulations of a convex $(n + 2)$-gon is the Catalan number $c_n$.
 
 **Proof:** Consider the string $s_1s_2\cdots s_{n+1}$ formed by taking the $n+1$ sides of $P$ other than $s_0$ in order around $P$. Then the product $s_1s_2\cdots s_{n+1}$ is well-parenthesized by a triangulation of $P$. We can always find an outer triangle that does not have $s_0$, and replace sides $s_i,s_{i+1}$ of $P$ by the diagonal labeled $(s_i s_{i+1})$. Now we have a convex $(n+1)$-gon and by the inductive hypothesis we can establish a one-to-one correspondence.
-
-# Reference
-
-1. [Catalan Number](https://en.wikipedia.org/wiki/Catalan_number)

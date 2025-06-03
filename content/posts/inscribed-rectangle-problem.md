@@ -63,4 +63,3 @@ tags:
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/IQqtsm-bBRU)
-2. [Inscribed Square Problem — Wiki](https://en.wikipedia.org/wiki/Inscribed_square_problem)

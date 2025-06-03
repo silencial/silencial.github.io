@@ -119,4 +119,3 @@ $$
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/Cld0p3a43fU)
-2. [Brachistochrone Curve — Wiki](https://en.wikipedia.org/wiki/Brachistochrone_curve)

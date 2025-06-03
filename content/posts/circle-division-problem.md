@@ -68,4 +68,3 @@ $$
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/YtkIWDE36qU)
-2. [Dividing a Circle into Areas — Wiki](https://en.wikipedia.org/wiki/Dividing_a_circle_into_areas)

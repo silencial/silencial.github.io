@@ -387,7 +387,7 @@ If the system is SISO:
 If the continuous time system is controllable, then the discrete time system obtained by zero-order hold is controllable if
 
 $$
-\abs{\operatorname{Im}(\lambda_i-\lambda_j)}\ne \frac{2\pi m}{T}, \quad \forall m=1,2,\dots, 
+\lvert \operatorname{Im}(\lambda_i-\lambda_j) \rvert \ne \frac{2\pi m}{T}, \quad \forall m=1,2,\dots,
 $$
 
 when $\operatorname{Re}(\lambda_i-\lambda_j)=0$. Where $T$ is the sampling time.

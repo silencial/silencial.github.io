@@ -1,6 +1,7 @@
 ---
 title: 隐藏在素数规律中的 $\pi$
 date: 2018-08-08
+lastmod: 2025-05-22
 categories:
 - Fun
 tags:
@@ -16,102 +17,117 @@ tags:
 
 ---
 
-使用简单的微积分可以得到：
+可以通过微积分证明：
+
 $$
 \begin{split}
 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\cdots &= \int_0^1 (1-x^2+x^4-\cdots)dx \\
 &= \int_0^1 \frac{1}{1+x^2}dx \\
-&= \tan^{-1}(1) \\
+&= \arctan(1) \\
 &= \frac{\pi}{4}
 \end{split}
 $$
-我们选择从另外一种方式来得出这个等式，从圆的定义开始。
+
+下面从圆的几何定义出发，给出另一种推导。
 
 # 计算圆内格点数目
 
-如果将二维平面划分为网格，并画出半径为 $r$ 的圆，圆内包含的格点数应该大约等于 $\pi r^2$，并且当 $r\to+\infty$ 时，两者应该无限接近，这即给出了一个计算 $\pi$ 的方法。
+将平面划分为单位网格，并画出半径为 $r$ 的圆，圆内（含圆周）包含的格点数约等于面积 $\pi r^2$。当 $r\to +\infty$ 时，两者无限接近，这提供了一种计算 $\pi$ 的方法。
 
-考虑经过格点的圆，由于格点的坐标都为整数，因此我们只需要考虑那些半径是整数平方根的圆即可。
+考虑那些恰好经过格点的圆。由于格点坐标均为整数，因此我们只需关注半径 $R$ 满足 $R^2$ 为整数的圆。
 
 ![Lattices inside Circle](https://i.imgur.com/LawE19V.png)
 
-考虑半径为 $R$ 的圆，如果能找到整数 $a,b$ 使得 $R^2 = a^2+b^2$，则该圆经过点 $(a,b)$，将其拓展至复平面：
+考虑半径为 $R$ 的圆。如果存在整数 $a,b$ 使得 $R^2 = a^2+b^2$，则该圆经过格点 $(a,b)$。为了方便分析，我们将此方程拓展至复平面：
+
 $$
 \begin{equation}
 \label{gaussian}
 R^2 = a^2+b^2 = (a+bi)(a-bi)
 \end{equation}
 $$
- 形如 $a+bi \ \ (a,b\in \mathbb{Z})$ 的数被称为**高斯整数**，因此寻找圆经过的格点等价于寻找所有满足 $\eqref{gaussian}$ 的高斯整数。
 
-# 在高斯整数上分解质因数
+形如 $a+bi$ ($a,b\in \mathbb{Z}$) 的数被称为高斯整数，记为 $\mathbb{Z}[i]$。因此，寻找圆经过的格点等价于寻找所有满足 $\eqref{gaussian}$ 的高斯整数。
 
-下一步我们需要了解一个数如何在高斯整数上分解。
+# 高斯整数分解
 
-我们已经知道每个正整数都可以以唯一的方式进行素数分解，因此我们只需要考虑素数在高斯整数上的分解问题。
+下一步，我们需要了解整数在高斯整数环上的分解方式。
 
-例如 $5$ 可以被分解为 $(2+i)(2-i)$，而 $(2+i)$ 无法在高斯整数上继续分解，这样的数被称为**高斯素数**。除了让因子乘以 $-1,i,-i$ 之外，素数在高斯整数上的分解是唯一的。
+我们知道每个正整数都具有唯一的质因数分解。因此，我们只需考虑质数在高斯整数环上的分解情况。
 
-由**费马平方和定理**可知，除了 $2$ 之外，只有形如 $p=4n+1\ \ (n\in \mathbb{N})$ 的素数可以在高斯整数中分解。
+例如，$5$ 可以分解为 $(2+i)(2-i)$。而 $(2+i)$ 无法在高斯整数上继续分解，这样的数被称为高斯质数。在高斯整数环内，质数的分解是唯一的，仅相差乘以一个单位因子（即乘以 $\pm 1, \pm i$）。
 
-因此将半径的平方进行高斯素数全分解后，计算有多少种分配方式能将其因子分为互为复共轭的两对，即是计算该圆经过了多少个格点。
+因此，将 $R^2$ 进行高斯质数分解后，通过计算其因子能够以多少种不同方式组成共轭高斯整数对，即可确定该圆周上的格点数目。
 
-计算半径为 $R$ 的圆上的格点数：
+费马平方和定理指出，除 $2$ 外，仅当质数满足 $p\equiv 1 \pmod 4$ 时才可在 $\mathbb Z[i]$ 中分解；若 $p\equiv3\pmod4$，则在该环中仍为质数。
 
-1. 将 $R^2$ 进行质因数分解：$R^2=3^4\cdot5^3\cdot13^2$
-2. 将形如 $p=4n+1$ 的素数继续在高斯整数上分解：$5,13$
-3. 将最后的因子分为两列，使其互为复共轭，由于 $p=4n+1$ 的素数可以分解为一对共轭的高斯素数，它们所提供的分配方式总是它们的指数加 $1$。而对于 $p=4n+3$ 的素数而言，只有当它们的指数为偶数时才能刚好进行分配。因此对于本例，分配方式共有 $1 \times (3+1) \times (2+1)$ 种。
-4. 由于因子可以乘以 $-1,i.-i$，分配方式需要再乘以 $4$。
-5. 特殊地 $2=(1+i)(1-i)$，但 $i(1+i)=(1-i)$ 已经被上一步包括，因此 $2$ 不影响总分配形式。
+设 $R^2 = \prod p_i^{k_i}$ 是 $R^2$ 在 $\mathbb{Z}$ 中的质因数分解，圆周上的格点数 $N(R)$ 可由下列规则计算：
 
-# 定义函数 $\chi$
+1. 若 $p_i\equiv1\pmod4$，则其贡献为 $k_i+1$；
+2. 若 $p_i\equiv3\pmod4$，则当 $k_i$ 为偶数时贡献为 $1$，奇数时 $N(R)=0$；
+3. 质因子 $2$ 的贡献恒为 $1$。
+4. 最终 $N(R)$ 等于 4 乘以上述各贡献之积。
+
+例如，若 $R^2=3^4 \cdot 5^3 \cdot 13^2$：
+
+$$
+N(R)=4\times1\times(3+1)\times(2+1)=48.
+$$
+
+# Dirichlet 特征 $\chi$
+
+定义
 
 $$
 \chi(n) = \begin{cases}
-1 &n=4k+1 \\
--1 &n=4k+3 \quad (k\in \mathbb{N}) \\
-0 &n=2k
+1 & \text{if } n \equiv 1 \pmod{4} \\
+-1 & \text{if } n \equiv 3 \pmod{4} \\
+0 & \text{if } n \equiv 0 \pmod{2}
 \end{cases}
 $$
 
-注意 $\chi(n)$ 有可积性：$\chi(ab) = \chi(a)\cdot\chi(b)$。
+注意 $\chi(n)$ 是完全积性函数：$\chi(ab) = \chi(a)\cdot\chi(b)$。
 
-有了这一函数，我们可以将 $a^b$ 对应的分配方式写为 $\chi(1)+\chi(a)+\chi(a^2)+\dots+\chi(a^b)$。
+利用此函数，$p_{i}$ 相关的贡献可以表示为 $\sum_{j=0}^{k_{i}} \chi(p_{i}^j)$。则 $N(R)$ 可以表示为：
 
-因此将半径的平方进行素数分解后再用 $\chi$ 函数进行替代，并利用可积性合并，记半径为 $R$ 的圆经过的格点数记为 $\#\text{LP}_R$：
 $$
-\begin{align*}
-R^2&=a^b\cdot c^d \\
-\#\text{LP}_R&=4[\chi(1)+\chi(a)+\cdots+\chi(a^b)][\chi(1)+\chi(c)+\cdots+\chi(c^d)] \\
-&= 4[\chi(1)+\chi(a_1)+\cdots+\chi(a_n)]
-\end{align*}
+\begin{equation*}
+\begin{split}
+N(R)&=4\sum_{j=0}^{k_{1}} \chi(p_{1}^j) \sum_{j=0}^{k_{2}} \chi(p_{2}^j) \cdots \\
+&= 4 \sum_{d\mid R^{2}} \chi(d)
+\end{split}
+\end{equation*}
 $$
-其中 $1, a_1, \cdots, a_n$ 是 $R^2$ 的所有因子。
 
-# 证明
+其中 $d$ 是 $R^2$ 的所有正因子。
 
-有了上述结论，我们就可以计算半径为 $R$ 的圆内的格点数：
+# 最终证明
+
+利用上述结论，我们可以计算半径为 $R$ 的圆内（含圆周）的格点数：
+
 $$
-\sum_{r=1}^{R} \#\text{LP}_r
+\sum_{r=1}^{R} N(r)
 $$
-当 $R\to+\infty$ 时，在 $1$ 到 $R^2$ 的所有整数中，有因子 $k$ 的概率为 $\dfrac{1}{k}$。因此：
+
+当 $R\to+\infty$ 时，在 $1$ 到 $R^2$ 的所有整数中，有因子 $k$ 的概率为 $1/k$。因此：
+
 $$
-\begin{align*}
-\sum_{r=1}^{R} \#\text{LP}_r &= 4R^2\left[\chi(1)+\dfrac{\chi(2)}{2}+\dfrac{\chi(3)}{3}+\cdots\right] \\
-&= \pi R^2
-\end{align*}
+\sum_{r=1}^{R} N(r) = 4R^2\left[\chi(1)+\dfrac{\chi(2)}{2}+\dfrac{\chi(3)}{3}+\cdots\right]
 $$
-所以：
+
+同时圆内格点数为 $\pi R^2$，两式联立可得：
+
 $$
-\begin{align*}
+\begin{equation*}
+\begin{split}
 \dfrac{\pi}{4} &= \chi(1)+\dfrac{\chi(2)}{2}+\dfrac{\chi(3)}{3}+\cdots \\
 &= 1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\dfrac{1}{9}-\cdots
-\end{align*}
+\end{split}
+\end{equation*}
 $$
+
 得证。
 
 # 参考
 
 1. [3Blue1Brown Video](https://youtu.be/NaL_Cb42WyY)
-2. [Fermat's Theorem on Sums of Two Squares — Wiki](https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_theorem_on_sums_of_two_squares)
-3. [Gaussian Integer — Wiki](https://en.wikipedia.org/wiki/Gaussian_integer#Gaussian_primes)
