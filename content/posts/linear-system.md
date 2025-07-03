@@ -60,8 +60,8 @@ If $A$ is diagonalizable: $A=QDQ^{-1}$, then $A^k=QD^kQ^{-1}$. Using Taylor seri
 $$
 e^{At}=Q\begin{bmatrix}
 e^{\lambda_1 t} & & \\
- & \ddots & \\
- & & e^{\lambda_n t}
+& \ddots & \\
+& & e^{\lambda_n t}
 \end{bmatrix}Q^{-1}
 $$
 
@@ -196,18 +196,18 @@ BIBO stable and steady state response
 
 2. For a sinusoidal input $u(t)=A\cos(\omega t)$:
 
-   $$
-   \lim_{t\to\infty} y(t)=AM\cos(\omega t+\varphi)
-   $$
+    $$
+    \lim_{t\to\infty} y(t)=AM\cos(\omega t+\varphi)
+    $$
 
-   where
+    where
 
-   $$
-   \begin{dcases}
-   M =\lvert G(s) \rvert_{s=j\omega}  \\
-   \varphi =\angle G(s)|_{s=j\omega}
-   \end{dcases}
-   $$
+    $$
+    \begin{dcases}
+    M =\lvert G(s) \rvert_{s=j\omega}  \\
+    \varphi =\angle G(s)|_{s=j\omega}
+    \end{dcases}
+    $$
 
 |                           |                                                                                                                        LTI                                                                                                                         |                                                                                 LTV                                                                                  |
 | :-----------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: |

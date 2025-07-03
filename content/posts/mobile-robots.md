@@ -433,8 +433,8 @@ $$
 1. Divides the steering angle range $[-\pi, \pi]$ equally for $K$ rollouts.
 2. Executes each steering angle through $T$ timesteps to collect $K \times T$ poses.
 3. Evaluates the cost of each rollout based on collision cost and error cost.
-   1. Collision cost: Adds a large cost if any pose in a trajectory collides with the map.
-   2. Error cost: The norm of the distance between the last pose and the reference pose, weighted by a constant.
+    1. Collision cost: Adds a large cost if any pose in a trajectory collides with the map.
+    2. Error cost: The norm of the distance between the last pose and the reference pose, weighted by a constant.
 4. Chooses the rollout with the minimal cost and executes the first step.
 5. Returns to step 1.
 
@@ -511,9 +511,9 @@ The pseudocode for the best-first search can be expressed as:
     1. Pop *best* from OPEN based on $f(s)$
     2. Add *best* to CLOSED.
     3. For every successor *s'*:
-          1. If $g(s') > g(s) + c(s, s')$:
-             1. $g(s') = g(s) + c(s, s')$
-             2. Add (update) $s'$ to OPEN.
+        1. If $g(s') > g(s) + c(s, s')$:
+            1. $g(s') = g(s) + c(s, s')$
+            2. Add (update) $s'$ to OPEN.
 
 The main challenge is how to choose the heuristic function $f(s)$.
 

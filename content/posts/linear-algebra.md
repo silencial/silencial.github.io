@@ -162,21 +162,21 @@ where $x_p$ is any particular solution that satisfies $A x_p = y$.
 - The solution set has $\dim \mathcal{N}(A) = n - m$ degrees of freedom.
 - The least norm solution is $x_\mathrm{ln} = A^T (A A^T)^{-1} y$.
 
-  $$
-  \begin{align*}
-  &\min & &\norm{x} \\
-  &\text{ s.t.} & &Ax = y
-  \end{align*}
-  $$
+    $$
+    \begin{align*}
+    &\min & &\norm{x} \\
+    &\text{ s.t.} & &Ax = y
+    \end{align*}
+    $$
 
 - $A^\dagger = A^T (A A^T)^{-1}$ is a right inverse of $A$
 - $I - A^T (A A^T)^{-1} A$ gives the projection onto $\mathcal{N}(A)$.
 - Applying the QR factorization $A^T = QR$ gives the same solution $x_\mathrm{ln} = QR^{-T} y$.
 - The derivation via Lagrange multiplier: $L(x, \lambda) = x^T x + \lambda^T (A x - y)$
 
-  $$
-  \nabla_x L = 2 x + A^T \lambda \, , \quad \nabla_\lambda L = A x - y = 0
-  $$
+    $$
+    \nabla_x L = 2 x + A^T \lambda \, , \quad \nabla_\lambda L = A x - y = 0
+    $$
 
 # General Norm Minimization With Equality Constraints
 
@@ -275,45 +275,44 @@ A problem is **well-conditioned** if small perturbations in the input lead to on
 
 - Absolute Condition Number for a function $f$:
 
-  $$
-  \hat{\kappa}  = \lim_{\delta \to 0} \sup_{\norm{\delta x} \le \delta} \frac{\norm{f(x+\delta x) - f(x)}}{\norm{\delta x}}
-  $$
+    $$
+    \hat{\kappa}  = \lim_{\delta \to 0} \sup_{\norm{\delta x} \le \delta} \frac{\norm{f(x+\delta x) - f(x)}}{\norm{\delta x}}
+    $$
 
-If $f$ is differentiable, then $\hat{\kappa} = \norm{J(x)}$, where $J(x)$ is the Jacobian matrix.
+    If $f$ is differentiable, then $\hat{\kappa} = \norm{J(x)}$, where $J(x)$ is the Jacobian matrix.
 
 - Relative Condition Number for a function $f$:
 
-  $$
-  \kappa = \lim_{\delta \to 0} \sup_{\norm{\delta x} \le \delta}
-  \left(
-  \frac{\norm{f(x+\delta x) - f(x)}}{\norm{f(x)}}
-  \bigg/
-  \frac{\norm{\delta x}}{\norm{x}}
-  \right)
-  $$
+    $$
+    \kappa = \lim_{\delta \to 0} \sup_{\norm{\delta x} \le \delta}
+    \left(
+    \frac{\norm{f(x+\delta x) - f(x)}}{\norm{f(x)}}
+    \bigg/
+    \frac{\norm{\delta x}}{\norm{x}}
+    \right)
+    $$
 
-  If $f$ is differentiable and $f(x) \ne 0$, then
+    If $f$ is differentiable and $f(x) \ne 0$, then
 
-  $$
-  \kappa = \frac{\norm{J(x)}}{\norm{f(x)} / \norm{x}}
-  $$
+    $$
+    \kappa = \frac{\norm{J(x)}}{\norm{f(x)} / \norm{x}}
+    $$
 
 Relative condition numbers are more important in numerical analysis because floating-point arithmetic introduces relative errors.
 
-- Condition Number of a matrix $A$:
-  For an invertible square matrix $A$, the condition number is $\kappa(A) = \norm{A}\norm{A^{-1}}$. It quantifies how much the solution $x$ of $Ax=b$ can change with respect to a change in $b$.
+- Condition Number of a matrix $A$: For an invertible square matrix $A$, the condition number is $\kappa(A) = \norm{A}\norm{A^{-1}}$. It quantifies how much the solution $x$ of $Ax=b$ can change with respect to a change in $b$.
 
-  $$
-  \frac{\norm{\delta x}}{\norm{x}} \le \kappa(A) \frac{\norm{\delta b}}{\norm{b}}
-  $$
+    $$
+    \frac{\norm{\delta x}}{\norm{x}} \le \kappa(A) \frac{\norm{\delta b}}{\norm{b}}
+    $$
 
-  For the 2-norm ($\norm{\cdot}_2$), $\norm{A} = \sigma_{\max}(A)$ and $\norm{A^{-1}} = 1/\sigma_{\min}(A)$. Thus, for an invertible matrix $A$,
+    For the 2-norm ($\norm{\cdot}_2$), $\norm{A} = \sigma_{\max}(A)$ and $\norm{A^{-1}} = 1/\sigma_{\min}(A)$. Thus, for an invertible matrix $A$,
 
-  $$
-  \kappa_2(A) = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}
-  $$
+    $$
+    \kappa_2(A) = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}
+    $$
 
-  where $\sigma_{\max}(A)$ is the largest singular value and $\sigma_{\min}(A)$ is the smallest singular value. This ratio can be interpreted as the eccentricity of the hyperellipse.
+    where $\sigma_{\max}(A)$ is the largest singular value and $\sigma_{\min}(A)$ is the smallest singular value. This ratio can be interpreted as the eccentricity of the hyperellipse.
 
 When $A$ is non-invertible matrix, the condition number is generalized using the pseudoinverse: $\kappa(A) = \norm{A} \norm{A^+}$.
 

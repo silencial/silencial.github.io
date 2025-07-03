@@ -1,6 +1,7 @@
 ---
 title: Convex Optimization
 date: 2019-07-05
+lastmod: 2025-06-30
 categories:
 - Study
 tags:
@@ -14,650 +15,698 @@ AA/EE/ME 578 Review
 
 ---
 
-# Convex Sets
+# Convex Set
 
 ## Examples
 
-### Subspaces
+### Subspace
 
-$S \subseteq \mathbb{R}^{n}$ is a subspace if
-$$
-x, y \in S, \quad \lambda, \mu \in \mathbb{R} \implies \lambda x+\mu y \in S
-$$
-Geometrically: $x, y \in S \to$ plane through $0, x, y \subseteq S$.
+A set $S \subseteq \mathbb{R}^{n}$ is a subspace if
 
-### Affine Sets
+$$
+\forall \mathbf{x}, \mathbf{y} \in S, \quad  \forall \lambda, \mu \in \mathbb{R}, \quad \lambda \mathbf{x}+\mu \mathbf{y} \in S
+$$
 
-$S \subseteq \mathbb{R}^n$ is affine if
-$$
-x, y \in S, \quad \lambda, \mu \in \mathbb{R}, \quad \lambda+\mu=1 \implies \lambda x+\mu y \in S
-$$
-Geometrically: $x, y \in S \to$ line through $x, y \subseteq S$.
+Geometrically: $\forall \mathbf{x}, \mathbf{y} \in S$, the plane passing through $\mathbf{0}, \mathbf{x}, \mathbf{y}$ is a subset of $S$.
 
-### Convex Sets
+### Affine Set
 
-$S \subseteq \mathbb{R}^n$ is a convex set if
+A set $S \subseteq \mathbb{R}^n$ is affine if
+
 $$
-x, y \in S, \quad \lambda, \mu \ge 0, \quad \lambda+\mu=1 \implies \lambda x+\mu y \in S
+\forall \mathbf{x}, \mathbf{y} \in S, \quad \forall \lambda, \mu \in \mathbb{R}, \quad \lambda+\mu=1 \implies \lambda \mathbf{x}+\mu \mathbf{y} \in S
 $$
-Geometrically: $x, y \in S \to$ segment $[x, y] \subseteq S$.
+
+Geometrically: $\forall \mathbf{x}, \mathbf{y} \in S$, the line passing through $\mathbf{x}, \mathbf{y}$ is a subset of $S$.
+
+### Convex Set
+
+A set $S \subseteq \mathbb{R}^n$ is a convex set if
+
+$$
+\forall \mathbf{x}, \mathbf{y} \in S, \quad \forall \lambda, \mu \ge 0, \quad \lambda+\mu=1 \implies \lambda \mathbf{x}+\mu \mathbf{y} \in S
+$$
+
+Geometrically: $\forall \mathbf{x}, \mathbf{y} \in S$, the line segment connecting $\mathbf{x}, \mathbf{y}$ is a subset of $S$.
 
 ### Convex Cone
 
-$S \subseteq \mathbb{R}^n$ is a cone if
-$$
-x \in S, \quad \lambda \ge 0 \implies \lambda x \in S
-$$
-$S \subseteq \mathbb{R}^n$ is a convex cone if
-$$
-x, y \in S, \quad \lambda, \mu \ge 0 \implies \lambda x+\mu y \in S
-$$
-Geometrically: $x, y \in S \to$ 'pie slice' between $x, y \subseteq S$.
+A set $S \subseteq \mathbb{R}^n$ is a cone if
 
-### Combinations and Hulls
-
-$y=\theta_{1} x_{1}+\dots+\theta_{k} x_{k}$ is a
-
-- linear combination of $x_1, \dots, x_k$
-- affine combination if $\sum \theta_i = 1$
-- convex combination if $\sum \theta_i = 1,\ \theta_i \ge 0$
-- conic combination if $\theta_i \ge 0$.
-
-(linear, ...) hull of $S$ is the set of all (linear, ...) combinations from $S$.
 $$
-\DeclareMathOperator{\conv}{conv}
-\conv(S)=\bigcap\{G \mid S \subseteq G, \ G \text { convex }\}
+\forall \mathbf{x} \in S, \quad \lambda \ge 0 \implies \lambda \mathbf{x} \in S
 $$
 
-convex hull $\conv(S)$ is the set of all convex combinations of points in $S$.
+A set $S \subseteq \mathbb{R}^n$ is a convex cone if
 
-### Hyperplanes and Halfspaces
-
-- Hyperplane: $\{x \mid a^{T} x=b,\ a \ne 0\}$
-- Halfspace: $\{x \mid a^{T} x \le b,\ a \ne 0\}$
-
-$a$ is the normal vector. Hyperplanes are affine and convex; halfspaces are convex.
-
-### Euclidean Balls and Ellipsoids
-
-Euclidean ball with center $x_c$ and radius $r$:
 $$
-\require{mathtools}
+\forall \mathbf{x}, \mathbf{y} \in S, \quad \lambda, \mu \ge 0 \implies \lambda \mathbf{x}+\mu \mathbf{y} \in S
+$$
+
+Geometrically: $\forall \mathbf{x}, \mathbf{y} \in S$, the conic sector (or "pie slice") between $\mathbf{x}, \mathbf{y}$ is a subset of $S$.
+
+### Combination and Hull
+
+A points $\mathbf{y}=\theta_{1} \mathbf{x}_{1}+\dots+\theta_{k} \mathbf{x}_{k}$ is a
+
+- Linear combination of $\mathbf{x}_1, \dots, \mathbf{x}_k$
+- Affine combination if $\sum \theta_i = 1$
+- Convex combination if $\sum \theta_i = 1$ and $\theta_i \ge 0$
+- Conic combination if $\theta_i \ge 0$.
+
+The (linear, affine, convex, or conic) hull of a set $S$ is the set of all possible (linear, affine, convex, or conic) combinations of points from $S$. The convex hull, $\operatorname{conv}(S)$, can also be defined as the intersection of all convex sets containing $S$.
+
+$$
+\operatorname{conv}(S)=\bigcap\{G \mid S \subseteq G, \ G \text { is convex}\}
+$$
+
+convex hull $\operatorname{conv}(S)$ is the set of all convex combinations of points in $S$.
+
+### Hyperplane and Halfspace
+
+- Hyperplane: $\{\mathbf{x} \mid \mathbf{a}^{T} \mathbf{x}=b,\ \mathbf{x} \ne \mathbf{0}\}$
+- Halfspace: $\{\mathbf{x} \mid \mathbf{a}^{T} \mathbf{x} \le b,\ \mathbf{x} \ne \mathbf{0}\}$
+
+The vector $\mathbf{a}$ is the normal to the hyperplane. Hyperplanes are both affine and convex; halfspaces are convex.
+
+### Euclidean Ball and Ellipsoid
+
+A Euclidean ball with center $\mathbf{x}_c$ and radius $r$:
+
+$$
 \DeclarePairedDelimiters\norm{\lVert}{\rVert}
 \DeclarePairedDelimiters\abs{\lvert}{\rvert}
-B(x_{c}, r)=\{x \mid \norm{x-x_{c}}_{2} \le r\}=\{x_{c}+r u \mid \norm{u}_{2} \le 1\}
+B(\mathbf{x}_{c}, r)=\{\mathbf{x} \mid \norm{\mathbf{x}-\mathbf{x}_{c}}_{2} \le r\}=\{\mathbf{x}_{c}+r \mathbf{u} \mid \norm{\mathbf{u}}_{2} \le 1\}
 $$
-Ellipsoid:
+
+An ellipsoid:
+
 $$
-\{x \mid (x-x_{c})^{T} P^{-1}(x-x_{c}) \le 1\}
+\{\mathbf{x} \mid (\mathbf{x}-\mathbf{x}_{c})^{T} P^{-1}(\mathbf{x}-\mathbf{x}_{c}) \le 1\}
 $$
-with $P \in \mathbb{S}_{++}^{n}$. Other representation: $\{x_{c}+A u \mid \norm{u}_{2} \le 1\}$ with $A$ square and nonsingular.
 
-### Norm Balls and Norm Cones
+with $P \in \mathbb{S}_{++}^{n}$ (the set of symmetric positive definite $n\times n$ matrices). An alternative representation is $\{\mathbf{x}_c+A\mathbf{u} \mid \norm{\mathbf{u}}_{2} \le 1\}$ with $A$ being a square, nonsingular matrix.
 
-Norm: a function $\norm{\cdot}$ that satisfies
+### Norm Ball and Norm Cone
 
-- $\norm{x} \ge 0 ; \ \norm{x}=0$ if and only if $x=0$
-- $\norm{t x}=\abs{t}\norm{x}$ for $t \in \mathbb{R}$
-- $\norm{x+y} \le\norm{x}+\norm{y}$
+A function $\norm{\cdot}$ is a norm if it satisfies
 
-Norm ball with center $x_c$ and radius $r$: $\{x \mid \norm{x-x_{c}} \le r\}$
+- $\norm{\mathbf{x}} \ge 0$; $\norm{\mathbf{x}}=0$ if and only if $\mathbf{x}=\mathbf{0}$.
+- $\norm{t\mathbf{x}}=\abs{t}\norm{\mathbf{x}}$ for any $t \in \mathbb{R}$.
+- $\norm{\mathbf{x}+\mathbf{y}} \le \norm{\mathbf{x}}+\norm{\mathbf{y}}$ (triangle inequality).
 
-Norm cone: $\{(x, t) \mid \norm{x} \le t\}$
+A norm ball with center $\mathbf{x}_c$ and radius $r$: $\{\mathbf{x} \mid \norm{\mathbf{x}-\mathbf{x}_c} \le r\}$.
+
+A norm cone: $\{(\mathbf{x}, t) \mid \norm{\mathbf{x}} \le t\}$.
 
 ### Polyhedron
 
-Solution set of finitely many linear inequalities and equalities
-$$
-A x \preceq b, \qquad C x=d
-$$
-($A \in \mathbb{R}^{m \times n},\ C \in \mathbb{R}^{p \times n},\ \preceq$ is component-wise inequality)
+A polyhedron is the solution set of a finite number of linear inequalities and equalities:
 
-Polyhedron is intersection of finite number of halfspaces and hyperplanes.
+$$
+A\mathbf{x} \preceq \mathbf{b}, \quad C\mathbf{x}=\mathbf{d}
+$$
+
+Here, $A \in \mathbb{R}^{m \times n}$, $C \in \mathbb{R}^{p \times n}$, and $\preceq$ denotes component-wise inequality.
+
+A polyhedron is the intersection of a finite number of halfspaces and hyperplanes.
 
 ### Positive Semidefinite Cone
 
-- $\mathbb{S}_{+}^{n}=\{X \in \mathbb{S}^{n} \mid X \succeq 0\}$: PSD matrices. A convex cone.
-- $\mathbb{S}_{++}^{n}=\{X \in \mathbb{S}^{n} \mid X\succ 0\}$: PD matrices.
+- $\mathbb{S}_{+}^{n}=\{X \in \mathbb{S}^{n} \mid X \succeq 0\}$ is the set of PSD matrices. It is a convex cone.
+- $\mathbb{S}_{++}^{n}=\{X \in \mathbb{S}^{n} \mid X\succ 0\}$ is the set of PD matrices.
 
 ## Operations That Preserve Convexity
 
-To show $C$ is convex set
+To show a set $C$ is convex, one can either:
 
-1. Definition
-   $$
-   x_{1}, x_{2} \in C, \quad 0 \le \theta \le 1 \implies \theta x_{1}+(1-\theta) x_{2} \in C
-   $$
+1. Use the definition
 
-2. Show that $C$ is obtained from simple convex sets by operations that preserve convexity
+    $$
+    \forall \mathbf{x}_{1}, \mathbf{x}_{2} \in C, \quad 0 \le \theta \le 1 \implies \theta\mathbf{x}_{1}+(1-\theta)\mathbf{x}_{2} \in C
+    $$
 
-   - intersection
-   - affine function
-   - perspective function
-   - linear-fractional functions
+2. Show that $C$ is formed by applying convexity-preserving operations to simpler convex sets. These operations include:
+    - Intersection
+    - Affine transformation
+    - Perspective transformation
+    - Linear fractional transformation
 
 ### Intersection
 
-The intersection of (any number of, even infinite) convex sets is convex.
+The intersection of any collection of convex sets (finite or infinite) is a convex set.
 
 ### Affine Function
 
-Suppose $f : \mathbb{R}^{n} \to \mathbb{R}^{m}$ is affine: $f(x)=A x+b$ with $A \in \mathbb{R}^{m \times n}, \ b \in \mathbb{R}^{m}$
+Suppose $f : \mathbb{R}^{n} \to \mathbb{R}^{m}$ is an affine function, defined as $f(\mathbf{x})=A\mathbf{x}+\mathbf{b}$ for $A \in \mathbb{R}^{m \times n}$ and $\mathbf{b} \in \mathbb{R}^{m}$.
 
-- The image of a convex set under $f$ is convex
-  $$
-  S \subseteq \mathbb{R}^{n} \text { convex} \implies f(S)=\{f(x) \mid x \in S\} \text{ convex}
-  $$
+- The image of a convex set under $f$ is convex:
 
-- The inverse image $f^{-1}(C)$ of a convex set under $f$ is convex
-  $$
-  C \subseteq \mathbb{R}^{m} \text{ convex} \implies f^{-1}(C)=\{x \in \mathbb{R}^{n} \mid f(x) \in C\} \text{ convex }
-  $$
+    $$
+    \forall S \subseteq \mathbb{R}^{n}, S \text { is convex} \implies f(S)=\{f(\mathbf{x}) \mid \mathbf{x} \in S\} \text{ is convex}
+    $$
+
+- The inverse image of a convex set under $f$, denoted $f^{-1}(C)$, is convex:
+
+    $$
+    \forall C \subseteq \mathbb{R}^{m}, C \text{ is convex} \implies f^{-1}(C)=\{\mathbf{x} \in \mathbb{R}^{n} \mid f(\mathbf{x}) \in C\} \text{ is convex}
+    $$
 
 ### Perspective and Linear-Fractional Function
 
-Perspective function $P : \mathbb{R}^{n+1} \to \mathbb{R}^{n}$
+The perspective function $P : \mathbb{R}^{n+1} \to \mathbb{R}^{n}$ is defined as
+
 $$
 \DeclareMathOperator*{\dom}{dom}
-P(x, t)=x / t, \quad \dom P=\{(x, t) \mid t>0\}
+P(\mathbf{x}, t)=\mathbf{x}/t, \quad \dom P=\{(\mathbf{x}, t) \mid t>0\}
 $$
-images and inverse images of convex sets under perspective are convex.
 
-Linear-fractional function $f : \mathbb{R}^{n} \to \mathbb{R}^{m}$
+Images and inverse images of convex sets under the perspective function are convex.
+
+The linear-fractional function $f : \mathbb{R}^{n} \to \mathbb{R}^{m}$ is defined as
+
 $$
-f(x)=\frac{Ax+b}{c^{T} x+d}, \quad \text { dom } f=\{x \mid c^{T} x+d>0\}
+f(\mathbf{x})=\frac{A\mathbf{x}+\mathbf{b}}{\mathbf{c}^{T}\mathbf{x}+d}, \quad \dom f=\{\mathbf{x} \mid \mathbf{c}^{T}\mathbf{x}+d>0\}
 $$
-images and inverse images of convex sets under linear-fractional functions are convex.
+
+Images and inverse images of convex sets under the linear-fractional function are convex.
 
 ## Generalized Inequalities
 
-A convex cone $K \subseteq \mathbb{R}^{n}$ is a proper cone if
+A convex cone $K \subseteq \mathbb{R}^{n}$ is called a proper cone if it is:
 
-- $K$ is closed (contains its boundary)
-- $K$ is solid (has nonempty interior)
-- $K$ is pointed (contains no line)
+- Closed: contains its boundary.
+- Solid: has a nonempty interior.
+- Pointed: contains no lines (i.e., if $\mathbf{x} \in K$ and $-\mathbf{x} \in K$, then $\mathbf{x}=\mathbf{0}$).
 
-Generalized inequality defined by a proper cone $K$:
+A proper cone $K$ defines a generalized inequality:
+
 $$
-x \preceq_{K} y \iff y-x \in K, \qquad x\preceq_{K} y \iff y-x \in \operatorname{int} K
+\begin{gather*}
+\mathbf{x} \preceq_{K} \mathbf{y} \iff \mathbf{y}-\mathbf{x} \in K \\
+\mathbf{x} \prec_{K} \mathbf{y} \iff \mathbf{y}-\mathbf{x} \in \operatorname{int} K
+\end{gather*}
 $$
+
+### Minimum and Minimal Element
+
+With generalized inequalities, the ordering is not linear, meaning we can have two elements $\mathbf{x}, \mathbf{y}$ for which neither $\mathbf{x} \preceq_K \mathbf{y}$ nor $\mathbf{y} \preceq_K \mathbf{x}$ holds. This leads to two distinct concepts of optimality:
+
+- An element $\mathbf{x} \in S$ is the **minimum element** of $S$ with respect to $\preceq_K$ if for every $\mathbf{y} \in S$, we have $\mathbf{x} \preceq_K \mathbf{y}$. A minimum element, if it exists, is unique.
+- An element $\mathbf{x} \in S$ is a **minimal element** of $S$ with respect to $\preceq_K$ if $\mathbf{y} \in S$ and $\mathbf{y} \preceq_{K} \mathbf{x}$ implies $\mathbf{y}=\mathbf{x}$. There can be many minimal elements.
 
 ## Hyperplane Theorem
 
-### Separating Hyperplane
+### Separating Hyperplane Theorem
 
-If $C$ and $D$ are disjoint convex sets, then there exists $a \ne 0, \ b$ s.t.
+If $C$ and $D$ are disjoint convex sets, then there exists a vector $\mathbf{a} \ne \mathbf{0}$ and a scalar $b$ such that:
+
 $$
-a^{T} x \le b,\ \forall x \in C; \quad a^{T} x \ge b,\ \forall x \in D
+\forall \mathbf{x} \in C , \mathbf{a}^{T}\mathbf{x} \le b \quad \text{and} \quad \forall \mathbf{x} \in D, \mathbf{a}^{T}\mathbf{x} \ge b
 $$
-the hyperplane $\{x \mid a^{T} x=b\}$ separates $C$ and $D$. Strict separation requires additional assumptions (e.g. $C$ is closed, $D$ is a singleton).
 
-### Supporting Hyperplane
+The hyperplane $\{\mathbf{x} \mid \mathbf{a}^{T}\mathbf{x}=b\}$ separates $C$ and $D$. Strict separation ($\mathbf{a}^{T}\mathbf{x} < b < \mathbf{a}^{T}\mathbf{y}$) requires additional assumptions (e.g., $C$ is closed, $D$ is a singleton).
 
-Supporting hyperplane to set $C$ at boundary point $x_0$:
+### Supporting Hyperplane Theorem
+
+A supporting hyperplane to a set $C$ at a boundary point $\mathbf{x}_0$ is defined as:
+
 $$
-\{x \mid a^{T} x=a^{T} x_{0}\}
+\{\mathbf{x} \mid \mathbf{a}^{T}\mathbf{x}=\mathbf{a}^{T}\mathbf{x}_{0}\}
 $$
-where $a \ne 0$ and $a^T x \le a^T x_0$ for all $x \in C$.
 
-Supporting hyperplane theorem: If $C$ is convex, then there exists a supporting hyperplane at every boundary point of $C$.
+where $\mathbf{a} \ne \mathbf{0}$ and $\mathbf{a}^T\mathbf{x} \le \mathbf{a}^T\mathbf{x}_0$ for all $\mathbf{x} \in C$.
 
-## Dual Cones
+The theorem states that if $C$ is a convex set, a supporting hyperplane exists at every point on its boundary.
 
-Dual cone of a cone $K$: $K^*=\{y \mid y^{T} x \ge 0, \ \forall x \in K\}$
+## Dual Cone
+
+The dual cone of a cone $K$ is defined as:
+
+$$
+K^*=\{\mathbf{y} \mid \mathbf{y}^{T}\mathbf{x} \ge 0, \ \forall \mathbf{x} \in K\}
+$$
 
 Examples:
 
-- $K=\mathbb{R}_{+}^{n} : K^{*}=\mathbb{R}_{+}^{n}$
-- $K=\mathbb{S}_{+}^{n} : K^{*}=\mathbb{S}_{+}^{n}$
-- $K=\{(x, t) \mid\norm{x}_{2} \le t\} : K^{*}=\{(x, t) \mid\norm{x}_{2} \le t\}$
-- $K=\{(x, t) \mid\norm{x}_{1} \le t\} : K^{*}=\{(x, t) \mid\norm{x}_{\infty} \le t\}$
+- If $K=\mathbb{R}_{+}^{n}$, then $K^{*}=\mathbb{R}_{+}^{n}$
+- If $K=\mathbb{S}_{+}^{n}$, then $K^{*}=\mathbb{S}_{+}^{n}$
+- If $K=\{(\mathbf{x}, t) \mid \norm{\mathbf{x}}_{2} \le t\}$, then $K^{*}=\{(\mathbf{x}, t) \mid \norm{\mathbf{x}}_{2} \le t\}$ (the second-order cone is self-dual).
+- If $K=\{(\mathbf{x}, t) \mid \norm{\mathbf{x}}_{1} \le t\}$, then its dual is $K^{*}=\{(\mathbf{x}, t) \mid \norm{\mathbf{x}}_{\infty} \le t\}$.
 
-# Convex Functions
+# Convex Function
 
-$f: \mathbb{R}^{n} \to \mathbb{R}$ is convex if $\dom f$ is a convex set and
+A function $f: \mathbb{R}^{n} \to \mathbb{R}$ is convex if its domain, $\dom f$, is a convex set and for all $\mathbf{x}, \mathbf{y} \in \dom f$ and $0 \le \theta \le 1$:
+
 $$
-f(\theta x+(1-\theta) y) \le \theta f(x)+(1-\theta) f(y)
+f(\theta\mathbf{x}+(1-\theta)\mathbf{y}) \le \theta f(\mathbf{x})+(1-\theta)f(\mathbf{y})
 $$
-for all $x, y \in \dom f, \ 0\le \theta \le 1$
 
 ## Examples
 
 ### Convex
 
-- affine: $a^T x + b$
-- exponential: $e^{ax}$, for any $a \in \mathbb{R}$
-- powers: $x^\alpha$ on $\mathbb{R}_{++}$, for $\alpha \ge 1$ or $a \le 0$
-- powers of absolute value: $\abs{x}^p$ on $\mathbb{R}$, for $p \ge 1$
-- negative entropy: $x\log x$ on $\mathbb{R}_{++}$
-- norms: $\norm{x}_{p}=\left(\sum_{i=1}^{n}\left|x_{i}\right|^{p}\right)^{1 / p}$ for $p \ge 1$
-- affine on matrices: $f(X)=\operatorname{tr}\left(A^{T} X\right)+b$
-- spectral norm: $f(X) = \norm{X}_2 = \sigma_{\max}(X)$
-- quadratic: $f(x)=(1 / 2) x^{T} P x+q^{T} x+r$ with $P \in \mathbb{S}^{n}$
-- least-squares: $f(x) = \norm{Ax - b}_2^2$
-- quadratic-over-linear: $f(x, y) = x^2/y$ with $y > 0$
-- log-sum-exp: $f(x)=\log \sum_{k=1}^{n} e^{x_{k}}$
+- Affine: $f(\mathbf{x})=\mathbf{a}^T\mathbf{x} + b$
+- Exponential: $e^{ax}$, for any $a \in \mathbb{R}$
+- Powers: $f(x)=x^\alpha$ on $\mathbb{R}_{++}$ for $\alpha \ge 1$ or $a \le 0$
+- Powers of absolute value: $f(x)=\abs{x}^p$ on $\mathbb{R}$ for $p \ge 1$
+- Negative entropy: $f(x)=x\log x$ on $\mathbb{R}_{++}$
+- Norms: $f(\mathbf{x})=\norm{\mathbf{x}}_{p}=\left(\sum_{i=1}^{n}\left|x_{i}\right|^{p}\right)^{1 / p}$ for $p \ge 1$
+- Affine on matrices: $f(X)=\operatorname{tr}\left(A^{T} X\right)+b$
+- Spectral norm: $f(X) = \norm{X}_2 = \sigma_{\max}(X)$
+- Quadratic: $f(\mathbf{x})=(1/2)\mathbf{x}^{T}P\mathbf{x}+\mathbf{q}^{T}\mathbf{x}+r$ with $P \in \mathbb{S}_{+}^{n}$
+- Least squares: $f(\mathbf{x}) = \norm{A\mathbf{x} - \mathbf{b}}_2^2$
+- Quadratic over linear: $f(x, y) = x^2/y$ on the domain $y > 0$
+- LogSumExp: $f(\mathbf{x})=\log \sum_{k=1}^{n} e^{x_{k}}$
 
 ### Concave
 
-- $f$ in concave if $-f$ is convex
-- affine
-- powers: $x^\alpha$ on $\mathbb{R}_{++}$, for $0\le \alpha \le 1$
-- logarithm: $\log x$ on $\mathbb{R}_{++}$
-- $\log\det X$ on $\mathbb{S}_{++}^n$
-- geometric mean: $f(x)=\left(\prod_{k=1}^{n} x_{k}\right)^{1 / n}$ on $\mathbb{R}_{++}^n$
+A function $f$ is concave if $-f$ is convex.
 
-## Properties
+- Affine
+- Powers: $f(x)=x^\alpha$ on $\mathbb{R}_{++}$ for $0\le \alpha \le 1$
+- Logarithm: $f(x)=\log x$ on $\mathbb{R}_{++}$
+- Log-determinant: $f(X)=\log\det X$ on $\mathbb{S}_{++}^n$
+- Geometric mean: $f(\mathbf{x})=\left(\prod_{k=1}^{n} x_{k}\right)^{1 / n}$ on $\mathbb{R}_{++}^n$
 
-### Restriction of a Convex Function to a Line
+## Properties of Convex Function
 
-$f : \mathbb{R}^{n} \to \mathbb{R}$ is convex iff the function $g : \mathbb{R}^{n} \to \mathbb{R}$
+### Restriction to a Line
+
+A function $f: \mathbb{R}^{n} \to \mathbb{R}$ is convex if and only if its restriction to any line is convex. That is, the function $g: \mathbb{R} \to \mathbb{R}$ defined by
+
 $$
-g(t)=f(x+t v), \quad \dom g=\{t \mid x+t v \in \dom f\}
-$$
-
-is convex (in $t$) for any $x \in \dom f, \ v\in \mathbb{R}^n$
-
-### First-Order Convexity Condition
-
-Differentiable $f$ with convex domain is convex iff
-$$
-f(y) \ge f(x)+\nabla f(x)^{T}(y-x),\quad \forall x, y \in \dom f
+g(t)=f(\mathbf{x}+t\mathbf{v}), \quad \dom g=\{t \mid \mathbf{x}+t\mathbf{v} \in \dom f\}
 $$
 
-### Second-Order Convexity Condition
+is convex in $t$ for any $\mathbf{x} \in \dom f$ and $\mathbf{v} \in \mathbb{R}^n$.
 
-Twice differentiable $f$ with convex domain is convex iff
+### First-Order Condition
+
+A differentiable function $f$ with a convex domain is convex if and only if:
+
 $$
-\nabla^{2} f(x) \succeq 0, \quad \forall x \in \dom f
+\forall \mathbf{x}, \mathbf{y} \in \dom f, \quad f(\mathbf{y}) \ge f(\mathbf{x})+\nabla f(\mathbf{x})^{T}(\mathbf{y}-\mathbf{x})
+$$
+
+This means the tangent line at any point is a global underestimator of the function.
+
+### Second-Order Condition
+
+A twice-differentiable function $f$ with a convex domain is convex if and only if
+
+$$
+\forall \mathbf{x} \in \dom f, \quad \nabla^{2} f(\mathbf{x}) \succeq 0
 $$
 
 ### Epigraph and Sublevel Set
 
-$\alpha$-sublevel set of $f : \mathbb{R}^{n} \to \mathbb{R}$:
-$$
-C_{\alpha}=\{x \in \dom f \mid f(x) \le \alpha\}
-$$
-sublevel sets of convex functions are convex (converse is false)
+The $\alpha$-sublevel set of a function $f : \mathbb{R}^{n} \to \mathbb{R}$ is
 
-Epigraph of $f : \mathbb{R}^{n} \to \mathbb{R}$:
 $$
-\operatorname{epi}f=\{(x, t) \in \mathbb{R}^{n+1} \mid x \in \dom f, \ f(x) \le t\}
+C_{\alpha}=\{\mathbf{x} \in \dom f \mid f(\mathbf{x}) \le \alpha\}
 $$
-$f$ is convex iff $\operatorname{epi}f$ is a convex set.
+
+The sublevel sets of a convex function are always convex (the converse is not true).
+
+The epigraph of a function $f : \mathbb{R}^{n} \to \mathbb{R}$ is
+
+$$
+\operatorname{epi}f=\{(\mathbf{x}, t) \in \mathbb{R}^{n+1} \mid \mathbf{x} \in \dom f, f(\mathbf{x}) \le t\}
+$$
+
+A function $f$ is convex if and only if its epigraph is a convex set.
 
 ### Jensen's Inequality
 
-If $f$ is convex, then for $0 \le \theta \le 1$
+If $f$ is convex, then for $0 \le \theta \le 1$:
+
 $$
-f(\theta x+(1-\theta) y) \le \theta f(x)+(1-\theta) f(y)
+f(\theta\mathbf{x}+(1-\theta)\mathbf{y}) \le \theta f(\mathbf{x})+(1-\theta)f(\mathbf{y})
 $$
-can be extended to
+
+This extends to expectations. For any random variable $\mathbf{z}$:
+
 $$
-f(\mathbb{E}\ z) \le \mathbb{E}\ f(z)
+f(\mathbb{E}[\mathbf{z}]) \le \mathbb{E}[f(\mathbf{z})]
 $$
-for any random variable $z$
 
-## Operations That Preserve Convexity
+## Operations that Preserve Function Convexity
 
-To show $f$ is convex function:
+To show a function $f$ is convex, one can either:
 
-1. Verify definition (often simplified by restricting to a line)
-2. For twice differentiable functions, show $\nabla^2 f(x) \succeq 0$
-3. Show that $f$ is obtained from simple convex functions by operations that preserve convexity
+1. Verify the definition (often simplified by restricting to a line).
+2. For a twice-differentiable function, show $\nabla^2 f(\mathbf{x}) \succeq 0$.
+3. Show that $f$ is constructed from simple convex functions using operations that preserve convexity.
 
-- Nonnegative multiple: $\alpha f$ is convex if $f$ is convex, $\alpha \ge 0$
+- Nonnegative multiple: If $f$ is convex and $\alpha \ge 0$, then $\alpha f$ is convex.
+- Sum: If $f_1$ and $f_2$ are convex, then $f_1 + f_2$ is convex.
+- Composition with an affine function: If $f$ is convex, then $g(\mathbf{x})=f(A\mathbf{x} + \mathbf{b})$ is convex.
+- Pointwise maximum: If $f_1, \dots, f_m$ are convex, then $f(\mathbf{x})=\max\{f_1(\mathbf{x}), \dots, f_m(\mathbf{x})\}$ is convex.
+- Pointwise supremum: If $f(\mathbf{x}, \mathbf{y})$ is convex in $\mathbf{x}$ for each $\mathbf{y} \in C$, then $g(\mathbf{x})=\sup_{\mathbf{y} \in C} f(\mathbf{x}, \mathbf{y})$ is convex.
+- Scalar composition: Let $h: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R}^{n} \to \mathbb{R}$. The composition $f(\mathbf{x}) = h(g(\mathbf{x}))$ is convex if:
+    - $g$ is convex, $h$ is convex, and $\tilde{h}$ is non-decreasing.
+    - $g$ is concave, $h$ is convex, and $\tilde{h}$ is non-increasing.
+- Vector composition: Let $h: \mathbb{R}^k \to \mathbb{R}$ and $g: \mathbb{R}^{n} \to \mathbb{R}^k$. The composition $f(\mathbf{x}) = h(g(\mathbf{x})) = h(g_1(\mathbf{x}), \dots, g_k(\mathbf{x}))$ is convex if:
+    - $g_i$ are convex, $h$ is convex, and $h$ is non-decreasing in each argument.
+    - $g_i$ are concave, $h$ is convex, and $h$ is non-increasing in each argument.
+- Minimization: If $f(\mathbf{x}, \mathbf{y})$ is convex in $(\mathbf{x}, \mathbf{y})$ and $C$ is a convex set, then $g(\mathbf{x})=\inf_{\mathbf{y} \in C} f(\mathbf{x}, \mathbf{y})$ is convex.
+- Perspective: The perspective of a function $f: \mathbb{R}^n \to \mathbb{R}$ is the function $g: \mathbb{R}^{n} \times \mathbb{R} \to \mathbb{R}$ defined by $g(\mathbf{x}, t) = t f(\mathbf{x}/t)$, with domain $\dom g=\{(\mathbf{x}, t) \mid \mathbf{x}/t \in \dom f, t>0\}$. If $f$ is convex, then $g$ is convex.
 
-- Sum: $f_1 + f_2$ is convex if $f_1, f_2$ convex
+## Convex Conjugate
 
-- Composition with affine function: $f(Ax + b)$ is convex if $f$ is convex
+The convex conjugate of a function $f$ is defined as:
 
-- Pointwise maximum: if $f_1, \dots, f_m$ are convex, then $f(x)=\max \{f_{1}(x), \dots, f_{m}(x)\}$ is convex
+$$
+f^{*}(\mathbf{y})=\sup_{\mathbf{x} \in \dom f}(\mathbf{y}^{T}\mathbf{x}-f(\mathbf{x}))
+$$
 
-- Pointwise supremum: if $f(x, y)$ is convex in $x$ for each $y\in C$, then $g(x)=\sup _{y \in C} f(x, y)$ is convex.
-
-- Composition of $g : \mathbb{R}^{n} \to \mathbb{R}$ and $h : \mathbb{R} \to \mathbb{R}$: $f(x) = h(g(x))$ is convex if
-  - $g$ convex, $h$ convex, $\tilde{h}$ nondecreasing
-  - $g$ concave, $h$ convex, $\tilde{h}$ nonincreasing
-
-- Composition of $g : \mathbb{R}^{n} \to \mathbb{R}^k$ and $h : \mathbb{R}^k \to \mathbb{R}$: $f(x) = h(g(x)) = h(g_1(x), \dots, g_k(x))$ is convex if
-  - $g_i$ convex, $h$ convex, $\tilde{h}$ nondecreasing in each argument
-  - $g_i$ concave, $h$ convex, $\tilde{h}$ nonincreasing in each argument
-
-- Minimization: if $f(x, y)$ is convex in $(x, y)$ and $C$ is convex set, then $g(x)=\inf_{y \in C} f(x, y)$ is convex
-
-- Perspective if a function $f : \mathbb{R}^{n} \to \mathbb{R}$ is the function $g : \mathbb{R}^{n} \times \mathbb{R} \to \mathbb{R}$
-   $$
-   g(x, t)=t f(x / t), \quad \dom g=\{(x, t) \mid x / t \in \dom f, t>0\}
-   $$
-   $g$ is convex if $f$ is convex
-
-## Conjugate Function
-
-The conjugate of a function $f$: $f^{*}(y)=\sup_{x \in \dom f}\left(y^{T} x-f(x)\right)$ is always convex.
+The conjugate function $f^*$ is always convex, regardless of whether $f$ is.
 
 ## Quasiconvex Function
 
-$f : \mathbb{R}^{n} \to \mathbb{R}$ is quasiconvex if $\dom f$ is convex and the sublevel sets
+A function $f: \mathbb{R}^{n} \to \mathbb{R}$ is quasiconvex if its domain is convex and its sublevel sets $S_{\alpha}=\{\mathbf{x} \in \dom f \mid f(\mathbf{x}) \le \alpha\}$ are convex for all $\alpha \in \mathbb{R}$. A function $f$ is quasiconcave if $-f$ is quasiconvex.
+
 $$
 S_{\alpha}=\{x \in \dom f \mid f(x) \le \alpha\}
 $$
-are convex for all $\alpha$
 
-$f$ is quasiconcave if $-f$ is quasiconvex.
-
-- Modified Jensen inequality: $0 \le \theta \le 1 \implies f(\theta x+(1-\theta) y) \le \max \{f(x), f(y)\}$
-- First-order condition: $f(y) \le f(x) \implies \nabla f(x)^{T}(y-x) \le 0$
-- Sums of quasiconvex functions are not necessarily quasiconvex
+- Modified Jensen inequality: For $0 \le \theta \le 1$, $f(\theta\mathbf{x}+(1-\theta)\mathbf{y}) \le \max\{f(\mathbf{x}), f(\mathbf{y})\}$.
+- First-order condition: If $f$ is differentiable, it is quasiconvex if and only if $f(\mathbf{y}) \le f(\mathbf{x}) \implies \nabla f(\mathbf{x})^{T}(\mathbf{y}-\mathbf{x}) \le 0$.
+- The sum of quasiconvex functions is not necessarily quasiconvex.
 
 ## Log-Concave and Log-Convex Function
 
-A positive function $f$ is log-concave if $\log f$ is concave:
-$$
-f(\theta x+(1-\theta) y) \ge f(x)^{\theta} f(y)^{1-\theta}, \quad \forall  0 \le \theta \le 1
-$$
-Many common probability densities are log-concave, e.g., normal distribution.
-
-- Second-order condition: $f(x) \nabla^{2} f(x) \preceq \nabla f(x) \nabla f(x)^{T}$
-- Product of log-concave functions is log-concave
-- Sum of log-concave functions is not always log-concave
-- Integration: if $f : \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$ is log-concave, then $g(x)=\int f(x, y) dy$ is log-concave
-
-# Convex Optimization Problems
-
-## Optimization Problem
+A positive function $f$ is log-concave if $\log f$ is concave. This is equivalent to:
 
 $$
-\begin{align*}
-&\text{minimize} & &{f_{0}(x)} \\
-&\text {subject to } & &{f_{i}(x) \le 0, \quad i=1, \ldots, m} \\
-& & &{h_{i}(x)=0, \quad i=1, \ldots, p}
-\end{align*}
+\forall  0 \le \theta \le 1, \quad f(\theta x+(1-\theta) y) \ge f(x)^{\theta} f(y)^{1-\theta}
 $$
 
-- $x \in \mathbb{R}^n$ is the optimization variable
-- $f_0: \mathbb{R}^n \to \mathbb{R}$ is the objective or cost function
-- $f_i: \mathbb{R}^n \to \mathbb{R},\ i = 1, \dots, m$ are the inequality constraint functions
-- $h_i: \mathbb{R}^n \to \mathbb{R}$ are the equality constraint functions
+- Examples: Many common probability density function (e.g., normal distribution, exponential distribution) are log-concave.
+- Second-order condition: $f(x) \nabla^{2} f(x) \preceq \nabla f(x) \nabla f(x)^{T}$.
+- The product of log-concave functions is log-concave.
+- The sum of log-concave functions is not necessarily log-concave.
+- Integration: If $f: \mathbb{R}^{n} \times \mathbb{R}^{m} \to \mathbb{R}$ is log-concave, then $g(\mathbf{x})=\int f(\mathbf{x}, \mathbf{y})d\mathbf{y}$ is also log-concave.
 
-Optimal value $p^{\star}=\inf \{f_{0}(x) \mid f_{i}(x) \le 0,\  i=1, \dots, m,\ h_{i}(x)=0, \ i=1, \dots, p\}$
+Similarly, $f$ is log-convex if $\log f$ is convex.
 
-- $p^\star = \infty$ if problem is infeasible
-- $p^\star = -\infty$ if problem is unbounded below
+# Optimization Problem
 
-## Feasibility Problem
+## Standard Optimization Problem
+
+The general form of an optimization problem is:
 
 $$
 \begin{align*}
-&\text{minimize} & &0 \\
-&\text{subject to} & &f_{i}(x) \le 0, \quad i=1, \dots, m \\
-& & &h_{i}(x)=0, \quad i=1, \dots, p
+&\text{minimize} & &f_{0}(\mathbf{x}) \\
+&\text{subject to} & &f_{i}(\mathbf{x}) \le 0, \quad i=1, \ldots, m \\
+& & &h_{i}(\mathbf{x})=0, \quad i=1, \ldots, p
 \end{align*}
 $$
 
-- $p^\star = 0$ if constraints are feasible; any feasible $x$ is optimal
-- $p^\star = \infty$ if constraints are infeasible
+- $\mathbf{x} \in \mathbb{R}^n$ is the optimization variable.
+- $f_0: \mathbb{R}^n \to \mathbb{R}$ is the objective or cost function.
+- $f_i: \mathbb{R}^n \to \mathbb{R}$ are the inequality constraint functions.
+- $h_i: \mathbb{R}^n \to \mathbb{R}$ are the equality constraint functions.
 
-## Convex Optimization
+The optimal value, $p^{\star}$, is the infimum of the objective function over the feasible set.
+
+- If the problem is infeasible, $p^\star = \infty$.
+- If the problem is unbounded below, $p^\star = -\infty$.
+
+## Convex Optimization Problem
+
+A standard convex optimization problem has the form:
 
 $$
 \begin{align*}
-&\text{minimize} & &f_{0}(x) \\
-&\text {subject to} & &f_{i}(x) \le 0, \quad i=1, \dots, m \\
-& & &Ax = b
+&\text{minimize} & &f_{0}(\mathbf{x}) \\
+&\text{subject to} & &f_{i}(\mathbf{x}) \le 0, \quad i=1, \dots, m \\
+& & &A\mathbf{x} = \mathbf{b}
 \end{align*}
 $$
 
-- $f_0, \dots, f_m$ are convex; equality constraints are affine
-- Feasible set of a convex optimization problem is convex
-- Any locally optimal point of a convex problem is globally optimal
+- The objective function $f_0$ and inequality constraint functions $f_1, \dots, f_m$ are convex.
+- The equality constraint functions are affine.
+
+**Key Properties:**
+
+- The feasible set of a convex optimization problem is a convex set.
+- Any locally optimal point is also globally optimal.
 
 ### Optimality Criterion
 
-$x$ is optimal iff it is feasible and $\nabla f_{0}(x)^{T}(y-x) \ge 0$ for all feasible $y$. If nonzero, $\nabla f_0(x)$ defines a supporting hyperplane to feasible set $X$ at $x$.
+For a differentiable objective function $f_0$, a point $\mathbf{x}$ is optimal if and only if it is feasible and for all feasible $\mathbf{y}$:
 
-- unconstrained problem:
-  $$
-  x \in \dom f_{0}, \quad \nabla f_{0}(x)=0
-  $$
+$$
+\nabla f_{0}(\mathbf{x})^{T}(\mathbf{y}-\mathbf{x}) \ge 0
+$$
 
-- equality constrained problem:
-  $$
-  \text{minimize } f_{0}(x) \quad \text{subject to } Ax=b
-  $$
-  x is optimal iff there exists a $\nu$ s.t.
-  $$
-  x \in \dom f_{0}, \quad A x=b, \quad \nabla f_{0}(x)+A^{T} \nu=0
-  $$
+This means that if nonzero, $\nabla f_0(\mathbf{x})$ defines a supporting hyperplane to the feasible set at $\mathbf{x}$.
 
-- minimization over nonnegative orthant:
-  $$
-  \text{minimize } f_{0}(x) \quad \text{subject to } x \succeq 0
-  $$
-  x is optimal iff
-  $$
-  x \in \dom f_{0}, \quad x \succeq 0, \quad
-  \begin{dcases}
-  \nabla f_{0}(x)_{i} \ge 0 \quad x_{i}=0 \\
-  {\nabla f_{0}(x)_{i}=0} \quad x_{i}>0
-  \end{dcases}
-  $$
+- Unconstrained problem: The optimality condition is
 
-### Equivalent Convex Problems
+    $$
+    \nabla f_{0}(\mathbf{x})=0
+    $$
 
-- eliminating equality constrains
-  $$
-  \begin{align*}
-  &\text{minimize}_z & &f_{0}(F z+x_{0}) \\
-  &\text{subject to} & &f_{i}(F z+x_{0}) \le 0, \quad i=1, \dots, m
-  \end{align*}
-  $$
-  where $F$ and $x_0$ s.t. $A x=b \iff x=F z+x_{0}$ for some $z$
+- Equality constrained problem ($\min f_0(\mathbf{x})$ s.t. $A\mathbf{x}=\mathbf{b}$): The optimality condition is
 
-- introducing slack variables for linear inequalities
-  $$
-  \begin{align*}
-  &\text{minimize} & &f_{0}(x) \\
-  &\text{subject to} & &a_{i}^{T} x \le b_{i}, \quad i=1, \dots, m
-  \end{align*}
-  $$
-  is equivalent to
-  $$
-  \begin{align*}
-  &\text{minimize}_{x, s} & &f_{0}(x) \\
-  &\text{subject to} & &a_{i}^{T} x+s_{i}=b_{i}, \quad i=1, \dots, m \\
-  & & &s_{i} \ge 0, \quad i=1, \dots m
-  \end{align*}
-  $$
+    $$
+    \exists \boldsymbol{\nu}, \quad A \mathbf{x}=\mathbf{b}, \quad \nabla f_{0}(\mathbf{x})+A^{T} \boldsymbol{\nu}=0
+    $$
 
-- epigraph form: standard form convex problem is equivalent to
-  $$
-  \begin{align*}
-  &\text{minimize}_{x, t} & &t \\
-  &\text{subject to} & &f_{0}(x)-t \le 0 \\
-  & & &f_{i}(x) \le 0, \quad i=1, \dots, m \\
-  & & &Ax=b
-  \end{align*}
-  $$
+- Minimization over the nonnegative orthant ($\min f_0(\mathbf{x})$ s.t. $\mathbf{x} \succeq \mathbf{0}$): The optimality condition is
+
+    $$
+    \mathbf{x} \succeq 0, \quad
+    \begin{cases}
+    \nabla f_{0}(\mathbf{x})_{i} \ge 0, \quad \text{if } x_{i}=0 \\
+    {\nabla f_{0}(\mathbf{x})_{i}=0}, \quad \text{if } x_{i}>0
+    \end{cases}
+    $$
+
+### Equivalent Convex Problem
+
+- Eliminating equality constrains: If the equality constraints are $A\mathbf{x}=\mathbf{b}$, we can express the feasible set as $\{\mathbf{x} \mid \mathbf{x}=F\mathbf{z}+\mathbf{x}_0\}$ for some matrix $F$ and vector $\mathbf{x}_0$. The problem becomes an unconstrained one in terms of $\mathbf{z}$:
+
+    $$
+    \begin{align*}
+    &\text{minimize} & &f_{0}(F \mathbf{z}+x_{0}) \\
+    &\text{subject to} & &f_{i}(F \mathbf{z}+x_{0}) \le 0, \quad i=1, \dots, m
+    \end{align*}
+    $$
+
+- Introducing slack variable: An inequality $\mathbf{a}_i^T\mathbf{x} \le b_i$ is equivalent to $\mathbf{a}_i^T\mathbf{x}+s_i=b_i$ with $s_i \ge 0$. This converts inequality constraints to equality and non-negativity constraints:
+
+    $$
+    \begin{align*}
+    &\text{minimize} & &f_{0}(\mathbf{x}) \\
+    &\text{subject to} & &\mathbf{a}_{i}^{T} \mathbf{x} \le b_{i}, \quad i=1, \dots, m
+    \end{align*}
+    $$
+
+    is equivalent to
+
+    $$
+    \begin{align*}
+    &\text{minimize}_{\mathbf{x}, \mathbf{s}} & &f_{0}(x) \\
+    &\text{subject to} & &\mathbf{a}_{i}^{T} \mathbf{x}+s_{i}=b_{i}, \quad i=1, \dots, m \\
+    & & &s_{i} \ge 0, \quad i=1, \dots m
+    \end{align*}
+    $$
+
+- Epigraph form: Standard convex optimization problem can be transformed into minimizing a linear objective:
+
+    $$
+    \begin{align*}
+    &\text{minimize}_{\mathbf{x}, t} & &t \\
+    &\text{subject to} & &f_{0}(\mathbf{x})-t \le 0 \\
+    & & &f_{i}(\mathbf{x}) \le 0, \quad i=1, \dots, m \\
+    & & &A\mathbf{x}=\mathbf{b}
+    \end{align*}
+    $$
 
 ## Quasiconvex Optimization
 
+A quasiconvex optimization problem has the form:
+
 $$
 \begin{align*}
-&\text{minimize} & &f_0(x) \\
-&\text{subject to} & &f_{i}(x) \le 0, \quad i=1, \dots, m \\
-& & &Ax=b
+&\text{minimize} & &f_0(\mathbf{x}) \\
+&\text{subject to} & &f_{i}(\mathbf{x}) \le 0, \quad i=1, \dots, m \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
 
-with $f_0: \mathbb{R}^n \to \mathbb{R}$ quasiconvex, $f_1, \dots, f_m$ convex. Can have locally optimal points that are not globally optimal
-
-If $f_0$ is quasiconvex, there exists a family of functions $\varphi_t$ s.t.
-
-- $\varphi_t(x)$ is convex in $x$ for fixed $t$
-- $t$-sublevel set of $f_0$ is $0$-sublevel set of $\varphi_t$
-
-For a fixed $t$, the quasiconvex optimization problem can be transferred to a convex feasibility problem in $x$. Bisection method can be used to find the optimal $t$.
+where $f_0$ is quasiconvex and $f_1, \dots, f_m$ are convex. Such problems can have locally optimal points that are not globally optimal. They can be solved using bisection method on the optimal value $t$. For a fixed $t$, checking if $f_0(\mathbf{x}) \le t$ is a convex feasibility problem.
 
 ## Linear Optimization
 
-### Linear Programming
+### Linear Programming (LP)
+
+An LP minimizes a linear objective over a polyhedron:
 
 $$
 \begin{align*}
-&\text{minimize} & &c^{T} x+d \\
-&\text{subject to} & &G x \preceq h \\
-& & &A x=b
+&\text{minimize} & &\mathbf{c}^{T}\mathbf{x}+d \\
+&\text{subject to} & &G\mathbf{x} \preceq \mathbf{h} \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
-
-- feasible set is a polyhedron.
 
 ### Linear-Fractional Programming
 
+A linear-fractional program minimizes a ratios of linear functions over polyhedron:
+
 $$
 \begin{align*}
-&\text{minimize} & &f_{0}(x) \\
-&\text{subject to} & &G x \preceq h \\
-& & &A x=b
+&\text{minimize} & &f_{0}(\mathbf{x}) \\
+&\text{subject to} & &G \mathbf{x} \preceq \mathbf{h} \\
+& & &A \mathbf{x}=\mathbf{b}
 \end{align*}
 $$
 
-where
+where the objective function is quasiconvex:
+
 $$
-f_{0}(x)=\frac{c^{T} x+d}{e^{T} x+f}, \quad \dom f_{0}(x)=\{x \mid e^{T} x+f>0\}
+f_{0}(\mathbf{x})=\frac{\mathbf{c}^{T}\mathbf{x}+d}{\mathbf{e}^{T}\mathbf{x}+f}, \quad \dom f_{0}(\mathbf{x})=\{\mathbf{x} \mid \mathbf{e}^{T}\mathbf{x}+f>0\}
 $$
 
-- a quasiconvex optimization problem
+It can be transformed into an equivalent LP:
 
-- equivalent to the LP
-  $$
-  \begin{align*}
-  &\text{minimize} & &c^{T} y+d z \\
-  &\text{subject to} & &G y \preceq h z \\
-  & & &A y=b z \\
-  & & &e^{T} y+f z=1 \\
-  & & &z \ge 0
-  \end{align*}
-  $$
+$$
+\begin{align*}
+&\text{minimize} & &c^{T} y+d z \\
+&\text{subject to} & &G y \preceq h z \\
+& & &A y=b z \\
+& & &e^{T} y+f z=1 \\
+& & &z \ge 0
+\end{align*}
+$$
 
 ## Quadratic Optimization
 
-### Quadratic Programming
+### Quadratic Programming (QP)
+
+A QP minimizes a convex quadratic function over a polyhedron:
 
 $$
 \begin{align*}
-&\text{minimize} & &(1 / 2) x^{T} P x+q^{T} x+r \\
-&\text{subject to} & &G x \preceq h \\
-& & &A x=b
+&\text{minimize} & &(1/2)\mathbf{x}^{T}P\mathbf{x}+\mathbf{q}^{T}\mathbf{x}+r \\
+&\text{subject to} & &G\mathbf{x} \preceq \mathbf{h} \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
 
-- $P \in \mathbb{S}_+^n$, so objective is convex quadratic
-- minimize a convex quadratic function over a polyhedron
+where $P \in \mathbb{S}_+^n$.
 
-### Quadratically Constrained Quadratic Programming
+### Quadratically Constrained Quadratic Programming (QCQP)
+
+A QCQP minimizes a convex quadratic function subject to convex quadratic inequality constraints:
 
 $$
 \begin{align*}
-&\text{minimize} & &(1 / 2) x^{T} P_{0} x+q_{0}^{T} x+r_{0} \\
-&\text{subject to} & &(1 / 2) x^{T} P_{i} x+q_{i}^{T} x+r_{i} \le 0, \quad i=1, \dots, m \\
-& & &A x=b
+&\text{minimize} & &(1/2)\mathbf{x}^{T}P_{0}\mathbf{x}+\mathbf{q}_{0}^{T}\mathbf{x}+r_{0} \\
+&\text{subject to} & &(1/2)\mathbf{x}^{T}P_{i}\mathbf{x}+\mathbf{q}_{i}^{T}\mathbf{x}+r_{i} \le 0, \quad i=1, \dots, m \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
 
-- $P_i \in \mathbb{S}_+^n$, objective and constraints are convex quadratic
-- if $P_1, \dots, P_m \in \mathbb{S}_{++}^n$, feasible region is intersection of $m$ ellipsoids and an affine set
+where each $P_i \in \mathbb{S}_+^n$.
 
-### Second-Order Cone Programming
+If $P_1, \dots, P_m \in \mathbb{S}_{++}^n$, then the feasible region is the intersection of $m$ ellipsoids and an affine set.
+
+### Second-Order Cone Programming (SOCP)
+
+SOCPs are more general than LPs and QPs:
 
 $$
 \begin{align*}
-&\text{minimize} & &f^{T} x \\
-&\text{subject to} & &\norm*{A_{i} x+b_{i}}_{2} \le c_{i}^{T} x+d_{i}, \quad i=1, \dots, m \\
-& & &F x=g
+&\text{minimize} & &\mathbf{f}^{T}\mathbf{x} \\
+&\text{subject to} & &\norm{A_{i}\mathbf{x}+\mathbf{b}_{i}}_{2} \le \mathbf{c}_{i}^{T}\mathbf{x}+d_{i}, \quad i=1, \dots, m \\
+& & &F\mathbf{x}=\mathbf{g}
 \end{align*}
 $$
 
-- $A_{i} \in \mathbb{R}^{n_{i} \times n}, F \in \mathbb{R}^{p \times n}$
-- inequalities are called second-order cone constraints
-- for $n_i = 0$, reduces to an LP; if $c_i = 0$, reduces to a QCQP
+- The inequalities are called second-order cone constraints.
+- This reduces to an LP if $A_{i} = 0$, and a QCQP if $\mathbf{c}_i = 0$.
 
-## Geometric Programming
+## Geometric Programming (GP)
 
-- Monomial function
-  $$
-  f(x)=c x_{1}^{a_{1}} x_{2}^{a_{2}} \cdots x_{n}^{a_{n}}, \quad \dom f=\mathbb{R}_{++}^{n}
-  $$
-  with $c>0,\ \alpha_i \in \mathbb{R}$
-
-- Posynomial function: sum of monomials
-  $$
-  f(x)=\sum_{k=1}^{K} c_{k} x_{1}^{a_{1 k}} x_{2}^{a_{2 k}} \cdots x_{n}^{a_{n k}}, \quad \dom f=\mathbb{R}_{++}^{n}
-  $$
-
-- Geometric program
-  $$
-  \begin{align*}
-  &\text{minimize} & &f_{0}(x) \\
-  &\text{subject to} & &f_{i}(x) \le 1, \quad i=1, \dots, m \\
-  & & &h_{i}(x)=1, \quad i=1, \dots, p
-  \end{align*}
-  $$
-  with $f_i$ posynomial, $h_i$ monomial
-
-Geometric program in convex form:
-$$
-\begin{align*}
-&\text{minimize} & &\log \left(\sum_{k=1}^{K} \exp \left(a_{0 k}^{T} y+b_{0 k}\right)\right) \\
-&\text{subject to} & &\log \left(\sum_{k=1}^{K} \exp \left(a_{i k}^{T} y+b_{i k}\right)\right) \le 0, \quad i=1, \dots, m \\
-& & &G y+d=0
-\end{align*}
-$$
-
-## Generalized Inequality Constraints
+A GP minimizes a posynomial subject to posynomial inequality constraints and monomial equality constraints:
 
 $$
 \begin{align*}
-&\text{minimize} & &f_{0}(x) \\
-&\text{subject to} & &f_{i}(x) \preceq_{K_{i}} 0, \quad i=1, \dots, m \\
-& & &A x=b
+&\text{minimize} & &f_{0}(\mathbf{x}) \\
+&\text{subject to} & &f_{i}(\mathbf{x}) \le 1, \quad i=1, \dots, m \\
+& & &h_{i}(\mathbf{x})=1, \quad i=1, \dots, p
 \end{align*}
 $$
 
-- $f_0: \mathbb{R}^n \to \mathbb{R}$ convex; $f_i: \mathbb{R}^n \to \mathbb{R}^{k_i}$ $K_i$-convex w.r.t. proper cone $K_i$
-- same properties as standard convex problem (convex feasible set, local optimum is global, etc.)
+where $f_i$ are posynomials and $h_i$ are monomials.
 
-Conic form problem:
+In the context of GP, a monomial function is
+
+$$
+f(\mathbf{x})=c x_{1}^{a_{1}} x_{2}^{a_{2}} \cdots x_{n}^{a_{n}}, \quad \dom f=\mathbb{R}_{++}^{n}
+$$
+
+where $c>0$ and $\alpha_i \in \mathbb{R}$. A posynomial is any sum of monomials.
+
+A GP is not convex in its original form but can be transformed into a convex problem by a change of variables ($y_i = \log x_i$) and taking the log of the objective and constraints.
+
+## Generalized Inequality Constraint
+
+A convex optimization problem can be formulated using generalized inequalities defined by proper cones:
+
 $$
 \begin{align*}
-&\text{minimize} & &c^{T} x \\
-&\text{subject to} & &F x+g \preceq_{K} 0 \\
-& & &A x=b
+&\text{minimize} & &f_{0}(\mathbf{x}) \\
+&\text{subject to} & &f_{i}(\mathbf{x}) \preceq_{K_{i}} \mathbf{0}, \quad i=1, \dots, m \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
-extends LP ($K = \mathbb{R}_+^m$) to non-polyhedral cones
 
-Semidefinite programming:
+- $f_0: \mathbb{R}^n \to \mathbb{R}$ is a convex function.
+- $K_i \subseteq \mathbb{R}^{k_i}$ are proper cones.
+- $f_i: \mathbb{R}^n \to \mathbb{R}^{k_i}$ is a $K_i$-convex function.
+
+This generalized form retains all the key properties of standard convex problems: the feasible set is convex, and any local optimum is a global optimum.
+
+### Conic Form Problem
+
+A conic form problem is a linear program with a generalized inequality constraint:
+
 $$
 \begin{align*}
-&\text{minimize} & &c^{T} x \\
-&\text{subject to} & &x_{1} F_{1}+x_{2} F_{2}+\cdots+x_{n} F_{n}+G \preceq 0 \\
-& & &A x=b
+&\text{minimize} & &\mathbf{c}^{T}\mathbf{x} \\
+&\text{subject to} & &F\mathbf{x}+\mathbf{g} \preceq_{K} \mathbf{0} \\
+& & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
-with $F_i, G \in \mathbb{S}^k$
 
-### Minimum and Minimal Elements
+This extends standard LPs (where $K = \mathbb{R}_+^m$) to problems involving non-polyhedral cones, such as the second-order cone or the semidefinite cone.
 
-$\preceq_K$ is not in general a linear ordering: we can have $x \npreceq_K y$ and $y \npreceq_K x$
+### Semidefinite Programming (SDP)
 
-- $x \in S$ is the minimum element of $S$ w.r.t. $\preceq_K$ if $y \in S \implies x \preceq_K y$
-- $x \in S$ is the minimal element of $S$ w.r.t. $\preceq_K$ if $y \in S, \ y \preceq_{K} x \implies y=x$
+An SDP is a conic form problem where the cone is the positive semidefinite matrices, $\mathbb{S}_+^k$. The constraint is a linear matrix inequality (LMI):
+
+$$
+\begin{align*}
+&\text{minimize} & &\mathbf{c}^{T}\mathbf{x} \\
+&\text{subject to} & &x_{1}F_{1}+x_{2}F_{2}+\cdots+x_{n}F_{n}+G \preceq 0 \\
+& & &A\mathbf{x}=\mathbf{b}
+\end{align*}
+$$
+
+where the matrices $F_i, G \in \mathbb{S}^k$ are given symmetric matrices.
 
 ## Vector Optimization
 
-General vector optimization problem:
+A general vector optimization problem minimizes a vector objective $f_0: \mathbb{R}^n \to \mathbb{R}^q$ with respect to a proper cone $K \subseteq \mathbb{R}^q$.
+
 $$
 \begin{align*}
 &\text{minimize}_K & &f_{0}(x) \\
@@ -665,20 +714,10 @@ $$
 & & &h_{i}(x) \le 0, \quad i=1, \dots, p
 \end{align*}
 $$
-vector objective $f_{0} : \mathbb{R}^{n} \to \mathbb{R}^{q}$, minimized w.r.t. proper cone $K \in \mathbb{R}^{q}$
 
-Convex vector optimization problem:
-$$
-\begin{align*}
-&\text{minimize}_K & &f_{0}(x) \\
-&\text{subject to} & &f_{i}(x) \le 0, \quad i=1, \dots, m \\
-& & &A x=b
-\end{align*}
-$$
+We say the vector optimization problem is a convex vector optimization problem if the objective function is $K$-convex, the inequality constraint functions $f_1,\dots, f_m$ are convex, and the equality constraint functions $h_{1},\dots h_{p}$ are affine (in the scalar case, it becomes $A\mathbf{x} = \mathbf{b}$).
 
-with $f_0$ $K$-convex, $f_1,\dots, f_m$ convex
-
-### Optimal and Pareto Optimal Points
+### Optimal and Pareto Optimal Point
 
 Set of achievable objective values $\mathcal{O}=\{f_{0}(x) \mid x \text{ feasible}\}$
 
@@ -689,211 +728,208 @@ Set of achievable objective values $\mathcal{O}=\{f_{0}(x) \mid x \text{ feasibl
 
 ## Lagrange Dual Function
 
-From the standard form optimization problem we define the Lagrangian $L : \mathbb{R}^{n} \times \mathbb{R}^{m} \times \mathbb{R}^{p} \to \mathbb{R}$
+For a standard optimization problem, the Lagrangian is defined as:
+
 $$
-L(x, \lambda, \nu)=f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{i=1}^{p} \nu_{i} h_{i}(x)
+L(\mathbf{x}, \boldsymbol{\lambda}, \boldsymbol{\nu})=f_{0}(\mathbf{x})+\sum_{i=1}^{m}\lambda_{i}f_{i}(\mathbf{x})+\sum_{i=1}^{p}\nu_{i}h_{i}(\mathbf{x})
 $$
 
-- weighted sum of objective and constraint functions
-- $\lambda_i$ is Lagrange multiplier associated with $f_i(x) \le 0$
-- $\nu_i$ is Lagrange multiplier associated with $h_i(x) = 0$
+The Lagrange dual function is the infimum of the Lagrangian over $\mathbf{x}$:
 
-Lagrange dual function $g : \mathbb{R}^{m} \times \mathbb{R}^{p} \to \mathbb{R}$
 $$
-\begin{split}
-g(\lambda, \nu) &=\inf_{x \in \mathcal{D}} L(x, \lambda, \nu) \\
-&=\inf_{x \in \mathcal{D}}\left(f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{i=1}^{p} \nu_{i} h_{i}(x)\right)
-\end{split}
+g(\boldsymbol{\lambda}, \boldsymbol{\nu}) =\inf_{\mathbf{x} \in \mathcal{D}} L(\mathbf{x}, \boldsymbol{\lambda}, \boldsymbol{\nu})
 $$
-$g$ is concave.
 
-**lower bound property**: if $\lambda \succeq 0$, then $g(\lambda, \nu) \le p^{\star}$
+The dual function $g$ is always concave, regardless of the convexity of the original problem. For any $\boldsymbol{\lambda} \succeq \mathbf{0}$, it provides a lower bound on the optimal value: $g(\boldsymbol{\lambda}, \boldsymbol{\nu}) \le p^{\star}$.
 
 ## Lagrange Dual Problem
 
+The dual problem seeks the best possible lower bound:
+
 $$
 \begin{align*}
-&\text{maximize} & &g(\lambda, \nu) \\
-&\text{subject to} & &\lambda \succeq 0
+&\text{maximize} & &g(\boldsymbol{\lambda}, \boldsymbol{\nu}) \\
+&\text{subject to} & &\boldsymbol{\lambda} \succeq \mathbf{0}
 \end{align*}
 $$
 
-- find best lower bound on $p^\star$, obtained from Lagrange dual function
-- a convex optimization problem; optimal value denoted $d^\star$
-- $\lambda, \nu$ are dual feasible if $\lambda \succeq 0,\ (\lambda, \nu) \in \dom g$
-- often simplified by making implicit constraint $(\lambda, \nu) \in \dom g$ explicit
+This is always a convex optimization problem. Let its optimal value be $d^{\star}$.
 
-## Optimality Conditions
+## Optimality Condition
 
-- Weak duality $d^\star \le p^\star$ always holds, can be expressed as
-  $$
-  \sup_{\lambda \succeq 0} \inf_{x} L(x, \lambda) \le \inf_x \sup_{\lambda \succeq 0} L(x, \lambda)
-  $$
+- Weak duality: $d^\star \le p^\star$ always holds, can be expressed as
 
-- Strong duality $d^\star = p^\star$ usually holds for convex problems. It means that $x^\star$ and $\lambda^\star$ from a saddle-point for the Lagrangian.
+    $$
+    \sup_{\lambda \succeq 0} \inf_{x} L(x, \lambda) \le \inf_x \sup_{\lambda \succeq 0} L(x, \lambda)
+    $$
 
-### Slater's Constraint Qualification
+- Strong duality: $d^\star = p^\star$ (usually) holds for convex problems. When strong duality holds, $x^\star$ and $\lambda^\star$ form a saddle point for the Lagrangian (converse also true).
 
-Strong duality holds for a convex problem if it is strictly feasible, i.e.,
+### Slater's Condition
+
+Conditions that guarantee strong duality in convex problems are called constraint qualifications. One simple constraint qualification is Slater's condition: There exists a strictly feasible point, i.e.,
+
 $$
-\exists x \in \operatorname{int} \mathcal{D} : \quad f_{i}(x)<0, \ i=1, \dots, m, \quad A x=b
+\exists x \in \operatorname{int} \mathcal{D}, \quad f_{i}(x)<0, \ i=1, \dots, m, \quad A x=b
 $$
 
 ### KKT Conditions
 
-If strong duality holds and $x^\star, \lambda^\star, \nu^\star$ are optimal, then they must satisfy:
+If strong duality holds, and $\mathbf{x}^{\star}, \boldsymbol{\lambda}^{\star}, \boldsymbol{\nu}^{\star}$ are primal and dual optimal points, they must satisfy the KKT conditions:
 
-1. primal constraints: $f_{i}(x^\star) \le 0,\ h_{i}(x^\star)=0$
+1. Primal Feasibility: $f_{i}(\mathbf{x}^{\star}) \le 0$ and $h_{i}(\mathbf{x}^{\star})=0$
+2. Dual Feasibility: $\boldsymbol{\lambda}^{\star} \succeq \mathbf{0}$
+3. Complementary Slackness: $\lambda_i^{\star} f_i(\mathbf{x}^{\star}) = 0$
+4. Stationarity: The gradient of the Lagrangian with respect to $\mathbf{x}$ vanishes at $\mathbf{x}^{\star}$:
 
-2. dual constraints: $\lambda^\star \succeq 0$
+    $$
+    \nabla f_{0}(\mathbf{x}^{\star})+\sum_{i=1}^{m}\lambda_{i}^{\star}\nabla f_{i}(\mathbf{x}^{\star})+\sum_{i=1}^{p}\nu_{i}^{\star}\nabla h_{i}(\mathbf{x}^{\star})=\mathbf{0}
+    $$
 
-3. complementary slackness: $\lambda_i^\star f_i(x^\star) = 0$
+For a convex problem, any set of points $(\tilde{\mathbf{x}}, \tilde{\boldsymbol{\lambda}}, \tilde{\boldsymbol{\nu}})$ that satisfies the KKT conditions is primal and dual optimal.
 
-4. gradient of Lagrangian with respect to $x$ vanishes:
-   $$
-   \nabla f_{0}(x^\star)+\sum_{i=1}^{m} \lambda_{i}^\star \nabla f_{i}(x^\star)+\sum_{i=1}^{p} \nu_{i}^\star \nabla h_{i}(x^\star)=0
-   $$
+# Application
 
-If $\tilde{x}, \tilde{\lambda}, \tilde{\nu}$ satisfy KKT for a convex problem, then they are optimal
-
-# Applications
-
-## Geometric Problems
+## Geometric Problem
 
 ### Minimum Volume Ellipsoid Around a Set
 
-Minimum volume ellipsoid $\mathcal{E}$ of a set $C$.
+Find the ellipsoid $\mathcal{E}$ of minimum volume that contains a given set $C \subseteq \mathbb{R}^n$.
 
-- parametrize $\mathcal{E}$ as $\mathcal{E}=\{v \mid \norm{A v+b}_{2} \le 1\}$, assume $A \in \mathbb{S}_{++}^n$
+- The ellipsoid is parametrized as $\mathcal{E}=\{\mathbf{v} \mid \norm{A\mathbf{v}+\mathbf{b}}_{2} \le 1 \}$, where $A \in \mathbb{S}_{++}^n$
+- The volume of $\mathcal{E}$ is proportional to $\det A^{-1}$
 
-- $\operatorname{vol} \mathcal{E}$ is proportional to $\det A^{-1}$, can compute $\mathcal{E}$ by solving
-  $$
-  \begin{align*}
-  &\text{minimize}_{A,b} & &\log \det A^{-1}\\
-  &\text{subject to} & &\sup_{v \in C}\norm{A v+b}_{2} \le 1
-  \end{align*}
-  $$
+The problem can be formulated as:
+
+$$
+\begin{align*}
+&\text{minimize}_{A,\mathbf{b}} & &\log \det A^{-1}\\
+&\text{subject to} & &\sup_{\mathbf{v} \in C}\norm{A \mathbf{v}+\mathbf{b}}_{2} \le 1
+\end{align*}
+$$
 
 ### Maximum Volume Inscribed Ellipsoid
 
-Maximum volume ellipsoid $\mathcal{E}$ inside a convex set $C \subseteq \mathbb{R}^n$
+Find the ellipsoid $\mathcal{E}$ of maximum volume that fits inside a given convex set $C \subseteq \mathbb{R}^n$.
 
-- parametrize $\mathcal{E}$ as $\mathcal{E}=\{B u+d \mid \norm{u}_{2} \le 1\}$, assume $B \in \mathbb{S}_{++}^n$
+- The ellipsoid is parametrized as $\mathcal{E}=\{B \mathbf{u}+\mathbf{d} \mid \norm{\mathbf{u}}_{2} \le 1\}$, where $B \in \mathbb{S}_{++}^n$
+- The volume of $\mathcal{E}$ is proportional to $\det B$
 
-- $\operatorname{vol} \mathcal{E}$ is proportional to $\det B$, can compute $\mathcal{E}$ by solving
-  $$
-  \begin{align*}
-  &\text{maximize} & &\log\det B \\
-  &\text{subject to} & &\sup_{\norm{u}_{2} \le 1} I_{C}(B u+d) \le 0
-  \end{align*}
-  $$
-  where $I_C(x) = 0$ for $x\in C$ and $I_C(x) = \infty$ for $x\notin C$
+The problem can be formulated as:
+
+$$
+\begin{align*}
+&\text{maximize}_{B, \mathbf{d}} & &\log\det B \\
+&\text{subject to} & &B \mathbf{u} + \mathbf{d} \in C \quad \text{for all } \norm{\mathbf{u}}_{2} \le 1
+\end{align*}
+$$
 
 ### Linear Discrimination
 
-Separate two sets of points $\{x_1, \dots, x_N\},\ \{y_1, \dots, y_M\}$ by a hyperplane:
+Find the hyperplane defined by $(\mathbf{a}, b)$ that separates two given sets of points $\{\mathbf{x}_1, \dots, \mathbf{x}_N\},\ \{\mathbf{y}_1, \dots, \mathbf{y}_M\}$:
+
 $$
-a^{T} x_{i}+b>0, \ i=1, \dots, N, \quad a^{T} y_{i}+b<0, \ i=1, \dots, M
-$$
-homogeneous in $a, b$, hence equivalent to
-$$
-a^{T} x_{i}+b \ge 1, \ i=1, \dots, N, \quad a^{T} y_{i}+b \le-1, \ i=1, \dots, M
-$$
-To separate two sets of points by maximum margin
-$$
-\begin{align*}
-&\text{minimize} & &(1 / 2)\norm{a}_{2} \\
-&\text{subject to} & &a^{T} x_{i}+b \ge 1, \quad i=1, \dots, N \\
-& & &a^{T} y_{i}+b \le-1, \quad i=1, \dots, M
-\end{align*}
+\mathbf{a}^{T}\mathbf{x}_{i}+b>0, \ i=1, \dots, N \quad \text{and} \quad \mathbf{a}^{T}\mathbf{y}_{i}+b<0, \ i=1, \dots, M
 $$
 
-### Support Vector Classifier
+Since the inequalities are homogeneous in $\mathbf{a}$ and $b$, this is equivalent to the following set of linear inequalities, which is a convex feasibility problem:
+
+$$
+\mathbf{a}^{T}\mathbf{x}_{i}+b \ge 1, \ i=1, \dots, N \quad \text{and} \quad \mathbf{a}^{T}\mathbf{y}_{i}+b \le-1, \ i=1, \dots, M
+$$
+
+### Support Vector Machine (SVM)
+
+The SVM finds the hyperplane that maximizes the margin (the distance between the hyperplane and the nearest point from either set). This can be formulated as a QP:
 
 $$
 \begin{align*}
-&\text{minimize} & &\norm{a}_{2}+\gamma\left(\mathbf{1}^{T} u+\mathbf{1}^{T} v\right) \\
-&\text{subject to} & &a^{T} x_{i}+b \ge 1-u_{i}, \quad i=1, \dots, N \\
-& & &a^{T} y_{i}+b \le -1+v_{i}, \quad i=1, \dots, M \\
-& & &u \succeq 0, \quad v \succeq 0
+&\text{minimize} & &(1/2)\norm{\mathbf{a}}_{2}^2 \\
+&\text{subject to} & &\mathbf{a}^{T}\mathbf{x}_{i}+b \ge 1, \quad i=1, \dots, N \\
+& & &\mathbf{a}^{T}\mathbf{y}_{i}+b \le-1, \quad i=1, \dots, M
 \end{align*}
 $$
 
-produces point on trade-off curve between inverse of margin $2/\norm{a}_2$ and classification error, measured by total slack $\mathbf{1}^{T} u+\mathbf{1}^{T} v$
+To handle data that is not linearly separable, slack variables $(\mathbf{u}, \mathbf{v})$ are introduced, leading to the soft-margin SVM formulation, which balances maximizing the margin against minimizing classification errors:
+
+$$
+\begin{align*}
+&\text{minimize} & &(1/2)\norm{\mathbf{a}}_{2}^2+\gamma(\mathbf{1}^{T}\mathbf{u}+\mathbf{1}^{T}\mathbf{v}) \\
+&\text{subject to} & &\mathbf{a}^{T}\mathbf{x}_{i}+b \ge 1-u_{i}, \quad i=1, \dots, N \\
+& & &\mathbf{a}^{T}\mathbf{y}_{i}+b \le -1+v_{i}, \quad i=1, \dots, M \\
+& & &\mathbf{u} \succeq \mathbf{0}, \quad \mathbf{v} \succeq \mathbf{0}
+\end{align*}
+$$
 
 ## Data Fitting
 
 ### Norm Approximation
 
+Find an $\mathbf{x}$ that minimizes the discrepancy between $A\mathbf{x}$ and a vector $\mathbf{b}$, as measured by a norm:
+
 $$
-\text{minimize } \norm{A x-b}
+\text{minimize } \norm{A \mathbf{x}-\mathbf{b}}
 $$
 
-where $A \in \mathbb{R}^{m \times n}$ with $m\ge n$
+where $A \in \mathbb{R}^{m \times n}$ with $m\ge n$. This is a convex problem for any norm.
 
-Linear measurement model: $y = Ax + v$, $y$ are measurements, $x$ is unknown, $v$ is measurement error. Given $y=b$, best guess of $x$ is $x^\star$
+A common application s a linear measurement model, $\mathbf{y} = A\mathbf{x}_{\text{true}} + \mathbf{v}$, where $y$ represents measurements, $\mathbf{x}_{\text{true}}$ is an unknown parameter vector, and $\mathbf{v}$ is measurement noise. Given an observation $\mathbf{y}=\mathbf{b}$, the solution $\mathbf{x}^\star$ to the norm approximation problem is the best estimate of $\mathbf{x}_{\text{true}}$.
 
-### Least-Norm Problems
+### Least Norm Problem
+
+When a system of linear equations $A\mathbf{x}=\mathbf{b}$ is underdetermined ($m \le n$), there can be infinitely many solutions. The least-norm problem seeks the solution with the minimum norm:
 
 $$
 \begin{align*}
-&\text{minimize} & &\norm{x} \\
-&\text{subject to} & &Ax=b
+&\text{minimize} & &\norm{\mathbf{x}} \\
+&\text{subject to} & &A\mathbf{x}=\mathbf{b}
 \end{align*}
 $$
 
-where $A \in \mathbb{R}^{m \times n}$ with $m\le n$
+This is a convex optimization problem that selects the "smallest" solution from the affine subspace of all solutions.
 
-### Scalarized Problem
+### Regularized Approximation
+
+This approach combines the objectives of norm approximation and least norm problems. It is also known as Tikhonov regularization when the $L_2$-norm is used.
 
 $$
-\text{minimize } \norm{A x-b}+\gamma\norm{x}
+\text{minimize } \norm{A\mathbf{x}-\mathbf{b}}+\gamma\norm{\mathbf{x}}
 $$
 
-tradeoff between error and norm
+The parameter $\gamma > 0$ controls the trade-off between minimizing the approximation error $\norm{A\mathbf{x}-\mathbf{b}}$ and the size of the solution $\norm{\mathbf{x}}$. This formulation is useful for improving the conditioning of the problem and preventing overfitting.
 
 ## Statistical Estimation
 
-### Maximum Likelihood Estimation
+### Maximum Likelihood Estimation (MLE)
+
+MLE is a method for estimating the parameters of a statistical model.
+
+For a linear measurement model with IID noise, $y_{i}=\mathbf{a}_{i}^{T}\mathbf{x}+v_{i}$, the log-likelihood function to be maximized is:
 
 $$
-\text{maximize }(\text{over } x ) \quad \log p_{x}(y)
+l(\mathbf{x}) = \sum_{i=1}^{m} \log p(y_{i}-\mathbf{a}_{i}^{T}\mathbf{x})
 $$
-With linear measurement model with IID noise: $y_{i}=a_{i}^{T} x+v_{i}, \ i=1, \dots, m$, the estimation problem becomes
-$$
-\text{maximize } l(x) = \sum_{i=1}^{m} \log p(y_{i}-a_{i}^{T} x)
-$$
-where $y$ is observed value, $p$ is the PDF of the measurement noise $v$
 
-- Gaussian noise $\mathcal{N}(0, \sigma^{2}) : p(z)=(2 \pi \sigma^{2})^{-1 / 2} e^{-z^{2} /(2 \sigma^{2})}$
-  $$
-  l(x)=-\frac{m}{2} \log (2 \pi \sigma^{2}) - \frac{1}{2 \sigma^{2}} \sum_{i=1}^{m}(a_{i}^{T} x-y_{i})^{2}
-  $$
+where $p$ is the probability density function of the noise. If $\log p$ is a concave function, this is a convex optimization problem.
 
-- Laplacian noise $p(z)=(1 /(2 a)) e^{-\abs{z} / a}$
-  $$
-  l(x)=-m \log (2 a)-\frac{1}{a} \sum_{i=1}^{m}\abs*{a_{i}^{T} x-y_{i}}
-  $$
+Different noise type:
 
-- Uniform noise on $[-a, a]$
-  $$
-  l(x)=\begin{dcases}
-  -m \log (2 a) & \abs*{a_{i}^{T} x-y_{i}} \le a, \ i=1, \ldots, m \\
-  -\infty & \text{otherwise}
-  \end{dcases}
-  $$
+- Gaussian distribution $\mathcal{N}(0, \sigma^{2}) : p(z)=(2 \pi \sigma^{2})^{-1 / 2} e^{-z^{2} /(2 \sigma^{2})}$. Maximizing $l(\mathbf{x})$ is equivalent to minimizing the sum of squares of the residuals, $\sum(y_i - \mathbf{a}_i^T\mathbf{x})^2$, which is a least squares problem.
+- Laplace distribution $p(z)=(1 /(2 a)) e^{-\abs{z} / a}$. Maximizing $l(\mathbf{x})$ is equivalent to minimizing the sum of absolute values of the residuals, $\sum|y_i - \mathbf{a}_i^T\mathbf{x}|$, which is an $L_1$-norm approximation problem.
+- Uniform distribution on $[-c, c]$. Maximizing $l(\mathbf{x})$ is equivalent to finding a feasible point for the linear inequalities $|\mathbf{a}_{i}^{T}\mathbf{x}-y_{i}| \le c$.
 
 ### Logistic Regression
 
-Random variable $y\in \{0,1\}$ with distribution
+Logistic regression is used for binary classification. It models the probability of an outcome $y \in \{0, 1\}$ given features $\mathbf{u}$ as:
+
 $$
-p=\operatorname{prob}(y=1)=\frac{\exp (a^{T} u+b)}{1+\exp (a^{T} u+b)}
+p = \operatorname{prob}(y=1) = \frac{\exp(\mathbf{a}^{T}\mathbf{u}+b)}{1+\exp(\mathbf{a}^{T}\mathbf{u}+b)}
 $$
-log-likelihood function (for $y_1 = \dots = y_k = 1, \ y_{k+1} = \dots = y_m = 0$):
+
+Given $m$ data points $(\mathbf{u}_i, y_i)$, the parameters $(\mathbf{a}, b)$ are found by maximizing the log-likelihood function. If the observed outcomes are $y_1, \dots, y_k = 1$ and $y_{k+1}, \dots, y_m = 0$, the log-likelihood is:
+
 $$
-\begin{split}
-l(a, b) &=\log \left(\prod_{i=1}^{k} \frac{\exp (a^{T} u_{i}+b)}{1+\exp (a^{T} u_{i}+b)} \prod_{i=k+1}^{m} \frac{1}{1+\exp (a^{T} u_{i}+b)}\right) \\
-&=\sum_{i=1}^{k}(a^{T} u_{i}+b)-\sum_{i=1}^{m} \log \left(1+\exp (a^{T} u_{i}+b)\right)
-\end{split}
+l(\mathbf{a}, b) = \sum_{i=1}^{k}(\mathbf{a}^{T}\mathbf{u}_{i}+b)-\sum_{i=1}^{m} \log(1+\exp(\mathbf{a}^{T}\mathbf{u}_{i}+b))
 $$
-concave in $a, b$
+
+This function is concave in $\mathbf{a}$ and $b$, so finding the MLE parameters is a convex optimization problem.
