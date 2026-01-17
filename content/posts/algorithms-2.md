@@ -1,6 +1,7 @@
 ---
-title: Algorithm II
+title: Algorithms II
 date: 2020-07-07
+lastmod: 2026-01-05
 categories:
 - Study
 tags:
@@ -9,12 +10,11 @@ tags:
 - Open Courses
 ---
 
+This is a review of the Princeton University [Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2) course offered on Coursera.
 
-Review of Princeton [Algorithms II](https://www.coursera.org/learn/algorithms-part2) course on Coursera.
+For the first part of the course, see [Algorithms I](/posts/algorithms-1).
 
-[Algorithms I Review]({{< ref "algorithms-1" >}})
-
-My [solution](https://github.com/silencial/Algorithms) to the homework
+My solutions to the programming assignments are available on [GitHub](https://github.com/silencial/Algorithms).
 
 <!--more-->
 
@@ -22,76 +22,73 @@ My [solution](https://github.com/silencial/Algorithms) to the homework
 
 # Course Overview
 
-|   topic    |           data structures and algorithms           |
-| :--------: | :------------------------------------------------: |
-| data types |   stack, queue, bag, union-find, priority queue    |
-|  sorting   |           quicksort, mergesort, heapsort           |
-| searching  |           BST, red-black BST, hash table           |
-|   graphs   |         BFS, DFS, Prim, Kruskal, Dijkstra          |
-|  strings   | radix sorts, tries, KMP, regexps, data compression |
-|  advanced  |           B-tree, suffix array, maxflow            |
+| Topic      | Data Structures and Algorithms                               |
+| :--------- | :----------------------------------------------------------- |
+| Data Types | Stack, Queue, Bag, Union-Find, Priority Queue                |
+| Sorting    | Quicksort, Mergesort, Heapsort                               |
+| Searching  | Binary Search Tree (BST), Red-Black Tree, Hash Table         |
+| Graphs     | Breadth-First Search (BFS), Depth-First Search (DFS), Prim's, Kruskal's, Dijkstra's |
+| Strings    | Radix Sorts, Tries, Knuth-Morris-Pratt (KMP), Regular Expressions, Data Compression |
+| Advanced   | B-tree, Suffix Array, Max-Flow Min-Cut                       |
 
-# Undirected Graphs
+# Undirected Graph
 
-Terminology:
+An **undirected graph** is a set of vertices and a collection of edges that connect pairs of vertices, where edges have no direction.
 
-- **Path**: sequence of vertices connected by edges
-- **Cycle**: path whose first and last vertices are the same
+**Terminology:**
+
+- **Path**: A sequence of vertices connected by edges.
+- **Cycle**: A path where the first and last vertices are the same.
 
 ![Undirected Graphs](https://i.imgur.com/QaMFLaK.png)
 
-Some graph problems:
+**Common graph problems:**
 
-- **Path**: Is there a path between $s$ and $t$
-- **Shortest path**: What is the shortest path between $s$ and $t$
-- **Cycle**: Is there a cycle in the graph
-- **Euler tour**: Is there a cycle that uses each edge exactly once
-- **Hamilton tour**: Is there a cycle that uses each vertex exactly once.
-- **Connectivity**: Is there a way to connect all of the vertices?
-- **MST**: What is the best way to connect all of the vertices?
-- **Biconnectivity**: Is there a vertex whose removal disconnects the graph?
-- **Planarity**: Can you draw the graph in the plane with no crossing edges
-- **Graph isomorphism**: Do two adjacency lists represent the same graph?
+- **Pathfinding**: Is there a path between vertex $s$ and vertex $t$?
+- **Shortest path**: What is the shortest path between $s$ and $t$?
+- **Cycle detection**: Is there a cycle in the graph?
+- **Euler tour**: Is there a cycle that uses each edge exactly once?
+- **Hamilton tour**: Is there a cycle that visits each vertex exactly once?
+- **Connectivity**: Are all vertices in the graph connected?
+- **Minimum spanning tree (MST)**: What is the lowest-cost way to connect all vertices?
+- **Biconnectivity**: Is there a vertex whose removal would disconnect the graph?
+- **Planarity**: Can the graph be drawn in a plane with no crossing edges?
+- **Graph isomorphism**: Do two different adjacency lists represent the same graph?
 
 ## API
 
 ```java
 public class Graph {
-    Graph(int V);  // create an emtpy graph with V vertices
-    Graph(In in);  // create a graph from input stream
-    void addEdge(int v, int w);  // add an edge v-w
-    Iterable<Integer> adj(int v);  // vertices adjacent to v
-    int V();  // number of vertices
-    int E();  //number of edges
-    String toString();  // string representation
+    Graph(int V); // Create an empty graph with V vertices
+    Graph(In in); // Create a graph from an input stream
+    void addEdge(int v, int w); // Add an edge v-w
+    Iterable<Integer> adj(int v); // Vertices adjacent to v
+    int V(); // Number of vertices
+    int E(); // Number of edges
+    String toString(); // String representation
 }
 ```
 
-For vertices, convert them between names and integers with symbol table
+- Vertex: Use a symbol table to map between vertex names and integer indices.
+- Edge: There are three common representations for edges
+    1. A list of all edges.
+    2. An adjacency matrix (a $V \times V$ boolean matrix).
+    3. An array of adjacency lists (a vertex-indexed array of lists).
 
-For edges, we have 3 choices:
+Comparison of graph representations:
 
-1. Maintain a list of the edges
-2. Maintain a 2-D $V$-by-$V$ boolean matrix
-3. Maintain a vertex-indexed array of lists
+|  Representation  |  Space  | Add edge | Edge between v and w | Iterate over vertices adjacent to v |
+| :--------------: | :-----: | :------: | :------------------: | :---------------------------------: |
+|  List of edges   |   $E$   |    1     |         $E$          |                 $E$                 |
+| Adjacency matrix |  $V^2$  |    1     |          1           |                 $V$                 |
+| Adjacency lists  | $E + V$ |    1     |      degree(v)       |              degree(v)              |
 
-Comparison:
-
-|  Representation  | Space | Add edge | Edge between v and w | Iterate over vertices adjacent to v |
-| :--------------: | :---: | :------: | :------------------: | :---------------------------------: |
-|  list of edges   |   E   |    1     |          E           |                  E                  |
-| adjacency matrix | V^2^  |    1     |          1           |                  V                  |
-| adjacency lists  | E + V |    1     |      degree(v)       |              degree(v)              |
-
-In practice, use adjacency lists because
-
-- Algorithms based on iterating over vertices adjacent to $v$
-- Real-world graphs tend to be **sparse**
+In practice, adjacency lists are preferred because algorithms often require iterating over the vertices adjacent to a given vertex, and most real-world graphs are **sparse** (the number of edges $E$ is much smaller than $V^2$).
 
 ```java
 public class Graph {
     private final int V;
-    private Bag<Integer>[] adj;  // order doesn't matter
+    private Bag<Integer>[] adj; // Adjacency lists
 
     public Graph(int V) {
         this.V = V;
@@ -112,17 +109,20 @@ public class Graph {
 
 ## Depth-First Search
 
-1. Mark vertex $v$ as visited
-2. **Recursively** visit all unmarked vertices adjacent to $v$
+DFS explores a graph by going as deep as possible down one path before backtracking.
+
+1. Mark vertex $v$ as visited.
+2. **Recursively** visit all unvisited vertices adjacent to $v$.
 
 ```java
 public class DepthFirstPaths {
     private boolean[] marked;
-    private int[] edgeTo;
-    private int s;
+    private int[] edgeTo; // parent-link representation of the DFS tree
+    private int s; // source vertex
 
     public DepthFirstPaths(Graph G, int s) {
-        ...
+        // ... initialization ...
+        this.s = s;
         dfs(G, s);
     }
 
@@ -130,20 +130,24 @@ public class DepthFirstPaths {
         marked[v] = true;
         for (int w : G.adj(v)) {
             if (!marked[w]) {
+                edgeTo[w] = v; // w was discovered from v
                 dfs(G, w);
-                edgeTo[w] = v;
             }
         }
     }
 }
 ```
 
-After DFS, can find vertices connected to $s$ in constant time (all true vertices in `marked`) and can find a path to $s$ in time proportional to its length (`edgeTo` is a parent-link representation of a tree rooted at $s$).
+After running DFS from a source vertex $s$, we can find all vertices connected to $s$ in constant time by checking the `marked` array. A path from any connected vertex back to $s$ can be found in time proportional to its length by following the parent links in the `edgeTo` array.
 
 ## Breadth-First Search
 
-1. Remove vertex $v$ from queue
-2. Add to queue all unmarked vertices adjacent to $v$ and mark them
+BFS explores a graph by visiting all neighbors at the present depth before moving on to the next level.
+
+1. Add the source vertex to a queue and mark it as visited.
+2. While the queue is not empty:
+    1. Remove vertex $v$ from the queue.
+    2. For each unvisited neighbor $w$ of $v$, mark $w$ as visited, set its parent link to $v$, and add it to the queue.
 
 ```java
 public class BreadthFirstPaths {
@@ -152,15 +156,15 @@ public class BreadthFirstPaths {
 
     private void bfs(Graph G, int s) {
         Queue<Integer> q = new Queue<Integer>();
-        q.enqueue(s);
         marked[s] = true;
+        q.enqueue(s);
         while (!q.isEmpty()) {
             int v = q.dequeue();
             for (int w : G.adj(v)) {
                 if (!marked[w]) {
-                    q.enqueue(w);
-                    marked[w] = true;
                     edgeTo[w] = v;
+                    marked[w] = true;
+                    q.enqueue(w);
                 }
             }
         }
@@ -168,22 +172,22 @@ public class BreadthFirstPaths {
 }
 ```
 
-BFS examines vertices in increasing distance from $s$. It can be used to find the shortest path.
+BFS examines vertices in increasing order of their distance (in terms of the number of edges) from $s$. Consequently, it finds the shortest path in an unweighted graph.
 
-## Connected Components
+## Connected Component
 
-**Definition**:
+**Definition:**
 
-- Vertices $v$ and $w$ are connected if there is a path between them
-- A connected component is a maximal set of connected vertices
+- Two vertices, $v$ and $w$, are **connected** if a path exists between them.
+- A **connected component** is a maximal set of connected vertices.
 
-Use DFS to partition vertices into connected components, then can answer whether $v$ is connected to $w$ in **constant** time
+By using DFS to partition vertices into connected components, we can determine if any two vertices are connected in **constant** time.
 
 ```java
 public class CC {
     private boolean[] marked;
-    private int[] id;  // id of component containing v
-    private int count;  // number of components
+    private int[] id;  // id[v] = component identifier for vertex v
+    private int count; // number of components
 
     public CC(Graph G) {
         marked = new boolean[G.V()];
@@ -191,12 +195,12 @@ public class CC {
         for (int v = 0; v < G.V(); v++) {
             if (!marked[v]) {
                 dfs(G, v);
-                count++;  // next component
+                count++; // A new component has been found
             }
         }
     }
 
-    boolean connected(int v, int w)
+    public boolean connected(int v, int w)
     { return id[v] == id[w]; }
 
     public int count()
@@ -207,7 +211,7 @@ public class CC {
 
     private void dfs(Graph G, int v) {
         marked[v] = true;
-        id[v] = count;  // all vertices discovered in same call of dfs have same id
+        id[v] = count; // All vertices in the same DFS traversal belong to the same component
         for (int w : G.adj(v))
             if (!marked[w]) {
                 dfs(G, w);
@@ -217,81 +221,88 @@ public class CC {
 }
 ```
 
-# Directed Graphs
+# Directed Graph
+
+A **directed graph** (or **digraph**) is a set of vertices connected by edges, where each edge has a direction.
 
 ![Directed Graphs](https://i.imgur.com/1z0ur3o.png)
 
 ## API
 
-Almost same as `Graph`:
+The API for a digraph is nearly identical to that for an undirected graph, with the primary difference being that edges are directed from one vertex to another.
 
 ```java
-public class DiGraph {
-    DiGraph(int V);  // create an emtpy digraph with V vertices
-    DiGraph(In in);  // create a digraph from input stream
-    void addEdge(int v, int w);  // add an edge v->w
-    Iterable<Integer> adj(int v);  // vertices pointing from v
-    int V();  // number of vertices
-    int E();  //number of edges
-    Digraph reverse();  // reverse of this digraph
-    String toString();  // string representation
+public class Digraph {
+    Digraph(int V); // Create an empty digraph with V vertices
+    Digraph(In in); // Create a digraph from an input stream
+    void addEdge(int v, int w); // Add a directed edge v→w
+    Iterable<Integer> adj(int v); // Vertices adjacent from v
+    int V(); // Number of vertices
+    int E(); // Number of edges
+    Digraph reverse(); // Returns the reverse of this digraph
+    String toString(); // String representation
 }
 ```
 
 ## Digraph Search
 
-Both DFS and BFS are digraph algorithms, code is identical to undirected graphs.
+Both DFS and BFS can be applied to digraphs. The code for these search algorithms is identical to their undirected graph counterparts.
 
-**DFS search applications**:
+**DFS applications:**
 
-- Every program is a digraph. Vertex=basic block of instructions; edge=jump
-  - Dead-code elimination: find and move unreachable code
-  - Infinite-loop detection: whether exit is unreachable
-- Every data structure is a digraph. Vertex=object; edge=reference
-  - Mark-sweep algorithm: collect unreachable objects as garbage
+- **Compiler Analysis**: Programs can be modeled as digraphs where vertices are basic blocks of instructions and edges are jumps.
+    - **Dead-code elimination**: Find and remove unreachable code blocks.
+    - **Infinite-loop detection**: Determine if the program's exit point is unreachable.
+- **Garbage Collection**: Data structures in memory form a digraph where objects are vertices and references are edges.
+    - **Mark-sweep algorithm**: Traverses the graph from root objects (e.g., local variables) to find all reachable objects. Unreachable objects are then collected as garbage.
 
-**BFS search applications**:
+**BFS applications:**
 
-- Multiple-source shortest paths: initialize by enqueuing all source vertices
-- Web crawler
+- **Multiple-Source Shortest Paths**: Find the shortest paths from a *set* of source vertices by enqueuing all sources initially.
+- **Web Crawling**: A web crawler can model the internet as a digraph where pages are vertices and hyperlinks are edges, using BFS to discover pages layer by layer.
 
 ## Topological Sort
 
-**Precedence scheduling**: Given a set of tasks to be completed with precedence constraints, in which order should we schedule the tasks?
+A topological sort is a linear ordering of a digraph's vertices such that for every directed edge from vertex $u$ to vertex $v$, $u$ comes before $v$ in the ordering. This is only possible if the graph is a **directed acyclic graph (DAG)**.
 
-1. Represent data as digraph: vertex=task; edge=precedence constraint
-2. Represent the problem as topological sort: redraw directed acyclic graph (**DAG**) so all edges point upwards
+**Application: Precedence scheduling**. Given a set of tasks with precedence constraints (e.g., task A must be completed before task B), what is a valid order to perform the tasks?
 
-Run DFS and return vertices in reverse postorder.
+1. Model the problem as a digraph: each task is a vertex, and an edge from A to B represents that A must precede B.
+2. The problem then becomes finding a topological sort of the graph.
 
-## Strong Components
+A topological sort can be computed by running DFS and taking the vertices in **reverse postorder**.
 
-**Definition**:
+## Strong Component
 
-- Vertices $v$ and $w$ are **strongly connected** if there is both a directed path from $v$ to $w$ and a directed path from $w$ to $v$
-- A Strong component is a maximal subset of strongly-connected vertices
+**Definition:**
 
-**Applications**:
+- Vertices $v$ and $w$ are **strongly connected** if there is both a directed path from $v$ to $w$ and a directed path from $w$ to $v$.
+- A **strongly connected component** (SCC) is a maximal subset of strongly connected vertices.
 
-- Food Web. Vertex=species; edge=from producer to consumer; strong component=subset of species with common energy flow
-- Software module dependency graph. Vertex=software module; edge=from module to dependency; strong component=subset of mutually interacting modules
+**Applications:**
 
-**Kosaraju-Sharir algorithm**:
+- **Ecological Food Webs**: Vertices can represent species, and an edge from A to B means A is consumed by B. An SCC represents a subset of species where energy flows cyclically.
+- **Software Module Dependencies**: Vertices are software modules, and an edge from A to B means A depends on B. An SCC represents a set of mutually dependent modules that should likely be grouped into a single package.
 
-1. Compute topological order (reverse postorder) in **Reverse** Graph $G^R$
-2. Run DFS in $G$, visiting unmarked vertices in the order computed above
+**Kosaraju-Sharir algorithm:** The classic algorithm for finding all SCCs in a digraph in linear time.
+
+1. Compute the topological order (reverse postorder) of the **reversed graph** $G^R$.
+2. Run DFS on the original graph $G$, visiting the vertices in the order obtained from step 1 to identify the separate SCCs.
 
 ```java
 public class KosarajuSharirSCC {
-    private boolean marked[];
+    private boolean[] marked;
     private int[] id;
     private int count;
 
     public KosarajuSharirSCC(Digraph G) {
         marked = new boolean[G.V()];
         id = new int[G.V()];
-        DepthFirstOrder dfs = new DepthFirstOrder(G.reverse());
-        for (int v : dfs.reversePost()) {
+        // Get topological sort of the reversed graph
+        DepthFirstOrder dfsOrder = new DepthFirstOrder(G.reverse());
+
+        // Run DFS on original graph in the computed order
+        for (int v : dfsOrder.reversePost()) {
             if (!marked[v]) {
                 dfs(G, v);
                 count++;
@@ -312,57 +323,57 @@ public class KosarajuSharirSCC {
 }
 ```
 
-## HW6 Wordnet
+## HW6: WordNet
 
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/wordnet/specification.php)
 
-- **WordNet digraph**: build digraph from input files. [WordNet.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/WordNet.java)
-  - `synsets.txt` saves all the id and corresponding words ==(one id can have one or more words, and one word can have one or more ids)==
-  - `hypernyms.txt` contains hypernym relationships
-- **Shortest ancestral path**: given two vertices, find the directed paths to their common ancestor with the max total length. [SAP.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/SAP.java)
-- **Outcast detection**: given a list of WordNet nouns, find the noun least related to the others. This can be measured by the sum of SAP distances to all the other vertices. [Outcast.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/Outcast.java)
+This assignment involves building and analyzing a large digraph based on the WordNet lexical database.
 
-# Minimum Spanning Trees
+- **WordNet digraph**: Build the digraph from the provided input files. [WordNet.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/WordNet.java)
+    - `synsets.txt`: This file maps a unique ID to a synset (a set of synonymous words). A single word can appear in multiple synsets.
+    - `hypernyms.txt`: This file defines the hypernym ("is-a-kind-of") relationships, which form the edges of the digraph.
+- **Shortest ancestral path**: Given two synsets (vertices), find a common ancestor in the digraph that has the shortest total distance from them. The distance is the sum of the path lengths from each synset to the common ancestor. [SAP.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/SAP.java)
+- **Outcast detection**: Given a list of WordNet nouns, identify the "outcast"—the noun that is least related to the others. The relatedness is measured by the sum of SAP distances from one noun to all others in the list; the outcast is the noun with the maximum sum. [Outcast.java](https://github.com/silencial/Algorithms/blob/master/06_WordNet/Outcast.java)
 
-**Definition**: A spanning tree of $G$ is a subgraph $T$ that is both a tree (connected and acyclic) and spanning (includes all of the vertices)
+# Minimum Spanning Tree
 
-**Problem**: Given undirected graph $G$ with positive edge weights, find the min weight spanning tree.
+A **spanning tree** of a connected, undirected graph $G$ is a subgraph that includes all of $G$'s vertices and is a single tree (i.e., it is connected and has no cycles).
+
+**Problem**: Given a connected, edge-weighted, undirected graph, find a spanning tree with the minimum possible total edge weight. This is known as a **Minimum Spanning Tree (MST)**.
 
 ## Edge-Weighted Graph API
 
-Edge abstraction needed for weighted edges.
+To work with weighted graphs, we first need an abstraction for a weighted edge and a graph representation that uses it.
 
 ```java
 public class Edge implements Comparable<Edge> {
     private final int v, w;
     private final double weight;
 
-    Edge(int v, int w, double weight) {
+    public Edge(int v, int w, double weight) {
         this.v = v;
         this.w = w;
         this.weight = weight;
     }
 
-    int either()
+    public double weight() {
+        return weight;
+    }
+
+    public int either()
     { return v; }
 
-    int other(int vertex) {
+    public int other(int vertex) {
         if (vertex == v) return w;
         else return v;
     }
 
-    int compareTo(Edge that) {
-        if (this.weight < that.weight) return -1;
-        else if (this.weight > that.weight) return 1;
-        else return 0;
-    }
-
-    double weight()
-    { return weight; }
+    public int compareTo(Edge that)
+    { return Double.compare(this.weight, that.weight); }
 }
 ```
 
-Edge-weighted graph representation:
+The graph representation uses an array of bags to store the edges incident to each vertex.
 
 ```java
 public class EdgeWeightedGraph {
@@ -384,48 +395,52 @@ public class EdgeWeightedGraph {
 
     public Iterable<Edge> adj(int v)
     { return adj[v]; }
+
+    // ... other methods like V(), E(), edges()
 }
 ```
 
 ## Greedy Algorithm
 
-**Simplifications**:
+A generic, greedy approach can find an MST based on the **cut property**.
 
-- Edge weights are distinct
-- Graph is connected
+**Assumptions for a simple proof:** Under these assumptions, the MST exists and is unique.
 
-Then MST exists and is unique.
+- Edge weights are distinct.
+- The graph is connected.
 
-**Definitions**:
+**Definition:**
 
-- A **cut** in a graph is a partition of its vertices into two (nonempty) sets
-- A **crossing edge** connects a vertex in one set with a vertex in the other.
+- A **cut** is a partition of a graph's vertices into two non-empty, disjoint sets.
+- A **crossing edge** is an edge that connects a vertex in one set to a vertex in the other.
 
-Given any cut, the crossing edge of min weight is in the MST.
+**Cut property**: For any cut in the graph, the minimum-weight crossing edge must be part of the MST.
 
-**Algorithm**:
+This leads to a general greedy algorithm:
 
-1. Start with all edges colored white
-2. Find cut with no black crossing edges; color its min-weight edge black
-3. Repeat until $V-1$ edges are colored black
+1. Initialize all edges as unselected.
+2. Find a cut that has no selected crossing edges.
+3. Select the minimum-weight edge that crosses this cut.
+4. Repeat this process until $V-1$ edges are selected.
 
-**Remove simplifying assumptions**:
+**Handling edge case**:
 
-- Greedy MST still correct if equal weights are present
-- Compute MST of each component if graph is not connected
+- If edge weights are not distinct, the MST may not be unique, but the greedy algorithm will still find a valid MST.
+- If the graph is not connected, we compute a **minimum spanning forest** (an MST for each connected component).
 
-**Efficient implementations**: How to choose cut? How to find min-weight edge?
+The challenge lies in efficiently choosing the cut and finding the minimum-weight crossing edge. Kruskal's and Prim's algorithms are two classic approaches that implement this greedy strategy.
 
 ## Kruskal's Algorithm
 
-1. Consider edges in ascending order of weight
-2. Add next edge to tree $T$ unless doing so would create a cycle
+Kruskal's algorithm builds the MST by adding the lowest-weight edges that do not form a cycle.
 
-The challenge is how to examine adding edge $v$-$w$ to tree $T$ create a cycle. Use **union-find**:
+1. Consider all edges in ascending order of their weight.
+2. For each edge, add it to the MST if and only if it does not create a cycle with the edges already selected.
 
-- Maintain a set for each connected component in $T$
-- If $v$ and $w$ are in same set, then adding $v$-$w$ would create a cycle
-- To add $v$-$w$ to $T$, merge sets containing $v$ and $w$
+The main challenge is efficiently detecting cycles. This is perfectly solved using a **union-find** data structure, where each set represents a connected component in the growing forest.
+
+- To check if adding edge $v-w$ creates a cycle, we test if $v$ and $w$ are already in the same component (`find(v) == find(w)`).
+- To add the edge, we merge the components of $v$ and $w$ (`union(v, w)`).
 
 ```java
 public class KruskalMST {
@@ -438,10 +453,10 @@ public class KruskalMST {
             pq.insert(e);
 
         UF uf = new UF(G.V());
-        while (!pq.isEmpty() && mst.size() < G.V()-1) {
+        while (!pq.isEmpty() && mst.size() < G.V() - 1) {
             Edge e = pq.delMin();
             int v = e.either(), w = e.other(v);
-            if (!uf.connected(v, w)) {
+            if (!uf.connected(v, w)) { // Does not form a cycle
                 uf.union(v, w);
                 mst.enqueue(e);
             }
@@ -455,87 +470,79 @@ public class KruskalMST {
 
 ## Prim's Algorithm
 
-1. Start with vertex $0$ and greedily grow tree $T$
-2. Add to $T$ the min weight edge with exactly one endpoint in $T$
-3. Repeat until $V-1$ edges
+Prim's algorithm grows the MST from a single starting vertex.
+
+1. Start with an arbitrary vertex in the tree $T$.
+2. Repeatedly add the minimum-weight edge that connects a vertex in $T$ to a vertex outside of $T$.
+3. Continue until $V-1$ edges have been added and all vertices are in $T$.
 
 ### Lazy Implementation
 
-Maintain a PQ of **edges** with (at least) one endpoint in $T$, where the priority is the weight of edge
+This version maintains a priority queue of **edges**. When a vertex is added to the tree, all its incident edges are added to the PQ.
 
-1. Delete-min to determine next edge $e=v\text{-}w$ to add to $T$
-2. Disregard if both endpoints $v$ and $w$ are marked (both in $T$)
-3. Otherwise, let $w$ be the unmarked vertex (not in $T$)
-   - add to PQ any edge incident to $w$
-   - add $e$ to $T$ and mark $w$
+1. Repeatedly extract the minimum-weight edge from the PQ.
+2. If the edge connects a tree vertex to a non-tree vertex, add it to the MST. Mark the new vertex as part of the tree and add its incident edges to the PQ.
+3. If both endpoints are already in the tree, the edge is obsolete; discard it and continue. This is the "lazy" part—we leave obsolete edges in the PQ.
 
 ```java
 public class LazyPrimMST {
     private boolean[] marked; // MST vertices
-    private Queue<Edge> mst; // MST edges
-    private MinPQ<Edge> pq; // PQ of edges
+    private Queue<Edge> mst;  // MST edges
+    private MinPQ<Edge> pq;   // PQ of edges crossing the cut
 
-    public LazyPrimMST(WeightedGraph G) {
+    public LazyPrimMST(EdgeWeightedGraph G) {
         pq = new MinPQ<Edge>();
         mst = new Queue<Edge>();
         marked = new boolean[G.V()];
-        visit(G, 0);
+        visit(G, 0); // Start from vertex 0
 
         while (!pq.isEmpty() && mst.size() < G.V() - 1) {
             Edge e = pq.delMin();
             int v = e.either(), w = e.other(v);
-            if (marked[v] && marked[w]) continue;
+            if (marked[v] && marked[w]) continue; // Obsolete edge
             mst.enqueue(e);
             if (!marked[v]) visit(G, v);
             if (!marked[w]) visit(G, w);
         }
     }
 
-    private void visit(WeightedGraph G, int v) {
+    private void visit(EdgeWeightedGraph G, int v) {
         marked[v] = true;
         for (Edge e : G.adj(v))
             if (!marked[e.other(v)])
                 pq.insert(e);
     }
 
-        public Iterable<Edge> mst()
-        { return mst; }
+    // ...
 }
 
 ```
 
 ### Eager Implementation
 
-Maintain a PQ of **vertices** connected by an edge to $T$, where priority of vertex $v$ = the weight of shortest edge connecting to $T$
+This optimized version maintains a priority queue of **vertices** not yet in the MST. The priority of a vertex $v$ is the weight of the shortest known edge connecting it to the tree.
 
-1. Delete min vertex $v$ and add its associated edge $v$-$w$ to $T$
-2. Update PQ by considering all edges $v$-$x$ incident to $v$
-   - ignore if $x$ is already in $T$
-   - add $x$ to PQ if not already in it
-   - update priority of $x$ if $v$-$x$ becomes shortest edge connecting $x$ to $T$
+1. Repeatedly extract the minimum-priority vertex $v$ from the PQ and add its corresponding edge to the MST.
+2. "Scan" vertex $v$: for each neighbor $w$, if the edge $v-w$ provides a shorter connection for $w$ to the tree, update $w$'s priority in the PQ.
 
 ```java
 public class PrimMST {
-    private Edge[] edgeTo;  // edgeTo[v] = shortest edge from tree vertex to non-tree vertex
-    private double[] distTo;  // distTo[v] = weight of shortest such edge
-    private boolean[] marked;  // marked[v] = true if v on tree, false otherwise
+    private Edge[] edgeTo;    // edgeTo[v] = shortest edge from tree to v
+    private double[] distTo;  // distTo[v] = weight of that edge
+    private boolean[] marked; // marked[v] = true if v is on tree
     private IndexMinPQ<Double> pq;
 
-    public PrimMST(WeightedGraph G) {
+    public PrimMST(EdgeWeightedGraph G) {
         edgeTo = new Edge[G.V()];
         distTo = new double[G.V()];
         marked = new boolean[G.V()];
         pq = new IndexMinPQ<Double>(G.V());
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < G.V(); v++) {
             distTo[v] = Double.POSITIVE_INFINITY;
+        }
 
-        for (int v = 0; v < G.V(); v++)  // run from each vertex to find
-            if (!marked[v]) prim(G, v);  // minimum spanning forest
-    }
-
-    private void prim(EdgeWeightedGraph G, int s) {
-        distTo[s] = 0.0;
-        pq.insert(s, distTo[s]);
+        distTo[0] = 0.0;
+        pq.insert(0, 0.0);
         while (!pq.isEmpty()) {
             int v = pq.delMin();
             scan(G, v);
@@ -551,114 +558,108 @@ public class PrimMST {
                 distTo[w] = e.weight();
                 edgeTo[w] = e;
                 if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-                else                pq.insert(w, distTo[w]);
+                else pq.insert(w, distTo[w]);
             }
         }
     }
-
-    public Iterable<Edge> edges() {
-        Queue<Edge> mst = new Queue<Edge>();
-        for (int v = 0; v < edgeTo.length; v++) {
-            Edge e = edgeTo[v];
-            if (e != null)
-                mst.enqueue(e);
-        }
-        return mst;
-    }
+    // ...
 }
 ```
 
-And we need a `IndexMinPQ` data structure
+This requires an **Indexed Priority Queue** (`IndexMinPQ`) that can efficiently decrease the key of an item it contains.
 
 ```java
 public class IndexMinPQ<Key extends Comparable<Key>> {
-    private int maxN;  // maximum number of elements on PQ
-    private int n;  // number of elements on PQ
-    private int[] pq;  // binary heap using 1-based indexing
-    private int[] qp;  // inverse of pq - qp[pq[i]] = pq[qp[i]] = i
-    private Key[] keys;  // keys[i] = priority of i
+    private int maxN;   // Maximum number of elements in the PQ
+    private int n;      // Current number of elements in the PQ
+    private int[] pq;   // Binary heap representation (1-based indexing)
+    private int[] qp;   // Inverse of pq: qp[pq[k]] = pq[qp[k]] = k
+    private Key[] keys; // keys[i] = priority of index i
 
-    IndexMinPQ(int N);  // create indexed priority queue with indices 0, 1, …, N-1
-    void insert(int i, Key key);  // associate key with index i
-    void decreaseKey(int i, Key key);  // decrease the key associated with index i, use swim(qp[i])
-    boolean contains(int i);  // is i an index on the priority queue?
-    int delMin();  // remove a minimal key and return its associated index
-    boolean isEmpty();  // is the priority queue empty?
-    int size();  // number of entries in the priority queu
+    IndexMinPQ(int N); //Create an indexed PQ with indices from 0 to N-1
+    void insert(int i, Key key); // Associate a priority (key) with index i
+    void decreaseKey(int i, Key key); // Decrease the priority associated with index i, use swim(qp[i])
+    boolean contains(int i); // Check if a given index is currently in the PQ.
+    int delMin(); // Remove the item with the minimum priority and return its index
+    boolean isEmpty(); // Check if the PQ is empty
+    int size(); // Number of items currently in the PQ
 }
 ```
 
-# Shortest Paths
+# Shortest Path
 
-Given an edge-weighted digraph, find the shortest path from $s$ to $t$.
+The **shortest path problem** is to find a path between a source vertex $s$ and a target vertex $t$ in an edge-weighted digraph such that the sum of the weights of its edges is minimized. The algorithms discussed here solve the **single-source shortest paths problem**, finding the shortest paths from a source vertex $s$ to all other vertices in the graph.
 
-|         Algorithm          |     Restriction     | Typical case | Worst case | Extra space |
+|         Algorithm          |     Restriction     | Typical Case | Worst Case | Extra Space |
 | :------------------------: | :-----------------: | :----------: | :--------: | :---------: |
-|      Topological sort      | no directed cycles  |    E + V     |   E + V    |      V      |
-|   Dijkstra (binary heap)   | no negative weights |   E log V    |  E log V   |      V      |
-|        Bellman-Ford        | no negative cycles  |     E V      |    E V     |      V      |
-| Bellman-Ford (queue-based) | no negative cycles  |    E + V     |    E V     |      V      |
+|      Topological sort      | No directed cycles  |   $E + V$    |  $E + V$   |     $V$     |
+|  Dijkstra's (binary heap)  | No negative weights |  $E \log V$  | $E \log V$ |     $V$     |
+|        Bellman-Ford        | No negative cycles  |    $E V$     |   $E V$    |     $V$     |
+| Bellman-Ford (queue-based) | No negative cycles  |   $E + V$    |   $E V$    |     $V$     |
 
 ## API
 
-**Weighted directed edge** API:
+The APIs require abstractions for weighted directed edges, the digraph itself, and the shortest path results.
+
+**Weighted directed edge API:**
 
 ```java
 public class DirectedEdge {
     private final int v, w;
     private final double weight;
 
-    // weighted edge v→w
+    // Represents a weighted edge v→w
     public DirectedEdge(int v, int w, double weight) {
         this.v = v;
         this.w = w;
         this.weight = weight;
     }
 
-    int from()
-    { return v; }
-
-    int to()
-    { return w; }
-
-    double weight()
-    { return weight; }
-
-    String toString();  // string representation
+    public int from() { return v; }
+    public int to() { return w; }
+    public double weight() { return weight; }
+    public String toString() { /* ... */ }; // string representation
 }
 ```
 
- The **Edge-weighted digraph** API is the same as `EdgeWeightedGraph`.
+The **edge-weighted digraph API** is analogous to its undirected counterpart, but `addEdge` adds a single directed edge.
 
-**Single-source shortest paths** API:
+**Single-source shortest path API:**
 
 ```java
 public class SP {
-    SP(EdgeWeightedDigraph G, int s);  // shortest paths from s in graph G
-    double distTo(int v);  // length of shortest path from s to v
-    Iterable<DirectedEdge> pathTo(int v);  // shortest path from s to v
+    // Constructor finds shortest paths from s in graph G
+    public SP(EdgeWeightedDigraph G, int s);
+
+    // Returns the length of the shortest path from s to v
+    public double distTo(int v);
+
+    // Returns the sequence of edges on the shortest path from s to v
+    public Iterable<DirectedEdge> pathTo(int v);
 }
 ```
 
 ## Edge Relaxation
 
-Relax edge $e=v \to w$
+All these algorithms are built on the principle of **edge relaxation**. To relax an edge $e = v \to w$:
 
-- `distTo[v]` is length of shortest known path from $s$ to $v$
-- `distTo[w]` is length of shortest known path from $s$ to $w$
-- `edgeTo[w]` is last edge on shortest known path from $s$ to $w$
-- If $e = v \to w$ gives shorter path to $w$ through $v$, update both `distTo[w]` and `edgeTo[w]`
+- We test if the best-known path from $s$ to $w$ can be improved by going through $v$.
+- If `distTo[v] + e.weight() < distTo[w]`, we have found a new, shorter path to $w$. We update `distTo[w]` with this new shorter distance and set `edgeTo[w]` to $e$, recording that this new path came via edge $e$.
 
-Different ways to choose which edge to relax:
-
-- Dijkstra's algorithm (nonnegative weights)
-- Topological sort algorithm (no directed cycles)
-- Bellman-Ford algorithm (no negative cycles)
+The various shortest-path algorithms differ primarily in the order they choose to relax edges.
 
 ## Dijkstra's Algorithm
 
-1. Consider vertices in increasing order of distance from $s$
-2. Add vertex to tree and relax all edges pointing from that vertex
+Dijkstra's algorithm is a greedy approach that works for digraphs with **non-negative** edge weights.
+
+1. Initialize `distTo[s] = 0` and `distTo[v] = infinity` for all other vertices.
+2. Repeatedly select the unvisited vertex $v$ with the smallest `distTo[]` value.
+3. Add $v$ to the shortest-path tree (SPT) and relax all of its outgoing edges.
+
+The implementation is structurally very similar to the eager version of Prim's algorithm, using an indexed priority queue to efficiently select the next closest vertex.
+
+- Prim's algorithm greedily grows an MST by adding the vertex closest to the **entire tree**.
+- Dijkstra's algorithm greedily grows an SPT by adding the vertex closest to the **source vertex**.
 
 ```java
 public class DijkstraSP {
@@ -689,25 +690,20 @@ public class DijkstraSP {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
             if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-            else pq.insert(w, distTo[w]);
+            else                pq.insert(w, distTo[w]);
         }
     }
 }
 ```
 
-Prim's algorithm is essentially the same algorithm, distinct in the way to choose next vertex for the tree:
+## Shortest Path in DAG
 
-- Prim's algorithm choose the closest vertex to the **tree** (via undirected edge)
-- Dijkstra's algorithm choose the closest vertex to the **source** (via a directed path)
+For edge-weighted **Directed Acyclic Graph (DAG)**, we can find shortest paths more efficiently, even with negative edge weights.
 
-## Topological Sort
+1. Compute a topological sort of the vertices.
+2. Relax the outgoing edges of each vertex in topological order.
 
-Suppose the edge-weighted digraph has no directed cycles
-
-1. Consider vertices in topological order
-2. Relax all edges pointing from that vertex
-
-It is more efficient to get the SPT. Time is proportional to $E + V$
+This approach computes the SPT in linear time, $O(E + V)$, because each edge is relaxed exactly once.
 
 ```java
 public class AcyclicSP {
@@ -727,128 +723,111 @@ public class AcyclicSP {
             for (DirectedEdge e : G.adj(v))
                 relax(e);
         }
+
+        // ... relax() method ...
     }
 ```
 
 **Applications**:
 
-- Seam carving: Resize an image without distortion
-  - Grid DAG: vertex = pixel; edge = from pixel to 3 downward neighbors
-  - Weight of pixel = energy function of 8 neighboring pixels
-  - Seam = shortest path (sum of vertex weights) from top to bottom
-- Find longest paths in edge-weighted DAGs
-  - Topological sort algorithm works with negative weights.
-  - Negate all the weights, find shortest path, negate weights in result.
-- Parallel job scheduling: Given a set of jobs with durations and precedence constraints, schedule the jobs (by finding a start time for each) so as to achieve the minimum completion time.
-  - Source and sink vertices. Two vertices for each job (begin and end).
-  - Three edges for each job. Begin to end (weighted by duration); source to begin (0 weight); end to sink (0 weight)
-  - One edge for each precedence constraint (0 weight)
-  - Use **longest path** from the source to schedule each job
+- **Seam carving**: A content-aware image resizing technique. To find a vertical seam, the image is modeled as a DAG where pixels are vertices. The shortest path from any top pixel to any bottom pixel corresponds to the lowest-energy seam.
+- **Finding longest paths in DAGs**: This is used in critical path analysis for scheduling problems. To find the longest path, negate all edge weights, run the acyclic shortest path algorithm, and then negate the resulting distances.
+- **Parallel job scheduling**: Model jobs as vertices and precedence constraints as edges. The longest path from a global start to a global finish vertex determines the minimum completion time for the entire project.
 
-## Bellman-Ford
+## Bellman-Ford Algorithm
 
-Dijkstra doesn't work with **negative** edge weights.
+The Bellman-Ford algorithm is a more general but slower algorithm that can handle edge-weighted digraphs with **negative edge weights**. A shortest path is only well-defined if there are no **negative cycles** reachable from the source.
 
-A SPT exists iff no negative cycles, A **negative cycle** is a directed cycle whose sum of edge weights is negative.
-
-**Bellman-Ford algorithm**:
+The standard Bellman-Ford algorithm relaxes *every* edge in the graph $V-1$ times.
 
 ```java
-for (int i = 0; i < G.V(); i++)
+// Conceptual algorithm
+for (int pass = 0; pass < G.V(); pass++)
     for (int v = 0; v < G.V(); v++)
         for (DirectedEdge e : G.adj(v))
             relax(e);
 ```
 
-**Dynamic programming** algorithm can be used to compute SPT in any edge-weighted graph with no negative cycles in time proportional to $E \times V$:
+This general method is guaranteed to find the shortest path in any edge-weighted digraph with no negative cycles in $O(EV)$ time. An important optimization is to maintain a queue of vertices whose `distTo[]` values have changed, as only the edges from those vertices need to be considered for relaxation in the next pass.
 
-- If `distTo[v]` does not change during pass $i$, no need to relax any edge pointing from $v$ in pass $i+1$
-- Maintain a queue of vertices whose `distTo[]` changed
+**Negative cycle detection**: Bellman-Ford can also detect negative cycles. If, after $V-1$ passes, a $V$-th pass still finds an edge that can be relaxed, a negative cycle must exist.
 
-Negative cycle can be found by Bellman-Ford algorithm too: If any vertex $v$ is updated in phase $V$, there exists a negative cycle.
+**Negative cycle application**: In currency exchange, an arbitrage opportunity is a cycle of trades that results in a profit. By modeling currencies as vertices and exchange rates as edge weights, we can find such opportunities by looking for negative cycles. If the edge weight is defined as $\ln(\text{rate})$, a cycle product greater than 1 becomes a cycle sum less than 0.
 
-**Negative cycle application**: Arbitrage detection. Given table of exchange rates, is there an arbitrage opportunity?
-
-- Vertex = currency; edge = transaction; weight = exchange rate
-- Find a directed cycle whose product of edge weights > 1
-- Take $-\ln$ for the weights so that multiplication > 1 turns to addition < 0
-- Equivalent to find a negative cycle
-
-## HW7 Seam Carving
+## HW7: Seam Carving
 
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/seam/specification.php)
 
-Seam Carving is a content-aware image resizing technique. Remove one row/column every time.
+This assignment implements seam carving, a content-aware image resizing technique. It operates by repeatedly finding and removing a "seam"—a path of pixels—with the lowest total energy.
 
-1. Design energy function for pixels
-2. Find seam with minimal energy with one pixel every row/column, and every two adjacent seam points differ at most 1 column/row
-3. Delete seam
-
-For this problem, dynamic programming is equivalent to treat the image as a graph and find the shortest path on it.
-
-1. Treat every pixel as a vertex (column, row) and there are edges connecting from it to vertexes (column-1, row+1), (column, row+1) and (column+1, row+1), unless the vertex is invalid.
-2. This graph is a DAG so the shortest path problem can be solved by topological sort. Moreover, since edges are connected layer by layer, we can sort it layer by layer too.
-3. To optimize the algorithm, energy can be precomputed and stored. When removing seams, only points near the removed location should be updated.
-4. Find/remove horizontal and vertical seam are equivalent, except for a transpose.
+1. **Energy function**: First, an energy value is computed for each pixel, which measures its importance.
+2. **Seam finding as shortest path**: The problem of finding the lowest-energy seam is modeled as a shortest path problem in a DAG. Each pixel is a vertex, and directed edges connect it to its valid neighbors in the next row (or column).
+3. **Topological sort approach**: Since the image graph is a DAG with a regular, layered structure, we can find the shortest path (the seam) efficiently by relaxing edges layer by layer, which is equivalent to processing vertices in topological order.
+4. **Seam removal**: Once the seam is identified, its pixels are removed from the image. The process can be repeated to further resize the image. To remove a horizontal seam, the image can be transposed and the same vertical seam removal logic can be applied.
 
 **Solution**: [SeamCarver.java](https://github.com/silencial/Algorithms/blob/master/07_Seam_Carving/SeamCarver.java)
 
 # Maximum Flow
 
+The **maximum flow problem** involves finding the greatest possible rate at which material can flow from a designated source vertex to a sink vertex through a network of capacitated edges. This has wide-ranging applications in areas like network routing, logistics, and scheduling.
+
 **Definition**:
 
-- A **$st$-cut** is a partition of the vertices into two disjoint sets, with $s$ in one set $A$ and $t$ is the other set $B$
-- Its **capacity** is the sum of the capacities of the edges from $A$ to $B$
-- A **$st$-flow** is a an assignment of values to the edges such that:
-  - Capacity constraints: $0 \le$ edge's flow $\le$ edge's capacity
-  - Local equilibrium: inflow = outflow at every vertex (except $s$ and $t$)
-- The value of a flow is the inflow at $t$
+- An **$st$-cut** is a partition of a network's vertices into two disjoint sets, $A$ and $B$, such that the source $s$ is in $A$ and the sink $t$ is in $B$.
+- The **capacity** of a cut is the sum of the capacities of all edges that point from a vertex in $A$ to a vertex in $B$.
+- An **$st$-flow** is an assignment of flow values to each edge that satisfies two conditions:
+    1. Capacity constraint: For any edge, its flow must be between $0$ and its capacity.
+    2. Flow conservation: For every vertex (except the source and sink), the total inflow must equal the total outflow.
+- The **value** of a flow is the net flow into the sink $t$.
 
-**Mincut problem**: Find a cut of minimum capacity
+The core problems are:
 
-**Maxflow problem**: Find a flow of maximum value
+- **Mincut problem**: Find a cut with the minimum possible capacity.
+- **Maxflow problem**: Find a flow with the maximum possible value.
 
 ## Ford-Fulkerson Algorithm
 
-For digraph with $V$ vertices, $E$ edges and **integer** capacities between $1$ and $U$:
+The Ford-Fulkerson algorithm is a general greedy method for solving the maxflow problem. It works by repeatedly finding "augmenting paths" with available capacity and increasing the flow along them.
 
-1. Start with $0$ flow
-2. Fina an undirected path from $s$ to $t$ such that (**Augmenting Path**)
-   - Can increase flow on forward edges (not full)
-   - Can decrease flow on backward edge (not empty)
-3. Increase flow on that path by bottleneck capacity
+1. Start with $0$ flow on all edges.
+2. While there is an **augmenting path** from $s$ to $t$:
+    1. An augmenting path is a simple path where we can increase flow on forward edges (not yet full) and/or decrease flow on backward edges (not yet empty).
+    2. Determine the bottleneck capacity of this path (the maximum amount of flow we can push through it).
+    3. Augment the flow along the path by this bottleneck amount.
+3. The algorithm terminates when no more augmenting paths can be found.
 
-FF performance depends on choice of augmenting paths:
+The performance of the Ford-Fulkerson method depends entirely on how the augmenting paths are chosen. For network with $V$ vertices, $E$ edges and **integer** capacities between $1$ and $U$, we have
 
-| Augmenting path |  Number of paths  |  Implementation  |
-| :-------------: | :---------------: | :--------------: |
-|  shortest path  |   $\le 1/2 E V$   |   queue (BFS)    |
-|  fattest path   | $\le E \ln (E U)$ |  priority queue  |
-|   random path   |     $\le E U$     | randomized queue |
-|    DFS path     |     $\le E U$     |   stack (DFS)    |
+|   Augmenting Path Strategy   | Number of Augmentations |  Implementation  |
+| :--------------------------: | :---------------------: | :--------------: |
+| Shortest Path (Edmonds-Karp) |  $\le \frac{1}{2} E V$  |       BFS        |
+|         Fattest Path         |    $\le E \ln (E U)$    |  Priority Queue  |
+|         Random Path          |        $\le E U$        | Randomized Queue |
+|   Any Path (e.g., via DFS)   |        $\le E U$        |   DFS / Stack    |
 
 ## Maxflow-Mincut Theorem
 
-**Definition**: The **net flow across** a cut $(A, B)$ is the sum of the flows on its edges from $A$ to $B$ minus the sum of the flows on its edges from $B$ to $A$
+This fundamental theorem connects the two problems of maxflow and mincut.
 
-**Flow-value lemma**: Let $f$ be any flow and let $(A, B)$ be any cut. The net flow across $(A, B)$ equals the value of $f$
+- **Flow-Value Lemma**: For any flow $f$ and any cut $(A, B)$, the net flow across the cut is equal to the value of $f$.
+- **Maxflow-Mincut Theorem**: The value of the maximum flow in a network is equal to the capacity of its minimum cut.
 
-**Maxflow-mincut theorem**: Value of the maxflow = capacity of mincut
-
-To compute mincut $(A, B)$ from maxflow $f$: Compute $A$ = set of vertices connected to $s$ by an undirected path with no full forward or empty backward edges.
+After the Ford-Fulkerson algorithm terminates, the minimum cut can be found: the set $A$ consists of all vertices reachable from $s$ in the final residual graph, and $B$ is all other vertices.
 
 ## Implementation
 
-**Residual network**:
+The concept of an augmenting path is formalized using a residual network. For an edge $v\to w$ with capacity $c$ and current flow $f$:
 
-- Use forward edge to represent residual capacity
-- Use backward edge to represent flow
+- The residual network has a forward edge $v\to w$ with remaining capacity $c - f$.
+- The residual network has a backward edge $w\to v$ with capacity $f$, representing the ability to "push back" or undo existing flow.
 
-Augmenting path in original network is equivalent to directed path in residual network
+An augmenting path is simply a directed path from $s$ to $t$ in this residual network.
 
-![Residual Network](https://i.imgur.com/6qlMKiN.png)
+![Residual Network|643x368](https://i.imgur.com/6qlMKiN.png)
 
-**Flow Edge API**:
+The implementation requires APIs for a flow edge and a flow network.
+
+Flow Edge API:
 
 ```java
 public class FlowEdge {
@@ -887,7 +866,7 @@ public class FlowEdge {
 }
 ```
 
-**Flow Network API**:
+Flow Network API:
 
 ```java
 public class FlowNetwork {
@@ -913,7 +892,7 @@ public class FlowNetwork {
 }
 ```
 
-**Ford-Fulkerson algorithm**:
+The Ford-Fulkerson implementation below uses BFS to find the shortest augmenting path (the Edmonds-Karp algorithm).
 
 ```java
 public class FordFulkerson {
@@ -933,6 +912,7 @@ public class FordFulkerson {
         }
     }
 
+    // BFS to find a path in the residual graph
     private boolean hasAugmentingPath(FlowNetwork G, int s, int t) {
         edgeTo = new FlowEdge[G.V()];
         marked = new boolean[G.V()];
@@ -953,56 +933,53 @@ public class FordFulkerson {
         return marked[t];
     }
 
-    public double value()
-    { return value; }
-
-    public boolean inCut(int v)
-    { return marked[v]; }
+    public double value() { return value; }
+    public boolean inCut(int v) { return marked[v]; } // Is v on s's side of the min-cut?
 }
 ```
 
 ## Applications
 
-### Bipartite Matching Problem
+### Bipartite Matching
 
-$N$ students apply for $N$ jobs, each gets several offers. Is there a way to match all students to jobs?
+**Problem**: Given a bipartite graph (e.g., students and jobs), find a perfect matching—a way to pair every vertex on the left with a unique vertex on the right.
 
-Equivalent to: Given a bipartite graph, find a perfect matching.
+**Reduction**:
 
-1. Create $s$, $t$, one vertex for each student, and one vertex for each job
-2. Add edge from $s$ to each student (capacity $1$)
-3. Add edge from each job to $t$ (capacity $1$)
-4. Add edge from student to each job offered (capacity infinity)
+1. Create a source $s$ and a sink $t$.
+2. Add an edge from $s$ to every student vertex (capacity $1$).
+3. Add an edge from every job vertex to $t$ (capacity $1$).
+4. For every potential student-job pairing, add an edge from the student to the job (capacity infinity).
 
-Every perfect matching in bipartite graph corresponds to a maxflow of value $N$
+A perfect matching exists if and only if the max flow in this network has a value equal to the number of students.
 
-### Baseball Elimination Problem
+### Baseball Elimination
 
-Given each team's current wins and losses, and their games left to play, determine whether team $i$ can be eliminated (cannot win).
+**Problem**: Given the current standings in a sports league, determine if a given team is mathematically eliminated from winning (or tying for first place).
 
-Construct the graph:
+**Reduction**: To determine if team $x$ is eliminated, we construct a flow network.
 
-1. Create $s$, $t$, one vertex for each pair of teams other than $i: j \leftrightarrow k$, and one vertex for each team other than $i$
-2. Add edge from $s$ to each pair of teams (capacity = number of games left between this pair)
-3. Add edge from each team $j$ to $t$ (capacity = $w_i + r_i - w_j$ ) **upper-bound** on the games that $j$ can win
-4. Add edge from each pair of teams to two corresponding teams (capacity infinity)
+1. Create a source $s$, a sink $t$, vertices for each remaining game between other teams, and vertices for each team other than $x$.
+2. Add edges from $s$ to each game vertex (capacity = games left in that matchup).
+3. Add edges from each game vertex to the two corresponding team vertices (capacity infinity).
+4. Add edges from each team vertex $i$ to $t$ (capacity = $w_x + r_x - w_i$, the max number of games $i$ can win without surpassing $x$).
 
-Team $i$ will not be eliminated iff all edges pointing from $s$ are full in maxflow
+Team $x$ is not eliminated if and only if the max flow saturates all edges leaving the source $s$. If the flow is less, it's impossible to schedule the games such that team $x$ can win.
 
-## HW8 Baseball Elimination
+## HW8: Baseball Elimination
 
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/baseball/specification.php)
 
-To check whether team $x$ is eliminated, we consider two cases:
+This assignment requires implementing the logic to determine if a baseball team is eliminated.
 
-- Trivial elimination: The maximum number of games team $x$ can win is less than the number of wins of some other team $i$
-- Nontrivial elimination: Solve a maxflow problem as mentioned above
+- Trivial elimination: A team is trivially eliminated if the maximum number of games it can possibly win is still less than the current number of wins for some other team.
+- Nontrivial elimination: For the non-trivial case, you must solve the maxflow problem described above to see if a valid schedule of future wins exists.
 
 **Solution**: [BaseballElimination.java](https://github.com/silencial/Algorithms/blob/master/08_Baseball_Elimination/BaseballElimination.java)
 
-# String Sorts
+# String Sort
 
-|                        |      worst       |    average     | extra space | stable? |
+|                        |      Worst       |    Average     | Extra Space | Stable? |
 | :--------------------: | :--------------: | :------------: | :---------: | :-----: |
 |          LSD           |      $2NW$       |     $2NW$      |   $N + R$   |    ✔    |
 |          MSD           |      $2NW$       |  $N \log_R N$  |  $N + DR$   |    ✔    |
@@ -1012,54 +989,59 @@ To check whether team $x$ is eliminated, we consider two cases:
 
 Operations:
 
-- Length: Number of characters
-- Indexing: Get the $i$-th character
-- Substring extraction: Get a contiguous subsequence of characters
-- String concatenation: Append one character to end of another string
+- Length: The number of characters.
+- Indexing: Get the $i$-th character.
+- Substring extraction: Get a contiguous subsequence of characters.
+- String concatenation: Append one character to the end of another string.
 
-|               | length() | charAt() | substring() | concat() |
-| :-----------: | :------: | :------: | :---------: | :------: |
-|    String     |    1     |    1     |      1      |    N     |
-| StringBuilder |    1     |    1     |      N      |    1     |
+|               | `length()` | `charAt()` | `substring()` | `concat()` (or `+`) |
+| :-----------: | :--------: | :--------: | :-----------: | :-----------------: |
+|    String     |    $1$     |    $1$     |      $1$      |         $N$         |
+| StringBuilder |    $1$     |    $1$     |      $N$      |         $1$         |
 
 String:
 
-- sequence of characters (immutable)
-- Immutable `char[]` array, offset, and length
+- A sequence of characters (immutable).
+- Implemented using an immutable `char[]` array with an offset and length.
 
 StringBuilder:
 
-- Sequence of characters (mutable)
-- Resizing `char[]` array and length
+- A sequence of characters (mutable).
+- Implemented using a resizing `char[]` array and a length.
 
 ## Key-Indexed Counting
 
-**Compare-based** algorithms require $\sim N\lg N$ compares.
-
-We can do better if we don't depend on key compares.
+Comparison-based sorting algorithms require $\sim N\log N$ comparisons. We can achieve better performance if we don't rely on key comparisons.
 
 **Key-indexed counting**:
 
-- Assumption: keys are integers between $0$ and $R-1$
-- Implication: can use key as an array index
+- Assumption: Keys are integers in the range $[0, R-1]$.
+- Implication: We can use the key value as an array index.
 
-Sort an array `a[]` of $N$ integers between $0$ and $R-1$:
+To sort an array `a[]` of $N$ integers (where each integer is in $[0, R-1]$):
 
-- Count frequencies of each letter using key as index
-- Compute frequency cumulates which specify destinations
-- Access cumulates using key as index to move items
-- Copy back into original array
+1. Count frequencies: Count the frequencies of each key, using the key as an index into a `count` array.
+2. Compute cumulates: Compute the cumulative frequencies to determine the starting position (destination) for each key.
+3. Move items: Access the cumulates using the key as an index to move each item into a temporary `aux` array at its correct sorted position.
+4. Copy back: Copy the sorted items from `aux` back into the original array `a`.
 
 ```java
 int N = a.length;
 int[] count = new int[R+1];
 
+// 1. Count frequencies
 for (int i = 0; i < N; i++)
     count[a[i]+1]++;
+
+// 2. Compute cumulates
 for (int r = 0; r < R; r++)
     count[r+1] += count[r];
+
+// 3. Move items to aux[]
 for (int i = 0; i < N; i++)
     aux[count[a[i]]++] = a[i];
+
+// 4. Copy back
 for (int i = 0; i < N; i++)
     a[i] = aux[i];
 ```
@@ -1068,24 +1050,29 @@ for (int i = 0; i < N; i++)
 
 LSD (Least-Significant-Digit-first) string sort:
 
-- Consider characters from right to left
-- Stably sort using $d$-th character as the key (key-indexed counting)
+- Considers characters from right to left (least significant to most significant).
+- Stably sorts the strings using the $d$-th character as the key (via key-indexed counting) on each pass.
 
 ```java
 public class LSD {
     public static void sort(String[] a, int W) {
-        int R = 256;
+        // Assumes all strings have a fixed length W
+        int R = 256; // Radix (extended ASCII)
         int N = a.length;
         String[] aux = new String[N];
 
         for (int d = W-1; d >= 0; d--) {
+            // Sort by char at index d
             int[] count = new int[R+1];
             for (int i = 0; i < N; i++)
                 count[a[i].charAt(d) + 1]++;
+
             for (int r = 0; r < R; r++)
                 count[r+1] += count[r];
+
             for (int i = 0; i < N; i++)
                 aux[count[a[i].charAt(d)]++] = a[i];
+
             for (int i = 0; i < N; i++)
                 a[i] = aux[i];
         }
@@ -1095,17 +1082,16 @@ public class LSD {
 
 ## MSD Radix Sort
 
-MSD (Most-Significant-Digit-First) string sort:
+MSD (Most-Significant-Digit-first) string sort:
 
-- Partition array into $R$ pieces according to first character
-- Recursively sort all strings that start with each character
-
-Treat **variable-length strings** as if they had an extra char at end (smaller than any char)
+- Partitions the array into $R$ "bins" based on the first character (the most significant digit).
+- Recursively sorts the strings within each bin, advancing to the next character.
+- Handles variable-length strings by treating them as if they have a special end-of-string character (represented as `-1`) that is smaller than any other character.
 
 ```java
 private static int charAt(String s, int d) {
     if (d < s.length()) return s.charAt(d);
-    else return -1;
+    else return -1; // Treat end-of-string as -1
 }
 ```
 
@@ -1117,16 +1103,27 @@ public static void sort(String[] a) {
 
 private static void sort(String[] a, String[] aux, int lo, int hi, int d) {
     if (hi <= lo) return;
+    
+    // Use R+2 for -1 (end-of-string) and 0-255 (chars)
     int[] count = new int[R+2];
+
+    // 1. Count frequencies
     for (int i = lo; i <= hi; i++)
         count[charAt(a[i], d) + 2]++;
+
+    // 2. Compute cumulates
     for (int r = 0; r < R+1; r++)
-        count[r+1] +=count[r];
-    for (int i = lo; i <=hi; i++)
+        count[r+1] += count[r];
+    
+    // 3. Move items to aux[]
+    for (int i = lo; i <= hi; i++)
         aux[count[charAt(a[i], d) + 1]++] = a[i];
+        
+    // 4. Copy back
     for (int i = lo; i <= hi; i++)
         a[i] = aux[i - lo];
-
+    
+    // Recursively sort for each character value
     for (int r = 0; r < R; r++)
         sort(a, aux, lo + count[r], lo + count[r+1] - 1, d+1);
 }
@@ -1136,22 +1133,23 @@ private static void sort(String[] a, String[] aux, int lo, int hi, int d) {
 
 Disadvantages of MSD string sort:
 
-- Extra space for `aux[]`
-- Extra space for `count[]`
-- Inner loop has a lot of instructions
-- Accesses memory "randomly" (cache inefficient)
+- Requires extra space for the `aux[]` array ($O(N)$).
+- Requires extra space for the `count[]` array (proportional to $R$, the radix size).
+- The inner loop is complex and has significant overhead.
+- Accesses memory "randomly", which is cache-inefficient.
 
-Disadvantage of quicksort:
+Disadvantage of standard quicksort:
 
-- Linearithmic number of string compares (not linear)
-- Has to rescan many characters in keys with long prefix matches
+- Requires a linearithmic number of string comparisons.
+- Costly when keys share long common prefixes, as it must rescan those characters repeatedly.
 
 ## 3-Way Radix Quicksort
 
-Do 3-way partitioning on the $d$-th character
+This algorithm combines the benefits of quicksort and radix sort.
 
-- Less overhead than $R$-way partitioning in MSD string sort
-- Does not re-examine characters equal to the partitioning char
+- Performs 3-way partitioning on the $d$-th character.
+- Has less overhead than the $R$-way partitioning used in MSD sort.
+- Does not re-examine characters that are equal to the partitioning character, making it highly efficient for strings with common prefixes.
 
 ```java
 private static void sort(String[] a)
@@ -1159,9 +1157,12 @@ private static void sort(String[] a)
 
 private static void sort(String[] a, int lo, int hi, int d) {
     if (hi <= lo) return;
+    
     int lt = lo, gt = hi;
-    int v = charAt(a[lo], d);
+    int v = charAt(a[lo], d); // Partitioning char
     int i = lo + 1;
+    
+    // 3-way partitioning
     while (i <= gt) {
         int t = charAt(a[i], d);
         if      (t < v) exch(a, lt++, i++);
@@ -1169,36 +1170,38 @@ private static void sort(String[] a, int lo, int hi, int d) {
         else            i++;
     }
 
-    sort(a, lo, lt-1, d);
-    if (v >= 0) sort(a, lt, gt, d+1);
-    sort(a, gt+1, hi, d);
+    // Recursively sort subarrays
+    sort(a, lo, lt-1, d); // Sort keys < v
+    if (v >= 0) sort(a, lt, gt, d+1); // Sort keys == v, move to next char
+    sort(a, gt+1, hi, d); // Sort keys > v
 }
 ```
 
 ### 3-Way String Quicksort vs. Standard Quicksort
 
-Standard quicksort:
+Standard Quicksort:
 
-- Uses $\sim 2 N \ln N$ **string compares** on average
-- Costly for keys with long common prefixes (and this is a common case)
+- Uses $\sim 2 N \ln N$ **string comparisons** on average.
+- Costly for keys with long common prefixes, which is a common case.
 
-3-way string quicksort:
+3-Way String Quicksort:
 
-- Uses $\sim 2 N \ln N$ **character compares** on average
-- Avoids re-comparing long common prefixes
+- Uses $\sim 2 N \ln N$ **character comparisons** on average.
+- Avoids re-comparing long common prefixes, making it much more efficient in practice.
 
-## Suffix Arrays
+## Suffix Array
 
-**Problem:** Given a text of $N$ characters, preprocess it to enable fast substring search (find all occurrences of query string context)
+**Problem:** Given a text of $N$ characters, preprocess it to enable fast substring search (i.e., find all occurrences of a query string).
 
-1. suffix sort the text
-2. Binary search for query; scan until mismatch
+1. Generate suffixes: Create all $N$ suffixes of the text.
+2. Sort suffixes: Sort the suffixes alphabetically. The suffix array is an integer array containing the starting indices of the sorted suffixes.
+3. Search: To find a query string, use binary search on the suffix array. All occurrences of the query will appear in a contiguous block.
 
 ![Suffix Array](https://i.imgur.com/mEKKQCA.png)
 
-# Tries
+# Trie
 
-**String symbol table API**:
+A **string symbol table** is an API for storing (key, value) pairs where the keys are strings.
 
 ```java
 public class StringST<Value> {
@@ -1209,29 +1212,31 @@ public class StringST<Value> {
 }
 ```
 
-Goal: Faster than hashing, more flexible than BSTs.
+Our goal is to create an implementation that is faster than hashing and more flexible than binary search trees.
 
 ![String Search Algorithms](https://i.imgur.com/WcRYIWV.png)
 
-## R-Way Tries
+## R-Way Trie
 
-- Store characters in nodes (not keys)
-- Each node has $R$ children, one for each possible character
+An R-way trie (also known as a prefix tree) is a tree-based data structure for storing strings.
 
-**Search**: Follow links corresponding to each character in the key
+- Characters are stored in the nodes (not the full keys).
+- Each node has $R$ children, one for each possible character in the alphabet.
 
-- Search hit: node where search ends has a non-null value
-- Search miss: reach null link or node where search ends has null value
+**Search**: To search for a key, follow the links corresponding to each character in the key.
 
-**Insertion**: Follow links corresponding to each character in the key
+- Search hit: The node where the search ends has a non-null value.
+- Search miss: A null link is encountered, or the node where the search ends has a null value.
 
-- Encounter a null link: create new node
-- Encounter the last character of the key: set value in that node
+**Insertion**: Follow the same search path.
+
+- If a null link is encountered, create new node.
+- When the last character of the key is reached, set the value in that node.
 
 **Deletion**:
 
-- Find the node corresponding to the key and set value to null
-- If node has null value and all null links, remove that node (and recur)
+- Find the node corresponding to the key and set its value to null.
+- If that node now has a null value and all its links are also null, remove the node (and recurse up the tree if necessary).
 
 ```java
 public class TriesST<Value> {
@@ -1277,29 +1282,28 @@ public class TriesST<Value> {
 
 **Performance**:
 
-- Search hit: Need to examine all $L$ characters for quality
-- Search miss: Examine only a few characters for typical case
-- Space: $R$ null links at each leaf (sublinear if many short strings share common **prefixes**)
+- Search hit: Requires examining all $L$ characters of the key.
+- Search miss: May only require examining a few characters, stopping at the first mismatch.
+- Space: Many nodes have $R$ null links, which is wasteful. However, the space is sublinear if many short strings share common prefixes.
 
-## Ternary Search Tries
+## Ternary Search Trie
 
-- Store characters and values in nodes (not keys)
-- Each node has **3** children: smaller (left), equal (middle), larger (right)
+A Ternary Search Trie (TST) is a more space-efficient alternative to an R-way trie.
 
-**Search**: Follow links corresponding to each character in the key
+- Store characters and values in the nodes.
+- Each node has **three** children:
+    - `left`: For characters smaller than the node's character.
+    - `mid`: For characters equal to the node's character (advances to the next key character).
+    - `right`: For characters larger than the node's character.
 
-- If less, take left link; if greater, take right link
-- If equal, take the middle link and move to the next key character
+**Search**: Follow links corresponding to each character in the key.
 
-**Insertion**: Follow links corresponding to each character in the key
+- If the key character is less than the node's character, take the `left` link.
+- If the key character is greater than the node's character, take the `right` link.
+- If the key character is equal, take the `mid` link and move to the next character in the key.
 
-- Encounter a null link: create new node
-- Encounter the last character of the key: set value in that node
-
-**Deletion**:
-
-- Find the node corresponding to the key and set value to null
-- If node has null value and all null links, remove that node (and recur)
+**Insertion**: Follow the same search path. Same as in the R-way trie.
+**Deletion**: Same as in the R-way trie.
 
 ```java
 public class TST<Value> {
@@ -1343,7 +1347,6 @@ public class TST<Value> {
         else if (c > x.c)            return get(x.right, key, d);
         else if (d < key.length()-1) return get(x.mid, key, d+1);
         else                         return x;
-        return x;
     }
 }
 ```
@@ -1352,92 +1355,116 @@ public class TST<Value> {
 
 Hashing:
 
-- Need to examine entire key
-- Search hits and misses cost about the same
-- Performance relies on hash function
-- Does not support ordered symbol table operations
+- Must examine the entire key for both hits and misses.
+- Search hits and misses cost about the same (assuming a good hash function).
+- Performance relies heavily on the quality of the hash function.
+- Does not naturally support ordered symbol table operations (like finding keys with a common prefix).
 
 TST:
 
-- Works only for strings (or digital keys)
-- Only examines just enough key characters
-- Search miss may involve only a few characters
-- Support ordered symbol table operations (plus others)
+- Works only for strings or other digital keys.
+- Only examines just enough key characters to find/miss a key.
+- A search miss can be very fast, stopping at the first mismatched character.
+- Naturally supports ordered operations (e.g., prefix matching, wildcard searches).
 
 # Substring Search
 
-Find pattern of length $M$ in a text of length $N$. Typically $N \gg M$
+The substring search problem involves finding the first occurrence of a pattern string (length $M$) within a text string (length $N$). Typically, we assume $N \gg M$.
 
-Brute force: Check for pattern starting at each text position.
+The brute-force approach checks for the pattern starting at each text position. This takes $O(MN)$ time in the worst case.
 
-- We want linear-time guarantee
-- We want to avoid **backup** problem: treat input as stream of data
+We aim for algorithms that:
+
+1. Provide a linear-time guarantee ($O(N + M)$).
+2. Avoid **backup**: The algorithm should not need to re-scan previously seen characters in the text. This allows the text to be treated as an input stream.
 
 ![Substring Search Algorithms](https://i.imgur.com/CNYnA46.png)
 
-## Knuth-Morris-Pratt
+## Knuth-Morris-Pratt Algorithm
 
-### DFA
+The KMP algorithm performs substring search without backup by using a **Deterministic Finite Automaton (DFA)**.
 
-DFA (Deterministic finite state automaton):
+### Deterministic Finite Automaton
 
-- Finite number of states (including start and halt)
-- Exactly one transition for each char in alphabet
-- Accept if sequence of transitions leads to halt state
+A DFA is an abstract machine with:
 
-The DFA state after reading in `text[i]` is the length of longest prefix of `pattern[]` that is a suffix of `text[0:i]`
+- A finite number of states (including a start state and one or more halt/accept states).
+- Exactly one transition defined for each character in the alphabet from each state.
 
-Constructing the DFA:
+KMP's DFA: We pre-build a DFA from the pattern.
 
-- Copy of `dfa[][X]` to `dfa[][j]` for mismatch case
-- Set `dfa[pat.charAt(j)][j]` to `j+1` for match case
-- Update `X`
+- The DFA state after reading `text[i]` represents the length of the longest prefix of the pattern that is also a suffix of `text[0...i]`.
+- The search finds a match if it reaches the DFA's final (accept) state, which corresponds to the length $M$ of the pattern.
+
+Constructing the DFA: The DFA, `dfa[c][j]`, tells us the next state to go to if we are currently in state `j` (meaning we've matched `pat[0...j-1]`) and we see character `c`.
+
+1. Match case: If `c == pat.charAt(j)`, we've extended our match, so we transition to state `j+1`.
+2. Mismatch case: If `c != pat.charAt(j)`, we must fall back to a shorter prefix. We simulate running this character `c` through the DFA starting from a "restart" state `X`. `X` is the state we would be in after matching the longest prefix of the pattern that is also a suffix of `pat[0...j-1]`.
 
 ```java
 public KMP(String pat) {
     this.pat = pat;
-    M = pat.length();
+    int M = pat.length();
+    int R = 256;
     dfa = new int[R][M];
-    dfa[pat.charAt(0)][0] = 1;
-    for (int X = 0, j = 1; j < M; j++) {
+    
+    dfa[pat.charAt(0)][0] = 1; // Initial match
+    int X = 0; // Restart state
+    
+    for (int j = 1; j < M; j++) {
+        // 1. Copy mismatch case from restart state
         for (int c = 0; c < R; c++)
-            dfa[c][j] = dfa[c][X];  // copy mismatch case
-        dfa[pat.charAt(j)][j] = j + 1;  // set match case
-        X = dfa[pat.charAt(j)][X];  // update restart state
+            dfa[c][j] = dfa[c][X];
+        
+        // 2. Set match case
+        dfa[pat.charAt(j)][j] = j + 1;
+        
+        // 3. Update the restart state for the next iteration
+        X = dfa[pat.charAt(j)][X];
     }
 }
 ```
 
-### KMP
+### KMP Search
 
-Once we have the `dfa` matrix, we can use this make transition without backup
+Once the `dfa` is built, the search algorithm is simple. It scans the text once, changing states according to the DFA.
 
 ```java
 public int search(In in) {
     int i, j;
     for (i = 0, j = 0; !in.isEmpty() && j < M; i++)
         j = dfa[in.readChar()][j];
-    if (j == M) return i - M;
-    else return NOT_FOUND;
+        
+    if (j == M) return i - M; // Match found, return start index
+    else return N;            // Not found
 }
 ```
 
-## Boyer-Moore
+KMP guarantees linear-time performance ($O(N)$ for search, after $O(RM)$ preprocessing) and never backs up in the text.
 
-- Scan characters in pattern from right to left
-- Can skip as many as $M$ text chars when finding one not in the pattern
+## Boyer-Moore Algorithm
 
-Precompute index of rightmost occurrence of character in pattern to decide how much to skip:
+The Boyer-Moore algorithm is often sublinear in practice because it scans the pattern from **right to left**.
+
+Mismatch Heuristic:
+
+1. Align the pattern with the text.
+2. Compare characters from the end of the pattern backward.
+3. If a mismatch occurs at `txt[i+j]` (where `pat[j]` is the mismatched pattern character), check the last (rightmost) occurrence of the text character `txt[i+j]` in the pattern.
+4. Shift the pattern so that the text character `txt[i+j]` aligns with its rightmost occurrence in the pattern.
+5. If the text character is not in the pattern at all, shift the pattern completely past it.
+
+First, precompute the `right[]` array: `right[c]` = the index of the rightmost occurrence of character `c` in the pattern ($-1$ if not present).
 
 ```java
 right = new int[R];
 for (int c = 0; c < R; c++)
-    right[c] = -1;
+    right[c] = -1; // Initialize all to -1
 for (int j = 0; j < M; j++)
-    right[pat.charAt(j)] = j;
+    right[pat.charAt(j)] = j; // Record rightmost position
 ```
 
-Boyer-Moore:
+Boyer-Moore Search:
 
 ```java
 public int search(String txt) {
@@ -1446,31 +1473,37 @@ public int search(String txt) {
     int skip;
     for (int i = 0; i <= N-M; i += skip) {
         skip = 0;
-        for (int j = M-1; j >= 0; j--) {
+        for (int j = M-1; j >= 0; j--) { // Scan from right to left
             if (pat.charAt(j) != txt.charAt(i+j)) {
+                // Mismatch found
                 skip = Math.max(1, j - right[txt.charAt(i+j)]);
                 break;
             }
         }
-        if (skip == 0) return i;
+        if (skip == 0) return i; // Match found (no skips)
     }
-    return N;
+    return N; // Not found
 }
 ```
 
-## Rabin-Karp
+## Rabin-Karp Algorithm
 
-Use modular hashing:
+The Rabin-Karp algorithm uses hashing to find a substring.
 
-- Compute a hash of pattern characters $0$ to $M-1$
-- For each $i$, compute a hash of text characters $i$ to $M+i-1$
-- if pattern hash = text substring hash, check for a match
+1. Compute a hash of the pattern (length $M$).
+2. Compute a hash of the first $M$ characters of the text.
+3. If the hashes match, check for an exact character-by-character match (to prevent hash collisions).
+4. If they don't match, "slide" the window one position to the right. Efficiently compute the hash of this new window by subtracting the first character and adding the new character.
 
-Modular hash function: use the notation $t_i$ for `txt.charAt(i)`, compute
+**Modular Hash Function**: We treat the $M$-length string as a large $M$-digit, base-$R$ number. Let $t_{i}$ be `txt.charAt(i)`, we compute:
+
 $$
 x_{i}=(t_{i} R^{M-1}+t_{i+1} R^{M-2}+\dots+t_{i+M-1} R^{0}) \bmod Q
 $$
-**Horner's method**: linear-time method to evaluate degree-$M$ polynomial
+
+where $Q$ is a large prime and $R$ is the radix (e.g., $256$).
+
+We can compute this efficiently using **Horner's method** (a linear-time method to evaluate a polynomial):
 
 ```java
 private long hash(String key, int M) {
@@ -1481,21 +1514,22 @@ private long hash(String key, int M) {
 }
 ```
 
-Rabin-Karp:
+Rabin-Karp Search:
 
 ```java
 public class RabinKarp {
-    private long patHash;
-    private int M;
-    private long Q;
-    private int R;
-    private long RM;  // R^(M-1) % Q
+    private long patHash; // Hash of the pattern
+    private int M;        // Pattern length
+    private long Q;       // A large prime modulus
+    private int R;        // Radix
+    private long RM;      // R^(M-1) % Q
 
     public RabinKarp(String pat) {
         M = pat.length();
         R = 256;
-        Q = longRandomPrime();
-
+        Q = longRandomPrime(); // Find a large random prime
+        
+        // Compute RM = R^(M-1) % Q
         RM = 1;
         for (int i = 1; i <= M-1; i++)
             RM = (R * RM) % Q;
@@ -1503,98 +1537,117 @@ public class RabinKarp {
     }
 
     private long hash(String key, int M)
-    { /* as before */ }
+    { /* same as before */ }
 
     public int search(String txt) {
         int N = txt.length();
-        int txtHash = hash(txt, M);
-        if (patHash == txtHash) return 0;
+        if (N < M) return N;
+        long txtHash = hash(txt, M);
+        
+        // Check for match at beginning
+        if (patHash == txtHash && check(txt, 0)) return 0;
+        
+        // Slide the window
         for (int i = M; i < N; i++) {
+            // Remove leading digit, add trailing digit
             txtHash = (txtHash + Q - RM*txt.charAt(i-M) % Q) % Q;
             txtHash = (txtHash*R + txt.charAt(i)) % Q;
-            if (patHash == txtHash) return i - M + 1;
+            
+            if (patHash == txtHash && check(txt, i - M + 1)) return i - M + 1;
         }
-        return N;
+        return N; // Not found
+    }
+    
+    private boolean check(String txt, int i) {
+        for (int j = 0; j < M; j++)
+            if (pat.charAt(j) != txt.charAt(i + j))
+                return false;
+        return true;
     }
 }
 ```
 
-## HW9 Boggle
+## HW9: Boggle
 
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/boggle/specification.php)
 
-Find valid words in a board by connecting characters to its eight neighbors.
+This assignment involves finding all valid words on Boggle board. A word is valid if it can be formed by connecting adjacent characters (including diagonals) and exists in a provided dictionary.
 
-1. Add dictionary to 26-way Tries
-2. Use dfs to search the board. Early termination can be made when no prefix match
-3. dfs can be run with node expansion together to avoid starting from the root every time
+1. **Dictionary TST**: Add all dictionary words to a TST (or an R-way tire).
+2. **Board Search**: Use DFS to explore paths on the board. Each board cell (die) is a starting point.
+3. **Prefix Pruning**: As the DFS builds a path (a string), check if that string exists as a prefix in the TST
+    - If it's a valid word (has a non-null value), add it to the set of found words.
+    - If it's not a prefix of any word in the dictionary, stop this DFS path immediately (pruning). This avoids exploring countless dead-end paths.
 
 **Solution**: [BoggleSolver.java](https://github.com/silencial/Algorithms/blob/master/09_Boggle/BoggleSolver.java)
 
-# Regular Expressions
+# Regular Expression
 
-- **Substring search**: Find a single string in text
-- **Pattern matching**: Find one of a specified set of strings in text
+While **substring search** finds a single, specific string, **pattern matching** involves finding any one of a specified set of strings within a text. Regular expressions (REs) are a powerful, formal language for describing such sets of strings.
 
-Regular Expression Pattern:
+## Regular Expression Operation
 
-|    operation    | order |    example RE     |          matches           |      dose not match       |
-| :-------------: | :---: | :---------------: | :------------------------: | :-----------------------: |
-|  concatenation  |   3   |      AABAAB       |           AABAAB           |    every other string     |
-|       or        |   4   |    AA \| BAAB     |         AA<br>BAAB         |    every other string     |
-|     closure     |   2   |       AB*A        |      AA<br>ABBBBBA       |       AB<br>ABABA       |
-|   parentheses   |   1   |   A(A \| B)AAB    |      AAAAB<br>ABAAB      |    every other string     |
-|   parentheses   |   1   |      (AB)*A       |      A<br>ABABABABA      |       AA<br>ABBA        |
-|    wildcard     |       |      .U.U.U.      |    CUMULUS<br>JUGULUM    | SUCCUBUS<br>TUMULTUOUS  |
-| character class |       |  [A-Za-z]\[a-z]*  |   word<br>Captitalized   |  camelCase<br>4illegal  |
-|   at least 1    |       |     A(BC)+DE      |     ABCDE<br>ABCBCDE     |       ADE<br>BCDE       |
-|    exactly k    |       | [0-9]{5}-[0-9]{4} | 08540-1321<br>19072-5541 | 111111111<br>166-54-111 |
+|     Operation      | Precedence |     Example RE      |        Matches         |      Dose Not Match       |
+| :----------------: | :--------: | :-----------------: | :--------------------: | :-----------------------: |
+|   Concatenation    |     3      |      `AABAAB`       |        `AABAAB`        |     Any other string      |
+|      Or `\|`       |     4      |     `AA\|BAAB`      |      `AA`, `BAAB`      |     Any other string      |
+|   Closure (`*`)    |     2      |       `AB*A`        |    `AA`, `ABBBBBA`     |       `AB`, `ABABA`       |
+|    Parentheses     |     1      |    `A(A\|B)AAB`     |    `AAAAB`, `ABAAB`    |     Any other string      |
+|    Parentheses     |     1      |      `(AB)*A`       |    `A`, `ABABABABA`    |       `AA`, `ABBA`        |
+|   Wildcard (`.`)   |            |      `.U.U.U.`      |  `CUMULUS`, `JUGULUM`  |        `SUCCUBUS`         |
+|  Character Class   |            |  `[A-Za-z][a-z]*`   | `word`, `Captitalized` |  `camelCase`, `4illegal`  |
+| At Least One (`+`) |            |     `A(BC)+DE`      |   `ABCDE`, `ABCBCDE`   |       `ADE`, `BCDE`       |
+| Exactly k (`{k}`)  |            | `[0-9]{5}-[0-9]{4}` |      `08540-1321`      | `111111111`, `166-54-111` |
 
-## NFA
+## Nondeterministic Finite Automata
+
+How can we check if a text string matches a given RE?
 
 **Kleene's theorem**:
 
-- For any DFA, there exists a RE that describes the same set of strings
-- For any RE, there exists a DFA that recognized the same set of strings
+1. For any DFA, there is a RE that describes the same set of strings.
+2. For any RE, there is a DFA that recognizes the same set of strings.
 
-==The DFA built from RE may have exponential number of states, so instead we use NFA (Nondeterministic finite state automata).==
+However, the DFA built from an $M$-character RE can have an exponential number of states. To avoid this, we use a Nondeterministic Finite Automata (NFA) instead.
 
-Regular-expression-matching NFA:
+An NFA is a state machine that can have multiple possible transitions from a single state on the same character.
 
-- RE enclosed in parentheses
-- One state per RE character (start=$0$, accept=$M$)
-- Red **$\epsilon$-transition** (change state, but don't scan text)
-- Black match transition (change state and scan to next text char)
-- Accept if **any** sequence of transitions end in accept state
+- **States**: We use one state per RE character, plus a start state $0$ and an accept state $M$.
+- **Black match transitions**: These transitions scan the next text character and change state (e.g., from state `i` to `i+1` if the character matches `re[i]`).
+- **Red $\epsilon$-transition**: These are "empty" transitions. The NFA can change its state without scanning a text character.
+
+An NFA accepts a text string if any valid sequence of transitions leads to the accept state.
 
 ![NFA Example](https://i.imgur.com/kw2bfcV.png)
 
-The **Nondeterminism** comes from different transitions. The program has to consider all possible transition sequences.
+**Nondeterminism** arises from -transitions: the machine must "guess" which path to follow. Our simulation will track all possible states the NFA could be in.
 
 Basic plan:
 
-- Build NFA from RE
-- Simulate NFA with text as input
+1. Build the NFA state-transition graph from the RE.
+2. Simulate the NFA's execution with the text as input.
 
 ## NFA Simulation
 
 NFA representation:
 
-- State names: Integers from $0$ to $M$
-- Match-transitions: Keep regular expression in array `re[]`
-- $\epsilon$-transitions: Store in a digraph $G$
+- States: Integers from $0$ to $M$ (where $M$ = `re.length()`).
+- Match-transitions: Stored implicitly in the `re[]` array.
+- $\epsilon$-transitions: Stored explicitly in a digraph $G$.
 
 Simulation Steps:
 
-1. Run DFS from each source, without unmarking vertices
-2. Maintain set of all possible states that NFA could be in after reading in the first $i$ characters
-3. When no more input characters, accept if any state in the set is an accept state
+1. **Initial states**: Find all states reachable from the start state ($0$) only via $\epsilon$-transitions. This is our initial set of possible states `pc`.
+2. For each text character `txt[i]`:
+    - Match: Find all states reachable from any state in `pc` by a match transition on `txt[i]`. Store these in a `match` set.
+    - $\epsilon$-closure: Find all states reachable from the `match` set only via $\epsilon$-transitions. This new set becomes our updated `pc`.
+3. Accept: After processing the entire text, if the set `pc` contains the accept state ($M$), the text is recognized.
 
 ```java
 public class NFA {
-    private char[] re; // match transitions
-    private Digraph G; // epsilon transition digraph
-    private int M; // number of states
+    private char[] re; // Match transitions
+    private Digraph G; // Epsilon transition digraph
+    private int M;     // Number of states
 
     public NFA(String regexp) {
         M = regexp.length();
@@ -1603,6 +1656,7 @@ public class NFA {
     }
 
     public boolean recognizes(String txt) {
+        // Find all states reachable from start (0) via epsilon-transitions
         Bag<Integer> pc = new Bag<Integer>();
         DirectedDFS dfs = new DirectedDFS(G, 0);
         for (int v = 0; v < G.V(); v++)
@@ -1610,18 +1664,21 @@ public class NFA {
 
         for (int i = 0; i < txt.length(); i++) {
             Bag<Integer> match = new Bag<Integer>();
+            // Find all states reachable by matching txt[i]
             for (int v : pc) {
                 if (v == M) continue;
                 if ((re[v] == txt.charAt(i)) || re[v] == '.')
                     match.add(v+1);
             }
 
+            // Find all states reachable from match set via epsilon-transitions
             dfs = new DirectedDFS(G, match);
             pc = new Bag<Integer>();
             for (int v = 0; v < G.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
         }
-
+        
+        // Check if accept state is in the final set
         for (int v : pc)
             if (v == M) return true;
 
@@ -1629,20 +1686,20 @@ public class NFA {
     }
 
     public Digraph buildEpsilonTransitionDigraph()
-    { /* next section */ }
+    { /* ... see next section ... */ }
 }
 
 ```
 
-**Time complexity**: Determining whether an $N$-character text is recognized by the NFA corresponding to an $M$-character pattern takes time proportional to $MN$ in the worst case.
+**Performance**: Determining whether an $N$-character text is recognized by an NFA built from an $M$-character pattern takes time proportional to $MN$ in the worst case.
 
 ## NFA Construction
 
-Construction process:
+We build the $\epsilon$-transition digraph $G$ by parsing the regular expression.
 
-- States: Include a state for each symbol in the RE, plus an accept state.
-- Concatenation: Add match-transition edge from state corresponding to characters in the alphabet to next state.
-- Parentheses: Add $\epsilon$-transition edge from parentheses to next state.
+- States: $M+1$ states, indexed $0$ to $M$.
+- Concatenation: `AB` -> Add a match-transition (implicitly) from state `A` to state `B`.
+- Parentheses: `()` -> Add an $\epsilon$-transition from the `(` state to the state immediately following its matching `)`.
 - Closure: Add three $\epsilon$-transition edges for each `*` operator.
 - Or: Add two $\epsilon$-transition edges for each `|` operator
 
@@ -1650,88 +1707,66 @@ Construction process:
 
 ```java
 private Digraph buildEpsilonTransitionDigraph() {
-   Digraph G = new Digraph(M+1);
-   Stack<Integer> ops = new Stack<Integer>();
+    Digraph G = new Digraph(M+1);
+    Stack<Integer> ops = new Stack<Integer>();
 
-   for (int i = 0; i < M; i++) {
-       int lp = i; // left parentheses
+    for (int i = 0; i < M; i++) {
+        int lp = i; // left parentheses
 
-       if (re[i] == '(' || re[i] == '|') ops.push(i);
+        if (re[i] == '(' || re[i] == '|') ops.push(i);
 
-       else if (re[i] == ')') {
-           int or = ops.pop();
-           // 2-way or
-           if (re[or] == '|') {
-               lp = ops.pop();
-               G.addEdge(lp, or+1);
-               G.addEdge(or, i);
-           }
-           else lp = or;
-       }
-       // Closure needs 1-character lookahead
-       if (i < M-1 && re[i+1] == '*') {
-           G.addEdge(lp, i+1);
-           G.addEdge(i+1, lp);
-       }
-       // Metasymbols
-       if (re[i] == '(' || re[i] == '*' || re[i] == ')')
-           G.addEdge(i, i+1);
-   }
-   return G;
+        else if (re[i] == ')') {
+            int or = ops.pop();
+            // 2-way or
+            if (re[or] == '|') {
+                lp = ops.pop();
+                G.addEdge(lp, or+1);
+                G.addEdge(or, i);
+            }
+            else lp = or;
+        }
+        // Closure needs 1-character lookahead
+        if (i < M-1 && re[i+1] == '*') {
+            G.addEdge(lp, i+1);
+            G.addEdge(i+1, lp);
+        }
+        // Metasymbols
+        if (re[i] == '(' || re[i] == '*' || re[i] == ')')
+            G.addEdge(i, i+1);
+    }
+    return G;
 }
 ```
 
-**Time complexity**: Building the NFA corresponding to an $M$-character RE takes time and space proportional to $M$
+**Time complexity**: Building the NFA for an $M$-character RE takes time and space proportional to $M$.
 
 # Data Compression
 
-Lossless compression and expansion:
+Lossless data compression involves two primary operations: **compression** and **expansion**.
 
 - **Message**: Binary data $B$ we want to compress
-- **Compress**: Generates a "compressed" representation $C(B)$
-- **Expand**: Reconstructs original bitstream $B$
+- **Compress**: Generate a compressed representation $C(B)$
+- **Expand**: Reconstruct the original bitstream $B$
 
-**Static model**: Same model for all texts
+Compression models are generally categorized into three types:
 
-- Fast
-- Not optimal: different texts have different statistical properties
-- Ex: ASCII, Morse code
-
-**Dynamic model**: Generate model bases on text
-
-- Preliminary pass needed to generate model
-- Must transmit the model
-- Ex: Huffman code
-
-**Adaptive model**: Progressively learn and update model as you read text
-
-- More accurate modeling produces better compression
-- Decoding must start from beginning
-- Ex: LZW
+- **Static**: Use a fixed model for all texts (e.g., ASCII, Morse code). While fast, it is not optimal because it ignores the specific statistical properties of different texts.
+- **Dynamic**: Generate a model based on the specific text (e.g., Huffman code). This requires a preliminary pass to build the model, which must be transmitted alongside the compressed data.
+- **Adaptive**: Progressively learn and update the model while processing the text (e.g., LZW). This method produces better compression through accurate modeling, but decoding must strictly start from the beginning of the stream.
 
 ## Run-Length Encoding
 
-Simple type of redundancy in a bitstream: Long runs of repeated bits
+Run-Length Encoding exploits a simple form of redundancy: long runs of repeated bits. It represents the data as counts of alternating runs of 0s and 1s.
 
-```text
-0000000000000001111111000000011111111111
-```
+Example: A 40-bit string containing 15 zeros, 7 ones, 7 zeros, and 11 ones `0000000000000001111111000000011111111111`.
 
-Representation: 4-bit counts to represent alternating runs of 0s and 1s (15 0s, 7 1s, 7 0s, 11 s)
-
-```text
-1111 0111 0111 1011
-```
+Using 4-bit counts, this can be compressed to 16 bits: `1111 0111 0111 1011`.
 
 ## Huffman Compression
 
-Variable-length codes: Use different number of bits to encode different chars.
+Huffman compression utilizes variable-length codes, assigning fewer bits to frequently occurring characters. To avoid ambiguity during decoding, the code must be **prefix-free**, meaning no codeword is a prefix of another. This structure is represented using a **binary trie**.
 
-To avoid ambiguity, ensure that no codeword is a **prefix** of another.
-
-Use **binary trie** to represent the prefix-free code.
-
-Huffman trie node data type:
+Trie Representation: The Huffman trie node implements `Comparable` to facilitate ordering by frequency.
 
 ```java
 private static class Node implements Comparable<Node> {
@@ -1754,7 +1789,7 @@ private static class Node implements Comparable<Node> {
 }
 ```
 
-Expansion:
+Expansion: Traverse the trie according to the input bits—left for 0, right for 1—until a leaf node is reached, at which point the character is output.
 
 ```java
 public void expand() {
@@ -1768,14 +1803,14 @@ public void expand() {
                 x = x.left;
             else
                 x = x.right;
-         }
+        }
         BinaryStdOut.write(x.ch, 8);
-     }
+    }
     BinaryStdOut.close();
 }
 ```
 
-Read and write:
+Tree Construction: To decode the message, the prefix-free code (the trie) must be transmitted. The trie is written using a preorder traversal: a bit indicates if a node is a leaf (1) or internal (0), followed by the character for leaf nodes.
 
 ```java
 private static void writeTrie(Node x) {
@@ -1802,11 +1837,12 @@ private static Node readTrie()  {
 
 ![Encode Trie as Bitstream](https://i.imgur.com/XSeU85p.png)
 
-To find the best prefix-free code, use **Huffman algorithm**:
+The **Huffman algorithm** constructs the optimal prefix-free code using a bottom-up approach:
 
-- Count freq for each char in input
-- Start with one node for each char with weight equal to freq
-- Select two tries with min weight and merge into single trie with cumulative weight
+1. Count the frequency of each character in the input.
+2. Initialize a minimum priority queue (`MinPQ`) with a node for each character, weighted by its frequency.
+3. Repeatedly remove the two nodes with the smallest weights, merge them into a new parent node (weight = sum of children), and insert the parent back into the queue.
+4. Repeat until only one node (the root) remains.
 
 ```java
 private static Node buildTrie(int[] freq) {
@@ -1815,26 +1851,28 @@ private static Node buildTrie(int[] freq) {
         if (freq[i] > 0)
             pq.insert(new Node(i, freq[i], null, null));
 
-      while (pq.size() > 1) {
-         Node x = pq.delMin();
-         Node y = pq.delMin();
-         Node parent = new Node('\0', x.freq + y.freq, x, y);
-         pq.insert(parent);
-      }
-
-         return pq.delMin();
+    while (pq.size() > 1) {
+        Node x = pq.delMin();
+        Node y = pq.delMin();
+        Node parent = new Node('\0', x.freq + y.freq, x, y);
+        pq.insert(parent);
     }
+
+    return pq.delMin();
+}
 ```
 
 ## LZW Compression
 
-- Create ST associating $W$-bit codewords with string keys
-- Initialize ST with codewords for single-char keys
-- Find longest string $s$ in ST that is a prefix of unscanned part of input
-- Write the $W$-bit codeword associated with $s$
-- Add $s+c$ to ST, where $c$ is next char in the input
+Lempel-Ziv-Welch (LZW) compression is an adaptive method that builds a dictionary of strings during processing.
 
-Use a trie that supports longest prefix match to represent LZW compression code table:
+1. Create a symbol table associating $W$-bit codewords with string keys.
+2. Initialize the table with codewords for all single-character keys.
+3. Find the longest string $s$ in the symbol table that is a prefix of the unscanned input.
+4. Write the $W$-bit codeword associated with $s$.
+5. Add the string $s+c$ to the symbol table, where $c$ is next character in the input.
+
+A Trie supporting longest prefix matching is typically used to represent the code table.
 
 ```java
 public static void compress() {
@@ -1863,8 +1901,8 @@ public static void compress() {
 
 [Specification](https://coursera.cs.princeton.edu/algs4/assignments/burrows/specification.php)
 
-Implement the *Burrows-Wheeler data compression algorithm*
+The assignment involves implementing the **Burrows-Wheeler data compression algorithm**, which consists of three distinct steps:
 
-1. *Burrows–Wheeler transform.* Given a typical English text file, transform it into a text file in which sequences of the same character occur near each other many times. [BurrowsWheeler.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/BurrowsWheeler.java), [CircularSuffixArray.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/CircularSuffixArray.java)
-2. *Move-to-front encoding.* Given a text file in which sequences of the same character occur near each other many times, convert it into a text file in which certain characters appear much more frequently than others. [MoveToFront.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/MoveToFront.java)
-3. *Huffman compression.* Given a text file in which certain characters appear much more frequently than others, compress it by encoding frequently occurring characters with short codewords and infrequently occurring characters with long codewords.
+1. **Burrows–Wheeler Transform (BWT)**: Transform a typical text file so that sequences of identical characters appear near each other. [BurrowsWheeler.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/BurrowsWheeler.java), [CircularSuffixArray.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/CircularSuffixArray.java)
+2. **Move-to-Front Encoding**: Process the BWT output to increase the frequency of certain characters (typically low-index characters), making the data more amenable to compression. [MoveToFront.java](https://github.com/silencial/Algorithms/blob/master/10_Burrows_Wheeler/MoveToFront.java)
+3. **Huffman Compression**: Compresses the encoded stream by assigning shorter codewords to frequently occurring characters.

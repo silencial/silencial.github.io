@@ -1,7 +1,7 @@
 ---
 title: Machine Learning
 date: 2019-07-26
-lastmod: 2019-09-14
+lastmod: 2026-01-16
 categories:
 - Study
 tags:
@@ -19,724 +19,153 @@ Machine Learning notes.
 
 ---
 
-Learning = Representation + Evaluation + Optimization
+# Foundations & Methodology
+
+This section covers universal concepts, optimization techniques, and evaluation metrics applicable to most machine learning models.
+
+## Machine Learning Overview
+
+A concise definition of machine learning components:
+
+$$
+\text{Learning} = \text{Representation} + \text{Evaluation} + \text{Optimization}
+$$
+
+- **Representation**: The hypothesis space (e.g., linear models, decision trees, neural networks).
+- **Evaluation**: How to judge the model (e.g., Cost function, Accuracy, Precision).
+- **Optimization**: How to search for the best parameters (e.g., Gradient Descent).
 
 ![ML Algorithms](https://i.imgur.com/xMHZRZZ.png)
 
-# Linear Regression
+### Cost Function
 
-## Cost Function
+The goal of most ML algorithms is to minimize a **Cost Function** $J(\theta)$, which measures the discrepancy between the model's predictions and the actual labels.
 
-Hypothesis:
-$$
-h_{\theta}(x)=\theta_{0}+\theta_{1} x
-$$
-Parameters:
-$$
-\theta_0,\quad \theta_1
-$$
-Cost function:
-$$
-J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}
-$$
-Goal:
-$$
-\min_{\theta_{0}, \theta_{1}} J\left(\theta_{0}, \theta_{1}\right)
-$$
+## Data Preprocessing
 
-## Multiple Variables
+Data often requires transformation before training to ensure efficient convergence and optimal performance.
 
-$$
-h_{\theta}(x)=\theta^{T} x=\theta_{0} x_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\dots+\theta_{n} x_{n}
-$$
+### Feature Scaling
 
-Make sure to scale every feature into approximately $-1 \le x_i \le 1$ range. ==(Mean normalization)==
+When features have significantly different scales (e.g., house size in $m^2$ vs. number of bedrooms), the cost function contours become skewed, causing gradient descent to oscillate ("zig-zag") and converge slowly.
 
-Be carful of the model interpretation when **Multicollinearity** (multiple variables are correlated to each other) is present.
+- **Goal**: Scale every feature into approximately the $-1 \le x_i \le 1$ range.
+- **Method**: Subtract the mean and divide by the range (or standard deviation).
 
-## Gradient Descent
+### Feature Encoding
 
-Repeat until convergence:
-$$
-\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)
-$$
-where $\alpha$ is the learning rate.
+Machine learning models require numerical input. We must transform categorical and specific continuous variables into efficient numerical representations.
 
-- If $\alpha$ is too small, gradient descent can be slow.
-- If $\alpha$ is too large, gradient descent can overshoot. It may fail to converge, or even diverge.
+#### One-Hot Encoding
 
-Gradient descent can get stuck in a local minimum if the cost function is not convex.
+Used for **categorical variables** (e.g., Color: Red, Blue, Green) where there is no ordinal relationship.
 
-For linear/logistic regression the formula are the same:
-$$
-\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m \big(h_\theta(x^{(i)}) - y^{(i)}\big)x_j^{(i)}
-$$
+- **Mechanism**: Create a new binary feature (dummy variable) for each unique category.
+- **Example**:
+    - Red $\rightarrow$ `[1, 0, 0]`
+    - Blue $\rightarrow$ `[0, 1, 0]`
+    - Green $\rightarrow$ `[0, 0, 1]`
 
-## Normal Equation
+> **Note**: For linear models, drop one column (Dummy Variable Trap) to avoid perfect multicollinearity.
 
-Solve for $\theta$ analytically.
-$$
-\begin{align*}
-&\frac{\partial}{\partial \theta_j} J(\theta) = 0 \\
-\implies & \theta = (X^T X)^{-1} X^T y
-\end{align*}
-$$
+#### Binning (Discretization)
 
-# Regularization
+Used to transform **continuous variables** into categorical counterparts.
 
-Overfitting: If we have too many features, the learned hypothesis may fit the training set very well, but fail to generalize to new examples.
+- **Mechanism**: Discretize continuous values into buckets to create a new set of Bernoulli-distributed features.
+- **Use Case**:
+    - Helping linear models capture nonlinear effects.
+    - Simplifying data for probabilistic models like Naive Bayes.
+- **Gaussian Assumption**: Alternatively, for probabilistic models, assume the continuous feature follows a Gaussian distribution within each class.
 
-## L1 Regularization
+## Model Evaluation
 
-$$
-\require{mathtools}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
-\DeclareMathOperator*{\argmin}{arg\,min\,}
-\DeclareMathOperator*{\argmax}{arg\,max\,}
-\norm{\theta}_1 = \sum_i |\theta_i|
-$$
+### Dataset Splitting
 
-In model relying on sparse features, L1 regularization helps drive the weights of irrelevant or barely relevant features to **exactly 0**.
+- **Hold-Out Validation**: Best for large datasets. Split data into Training, Validation, and Test sets (e.g., 60/20/20).
+- **K-Fold Cross-Validation**: Best for limited data. Divide the training set into $k$ subsets. Iteratively use one subset for validation and the rest for training, then average the results.
 
-## L2 Regularization
+### Bias vs. Variance (Error Analysis)
 
-$$
-\norm{\theta}_2 = \sum_i \theta_i^2
-$$
+Diagnose the model state by plotting learning curves for training and validation errors.
 
-L2 regularization helps drive outlier weights **closer to 0** but not quite to 0
+| Problem           | Symptom                                      | Root Cause       | Solutions                                                                                                                                   |
+| ----------------- | -------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **High Bias**     | High Training Error<br>High Validation Error | **Underfitting** | • Add more features<br>• Use a more complex model<br>• Decrease regularization ($\lambda$)<br>• Use better optimizers (e.g., Adam)          |
+| **High Variance** | Low Training Error<br>High Validation Error  | **Overfitting**  | • Get more training data<br>• Feature selection (reduce features)<br>• Increase regularization ($\lambda$)<br>• Ensemble learning (Bagging) |
+
+### Hyperparameter Search
+
+- **Grid Search**: Brute-force search over a manually specified subset of the hyperparameter space.
+- **Random Search**: Randomly samples hyperparameters. **More effective in high-dimensional spaces** as it explores more unique values for important parameters.
+- **Bayesian Optimization**: Uses a probabilistic model to map hyperparameters to a probability of a score on the objective function, selecting the next point intelligently.
+
+### Metrics
+
+#### Classification
+
+The **Confusion Matrix** is the foundation for classification metrics:
+
+![Confusion Matrix](https://i.imgur.com/A2oVjho.png)
+
+- **Accuracy**: $\displaystyle \frac{\text{TP + TN}}{\text{TP + FN + FP + TN}}$
+- **Precision**: $\displaystyle \frac{\text{TP}}{\text{TP + FP}}$ (Focus: **Exactness** — "Of all predicted positives, how many were actually positive?")
+- **Recall**: $\displaystyle \frac{\text{TP}}{\text{TP + FN}}$ (Focus: **Completeness** — "Of all actual positives, how many did we find?")
+- **F1 Score**: The harmonic mean of Precision and Recall.
+
+    $$
+    F_1 = 2 \cdot \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+    $$
+
+- **AUC / ROC**: The ROC curve plots TPR vs. FPR at different thresholds. AUC (Area Under Curve) measures the model's ability to distinguish between classes.
+
+#### Regression
+
+- **MAE** (Mean Absolute Error): $\displaystyle \frac{1}{n} \sum |y_i - \hat{y}_i|$
+- **MSE** (Mean Squared Error): $\displaystyle \frac{1}{n} \sum (y_i - \hat{y}_i)^2$
+- **RMSE** (Root Mean Squared Error): $\displaystyle \sqrt{\text{MSE}}$
+- **MAPE** (Mean Absolute Percentage Error): $\displaystyle \frac{1}{n} \sum_{i=1}^n \left| \frac{y_i - \hat{y}_i}{y_i} \right|$
+- $R^2$ (Coefficient of Determination): Measures the proportion of variance in the dependent variable predictable from the independent variables.
+
+    $$
+    R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+    $$
+
+- **Adjusted** $R^2$: Penalizes adding irrelevant features (which artificially inflate regular $R^2$).
+
+    $$
+    R^2_{adj} = 1 - (1-R^2) \frac{n-1}{n-p-1}
+    $$
+
+    - $n$: Sample size.
+    - $p$: Number of features.
+
+## Optimization Algorithms
 
 ### Gradient Descent
 
-Modify the cost function to be:
-$$
-J(\theta)=\frac{1}{2 m}\left[\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}+\lambda \sum_{j=1}^{n} \theta_{j}^{2}\right]
-$$
-then
-$$
-\begin{align*}
-\theta_0 &:= \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)}) x_0^{(i)} \\
-\theta_j &:= \theta_j \left( 1 - \alpha \frac{\lambda}{m} \right) - \alpha \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)}) x_j^{(i)}
-\end{align*}
-$$
-
-### Normal Equation
-
-$$
-\theta =
-\left(
-X^T X + \lambda
-\left[\begin{smallmatrix}
-0 & & & \\
-& 1 & & \\
-& & \ddots & \\
-& & & 1
-\end{smallmatrix}\right]^{-1}
-\right)
-X^T y
-$$
-
-# Logistic Regression
-
-## Classification
-
-With $y \in \{0, 1\}$. Use $h_\theta(x)$ as the estimated probability that $y=1$ on input $x$. We want $0 \le h_\theta(x)\le 1$.
-$$
-\begin{split}
-h_\theta(x) &= g(\theta^T x) \\
-&= \frac{1}{1 + e^{-\theta^T x}}
-\end{split}
-$$
-where $g$ is called the **Sigmoid function**.
-
-Cost function:
-$$
-\operatorname{Cost}(h_\theta(x), y) =
-\begin{dcases}
--\log(h_\theta(x)) &\text{if } y=1\\
--\log(1 - h_\theta(x)) &\text{if } y=0
-\end{dcases}
-$$
-And
-$$
-\begin{split}
-J(\theta) &=\frac{1}{m} \sum_{i=1}^{m} \operatorname{Cost}(h_{\theta}(x^{(i)}), y^{(i)}) \\
-&= -\frac{1}{m}\left[\sum_{i=1}^{m} y^{(i)} \log h_{\theta}(x^{(i)})+(1-y^{(i)}) \log (1-h_{\theta}(x^{(i)}))\right]
-\end{split}
-$$
-
-## Multi-Class Classification
-
-Train a logistic regression classifier $h_\theta^{(i)}(x)$ for each class $i$ to predict the probability that $y = i$.
-
-On a new input $x$ to make a prediction, pick the class $i$ that maximizes $\max_i h_\theta^{(i)}(x)$.
-
-# Neural Network
-
-1. Initialize weights.
-2. Choose the activation function.
-3. Implement forward propagation to get $h_\Theta(x^{(i)})$ for any $x^{(i)}$.
-4. Implement code to compute cost function $J(\Theta).$
-5. Implement backprop to compute partial derivatives.
-6. Use gradient checking to see whether backprop is correct. Then disable the code.
-7. Use gradient descent or other optimization method with backpropagation to minimize $J(\Theta)$.
-
-## Weight Initialization
-
-Assign the weights from a Gaussian distribution with zero mean and small variance is okay for small networks, but problems with deeper network.
-
-Since the goal is to keep variance stays the same through each layer, we can use Xavier initialization.
-$$
-\operatorname{var}(w_i) = \frac{1}{N_{avg}} = \frac{2}{N_{in} + N_{out}}
-$$
-==Xavier assumes zero centered activation function, double the variance if using ReLU==
-
-## Activation Function
-
-### Hidden Layer
-
-==ReLU is a good default choice for most problems==
-
-Consider when choosing activation function:
-
-- Vanishing/Exploding gradients: When local gradient is very small/large, it will kill/blow the gradient during backprop.
-- Zero-centered: Could introduce undesirable zig-zagging dynamics in gradient updates.
-
-![Activation Functions](https://i.imgur.com/3w1EOxp.png)
-
-### Output Layer
-
-- Use SoftMax function for classification problem.
-- Use Linear function for regression problem.
-
-## Cost Function
-
-$h_\Theta (x) \in \mathbb{R}^K, \quad (h_\Theta(x))_i = i^{th}$ output.
-$$
-J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^{m} \sum_{k=1}^{K} y_{k}^{(i)} \log \left(h_{\Theta}(x^{(i)})\right)_{k}+(1-y_{k}^{(i)}) \log \left(1-\big(h_{\Theta}(x^{(i)})\big)_{k}\right)\right] +\frac{\lambda}{2 m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}}\left(\Theta_{j i}^{(l)}\right)^{2}
-$$
-
-## Backpropagation
-
-Given one training example $(x, y)$, use the Forward propagation to compute the cost:
-$$
-\begin{align*}
-a^{(1)} &= x \\
-z^{(2)} &= \Theta^{(1)} a^{(1)} \\
-a^{(2)} &= g(z^{(2)}) \quad (\text{add } a_0^{(2)}) \\
-z^{(3)} &= \Theta^{(2)} a^{(2)} \\
-a^{(3)} &= g(z^{(3)}) \quad (\text{add } a_0^{(3)}) \\
-z^{(4)} &= \Theta^{(3)} a^{(3)} \\
-a^{(4)} &= h_\Theta(x) =  g(z^{(4)})
-\end{align*}
-$$
-In Backpropagation, first compute $\delta_j^{(l)} = \frac{\partial}{\partial z_j^{(l)}} J(\Theta)$, which is the "error" of node $j$ in layer $l$.
-$$
-\begin{align*}
-\delta^{(4)} &= a^{(4)} - y \\
-\delta^{(3)} &= (\Theta^{(3)})^T \delta^{(4)} .*g'(z^{(3)}) \\
-\delta^{(2)} &= (\Theta^{(2)})^T \delta^{(3)} .*g'(z^{(2)}) \\
-\end{align*}
-$$
-Then the gradient:
-$$
-\begin{align*}
-\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) &= \frac{1}{m} a_j^{(l)} \delta_i^{(l + 1)} + \lambda \Theta_{ij}^{(l)}  & &\text{if } j \ne 0 \\
-\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) &= \frac{1}{m} a_j^{(l)} \delta_i^{(l + 1)} & &\text{if } j = 0 \\
-\end{align*}
-$$
-
-## Gradient Check
-
-A numerical method to check the backprop is correct. Useful in implementation.
-$$
-\frac{\partial}{\partial \theta_j} J(\theta) \approx \frac{J(\theta_1,\dots, \theta_j + \epsilon, \dots, \theta_n) - J(\theta_1,\dots, \theta_j - \epsilon, \dots, \theta_n)}{2\epsilon}
-$$
-
-## Batch Normalization
-
-Apply feature scaling not just to the input layer, but also to the hidden units.
-
-**Make it possible to use significantly higher learning rates, and reduces  the sensitivity to initialization.**
-
-Before activation function, normalize $z$ to $z_\text{norm}$ and then scale and shift to $\tilde{z}$:
-$$
-\tilde{z} = \gamma z_\text{norm} + \beta
-$$
-where $\beta$ and $\gamma$ are learned during training.
-
-## Dropout Regularization
-
-Besides using early stopping and L1/L2 regularization, dropout regularization is another popular approach to prevent overfitting in neural network.
-
-- Each time an example is read, some hidden units are removed with probability.
-- During testing there is no dropout applied, but with averaging.
-- Different hidden layer can have different dropout probability.
-- It can be viewed as a form of model averaging.
-
-# Convolutional Neural Network
-
-Useful in computer vision:
-
-- Classification
-- Segmentation
-- Localization
-- Detection
-
-Since using regular neural network on large images requires huge number of parameters, CNN use **convolution** + **pooling** layers to first perform feature extraction before passing it to a fully connected hidden layers.
-
-Two main advantages of CNN over just fully connected layers:
-
-- Parameter sharing: feature detector is likely invariant to locations.
-- Sparsity of connection: only connect each neuron to only a local region of the input.
-- Translation invariant.
-
-## Convolution
-
-A convolution layer is made up of some predetermined number of filters. **Each filter acts as a detector for a particular feature**.
-
-Always use **multiple filters** at the same time and stack all these feature maps together.
-
-Treat convolution matrix as parameter and **learn** them through backprop.
-
-Use **activation function** to introduce nonlinearity to output, e.g. ReLU.
-
-==Since all neurons in a feature map share the same parameters, CNN can recognize a pattern in any location once it is learned.==
-
-## Pooling
-
-Pooling layers are in charge of **downsampling** the input. It can decrease feature map size while at the same time keeping the important information.
-
-The most common type of pooling is **max pooling**.
-
-- Given pooling window size, stride size and padding size.
-- Take the max value in the pooling window.
-
-Pooling also helps to make the representation become approximately **invariant to small translations**. This property is useful if we care more about whether some feature is present than exactly where it is.
-
-Padding (zero-padding) is used in CNN to preserve the size of the feature maps, otherwise they would shrink at each layer.
-
-## Transfer Learning
-
-Transfer learning in CNN is common. When your interested dataset is small, train the CNN on a large dataset with similar data, then transfer learn to your dataset.
-
-Usually only the FC layers needs to be relearned during transfer. The number of layers needs to be relearned depends on the size of your dataset.
-
-# Recurrent Neural Network
-
-More flexible in architecture design:
-
-- Image Captioning
-- Sentiment Classification
-- Machine Translation
-- Video Classification on frame level
-
-## Vanilla RNN
-
-We can process a sequence of vectors $x$ by applying a recurrence formula at every time step:
-$$
-\begin{align*}
-h_t &= f_W (h_{t-1}, x_t) \\
-&= \tanh(W_{hh} h_{t-1} + W_{xh} x_t) \\
-y_t &=W_{hy} h_t
-\end{align*}
-$$
-==Computing gradient of $h_0$ involves many factors of $W$ and $\tanh$, easily lead to gradient exploding/vanishing.==
-
-## LSTM
-
-Long Short Term Memory (LSTM)
-$$
-\begin{gather*}
-\begin{pmatrix}
-{i} \\ {f} \\ {o} \\ {g}
-\end{pmatrix}
-=\begin{pmatrix}
-{\sigma} \\ {\sigma} \\ {\sigma} \\ {\tanh }
-\end{pmatrix} W
-\begin{pmatrix}
-{h_{t-1}} \\ {x_{t}}
-\end{pmatrix} \\
-c_{t} = f \odot c_{t-1}+i \odot g \\
-h_{t} = o \odot \tanh \left(c_{t}\right)
-\end{gather*}
-$$
-
-- $f$: Forget gate, whether to erase cell
-- $i$: Input gate, whether to write to cell
-- $g$: Gate gate, how much to write to cell
-- $o$: Output gate, how much to reveal cell
-
-# Generative Adversarial Network
-
-- Generator network: try to fool the discriminator by generating real-looking images.
-- Discriminator network: try to distinguish between real and fake images.
-
-Train jointly with the minimax objective function:
-$$
-\min _{\theta_{g}} \max _{\theta_{d}}\Big[\mathbb{E}_{x \sim p_\text{data}} \log D_{\theta_{d}}(x)+\mathbb{E}_{z \sim p(z)} \log \Big(1-D_{\theta_{d}}\big(G_{\theta_{g}}(z)\big)\Big)\Big]
-$$
-In practice, alternate between:
-
-1. Gradient ascent on discriminator
-   $$
-   \max _{\theta_{d}}\Big[\mathbb{E}_{x \sim p_\text{data}} \log D_{\theta_{d}}(x)+\mathbb{E}_{z \sim p(z)} \log \Big(1-D_{\theta_{d}}\big(G_{\theta_{g}}(z)\big)\Big)\Big]
-   $$
-
-2. Gradient ascent on generator
-   $$
-   \min _{\theta_{g}} \mathbb{E}_{z \sim p(z)} \log \Big(D_{\theta_{d}}\big(G_{\theta_{g}}(z)\big)\Big)
-   $$
-   ==The reason to use gradient ascent instead of gradient descent for the generator is to put more gradient signal on the region where samples are bad.==
-
-# Reinforcement Learning
-
-Problems involving an **agent** interacting with an **environment**, which provides numeric **reward** signals. The goal is to learn how to take actions in order to maximize reward.
-
-## Markov Decision Process
-
-- $\mathcal{S}$: set of possible states
-- $\mathcal{A}$: set of possible actions
-- $\mathcal{R}$: distribution of reward given state and action
-- $\mathbb{P}$: transition probability
-- $\gamma$: discount factor
-
-1. At time step $t=0$, environment samples initial state $s_0 \sim p(s_0)$
-2. For $t=0$ until done:
-   1. Agent selects action $a_t$
-   2. Environment samples reward $r_t \sim R(\cdot \mid s_t, a_t)$
-   3. Environment samples next state $s_{t+1} \sim P(\cdot \mid s_t, a_t)$
-   4. Agent receives reward $r_t$ and next state $s_{t+1}$
-
-A policy $\pi: \mathcal{S} \to \mathcal{A}$ specifies what action to take in each state.
-
-Objective: find policy $\pi^* = \argmax_\pi \mathbb{E}[\sum_t \gamma^t r_t]$
-
-## Basics
-
-### Value Function
-
-Measure how good is a state.
-
-The value function at state $s$, is the expected cumulative reward from following the policy from state $s$:
-$$
-V^{\pi}(s)=\mathbb{E}\left[\sum_{t \ge 0} \gamma^{t} r_{t} | s_{0}=s, \pi\right]
-$$
-
-### Q-Value Function
-
-Measure how good is a state-action pair.
-
-The Q-value function at state $s$ and action $a$, is the cumulative reward from taking action $a$ in state $s$ and then following the policy:
-$$
-Q^{\pi}(s, a)=\mathbb{E}\left[\sum_{t \ge 0} \gamma^{t} r_{t} \Bigm\vert s_{0}=s, a_{0}=a, \pi\right]
-$$
-
-### Bellman Equation
-
-The optimal Q-value function $Q^*$ is the maximum expected cumulative reward achievable
-from a given state-action pair:
-$$
-Q^*(s, a) = \max_\pi \mathbb{E}\left[\sum_{t \ge 0} \gamma^{t} r_{t} \Bigm\vert s_{0}=s, a_{0}=a, \pi\right]
-$$
-$Q^*$ satisfies the Bellman equation:
-$$
-Q^{*}(s, a)=\mathbb{E}_{s^{\prime} \sim \mathcal{E}}\left[r+\gamma \max _{a^{\prime}} Q^{*}\left(s^{\prime}, a^{\prime}\right) \Bigm\vert s, a\right]
-$$
-
-## Solver
-
-### Value Iteration
-
-Use Bellman equation as an iterative update:
-$$
-Q_{i+1}(s, a)=\mathbb{E}\left[r+\gamma \max _{a^{\prime}} Q_i\left(s^{\prime}, a^{\prime}\right) \Bigm\vert s, a\right]
-$$
-$Q_i$ will converge to $Q^*$ as $i\to \infty$
-
-==Problem: Must compute $Q(s,a)$ for every state-action pair.==
-
-### Q-Learning
-
-Use a function approximator to estimate $Q(s,a)$, e.g. a neural network. $Q(s,a; \theta) \approx Q^*(s,a)$. Loss function is
-$$
-L_{i}\left(\theta_{i}\right)=\mathbb{E}_{s, a \sim \rho(\cdot)}\left[\left(y_{i}-Q\left(s, a ; \theta_{i}\right)\right)^{2}\right]
-$$
-where $y_i = \mathbb{E}_{s'\sim \mathcal{E}}\left[r+\gamma \max _{a^{\prime}} Q_i\left(s^{\prime}, a^{\prime}\right) \mid s, a\right]$
-
-### Policy Gradients
-
-Sometimes the $Q$-function can be very complicated while the policy are much simpler.
-
-Gradient ascent on policy parameters with rewards:
-$$
-\begin{split}
-J(\theta) &= \mathbb{E}\left[ \sum_{t\ge 0} \gamma^t r_t \Bigm\vert \pi_\theta \right] \\
-&= \mathbb{E}_{\tau\sim p(\tau; \theta)} [r(\tau)] \\
-&= \int_\tau r(\tau) p(\tau; \theta) d\tau
-\end{split}
-$$
-and
-$$
-\begin{split}
-\nabla_\theta J(\theta) &= \int_\tau r(\tau) \nabla_\theta p(\tau; \theta) d\tau \\
-&= \int_\tau \big(r(\tau) \nabla_\theta \log p(\tau; \theta)\big) p(\tau; \theta) d\tau \\
-&= \mathbb{E}_{\tau\sim p(\tau; \theta)} [r(\tau) \nabla_\theta \log p(\tau; \theta)]
-\end{split}
-$$
-plug in $p(\tau ; \theta)=\prod_{t \ge 0} p\left(s_{t+1} | s_{t}, a_{t}\right) \pi_{\theta}\left(a_{t} | s_{t}\right)$ to get
-$$
-\nabla_\theta J(\theta) \approx \sum_{t\ge 0} r(\tau) \nabla_\theta \log \pi_\theta (a_t | s_t)
-$$
-
-### Variance Reduction
-
-The basic of policy gradients is that if a trajectory is good then all its actions were good. In expectation, it averages out. But it also suffers from high variance because credit assignment is really hard.
-
-- Push up probabilities of an action seen, only by the cumulative future reward from that state
-  $$
-  \nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t'\ge t} r_{t'} \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
-  $$
-
-- Use discount factor $\gamma$ to ignore delayed effects
-  $$
-  \nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t'\ge t} \gamma^{t' - t} r_{t'} \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
-  $$
-
-- Introduce a baseline function dependent on the state
-  $$
-  \nabla_\theta J(\theta) \approx \sum_{t\ge 0} \left( \sum_{t'\ge t} \gamma^{t' - t} r_{t'} - b(s_t) \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
-  $$
-
-- Baseline
-  $$
-  \nabla_\theta J(\theta) \approx \sum_{t\ge 0} \big( Q^{\pi_\theta}(s_t, a_t) - V^{\pi_\theta}(s_t) \big) \nabla_\theta \log \pi_\theta (a_t | s_t)
-  $$
-
-# Naive Bayes
-
-Assumption: **independence** between the features.
-
-It simplifies the classification task dramatically and work well in document classification and spam filtering.
-
-Given training data $X = (X_1, X_2, \dots, X_n)$, the probability of $X$ belonging to class $C_k$ is given by
-$$
-\begin{split}
-P\left(C_{k} | X_{1}, \ldots, X_{\mathrm{n}}\right) &= \frac{P\left(X_{1}, \ldots, X_{\mathrm{n}} | C_{k}\right) P\left(C_{k}\right)}{P\left(X_{1}, \ldots, X_{\mathrm{n}}\right)} \\
-&=\frac{P\left(X_{1} | C_{k}\right) \ldots P\left(X_{\mathrm{n}} | C_{k}\right) P\left(C_{k}\right)}{P\left(X_{1}, \ldots,X_{\mathrm{n}}\right)}
-\end{split}
-$$
-Ignore the normalize term and use **Maximum A Posteriori (MAP)** classification rule to get the class number
-$$
-\hat{y} = \argmax_x p(C_k) \prod_{i=1}^n p(x_i | C_k)
-$$
-
-## Distribution
-
-For discrete value, the Bayes approach is intuitive.
-
-For continuous value, we can either
-
-- Use **binning** to discretize the feature values to obtain a new set of Bernoulli-distributed features.
-- Or assuming it has **Gaussian distribution**.
-
-To avoid unseen features $p(\mathbf{x} | C_k) = 0$ wipe out all information in the other probabilities, use **Laplacian correction** to add 1 to each case.
-
-# Support Vector Machine
-
-Alternative view of logistic regression:
-$$
-\min _{\theta} C \sum_{i=1}^{m}\left[y^{(i)} \text{cost}_{1}\left(\theta^{T} x^{(i)}\right)+\left(1-y^{(i)}\right) \text{cost}_{0}\left(\theta^{T} x^{(i)}\right)\right]+\frac{1}{2} \sum_{i=1}^{n} \theta_{j}^{2}
-$$
-An intuitive choice for the cost function is **Hinge loss**. It can be represented as
-$$
-\begin{align*}
-&\text{minimize} & &\frac{1}{2} \norm{a}_{2} \\
-&\text{subject to} & &a^{T} x_{i}+b \ge 1, \quad i=1, \dots, N \\
-& & &a^{T} y_{i}+b \le-1, \quad i=1, \dots, M
-\end{align*}
-$$
-
-## Kernels
-
-Using kernel allows the algorithm to fit the maximum-margin hyperplane in a transformed feature space.
-
-Given $x$, compute new feature $f_i$ depending on proximity to landmarks $l^{(1)}, \dots, l^{(n)}$:
-$$
-f_i = \text{sim}(x, l^{(i)})
-$$
-Then predict $y = 1$ if $\theta^T f \ge 0$.
-
-==To make valid kernels, similarity function need to satisfy Mercer's condition.==
-
-Gaussian kernel:
-$$
-f_{i}=\exp \left(-\frac{\norm{x-l^{(i)}}^{2}}{2 \sigma^{2}}\right)
-$$
-where $l^{(i)} = x^{(i)}$. ==Do perform feature scaling before using the Gaussian kernel.==
-
-## Logistic Regression vs. SVM
-
-$n=$ number of features, $m=$ number of training examples.
-
-If $n \gg m$: Use logistic regression, or SVM without a kernel.
-
-If $n$ is small, $m$ is intermediate: Use SVM with Gaussian kernel.
-
-If $n$ is small, $m$ is large: Add more features, then use logistic regression or SVM without a kernel.
-
-# Clustering
-
-## Hierarchical Clustering
-
-- Agglomerative (bottom up): Each point is a cluster at first and then repeatedly combine the two "nearest" clusters into one.
-- Divisive (top down): Start with one cluster and recursively split it.
-
-To represent a cluster, for Euclidean case, we can simply use the average of points as the centroid. For non-Euclidean case, we can define clustroid to be the point "closest" to other points, where the "closest" can be measured in different ways.
-
-To find nearest clusters, we can use the distance from the centroid/clustroid, or other measures like the minimum distance between two points from each cluster, the diameter of the merged cluster, or the average distance between points in the cluster.
-
-Stop merging clusters when $k$ clusters are found (if we know the number of clusters), or criterion is met based on the merging criterion, or there is only 1 cluster left.
-
-==The best choice depends on the shape of clusters.==
-
-## $k$-Means Algorithm
-
-Assumes Euclidean space.
-
-- Randomly initialize $K$ cluster centroids $\mu_1, \dots, \mu_K$.
-- Find the index $c^{(i)}$ of cluster centroid closest to point $x^{(i)}$.
-- Update cluster centroids by averaging points assigned to each cluster.
-
-Optimization objective:
-$$
-J = \frac{1}{m} \sum_{i=1}^m \norm{ x^{(i)} - \mu_{c^{(i)}} }^2
-$$
-
-To choose the value of $k$:
-
-- Elbow method: try different $k$ and look at the changes in the average distance to centroid. As $k$ increases, the average falls rapidly until right $k$, then changes little. **A well-defined elbow is rarely seen in practice**.
-- Silhouette method: the silhouette value is a measure of how similar an object is to its own cluster compared to other clusters.
-
-Weakness:
-
-- Sensitive to outliers and noise. Discover and eliminate them beforehand.
-- Can only handle numerical data.
-- Difficult to detect clusters with non-spherical shapes or widely different sizes/densities.
-
-# Decision Tree
-
-Decision trees can be used for classification or regression with a tree structure.
-
-- Select attribute for root node.
-- Split instances into subsets
-- Repeat recursively for each branch, using only instances that reach the branch.
-
-## Purity
-
-To decide which attribute to split on, use **Information Gain** or **Gini Index** to measure the purity of the split.
-
-Entropy = $-\sum_i p_i \log p_i$ measures the disorder or uncertainty.
+Iteratively update parameters $\theta$ to minimize the cost function $J(\theta)$.
 
-### Information Gain
-
-The difference of entropy after splitting. The higher, the better.
-$$
-\operatorname{IG}(S, A) = H(S) - \sum_{v\in A} \frac{|S_v|}{|S|} H(S_v)
-$$
-Use **Information Gain Ratio** instead to prevent "super attributes" being selected as root.
-$$
-\operatorname{IGR}(A) = \frac{\operatorname{IG}(A)}{\operatorname{IV}(A)} = \operatorname{IG}(A) \bigg/ -\sum_{v} \frac{|S_v|}{|S|} \log\left(\frac{|S_v|}{|S|}\right)
-$$
-
-### Gini Index
-
-The smaller, the better.
-$$
-G_i = 1 - \sum_{k=1}^n p_{ik}^2
-$$
-where $p_{ik}$ is the ratio of class $k$ instances among the training instances in the $i$-th node
-
-## Pruning
-
-Change the model by deleting the child nodes of a branch node to prevent overfitting.
-
-- Pre-pruning: stop the growth early if a split would result in the purity below a threshold.
-- Post-pruning: remove non-significant branches form a fully grown tree. Replace subtree by a leaf node labeled with the most frequent class.
-
-==Post-pruning is more successful in practice because it is not easy to precisely estimate when to stop growing the tree.==
-
-# Ensemble Learning
-
-Multiple learners are trained and combined to solve the same problem.
-
-- Bagging (bootstrap aggregating): build several learners independently and then to average their predictions.
-- Boosting: base learners are built sequentially and one tries to reduce the bias of the
-  combined learner.
-
-## Bagging
-
-- Sampling **with replacement** from the training dataset.
-- Train base learners on each sample separately.
-- Average predictions from multiple base learners.
-  - Majority voting for classification
-  - Averaging for regression
-
-Often used with tree, an extension is **random forest**.
-
-## Boosting
-
-Extremely useful in **computer vision**.
-
-- Train a base learner on the entire dataset.
-- Find the data that are incorrectly predicted and assigned it with more weight.
-- Train the next learner on the weighted dataset.
-- Repeat the process to sequentially train base learners.
-- Combine the base learners using a weighted average. More weight to those with better performance.
-
-**AdaBoost** computes the weight by
 $$
-\alpha_t = \frac{1}{2} \ln \left(\frac{1-\epsilon_t}{\epsilon_t}\right)
+\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta)
 $$
-where $\epsilon_t$ is the error rate.
-
-# PCA
-
-PCA (Principal Component Analysis) is the most popular algorithm in **dimensionality reduction**. It is widely used for
-
-1. Data compression: Reduce memory. Speed up learning algorithm.
-2. Data visualization.
-3. Feature extraction.
-
-==Before you implement PCA, first try running whatever you want to do with the original data/raw data. Only if that doesn't do what you want, then implement PCA.==
-
-There are two points of view leading to the same result of PCA, one is to **minimize the reconstruction error** with SVD:
-
-- Perform feature scaling/mean normalization to get $X$
-- SVD: $X = U \Sigma V^T$
-- The reduced PCA projections will be given by $Z = X V_{:, 1:k}$
-- Reconstruct data by $\hat{X} = V_{:, 1:k}^T Z$
-
-Here $V$ are **principal directions** and $XV = US$ are **principal components**.
 
-The other is to **maximize the variance** of the projected data.
+- **Learning Rate** ($\alpha$):
+    - Too small: Slow convergence.
+    - Too large: May overshoot, fail to converge, or diverge.
 
-- Perform feature scaling/mean normalization to get $X$
-- Compute the covariance matrix: $S = X^T X$
-- Eigen decomposition: $S = V \Sigma^2 V$
-- Same as SVD
+#### Variants
 
-# Gradient Descent
+1. **Batch Gradient Descent**: Uses **all** examples for each update. Slow for large datasets.
+2. **Stochastic Gradient Descent (SGD)**: Uses **one** example per update. High variance helps escape local optima but prevents settling at the exact minimum (solution: decay learning rate).
+3. **Mini-batch Gradient Descent**: Uses a small batch (e.g., 32, 64) per update. Combines the stability of Batch GD with the speed of SGD.
 
-## Variants
+### Advanced Optimizers
 
-- Batch gradient descent: Use all examples in each update. **Not suitable for huge datasets**.
-- Stochastic gradient descent: Use 1 example in each update. **The randomness is good to escape from local optima**. **But it can never settle at the minimum**. One solution is to gradually reduce the learning rate.
-- Mini-batch gradient descent: Take the best of both batch GD and SGD.
+#### Momentum
 
-## Momentum
+Accelerates SGD in the relevant direction and dampens oscillations.
 
-GD can get trapped in local minima or saddle points. Momentum helps accelerate SGD in the relevant direction and dampens oscillations.
 $$
 \begin{align*}
 v_t &= \beta v_{t-1} + \eta \nabla_\theta J(\theta) \\
@@ -744,127 +173,722 @@ v_t &= \beta v_{t-1} + \eta \nabla_\theta J(\theta) \\
 \end{align*}
 $$
 
-- $v$: plays the role of velocity.
-- $\beta$: plays the role of friction. Must be between 0 to 1, typical choice is about 0.9
+- $\beta$: Momentum term (friction), typically 0.9.
 
-## Adam
+#### Adam (Adaptive Moment Estimation)
 
-Adam (Adaptive Moment Estimation) automatically computes adaptive learning rates for each parameter.
+Computes adaptive learning rates for each parameter. Combines Momentum (1st moment) and RMSProp (2nd moment). **Generally the best default choice.**
 
-- Compute gradient $g_t$
+1. Update 1st moment (Momentum): $m_{t} = \beta_{1} m_{t-1}+\left(1-\beta_{1}\right) g_{t}$
+2. Update 2nd raw moment (RMSProp): $v_{t} = \beta_{2} v_{t-1}+\left(1-\beta_{2}\right) g_{t}^{2}$
+3. Bias correction: $\displaystyle \hat{m}_{t} = \frac{m_{t}}{1-\beta_{1}^t}, \quad \hat{v}_{t} = \frac{v_{t}}{1-\beta_{2}^t}$
+4. Parameter update:
 
-- Update biased 1st moment estimate
-  $$
-  m_{t} = \beta_{1} m_{t-1}+\left(1-\beta_{1}\right) g_{t}
-  $$
+    $$
+    w_{t} = w_{t-1} - \eta \frac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}
+    $$
 
-- Update biased 2nd raw moment estimate
-  $$
-  v_{t} = \beta_{2} v_{t-1}+\left(1-\beta_{2}\right) g_{t}^{2}
-  $$
+### Second-Order Methods
 
-- Update bias-corrected 1st moment estimate
-  $$
-  \hat{m}_{t} = \frac{m_{t}}{1-\beta_{1}^t}
-  $$
+- **Newton's Method**: Uses the Hessian matrix to find the minimum directly. Fast convergence but computationally expensive due to matrix inversion.
+- **BFGS / L-BFGS**: Quasi-Newton methods that approximate the Hessian. L-BFGS (Limited-memory) is efficient for large-scale problems.
 
-- Update bias-corrected 2nd raw moment estimate
-  $$
-  \hat{v}_{t} = \frac{v_{t}}{1-\beta_{2}^t}
-  $$
+## Regularization
 
-- Update parameters
-  $$
-  w_{t} =w_{t-1}-\eta \frac{\hat{m}_{t}}{\sqrt{\hat{v}_{t}}+\epsilon}
-  $$
+Regularization prevents overfitting by penalizing large weights.
 
-==Default choice to use, especially for sparse data sets.==
+### L1 Regularization (Lasso)
 
-## Second-Order
+Adds the absolute value of the magnitude of coefficients as a penalty term.
 
-- Quasi-Newton methods (BGFS most popular): Approximate inverse Hessian with rank 1 updates over time.
-- L-BFGS: Does not form the full inverse Hessian. Usually works very well in full batch, deterministic mode.
+$$
+\DeclarePairedDelimiters\norm{\lVert}{\rVert}
+\DeclareMathOperator*{\argmin}{arg\,min\,}
+\DeclareMathOperator*{\argmax}{arg\,max\,}
+\norm{\theta}_1 = \sum_i |\theta_i|
+$$
 
-# Evaluation
+> **Key Property**: L1 regularization produces **sparse models**, driving the weights of irrelevant features to **exactly 0** (acting as feature selection).
 
-## Validation Set
+### L2 Regularization (Ridge)
 
-Separate the dataset to training/validation/test sets, use the validation set for model selection and hyperparameter tuning.
+Adds the squared magnitude of coefficients as a penalty term.
 
-### Hold-Out Validation
+$$
+\norm{\theta}_2 = \sum_i \theta_i^2
+$$
 
-For relatively small dataset, split the data to $6:2:2$.
+> **Key Property**: L2 regularization drives outlier weights **closer to 0** but rarely to exactly 0. Generally more stable than L1.
 
-For big data set, split the data to $98:1:1$.
+Gradient Descent with L2 Regularization:
 
-### K-Fold Cross Validation
+$$
+\theta_j := \theta_j (1 - \alpha \frac{\lambda}{m}) - \alpha \frac{1}{m} \sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)}) x_j^{(i)}
+$$
 
-For small dataset, divide the training set into $k$ equal size subsets. Each time, one of the $k$ subsets is used as the validation set. Repeat this process for $k$ times and average the errors.
+The term $(1 - \alpha \frac{\lambda}{m})$ is known as **Weight Decay**.
 
-## Hyperparameter Searching
+# Classical Supervised Learning
 
-- Grid search: Brutal force to search every combination of hyperparameters.
-- Random search: Randomly sample and narrow the range. **More effective in high-dimensional spaces.**
-- Bayesian Optimization:
+This section covers foundational statistical learning models that establish the baseline for more complex architectures.
 
-## Over/Under Fitting
+## Linear Models
 
-Plot the learning curves for test and validation sets for debugging.
+### Linear Regression
 
-- High Bias: Underfit. Both training/validation error will be high.
-  - Get additional features
-  - More complex model
-  - Better optimization algorithm such as Adam
-- Use ensemble learning — Boosting
-  - Decrease $\lambda$
+**Hypothesis**: The model predicts a continuous value based on a linear combination of input features.
 
-- High Variance: Overfit. Low training error, high validation error.
-  - Get more training examples
-  - Try smaller sets of features
-  - Use ensemble learning — Bagging & Random Forest
-  - Increase $\lambda$
+$$
+h_{\theta}(x) = \theta^{T} x = \theta_{0} + \theta_{1} x_{1} + \dots + \theta_{n} x_{n}
+$$
 
-## Metrics
+**Optimization Methods**:
 
-### Classification
+1. **Gradient Descent**: Iterative approach. Efficient for large $n$.
+2. **Normal Equation**: Analytical solution to find $\theta$ directly by setting $\nabla_\theta J(\theta) = 0$.
 
-The **confusion matrix**:
+    $$
+    \theta = (X^T X)^{-1} X^T y
+    $$
 
-![Confusion Matrix](https://i.imgur.com/A2oVjho.png)
+    > **Note**: The Normal Equation becomes computationally expensive if $n$ (number of features) is very large (e.g., $n > 10,000$) due to the $O(n^3)$ cost of matrix inversion.
 
-- Accuracy:
-  $$
-  \frac{\text{TP + TN}}{\text{TP + FN + FP + TN}}
-  $$
+**Multicollinearity**: If features are highly correlated, the matrix $X^T X$ may be non-invertible (singular) or numerically unstable, affecting model interpretation.
 
-- Precision:
-  $$
-  \frac{\text{TP}}{\text{TP + FP}}
-  $$
+**With L2 Regularization (Ridge Regression)**: To prevent overfitting and handle non-invertible matrices, add a regularization term $\lambda$ to the diagonal (excluding the bias term $\theta_0$):
 
-- Recall:
-  $$
-  \frac{\text{TP}}{\text{TP + FN}}
-  $$
+$$
+\theta = \left( X^T X + \lambda I' \right)^{-1} X^T y
+$$
 
-How to choose the trade-off between precision and recall depends on the actual problem.
+Where $I'$ is the identity matrix with the top-left element (corresponding to $\theta_0$) set to 0.
 
-Single metric:
+### Logistic Regression
 
-- F score:
-  $$
-  F_1 = 2\frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
-  $$
+Despite its name, Logistic Regression is used for **classification** problems ($y \in \{0, 1\}$). It predicts the probability that an instance belongs to the positive class.
 
-- AUC (area under the curve): ROC curve plots False Positive Rate TP / (TP + FN) vs. True Positive Rate FP / (FP + TN) at different classification thresholds.
+**Sigmoid Function**: Maps real-valued numbers to the range $(0, 1)$.
 
-### Regression
+$$
+g(z) = \frac{1}{1 + e^{-z}}
+$$
 
-- MAE (Mean Absolute Error): $\displaystyle \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|$
-- MSE (Mean Squared Error): $\displaystyle \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2$
-- RMSE (Root Mean Squared Error): $\displaystyle \frac{1}{n} \sqrt{\sum_{i=1}^n (y_i - \hat{y}_i)^2}$
-- MAPE (Mean Absolute Percentage Error): $\displaystyle \frac{1}{n} \sum_{i=1}^n \left| \frac{y_i - \hat{y}_i}{y_i} \right|$
-- $R^2$ (coefficient of determination): $\displaystyle \frac{\big( \sum (x_i - \bar{x}) (y - \bar{y})\big)^2}{\sum (x_i - \bar{x})^2 (y - \bar{y})^2} = \frac{\sum_i (\hat{y}_i - \bar{y})^2}{\sum_i (\hat{y}_i - \bar{y})^2 + \sum_i (\hat{y}_i - y_i)^2}$
-- Adjusted $R^2$ (Prevent overfitting): $\displaystyle R_\text{adj}^2 = 1-\frac{(1-R^2) (n-1)}{n-k-1}$ where $n$ is the sample size and $k$ the total number of explanatory variables (not including the constant term).
+**Hypothesis**:
 
-lstm
+$$
+h_\theta(x) = g(\theta^T x) = P(y=1 | x; \theta)
+$$
+
+**Cost Function (Cross-Entropy Loss)**: Since the sigmoid function is nonlinear, using MSE would result in a non-convex function. Instead, we use Log Loss:
+
+$$
+J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log h_{\theta}(x^{(i)}) + (1-y^{(i)}) \log (1-h_{\theta}(x^{(i)})) \right]
+$$
+
+**Multiclass Classification (One-vs-All)**: Train $K$ separate binary classifiers. Each classifier $i$ distinguishes class $i$ from all other classes. To predict, choose the class $i$ that maximizes $h_\theta^{(i)}(x)$.
+
+Alternatively, **Softmax Regression** (Multinomial Logistic Regression) generalizes the logistic regression to support multiclass problems directly by outputting a probability distribution across $K$ classes.
+
+## K-Nearest Neighbors (KNN)
+
+KNN is a **non-parametric**, **lazy learning** algorithm. It does not learn a discriminative function from the training data but instead memorizes the training dataset.
+
+**Mechanism**: Given a query point $x_q$:
+
+1. **Calculate Distances**: Compute the distance (e.g., Euclidean) between $x_q$ and all training examples.
+2. **Find Neighbors**: Identify the $k$ nearest neighbors.
+3. **Vote/Average**:
+    - **Classification**: Majority vote of the labels of the $k$ neighbors.
+    - **Regression**: Average of the values of the $k$ neighbors.
+
+**Hyperparameter** $k$:
+
+- **Small** $k$: High complexity, low bias, **high variance**. Sensitive to noise (outliers).
+- **Large** $k$: Low complexity, **high bias**, low variance. The decision boundary becomes smoother.
+
+**Pros & Cons**:
+
+- **Pros**: Simple, effective baseline, no training phase (instant adaptation to new data).
+- **Cons**:
+    - **Computationally expensive** at prediction time ($O(N)$ for every query).
+    - **Memory intensive** (must store all data).
+    - Sensitive to **Feature Scaling** (large scale features dominate distance).
+    - Suffers from the **Curse of Dimensionality** in high-dimensional space.
+
+## Generative Models
+
+### Naive Bayes Classifier
+
+A probabilistic classifier based on **Bayes' Theorem** with a "naive" independence assumption.
+
+**Assumption**: All features $x_i$ are **mutually independent** given the class $y$.
+
+**Decision Rule (Maximum A Posteriori - MAP)**:
+
+$$
+\hat{y} = \argmax_{k} P(C_k) \prod_{i=1}^n P(x_i | C_k)
+$$
+
+(The denominator $P(x)$ is constant across classes and is ignored during prediction).
+
+**Smoothing (Laplace Smoothing)**: If a feature value never appears in the training set for a given class, the probability becomes 0, wiping out all other information.
+
+- **Solution**: Add 1 to the count of every event (numerator) and add $k$ (number of distinct values) to the denominator.
+
+**Handling Continuous Data**:
+
+1. **Binning**: Discretize features into buckets.
+2. **Gaussian Naive Bayes**: Assume features follow a normal (Gaussian) distribution within each class.
+
+## Support Vector Machine (SVM)
+
+SVMs search for the optimal hyperplane that maximizes the **margin** between classes.
+
+### Hinge Loss (Optimization Objective)
+
+The SVM objective is conceptually similar to logistic regression but with a stricter penalty (Hinge Loss) and L2 regularization:
+
+$$
+\min_{\theta} C \sum_{i=1}^{m} \left[ y^{(i)} \text{cost}_1(\theta^T x^{(i)}) + (1-y^{(i)}) \text{cost}_0(\theta^T x^{(i)}) \right] + \frac{1}{2} \sum_{j=1}^{n} \theta_j^2
+$$
+
+**Cost Definition**: These functions are piecewise-linear approximations of the logistic loss (the "hockey stick" shape):
+
+- $\text{cost}_1(z) = \max(0, 1-z)$: Used when $y=1$. Penalizes the model if prediction $z < 1$.
+- $\text{cost}_0(z) = \max(0, 1+z)$: Used when $y=0$. Penalizes the model if prediction $z > -1$.
+- $C$ **parameter**: Acts as the inverse of regularization ($\lambda$).
+    - **Large** $C$: Strict penalty on misclassifications $\rightarrow$ Lower Bias, Higher Variance (risk of overfitting).
+    - **Small** $C$: Wider margin, allows some misclassifications $\rightarrow$ Higher Bias, Lower Variance.
+
+**Geometric Interpretation**: The loss function approximates the following constrained optimization problem (Hard Margin SVM):
+
+$$
+\begin{align*}
+& \text{minimize} & & \frac{1}{2} ||\theta||^2 \\
+& \text{subject to} & & \theta^{T} x^{(i)} \ge 1, \quad \text{if } y^{(i)} = 1 \\
+& & & \theta^{T} x^{(i)} \le -1, \quad \text{if } y^{(i)} = 0
+\end{align*}
+$$
+
+The model predicts $1$ if $\theta^T x \ge 1$ and $0$ if $\theta^T x \le -1$.
+
+### Kernels
+
+Kernels allow SVMs to learn complex nonlinear decision boundaries by implicitly mapping features into a high-dimensional space without computing the coordinates explicitly.
+
+- **Mercer's Condition**: To ensure a valid kernel (i.e., one that maps to a valid high-dimensional inner product space), the similarity function must satisfy Mercer's Condition (essentially, the kernel matrix must be positive semi-definite).
+
+**Gaussian Kernel (RBF)**: Measures similarity between a data point $x$ and a landmark $l$.
+
+$$
+f_i = \text{similarity}(x, l^{(i)}) = \exp \left( -\frac{\| x - l^{(i)} \|^2}{2\sigma^2} \right)
+$$
+
+> **Crucial Preprocessing Step**: You **must** perform **Feature Scaling** before using the Gaussian kernel. Otherwise, features with larger numeric ranges will dominate the distance calculation.
+
+### Model Selection Strategy
+
+Let $n$ = number of features, $m$ = number of training examples.
+
+| Scenario                              | Recommended Model                          | Reason                                                                                                |
+| :------------------------------------ | :----------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| **$n$ is large** ($n \ge m$)          | Logistic Regression or SVM (Linear Kernel) | High-dimensional data is often linearly separable; complex kernels may overfit.                       |
+| **$n$ is small, $m$ is intermediate** | SVM (Gaussian Kernel)                      | Excellent for capturing nonlinear relationships in medium-sized datasets.                            |
+| **$n$ is small, $m$ is large**        | Logistic Regression                        | SVM with kernels is computationally expensive ($O(m^2)$ to $O(m^3)$). Create manual features instead. |
+
+## Trees & Ensemble Learning
+
+### Decision Tree
+
+A hierarchical structure where internal nodes represent tests on attributes, and leaf nodes represent class labels.
+
+**Splitting Criteria (Impurity Metrics)**:
+
+1. **Information Gain (ID3 Algorithm)**: Measures the reduction in entropy (uncertainty) achieved by splitting dataset $S$ on attribute $A$.
+
+    $$
+    \text{Gain}(S, A) = \text{Entropy}(S) - \sum_{v \in \text{Values}(A)} \frac{|S_v|}{|S|} \text{Entropy}(S_v)
+    $$
+
+    Where $\text{Entropy}(S) = - \sum p_i \log_2 p_i$.
+
+2. **Information Gain Ratio (C4.5 Algorithm)**: Used to prevent the model from preferring attributes with many unique values (e.g., "ID numbers") by normalizing with Split Info.
+
+    $$
+    \text{IGR}(A) = \frac{\text{Gain}(S, A)}{\text{SplitInformation}(A)}
+    $$
+
+    where $\text{SplitInformation}(A) = - \sum_{v} \frac{|S_v|}{|S|} \log_2 \left( \frac{|S_v|}{|S|} \right)$.
+
+3. **Gini Index (CART Algorithm)**: Measures the probability of misclassification. Often faster to compute than Entropy as it avoids logarithms.
+
+    $$
+    \text{GiniIndex}(S, A) = \sum_{v \in \text{Values(A)}} \frac{|S_v|}{|S|} \text{Gini}(S_v)
+    $$
+
+    where $\text{Gini}(S) = 1 - \sum p_i^2$.
+
+**Pruning**:
+
+- **Pre-pruning**: Stop growing early (e.g., max depth, min samples per leaf).
+- **Post-pruning**: Grow the full tree, then remove insignificant branches. **Generally more effective** as it avoids premature stopping.
+
+### Ensemble Learning
+
+Combining multiple "weak learners" to build a "strong learner".
+
+#### Bagging (Bootstrap Aggregating)
+
+- **Mechanism**: Train multiple learners independently on random subsets of data (sampled **with replacement**).
+- **Prediction**: Majority voting (classification) or Averaging (regression).
+- **Example**: **Random Forest** (Applies Bagging + Random feature selection at each split).
+- **Primary Goal**: Reduces **Variance** (combats overfitting).
+
+#### Boosting
+
+- **Mechanism**: Train learners **sequentially**. Each new learner focuses on the errors (misclassified examples) made by the previous ones.
+- **Example**: **AdaBoost**, **Gradient Boosting**, **XGBoost**.
+    - In AdaBoost, weights of misclassified examples are increased.
+- **Primary Goal**: Reduces **Bias** (combats underfitting), though it can also reduce variance.
+
+# Unsupervised Learning
+
+In unsupervised learning, the data consists of input features $X$ without corresponding labels $y$. The goal is to discover hidden structures, underlying patterns, or natural groupings within the data.
+
+## Clustering
+
+Clustering algorithms group similar data points together based on a defined distance metric.
+
+### K-Means Clustering
+
+An iterative algorithm that partitions data into $K$ distinct, non-overlapping clusters.
+
+**Algorithm Steps**:
+
+1. **Initialize**: Randomly select $K$ cluster centroids $\mu_1, \dots, \mu_K$.
+2. **Assign**: Assign each data point $x^{(i)}$ to the closest centroid.
+
+    $$
+    c^{(i)} := \argmin_j || x^{(i)} - \mu_j ||^2
+    $$
+
+    - $c^{(i)}$: The **index** ($1$ to $K$) of the cluster centroid closest to $x^{(i)}$.
+
+3. **Update**: Move each centroid to the mean of the points assigned to it.
+
+    $$
+    \mu_j := \frac{1}{|C_j|} \sum_{i \in C_j} x^{(i)}
+    $$
+
+    - $C_j$: The **set** of examples assigned to cluster $j$.
+
+4. **Repeat**: Steps 2-3 until convergence (centroids stop moving).
+
+**Optimization Objective**: Minimize the sum of squared distances between data points and their assigned centroids.
+
+$$
+J(c, \mu) = \frac{1}{m} \sum_{i=1}^m || x^{(i)} - \mu_{c^{(i)}} ||^2
+$$
+
+**Choosing $K$**:
+
+- **Elbow Method**: Plot cost $J$ vs. $K$. Look for the "elbow" point where the marginal gain in performance drops significantly.
+
+    > **Note**: Real-world data often lacks a clear elbow.
+
+- **Silhouette Analysis**: Measures how similar an object is to its own cluster (cohesion) compared to other clusters (separation). Range $[-1, 1]$. High value indicates good clustering.
+
+**Limitations**:
+
+- Sensitive to **initialization** (can get stuck in local optima; solution: Random Restart).
+- Sensitive to **outliers**.
+- Assumes clusters are **spherical** and of similar density; fails on complex geometries (e.g., concentric circles).
+
+### Hierarchical Clustering
+
+Builds a hierarchy of clusters, often visualized as a **Dendrogram**.
+
+- **Agglomerative (Bottom-Up)**: Start with each point as its own cluster. Repeatedly merge the two "closest" clusters until only one remains.
+- **Divisive (Top-Down)**: Start with one cluster containing all points. Recursively split it.
+
+**Linkage Criteria (Distance between Clusters)**:
+
+- **Single Linkage**: Min distance between points in two clusters (can result in long, chain-like clusters).
+- **Complete Linkage**: Max distance between points.
+- **Average Linkage**: Average distance between all pairs.
+
+## Dimensionality Reduction
+
+Used for data compression, visualization (2D/3D), and noise reduction.
+
+### Principal Component Analysis (PCA)
+
+PCA projects data onto a lower-dimensional linear subspace while retaining the maximum possible variance.
+
+**Two Mathematical Interpretations**:
+
+1. **Maximum Variance**: Find the direction (vector) onto which the projected data variance is maximized.
+2. **Minimum Reconstruction Error**: Find the direction that minimizes the orthogonal distance between original data and its projection.
+
+**Algorithm via SVD (Singular Value Decomposition)**:
+
+1. **Preprocessing (Crucial)**: Perform **Feature Scaling** to ensure zero mean and comparable variances.
+2. **Covariance / SVD**: Compute the SVD of the covariance matrix (or data matrix).
+
+    $$
+    X = U \Sigma V^T
+    $$
+
+    - $U$: Left singular vectors.
+    - $\Sigma$: Diagonal matrix of singular values (indicates importance).
+    - $V$: Right singular vectors (Principal Components).
+3. **Projection**: To reduce to $k$ dimensions, select the first $k$ columns of $V$ (or $U$ depending on implementation specifics).
+
+    $$
+    Z = X V_{:, 1:k}
+    $$
+
+**Reconstruction**: Map the reduced data back to the original dimension (approximation).
+
+$$
+\hat{X} \approx Z V_{:, 1:k}^T
+$$
+
+**Variance Retained**: To choose $k$, calculate the proportion of variance explained:
+
+$$
+\frac{\sum_{i=1}^k \sigma_i^2}{\sum_{j=1}^n \sigma_j^2} \ge \text{Threshold (e.g., 0.99)}
+$$
+
+> **Practical Advice**:
+>
+> - Do **not** use PCA specifically to prevent overfitting (use Regularization instead).
+>
+> - Always attempt training on **raw data** first. Only use PCA if computational costs (memory/speed) are prohibitive.
+
+# Deep Learning
+
+This section focuses on Neural Networks and their specialized architectures for Vision (CNN), Sequence Modeling (RNN/Transformers), and Generation (GAN).
+
+## Feedforward Neural Network
+
+### Architecture
+
+A basic neural network consists of an **Input Layer**, one or more **Hidden Layers**, and an **Output Layer**. It functions as a universal function approximator.
+
+### Activation Functions
+
+![Activation Functions](https://i.imgur.com/3w1EOxp.png)
+
+Activation functions introduce nonlinearity, allowing the network to learn complex patterns. Without them, a deep network is mathematically equivalent to a single linear layer.
+
+- **Sigmoid**: Outputs $(0, 1)$.
+    - *Issue*: **Vanishing Gradient**. For large positive or negative inputs, the derivative is near 0, stopping the learning process in deep layers.
+- **Tanh**: Outputs $(-1, 1)$. Zero-centered, but still suffers from vanishing gradients.
+- **ReLU (Rectified Linear Unit)**:
+    - *Advantage*: **The default choice**. Computationally efficient and significantly reduces the vanishing gradient problem (gradient is constant 1 for $z > 0$).
+- **Softmax**: Used in the **Output Layer** for multiclass classification to output a valid probability distribution (sums to 1).
+
+### Cost Function (Regularized)
+
+For a network with $L$ layers outputting $K$ classes (Cross-Entropy Loss with L2 Regularization):
+
+$$
+J(\Theta) = -\frac{1}{m} \left[ \sum_{i=1}^{m} \sum_{k=1}^{K} y_k^{(i)} \log (h_\Theta(x^{(i)}))_k + (1-y_k^{(i)}) \log (1 - (h_\Theta(x^{(i)}))_k) \right] + \frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2
+$$
+
+### Backpropagation
+
+The core algorithm for training. It efficiently computes the gradient of the loss function with respect to weights, $\nabla_\Theta J(\Theta)$, using the **Chain Rule**.
+
+1. **Forward Propagation**: Compute activations $a^{(l)}$ layer by layer until the output $a^{(L)} = h_\Theta(x)$ is obtained.
+2. **Compute Error Terms ($\delta$)**: Calculate the "error" (gradient of cost w.r.t. pre-activation $z$) for node $j$ in layer $l$.
+    - **Output Layer**: $\delta^{(L)} = a^{(L)} - y$
+    - **Hidden Layers** (Propagate backwards): $\delta^{(l)} = ((\Theta^{(l)})^T \delta^{(l+1)}) .* g'(z^{(l)})$
+3. **Compute Gradients**:
+
+    $$
+    \frac{\partial J}{\partial \Theta_{ij}^{(l)}} = a_j^{(l)} \delta_i^{(l+1)}
+    $$
+
+    (Add regularization term $\lambda \Theta_{ij}^{(l)}$ if $j \ne 0$).
+
+4. **Update**: Adjust weights using Gradient Descent (or advanced optimizers like Adam).
+
+### Gradient Checking
+
+A numerical approximation method to verify that the analytical backpropagation gradients are correct (debugging tool).
+
+$$
+\frac{\partial}{\partial \theta_j} J(\theta) \approx \frac{J(\theta_1,\dots, \theta_j + \epsilon, \dots, \theta_n) - J(\theta_1,\dots, \theta_j - \epsilon, \dots, \theta_n)}{2\epsilon}
+$$
+
+> **Tip**: Only use during debugging to verify your implementation. Turn it off during actual training because it is computationally very expensive.
+
+## Practical Training Techniques
+
+### Weight Initialization
+
+Initializing weights with simple Gaussian noise can lead to vanishing or exploding gradients.
+
+- **Xavier Initialization**: Keeps the variance of activations constant across layers. Ideal for **Sigmoid/Tanh**.
+
+    $$
+    \text{Var}(W) = \frac{2}{N_{in} + N_{out}}
+    $$
+
+- **He Initialization**: Ideal for **ReLU**.
+
+    $$
+    \text{Var}(W) = \frac{2}{N_{in}}
+    $$
+
+### Batch Normalization
+
+Normalizes inputs to a layer for every mini-batch to mean 0 and variance 1.
+
+- **Mechanism**: $\hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}}$, then scale and shift: $y = \gamma \hat{x} + \beta$.
+- **Benefit**: Stabilizes training, allows for significantly **higher learning rates**, and acts as a weak regularizer.
+
+### Dropout
+
+A regularization technique to prevent overfitting.
+
+- **Mechanism**: Randomly "drops" (sets to zero) a fraction of neurons (e.g., $p=0.5$) during each training step.
+- **Interpretation**: Can be viewed as training an ensemble of exponentially many thinned networks (**Model Averaging**).
+
+## Convolutional Neural Network (CNN)
+
+Designed for grid-like data (e.g., images).
+
+### Core Layers
+
+1. **Convolution Layer (Filters)**:
+    - Learns feature detectors (edges, textures, shapes).
+    - **Parameter Sharing**: A feature detector (e.g., edge detector) useful in one part of the image is likely useful elsewhere. Significantly reduces parameter count.
+    - **Local Connectivity**: Neurons connect only to a local receptive field.
+2. **Pooling Layer**:
+    - **Max Pooling**: Selects the maximum value in a window.
+    - **Function**: Downsampling to reduce computation and providing **Translation Invariance** (small shifts in input don't change the output).
+3. **Fully Connected Layer**: Used at the end for final classification.
+
+### Transfer Learning
+
+Instead of training from scratch, use a model pre-trained on a large dataset (e.g., ImageNet).
+
+1. **Freeze** the parameters of the convolutional layers (feature extractors).
+2. **Replace** and retrain only the final fully connected layers (classifier) for your specific task.
+
+## Recurrent Neural Network (RNN)
+
+Designed for sequential data (e.g., NLP, Time Series).
+
+### Vanilla RNN
+
+Processes sequences by maintaining a hidden state $h_t$ that acts as "memory".
+
+$$
+h_t = \tanh(W_{hh} h_{t-1} + W_{xh} x_t)
+$$
+
+- **Issue**: **Exploding or Vanishing Gradients** make it difficult to capture long-term dependencies (e.g., a subject at the start of a sentence affecting a verb at the end).
+
+### LSTM (Long Short-Term Memory)
+
+Designed to solve the vanishing gradient problem using a **Gated** mechanism to regulate information flow.
+
+The LSTM maintains a **Cell State** $c_t$ (long-term memory) and **Hidden State** $h_t$ (output).
+
+**Gate Equations**:
+
+$$
+\begin{align*}
+f_t &= \sigma(W_f \cdot [h_{t-1}, x_t] + b_f) & (\text{Forget Gate}) \\
+i_t &= \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) & (\text{Input Gate}) \\
+\tilde{c}_t &= \tanh(W_c \cdot [h_{t-1}, x_t] + b_c) & (\text{Candidate Memory}) \\
+o_t &= \sigma(W_o \cdot [h_{t-1}, x_t] + b_o) & (\text{Output Gate})
+\end{align*}
+$$
+
+**Update Steps**:
+
+1. **Update Cell State**: $c_t = f_t \odot c_{t-1} + i_t \odot \tilde{c}_t$ *(Forget old context + Add new context)*
+2. **Update Hidden State**: $h_t = o_t \odot \tanh(c_t)$
+
+## Transformer (Attention Mechanism)
+
+The modern standard for NLP (e.g., BERT, GPT), designed to overcome the limitations of RNNs.
+
+### Architecture Shifts
+
+- **No Recurrence**: Processes the entire sequence simultaneously (parallelization), unlike RNNs which process token by token (sequential).
+- **Positional Encoding**: Since there is no recurrence, the model injects information about the relative or absolute position of the tokens in the sequence.
+
+### Self-Attention Mechanism
+
+The core component that allows the model to weigh the importance of different words in a sentence relative to each other, regardless of their distance.
+
+**Inputs**: Queries ($Q$), Keys ($K$), and Values ($V$).
+
+**Formula (Scaled Dot-Product Attention)**:
+
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
+
+- $\frac{QK^T}{\sqrt{d_k}}$: Computes similarity scores between a query and all keys. Scaled by $\sqrt{d_k}$ to prevent vanishing gradients in softmax.
+- **Softmax**: Converts scores into probabilities (weights).
+- **Weighted Sum**: Multiplies weights by Values ($V$) to get the final representation.
+
+### Advantages over RNN/LSTM
+
+1. **Parallelizable**: Can train on all words in a sentence at once (massive speedup).
+2. **Global Context**: Captures long-range dependencies perfectly (distance between words is always 1 step in the attention matrix), whereas RNNs struggle with long sequences.
+
+## Generative Adversarial Network (GAN)
+
+A framework where two networks compete against each other in a zero-sum game.
+
+- **Generator ($G$)**: Tries to create "fake" data to fool the discriminator.
+- **Discriminator ($D$)**: Tries to distinguish between real data and fake data from $G$.
+
+### Minimax Objective
+
+$$
+\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_{data}} [\log D(x)] + \mathbb{E}_{z \sim p_{z}} [\log (1 - D(G(z)))]
+$$
+
+### Training Strategy
+
+In practice, we alternate between:
+
+1. **Update Discriminator**: Maximize the probability of correctly classifying real vs. fake.
+2. **Update Generator**: Minimize $\log(1 - D(G(z)))$.
+    - *Practical Tip*: Minimize $\log(1 - D(G(z)))$ saturates early. Instead, **maximize** $\log(D(G(z)))$ (maximize probability that D is fooled). This provides stronger gradients early in training.
+
+# Reinforcement Learning
+
+Reinforcement Learning (RL) involves an **agent** taking actions in an **environment** to maximize cumulative **reward**. Unlike supervised learning, there are no labels; the agent learns from trial and error.
+
+## RL Core Framework
+
+### Markov Decision Process (MDP)
+
+Mathematically, an RL problem is defined as an MDP tuple $(\mathcal{S}, \mathcal{A}, \mathcal{R}, \mathbb{P}, \gamma)$:
+
+- $\mathcal{S}$: Set of possible **States**.
+- $\mathcal{A}$: Set of possible **Actions**.
+- $\mathcal{R}$: **Reward** function.
+- $\mathbb{P}$: **Transition Probability** (dynamics) $p(s' | s, a)$.
+- $\gamma$: **Discount Factor** ($\gamma \in [0, 1)$). Prioritizes immediate rewards over distant future rewards and ensures mathematical convergence.
+
+**Objective**: Find an optimal policy $\pi^*$ that maximizes the expected return:
+
+$$
+\pi^* = \argmax_\pi \mathbb{E}\left[\sum_{t \ge 0} \gamma^t r_t\right]
+$$
+
+### Value Functions
+
+- **Value Function** $V^\pi(s)$: How good is it to be in state $s$? (Expected cumulative reward starting from $s$ following policy $\pi$).
+- **Q-Value Function** $Q^\pi(s, a)$: How good is it to take action $a$ in state $s$?
+
+    $$
+    Q^{\pi}(s, a) = \mathbb{E}\left[\sum_{t \ge 0} \gamma^{t} r_{t} \Bigm\vert s_{0}=s, a_{0}=a, \pi\right]
+    $$
+
+### Bellman Equation
+
+The fundamental recursive relationship in RL. The value of a state is the immediate reward plus the discounted value of the next state.
+
+**Optimal Bellman Equation for $Q^*$**:
+
+$$
+Q^{*}(s, a) = \mathbb{E}_{s^{\prime}}\left[r + \gamma \max _{a^{\prime}} Q^{*}\left(s^{\prime}, a^{\prime}\right) \Bigm\vert s, a\right]
+$$
+
+## Value-Based Solvers
+
+These methods aim to learn the optimal Value function ($V^*$ or $Q^*$) first, then derive the policy from it (e.g., act greedily: $a = \argmax_a Q(s, a)$).
+
+### Value Iteration
+
+An iterative algorithm based on **Dynamic Programming**. It repeatedly applies the Bellman update rule until convergence.
+
+$$
+Q_{k+1}(s, a) \leftarrow \mathbb{E}_{s'}\left[r + \gamma \max _{a^{\prime}} Q_k\left(s^{\prime}, a^{\prime}\right)\right]
+$$
+
+- *Limitation*: Requires a known model of the environment (transition probabilities) and iterating over all state-action pairs, which is computationally impossible for large state spaces.
+
+### Q-Learning (Model-Free)
+
+A sample-based method that learns $Q^*$ without knowing the environment mechanics.
+
+**Deep Q-Learning (DQN)**: For complex problems (e.g., video games, robotics), the state space is too large for a table. We use a Neural Network to approximate the Q-function:
+
+$$
+Q(s, a; \theta) \approx Q^*(s, a)
+$$
+
+**Loss Function**: Minimize the Temporal Difference (TD) error (Mean Squared Error between prediction and target):
+
+$$
+L(\theta) = \mathbb{E} \left[ (y - Q(s, a; \theta))^2 \right]
+$$
+
+Where the **target** $y$ is computed using the current reward and the best estimated future Q-value:
+
+$$
+y = r + \gamma \max_{a'} Q(s', a'; \theta_{\text{old}})
+$$
+
+## Policy-Based Solvers
+
+These methods parameterize the policy $\pi_\theta(a|s)$ directly (e.g., a neural network taking state $s$ as input and outputting action probabilities). We optimize parameters $\theta$ via **gradient ascent** on the expected reward $J(\theta)$.
+
+### Policy Gradient
+
+We aim to maximize the objective $J(\theta) = \mathbb{E}_{\tau \sim p(\tau;\theta)}[r(\tau)]$, where $\tau$ is a trajectory.
+
+1. **The Objective**:
+
+    $$
+    J(\theta) = \int_\tau r(\tau) p(\tau; \theta) d\tau
+    $$
+
+2. **Gradient Derivation (Log-Derivative Trick)**:
+
+    $$
+    \begin{split}
+    \nabla_\theta J(\theta) &= \int_\tau r(\tau) \nabla_\theta p(\tau; \theta) d\tau \\
+    &= \int_\tau r(\tau) \frac{\nabla_\theta p(\tau; \theta)}{p(\tau; \theta)} p(\tau; \theta) d\tau \quad \text{(Identity: } \nabla \log x = \frac{\nabla x}{x} \text{)} \\
+    &= \mathbb{E}_{\tau \sim p(\tau; \theta)} [ r(\tau) \nabla_\theta \log p(\tau; \theta) ]
+    \end{split}
+    $$
+
+3. **Resulting Gradient**: Since $p(\tau; \theta)$ depends on the policy $\pi_\theta$, the gradient simplifies to:
+
+    $$
+    \nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left( \sum_{t=0}^T r(s_t, a_t) \right) \nabla_\theta \log \pi_\theta (a_t | s_t)
+    $$
+
+    > **Intuition**: If a trajectory yielded high reward, move the gradients to make the actions in that trajectory **more probable**.
+
+### Variance Reduction
+
+Raw Policy Gradients suffer from **High Variance**, making training unstable.
+
+1. **Rewards-to-Go**: An action at time $t$ only affects *future* rewards, not past ones. We replace the total reward with the future return $G_t=\sum_{t'=t}^T \gamma^{t'-t} r_{t'}$.
+
+    $$
+    \nabla_\theta J(\theta) \approx \sum_{t\ge 0} G_t \cdot \nabla_\theta \log \pi_\theta (a_t | s_t)
+    $$
+
+2. **Baseline Subtraction**: Subtract a baseline $b(s)$ to reduce variance without introducing bias. A common baseline is the Value Function $V(s)$.
+
+    $$
+    \nabla_\theta J(\theta) \approx \sum_{t\ge 0} \underbrace{\big( Q^{\pi}(s_t, a_t) - V^{\pi}(s_t) \big)}_{\text{Advantage Function } A(s, a)} \nabla_\theta \log \pi_\theta (a_t | s_t)
+    $$
+
+    - **Advantage** $A(s, a)$: Tells us "how much better is taking action $a$ compared to the average action in state $s$?"

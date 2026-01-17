@@ -8,7 +8,6 @@ tags:
 - Philosophy
 ---
 
-
 一些科学哲学思考，大部分参考[魔鬼眼中的自然界——知乎专栏](https://www.zhihu.com/column/c_116602381)
 
 <!--more-->

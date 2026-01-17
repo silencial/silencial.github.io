@@ -147,24 +147,24 @@ reward:
 
     ```yaml
     name: Hexo Deploy
-    
+
     on:
         push:
             branches: master  # 主分支名
-    
+
     jobs:
         build:
             runs-on: ubuntu-latest
-    
+
         steps:
             - name: Checkout source
                 uses: actions/checkout@v2
-    
+
             - name: Setup Node.js
                 uses: actions/setup-node@v2.1.5
                 with:
                     node-version: '15.12.0'  # 建议使用 LTS 版本
-    
+
             - name: Setup Environment
                 run: |
                     git config --global user.email "<Email>"
@@ -172,12 +172,12 @@ reward:
                     sudo apt-get install -y pandoc
                     npm install -g hexo-cli
                     npm install
-    
+
             - name: Custom file copy
                 run: |
                     # 如果 NexT 主题通过 node_modules 安装，此步骤可用于覆盖默认模板文件
                     cp source/_data/post.njk_custom node_modules/hexo-theme-next/layout/_macro/post.njk
-    
+
             - name: Hexo Deploy
                 env:
                     GITHUB_TOKEN: ${{ secrets.HEXO_PUBLISH }}
@@ -273,7 +273,7 @@ npm install hexo-renderer-pandoc --save
 
 ## MathJax 3 换行问题
 
-MathJax 3. x 版本不再默认支持使用 `\\` 进行自动换行（参见此 [GitHub Issue](https://github.com/mathjax/MathJax/issues/2312)）。
+MathJax 3.x 版本不再默认支持使用 `\\` 进行自动换行（参见此 [GitHub Issue](https://github.com/mathjax/MathJax/issues/2312)）。
 
 应遵守 LaTeX 规范的数学公式写法。请参考 [AMS (American Mathematical Society) 的标准规范](https://mirror.math.princeton.edu/pub/CTAN/info/short-math-guide/short-math-guide.pdf) 来书写多行公式，例如使用 `align` 或 `gather` 环境。
 

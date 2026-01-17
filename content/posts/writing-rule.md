@@ -315,4 +315,3 @@ mathtools:
 5. Conditional probability: $p(a | b)$
 6. Set with conditions: $\{a \mid a\in A\}$
 7. $i$-th
-
