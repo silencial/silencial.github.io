@@ -1,7 +1,6 @@
 baseURL: 'https://example.org/'
 languageCode: 'en-us'
 title: 'silencial Blog'
-theme: ['hugo-admonitions', 'PaperMod']
 hasCJKLanguage: true
 enableEmoji: true
 enableRobotsTXT: true
@@ -10,6 +9,15 @@ googleAnalytics: 'G-CER92VFVHN'
 frontmatter:
   lastmod:
     - lastmod
+
+module:
+  imports:
+    - path: github.com/KKKZOZ/hugo-admonitions
+    - path: github.com/silencial/hugo-PaperMod
+
+caches:
+  images:
+    dir: :cacheDir/images
 
 markup:
   goldmark:
@@ -34,7 +42,7 @@ markup:
           enable: true
   highlight:
     lineNos: true
-    style: dracula
+    style: catppuccin-frappe
 
 menu:
   main:
@@ -86,26 +94,29 @@ menu:
 
 params:
   math: true
-  defaultTheme: auto # to switch between dark or light according to browser theme
+  defaultTheme: auto
+  DateFormat: "2006-01-02"
+
   ShowReadingTime: true
   ShowToc: true
+  ShowWordCount: true
   ShowBreadCrumbs: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
-  DateFormat: "2006-01-02"
+  ShowRssButtonInSectionTermList: true
 
   homeInfoParams:
     Title: 👋🏻 Welcome to silencial Blog
     Content: Any Sufficiently Advanced Technology is Indistinguishable from Magic.
 
-  socialIcons: # optional
+  socialIcons:
     - name: "Github"
       url: "https://github.com/silencial"
     - name: "Notion"
       url: "https://silencial.notion.site/d085d7c7a5324152be1978d1d237fe46"
-    - name: "Mastodon"
-      url: "https://mastodon.social/@silencial"
+    # - name: "Mastodon"
+    #   url: "https://mastodon.social/@silencial"
     # - name: "Instagram"
     #   url: "https://www.instagram.com/silencial"
     - name: "RSS"
