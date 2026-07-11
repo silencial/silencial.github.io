@@ -1,7 +1,7 @@
 ---
 title: Applied Optimal Control
 date: 2020-12-29
-lastmod: 2021-02-13
+updated: 2021-02-13
 categories:
 - Study
 tags:

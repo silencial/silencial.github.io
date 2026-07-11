@@ -1,7 +1,7 @@
 ---
 title: 隐藏在素数规律中的 $\pi$
 date: 2018-08-08
-lastmod: 2025-05-22
+updated: 2025-05-22
 categories:
 - Fun
 tags:

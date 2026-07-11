@@ -1,6 +1,7 @@
 ---
 title: Projective Dynamics
 date: 2018-03-17
+updated: 2026-06-16
 categories:
 - Study
 tags:
@@ -8,109 +9,107 @@ tags:
 - Paper Reading
 ---
 
-[Paper](http://sofienbouaziz.com/publications.php) Reading Note
+Paper review: [Projective Dynamics: Fusing Constraint Projections for Fast Simulation](https://sofienbouaziz.com/papers/Projective%20Dynamics-%20Fusing%20Constraint%20Projections%20for%20Fast%20Simulation.pdf)
+
+- Author: Sofien Bouaziz, Sebastian Martin, Tiantian Liu, Ladislav Kavan, Mark Pauly
+- Venue: ACM SIGGRAPH 2014
+- Core Contribution: Bridges the gap between Continuum Mechanics (FEM) and Position Based Dynamics (PBD) by introducing an unconditionally stable, hyper-fast implicit Euler solver based on a **Local/Global alternating optimization** framework (Block Coordinate Descent).
 
 <!--more-->
 
 ---
 
-# Implicit Euler Solver
+# Background & Motivation
+
+Simulating deformable bodies (e.g., cloth, soft tissue, shells) in physics-based animation traditionally forces a compromise between two conflicting paradigms:
+
+- **FEM / Continuum Mechanics**:
+    - Mechanism: Rigorously formulated from strain energy potentials and typically integrated via the implicit Euler method for large time steps.
+    - Bottleneck: Solving the nonlinear implicit system relies on Newton's method. This requires recomputing and refactoring a massive, position-dependent Hessian matrix at every single iteration. Extreme element inversion or deformation can render the Hessian indefinite, leading to numerical divergence (explosions) without expensive line search protections.
+- **PBD**:
+    - Mechanism: Bypasses force computation, directly manipulating vertex positions by sequentially projecting them onto geometric constraints via a Gauss-Seidel approach.
+    - Bottleneck: Lacks a rigorous continuum mechanics foundation. Material stiffness is artificially tied to iteration counts and mesh resolution. Furthermore, sequential projection violates momentum conservation, washing away individual point inertia and resulting in purely inelastic behavior (like plasticine) at high iteration counts.
+
+**Goal**: Design an implicit integrator that inherits the **physical accuracy and resolution-independence** of continuum mechanics, while matching the **computational speed, simplicity, and absolute stability** of PBD.
+
+# Core Mathematical Insight: Decoupling Energy Potentials
+
+The core innovation lies in decoupling geometric nonlinearities from material distance metrics.
+
+An implicit Euler time step can be framed as an optimization problem:
 
 $$
-\begin{gather*}
-\mathbf{q}_{n+1}=\mathbf{q}_n+h\mathbf{v}_{n+1} \\
-\mathbf{v}_{n+1}=\mathbf{v}_n+h\mathbf{M}^{-1}(\mathbf{f}_{\text{int}}(\mathbf{q}_{n+1})+\mathbf{f}_{\text{ext}})
-\end{gather*}
+\min_{\mathbf{q}} \frac{1}{2h^2} \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{q} - \mathbf{s}_n)}_F^2 + \sum_i W_i(\mathbf{q})
 $$
-This system can be converted to an optimization problem:
-$$
-\require{mathtools}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
-\min_{\mathbf{q}_{n+1}} \dfrac{1}{2h^2} \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{q}_{n+1} - \mathbf{s}_n)}_F^2 + \sum_i W_i(\mathbf{q}_{n+1})
-$$
-where $\mathbf{s}_n = \mathbf{q}_n + h\mathbf{v}_n + h^2\mathbf{M}^{-1}\mathbf{f}_{\text{ext}}$ and $W_i(\mathbf{q})$ is a scalar potential energy function.
 
-Intuitively, this minimization problem describes the compromise between the momentum potential
-$$
-\begin{equation}\label{potential}
-\dfrac{1}{2h^2} \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{q}_{n+1} - \mathbf{s}_n)}_F^2
-\end{equation}
-$$
-which states that the solution should follow its momentum (plus external forces), and the elastic potential, that requires the solution to minimize the elastic deformation. The corresponding weighting terms, i.e. the mass distribution in $M$, the time step $h$ and the material stiffness of $W$, determine which potential has more importance in this balance.
+- $\mathbf{q}$: The unknown position vector for the next frame.
+- $\mathbf{M}$: The mass matrix.
+- $h$: The time step length.
+- $\mathbf{s}_n = \mathbf{q}_n + h\mathbf{v}_n + h^2\mathbf{M}^{-1}\mathbf{f}_{\text{ext}}$: The inertial predictor position.
+- $W_i(\mathbf{q})$: The nonlinear elastic potentials.
 
-# Nonlinear Elasticity
+Instead of directly optimizing the nonlinear strain energy $W_{i}(\mathbf{q})$, Projective Dynamics introduces an auxiliary target variable $\mathbf{p}_{i}$ for each constraint. This $\mathbf{p}_{i}$ is mathematically forced to reside on an ideal, undeformed constraint manifold defined by $\mathbf{C}_{i}(\mathbf{p}_{i}) = 0$, enforced via an indicator function $\delta_{\mathbf{C}_{i}}(\mathbf{p}_{i})$.
 
-In nonlinear continuum mechanics elastic potentials are $W(\mathbf{q}) = \Psi (\mathbf{E}(\mathbf{q}))$, where $\mathbf{E}(\mathbf{q})$ is the strain. We can observe that $\mathbf{E}(\mathbf{q}) = 0$ defines a constraint manifold of all possible undeformed configurations, while $\Psi (\mathbf{E}(\mathbf{q}))$ measures how far the deformed configuration is from this manifold (like level set). Therefore, these two concepts can be decoupled; the distance metric does not have to be a complicated nonlinear function because the nonlinearities are already captured by the constraint manifold.
+Consequently, the deformation energy is reformulated as a convex, purely quadratic distance between the actual deformed coordinates $\mathbf{q}$ and the ideal projected states $\mathbf{p}_{i}$:
 
-**Decoupling distance measure and constraint manifold**:
 $$
-W(\mathbf{q}, \mathbf{p}) = d(\mathbf{q}, \mathbf{p}) + \delta_\mathbf{E}(\mathbf{p})
+W_{i}(\mathbf{q}, \mathbf{p}_{i}) = \frac{w_{i}}{2}\norm*{\mathbf{A}_{i}\mathbf{S}_{i}\mathbf{q} - \mathbf{B}_{i}\mathbf{p}_{i}}_F^2 + \delta_{\mathbf{C}_{i}}(\mathbf{p}_{i})
 $$
-Here, $\delta_\mathbf{E}(\mathbf{p})$ is an indicator function that evaluates to zero if $\mathbf{E}(\mathbf{p}) = 0$ and to $+\infty$ otherwise, and formalizes the requirement that $\mathbf{p}$ should lie on the constraint manifold. The function $d(\mathbf{q}, \mathbf{p})$ then measures a distance between ${\bf q}$ and ${\bf p}$. Minimizing it over $\mathbf{p}$ corresponds to a projection of $\mathbf{q}$ onto the constraint manifold. An analogous elastic potential can be defined as $\tilde{W}(\mathbf{q}) = \min_\mathbf{p} W(\mathbf{q}, \mathbf{p})$
 
-**Quadratic distance measures**:
+- $\mathbf{S}_{i}$: A constant selection matrix extracting vertices involved in constraint $i$.
+- $\mathbf{A}_{i}, \mathbf{B}_{i}$: Constant matrices derived from rest-state geometry (e.g., differential/discrete gradient operators).
+- $w_{i}$: A non-negative material stiffness weight.
 
-An important advantage of this formulation is that the distance measure can be freely chosen. The constraint nonlinearity (also known as geometric nonlinearity) is already taken care of by the projection on the constraint set, so the distance metric can be kept simple, trading general material nonlinearity against efficiency and robustness. Specifically, consider distance metrics leading to the following potentials:
-$$
-W(\mathbf{q}, \mathbf{p}) = \frac{w}{2}\norm*{\mathbf{Aq} - \mathbf{Bp}}_F^2 + \delta_\mathbf{C}(\mathbf{p})
-$$
-where $\mathbf{A}$ and $\mathbf{B}$ are constant matrices and $w$ is a nonnegative weight. We are not restricted to Green’s strains but can use any constraint definition $\mathbf{C}(\mathbf{q}) = 0$ for the set of desired configurations.
+# The Local/Global Optimization Framework
 
-From Implicit Euler Solver we now get **Projective Implicit Euler Solver**:
-$$
-\frac{1}{2h^2} \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{q} - \mathbf{s}_n)}_F^2 + \sum_i \frac{w_i}{2} \norm*{\mathbf{A}_i \mathbf{S}_i \mathbf{q} - \mathbf{B}_i \mathbf{p}_i }_F^2 + \delta_{\mathbf{C}_i}(\mathbf{p}_i)
-$$
-where $\mathbf{S}_i$ is a constant selection matrix that selects the vertices involved in the $i$-th constraint.
+By splitting the objective function across $\mathbf{q}$ and $\mathbf{p}_i$, the system can be solved with extreme efficiency using **Block Coordinate Descent**:
 
-**Local solve**: First minimize over the auxiliary variables keeping the positions fixed
-$$
-\min_{\mathbf{p}_i} \dfrac{w_i}{2} \norm*{\mathbf{A}_i \mathbf{S}_i \mathbf{q} - \mathbf{B}_i \mathbf{p}_i }_F^2 + \delta_{\mathbf{C}_i}(\mathbf{p}_i)
-$$
-**Global solve**: Then minimize over the positions, keeping the auxiliary variables fixed.
-$$
-\left(\frac{\mathbf{M}}{h^2} + \sum_i w_i \mathbf{S}_i^T \mathbf{A}_i^T \mathbf{A}_i \mathbf{S}_i \right) \mathbf{q} = \frac{\mathbf{M}}{h^2} \mathbf{s}_n + \sum_i w_i \mathbf{S}_i^T \mathbf{A}_i^T \mathbf{B}_i \mathbf{p}_i
-$$
-The system matrix (left hand side) is constant as long as the constraints are not changing and therefore can be prefactored at initializations. The right hand side requires recomputation in each iteration after the projection variables have been updated in the local step.
+1. **Local Solve (Constraint Projection)**: Fixing the vertex positions $\mathbf{q}$, optimize each auxiliary variable $\mathbf{p}_{i}$ independently
 
-Can choose $\mathbf{A}_i = \mathbf{B}_i$ as differential coordinate matrices to improve convergence since the internal physical constraints are translation invariant. But needed to be derived from continuum formulations to avoid tessellation and resolution dependent. Note that the choice of $\mathbf{A}_i$ and $\mathbf{B}_i$ only impacts the numerical solution procedure and does not affect the conservation of momentum.
+    $$
+    \min_{\mathbf{p}_i} \frac{w_i}{2} \norm*{\mathbf{A}_i \mathbf{S}_i \mathbf{q} - \mathbf{B}_i \mathbf{p}_i }_F^2 \quad \text{s.t.} \quad \mathbf{C}_{i}(\mathbf{p}_{i}) = 0
+    $$
 
-# PBD View
+    - Geometric Meaning: Find a state $\mathbf{p}_{i}$ on the constraint manifold that is geometrically closest to the element's current deformed state.
+    - Performance: Completely decoupled across elements, allowing massive CPU/GPU parallelization. For standard constraints, this reduces to trivial local SVDs or analytic normalizations.
+2. **Global Solve (Linear Consensus)**: Fixing all target states $\mathbf{p}_i$ computed in the local step, optimize the global vertex coordinates $\mathbf{q}$. Since the energy function is purely quadratic w.r.t. $\mathbf{q}$, setting its gradient to zero yields a linear system
 
-The constraint resolution strategy of PBD actually implements a Gauss-Seidel type minimization on the energy
-$$
-\dfrac{1}{2} \sum_i \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{S}_i \mathbf{q} - \mathbf{p}_i)}_F^2 + \delta_{C_i}(\mathbf{p}_i)
-$$
-using a lumped mass matrix $\mathbf{M}_i$ only involving the constraint's points. A Gauss-Seidel approach minimizes this energy by optimizing each summand sequentially, i.e. minimizing potentials of the form $\dfrac{1}{2} \norm{\mathbf{M}^{\frac{1}{2}} \Delta \mathbf{q}}_F^2 + \delta_C (\mathbf{q} + \Delta \mathbf{q})$ where $\Delta\mathbf{q} = \mathbf{p} - \mathbf{q}$. Using Lagrange multipliers for the linearized constraint $C(\mathbf{q}) + \operatorname{tr}(\nabla C(\mathbf{q})^T \Delta \mathbf{q}) = 0$, we can define the Lagrangian
-$$
-\dfrac{1}{2} \norm*{\mathbf{M}^{\frac{1}{2}} \Delta \mathbf{q}}_F^2 + \lambda \left(C(\mathbf{q}) + \operatorname{tr}(\nabla C(\mathbf{q})^T \Delta \mathbf{q})\right)
-$$
-Using the critical point condition w.r.t. $\Delta \mathbf{q}$, we find the optimal direction $\Delta \mathbf{q} = -\lambda \mathbf{M}^{-1} \nabla C(\mathbf{q})$. The Lagrange multiplier $\lambda$ can then be found by requiring that the linearized constraint vanishes in this direction, i.e. $C(\mathbf{q}) - \lambda \norm{\mathbf{M}^{-\frac{1}{2}} \nabla C(\mathbf{q})}_F^2 = 0$, leading to the final update
-$$
-\Delta \mathbf{q} = - \mathbf{M}^{-1} \nabla C(\mathbf{q}) \frac{C(\mathbf{q})}{\norm*{\mathbf{M}^{-\frac{1}{2}} \nabla C(\mathbf{q})}_F^2}
-$$
-corresponding exactly to the mass-weighted update rule of PBD.
+    $$
+    \left(\frac{\mathbf{M}}{h^2} + \sum_i w_i \mathbf{S}_i^T \mathbf{A}_i^T \mathbf{A}_i \mathbf{S}_i \right) \mathbf{q} = \frac{\mathbf{M}}{h^2} \mathbf{s}_n + \sum_i w_i \mathbf{S}_i^T \mathbf{A}_i^T \mathbf{B}_i \mathbf{p}_i
+    $$
 
-**Jacobi Solver**:
+    - Performance: The left-hand side system matrix consists entirely of constant terms ($\mathbf{M}, h, w_{i}, \mathbf{A}_{i}, \mathbf{S}_{i}$). It remains invariant to rotation and deformation, allowing it to be pre-factored once during initialization using sparse Cholesky factorization ($\mathbf{L}\mathbf{L}^T$). Runtime execution only requires updating the right-hand side vector and performing computationally cheap back-substitution.
 
-While Jacobi solvers have in general slower convergence than Gauss-Seidel solvers, they allow the use of differential coordinate representations for faster convergence and efficient parallelization of the constraint projections that resolve this shortcoming. Second, we introduce the momentum constraint into the optimization to take into account the inertia of each point. As seen in the continuum mechanics view, to achieve a correct behavior we need to add back the inertia of each point by integrating the momentum constraint term defined in $\eqref{potential}$
-$$
-\dfrac{1}{2h^2} \norm*{\mathbf{M}^{\frac{1}{2}} (\mathbf{q}_{n+1} - \mathbf{s}_n)}_F^2 + \sum_i \dfrac{w_i}{2} \norm*{\mathbf{M}_i^{\frac{1}{2}} (\mathbf{S}_i \mathbf{q} - \mathbf{p}_i)}_F^2 + \delta_{C_i}(\mathbf{p}_i)
-$$
-Its connection to projective implicit Euler is by choosing $\mathbf{A}_i = \mathbf{B}_i = \mathbf{M}_i^{\frac{1}{2}}$
+# Connection to PBD
 
-# Discussion
+The paper establishes a formal unification demonstrating how PBD relates to implicit integration:
 
-The rest of the paper implements several constraints from continuum mechanics' view. Discrete constraints like positional constraints and collisions are also discussed.
+| Feature             | PBD                                                                     | Projective Dynamics                                                                    |
+| ------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Solver Paradigm     | Gauss-Seidel (sequential update)                                        | Jacobi (parallel update) + Linear Consensus                         |
+| Energy Minimization | Often oscillates or fails under conflicting constraints.                | Guaranteed to reach a global energy consensus.                                         |
+| Momentum & Inertia  | Strips point inertia during projection; violates momentum conservation. | Explicitly locks inertial momentum into the optimization via the global linear system. |
 
-This method has a great generality and numerical stability. The only requirement is that
-the mesh elements of the input model are well behaved in order to compute the discretization of the gradient and Laplace-Beltrami operators of the original manifold.
+**The Unification**: Mathematically, if one sets $\mathbf{A}_{i} = \mathbf{B}_{i} = \mathbf{M}_{i}^{\frac{1}{2}}$ (mass-weighted absolute coordinates), Projective Dynamics directly reduces to a generalized Jacobi version of PBD, but crucially fortified with true implicit Euler momentum properties.
 
-**Comparison with Newton**: Newton’s method exhibits quadratic convergence while local/global
-solvers have linear convergence.
+# Supported Continuum and Discrete Constraints
 
-**Comparison with PBD**: PBD does not include the momentum constraints making the material stiffness dependent of the number of iterations.
+By defining specific $\mathbf{A}_i, \mathbf{B}_i$ matrices and local projection manifolds, Projective Dynamics unifies diverse constraint types under a single solver:
 
-**Limitation**:
+- **Strain & Elasticity**: Built upon continuous deformation gradients. Setting the constraint manifold to $SO(3)$ models standard elasticity. Capping the allowable singular values ($\sigma_{\min} \le \sigma \le \sigma_{\max}$) yields robust **isotropic strain limiting** (e.g., non-ripping cloth).
+- **Volume Preservation**: Restricting the determinant of local transformations ($\sigma_{\min} \le \det(\mathbf{T}) \le \sigma_{\max}$) preserves volume for incompressible materials like flesh or rubber.
+- **Bending**: Leverages discrete differential geometry where the mean curvature normal equals the Laplace-Beltrami operator acting on coordinates. The resulting local step bypasses SVD entirely, requiring only trivial vector normalization.
+- **Discrete External Constraints**: Positional constraints and **collisions** fit natively into the framework. Collisions are injected dynamically as unilateral half-space constraints ($\mathbf{n}^T(\mathbf{q}-\mathbf{b}) \ge 0$). The projection is a trivial plane mapping. Because it is solved via Jacobi consensus, it completely circumvents the sticky artifact common in classical implicit collision handling.
 
-1. Implicit damping
-2. Trading hard constraints for simplicity and efficiency. Although they can be approximated by increasing the weight of the constraints, this can degrade the conditioning of the linear system and can result in locking artifacts.
+# Performance & Limitations
+
+**Strengths**:
+
+- Unconditional Numerical Stability: Both the Local and Global steps mathematically guarantee a monotonic decrease (or weak decrease) of the objective energy. The solver cannot diverge or explode, even with massive time steps or degenerate mesh configurations.
+- **Interactive Performance**: While Newton's method exhibits quadratic convergence (requiring fewer iterations), Projective Dynamics is vastly faster in terms of clock time. Roughly 30 Projective Dynamics iterations match the execution time of a single Newton step.
+
+**Limitations**:
+
+- **Implicit Damping**: Due to its implicit Euler ancestry, terminating the solver early (with low iteration counts) introduces artificial numerical damping, causing materials to appear overly viscous or sluggish.
+- **Topological Changes**: Cutting or fracturing alters mesh topology, changing the global system matrix. This violates the "constant matrix" premise, requiring expensive refactorization or dynamic rank-1 updates.
+- **Soft Approximations of Hard Constraints**: Treating hard boundaries (e.g., collisions, pinning) as soft constraints with high stiffness weights $w_i$ degrades the numerical conditioning of the linear system, potentially leading to visual locking artifacts.

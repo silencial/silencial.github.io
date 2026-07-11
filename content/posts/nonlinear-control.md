@@ -664,8 +664,6 @@ $$
 where $W(\eta)$ is P.D. Now using
 
 $$
-\require{mathtools}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
 V(\eta, \xi) = V_0(\eta) + \frac{1}{2} \norm{\xi-\phi(\eta)}^2
 $$
 and we can obtain

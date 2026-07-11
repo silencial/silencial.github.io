@@ -1,7 +1,7 @@
 ---
 title: Nonlinear Optimization
 date: 2021-05-13
-lastmod: 2025-05-17
+updated: 2025-05-17
 categories:
 - Study
 tags:
@@ -223,8 +223,6 @@ $$
 The quadratic penalty function $Q(x; \mu)$ for this formulation is
 
 $$
-\require{mathtools}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
 \begin{equation}\label{qua}
 Q(x; \mu) = f(x) + \frac{\mu}{2}\sum_{i\in\mathcal{E}} c_i^2(x)
 \end{equation}

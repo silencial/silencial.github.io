@@ -1,7 +1,7 @@
 ---
 title: Physically Based Modeling
 date: 2018-03-20
-lastmod: 2025-05-27
+updated: 2025-05-27
 categories:
 - Study
 tags:
@@ -214,7 +214,7 @@ $$
 If we define the skew-symmetric matrix $\omega^*$ as:
 
 $$
-w^* = 
+w^* =
 \begin{pmatrix}
 0 & -\omega_z & \omega_y \\
 \omega_z & 0 & -\omega_x \\
@@ -344,4 +344,3 @@ b_n
 $$
 
 Then $\eqref{NC}$ forms a quadratic programming problem.
-

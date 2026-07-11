@@ -1,7 +1,7 @@
 ---
 title: Hugo 博客搭建
 date: 2024-03-19
-lastmod: 2025-07-01
+updated: 2025-07-01
 categories:
 - Tech
 tags:
@@ -54,7 +54,7 @@ hugo new site <site_name> --format yaml
 为使博客支持 LaTeX 数学公式渲染，需进行如下配置，具体可参照[官方文档](https://gohugo.io/content-management/mathematics/)。
 
 1. 更新 Hugo 配置：在 `hugo.yaml` 中添加相关设置，使 Hugo 内置的 `Goldmark` Markdown 渲染器能够正确解析 `$` 和 `$$` 数学环境。
-2. 创建 MathJax 模板：在主题文件夹下新建 `layouts/partials/math.html` 文件，用于引入 MathJax 脚本并进行配置。完整的配置选项可参阅 [MathJax 官方文档](https://docs.mathjax.org/en/v3.0-latest/options/input/tex.html)。我的配置中额外加入了 `tags: 'ams'` 以支持公式的自动编号和引用，并引入了 `mathtools` 包以使用更多常见命令。
+2. 创建 MathJax 模板：在主题文件夹下新建 `layouts/partials/math.html` 文件，用于引入 MathJax 脚本并进行配置。完整的配置选项可参阅 [MathJax 官方文档](https://docs.mathjax.org/en/latest/options/input/tex.html)。我的配置中额外加入了 `tags: 'ams'` 以支持公式的自动编号和引用，并引入了 `mathtools` 包以使用更多常见命令。
 
     ```html
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -117,7 +117,7 @@ hugo new site <site_name> --format yaml
 
 ## 图注
 
-为了给图片添加图注（Caption），我的实现方式是利用 Markdown 图片语法中的 `alt` 文本。
+为了给图片添加图注 (Caption)，我的实现方式是利用 Markdown 图片语法中的 `alt` 文本。
 
 由于 Markdown 语言中图片的语法 `![alt text](image.png "title text")` 在转化为 HTML 时会变为 `<img src="image.png" alt="alt text" title="title text">`。因此，修改 `layouts/_default/_markup/render-image.html` 文件，将 `alt` 文本渲染为 `<figcaption>`：
 
@@ -175,14 +175,10 @@ hugo new site <site_name> --format yaml
 
 参照[官方文档](https://gohugo.io/content-management/diagrams/)，可以为 Hugo 添加 Mermaid.js 支持，从而在 Markdown 中直接渲染流程图、时序图等。
 
-## Callout 支持
-
-通过集成 [hugo-admonitions](https://github.com/KKKZOZ/hugo-admonitions) 模块，可以方便地在文章中使用 Callout/Admonition 块（如 `note`, `warning`, `tip` 等）。
-
 # GitHub Pages 发布
 
 部署过程可直接参考官方文档：[Hosting on GitHub Pages](https://gohugo.io/hosting-and-deployment/hosting-on-github/)。
 
 # TODO
 
-- 将文章目录（TOC）移至侧边栏，并实现滚动时高亮当前章节的功能。目前尚未找到理想的解决方案。
+- 将文章目录 (TOC) 移至侧边栏，并实现滚动时高亮当前章节的功能。目前尚未找到理想的解决方案。

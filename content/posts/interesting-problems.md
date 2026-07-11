@@ -1,7 +1,7 @@
 ---
 title: Interesting Problems
 date: 2023-10-13
-lastmod: 2024-06-18
+updated: 2024-06-18
 categories:
 - Fun
 tags:

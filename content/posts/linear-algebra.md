@@ -1,7 +1,7 @@
 ---
 title: Linear Algebra Review
 date: 2019-01-18
-lastmod: 2025-05-03
+updated: 2025-05-03
 categories:
 - Study
 tags:
@@ -20,7 +20,6 @@ A subspace is a subset of a vector space that satisfies the requirements to be a
 # QR Decomposition
 
 $$
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
 A = \begin{bmatrix}
 Q_1 & Q_2
 \end{bmatrix}

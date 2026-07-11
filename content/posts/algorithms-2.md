@@ -1,7 +1,7 @@
 ---
 title: Algorithms II
 date: 2020-07-07
-lastmod: 2026-01-05
+updated: 2026-01-05
 categories:
 - Study
 tags:
@@ -1103,7 +1103,7 @@ public static void sort(String[] a) {
 
 private static void sort(String[] a, String[] aux, int lo, int hi, int d) {
     if (hi <= lo) return;
-    
+
     // Use R+2 for -1 (end-of-string) and 0-255 (chars)
     int[] count = new int[R+2];
 
@@ -1114,15 +1114,15 @@ private static void sort(String[] a, String[] aux, int lo, int hi, int d) {
     // 2. Compute cumulates
     for (int r = 0; r < R+1; r++)
         count[r+1] += count[r];
-    
+
     // 3. Move items to aux[]
     for (int i = lo; i <= hi; i++)
         aux[count[charAt(a[i], d) + 1]++] = a[i];
-        
+
     // 4. Copy back
     for (int i = lo; i <= hi; i++)
         a[i] = aux[i - lo];
-    
+
     // Recursively sort for each character value
     for (int r = 0; r < R; r++)
         sort(a, aux, lo + count[r], lo + count[r+1] - 1, d+1);
@@ -1157,11 +1157,11 @@ private static void sort(String[] a)
 
 private static void sort(String[] a, int lo, int hi, int d) {
     if (hi <= lo) return;
-    
+
     int lt = lo, gt = hi;
     int v = charAt(a[lo], d); // Partitioning char
     int i = lo + 1;
-    
+
     // 3-way partitioning
     while (i <= gt) {
         int t = charAt(a[i], d);
@@ -1407,18 +1407,18 @@ public KMP(String pat) {
     int M = pat.length();
     int R = 256;
     dfa = new int[R][M];
-    
+
     dfa[pat.charAt(0)][0] = 1; // Initial match
     int X = 0; // Restart state
-    
+
     for (int j = 1; j < M; j++) {
         // 1. Copy mismatch case from restart state
         for (int c = 0; c < R; c++)
             dfa[c][j] = dfa[c][X];
-        
+
         // 2. Set match case
         dfa[pat.charAt(j)][j] = j + 1;
-        
+
         // 3. Update the restart state for the next iteration
         X = dfa[pat.charAt(j)][X];
     }
@@ -1434,7 +1434,7 @@ public int search(In in) {
     int i, j;
     for (i = 0, j = 0; !in.isEmpty() && j < M; i++)
         j = dfa[in.readChar()][j];
-        
+
     if (j == M) return i - M; // Match found, return start index
     else return N;            // Not found
 }
@@ -1528,7 +1528,7 @@ public class RabinKarp {
         M = pat.length();
         R = 256;
         Q = longRandomPrime(); // Find a large random prime
-        
+
         // Compute RM = R^(M-1) % Q
         RM = 1;
         for (int i = 1; i <= M-1; i++)
@@ -1543,21 +1543,21 @@ public class RabinKarp {
         int N = txt.length();
         if (N < M) return N;
         long txtHash = hash(txt, M);
-        
+
         // Check for match at beginning
         if (patHash == txtHash && check(txt, 0)) return 0;
-        
+
         // Slide the window
         for (int i = M; i < N; i++) {
             // Remove leading digit, add trailing digit
             txtHash = (txtHash + Q - RM*txt.charAt(i-M) % Q) % Q;
             txtHash = (txtHash*R + txt.charAt(i)) % Q;
-            
+
             if (patHash == txtHash && check(txt, i - M + 1)) return i - M + 1;
         }
         return N; // Not found
     }
-    
+
     private boolean check(String txt, int i) {
         for (int j = 0; j < M; j++)
             if (pat.charAt(j) != txt.charAt(i + j))
@@ -1677,7 +1677,7 @@ public class NFA {
             for (int v = 0; v < G.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
         }
-        
+
         // Check if accept state is in the final set
         for (int v : pc)
             if (v == M) return true;

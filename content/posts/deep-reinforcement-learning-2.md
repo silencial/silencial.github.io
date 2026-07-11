@@ -1,7 +1,7 @@
 ---
 title: Deep Reinforcement Learning (Part 2)
 date: 2020-02-06
-lastmod: 2020-02-12
+updated: 2020-02-12
 categories:
 - Study
 tags:
@@ -43,10 +43,8 @@ Often it will make learning easier. Previous methods (policy gradient, value bas
 
 For **deterministic** open-loop system, the objective is:
 $$
-\require{mathtools}
-\DeclareMathOperator*{\argmin}{arg\,min\,}
-\DeclareMathOperator*{\argmax}{arg\,max\,}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \begin{equation}\label{dol}
 \begin{gathered}
 \mathbf{a}_{1}, \ldots, \mathbf{a}_{T}=\argmax _{\mathbf{a}_{1}, \ldots, \mathbf{a}_{T}} \sum_{t=1}^{T} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right) \\

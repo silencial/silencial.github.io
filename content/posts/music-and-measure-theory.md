@@ -1,7 +1,7 @@
 ---
 title: 音乐与测度论有什么关系
 date: 2018-08-05
-lastmod: 2025-05-18
+updated: 2025-05-18
 categories:
 - Fun
 tags:

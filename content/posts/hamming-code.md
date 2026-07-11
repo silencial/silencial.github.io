@@ -1,7 +1,7 @@
 ---
 title: Hamming Code
 date: 2018-11-19
-lastmod: 2025-04-20
+updated: 2025-04-20
 categories:
 - Fun
 tags:

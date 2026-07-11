@@ -1,7 +1,7 @@
 ---
 title: Nonlinear System
 date: 2019-10-12
-lastmod: 2019-12-08
+updated: 2019-12-08
 categories:
 - Study
 tags:
@@ -153,8 +153,6 @@ Then, $M$ contains a periodic orbit of $\eqref{sys}$.
 
 **Theorem 1 (Local Existence and Uniqueness)**: Let $f(t, x)$ be *piecewise cont.* in $t$ and satisfy the *Lipschitz condition*
 $$
-\require{mathtools}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
 \norm{ f(t, x) - f(t, y) } \le L \norm{ x - y }
 $$
 $\forall x, y\in B = \{ x\in \mathbb{R}^n \mid \norm{ x - x_0 } \le r \}$, $\forall t \in [t_0, t_1]$. Then there exists some $\delta > 0$ s.t. the state equation $\dot{x} = f(t, x)$ with $x(t_0) = x_0$ has a unique solution over $[t_0, t_0 + \delta]$.

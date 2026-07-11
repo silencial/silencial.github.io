@@ -1,7 +1,7 @@
 ---
 title: Linear System
 date: 2018-12-20
-lastmod: 2025-04-29
+updated: 2025-04-29
 categories:
 - Study
 tags:

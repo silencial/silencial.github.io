@@ -1,7 +1,7 @@
 ---
 title: Deep Reinforcement Learning (Part 1)
 date: 2020-02-05
-lastmod: 2021-09-09
+updated: 2021-09-09
 categories:
 - Study
 tags:
@@ -55,7 +55,6 @@ Instead of being clever about $p_{\pi_\theta}(\mathbf{o}_t) = p_\text{data}(\mat
 
 0-1 cost function:
 $$
-\require{mathtools}
 c(\mathbf{s}, \mathbf{a})=\begin{dcases}
 0 &\text{if } \mathbf{a}=\pi^{\star}(\mathbf{s}) \\
 1 &\text{otherwise }
@@ -95,8 +94,6 @@ The goal of RL is to find the optimal policy
 $$
 \DeclareMathOperator*{\argmin}{arg\,min\,}
 \DeclareMathOperator*{\argmax}{arg\,max\,}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
-\DeclarePairedDelimiters\abs{\lvert}{\rvert}
 \begin{split}
 \theta^{\star} &= \argmax_{\theta} \mathbb{E}_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right] \\
 &= \argmax_{\theta} \sum_{t=1}^T \mathbb{E}_{(\mathbf{s}_t, \mathbf{a}_t) \sim p_{\theta}(\mathbf{s}_t, \mathbf{a}_t)}\left[r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]

@@ -1,7 +1,7 @@
 ---
 title: 用莫比乌斯带巧解内接矩形问题
 date: 2018-08-07
-lastmod: 2025-04-21
+updated: 2025-04-21
 categories:
 - Fun
 tags:

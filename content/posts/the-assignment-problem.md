@@ -1,6 +1,7 @@
 ---
 title: The Assignment Problem
 date: 2018-12-16
+updated: 2026-05-27
 categories:
 - Fun
 tags:
@@ -8,28 +9,33 @@ tags:
 - Discrete Math
 ---
 
-Given $n$ workers and $n$ jobs, and the cost $c_{ij}$ to train the $i$-th worker for the $j$-th job, find an assignment of one worker to each job which minimized the total training cost.
+**Problem statement**: Given $n$ workers and $n$ jobs, along with the cost $c_{ij}$ to train the $i$-th worker for the $j$-th job, find an assignment of exactly one worker to each job which **minimizes** the total training cost.
 
 <!--more-->
 
 ---
 
-# Solving Assignment Problems
+# Mathematical Formulation
 
-Recall that a permutation of a set $N=\{1,2,\dots,n\}$ is a function $\sigma:N\to N$ which is one-to-one and onto. Given any $n\times n$ matrix $C=[c_{ij}]$, the assignment problem specified by $C$ is the problem of finding a permutation $\sigma$ of $\{1,2,\dots,n\}$ that minimizes
+Recall that a permutation of a set $N=\{1,2,\dots,n\}$ is a one-to-one and onto function $\sigma:N\to N$. Given any $n\times n$ cost matrix $C=[c_{ij}]$, the assignment problem specifies finding a permutation $\sigma$ of $\{1,2,\dots,n\}$ that minimizes the total cost:
+
 $$
 z=\sum_{i=1}^n c_{i\sigma(i)}
 $$
-One method for solving assignment problems is to generate all $n!$ permutations of $\{1,2,\dots,n\}$, compute every $z$ for each permutation $\sigma$, and then find a permutation on which the minimum of $z$ is attained.
 
-We want to develop a more efficient method. Let $C=[c_{ij}]$ be any $n\times n$ matrix in which $c_{ij}$ is the cost of assigning worker $i$ to job $j$. Let $X=[x_{ij}]$ be the $n\times n$ matrix where
+**Brute-Force Approach**: Generate all $n!$ permutations of $\{1,2,\dots,n\}$, compute $z$ for each permutation $\sigma$, and find the minimum.
+
+**Linear Programming Formulation**: Let $X=[x_{ij}]$ be an $n\times n$ binary decision matrix where:
+
 $$
 x_{ij}=\begin{cases}
-1 &\text{if row } i \text{ assigned to column } j \\
+1 &\text{if worker } i \text{ is assigned to job } j \\
 0 &\text{otherwise}
 \end{cases}
 $$
-The assignment problem can then be expressed in terms of a function $z$ as:
+
+The problem can be expressed as:
+
 $$
 \begin{align*}
 &\min & &z(X) = \sum_{i=1}^n\sum_{j=1}^n c_{ij}x_{ij} \\
@@ -37,67 +43,78 @@ $$
 & & &\sum_{i=1}^n x_{ij}=1, \quad \text{for } j=1,2,\dots,n
 \end{align*}
 $$
-Any solution $X$ on which $z(X)$ is minimum is called an **optimal solution**.
 
-This model allows for the derivation of an efficient algorithm known as the **Hungarian method**. The idea behind the Hungarian method is to try to transform a given assignment problem specified by $C$ into another one specified by a matrix $\hat{C}=[\hat{c}_{ij}]$, such that $\hat{c}_{ij}\ge 0$, for all pairs $i,j$, where both problems have the same set of optimal solutions.
+Any solution $X$ that minimizes $z(X)$ is called an optimal solution.
 
-**Theorem 1**  A solution $X$ is an optimal solution for
-$$
-z(X)=\sum_{i=1}^n\sum_{j=1}^n c_{ij}x_{ij}
-$$
-if and only if it is an optimal solution for
-$$
-\hat{z}(X)=\sum_{i=1}^n\sum_{j=1}^n \hat{c}_{ij}x_{ij}
-$$
-where $\hat{c}_{ij}=c_{ij}-u_i-v_j$ for any choice of $(u_1,\dots,u_n)$ and $(v_1,\dots,v_n)$ where $u_i$ and $v_j$ are real numbers for all $i$ and $j$.
+This model allows for the derivation of an efficient algorithm known as the **Hungarian method**. The core idea is to transform a given cost matrix $C$ into a reduced matrix $\hat{C}=[\hat{c}_{ij}]$ (where $\hat{c}_{ij} \ge 0$) such that both matrices share the same set of optimal solutions.
 
-**Proof:**
+**Theorem 1 (Equivalent Objectives)**: A solution $X$ is an optimal solution for $z(X) = \sum_{i, j} c_{ij}x_{ij}$, if and only if it is an optimal solution for $\hat{z}(X)=\sum_{i, j} \hat{c}_{ij}x_{ij}$, where $\hat{c}_{ij}=c_{ij}-u_i-v_j$ for any real numbers $u_i$ and $v_j$.
+
+**Proof**:
+
 $$
 \begin{split}
-\hat{z}(x)&=\sum_{i=1}^n\sum_{j=1}^n \hat{c}_{ij}x_{ij} \\
+\hat{z}(X)&=\sum_{i=1}^n\sum_{j=1}^n \hat{c}_{ij}x_{ij} \\
 &=\sum_{i=1}^n\sum_{j=1}^n (c_{ij}-u_i-v_j)x_{ij} \\
-&=z(x)-\sum_{i=1}^n u_i\sum_{j=1}^n x_{ij}-\sum_{j=1}^n v_j\sum_{i=1}^n x_{ij} \\
-&=z(x)-\sum_{i=1}^n u_i-\sum_{j=1}^n v_j
+&=z(X)-\sum_{i=1}^n u_i \left(\sum_{j=1}^n x_{ij}\right) - \sum_{j=1}^n v_j \left(\sum_{i=1}^n x_{ij}\right) \\
+&=z(X)-\sum_{i=1}^n u_i-\sum_{j=1}^n v_j
 \end{split}
 $$
 
-**Theorem 2**  If $C=[c_{ij}]$ satisfies $c_{ij}\ge 0$ for all $i$ and $j$, and $\{c_{1j_1},c_{2j_2},\dots,c_{nj_n}\}$ is an independent set of $n$ zeros in $C$, then $X^*=[x_{ij}^*]$ where $x_{1j_1}^*=1,x_{2j_2}^*=1,\dots,x_{nj_n}^*=1$, and $x_{ij}^*=0$ for any other $i$ and $j$, is an optimal solution to the assignment problem specified by $C$.
+Since $\sum u_i$ and $\sum v_j$ are constants for a given valid assignment $X$, minimizing $\hat{z}(X)$ is strictly equivalent to minimizing $z(X)$.
+
+**Theorem 2 (Zero-Cost Assignment)**: If $C=[c_{ij}]$ satisfies $c_{ij}\ge 0$ for all $i, j$, and there exists an independent set of $n$ zeros $\{c_{1j_1},c_{2j_2},\dots,c_{nj_n}\}$ in $C$, then the assignment $X^*$ (where $x_{ij}^*=1$ if $j=j_{i}$, and $0$ otherwise) is an optimal solution.
 
 # The Hungarian Method
 
-The objective of the Hungarian method is to use Theorem 1 to transform a matrix $C$ into another matrix $\hat{C}$, having the same set of optimal solutions as $C$, such that $\hat{C}$ contains an independent set of $n$ zeros. Then, using Theorem 2, an optimal solution to both problems can be obtained.
+The objective is to utilize Theorem 1 to transform matrix $C$ into a reduced matrix $\hat{C}$ containing an independent set of $n$ zeros, and then apply Theorem 2 to locate the optimal assignment.
 
-Given any $n\times n$ matrix $C=[c_{ij}]$, let
-$$
-\begin{align*}
-&u_i=\min(c_{i1},c_{i2},\dots,c_{in}), & &\text{for }i=1,2,\dots,n \\
-&v_j=\min(c_{1j}-u_1,c_{2j}-u_2,\dots,c_{nj}-u_n), & &\text{for }j=1,2,\dots,n
-\end{align*}
-$$
-The matrix $\hat{C}=[\hat{c}_{ij}]$ given by $\hat{c}_{ij}=c_{ij}-u_i-v_j$ for all pairs $i$ and $j$ is called the reduced matrix for $C$.
+Given any $n\times n$ matrix $C=[c_{ij}]$
 
-The reduced matrix have the same set of optimal solutions as the original matrix. All entries in the reduced matrix are nonnegative. However, the reduced matrix may not contain an independent set of $n$ zeros. To obtain a new matrix having the same optimal solutions, but containing more zeros, draw a set of lines through the rows and columns of $\hat{C}$ using as few lines as possible so that there is at least one line through every zero. We can easily see that the minimum number of lines needed to cover all zeros is equal to the maximum number of independent zeros.
+1. Row reduction: Find $u_i = \min(c_{i1}, \dots, c_{in})$ for each row $i$.
+2. Column reduction: Find $v_j = \min(c_{1j}-u_1, \dots, c_{nj}-u_n)$ for each column $j$.
+3. The matrix $\hat{C}=[\hat{c}_{ij}]$ given by $\hat{c}_{ij}=c_{ij}-u_i-v_j$ is the **reduced matrix**. All entries are nonnegative.
 
-We now give the Hungarian method:
+Algorithm steps:
 
 1. Obtain the reduce matrix $\hat{C}$ for $C$.
-2. Find a maximal independent set of zeros. If this set has $n$ elements, an optimal solution is available. Otherwise go to step 3.
-3. Find a set of lines that cover all zeros using the smallest possible number of lines. Let $k$ be the smallest entry not covered. Subtract $k$ from each entry not covered by any line, and add $k$ to each entry covered twice. Repeat step 2.
+2. Check for optimality: Find a maximal independent set of zeros.
+    - If this set has $n$ elements, an optimal solution is available.
+    - Otherwise, proceed to Step 3.
+3. Line covering & Matrix update:
+    - Draw the minimum number of lines through the rows and columns to cover all zeros.
+    - Let $k$ be the smallest entry **not covered** by any line.
+    - **Subtract** $k$ from each entry not covered by any line.
+    - **Add** $k$ to each entry covered twice.
+    - Repeat Step 2.
 
-The number of iteration is $O(n^2)$.
+> Complexity: The number of iteration for matrix update is bounded by $O(n^2)$, leading to an overall standard time complexity of $O(n^3)$ for the Hungarian method.
 
-# Perfect Matching Problems
+# The Perfect Matching Problem
 
-Suppose four workers must be assigned to four jobs. Is it possible to assign workers to jobs so that each worker is assigned one job and each job is assigned to one worker? This problem can be stated in terms of graphs.
+**Motivation**: Suppose 4 workers must be assigned to 4 jobs. Is it possible to assign them such that each worker gets exactly one job, and each job is assigned to exactly one worker? This translates directly to a graph theory problem.
 
-Let $G =(V,E) $be any bipartite graph with $V = V_1 \cup V_2$.A subset of edges $M$ contained in $E$ is called a perfect matching if every vertex in $V$ is contained in exactly one edge of $M$.
+- **Bipartite Graph**: A graph $G=(V,E)$ where the vertex set is partitioned into two disjoint subsets $V = V_1 \cup V_2$.
+- **Perfect Matching**: A subset of edges $M \subseteq E$ where every vertex in $V$ is contained in exactly one edge of $M$.
+- **Vertex Cover**: A set of vertices $Q$ such that every edge in $G$ contains at least one vertex in $Q$.
 
-The **Frobenius Marriage Theorem** states that a bipartite graph $G=(V,E)$ with $V=V_1\cup V_2$ has a perfect matching if and only if $|V_1|=|V_2|$ and for every subset $W$ contained in $V_1$, $|R(W)|\ge |W|$, where $R(W)$ denote the set of vertices in $V_2$ adjacent to a vertex in $W$.
+**Hall's Marriage Theorem**: A bipartite graph $G=(V,E)$ with $V=V_1\cup V_2$ has a perfect matching if and only if:
 
-**Proof:** First we can give the definition of **vertex cover**. A vertex cover $Q$ of the edges of a graph $G$ is a set of vertices such that each edge of $G$ contains at least one vertex in $Q$. We can easily see that in a bipartite graph $G=(V,E)$ the maximum number of edges in a matching is equal to the minimum number of vertices in a vertex cover. Let $V=V_1\cup V_2$. If $G$ has a perfect matching, then for any $W$ contains in $V_1$ with $k$ elements, there must be $k$ elements in $V_2$ that are contained in $R(W)$, so $|R(W)|\ge |W|$. Conversely, assume $|V_1=|V_2|$ and $|R(W)|\ge |W|$, for all $W$ contained in $V_1$. Since $V_1$ is a vertex cover, the proof is complete if we show that $V_1$ is a cover of minimal size. Suppose $Q$ is a vertex cover of the edges of minimum size. Let $U_1=Q\cap V_1$ and $U_2=V_2-U_1$. By assumption, $|R(U_2)|\ge |U_2|$. However, $R(U_2)$ is contained in $Q\cap V_2$ because edges not covered by vertices in $V_1$ must be covered by vertices in $V_2$. Thus, $|U_2|\le|R(U_2)|\le|Q\cap V_2|$. This implies that $|V_1|=|U_1|+|U_2|\le|U_1|+|Q\cap V_2|=|Q\cap V_1|+|Q\cap V_2|=|Q|$. So that $V_1$ must be a cover of minimum size.
+1. $|V_1| = |V_2|$
+2. For every subset $W\subseteq V_{1}$, $|R(W)|\ge |W|$, where $R(W)$ denotes the set of vertices in $V_2$ adjacent to at least one vertex in $W$.
 
-# Reference
+**Proof**: (By Kőnig's theorem, in any bipartite graph, the maximum number of edges in a matching is equal to the minimum number of vertices in a vertex cover.)
 
-1. [Assignment Problem](https://en.wikipedia.org/wiki/Assignment_problem)
-2. [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm)
-3. [Matching](https://en.wikipedia.org/wiki/Matching_(graph_theory))
+- Sufficiency:
+    - Assume $G$ has a perfect matching.
+    - For any $W \subseteq V_1$ with $k$ elements, the matching dictates there must be exactly $k$ elements in $V_{2}$ strictly adjacent to them.
+    - These $k$ elements are contained in $R(W)$, so $|R(W)| \geq |W|$.
+- Necessity:
+    - Assume $|V_1| = |V_2|$ and $|R(W)|\ge |W|$ for all $W \subseteq V_1$.
+    - Since $V_1$ inherently covers all edges (as every edge has exactly one endpoint in $V_1$), $V_1$ is a valid vertex cover. The proof is complete if we show $V_1$ is a cover of **minimal size**.
+    - Suppose $Q$ is a vertex cover of minimum size. Let $U_1 = Q \cap V_1$ and $U_2 = V_1 \setminus U_1$.
+    - Since $U_2 \cap Q = \emptyset$, all edges incident to $U_2$ must be covered by their other endpoints in $V_2$. Thus, the neighbors of $U_2$ must be entirely contained within $Q$, meaning $R(U_2) \subseteq Q \cap V_2$.
+    - By the initial assumption, $|R(U_2)|\ge |U_2|$.
+    - This gives us: $|U_2| \le |R(U_2)| \le |Q \cap V_2|$.
+    - Calculating the total size of $Q$: $|Q| = |Q \cap V_1| + |Q \cap V_2| = |U_1| + |Q \cap V_2| \ge |U_1| + |U_2| = |V_1|$.
+    - Since $|Q| \geq |V_{1}|$, $V_1$ must be a vertex cover of minimum size.

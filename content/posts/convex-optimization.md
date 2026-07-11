@@ -1,7 +1,7 @@
 ---
 title: Convex Optimization
 date: 2019-07-05
-lastmod: 2025-06-30
+updated: 2025-06-30
 categories:
 - Study
 tags:
@@ -94,8 +94,6 @@ The vector $\mathbf{a}$ is the normal to the hyperplane. Hyperplanes are both af
 A Euclidean ball with center $\mathbf{x}_c$ and radius $r$:
 
 $$
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
-\DeclarePairedDelimiters\abs{\lvert}{\rvert}
 B(\mathbf{x}_{c}, r)=\{\mathbf{x} \mid \norm{\mathbf{x}-\mathbf{x}_{c}}_{2} \le r\}=\{\mathbf{x}_{c}+r \mathbf{u} \mid \norm{\mathbf{u}}_{2} \le 1\}
 $$
 

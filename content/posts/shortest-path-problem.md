@@ -1,7 +1,7 @@
 ---
 title: Shortest Path Problem
 date: 2018-12-18
-lastmod: 2025-06-22
+updated: 2025-06-22
 categories:
 - Fun
 tags:

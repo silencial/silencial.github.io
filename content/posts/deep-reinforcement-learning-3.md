@@ -1,7 +1,7 @@
 ---
 title: Deep Reinforcement Learning (Part 3)
 date: 2020-02-07
-lastmod: 2020-02-13
+updated: 2020-02-13
 categories:
 - Study
 tags:
@@ -30,11 +30,8 @@ p(x) = \int p(x|z)p(z)dz
 $$
 and the maximum likelihood fit becomes
 $$
-\require{mathtools}
-\DeclareMathOperator*{\argmin}{arg\,min\,}
-\DeclareMathOperator*{\argmax}{arg\,max\,}
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
-\DeclarePairedDelimiters\abs{\lvert}{\rvert}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \theta \gets \argmax _{ \theta } \frac { 1 } { N } \sum_ { i } \log \left( \int p _{ \theta } \left( x_ { i } | z \right) p ( z ) d z \right)
 $$
 the integral is intractable so we replace it by expectation

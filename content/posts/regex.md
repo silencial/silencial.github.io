@@ -1,7 +1,7 @@
 ---
 title: Regular Expression
 date: 2019-05-24
-lastmod: 2021-03-21
+updated: 2021-03-21
 categories:
 - Tech
 tags:

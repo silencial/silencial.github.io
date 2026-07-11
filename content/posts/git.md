@@ -1,7 +1,7 @@
 ---
 title: Git 101
 date: 2019-02-01
-lastmod: 2022-07-04
+updated: 2022-07-04
 categories:
 - Tech
 tags:

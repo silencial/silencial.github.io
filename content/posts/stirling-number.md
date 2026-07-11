@@ -1,7 +1,7 @@
 ---
 title: Stirling Number
 date: 2018-11-29
-lastmod: 2025-06-23
+updated: 2025-06-23
 categories:
 - Fun
 tags:

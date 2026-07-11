@@ -1,7 +1,7 @@
 ---
 title: Ramsey Number
 date: 2018-12-13
-lastmod: 2025-06-11
+updated: 2025-06-11
 categories:
 - Fun
 tags:

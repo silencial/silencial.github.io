@@ -1,7 +1,7 @@
 ---
 title: Hexo + NexT 博客搭建
 date: 2018-01-01
-lastmod: 2025-06-24
+updated: 2025-06-24
 categories:
 - Tech
 tags:
@@ -341,4 +341,4 @@ Hexo 使用 Nunjucks 作为模板引擎，它会解析双大括号 `{{ }}`。如
 
 - 思维导图: [hexo-markmap](https://github.com/MaxChang3/hexo-markmap)
 - 时间线: [hexo-tag-mdline](https://github.com/wangwei1237/hexo-tag-mdline)
-- 图表绘制 (Chart.js): [hexo-tag-chart](https://github.com/Shen-Yu/hexo-tag-chart)
+- 图表绘制（Chart.js）: [hexo-tag-chart](https://github.com/Shen-Yu/hexo-tag-chart)

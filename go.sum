@@ -2,3 +2,9 @@ github.com/KKKZOZ/hugo-admonitions v0.12.1 h1:SMpeJ4/0VUXwpy1bgmyigNrXTPmAFrO28/
 github.com/KKKZOZ/hugo-admonitions v0.12.1/go.mod h1:4PsJAsqo3mS3VzAtDLa8k0ds+CJQUWZhAo9kLi1NRlM=
 github.com/silencial/hugo-PaperMod v0.0.0-20260626074927-3ab4de40a65d h1:G2G45W4O0bRp/JICFj2s4y9q3ejbd1KuHRMA73yuZLY=
 github.com/silencial/hugo-PaperMod v0.0.0-20260626074927-3ab4de40a65d/go.mod h1:rkQZpQC/ae74gY0X7QF01d/hpoWHkJoM7mnQOuVgtRM=
+github.com/silencial/hugo-PaperMod v0.0.0-20260626154836-2cbe5ee763b1 h1:hBDUda7qAi0QeSOisQnVONrNPHK7hk3+x17mqm4lHyo=
+github.com/silencial/hugo-PaperMod v0.0.0-20260626154836-2cbe5ee763b1/go.mod h1:rkQZpQC/ae74gY0X7QF01d/hpoWHkJoM7mnQOuVgtRM=
+github.com/silencial/hugo-PaperMod v0.0.0-20260626210731-222a964a7dbf h1:194z3FlrV1ea4iwExzhmRT8Yew1gOHE7cYkllLc/A+U=
+github.com/silencial/hugo-PaperMod v0.0.0-20260626210731-222a964a7dbf/go.mod h1:rkQZpQC/ae74gY0X7QF01d/hpoWHkJoM7mnQOuVgtRM=
+github.com/silencial/hugo-PaperMod v0.0.0-20260707123302-750310e6a191 h1:Oj6zA72OKK2ympkhpqWA+FXyqH9ols1y8Dd+Ijr9FXw=
+github.com/silencial/hugo-PaperMod v0.0.0-20260707123302-750310e6a191/go.mod h1:rkQZpQC/ae74gY0X7QF01d/hpoWHkJoM7mnQOuVgtRM=

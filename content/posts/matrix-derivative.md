@@ -1,7 +1,7 @@
 ---
 title: Matrix Derivatives
 date: 2019-08-01
-lastmod: 2025-05-14
+updated: 2025-05-14
 categories:
 - Study
 tags:
@@ -37,7 +37,7 @@ All taking derivative w.r.t. $\mathbf{x}$.
 
 - $\nabla A \mathbf{x}=A$
 - $\nabla \left(\mathbf{a}^{\mathrm{T}} \mathbf{x}\right)=\mathbf{a}$
-- $\require{mathtools}\DeclarePairedDelimiters\norm{\lVert}{\rVert}\nabla\norm{\mathbf{x}}_{2}^{2}=\nabla\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2 \mathbf{x}$
+- $\nabla\norm{\mathbf{x}}_{2}^{2}=\nabla\left(\mathbf{x}^{\mathbf{T}} \mathbf{x}\right)=2 \mathbf{x}$
 - $\nabla\left(\mathbf{x}^{T} A \mathbf{x}\right)=\left(A+A^{T}\right) \mathbf{x}$
 - $\nabla\left(\mathbf{u}^{\mathrm{T}} \mathbf{v}\right)=\left(\nabla_{\mathbf{x}} \mathbf{u}\right)^{T} \mathbf{v}+\left(\nabla_{\mathbf{x}} \mathbf{v}\right)^{T} \mathbf{u}$
 - $\nabla (\alpha(\mathbf{x}) \mathbf{f}(\mathbf{x}))=\mathbf{f}(\mathbf{x}) \nabla_{\mathbf{x}^{\mathrm{T}}} \alpha(\mathbf{x})+\alpha(\mathbf{x}) \nabla_{\mathbf{x}} \mathbf{f}(\mathbf{x})$

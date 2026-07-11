@@ -1,14 +1,14 @@
 ---
 title: Writing Rules For Markdown
 date: 2018-01-01
-lastmod: 2025-03-19
+updated: 2025-03-19
 categories:
 - Tech
 tags:
 - Tool
 ---
 
-博客写作时的一些规范和特殊用法参考。同时作为 Markdown 渲染时的标准参考文件。
+Blog 写作时的一些规范和特殊用法参考。同时作为 Markdown 渲染时的标准参考文件。
 
 <!--more-->
 
@@ -17,7 +17,16 @@ tags:
 # File
 
 1. 使用文件名为链接名，因此使用英文，用 `-` 代替空格
-1. Front Matter 中写上 `date` 和 `lastmod` 属性
+2. Front Matter 中写上 `date` 和 `lastmod` 属性
+
+# Grammar
+
+1. 标点符号放在加粗外，比如：应该是**证明**：而非**证明：**
+2. 推导数学公式时加入 `:`，表示下面的公式与本段有关，除非有连接词
+3. 中文使用直角引号「」
+4. 中文和英文之间空格
+5. 数字和单位之间空格，如 8 GB
+6. 括号中放英文翻译时都使用英文括号，比如数学 (Math) 而不是数学（Math）
 
 # Markdown
 
@@ -27,28 +36,104 @@ tags:
 
 示例[^footnote]
 
-[^footnote]: 这是一个脚注
-
 ## 标题引用 {#id0}
 
 可以为标题增加 ID，以便在文内[引用](#id0)
 
 ## Callout
 
+Obsidian、Hugo 和 Typora 支持的 callout style 并不一致。
+
+- Hugo：默认不支持，可通过安装 [hugo-admonitions](https://github.com/KKKZOZ/hugo-admonitions) 插件实现，
+- Obsidian：相比于 GitHub Alerts 支持[更多](https://obsidian.md/help/callouts#Supported%20types)。
+- Typora：支持 [GitHub Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)。
+
+Hugo 和 Obsidian 中支持 foldable callout：
+
+> [!TIP]+
+> 在 callout 类型后增加 `+` 或 `-` 标志可使 callout 支持折叠。`+` 默认状态为展开，`-` 默认折叠。
+
+Hugo 和 Obsidian 中支持 nested callout：
+
+> [!question] Can callouts be nested?
+>
+> > [!todo] Yes!, they can.
+> >
+> > > [!example]  You can even use multiple layers of nesting.
+
+所有样式如下：
+
 > [!NOTE]
-> Useful information that users should know, even when skimming content.
+> 全部支持
 
 > [!TIP]
-> Helpful advice for doing things better or more easily.
+> 全部支持
 
 > [!IMPORTANT]
-> Key information users need to know to achieve their goal.
+> 全部支持。Obsidian 中是 Tip 的别名。
 
 > [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
+> 全部支持
 
 > [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
+> 全部支持。Obsidian 中是 warning 的别名。
+
+> [!INFO]
+> Hugo + Obsidian
+
+> [!ABSTRACT]
+> Hugo + Obsidian
+
+> [!EXAMPLE]
+> Hugo + Obsidian
+
+> [!QUOTE]
+> Hugo + Obsidian
+
+> [!QUESTION]
+> Hugo + Obsidian
+
+> [!DANGER]
+> Hugo + Obsidian
+
+> [!ERROR]
+> Hugo + Obsidian。Obsidian 中是 danger 的别名。
+
+> [!SUCCESS]
+> Hugo + Obsidian
+
+> [!CONCLUSION]
+> Hugo
+
+> [!CODE]
+> Hugo
+
+> [!EXPERIMENT]
+> Hugo
+
+> [!MEMO]
+> Hugo
+
+> [!TASK]
+> Hugo
+
+> [!GOAL]
+> Hugo
+
+> [!IDEA]
+> Hugo
+
+> [!NOTIFY]
+> Hugo
+
+> [!TODO]
+> Obsidian
+
+> [!FAILURE]
+> Obsidian
+
+> [!BUG]
+> Obsidian
 
 ## Image Caption
 
@@ -65,12 +150,13 @@ pie
 "Rats" : 15
 ```
 
-# Grammar
-
-1. 推导数学公式时加入`:`，表示下面的公式与本段有关，除非有连接词
-2. 中文使用直角引号「」
-3. 中文和英文之间空格
-4. 数字和单位之间空格，如 8 GB
+```mermaid
+venn-beta
+  title "Team overlap"
+  set Frontend
+  set Backend
+  union Frontend,Backend["APIs"]
+```
 
 # Math
 
@@ -84,17 +170,22 @@ pie
 - `\mod` 相关：$a\mod b$, $a\pmod b$, $a\bmod b$
 - 数学推导：$\implies, \iff$
 - 连分数使用 `cfrac`:
+
   $$
   \cfrac{1}{\sqrt{2}+ \cfrac{1}{\sqrt{2}+ \cfrac{1}{\sqrt{2}+\dotsb }}}
   $$
+
 - 改变限制的位置使用 `\limits` 和 `\nolimits`:
+
   $$
   \begin{gather*}
   \sum_a \qquad \sum\nolimits_a \\
   \int_a \qquad \int\limits_a
   \end{gather*}
   $$
+
 - 多行上下标使用 `\substack`:
+
   $$
   \sum_{\substack{
   0\le i\le m \\
@@ -130,13 +221,17 @@ f(x) &= x^2\qquad +3x\qquad +2
 $$
 
 二元运算符和关系运算符的距离有极细微的差异：
+
 $$
 \begin{align*}
 3ax+4by=5cz\\
 3ax<4by+5cz
 \end{align*}
 $$
+
 因此在定义自己的运算符时应确定是二元运算符 `\mathbin{\#}` 还是关系运算符 `\mathrel{\#}`
+
+`-` 默认是二元运算符，如果想当负号使用，应该用括号包起来，例如：$\forall -x$ 对比 $\forall {-x}$
 
 ## 字体
 
@@ -160,6 +255,7 @@ $$
 $$
 
 对整个公式有效：`\mathnormal`, `\mathrm`, `\mathit`, `\mathbf`, `\mathsf`, `\mathtt`
+
 $$
 \begin{align*}
 3x^2 \in R \subset Q \\
@@ -177,12 +273,15 @@ $$
 ### 主环境
 
 单行使用 `equation`:
+
 $$
 \begin{equation}
 e^{\pi i} + 1 = 0
 \end{equation}
 $$
+
 公式超出一行使用 `multline`:
+
 $$
 \begin{multline}
 p = 1+2+3 \\
@@ -191,14 +290,18 @@ p = 1+2+3 \\
 +12+13+14
 \end{multline}
 $$
+
 多行居中不对齐使用 `gather`:
+
 $$
 \begin{gather}
 2x - 5y =  8 \\
 3x^2 + 9y =  3a + c
 \end{gather}
 $$
+
 多行对齐使用 `align`:（每个等式由两部分组成，用 `&` 分隔；等式之间同样由 `&` 分隔。用于排列多个公式）
+
 $$
 \begin{align}
 x&=y           &  w &=z              &  a&=b+c\\
@@ -206,7 +309,9 @@ x&=y           &  w &=z              &  a&=b+c\\
 -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
 \end{align}
 $$
+
 `align` 会在列之间加入空格，如果希望自己控制距离则使用 `alignat`:
+
 $$
 \begin{alignat}{3}
 & m   \quad && \text{módulo}            \quad && m>0\\
@@ -215,7 +320,9 @@ $$
 & x_0 \quad && \text{valor inicial}     \quad && 0\le x_0 <m
 \end{alignat}
 $$
+
 全长度 `align` 为 `flalign`:
+
 $$
 \begin{flalign}
 x&=y           &  w &=z              &  a&=b+c\\
@@ -223,11 +330,13 @@ x&=y           &  w &=z              &  a&=b+c\\
 -4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
 \end{flalign}
 $$
+
 **主环境都可以在名字最后加入 `*` 来抑制自动编号**
 
 ### 从属环境
 
 公式多行推导使用从属环境 `split`:
+
 $$
 \begin{equation}
 \begin{split}
@@ -236,9 +345,10 @@ $$
 \end{split}
 \end{equation}
 $$
+
 分段函数使用 `cases`（公式样式会变为行内公式）或 `dcases` (需要 `mathtools` 包)
+
 $$
-\require{mathtools}
 \begin{gather*}
 f(x) = \begin{cases}
 \frac{x+1}{4}, & \text{if } 0 < x < 1; \\
@@ -250,6 +360,7 @@ f(x) = \begin{dcases}
 \end{dcases}
 \end{gather*}
 $$
+
 其它从属环境：`multlined`, `gathered`, `aligned`, `alignedat`
 
 ### 其它
@@ -258,7 +369,7 @@ MathJax 尚不支持从属编号环境 `subequations`
 
 ## 自定义
 
-### 宏==TODO==
+### 宏 ==TODO==
 
 $$
 \def\specialFrac#1#2{\frac{x + #1}{y + #2}}
@@ -266,13 +377,13 @@ $$
 $$
 
 $$
-\DeclarePairedDelimiters\norm{\lVert}{\rVert} % require{\mathtools}
-\norm{v}_2 \quad \norm{\frac 1 2} \quad \norm*{\frac 1 2} \quad \norm[\Bigg]{v}
+\norm{v}_2 \quad \norm{\frac 1 2} \quad \norm*{\frac 1 2}
 $$
 
 ### 自定义数学符号
 
 数学符号以罗马体表示，间距和上下标也会有区别，比如正确的写法 $\sin(x)$ 对比 $sin(x)$。自定义数学符号可以使用 `\DeclareMathOperator` 或 `\DeclareMathOperator*`。等价于使用 `\operatorname` 和 `\operatorname*`
+
 $$
 \DeclareMathOperator*{\argmin}{arg\,min\,}
 \DeclareMathOperator{\argmax}{arg\,max\,}
@@ -286,23 +397,31 @@ $$
 ## MathJax Extensions
 
 See [MathJax Extension List](https://docs.mathjax.org/en/latest/input/tex/extensions/index.html) ==TODO==
+
 $$
 \toggle{math1}{math2}\endtoggle
 $$
 
-physics:
+[physics](https://ctan.math.illinois.edu/macros/latex/contrib/physics/physics.pdf):
+
 $$
 \require{physics}
 \begin{pmatrix}
-\imat{5}
+\imat{2}
 \end{pmatrix}
 $$
+
 centernot:
+
 $$
 \centernot\implies \qquad \not\implies
 $$
 
-mathtools:
+[mathtools](https://mirror.math.princeton.edu/pub/CTAN/macros/latex/contrib/mathtools/mathtools.pdf):
+
+$$
+\norm{a}
+$$
 
 ## 自定规范
 
@@ -315,3 +434,5 @@ mathtools:
 5. Conditional probability: $p(a | b)$
 6. Set with conditions: $\{a \mid a\in A\}$
 7. $i$-th
+
+[^footnote]: 这是一个脚注

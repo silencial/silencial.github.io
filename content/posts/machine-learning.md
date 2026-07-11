@@ -1,7 +1,7 @@
 ---
 title: Machine Learning
 date: 2019-07-26
-lastmod: 2026-01-16
+updated: 2026-01-16
 categories:
 - Study
 tags:
@@ -202,7 +202,6 @@ Regularization prevents overfitting by penalizing large weights.
 Adds the absolute value of the magnitude of coefficients as a penalty term.
 
 $$
-\DeclarePairedDelimiters\norm{\lVert}{\rVert}
 \DeclareMathOperator*{\argmin}{arg\,min\,}
 \DeclareMathOperator*{\argmax}{arg\,max\,}
 \norm{\theta}_1 = \sum_i |\theta_i|

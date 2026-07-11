@@ -1,7 +1,7 @@
 ---
 title: Mobile Robots
 date: 2020-03-19
-lastmod: 2025-05-05
+updated: 2025-05-05
 categories:
 - Study
 tags:
@@ -114,7 +114,6 @@ $$
 1. Simple measurement noise:
 
     $$
-    \require{mathtools}
     p_{\text {hit}}\left(z_{t}^{k} | x_{t}, m\right)=\begin{dcases}
     \eta \mathcal{N}\left(z_{t}^{k} ; z_{t}^{k *}, \sigma_{\text {hit}}^{2}\right) & \text {if } 0 \le z_{t}^{k} \le z_{\max} \\
     0 & \text { otherwise }

@@ -29,7 +29,7 @@ tags:
 
 ![Pattern Fail at 6](https://i.imgur.com/TqeOUAo.png)
 
-为了找到这个数列的通项公式，我们使用**欧拉示性数公式**（Euler's Characteristic Formula）来进行推导：
+为了找到这个数列的通项公式，我们使用**欧拉示性数公式 (Euler's Characteristic Formula)** 来进行推导：
 
 $$
 V-E+F=2

@@ -1,7 +1,7 @@
 ---
 title: Algorithms I
 date: 2019-02-10
-lastmod: 2025-07-17
+updated: 2025-07-17
 categories:
 - Study
 tags:
