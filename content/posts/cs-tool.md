@@ -183,10 +183,10 @@ IdentityFile [私钥绝对路径]
 利用公钥加密机制实现免输入密码的安全验证。
 
 ```bash
-# 生成 RSA 密钥对（公钥与私钥）
+# 生成密钥对（公钥与私钥）
 ssh-keygen -t ed25519 -C "your_email@example.com"
 # 将公钥安全传输并追加至服务端的 authorized_keys 中
-ssh-copy-id -i ~/.ssh/id_rsa.pub username@ip
+ssh-copy-id -i ~/.ssh/id_ed25519.pub username@ip
 ```
 
 ### 网络连接注意事项

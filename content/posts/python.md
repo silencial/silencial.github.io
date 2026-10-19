@@ -6,7 +6,7 @@ categories:
 - Tech
 tags:
 - CS
-- Tool"
+- Tool
 ---
 
 Python 知识点梳理
