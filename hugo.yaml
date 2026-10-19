@@ -1,5 +1,5 @@
-baseURL: 'https://example.org/'
-languageCode: 'en-us'
+baseURL: 'https://silencial.github.io/'
+locale: 'en-us'
 title: 'silencial Blog'
 hasCJKLanguage: true
 enableEmoji: true
@@ -9,6 +9,7 @@ googleAnalytics: 'G-CER92VFVHN'
 frontmatter:
   lastmod:
     - updated
+    - date
 
 module:
   imports:
@@ -96,6 +97,10 @@ params:
   math: true
   defaultTheme: auto
   DateFormat: "2006-01-02"
+  description: Personal notes on mathematics, computer science, robotics, and other interesting problems.
+  author: silencial
+  images:
+    - /android-chrome-384x384.png
 
   ShowReadingTime: true
   ShowToc: true

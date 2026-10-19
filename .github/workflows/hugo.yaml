@@ -118,6 +118,7 @@ jobs:
           hugo build \
             --gc \
             --minify \
+            --printPathWarnings \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
 
