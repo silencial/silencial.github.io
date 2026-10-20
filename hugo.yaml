@@ -110,6 +110,7 @@ params:
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
   ShowRssButtonInSectionTermList: true
+  hideAuthor: true
 
   homeInfoParams:
     Title: 👋🏻 Welcome to silencial Blog
